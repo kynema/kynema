@@ -17,23 +17,22 @@ std::array<double, 6> CalculateAerodynamicLoad(
     assert(aoa_polar.size() == cd_polar.size());
     assert(aoa_polar.size() == cm_polar.size());
 
-    auto v_rel_global = std::array<double, 3>{};
-    for (auto direction = 0U; direction < 3U; ++direction) {
-        v_rel_global[direction] = v_inflow[direction] - v_motion[direction];
-    }
+    const auto v_in = Eigen::Matrix<double, 3, 1>(v_inflow.data());
+    const auto v_mo = Eigen::Matrix<double, 3, 1>(v_motion.data());
+    const auto v_rel_global = v_in - v_mo;
 
-    const auto qqr_inv = math::QuaternionInverse(qqr);
-    auto v_rel = math::RotateVectorByQuaternion(qqr_inv, v_rel_global);
-    v_rel[0] = 0.;
+    const auto qqr_quat = Eigen::Quaternion<double>(qqr[0], qqr[1], qqr[2], qqr[3]);
+    const auto qqr_inv = qqr_quat.inverse();
+    auto v_rel = qqr_inv._transformVector(v_rel_global);
+    v_rel(0) = 0.;
 
-    const auto velocity_magnitude = math::Norm(v_rel);
+    const auto velocity_magnitude = v_rel.norm();
 
-    const auto aoa = CalculateAngleOfAttack(v_rel);
+    const auto aoa = CalculateAngleOfAttack(std::span<const double, 3>(v_rel.data(), 3));
 
-    const auto polar_iterator =
-        std::find_if(std::cbegin(aoa_polar), std::cend(aoa_polar), [aoa](auto polar) {
-            return polar > aoa;
-        });
+    const auto polar_iterator = std::ranges::find_if(aoa_polar, [aoa](auto polar) {
+        return polar > aoa;
+    });
 
     assert(polar_iterator != aoa_polar.end());
 
@@ -58,40 +57,23 @@ std::array<double, 6> CalculateAerodynamicLoad(
 
     const auto dynamic_pressure = .5 * fluid_density * velocity_magnitude * velocity_magnitude;
 
-    const auto drag_vector = std::array{
-        v_rel[0] / velocity_magnitude, v_rel[1] / velocity_magnitude, v_rel[2] / velocity_magnitude
-    };
-    const auto lift_vector = math::CrossProduct(
-        std::array{
-            -1.,
-            0.,
-            0.,
-        },
-        drag_vector
-    );
+    const auto drag_vector = v_rel.normalized();
+    const auto lift_vector = Eigen::Matrix<double, 3, 1>(-1., 0., 0.).cross(drag_vector);
 
-    auto force_local = std::array<double, 3>{};
-    for (auto direction = 0U; direction < 3U; ++direction) {
-        force_local[direction] = dynamic_pressure * chord * delta_s *
-                                 (cl * lift_vector[direction] + cd * drag_vector[direction]);
-    }
-    const auto moment_local = std::array{cm * dynamic_pressure * chord * chord * delta_s, 0., 0.};
+    const auto force_local =
+        dynamic_pressure * chord * delta_s * (cl * lift_vector + cd * drag_vector);
+    const auto moment_local =
+        Eigen::Matrix<double, 3, 1>(cm * dynamic_pressure * chord * chord * delta_s, 0., 0.);
+    const auto load_force = qqr_quat._transformVector(force_local);
+    const auto load_moment = qqr_quat._transformVector(moment_local);
+    const auto force_moment = force_local.cross(Eigen::Matrix<double, 3, 1>(con_force.data()));
+    const auto ref_axis_moment_local = force_moment + moment_local;
 
-    const auto load_force = math::RotateVectorByQuaternion(qqr, force_local);
-    const auto load_moment = math::RotateVectorByQuaternion(qqr, moment_local);
-
-    const auto force_moment = math::CrossProduct(force_local, con_force);
-    auto ref_axis_moment_local = std::array<double, 3>{};
-    for (auto component = 0U; component < 3U; ++component) {
-        ref_axis_moment_local[component] = force_moment[component] + moment_local[component];
-    }
-
-    const auto moment = math::RotateVectorByQuaternion(qqr, ref_axis_moment_local);
+    const auto moment = qqr_quat._transformVector(ref_axis_moment_local);
     std::ranges::copy(moment, std::begin(ref_axis_moment));
-    //    ref_axis_moment = math::RotateVectorByQuaternion(qqr, ref_axis_moment_local);
 
-    return {load_force[0],  load_force[1],  load_force[2],
-            load_moment[0], load_moment[1], load_moment[2]};
+    return {load_force(0),  load_force(1),  load_force(2),
+            load_moment(0), load_moment(1), load_moment(2)};
 }
 
 std::array<double, 3> CalculateConMotionVector(
@@ -237,21 +219,13 @@ void AerodynamicBody::InterpolateQuaternionFromNodesToSections(
 
     // Normalize
     for (auto section = 0U; section < n_sections; ++section) {
-        const auto local_xr = xr[section];
-        const auto length = std::sqrt(
-            local_xr[3] * local_xr[3] + local_xr[4] * local_xr[4] + local_xr[5] * local_xr[5] +
-            local_xr[6] * local_xr[6]
-        );
-        if (length > 1.e-16) {
-            for (auto component = 3U; component < 7U; ++component) {
-                xr[section][component] /= length;
-            }
-        } else {
-            xr[section][3] = 1.;
-            for (auto component = 4U; component < 7U; ++component) {
-                xr[section][component] = 0.;
-            }
-        }
+        const auto local_xr =
+            Eigen::Quaternion<double>(xr[section][3], xr[section][4], xr[section][5], xr[section][6])
+                .normalized();
+        xr[section][3] = local_xr.w();
+        xr[section][4] = local_xr.x();
+        xr[section][5] = local_xr.y();
+        xr[section][6] = local_xr.z();
     }
 }
 
@@ -308,7 +282,7 @@ void AerodynamicBody::AddTwistToReferenceLocation(
                 x_tan[i][component] += coeff * node_x[j][component];
             }
         }
-        const auto m = math::Norm(x_tan[i]);
+        const auto m = Eigen::Matrix<double, 3, 1>(x_tan[i].data()).norm();
         if (m > 1.e-16) {
             for (auto component = 0U; component < 3U; ++component) {
                 x_tan[i][component] /= m;
@@ -317,13 +291,17 @@ void AerodynamicBody::AddTwistToReferenceLocation(
     }
 
     for (auto section = 0U; section < n_sections; ++section) {
-        const auto q_twist =
-            math::AxisAngleToQuaternion(x_tan[section], -input.aero_sections[section].twist);
-        const auto qr = std::array{xr[section][3], xr[section][4], xr[section][5], xr[section][6]};
-        auto q = math::QuaternionCompose(q_twist, qr);
-        for (auto component = 3U; component < 7U; ++component) {
-            xr[section][component] = q[component - 3U];
-        }
+        const auto q_twist = Eigen::Quaternion<double>(Eigen::AngleAxis<double>(
+            -input.aero_sections[section].twist, Eigen::Matrix<double, 3, 1>(x_tan[section].data())
+        ));
+        const auto qr = Eigen::Quaternion<double>(
+            xr[section][3], xr[section][4], xr[section][5], xr[section][6]
+        );
+        const auto q = q_twist * qr;
+        xr[section][3] = q.w();
+        xr[section][4] = q.x();
+        xr[section][5] = q.y();
+        xr[section][6] = q.z();
     }
 }
 
@@ -466,13 +444,18 @@ void AerodynamicBody::SetInflowFromVector(std::span<const std::array<double, 3>>
 void AerodynamicBody::SetAerodynamicLoads(std::span<const std::array<double, 6>> aerodynamic_loads) {
     for (auto load = 0U; load < con_force.size(); ++load) {
         loads[load] = aerodynamic_loads[load];
+        const auto qqr_mm = Eigen::Quaternion<double>(
+            qqr_motion_map[load][0], qqr_motion_map[load][1], qqr_motion_map[load][2],
+            qqr_motion_map[load][3]
+        );
         const auto rotated_con_force =
-            math::RotateVectorByQuaternion(qqr_motion_map[load], con_force[load]);
-        const auto new_load = std::array{loads[load][0], loads[load][1], loads[load][2]};
-        const auto new_moment = std::array{loads[load][3], loads[load][4], loads[load][5]};
-        const auto force_moment = math::CrossProduct(new_load, rotated_con_force);
+            qqr_mm._transformVector(Eigen::Matrix<double, 3, 1>(con_force[load].data()));
+        const auto new_load = Eigen::Matrix<double, 3, 1>(loads[load].data());
+        const auto new_moment = Eigen::Matrix<double, 3, 1>(&loads[load][3]);
+        const auto force_moment = new_load.cross(rotated_con_force);
+        const auto ram = force_moment + new_moment;
         for (auto component = 0U; component < 3U; ++component) {
-            ref_axis_moments[load][component] = force_moment[component] + new_moment[component];
+            ref_axis_moments[load][component] = ram(component);
         }
     }
 }

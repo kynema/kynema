@@ -11,11 +11,11 @@ inline auto SetUpHeavyTopTest() {
     model.SetGravity(0., 0., -9.81);
 
     // Heavy top model parameters
-    constexpr auto mass = 15.;                                         // mass
-    constexpr auto inertia = std::array{0.234375, 0.46875, 0.234375};  // inertia matrix
-    const auto x = std::array{0., 1., 0.};                             // initial position
-    const auto omega = std::array{0., 150., -4.61538};                 // initial angular velocity
-    const auto x_dot = math::CrossProduct(omega, x);                   // initial velocity
+    constexpr auto mass = 15.;                                           // mass
+    constexpr auto inertia = std::array{0.234375, 0.46875, 0.234375};    // inertia matrix
+    const auto x = Eigen::Matrix<double, 3, 1>(0., 1., 0.);              // initial position
+    const auto omega = Eigen::Matrix<double, 3, 1>(0., 150., -4.61538);  // initial angular velocity
+    const auto x_dot = omega.cross(x);                                   // initial velocity
     const auto omega_dot =
         std::array{661.3461692307691919, 0., 0.};  // initial anguluar acceleration
     const auto x_ddot =
@@ -28,8 +28,8 @@ inline auto SetUpHeavyTopTest() {
     // Add node with initial position and velocity
     auto mass_node_id =
         model.AddNode()
-            .SetPosition(x[0], x[1], x[2], 1., 0., 0., 0.)
-            .SetVelocity(x_dot[0], x_dot[1], x_dot[2], omega[0], omega[1], omega[2])
+            .SetPosition(x(0), x(1), x(2), 1., 0., 0., 0.)
+            .SetVelocity(x_dot(0), x_dot(1), x_dot(2), omega(0), omega(1), omega(2))
             .SetAcceleration(
                 x_ddot[0], x_ddot[1], x_ddot[2], omega_dot[0], omega_dot[1], omega_dot[2]
             )
@@ -51,7 +51,7 @@ inline auto SetUpHeavyTopTest() {
     auto ground_node_id = model.AddNode().SetPosition(0., 0., 0., 1., 0., 0., 0.).Build();
 
     // Add constraints (6 DOF base node -> 3 DOF target node)
-    model.AddRigidJoint6DOFsTo3DOFs({mass_node_id, ground_node_id});
+    model.AddRigidJoint6DOFsTo3DOFs(std::array{mass_node_id, ground_node_id});
     model.AddPrescribedBC3DOFs(ground_node_id);
 
     // Set up step parameters

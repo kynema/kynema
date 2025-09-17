@@ -292,38 +292,40 @@ struct Constraints {
     ) {
         std::array<std::array<double, 3>, 3> rotation_matrix{};
         if (constraint.type == constraints::ConstraintType::RevoluteJoint) {
-            constexpr std::array<double, 3> x = {1., 0., 0.};
-            const std::array<double, 3> x_hat = math::Norm(constraint.axis_vector) != 0.
-                                                    ? math::UnitVector(constraint.axis_vector)
-                                                    : math::UnitVector(x0);
+            const auto x = Eigen::Matrix<double, 3, 1>::Unit(0);
+            const auto axis_vector = Eigen::Matrix<double, 3, 1>(constraint.axis_vector.data());
+            const auto x_hat = (axis_vector.norm() != 0.)
+                                   ? axis_vector.normalized()
+                                   : Eigen::Matrix<double, 3, 1>(x0.data()).normalized();
 
             // Create rotation matrix to rotate x to match vector
-            const auto cross_product = math::CrossProduct(x, x_hat);
-            const auto dot_product = math::DotProduct(x_hat, x);
+            const auto cross_product = x.cross(x_hat);
+            const auto dot_product = x_hat.dot(x);
             const auto k = 1. / (1. + dot_product);
 
             // Set orthogonal unit vectors from the rotation matrix
-            rotation_matrix[0][0] = cross_product[0] * cross_product[0] * k + dot_product;
-            rotation_matrix[0][1] = cross_product[1] * cross_product[0] * k + cross_product[2];
-            rotation_matrix[0][2] = cross_product[2] * cross_product[0] * k - cross_product[1];
+            rotation_matrix[0][0] = cross_product(0) * cross_product(0) * k + dot_product;
+            rotation_matrix[0][1] = cross_product(1) * cross_product(0) * k + cross_product(2);
+            rotation_matrix[0][2] = cross_product(2) * cross_product(0) * k - cross_product(1);
 
-            rotation_matrix[1][0] = cross_product[0] * cross_product[1] * k - cross_product[2];
-            rotation_matrix[1][1] = cross_product[1] * cross_product[1] * k + dot_product;
-            rotation_matrix[1][2] = cross_product[2] * cross_product[1] * k + cross_product[0];
+            rotation_matrix[1][0] = cross_product(0) * cross_product(1) * k - cross_product(2);
+            rotation_matrix[1][1] = cross_product(1) * cross_product(1) * k + dot_product;
+            rotation_matrix[1][2] = cross_product(2) * cross_product(1) * k + cross_product(0);
 
-            rotation_matrix[2][0] = cross_product[0] * cross_product[2] * k + cross_product[1];
-            rotation_matrix[2][1] = cross_product[1] * cross_product[2] * k - cross_product[0];
-            rotation_matrix[2][2] = cross_product[2] * cross_product[2] * k + dot_product;
+            rotation_matrix[2][0] = cross_product(0) * cross_product(2) * k + cross_product(1);
+            rotation_matrix[2][1] = cross_product(1) * cross_product(2) * k - cross_product(0);
+            rotation_matrix[2][2] = cross_product(2) * cross_product(2) * k + dot_product;
 
             return rotation_matrix;
         }
 
         // Set rotation_matrix to the unit vector of the constraint axis for rotation control
         if (constraint.type == constraints::ConstraintType::RotationControl) {
-            const auto unit_vector = math::UnitVector(constraint.axis_vector);
-            rotation_matrix[0][0] = unit_vector[0];
-            rotation_matrix[0][1] = unit_vector[1];
-            rotation_matrix[0][2] = unit_vector[2];
+            const auto unit_vector =
+                Eigen::Matrix<double, 3, 1>(constraint.axis_vector.data()).normalized();
+            rotation_matrix[0][0] = unit_vector(0);
+            rotation_matrix[0][1] = unit_vector(1);
+            rotation_matrix[0][2] = unit_vector(2);
             return rotation_matrix;
         }
 

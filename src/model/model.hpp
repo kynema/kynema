@@ -231,7 +231,7 @@ public:
      * @param beam_elem_id The index of the beam to be translated
      * @param displacement The displacement vector
      */
-    void TranslateBeam(size_t beam_elem_id, const std::array<double, 3>& displacement) {
+    void TranslateBeam(size_t beam_elem_id, std::span<const double, 3> displacement) {
         const auto& beam_elem = this->beam_elements_[beam_elem_id];
         for (const auto& node_id : beam_elem.node_ids) {
             this->GetNode(node_id).Translate(displacement);
@@ -246,8 +246,8 @@ public:
      * @param point The point around which the beam will be rotated
      */
     void RotateBeamAboutPoint(
-        size_t beam_elem_id, const std::array<double, 4>& displacement_quaternion,
-        const std::array<double, 3>& point
+        size_t beam_elem_id, std::span<const double, 4> displacement_quaternion,
+        std::span<const double, 3> point
     ) {
         const auto& beam_elem = this->beam_elements_[beam_elem_id];
         for (const auto& node_id : beam_elem.node_ids) {
@@ -263,8 +263,7 @@ public:
      * @param point The point about which the rotational velocity is based
      */
     void SetBeamVelocityAboutPoint(
-        size_t beam_elem_id, const std::array<double, 6>& velocity,
-        const std::array<double, 3>& point
+        size_t beam_elem_id, std::span<const double, 6> velocity, std::span<const double, 3> point
     ) {
         const auto& beam_elem = this->beam_elements_[beam_elem_id];
         for (const auto& node_id : beam_elem.node_ids) {
@@ -281,8 +280,8 @@ public:
      * @param point The point about which the rotational velocity is based
      */
     void SetBeamAccelerationAboutPoint(
-        size_t beam_elem_id, const std::array<double, 6>& acceleration,
-        const std::array<double, 3>& omega, const std::array<double, 3>& point
+        size_t beam_elem_id, std::span<const double, 6> acceleration,
+        std::span<const double, 3> omega, std::span<const double, 3> point
     ) {
         const auto& beam_elem = this->beam_elements_[beam_elem_id];
         for (const auto& node_id : beam_elem.node_ids) {
@@ -509,9 +508,11 @@ public:
      * @param node_ids The IDs of the two nodes to be linked by the constraint
      * @return The ID of the created constraint
      */
-    size_t AddRigidJointConstraint(const std::array<size_t, 2>& node_ids) {
+    size_t AddRigidJointConstraint(std::span<const size_t, 2> node_ids) {
         const auto id = this->constraints_.size();
-        this->constraints_.emplace_back(id, constraints::ConstraintType::RigidJoint, node_ids);
+        this->constraints_.emplace_back(
+            id, constraints::ConstraintType::RigidJoint, std::array{node_ids[0], node_ids[1]}
+        );
         this->mesh_connectivity_.AddConstraintConnectivity(
             id, std::vector<size_t>{node_ids[0], node_ids[1]}
         );
@@ -527,12 +528,12 @@ public:
      * @return the ID of the created constraint
      */
     size_t AddRevoluteJointConstraint(
-        const std::array<size_t, 2>& node_ids, const std::array<double, 3>& axis, double* torque
+        std::span<const size_t, 2> node_ids, std::span<const double, 3> axis, double* torque
     ) {
         const auto id = this->constraints_.size();
         this->constraints_.emplace_back(
-            id, constraints::ConstraintType::RevoluteJoint, node_ids, axis,
-            std::array{0., 0., 0., 1., 0., 0., 0.}, torque
+            id, constraints::ConstraintType::RevoluteJoint, std::array{node_ids[0], node_ids[1]},
+            std::array{axis[0], axis[1], axis[2]}, std::array{0., 0., 0., 1., 0., 0., 0.}, torque
         );
         this->mesh_connectivity_.AddConstraintConnectivity(
             id, std::vector<size_t>{node_ids[0], node_ids[1]}
@@ -548,12 +549,12 @@ public:
      * @return the ID of the created constraint
      */
     size_t AddRotationControl(
-        const std::array<size_t, 2>& node_ids, const std::array<double, 3>& axis, double* control
+        std::span<const size_t, 2> node_ids, std::span<const double, 3> axis, double* control
     ) {
         const auto id = this->constraints_.size();
         this->constraints_.emplace_back(
-            id, constraints::ConstraintType::RotationControl, node_ids, axis,
-            std::array{0., 0., 0., 1., 0., 0., 0.}, control
+            id, constraints::ConstraintType::RotationControl, std::array{node_ids[0], node_ids[1]},
+            std::array{axis[0], axis[1], axis[2]}, std::array{0., 0., 0., 1., 0., 0., 0.}, control
         );
         this->mesh_connectivity_.AddConstraintConnectivity(
             id, std::vector<size_t>{node_ids[0], node_ids[1]}
@@ -596,10 +597,11 @@ public:
      * @param node_ids the IDs of the nodes which will be joined by the constraint
      * @return the ID of the created constraint
      */
-    size_t AddRigidJoint6DOFsTo3DOFs(const std::array<size_t, 2>& node_ids) {
+    size_t AddRigidJoint6DOFsTo3DOFs(std::span<const size_t, 2> node_ids) {
         const auto id = this->constraints_.size();
         this->constraints_.emplace_back(
-            id, constraints::ConstraintType::RigidJoint6DOFsTo3DOFs, node_ids
+            id, constraints::ConstraintType::RigidJoint6DOFsTo3DOFs,
+            std::array{node_ids[0], node_ids[1]}
         );
         this->mesh_connectivity_.AddConstraintConnectivity(
             id, std::vector<size_t>{node_ids[0], node_ids[1]}

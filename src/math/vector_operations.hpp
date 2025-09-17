@@ -1,7 +1,6 @@
 #pragma once
 
-#include <array>
-
+#include <Eigen/Dense>
 #include <Kokkos_Core.hpp>
 
 namespace kynema::math {
@@ -30,11 +29,6 @@ KOKKOS_INLINE_FUNCTION double DotProduct(const AVectorType& a, const BVectorType
     return sum;
 }
 
-/// Calculate the dot product between two vector views
-constexpr double DotProduct(const std::array<double, 3>& a, const std::array<double, 3>& b) {
-    return a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
-}
-
 /// Calculate the cross product between two vector views
 template <typename VectorType>
 KOKKOS_INLINE_FUNCTION void CrossProduct(
@@ -45,32 +39,4 @@ KOKKOS_INLINE_FUNCTION void CrossProduct(
     c(2) = a(0) * b(1) - a(1) * b(0);
 }
 
-/// Calculate the cross product between two vectors
-constexpr std::array<double, 3> CrossProduct(
-    std::span<const double, 3> a, std::span<const double, 3> b
-) {
-    return std::array<double, 3>{
-        a[1] * b[2] - a[2] * b[1],
-        a[2] * b[0] - a[0] * b[2],
-        a[0] * b[1] - a[1] * b[0],
-    };
-}
-
-/// Calculate the norm of a given vector
-constexpr double Norm(const std::array<double, 3>& v) {
-    return std::sqrt(v[0] * v[0] + v[1] * v[1] + v[2] * v[2]);
-}
-
-/// UnitVector returns the unit vector of the given vector
-constexpr std::array<double, 3> UnitVector(const std::array<double, 3>& v) {
-    const double norm = Norm(v);
-    if (norm == 0.) {
-        throw std::invalid_argument("Cannot normalize a zero vector");
-    }
-    return std::array<double, 3>{
-        v[0] / norm,
-        v[1] / norm,
-        v[2] / norm,
-    };
-}
 }  // namespace kynema::math

@@ -128,9 +128,9 @@ TEST(BladeInterfaceTest, BladeWindIO) {
 
 TEST(BladeInterfaceTest, RotatingBeam) {
     const auto time_step{0.01};
-    const auto omega = std::array{0., 0., 1.};
-    const auto x0_root = std::array{2., 0., 0.};
-    const auto root_vel = math::CrossProduct(omega, x0_root);
+    const auto omega = Eigen::Matrix<double, 3, 1>(0., 0., 1.);
+    const auto x0_root = Eigen::Matrix<double, 3, 1>(2., 0., 0.);
+    const auto root_vel = omega.cross(x0_root);
     const auto write_output{false};
 
     // Create interface builder
@@ -157,8 +157,8 @@ TEST(BladeInterfaceTest, RotatingBeam) {
     builder.Blade()
         .SetElementOrder(5)
         .PrescribedRootMotion(true)
-        .SetRootPosition({x0_root[0], x0_root[1], x0_root[2], 1., 0., 0., 0.})
-        .SetRootVelocity({root_vel[0], root_vel[1], root_vel[2], omega[0], omega[1], omega[2]})
+        .SetRootPosition({x0_root(0), x0_root(1), x0_root(2), 1., 0., 0., 0.})
+        .SetRootVelocity({root_vel(0), root_vel(1), root_vel(2), omega(0), omega(1), omega(2)})
         .AddRefAxisTwist(0., 0.)
         .AddRefAxisTwist(1., 0.);
 
@@ -208,13 +208,11 @@ TEST(BladeInterfaceTest, RotatingBeam) {
         const auto t{static_cast<double>(i) * time_step};
 
         // Calculate root displacement from initial position and apply
-        const auto u_rot =
-            math::RotationVectorToQuaternion({omega[0] * t, omega[1] * t, omega[2] * t});
-        const auto x_root = math::RotateVectorByQuaternion(u_rot, x0_root);
-        const auto u_trans =
-            std::array{x_root[0] - x0_root[0], x_root[1] - x0_root[1], x_root[2] - x0_root[2]};
+        const auto u_rot = Eigen::Quaternion<double>(Eigen::AngleAxis<double>(t, omega));
+        const auto x_root = u_rot._transformVector(x0_root);
+        const auto u_trans = x_root - x0_root;
         interface.SetRootDisplacement(
-            {u_trans[0], u_trans[1], u_trans[2], u_rot[0], u_rot[1], u_rot[2], u_rot[3]}
+            {u_trans(0), u_trans(1), u_trans(2), u_rot.w(), u_rot.x(), u_rot.y(), u_rot.z()}
         );
 
         // Calculate state at end of step
@@ -369,7 +367,7 @@ TEST(BladeInterfaceTest, TwoBeams) {
     }
 
     model.AddPrescribedBC(beam_1.nodes[0].id);
-    model.AddRigidJointConstraint({beam_1.nodes[n_nodes - 1].id, beam_2.nodes[0].id});
+    model.AddRigidJointConstraint(std::array{beam_1.nodes[n_nodes - 1].id, beam_2.nodes[0].id});
 
     // Create solver parameters
     auto parameters = StepParameters(true, 6, 0.01, 0.);

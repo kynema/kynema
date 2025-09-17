@@ -67,14 +67,12 @@ struct Node {
         displaced_position[2] = this->x0[2] + this->u[2];
 
         // Compose quaternions for orientation (w, i, j, k)
-        auto q_displaced = math::QuaternionCompose(
-            {this->x0[3], this->x0[4], this->x0[5], this->x0[6]},  // initial orientation
-            {this->u[3], this->u[4], this->u[5], this->u[6]}       // displacement orientation
-        );
-        displaced_position[3] = q_displaced[0];
-        displaced_position[4] = q_displaced[1];
-        displaced_position[5] = q_displaced[2];
-        displaced_position[6] = q_displaced[3];
+        const auto q_displaced = Eigen::Quaternion<double>(x0[3], x0[4], x0[5], x0[6]) *
+                                 Eigen::Quaternion<double>(u[3], u[4], u[5], u[6]);
+        displaced_position[3] = q_displaced.w();
+        displaced_position[4] = q_displaced.x();
+        displaced_position[5] = q_displaced.y();
+        displaced_position[6] = q_displaced.z();
 
         return displaced_position;
     }
@@ -84,7 +82,7 @@ struct Node {
     //--------------------------------------------------------------------------
 
     /// Translate node by a displacement vector
-    Node& Translate(const std::array<double, 3>& displacement) {
+    Node& Translate(std::span<const double, 3> displacement) {
         //----------------------------------------------------
         // Position, x(0:2)
         //----------------------------------------------------
@@ -97,42 +95,47 @@ struct Node {
     }
 
     /// Rotate node by a quaternion about the given point
-    Node& RotateAboutPoint(const std::array<double, 4>& q, const std::array<double, 3>& point) {
+    Node& RotateAboutPoint(std::span<const double, 4> q, std::span<const double, 3> point) {
+        const auto quaternion = Eigen::Quaternion<double>(q[0], q[1], q[2], q[3]);
+        const auto location = Eigen::Matrix<double, 3, 1>(x0.data());
+        const auto point_location = Eigen::Matrix<double, 3, 1>(point.data());
+
         //----------------------------------------------------
         // Position, x(0:2)
         //----------------------------------------------------
         // Get vector from reference point to initial node position
-        const auto r =
-            std::array{this->x0[0] - point[0], this->x0[1] - point[1], this->x0[2] - point[2]};
+        const auto r = location - point_location;
 
         // Rotate the vector r using the provided quaternion q
-        const auto rotated_r = math::RotateVectorByQuaternion(q, r);
+        const auto rotated_r = quaternion._transformVector(r);
 
         // Update the position by adding the rotated vector to the reference point
-        this->x0[0] = rotated_r[0] + point[0];
-        this->x0[1] = rotated_r[1] + point[1];
-        this->x0[2] = rotated_r[2] + point[2];
+        const auto x0_new = rotated_r + point_location;
+        this->x0[0] = x0_new(0);
+        this->x0[1] = x0_new(1);
+        this->x0[2] = x0_new(2);
 
         //----------------------------------------------------
         // Orientation, x(3:6)
         //----------------------------------------------------
         // Compose q with initial orientation to get rotated orientation
-        auto q_new =
-            math::QuaternionCompose(q, {this->x0[3], this->x0[4], this->x0[5], this->x0[6]});
+        auto q_new = quaternion * Eigen::Quaternion<double>(x0[3], x0[4], x0[5], x0[6]);
 
         // Update the orientation
-        this->x0[3] = q_new[0];
-        this->x0[4] = q_new[1];
-        this->x0[5] = q_new[2];
-        this->x0[6] = q_new[3];
+        this->x0[3] = q_new.w();
+        this->x0[4] = q_new.x();
+        this->x0[5] = q_new.y();
+        this->x0[6] = q_new.z();
 
         return *this;
     }
 
     /// Rotate node by a rotation vector about the given point
-    Node& RotateAboutPoint(const std::array<double, 3>& rv, const std::array<double, 3>& point) {
-        const auto q = math::RotationVectorToQuaternion(rv);
-        this->RotateAboutPoint(q, point);
+    Node& RotateAboutPoint(std::span<const double, 3> rv, std::span<const double, 3> point) {
+        const auto vec = Eigen::Matrix<double, 3, 1>(rv.data());
+        const auto q =
+            Eigen::Quaternion<double>(Eigen::AngleAxis<double>(vec.norm(), vec.normalized()));
+        this->RotateAboutPoint(std::array{q.w(), q.x(), q.y(), q.z()}, point);
         return *this;
     }
 
@@ -141,7 +144,7 @@ struct Node {
     //--------------------------------------------------------------------------
 
     /// Add translational displacement to node displacement vector
-    Node& TranslateDisplacement(const std::array<double, 3>& displacement) {
+    Node& TranslateDisplacement(std::span<const double, 3> displacement) {
         this->u[0] += displacement[0];
         this->u[1] += displacement[1];
         this->u[2] += displacement[2];
@@ -150,48 +153,53 @@ struct Node {
 
     /// Rotate node displacement by a quaternion about the given point
     Node& RotateDisplacementAboutPoint(
-        const std::array<double, 4>& q, const std::array<double, 3>& point
+        std::span<const double, 4> q, std::span<const double, 3> point
     ) {
+        const auto quaternion = Eigen::Quaternion<double>(q[0], q[1], q[2], q[3]);
+        const auto point_location = Eigen::Matrix<double, 3, 1>(point.data());
+        const auto dp = this->DisplacedPosition();
+        const auto displaced_position = Eigen::Matrix<double, 3, 1>(dp.data());
+        const auto location = Eigen::Matrix<double, 3, 1>(x0.data());
+
         //----------------------------------------------------
         // Displacement position, u(0:2)
         //----------------------------------------------------
         // Get vector from reference point to displaced node position
-        const auto displaced_position = this->DisplacedPosition();
-        const std::array<double, 3> r{
-            displaced_position[0] - point[0], displaced_position[1] - point[1],
-            displaced_position[2] - point[2]
-        };
+        const auto r = displaced_position - point_location;
 
         // Rotate the vector r using the provided quaternion q
-        const auto rotated_r = math::RotateVectorByQuaternion(q, r);
+        const auto rotated_r = quaternion._transformVector(r);
 
         // Update the displacement position by adding the rotated vector to the reference point
         // and subtracting the initial position
-        this->u[0] = rotated_r[0] + point[0] - this->x0[0];
-        this->u[1] = rotated_r[1] + point[1] - this->x0[1];
-        this->u[2] = rotated_r[2] + point[2] - this->x0[2];
+        const auto u_new = rotated_r + point_location - location;
+        this->u[0] = u_new(0);
+        this->u[1] = u_new(1);
+        this->u[2] = u_new(2);
 
         //----------------------------------------------------
         // Displacement orientation, u(3:6)
         //----------------------------------------------------
         // Compose q with initial displacement orientation to get rotated displacement orientation
-        auto q_new = math::QuaternionCompose(q, {this->u[3], this->u[4], this->u[5], this->u[6]});
+        const auto q_new = quaternion * Eigen::Quaternion<double>(u[3], u[4], u[5], u[6]);
 
         // Update the displacement orientation
-        this->u[3] = q_new[0];
-        this->u[4] = q_new[1];
-        this->u[5] = q_new[2];
-        this->u[6] = q_new[3];
+        this->u[3] = q_new.w();
+        this->u[4] = q_new.x();
+        this->u[5] = q_new.y();
+        this->u[6] = q_new.z();
 
         return *this;
     }
 
     /// Rotate node displacement by a rotation vector about the given point
     Node& RotateDisplacementAboutPoint(
-        const std::array<double, 3>& rv, const std::array<double, 3>& point
+        std::span<const double, 3> rv, std::span<const double, 3> point
     ) {
-        const auto q = math::RotationVectorToQuaternion(rv);
-        this->RotateDisplacementAboutPoint(q, point);
+        const auto vec = Eigen::Matrix<double, 3, 1>(rv.data());
+        const auto q =
+            Eigen::Quaternion<double>(Eigen::AngleAxis<double>(vec.norm(), vec.normalized()));
+        this->RotateDisplacementAboutPoint(std::array{q.w(), q.x(), q.y(), q.z()}, point);
         return *this;
     }
 
@@ -201,23 +209,22 @@ struct Node {
 
     /// Set node velocity based on rigid body motion about a reference point
     void SetVelocityAboutPoint(
-        const std::array<double, 6>& velocity, const std::array<double, 3>& point
+        std::span<const double, 6> velocity, std::span<const double, 3> point
     ) {
         // Get vector from reference point to displaced node position
         const auto displaced_position = this->DisplacedPosition();
-        const auto r = std::array{
-            displaced_position[0] - point[0], displaced_position[1] - point[1],
-            displaced_position[2] - point[2]
-        };
+        const auto dp = Eigen::Matrix<double, 3, 1>(displaced_position.data());
+        const auto p = Eigen::Matrix<double, 3, 1>(point.data());
+        const auto r = dp - p;
 
         // Calculate velocity contribution from angular velocity
-        const auto omega = std::array{velocity[3], velocity[4], velocity[5]};
-        const auto omega_cross_r = math::CrossProduct(omega, r);
+        const auto omega = Eigen::Matrix<double, 3, 1>(&velocity[3]);
+        const auto omega_cross_r = omega.cross(r);
 
         // Set node translational velocity
-        this->v[0] = velocity[0] + omega_cross_r[0];
-        this->v[1] = velocity[1] + omega_cross_r[1];
-        this->v[2] = velocity[2] + omega_cross_r[2];
+        this->v[0] = velocity[0] + omega_cross_r(0);
+        this->v[1] = velocity[1] + omega_cross_r(1);
+        this->v[2] = velocity[2] + omega_cross_r(2);
 
         // Set node angular velocity
         this->v[3] = velocity[3];
@@ -231,26 +238,26 @@ struct Node {
 
     /// Set node acceleration based on rigid body motion about a reference point
     void SetAccelerationAboutPoint(
-        const std::array<double, 6>& acceleration, const std::array<double, 3>& omega,
-        const std::array<double, 3>& point
+        std::span<const double, 6> acceleration, std::span<const double, 3> omega,
+        std::span<const double, 3> point
     ) {
+        const auto omega_vec = Eigen::Matrix<double, 3, 1>(omega.data());
         // Get vector from reference point to displaced node position
         const auto displaced_position = this->DisplacedPosition();
-        const auto r = std::array{
-            displaced_position[0] - point[0], displaced_position[1] - point[1],
-            displaced_position[2] - point[2]
-        };
+        const auto dp = Eigen::Matrix<double, 3, 1>(displaced_position.data());
+        const auto p = Eigen::Matrix<double, 3, 1>(point.data());
+        const auto r = dp - p;
 
         // Calculate translational acceleration contribution from angular velocity
-        const auto alpha = std::array{acceleration[3], acceleration[4], acceleration[5]};
-        const auto alpha_cross_r = math::CrossProduct(alpha, r);
-        const auto omega_cross_omega_cross_r =
-            math::CrossProduct(omega, math::CrossProduct(omega, r));
+        const auto alpha = Eigen::Matrix<double, 3, 1>(&acceleration[3]);
+        const auto alpha_cross_r = alpha.cross(r);
+        const auto omega_cross_omega_cross_r = omega_vec.cross(omega_vec.cross(r));
+        const auto angular_contribution = alpha_cross_r + omega_cross_omega_cross_r;
 
         // Set node translational acceleration
-        this->vd[0] = acceleration[0] + alpha_cross_r[0] + omega_cross_omega_cross_r[0];
-        this->vd[1] = acceleration[1] + alpha_cross_r[1] + omega_cross_omega_cross_r[1];
-        this->vd[2] = acceleration[2] + alpha_cross_r[2] + omega_cross_omega_cross_r[2];
+        this->vd[0] = acceleration[0] + angular_contribution(0);
+        this->vd[1] = acceleration[1] + angular_contribution(1);
+        this->vd[2] = acceleration[2] + angular_contribution(2);
 
         // Set node angular acceleration
         this->vd[3] = alpha[0];
@@ -296,8 +303,8 @@ public:
      * @brief Sets the node position from a 7 x 1 vector
      * @param p -> 7 x 1 vector (x, y, z, w, i, j, k)
      */
-    NodeBuilder& SetPosition(const std::array<double, 7>& p) {
-        this->node.x0 = p;
+    NodeBuilder& SetPosition(std::span<const double, 7> p) {
+        std::ranges::copy(p, std::begin(node.x0));
         return *this;
     }
 
@@ -321,10 +328,8 @@ public:
      * @param y Y position component
      * @param z Z position component
      */
-    NodeBuilder& SetPosition(const std::array<double, 3>& p) {
-        this->node.x0[0] = p[0];
-        this->node.x0[1] = p[1];
-        this->node.x0[2] = p[2];
+    NodeBuilder& SetPosition(std::span<const double, 3> p) {
+        std::ranges::copy(p, std::begin(node.x0));
         return *this;
     }
 
@@ -346,11 +351,8 @@ public:
      * @brief Sets the node orientation from quaternion
      * @param p quaternion (w,i,j,k)
      */
-    NodeBuilder& SetOrientation(const std::array<double, 4>& p) {
-        this->node.x0[3] = p[0];
-        this->node.x0[4] = p[1];
-        this->node.x0[5] = p[2];
-        this->node.x0[6] = p[3];
+    NodeBuilder& SetOrientation(std::span<const double, 4> p) {
+        std::ranges::copy(p, &node.x0[3]);
         return *this;
     }
 
@@ -373,8 +375,8 @@ public:
      * @brief Sets the node displacement from a 7 x 1 vector
      * @param p -> 7 x 1 vector (x, y, z, w, i, j, k)
      */
-    NodeBuilder& SetDisplacement(const std::array<double, 7>& p) {
-        this->node.u = p;
+    NodeBuilder& SetDisplacement(std::span<const double, 7> p) {
+        std::ranges::copy(p, std::begin(node.u));
         return *this;
     }
 
@@ -400,10 +402,8 @@ public:
      * @param y displacement Y component
      * @param z displacement Z component
      */
-    NodeBuilder& SetDisplacement(const std::array<double, 3>& p) {
-        this->node.u[0] = p[0];
-        this->node.u[1] = p[1];
-        this->node.u[2] = p[2];
+    NodeBuilder& SetDisplacement(std::span<const double, 3> p) {
+        std::ranges::copy(p, std::begin(node.u));
         return *this;
     }
 
@@ -431,7 +431,7 @@ public:
      * @param rz z-component of rotational velocity
      */
     NodeBuilder& SetVelocity(double x, double y, double z, double rx, double ry, double rz) {
-        this->node.v = {x, y, z, rx, ry, rz};
+        SetVelocity(std::array{x, y, z, rx, ry, rz});
         return *this;
     }
 
@@ -439,8 +439,9 @@ public:
      * @brief Sets the node velocity from a vector
      * @param v -> 6 x 1 vector (x, y, z, rx, ry, rz)
      */
-    NodeBuilder& SetVelocity(const std::array<double, 6>& v) {
-        return this->SetVelocity(v[0], v[1], v[2], v[3], v[4], v[5]);
+    NodeBuilder& SetVelocity(std::span<const double, 6> v) {
+        std::ranges::copy(v, std::begin(node.v));
+        return *this;
     }
 
     /*
@@ -450,9 +451,7 @@ public:
      * @param z z-component of translational velocity
      */
     NodeBuilder& SetVelocity(double x, double y, double z) {
-        this->node.v[0] = x;
-        this->node.v[1] = y;
-        this->node.v[2] = z;
+        SetVelocity(std::array{x, y, z});
         return *this;
     }
 
@@ -460,8 +459,9 @@ public:
      * @brief Sets the node velocity from a 3 x 1 vector
      * @param v -> 3D vector (x, y, z)
      */
-    NodeBuilder& SetVelocity(const std::array<double, 3>& v) {
-        return this->SetVelocity(v[0], v[1], v[2]);
+    NodeBuilder& SetVelocity(std::span<const double, 3> v) {
+        std::ranges::copy(v, std::begin(node.v));
+        return *this;
     }
 
     //--------------------------------------------------------------------------
@@ -478,7 +478,7 @@ public:
      * @param rz z-component of rotational acceleration
      */
     NodeBuilder& SetAcceleration(double x, double y, double z, double rx, double ry, double rz) {
-        this->node.vd = {x, y, z, rx, ry, rz};
+        SetAcceleration(std::array{x, y, z, rx, ry, rz});
         return *this;
     }
 
@@ -486,8 +486,9 @@ public:
      * @brief Sets the node acceleration from a vector
      * @param v -> 6 x 1 vector (x, y, z, rx, ry, rz)
      */
-    NodeBuilder& SetAcceleration(const std::array<double, 6>& v) {
-        return this->SetAcceleration(v[0], v[1], v[2], v[3], v[4], v[5]);
+    NodeBuilder& SetAcceleration(std::span<const double, 6> v) {
+        std::ranges::copy(v, std::begin(node.vd));
+        return *this;
     }
 
     /*
@@ -497,9 +498,7 @@ public:
      * @param z z-component of acceleration
      */
     NodeBuilder& SetAcceleration(double x, double y, double z) {
-        this->node.vd[0] = x;
-        this->node.vd[1] = y;
-        this->node.vd[2] = z;
+        SetAcceleration(std::array{x, y, z});
         return *this;
     }
 
@@ -508,7 +507,8 @@ public:
      * @param v -> 3 x 1 vector (x, y, z)
      */
     NodeBuilder& SetAcceleration(const std::array<double, 3>& v) {
-        return this->SetAcceleration(v[0], v[1], v[2]);
+        std::ranges::copy(v, std::begin(node.vd));
+        return *this;
     }
 
     //--------------------------------------------------------------------------

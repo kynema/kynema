@@ -101,7 +101,7 @@ FloatingPlatform CreateFloatingPlatform(const FloatingPlatformInput& input, Mode
 
             // Add rigid constraint from fairlead node to platform node
             auto rigid_constraint_id =
-                model.AddRigidJoint6DOFsTo3DOFs({platform.node.id, fairlead_node_id});
+                model.AddRigidJoint6DOFsTo3DOFs(std::array{platform.node.id, fairlead_node_id});
 
             // Add spring from fairlead to anchor
             auto spring_element_id = model.AddSpringElement(

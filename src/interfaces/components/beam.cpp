@@ -199,13 +199,9 @@ void Beam::CalcNodeTangents() {
 
     // Normalize tangent vectors
     std::ranges::transform(
-        this->node_tangents, this->node_tangents.begin(),
-        [](std::array<double, 3>& tangent) {
-            const auto norm = math::Norm(tangent);
-            std::ranges::transform(tangent, tangent.begin(), [norm](double v) {
-                return v / norm;
-            });
-            return tangent;
+        this->node_tangents, this->node_tangents.begin(), [](const std::array<double, 3>& tangent) {
+            const auto normalized = Eigen::Matrix<double, 3, 1>(tangent.data()).normalized();
+            return std::array{normalized(0), normalized(1), normalized(2)};
         }
     );
 }
@@ -218,10 +214,14 @@ std::vector<BeamSection> Beam::BuildBeamSections(const BeamInput& input) {
     auto twist = math::LinearInterp(
         input.sections[0].location, input.ref_axis.twist_grid, input.ref_axis.twist
     );
-    auto q_twist = math::RotationVectorToQuaternion({twist * std::numbers::pi / 180., 0., 0.});
+    auto q_twist = Eigen::Quaternion<double>(Eigen::AngleAxis<double>(
+        twist * std::numbers::pi / 180., Eigen::Matrix<double, 3, 1>::Unit(0)
+    ));
+    auto q_twist_array = std::array{q_twist.w(), q_twist.x(), q_twist.y(), q_twist.z()};
     sections.emplace_back(
-        input.sections[0].location, math::RotateMatrix6(input.sections[0].mass_matrix, q_twist),
-        math::RotateMatrix6(input.sections[0].stiffness_matrix, q_twist)
+        input.sections[0].location,
+        math::RotateMatrix6(input.sections[0].mass_matrix, q_twist_array),
+        math::RotateMatrix6(input.sections[0].stiffness_matrix, q_twist_array)
     );
 
     // Loop through remaining section locations
@@ -263,20 +263,26 @@ std::vector<BeamSection> Beam::BuildBeamSections(const BeamInput& input) {
             );
 
             // Add refinement section
-            q_twist = math::RotationVectorToQuaternion({twist * std::numbers::pi / 180., 0., 0.});
+            q_twist = Eigen::Quaternion<double>(Eigen::AngleAxis<double>(
+                twist * std::numbers::pi / 180., Eigen::Matrix<double, 3, 1>::Unit(0)
+            ));
+            q_twist_array = std::array{q_twist.w(), q_twist.x(), q_twist.y(), q_twist.z()};
             sections.emplace_back(
-                grid_value, math::RotateMatrix6(mass_matrix, q_twist),
-                math::RotateMatrix6(stiffness_matrix, q_twist)
+                grid_value, math::RotateMatrix6(mass_matrix, q_twist_array),
+                math::RotateMatrix6(stiffness_matrix, q_twist_array)
             );
         }
 
         // Add ending section
         twist =
             math::LinearInterp(section_location, input.ref_axis.twist_grid, input.ref_axis.twist);
-        q_twist = math::RotationVectorToQuaternion({twist * std::numbers::pi / 180., 0., 0.});
+        q_twist = Eigen::Quaternion<double>(Eigen::AngleAxis<double>(
+            twist * std::numbers::pi / 180., Eigen::Matrix<double, 3, 1>::Unit(0)
+        ));
+        q_twist_array = std::array{q_twist.w(), q_twist.x(), q_twist.y(), q_twist.z()};
         sections.emplace_back(
-            section_location, math::RotateMatrix6(section_mass_matrix, q_twist),
-            math::RotateMatrix6(section_stiffness_matrix, q_twist)
+            section_location, math::RotateMatrix6(section_mass_matrix, q_twist_array),
+            math::RotateMatrix6(section_stiffness_matrix, q_twist_array)
         );
     }
 
