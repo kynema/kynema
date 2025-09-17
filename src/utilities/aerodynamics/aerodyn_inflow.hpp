@@ -172,7 +172,11 @@ inline void SetPositionAndOrientation(
     }
 
     // Set orientation (converts last 4 elements i.e. quaternion -> 3x3 rotation matrix)
-    orientation = math::QuaternionToRotationMatrix({data[3], data[4], data[5], data[6]});
+    const auto om = Eigen::Quaternion<double>(data[3], data[4], data[5], data[6]).toRotationMatrix();
+    orientation = std::array{
+        std::array{om(0, 0), om(0, 1), om(0, 2)}, std::array{om(1, 0), om(1, 1), om(1, 2)},
+        std::array{om(2, 0), om(2, 1), om(2, 2)}
+    };
 }
 
 /**
@@ -394,17 +398,19 @@ struct TurbineData {
         }
 
         // Rotation to convert blade orientation
-        const auto r_x2z = math::RotationVectorToQuaternion({0., std::numbers::pi / 2., 0.});
+        const auto r_x2z = Eigen::Quaternion<double>(
+            Eigen::AngleAxis<double>(std::numbers::pi / 2., Eigen::Matrix<double, 3, 1>::Unit(1))
+        );
 
         // Original orientation
-        const std::array<double, 4> r{position[3], position[4], position[5], position[6]};
+        const auto r = Eigen::Quaternion<double>(position[3], position[4], position[5], position[6]);
 
         // Converted orientation
-        const auto r_adi = math::QuaternionCompose(r, r_x2z);
+        const auto r_adi = r * r_x2z;
 
         // Position with new orientation
-        const std::array<double, 7> position_new{position[0], position[1], position[2], r_adi[0],
-                                                 r_adi[1],    r_adi[2],    r_adi[3]};
+        const std::array<double, 7> position_new{position[0], position[1], position[2], r_adi.w(),
+                                                 r_adi.x(),   r_adi.y(),   r_adi.z()};
 
         const size_t node_index = node_indices_by_blade[blade_number][node_number];
         blade_nodes.SetValues(node_index, position_new, velocity, acceleration);
@@ -431,17 +437,19 @@ struct TurbineData {
         }
 
         // Rotation to convert blade orientation
-        const auto r_x2z = math::RotationVectorToQuaternion({0., std::numbers::pi / 2., 0.});
+        const auto r_x2z = Eigen::Quaternion<double>(
+            Eigen::AngleAxis<double>(std::numbers::pi / 2., Eigen::Matrix<double, 3, 1>::Unit(1))
+        );
 
         // Original orientation
-        const auto r = std::array{position[3], position[4], position[5], position[6]};
+        const auto r = Eigen::Quaternion<double>(position[3], position[4], position[5], position[6]);
 
         // Converted orientation
-        const auto r_adi = math::QuaternionCompose(r, r_x2z);
+        const auto r_adi = r * r_x2z;
 
         // Position with new orientation
-        const auto position_new = std::array{position[0], position[1], position[2], r_adi[0],
-                                             r_adi[1],    r_adi[2],    r_adi[3]};
+        const auto position_new = std::array{position[0], position[1], position[2], r_adi.w(),
+                                             r_adi.x(),   r_adi.y(),   r_adi.z()};
 
         blade_roots.SetValues(blade_number, position_new, velocity, acceleration);
     }

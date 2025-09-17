@@ -1,4 +1,5 @@
 #include <numbers>
+#include <ranges>
 
 #include <Kokkos_Core.hpp>
 #include <gtest/gtest.h>
@@ -73,23 +74,6 @@ TEST(QuaternionTest, ConvertQuaternionToRotationMatrix_90DegreeRotationAboutZAxi
     for (auto i : std::views::iota(0, 3)) {
         for (auto j : std::views::iota(0, 3)) {
             EXPECT_NEAR(R_from_q_mirror(i, j), expected(i, j), 1.e-15);
-        }
-    }
-}
-
-TEST(QuaternionTest, ConvertRotationMatrixToQuaternion) {
-    const auto n = 25;
-    const auto dtheta = std::numbers::pi / static_cast<double>(n);
-    for (auto i : std::views::iota(0, n)) {
-        for (auto j : std::views::iota(0, n)) {
-            auto q_ref = math::RotationVectorToQuaternion(
-                {static_cast<double>(i) * dtheta, static_cast<double>(j) * dtheta, 0.}
-            );
-            auto r = math::QuaternionToRotationMatrix(q_ref);
-            auto q_new = math::RotationMatrixToQuaternion(r);
-            for (auto m : std::views::iota(0U, 4U)) {
-                EXPECT_NEAR(q_ref[m], q_new[m], 1e-12);
-            }
         }
     }
 }
@@ -375,19 +359,6 @@ TEST(QuaternionTest, QuaternionToRotationVector_1) {
     test_quaternion_to_rotation_vector_2();
 }
 
-TEST(QuaternionTest, QuaternionToRotationVector_2) {
-    const auto n = 100;
-    const auto dtheta = std::numbers::pi / static_cast<double>(n);
-    for (auto i : std::views::iota(0, n)) {
-        auto rot_vec = std::array{static_cast<double>(i) * dtheta, 0., 0.};
-        auto q = math::RotationVectorToQuaternion(rot_vec);
-        auto rot_vec2 = math::QuaternionToRotationVector(q);
-        ASSERT_NEAR(rot_vec2[0], rot_vec[0], 1e-14);
-        ASSERT_NEAR(rot_vec2[1], rot_vec[1], 1e-14);
-        ASSERT_NEAR(rot_vec2[2], rot_vec[2], 1e-14);
-    }
-}
-
 TEST(QuaternionTest, CheckTangentTwistToQuaternion) {
     struct TestData {
         double twist;
@@ -441,24 +412,6 @@ TEST(QuaternionTest, IsIdentityQuaternion_WithCustomTolerance) {
     // 1e-10 is within custom tolerance
     const auto near_identity_q = std::array{1. + 1e-10, 1e-10, 0., 0.};
     EXPECT_TRUE(math::IsIdentityQuaternion(near_identity_q, 1e-9));
-}
-
-TEST(QuaternionTest, IsIdentityQuaternion_NonIdentityQuaternions) {
-    // 90 degree rotation about X axis
-    const auto rotation_x = math::RotationVectorToQuaternion({std::numbers::pi / 2., 0., 0.});
-    EXPECT_FALSE(math::IsIdentityQuaternion(rotation_x));
-
-    // 90 degree rotation about Y axis
-    const auto rotation_y = math::RotationVectorToQuaternion({0., std::numbers::pi / 2., 0.});
-    EXPECT_FALSE(math::IsIdentityQuaternion(rotation_y));
-
-    // 90 degree rotation about Z axis
-    const auto rotation_z = math::RotationVectorToQuaternion({0., 0., std::numbers::pi / 2.});
-    EXPECT_FALSE(math::IsIdentityQuaternion(rotation_z));
-
-    // Arbitrary quaternion
-    const auto arbitrary = std::array{0.5, 0.5, 0.5, 0.5};
-    EXPECT_FALSE(math::IsIdentityQuaternion(arbitrary));
 }
 
 }  // namespace kynema::tests

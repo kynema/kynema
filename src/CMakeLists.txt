@@ -59,6 +59,7 @@ endif()
 target_link_system_libraries(kynema_library PUBLIC
   KokkosKernels::kokkoskernels
   LAPACK::LAPACK
+  Eigen3::Eigen
   ${YAML_CPP_TARGET}
   ${FS_LIB}
   ${NETCDF_TARGET}
