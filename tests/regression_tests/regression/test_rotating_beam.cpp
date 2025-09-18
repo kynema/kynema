@@ -515,9 +515,9 @@ TEST(RotatingBeamTest, CompoundRotationControlConstraint) {
         const auto t = step_size * static_cast<double>(i + 1);
         pitch = t * std::numbers::pi / 2.;
         azimuth = 0.5 * t * std::numbers::pi / 2.;
-        const auto q = Eigen::Quaternion<double>(
-            Eigen::AngleAxis(azimuth, Eigen::Matrix<double, 3, 1>::Unit(2))
-        );
+        const auto q =
+            Eigen::Quaternion<double>(Eigen::AngleAxis(azimuth, Eigen::Matrix<double, 3, 1>::Unit(2))
+            );
         const auto displacement = std::array{0., 0., 0., q.w(), q.x(), q.y(), q.z()};
         constraints.UpdateDisplacement(hub_bc_id, displacement);
         const auto converged = Step(parameters, solver, elements, state, constraints);
@@ -657,7 +657,8 @@ void GeneratorTorqueWithAxisTilt(
     // Add torque to the azimuth node to simulate generator torque
     auto torque = 100.;
     auto shaft_rj_id = model.AddRevoluteJointConstraint(  // Azimuth can rotate around shaft base
-        std::array{shaft_base_node_id, azimuth_node_id}, std::array{0., std::sin(tilt), std::cos(tilt)}, &torque
+        std::array{shaft_base_node_id, azimuth_node_id},
+        std::array{0., std::sin(tilt), std::cos(tilt)}, &torque
     );
 
     // Hub is rigidly attached to azimuth

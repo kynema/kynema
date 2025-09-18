@@ -19,7 +19,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ${{ github.workspace }}/spack
-        key: linux-spack_v5
+        key: linux-spack_v6
     - name: Install Dependencies
       if: steps.cache-dependencies.outputs.cache-hit != 'true'
       run: |
@@ -33,7 +33,10 @@ jobs:
         spack install suite-sparse
         spack install superlu
         spack install lapack
+        spack install rosco
+        spack install openfast
         spack install kokkos-kernels
+        spack install eigen
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
@@ -51,7 +54,7 @@ jobs:
     - name: Build Kynema with documentation
       run: |
         source spack/share/spack/setup-env.sh
-        spack load kokkos-kernels yaml-cpp netcdf-c suite-sparse superlu lapack
+        spack load eigen kokkos-kernels yaml-cpp netcdf-c suite-sparse superlu lapack
         cd kynema
         mkdir build
         cd build

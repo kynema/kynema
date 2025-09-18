@@ -217,7 +217,8 @@ void Beam::CalcNodeTangents() {
 
     // Normalize tangent vectors
     std::ranges::transform(
-        this->node_tangents, this->node_tangents.begin(), [](const std::array<double, 3>& tangent) {
+        this->node_tangents, this->node_tangents.begin(),
+        [](const std::array<double, 3>& tangent) {
             const auto normalized = Eigen::Matrix<double, 3, 1>(tangent.data()).normalized();
             return std::array{normalized(0), normalized(1), normalized(2)};
         }
