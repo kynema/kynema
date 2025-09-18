@@ -370,18 +370,14 @@ void Turbine::AddConstraints(const TurbineInput& input, Model& model) {
         };
 
         // Create pitch control constraint
-        this->blade_pitch.emplace_back(
-            ConstraintData{model.AddRotationControl(
-                std::array{root_node.id, apex_node.id}, pitch_axis, &this->blade_pitch_control[beam]
-            )}
-        );
+        this->blade_pitch.emplace_back(ConstraintData{model.AddRotationControl(
+            std::array{root_node.id, apex_node.id}, pitch_axis, &this->blade_pitch_control[beam]
+        )});
 
         // Add rigid constraint between hub and blade apex
-        this->apex_to_hub.emplace_back(
-            ConstraintData{
-                model.AddRigidJointConstraint(std::array{this->hub_node.id, apex_node.id})
-            }
-        );
+        this->apex_to_hub.emplace_back(ConstraintData{
+            model.AddRigidJointConstraint(std::array{this->hub_node.id, apex_node.id})
+        });
     }
 
     //--------------------------------------------------------------------------
