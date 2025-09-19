@@ -315,9 +315,6 @@ TEST(Milestone, IEA15RotorAeroController) {
         const auto node_coord = Eigen::Matrix<double, 3, 1>(
             node_coords[0][0] + hub_radius, node_coords[0][1], node_coords[0][2]
         );
-        const auto node_quat = Eigen::Quaternion<double>(
-            node_coords[0][3], node_coords[0][4], node_coords[0][5], node_coords[0][6]
-        );
 
         // Calculate node position and orientation for this blade
         const auto pos = q_root._transformVector(node_coord);
