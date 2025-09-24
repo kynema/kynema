@@ -144,6 +144,27 @@ public:
      */
     TurbineBuilder& SetRotorSpeed(double speed);
 
+    /**
+     * @brief Set the gear box ratio
+     * @param ratio ratio between generator speed and rotor speed
+     * @return Reference to the builder for method chaining
+     */
+    TurbineBuilder& SetGearBoxRatio(double ratio);
+
+    /**
+     * @brief Set the generator power
+     * @param power initial generator power (W)
+     * @return Reference to the builder for method chaining
+     */
+    TurbineBuilder& SetGeneratorPower(double power);
+
+    /**
+     * @brief Set the controller wind speed
+     * @param ratio between generator speed and rotor speed
+     * @return Reference to the builder for method chaining
+     */
+    TurbineBuilder& SetHubWindSpeed(double speed);
+
 private:
     TurbineInput input;                       ///< turbine configuration being built
     std::vector<BeamBuilder> blade_builders;  ///< builders for the blade components

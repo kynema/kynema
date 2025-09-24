@@ -114,13 +114,7 @@ void TurbineInterface::UpdateAerodynamicLoads(
     }
 }
 
-bool TurbineInterface::Step(double t) {
-    // Apply controller if available
-    if (controller) {
-        controller->io.time = t;
-        ApplyController();
-    }
-
+bool TurbineInterface::Step() {
     // Update the host state with current node loads
     Kokkos::deep_copy(this->host_state.f, 0.);
     this->turbine.SetLoads(this->host_state);
@@ -202,6 +196,10 @@ double TurbineInterface::CalculateRotorSpeed() const {
     return this->constraints.host_output(azimuth_constraint_id, 1);
 }
 
+std::array<double, 3> TurbineInterface::GetHubNodePosition() const {
+    return std::array{turbine.hub_node.position[0], turbine.hub_node.position[1], turbine.hub_node.position[2]};
+}
+
 void TurbineInterface::InitializeController(
     const components::TurbineInput& turbine_input, const components::SolutionInput& solution_input
 ) {
@@ -235,26 +233,22 @@ void TurbineInterface::InitializeController(
 
     // Make first call to controller to initialize
     controller->CallController();
+
+    this->turbine.torque_control = controller->io.generator_torque_actual;
+    this->turbine.blade_pitch_control[0] = turbine_input.blade_pitch_angle;
+    this->turbine.blade_pitch_control[1] = turbine_input.blade_pitch_angle;
+    this->turbine.blade_pitch_control[2] = turbine_input.blade_pitch_angle;
 }
 
-void TurbineInterface::ApplyController() {
+void TurbineInterface::ApplyController(double t, double hub_wind_speed) {
     if (!controller) {
         return;
     }
 
     // Update controller inputs from current system state
-    UpdateControllerInputs();
-
-    // Call the controller
-    controller->CallController();
-
-    // Apply controller outputs to the turbine?
-}
-
-void TurbineInterface::UpdateControllerInputs() {
     // Update time and azimuth
-    // TODO How to get simulation time here?
-    controller->io.time = static_cast<double>(this->state.time_step);
+    controller->io.status = 1;
+    controller->io.time = t;
     controller->io.azimuth_angle = CalculateAzimuthAngle();
 
     // Update rotor and generator speeds
@@ -265,13 +259,20 @@ void TurbineInterface::UpdateControllerInputs() {
 
     // Update generator power and torque
     const double generator_speed = controller->io.generator_speed_actual;
-    const double generator_torque = controller->io.generator_torque_actual;
+    const double generator_torque = this->turbine.torque_control;
+    controller->io.horizontal_wind_speed = hub_wind_speed;
+    controller->io.generator_torque_actual = this->turbine.torque_control;
     controller->io.generator_power_actual = generator_speed * generator_torque;
+    controller->io.pitch_blade1_actual = this->turbine.blade_pitch_control[0];
+    controller->io.pitch_blade2_actual = this->turbine.blade_pitch_control[1];
+    controller->io.pitch_blade3_actual = this->turbine.blade_pitch_control[2];
 
-    // Update wind speed (assuming it's constant for now)
-    controller->io.horizontal_wind_speed = this->turbine.GetTurbineInput().hub_wind_speed;
+    // Call the controller
+    controller->CallController();
 
-    // Set status for subsequent calls
-    controller->io.status = 1;
+    this->turbine.torque_control = controller->io.generator_torque_command;
+    this->turbine.blade_pitch_control[0] = controller->io.pitch_collective_command;
+    this->turbine.blade_pitch_control[1] = controller->io.pitch_collective_command;
+    this->turbine.blade_pitch_control[2] = controller->io.pitch_collective_command;
 }
 }  // namespace kynema::interfaces

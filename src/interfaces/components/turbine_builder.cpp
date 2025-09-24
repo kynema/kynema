@@ -102,4 +102,19 @@ TurbineBuilder& TurbineBuilder::SetRotorSpeed(double speed) {
     this->input.rotor_speed = speed;
     return *this;
 }
+
+TurbineBuilder& TurbineBuilder::SetGearBoxRatio(double ratio) {
+    this->input.gear_box_ratio = ratio;
+    return *this;
+}
+
+TurbineBuilder& TurbineBuilder::SetGeneratorPower(double power) {
+    this->input.generator_power = power;
+    return *this;
+}
+
+TurbineBuilder& TurbineBuilder::SetHubWindSpeed(double speed) {
+    this->input.hub_wind_speed = speed;
+    return *this;
+}
 }  // namespace kynema::interfaces::components

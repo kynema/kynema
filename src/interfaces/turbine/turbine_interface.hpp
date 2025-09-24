@@ -56,6 +56,13 @@ public:
         double fluid_density,
         const std::function<std::array<double, 3>(const std::array<double, 3>&)>& inflow_function
     );
+    
+    std::array<double, 3> GetHubNodePosition() const;
+
+    /**
+     * @brief Update controller inputs from current system state
+     */
+    void ApplyController(double t, double hub_wind_speed);
 
     /**
      * @brief Steps forward in time
@@ -67,7 +74,7 @@ public:
      *       solves the dynamic system, and updates the node motion with the new state.
      *       If the solver does not converge, the motion is not updated.
      */
-    [[nodiscard]] bool Step(double t = 0.);
+    [[nodiscard]] bool Step();
 
     /// @brief Saves the current state for potential restoration (in correction step)
     void SaveState();
@@ -126,13 +133,6 @@ private:
         const components::TurbineInput& turbine_input,
         const components::SolutionInput& solution_input
     );
-
-    void ApplyController();
-
-    /**
-     * @brief Update controller inputs from current system state
-     */
-    void UpdateControllerInputs();
 };
 
 }  // namespace kynema::interfaces
