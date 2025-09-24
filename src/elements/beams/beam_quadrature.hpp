@@ -44,10 +44,14 @@ inline std::vector<std::array<double, 2>> CreateTrapezoidalQuadrature(std::span<
 }
 
 /**
- * @brief Creates Gauss-Legendre quadrature points and weights on [-1, 1]
+ * @brief Creates Gauss-Legendre (GL) quadrature points and weights on [-1, 1]
  *
- * @param order Number of quadrature points (n >= 1). Uses P_n for n points.
- * @return Vector of {point, weight} pairs for Gauss-Legendre quadrature
+ * @details GL quadrature provides optimal accuracy for polynomial integration.
+ *          The points are roots of P_n(x) where P_n is the nth Legendre polynomial.
+ *          GL quadrature does NOT include the endpoints (-1, 1).
+ *
+ * @param order Number of quadrature points (n >= 1). Returns n quadrature points.
+ * @return Vector of {point, weight} pairs for GL quadrature, sorted by point value
  */
 inline std::vector<std::array<double, 2>> CreateGaussLegendreQuadrature(const size_t order) {
     constexpr auto max_iterations = 1000U;
@@ -58,35 +62,36 @@ inline std::vector<std::array<double, 2>> CreateGaussLegendreQuadrature(const si
         return {{0., 2.}};  // point -> 0, weight->2
     }
 
-    const size_t n{order};        // Total number of quadrature points to be calculated
-    const size_t m{(n + 1) / 2};  // Number of unique Gauss-Legendre points needed due to symmetry
-    std::vector<double> points(n, 0.);   // Quadrature points
-    std::vector<double> weights(n, 0.);  // Quadrature weights
+    const size_t n_points{order};               // GL has n points for order n
+    const size_t n_unique{(n_points + 1) / 2};  // Unique points due to symmetry
+    std::vector<double> points(n_points, 0.);   // Quadrature points
+    std::vector<double> weights(n_points, 0.);  // Quadrature weights
 
-    // Find the Gauss-Legendre points using Newton-Raphson method
-    for (auto i_GL_point : std::views::iota(0U, m)) {
+    // Find Gauss-Legendre (GL) points using Newton-Raphson method
+    for (auto i_GL_point : std::views::iota(0U, n_unique)) {
         // Initial guess
         auto x_it = std::cos(
             std::numbers::pi * (static_cast<double>(i_GL_point) + 0.75) /
-            (static_cast<double>(n) + 0.5)
+            (static_cast<double>(n_points) + 0.5)
         );
 
-        // Newton-Raphson iterations using P_n, P_{n-1}, and P'_n relation where
-        // P_n      ->  nth order Legendre polynomial
-        // P_{n-1}  ->  (n-1)th order Legendre polynomial
-        // P'_n     ->  derivative of the nth order Legendre polynomial
-        bool converged{false};
-        for ([[maybe_unused]] auto it : std::views::iota(0U, max_iterations)) {
-            const auto p_n_minus_1 = kynema::math::LegendrePolynomial(n - 1, x_it);
-            const auto p_n = kynema::math::LegendrePolynomial(n, x_it);
+        // Newton-Raphson iteration to find root of P_n(x)
+        bool converged = false;
+        for ([[maybe_unused]] auto iteration : std::views::iota(0U, max_iterations)) {
+            const auto x_old = x_it;  // Store old value for convergence check
+
+            // Evaluate Legendre polynomials P_{n-1}(x) and P_n(x)
+            const auto p_n_minus_1 = kynema::math::LegendrePolynomial(n_points - 1, x_it);
+            const auto p_n = kynema::math::LegendrePolynomial(n_points, x_it);
+
+            // Compute derivative P'_n(x) using recurrence relation
             const auto p_n_prime =
-                static_cast<double>(n) * (x_it * p_n - p_n_minus_1) / (x_it * x_it - 1.);
+                static_cast<double>(n_points) * (x_it * p_n - p_n_minus_1) / (x_it * x_it - 1.);
 
             // Newton update: x_{n+1} = x_n - f(x_n)/f'(x_n)
-            const auto x_old = x_it;  // Store old value for convergence check
-            x_it -= p_n / p_n_prime;  // Newton-Raphson update
+            x_it -= p_n / p_n_prime;
 
-            // Check for convergence
+            // Check convergence
             if (std::abs(x_it - x_old) <= convergence_tolerance) {
                 converged = true;
                 break;
@@ -94,30 +99,30 @@ inline std::vector<std::array<double, 2>> CreateGaussLegendreQuadrature(const si
         }
         if (!converged) {
             throw std::runtime_error(
-                "Newton-Raphson iteration failed to converge for GLL point index " +
-                std::to_string(i_GL_point)
+                "Newton-Raphson failed to converge for GL point " + std::to_string(i_GL_point) +
+                " of order " + std::to_string(n_points)
             );
         }
 
-        // Symmetric nodes i.e. points_i = -x_it and points_{n-1-i} = x_it
-        points[i_GL_point] = -x_it;
-        points[n - 1 - i_GL_point] = x_it;
+        // Store symmetric points
+        points[i_GL_point] = -x_it;                // left side
+        points[n_points - 1 - i_GL_point] = x_it;  // right side
 
-        // Weight: w = 2 / ((1 - x_it^2) [P'_n(x_it)]^2)
-        const auto p_n_minus_1 = kynema::math::LegendrePolynomial(n - 1, x_it);
-        const auto p_n = kynema::math::LegendrePolynomial(n, x_it);
+        // Compute GL weights: w = 2 / ((1 - x²) * [P'_n(x)]²)
+        const auto p_n_minus_1 = kynema::math::LegendrePolynomial(n_points - 1, x_it);
+        const auto p_n = kynema::math::LegendrePolynomial(n_points, x_it);
         const auto p_n_prime =
-            static_cast<double>(n) * (x_it * p_n - p_n_minus_1) / (x_it * x_it - 1.);
+            static_cast<double>(n_points) * (x_it * p_n - p_n_minus_1) / (x_it * x_it - 1.);
         const auto weight = 2. / ((1. - x_it * x_it) * p_n_prime * p_n_prime);
 
-        // Symmetric nodes i.e. weights_i = weights_{n-1-i}
+        // Store symmetric weights
         weights[i_GL_point] = weight;
-        weights[n - 1 - i_GL_point] = weight;
+        weights[n_points - 1 - i_GL_point] = weight;
     }
 
-    // Return the quadrature points and weights by sorting the points in ascending order
-    auto quadrature = std::vector<std::array<double, 2>>(n);
-    for (auto i_GL_point : std::views::iota(0U, n)) {
+    // Build and sort quadrature pairs
+    auto quadrature = std::vector<std::array<double, 2>>(n_points);
+    for (auto i_GL_point : std::views::iota(0U, n_points)) {
         quadrature[i_GL_point] = {points[i_GL_point], weights[i_GL_point]};
     }
     std::ranges::sort(quadrature, [](const auto& a, const auto& b) {

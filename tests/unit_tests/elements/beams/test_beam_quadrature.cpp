@@ -73,9 +73,9 @@ TEST(BeamQuadratureTest, GaussLegendreQuadrature_1point) {
 
 TEST(BeamQuadratureTest, GaussLegendreQuadrature_2points) {
     const auto calculated_quadrature = CreateGaussLegendreQuadrature(2);
-    constexpr auto expected_quadrature = std::array<std::array<double, 2>, 2>{
-        std::array{-1. / std::sqrt(3.), 1.},  // pt_1: -1 / sqrt(3), wt_1: 1
-        {1. / std::sqrt(3.), 1.}              // pt_2: 1 / sqrt(3), wt_2: 1
+    const auto expected_quadrature = std::array<std::array<double, 2>, 2>{
+        std::array{-1. / std::numbers::sqrt3, 1.},  // pt_1: -1 / sqrt(3), wt_1: 1
+        {1. / std::numbers::sqrt3, 1.}              // pt_2: 1 / sqrt(3), wt_2: 1
     };
 
     for (size_t i = 0; i < expected_quadrature.size(); ++i) {
@@ -87,7 +87,7 @@ TEST(BeamQuadratureTest, GaussLegendreQuadrature_2points) {
 
 TEST(BeamQuadratureTest, GaussLegendreQuadrature_3points) {
     const auto calculated_quadrature = CreateGaussLegendreQuadrature(3);
-    constexpr auto expected_quadrature = std::array<std::array<double, 2>, 3>{
+    const auto expected_quadrature = std::array<std::array<double, 2>, 3>{
         std::array{-std::sqrt(3. / 5.), 5. / 9.},  // pt_1: -sqrt(3 / 5), wt_1: 5 / 9
         {0., 8. / 9.},                             // pt_2: 0, wt_2: 8 / 9
         {std::sqrt(3. / 5.), 5. / 9.}              // pt_3: sqrt(3 / 5), wt_3: 5 / 9
@@ -102,7 +102,7 @@ TEST(BeamQuadratureTest, GaussLegendreQuadrature_3points) {
 
 TEST(BeamQuadratureTest, GaussLegendreQuadrature_5points) {
     const auto calculated_quadrature = CreateGaussLegendreQuadrature(5);
-    constexpr auto expected_quadrature = std::array<std::array<double, 2>, 5>{
+    const auto expected_quadrature = std::array<std::array<double, 2>, 5>{
         std::array{
             -std::sqrt(5. + 2. * std::sqrt(10. / 7.)) / 3., (322. - 13. * std::sqrt(70.)) / 900.
         },
@@ -121,7 +121,7 @@ TEST(BeamQuadratureTest, GaussLegendreQuadrature_5points) {
 
 TEST(BeamQuadratureTest, GaussLegendreQuadrature_7points) {
     const auto calculated_quadrature = CreateGaussLegendreQuadrature(7);
-    constexpr auto expected_quadrature = std::array<std::array<double, 2>, 7>{
+    const auto expected_quadrature = std::array<std::array<double, 2>, 7>{
         std::array{-0.9491079123427585, 0.1294849661688697},
         {-0.7415311855993945, 0.2797053914892766},
         {-0.4058451513773972, 0.3818300505051189},
@@ -140,7 +140,7 @@ TEST(BeamQuadratureTest, GaussLegendreQuadrature_7points) {
 
 TEST(BeamQuadratureTest, GaussLegendreQuadrature_9points) {
     const auto calculated_quadrature = CreateGaussLegendreQuadrature(9);
-    constexpr auto expected_quadrature = std::array<std::array<double, 2>, 9>{
+    const auto expected_quadrature = std::array<std::array<double, 2>, 9>{
         std::array{-0.9681602395076261, 0.0812743883615744},
         {-0.8360311073266358, 0.1806481606948574},
         {-0.6133714327005904, 0.2606106964029354},
@@ -161,7 +161,8 @@ TEST(BeamQuadratureTest, GaussLegendreQuadrature_9points) {
 
 TEST(BeamQuadratureTest, GaussLegendreQuadrature_10points) {
     const auto calculated_quadrature = CreateGaussLegendreQuadrature(10);
-    constexpr auto expected_quadrature = std::array<std::array<double, 2>, 10>{
+    // NOLINTBEGIN(modernize-use-std-numbers)
+    const auto expected_quadrature = std::array<std::array<double, 2>, 10>{
         std::array{-0.973906528517172, 0.06667134430868793},
         {-0.8650633666889761, 0.1494513491504942},
         {-0.6794095682990245, 0.2190863625159827},
@@ -173,6 +174,7 @@ TEST(BeamQuadratureTest, GaussLegendreQuadrature_10points) {
         {0.8650633666889761, 0.1494513491504942},
         {0.973906528517172, 0.06667134430868793}
     };
+    // NOLINTEND(modernize-use-std-numbers)
 
     for (size_t i = 0; i < expected_quadrature.size(); ++i) {
         for (size_t j = 0; j < expected_quadrature[i].size(); ++j) {
@@ -183,7 +185,7 @@ TEST(BeamQuadratureTest, GaussLegendreQuadrature_10points) {
 
 TEST(BeamQuadratureTest, GaussLegendreQuadrature_11points) {
     const auto calculated_quadrature = CreateGaussLegendreQuadrature(11);
-    constexpr auto expected_quadrature = std::array<std::array<double, 2>, 11>{
+    const auto expected_quadrature = std::array<std::array<double, 2>, 11>{
         std::array{-0.9782286581460570, 0.0556685671161737},
         {-0.8870625997680953, 0.1255803694649046},
         {-0.7301520055740494, 0.1862902109277343},
@@ -206,7 +208,7 @@ TEST(BeamQuadratureTest, GaussLegendreQuadrature_11points) {
 
 TEST(BeamQuadratureTest, GaussLegendreQuadrature_13points) {
     const auto calculated_quadrature = CreateGaussLegendreQuadrature(13);
-    constexpr auto expected_quadrature = std::array<std::array<double, 2>, 13>{
+    const auto expected_quadrature = std::array<std::array<double, 2>, 13>{
         std::array{-0.9841830547185881, 0.0404840047653159},
         {-0.9175983992229779, 0.0921214998377284},
         {-0.8015780907333099, 0.1388735102197872},
@@ -231,7 +233,7 @@ TEST(BeamQuadratureTest, GaussLegendreQuadrature_13points) {
 
 TEST(BeamQuadratureTest, GaussLegendreQuadrature_15points) {
     const auto calculated_quadrature = CreateGaussLegendreQuadrature(15);
-    constexpr auto expected_quadrature = std::array<std::array<double, 2>, 15>{
+    const auto expected_quadrature = std::array<std::array<double, 2>, 15>{
         std::array{-0.9879925180204854, 0.0307532419961173},
         {-0.9372733924007059, 0.0703660474881081},
         {-0.8482065834104272, 0.1071592204671719},
