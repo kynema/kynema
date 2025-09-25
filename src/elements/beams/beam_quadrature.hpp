@@ -79,6 +79,8 @@ inline std::vector<std::array<double, 2>> CreateGaussLegendreLobattoQuadrature(
  *          The points are roots of P_n(x) where P_n is the nth Legendre polynomial.
  *          GL quadrature does NOT include the endpoints (-1, 1).
  *
+ * @param grid grid locations of each quadrature point
+ * @param original_grid grid locations of the origionally specified sections
  * @param order Number of quadrature points (n >= 1). Returns n quadrature points.
  * @return Vector of {point, weight} pairs for GL quadrature, sorted by point value
  */
