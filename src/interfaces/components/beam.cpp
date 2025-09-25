@@ -5,6 +5,7 @@
 
 #include "elements/beams/beam_quadrature.hpp"
 #include "interfaces/components/beam_input.hpp"
+#include "math/gll_quadrature.hpp"
 #include "math/interpolation.hpp"
 #include "math/least_squares_fit.hpp"
 #include "math/matrix_operations.hpp"
@@ -137,10 +138,11 @@ void Beam::CreateBeamElement(const BeamInput& input, Model& model) {
     });
 
     // Calculate trapezoidal quadrature based on section locations
-    const auto trapezoidal_quadrature = beams::CreateTrapezoidalQuadrature(section_grid);
+    const auto gll_quadrature =
+        beams::CreateGaussLegendreLobattoQuadrature(section_grid, input.section_refinement + 1U);
 
     // Add beam element and get ID
-    this->beam_element_id = model.AddBeamElement(node_ids, sections, trapezoidal_quadrature);
+    this->beam_element_id = model.AddBeamElement(node_ids, sections, gll_quadrature);
 }
 
 void Beam::PositionBladeInSpace(const BeamInput& input, Model& model) const {
@@ -223,6 +225,7 @@ std::vector<BeamSection> Beam::BuildBeamSections(const BeamInput& input) {
     );
 
     // Loop through remaining section locations
+    const auto gll_locations = math::GetGllLocations(input.section_refinement + 1U);
     for (auto section : std::views::iota(1U, input.sections.size())) {
         const auto section_location = input.sections[section].location;
         const auto section_mass_matrix = input.sections[section].mass_matrix;
@@ -235,8 +238,7 @@ std::vector<BeamSection> Beam::BuildBeamSections(const BeamInput& input) {
             const auto left_stiffness_matrix = input.sections[section - 1].stiffness_matrix;
 
             // Calculate interpolation ratio between bounding sections
-            const auto alpha = static_cast<double>(refinement + 1) /
-                               static_cast<double>(input.section_refinement + 1);
+            const auto alpha = (gll_locations[refinement + 1] + 1.) / 2.;
 
             // Interpolate grid location
             const auto grid_value = (1. - alpha) * left_location + alpha * section_location;
