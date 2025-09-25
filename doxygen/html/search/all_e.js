@@ -57,7 +57,7 @@ var searchData=
   ['nodes_54',['nodes',['../classkynema_1_1interfaces_1_1components_1_1Beam.html#a6b5a44cd47380f4a7845cd6f993596d2',1,'kynema::interfaces::components::Beam']]],
   ['nodestateindices_55',['NodeStateIndices',['../structkynema_1_1Elements.html#afc64c37474f4695f78daee307ce55526',1,'kynema::Elements']]],
   ['nodestatewriter_56',['nodestatewriter',['../classkynema_1_1util_1_1NodeStateWriter.html',1,'kynema::util::NodeStateWriter'],['../classkynema_1_1util_1_1NodeStateWriter.html#af61f2ae6c0aec8bc6dbacd63fd09e8bc',1,'kynema::util::NodeStateWriter::NodeStateWriter()']]],
-  ['none_57',['none',['../namespacekynema_1_1dss.html#a80f774692ab0d512e96cf414a121b3d2ab50339a10e1de285ac99d4c3990b8693',1,'kynema::dss::NONE'],['../namespacekynema_1_1constraints.html#a592514e9df952e105e65328c4de0e39ba6adf97f83acf6453d4a6a4b1070f3754',1,'kynema::constraints::None']]],
+  ['none_57',['none',['../namespacekynema_1_1constraints.html#a592514e9df952e105e65328c4de0e39ba6adf97f83acf6453d4a6a4b1070f3754',1,'kynema::constraints::None'],['../namespacekynema_1_1dss.html#a80f774692ab0d512e96cf414a121b3d2ab50339a10e1de285ac99d4c3990b8693',1,'kynema::dss::NONE']]],
   ['norm_58',['Norm',['../namespacekynema_1_1math.html#ab88b47af8a54430f9f529981dd5aee47',1,'kynema::math']]],
   ['normalizequaternion_59',['NormalizeQuaternion',['../namespacekynema_1_1math.html#a9b5ea67b94098aeeadb3a0cb4bf345e1',1,'kynema::math']]],
   ['num_5fconstraints_60',['num_constraints',['../structkynema_1_1Constraints.html#ab456e594cab1dfe24e280bc0444f5fe3',1,'kynema::Constraints']]],
