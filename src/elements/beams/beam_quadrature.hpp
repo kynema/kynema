@@ -72,6 +72,8 @@ inline std::vector<std::array<double, 2>> CreateGaussLegendreLobattoQuadrature(
         }
         section_index += sectional_num_nodes - 1UL;
     }
+    return quadrature;
+}
 
 /**
  * @brief Creates Gauss-Legendre (GL) quadrature points and weights on [-1, 1]
