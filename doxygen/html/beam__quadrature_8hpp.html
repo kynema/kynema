@@ -174,9 +174,14 @@ $(function() {
 <div class="contents">
 <div class="textblock"><code>#include &lt;algorithm&gt;</code><br />
 <code>#include &lt;array&gt;</code><br />
+<code>#include &lt;cmath&gt;</code><br />
+<code>#include &lt;limits&gt;</code><br />
+<code>#include &lt;numbers&gt;</code><br />
 <code>#include &lt;ranges&gt;</code><br />
 <code>#include &lt;span&gt;</code><br />
+<code>#include &lt;stdexcept&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
+<code>#include &quot;<a class="el" href="interpolation_8hpp_source.html">math/interpolation.hpp</a>&quot;</code><br />
 </div>
 <p><a href="beam__quadrature_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -190,7 +195,11 @@ Namespaces</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a214c993e533aa7f86308b9f988ba6605" id="r_a214c993e533aa7f86308b9f988ba6605"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::array&lt; double, 2 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacekynema_1_1beams.html#a214c993e533aa7f86308b9f988ba6605">kynema::beams::CreateTrapezoidalQuadrature</a> (std::span&lt; const double &gt; grid)</td></tr>
+<tr class="memdesc:a214c993e533aa7f86308b9f988ba6605"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a trapezoidal quadrature rule based on a given grid.  <br /></td></tr>
 <tr class="separator:a214c993e533aa7f86308b9f988ba6605"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62401a37eee1564cd6bd4db1a2d894cb" id="r_a62401a37eee1564cd6bd4db1a2d894cb"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::array&lt; double, 2 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacekynema_1_1beams.html#a62401a37eee1564cd6bd4db1a2d894cb">kynema::beams::CreateGaussLegendreQuadrature</a> (const size_t order)</td></tr>
+<tr class="memdesc:a62401a37eee1564cd6bd4db1a2d894cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates Gauss-Legendre (GL) quadrature points and weights on [-1, 1].  <br /></td></tr>
+<tr class="separator:a62401a37eee1564cd6bd4db1a2d894cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 <!-- start footer part -->
