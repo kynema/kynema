@@ -17,6 +17,11 @@ BeamBuilder& BeamBuilder::SetQuadratureRule(BeamInput::QuadratureRule rule) {
     return *this;
 }
 
+BeamBuilder& BeamBuilder::SetQuadratureStyle(BeamInput::QuadratureStyle style) {
+    input.quadrature_style = style;
+    return *this;
+}
+
 BeamBuilder& BeamBuilder::SetSectionRefinement(size_t section_refinement) {
     input.section_refinement = section_refinement;
     return *this;

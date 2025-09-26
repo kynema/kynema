@@ -126,12 +126,50 @@ private:
      * @brief Calculate tangent vectors at each node
      */
     void CalcNodeTangents();
+
     /**
      * @brief Create beam sections from input configuration
      * @param input Blade input configuration
      * @return Vector of beam sections
      */
     static std::vector<BeamSection> BuildBeamSections(const BeamInput& input);
+
+    /**
+     * @brief Create beam sections from input configuration
+     * @param input Blade input configuration
+     * @return Vector of beam sections
+     */
+    static std::vector<BeamSection> BuildBeamSections_SegmentedGLL(const BeamInput& input);
+
+    /**
+     * @brief Create beam sections from input configuration
+     * @param input Blade input configuration
+     * @return Vector of beam sections
+     */
+    static std::vector<BeamSection> BuildBeamSections_SegmentedGL(const BeamInput& input);
+
+    /**
+     * @brief Create beam sections from input configuration
+     * @param input Blade input configuration
+     * @return Vector of beam sections
+     */
+    static std::vector<BeamSection> BuildBeamSections_WholeBeam(
+        const BeamInput& input, std::span<const double> quad_locations
+    );
+
+    /**
+     * @brief Create beam sections from input configuration
+     * @param input Blade input configuration
+     * @return Vector of beam sections
+     */
+    static std::vector<BeamSection> BuildBeamSections_WholeBeamGLL(const BeamInput& input);
+
+    /**
+     * @brief Create beam sections from input configuration
+     * @param input Blade input configuration
+     * @return Vector of beam sections
+     */
+    static std::vector<BeamSection> BuildBeamSections_WholeBeamGL(const BeamInput& input);
 };
 
 }  // namespace kynema::interfaces::components

@@ -87,11 +87,20 @@ struct BeamInput {
         GaussLegendre,
         GaussLobatto
     };
+
+    enum class QuadratureStyle : std::uint8_t {
+        Segmented,
+        WholeBeam
+    };
+
     /// @brief Spectral element order (num nodes - 1)
     size_t element_order{10};
 
     /// @brief Quadrature Rule
     QuadratureRule quadrature_rule{QuadratureRule::GaussLobatto};
+
+    /// @brief Quadrature stype
+    QuadratureStyle quadrature_style{QuadratureStyle::Segmented};
 
     /// @brief Quadrature point refinement
     size_t section_refinement{0};
