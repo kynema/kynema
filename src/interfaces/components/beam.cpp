@@ -134,7 +134,8 @@ void Beam::CreateBeamElement(const BeamInput& input, Model& model) {
     if (input.quadrature_style == BeamInput::QuadratureStyle::Segmented) {
         original_section_grid.resize(input.sections.size());
         std::ranges::transform(
-            input.sections, std::begin(original_section_grid), [](const auto& section) {
+            input.sections, std::begin(original_section_grid),
+            [](const auto& section) {
                 return section.location;
             }
         );
@@ -393,7 +394,8 @@ std::vector<BeamSection> Beam::BuildBeamSections_WholeBeam(
 
     auto grid_locations = std::vector<double>(quad_locations.size());
     std::ranges::transform(
-        quad_locations, std::begin(grid_locations), [min_location, max_location](auto x) {
+        quad_locations, std::begin(grid_locations),
+        [min_location, max_location](auto x) {
             const auto alpha = (x + 1.) / 2.;
             return (1. - alpha) * min_location + alpha * max_location;
         }
