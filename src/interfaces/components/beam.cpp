@@ -301,7 +301,7 @@ std::vector<BeamSection> Beam::BuildBeamSections_SegmentedGLL(const BeamInput& i
 
             // Calculate twist at current section location via linear interpolation
             const auto twist = math::LinearInterp(
-                section_location, input.ref_axis.twist_grid, input.ref_axis.twist
+                grid_value, input.ref_axis.twist_grid, input.ref_axis.twist
             );
 
             // Add refinement section
@@ -370,7 +370,7 @@ std::vector<BeamSection> Beam::BuildBeamSections_SegmentedGL(const BeamInput& in
 
             // Calculate twist at current section location via linear interpolation
             const auto twist = math::LinearInterp(
-                section_location, input.ref_axis.twist_grid, input.ref_axis.twist
+                grid_value, input.ref_axis.twist_grid, input.ref_axis.twist
             );
 
             // Add refinement section
