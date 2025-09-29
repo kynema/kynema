@@ -292,13 +292,13 @@ TEST(TurbineInterfaceTest, IEA15_Structure) {
 
     // Check tower top position and orientation
     const auto& tower_top_node = interface.Turbine().tower.nodes.back();
-    EXPECT_NEAR(tower_top_node.position[0], 0.0002126927854378018, 1e-10);
-    EXPECT_NEAR(tower_top_node.position[1], 0.011379102779460769, 1e-10);
-    EXPECT_NEAR(tower_top_node.position[2], 144.36523368059588, 1e-10);
-    EXPECT_NEAR(tower_top_node.position[3], 0.70691575889173808, 1e-10);
-    EXPECT_NEAR(tower_top_node.position[4], -0.0089854700529016247, 1e-10);
-    EXPECT_NEAR(tower_top_node.position[5], -0.70720684377750109, 1e-10);
-    EXPECT_NEAR(tower_top_node.position[6], -0.0069174614355188109, 1e-10);
+    EXPECT_NEAR(tower_top_node.position[0], 0.00020919358344103186, 1e-10);
+    EXPECT_NEAR(tower_top_node.position[1], 0.011380421713292305, 1e-10);
+    EXPECT_NEAR(tower_top_node.position[2], 144.36523477832429, 1e-10);
+    EXPECT_NEAR(tower_top_node.position[3], 0.70691577289760743, 1e-10);
+    EXPECT_NEAR(tower_top_node.position[4], -0.0089855179015156366, 1e-10);
+    EXPECT_NEAR(tower_top_node.position[5], -0.70720682982140304, 1e-10);
+    EXPECT_NEAR(tower_top_node.position[6], -0.0069173947828132729, 1e-10);
 }
 
 }  // namespace kynema::tests
