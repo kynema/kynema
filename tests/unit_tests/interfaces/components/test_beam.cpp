@@ -1214,4 +1214,685 @@ TEST(BeamComponentTest, Quadrature_GL_ElevenSections_OneRefinement) {
     EXPECT_NEAR(quadrature[19][0], .9 + 1. / std::sqrt(3.) / 10., 1.e-15);
     EXPECT_NEAR(quadrature[19][1], .1, 1.e-15);
 }
+
+TEST(BeamComponentTest, Section_GLL_TwoSections_NoRefinement_NoTwist_ConstantSection) {
+    auto model = kynema::Model();
+    auto beam_input = kynema::interfaces::components::BeamInput{};
+
+    beam_input.element_order = 2UL;
+
+    beam_input.ref_axis.coordinate_grid = std::vector{0., 1.0};
+    beam_input.ref_axis.coordinates = std::vector{std::array{0., 0., 0.}, std::array{1., 0., 0.}};
+    beam_input.ref_axis.twist_grid = std::vector{0., 1.0};
+    beam_input.ref_axis.twist = std::vector{0., 0.};
+
+    auto mass_stiff_array =
+        std::array{std::array{1., 0., 0., 0., 0., 0.}, std::array{0., 1., 0., 0., 0., 0.},
+                   std::array{0., 0., 1., 0., 0., 0.}, std::array{0., 0., 0., 1., 0., 0.},
+                   std::array{0., 0., 0., 0., 1., 0.}, std::array{0., 0., 0., 0., 0., 1.}};
+    beam_input.sections = std::vector{
+        kynema::interfaces::components::Section(0., mass_stiff_array, mass_stiff_array),
+        kynema::interfaces::components::Section(1., mass_stiff_array, mass_stiff_array)
+    };
+
+    beam_input.section_refinement = 0UL;
+
+    const auto beam = kynema::interfaces::components::Beam(beam_input, model);
+    const auto beam_elements = model.GetBeamElements();
+    const auto& sections = beam_elements.front().sections;
+
+    EXPECT_EQ(sections.size(), 2UL);
+
+    EXPECT_NEAR(sections[0].position, 0., 1.e-15);
+    EXPECT_NEAR(sections[1].position, 1., 1.e-15);
+
+    for (auto i : std::views::iota(0U, 6U)) {
+        for (auto j : std::views::iota(0U, 6U)) {
+            EXPECT_NEAR(sections[0].M_star[i][j], mass_stiff_array[i][j], 1.e-15);
+        }
+    }
+
+    for (auto i : std::views::iota(0U, 6U)) {
+        for (auto j : std::views::iota(0U, 6U)) {
+            EXPECT_NEAR(sections[1].M_star[i][j], mass_stiff_array[i][j], 1.e-15);
+        }
+    }
+
+    for (auto i : std::views::iota(0U, 6U)) {
+        for (auto j : std::views::iota(0U, 6U)) {
+            EXPECT_NEAR(sections[0].C_star[i][j], mass_stiff_array[i][j], 1.e-15);
+        }
+    }
+
+    for (auto i : std::views::iota(0U, 6U)) {
+        for (auto j : std::views::iota(0U, 6U)) {
+            EXPECT_NEAR(sections[1].C_star[i][j], mass_stiff_array[i][j], 1.e-15);
+        }
+    }
+}
+
+TEST(BeamComponentTest, Section_GLL_TwoSections_NoRefinement_NoTwist_LinearSection) {
+    auto model = kynema::Model();
+    auto beam_input = kynema::interfaces::components::BeamInput{};
+
+    beam_input.element_order = 2UL;
+
+    beam_input.ref_axis.coordinate_grid = std::vector{0., 1.0};
+    beam_input.ref_axis.coordinates = std::vector{std::array{0., 0., 0.}, std::array{1., 0., 0.}};
+    beam_input.ref_axis.twist_grid = std::vector{0., 1.0};
+    beam_input.ref_axis.twist = std::vector{0., 0.};
+
+    constexpr auto mass_stiff_array_0 =
+        std::array{std::array{1., 0., 0., 0., 0., 0.}, std::array{0., 1., 0., 0., 0., 0.},
+                   std::array{0., 0., 1., 0., 0., 0.}, std::array{0., 0., 0., 1., 0., 0.},
+                   std::array{0., 0., 0., 0., 1., 0.}, std::array{0., 0., 0., 0., 0., 1.}};
+    constexpr auto mass_stiff_array_1 =
+        std::array{std::array{2., 0., 0., 0., 0., 0.}, std::array{0., 2., 0., 0., 0., 0.},
+                   std::array{0., 0., 2., 0., 0., 0.}, std::array{0., 0., 0., 2., 0., 0.},
+                   std::array{0., 0., 0., 0., 2., 0.}, std::array{0., 0., 0., 0., 0., 2.}};
+    beam_input.sections = std::vector{
+        kynema::interfaces::components::Section(0., mass_stiff_array_0, mass_stiff_array_0),
+        kynema::interfaces::components::Section(1., mass_stiff_array_1, mass_stiff_array_1)
+    };
+
+    beam_input.section_refinement = 0UL;
+
+    const auto beam = kynema::interfaces::components::Beam(beam_input, model);
+    const auto beam_elements = model.GetBeamElements();
+    const auto& sections = beam_elements.front().sections;
+
+    EXPECT_EQ(sections.size(), 2UL);
+
+    EXPECT_NEAR(sections[0].position, 0., 1.e-15);
+    EXPECT_NEAR(sections[1].position, 1., 1.e-15);
+
+    for (auto i : std::views::iota(0U, 6U)) {
+        for (auto j : std::views::iota(0U, 6U)) {
+            EXPECT_NEAR(sections[0].M_star[i][j], mass_stiff_array_0[i][j], 1.e-15);
+        }
+    }
+
+    for (auto i : std::views::iota(0U, 6U)) {
+        for (auto j : std::views::iota(0U, 6U)) {
+            EXPECT_NEAR(sections[1].M_star[i][j], mass_stiff_array_1[i][j], 1.e-15);
+        }
+    }
+
+    for (auto i : std::views::iota(0U, 6U)) {
+        for (auto j : std::views::iota(0U, 6U)) {
+            EXPECT_NEAR(sections[0].C_star[i][j], mass_stiff_array_0[i][j], 1.e-15);
+        }
+    }
+
+    for (auto i : std::views::iota(0U, 6U)) {
+        for (auto j : std::views::iota(0U, 6U)) {
+            EXPECT_NEAR(sections[1].C_star[i][j], mass_stiff_array_1[i][j], 1.e-15);
+        }
+    }
+}
+
+TEST(BeamComponentTest, Section_GLL_ThreeSections_NoRefinement_NoTwist_LinearSection) {
+    auto model = kynema::Model();
+    auto beam_input = kynema::interfaces::components::BeamInput{};
+
+    beam_input.element_order = 2UL;
+
+    beam_input.ref_axis.coordinate_grid = std::vector{0., 1.0};
+    beam_input.ref_axis.coordinates = std::vector{std::array{0., 0., 0.}, std::array{1., 0., 0.}};
+    beam_input.ref_axis.twist_grid = std::vector{0., 1.0};
+    beam_input.ref_axis.twist = std::vector{0., 0.};
+
+    constexpr auto mass_stiff_array_0 =
+        std::array{std::array{1., 0., 0., 0., 0., 0.}, std::array{0., 1., 0., 0., 0., 0.},
+                   std::array{0., 0., 1., 0., 0., 0.}, std::array{0., 0., 0., 1., 0., 0.},
+                   std::array{0., 0., 0., 0., 1., 0.}, std::array{0., 0., 0., 0., 0., 1.}};
+    constexpr auto mass_stiff_array_1 =
+        std::array{std::array{2., 0., 0., 0., 0., 0.}, std::array{0., 2., 0., 0., 0., 0.},
+                   std::array{0., 0., 2., 0., 0., 0.}, std::array{0., 0., 0., 2., 0., 0.},
+                   std::array{0., 0., 0., 0., 2., 0.}, std::array{0., 0., 0., 0., 0., 2.}};
+    constexpr auto mass_stiff_array_2 =
+        std::array{std::array{4., 0., 0., 0., 0., 0.}, std::array{0., 4., 0., 0., 0., 0.},
+                   std::array{0., 0., 4., 0., 0., 0.}, std::array{0., 0., 0., 4., 0., 0.},
+                   std::array{0., 0., 0., 0., 4., 0.}, std::array{0., 0., 0., 0., 0., 4.}};
+    beam_input.sections = std::vector{
+        kynema::interfaces::components::Section(0., mass_stiff_array_0, mass_stiff_array_0),
+        kynema::interfaces::components::Section(.5, mass_stiff_array_1, mass_stiff_array_1),
+        kynema::interfaces::components::Section(1., mass_stiff_array_2, mass_stiff_array_2)
+    };
+
+    beam_input.section_refinement = 0UL;
+
+    const auto beam = kynema::interfaces::components::Beam(beam_input, model);
+    const auto beam_elements = model.GetBeamElements();
+    const auto& sections = beam_elements.front().sections;
+
+    EXPECT_EQ(sections.size(), 3UL);
+
+    EXPECT_NEAR(sections[0].position, 0., 1.e-15);
+    EXPECT_NEAR(sections[1].position, .5, 1.e-15);
+    EXPECT_NEAR(sections[2].position, 1., 1.e-15);
+
+    for (auto i : std::views::iota(0U, 6U)) {
+        for (auto j : std::views::iota(0U, 6U)) {
+            EXPECT_NEAR(sections[0].M_star[i][j], mass_stiff_array_0[i][j], 1.e-15);
+        }
+    }
+
+    for (auto i : std::views::iota(0U, 6U)) {
+        for (auto j : std::views::iota(0U, 6U)) {
+            EXPECT_NEAR(sections[1].M_star[i][j], mass_stiff_array_1[i][j], 1.e-15);
+        }
+    }
+
+    for (auto i : std::views::iota(0U, 6U)) {
+        for (auto j : std::views::iota(0U, 6U)) {
+            EXPECT_NEAR(sections[2].M_star[i][j], mass_stiff_array_2[i][j], 1.e-15);
+        }
+    }
+
+    for (auto i : std::views::iota(0U, 6U)) {
+        for (auto j : std::views::iota(0U, 6U)) {
+            EXPECT_NEAR(sections[0].C_star[i][j], mass_stiff_array_0[i][j], 1.e-15);
+        }
+    }
+
+    for (auto i : std::views::iota(0U, 6U)) {
+        for (auto j : std::views::iota(0U, 6U)) {
+            EXPECT_NEAR(sections[1].C_star[i][j], mass_stiff_array_1[i][j], 1.e-15);
+        }
+    }
+
+    for (auto i : std::views::iota(0U, 6U)) {
+        for (auto j : std::views::iota(0U, 6U)) {
+            EXPECT_NEAR(sections[2].C_star[i][j], mass_stiff_array_2[i][j], 1.e-15);
+        }
+    }
+}
+
+TEST(BeamComponentTest, Section_GLL_ThreeSections_OneRefinement_NoTwist_LinearSection) {
+    auto model = kynema::Model();
+    auto beam_input = kynema::interfaces::components::BeamInput{};
+
+    beam_input.element_order = 2UL;
+
+    beam_input.ref_axis.coordinate_grid = std::vector{0., 1.0};
+    beam_input.ref_axis.coordinates = std::vector{std::array{0., 0., 0.}, std::array{1., 0., 0.}};
+    beam_input.ref_axis.twist_grid = std::vector{0., 1.0};
+    beam_input.ref_axis.twist = std::vector{0., 0.};
+
+    constexpr auto mass_stiff_array_0 =
+        std::array{std::array{1., 0., 0., 0., 0., 0.}, std::array{0., 1., 0., 0., 0., 0.},
+                   std::array{0., 0., 1., 0., 0., 0.}, std::array{0., 0., 0., 1., 0., 0.},
+                   std::array{0., 0., 0., 0., 1., 0.}, std::array{0., 0., 0., 0., 0., 1.}};
+    constexpr auto mass_stiff_array_1 =
+        std::array{std::array{1.5, 0., 0., 0., 0., 0.}, std::array{0., 1.5, 0., 0., 0., 0.},
+                   std::array{0., 0., 1.5, 0., 0., 0.}, std::array{0., 0., 0., 1.5, 0., 0.},
+                   std::array{0., 0., 0., 0., 1.5, 0.}, std::array{0., 0., 0., 0., 0., 1.5}};
+    constexpr auto mass_stiff_array_2 =
+        std::array{std::array{2., 0., 0., 0., 0., 0.}, std::array{0., 2., 0., 0., 0., 0.},
+                   std::array{0., 0., 2., 0., 0., 0.}, std::array{0., 0., 0., 2., 0., 0.},
+                   std::array{0., 0., 0., 0., 2., 0.}, std::array{0., 0., 0., 0., 0., 2.}};
+    constexpr auto mass_stiff_array_3 =
+        std::array{std::array{3., 0., 0., 0., 0., 0.}, std::array{0., 3., 0., 0., 0., 0.},
+                   std::array{0., 0., 3., 0., 0., 0.}, std::array{0., 0., 0., 3., 0., 0.},
+                   std::array{0., 0., 0., 0., 3., 0.}, std::array{0., 0., 0., 0., 0., 3.}};
+    constexpr auto mass_stiff_array_4 =
+        std::array{std::array{4., 0., 0., 0., 0., 0.}, std::array{0., 4., 0., 0., 0., 0.},
+                   std::array{0., 0., 4., 0., 0., 0.}, std::array{0., 0., 0., 4., 0., 0.},
+                   std::array{0., 0., 0., 0., 4., 0.}, std::array{0., 0., 0., 0., 0., 4.}};
+    beam_input.sections = std::vector{
+        kynema::interfaces::components::Section(0., mass_stiff_array_0, mass_stiff_array_0),
+        kynema::interfaces::components::Section(.5, mass_stiff_array_2, mass_stiff_array_2),
+        kynema::interfaces::components::Section(1., mass_stiff_array_4, mass_stiff_array_4)
+    };
+
+    beam_input.section_refinement = 1UL;
+
+    const auto beam = kynema::interfaces::components::Beam(beam_input, model);
+    const auto beam_elements = model.GetBeamElements();
+    const auto& sections = beam_elements.front().sections;
+
+    EXPECT_EQ(sections.size(), 5UL);
+
+    EXPECT_NEAR(sections[0].position, 0., 1.e-15);
+    EXPECT_NEAR(sections[1].position, .25, 1.e-15);
+    EXPECT_NEAR(sections[2].position, .5, 1.e-15);
+    EXPECT_NEAR(sections[3].position, .75, 1.e-15);
+    EXPECT_NEAR(sections[4].position, 1., 1.e-15);
+
+    for (auto i : std::views::iota(0U, 6U)) {
+        for (auto j : std::views::iota(0U, 6U)) {
+            EXPECT_NEAR(sections[0].M_star[i][j], mass_stiff_array_0[i][j], 1.e-15);
+        }
+    }
+
+    for (auto i : std::views::iota(0U, 6U)) {
+        for (auto j : std::views::iota(0U, 6U)) {
+            EXPECT_NEAR(sections[1].M_star[i][j], mass_stiff_array_1[i][j], 1.e-15);
+        }
+    }
+
+    for (auto i : std::views::iota(0U, 6U)) {
+        for (auto j : std::views::iota(0U, 6U)) {
+            EXPECT_NEAR(sections[2].M_star[i][j], mass_stiff_array_2[i][j], 1.e-15);
+        }
+    }
+
+    for (auto i : std::views::iota(0U, 6U)) {
+        for (auto j : std::views::iota(0U, 6U)) {
+            EXPECT_NEAR(sections[3].M_star[i][j], mass_stiff_array_3[i][j], 1.e-15);
+        }
+    }
+
+    for (auto i : std::views::iota(0U, 6U)) {
+        for (auto j : std::views::iota(0U, 6U)) {
+            EXPECT_NEAR(sections[4].M_star[i][j], mass_stiff_array_4[i][j], 1.e-15);
+        }
+    }
+
+    for (auto i : std::views::iota(0U, 6U)) {
+        for (auto j : std::views::iota(0U, 6U)) {
+            EXPECT_NEAR(sections[0].C_star[i][j], mass_stiff_array_0[i][j], 1.e-15);
+        }
+    }
+
+    for (auto i : std::views::iota(0U, 6U)) {
+        for (auto j : std::views::iota(0U, 6U)) {
+            EXPECT_NEAR(sections[1].C_star[i][j], mass_stiff_array_1[i][j], 1.e-15);
+        }
+    }
+
+    for (auto i : std::views::iota(0U, 6U)) {
+        for (auto j : std::views::iota(0U, 6U)) {
+            EXPECT_NEAR(sections[2].C_star[i][j], mass_stiff_array_2[i][j], 1.e-15);
+        }
+    }
+
+    for (auto i : std::views::iota(0U, 6U)) {
+        for (auto j : std::views::iota(0U, 6U)) {
+            EXPECT_NEAR(sections[3].C_star[i][j], mass_stiff_array_3[i][j], 1.e-15);
+        }
+    }
+
+    for (auto i : std::views::iota(0U, 6U)) {
+        for (auto j : std::views::iota(0U, 6U)) {
+            EXPECT_NEAR(sections[4].C_star[i][j], mass_stiff_array_4[i][j], 1.e-15);
+        }
+    }
+}
+
+TEST(BeamComponentTest, Section_GLL_ThreeSections_OneRefinement_ConstantTwist_ConstantSection) {
+    auto model = kynema::Model();
+    auto beam_input = kynema::interfaces::components::BeamInput{};
+
+    beam_input.element_order = 2UL;
+
+    beam_input.ref_axis.coordinate_grid = std::vector{0., 1.0};
+    beam_input.ref_axis.coordinates = std::vector{std::array{0., 0., 0.}, std::array{1., 0., 0.}};
+    beam_input.ref_axis.twist_grid = std::vector{0., 1.0};
+    beam_input.ref_axis.twist = std::vector{45., 45.};
+
+    constexpr auto mass_stiff_array_0 =
+        std::array{std::array{1., 0., 0., 0., 0., 0.}, std::array{0., 2., 0., 0., 0., 0.},
+                   std::array{0., 0., 3., 0., 0., 0.}, std::array{0., 0., 0., 4., 0., 0.},
+                   std::array{0., 0., 0., 0., 5., 0.}, std::array{0., 0., 0., 0., 0., 6.}};
+    constexpr auto mass_stiff_array_2 =
+        std::array{std::array{2., 0., 0., 0., 0., 0.}, std::array{0., 3., 0., 0., 0., 0.},
+                   std::array{0., 0., 4., 0., 0., 0.}, std::array{0., 0., 0., 5., 0., 0.},
+                   std::array{0., 0., 0., 0., 6., 0.}, std::array{0., 0., 0., 0., 0., 7.}};
+    constexpr auto mass_stiff_array_4 =
+        std::array{std::array{4., 0., 0., 0., 0., 0.}, std::array{0., 5., 0., 0., 0., 0.},
+                   std::array{0., 0., 6., 0., 0., 0.}, std::array{0., 0., 0., 7., 0., 0.},
+                   std::array{0., 0., 0., 0., 8., 0.}, std::array{0., 0., 0., 0., 0., 9.}};
+    beam_input.sections = std::vector{
+        kynema::interfaces::components::Section(0., mass_stiff_array_0, mass_stiff_array_0),
+        kynema::interfaces::components::Section(.5, mass_stiff_array_2, mass_stiff_array_2),
+        kynema::interfaces::components::Section(1., mass_stiff_array_4, mass_stiff_array_4)
+    };
+
+    beam_input.section_refinement = 1UL;
+
+    const auto beam = kynema::interfaces::components::Beam(beam_input, model);
+    const auto beam_elements = model.GetBeamElements();
+    const auto& sections = beam_elements.front().sections;
+
+    EXPECT_EQ(sections.size(), 5UL);
+
+    EXPECT_NEAR(sections[0].position, 0., 1.e-15);
+    EXPECT_NEAR(sections[1].position, .25, 1.e-15);
+    EXPECT_NEAR(sections[2].position, .5, 1.e-15);
+    EXPECT_NEAR(sections[3].position, .75, 1.e-15);
+    EXPECT_NEAR(sections[4].position, 1., 1.e-15);
+
+    constexpr auto mass_stiff_array_0_exact =
+        std::array{std::array{1., 0., 0., 0., 0., 0.},   std::array{0., 2.5, -.5, 0., 0., 0.},
+                   std::array{0., -.5, 2.5, 0., 0., 0.}, std::array{0., 0., 0., 4., 0., 0.},
+                   std::array{0., 0., 0., 0., 5.5, -.5}, std::array{0., 0., 0., 0., -.5, 5.5}};
+    constexpr auto mass_stiff_array_1_exact =
+        std::array{std::array{1.5, 0., 0., 0., 0., 0.}, std::array{0., 3., -.5, 0., 0., 0.},
+                   std::array{0., -.5, 3., 0., 0., 0.}, std::array{0., 0., 0., 4.5, 0., 0.},
+                   std::array{0., 0., 0., 0., 6., -.5}, std::array{0., 0., 0., 0., -.5, 6.}};
+    constexpr auto mass_stiff_array_2_exact =
+        std::array{std::array{2., 0., 0., 0., 0., 0.},   std::array{0., 3.5, -.5, 0., 0., 0.},
+                   std::array{0., -.5, 3.5, 0., 0., 0.}, std::array{0., 0., 0., 5., 0., 0.},
+                   std::array{0., 0., 0., 0., 6.5, -.5}, std::array{0., 0., 0., 0., -.5, 6.5}};
+    constexpr auto mass_stiff_array_3_exact =
+        std::array{std::array{3., 0., 0., 0., 0., 0.},   std::array{0., 4.5, -.5, 0., 0., 0.},
+                   std::array{0., -.5, 4.5, 0., 0., 0.}, std::array{0., 0., 0., 6., 0., 0.},
+                   std::array{0., 0., 0., 0., 7.5, -.5}, std::array{0., 0., 0., 0., -.5, 7.5}};
+    constexpr auto mass_stiff_array_4_exact =
+        std::array{std::array{4., 0., 0., 0., 0., 0.},   std::array{0., 5.5, -.5, 0., 0., 0.},
+                   std::array{0., -.5, 5.5, 0., 0., 0.}, std::array{0., 0., 0., 7., 0., 0.},
+                   std::array{0., 0., 0., 0., 8.5, -.5}, std::array{0., 0., 0., 0., -.5, 8.5}};
+
+    for (auto i : std::views::iota(0U, 6U)) {
+        for (auto j : std::views::iota(0U, 6U)) {
+            EXPECT_NEAR(sections[0].M_star[i][j], mass_stiff_array_0_exact[i][j], 1.e-15);
+        }
+    }
+
+    for (auto i : std::views::iota(0U, 6U)) {
+        for (auto j : std::views::iota(0U, 6U)) {
+            EXPECT_NEAR(sections[1].M_star[i][j], mass_stiff_array_1_exact[i][j], 1.e-15);
+        }
+    }
+
+    for (auto i : std::views::iota(0U, 6U)) {
+        for (auto j : std::views::iota(0U, 6U)) {
+            EXPECT_NEAR(sections[2].M_star[i][j], mass_stiff_array_2_exact[i][j], 1.e-15);
+        }
+    }
+
+    for (auto i : std::views::iota(0U, 6U)) {
+        for (auto j : std::views::iota(0U, 6U)) {
+            EXPECT_NEAR(sections[3].M_star[i][j], mass_stiff_array_3_exact[i][j], 1.e-15);
+        }
+    }
+
+    for (auto i : std::views::iota(0U, 6U)) {
+        for (auto j : std::views::iota(0U, 6U)) {
+            EXPECT_NEAR(sections[4].M_star[i][j], mass_stiff_array_4_exact[i][j], 1.e-15);
+        }
+    }
+
+    for (auto i : std::views::iota(0U, 6U)) {
+        for (auto j : std::views::iota(0U, 6U)) {
+            EXPECT_NEAR(sections[0].C_star[i][j], mass_stiff_array_0_exact[i][j], 1.e-15);
+        }
+    }
+
+    for (auto i : std::views::iota(0U, 6U)) {
+        for (auto j : std::views::iota(0U, 6U)) {
+            EXPECT_NEAR(sections[1].C_star[i][j], mass_stiff_array_1_exact[i][j], 1.e-15);
+        }
+    }
+
+    for (auto i : std::views::iota(0U, 6U)) {
+        for (auto j : std::views::iota(0U, 6U)) {
+            EXPECT_NEAR(sections[2].C_star[i][j], mass_stiff_array_2_exact[i][j], 1.e-15);
+        }
+    }
+
+    for (auto i : std::views::iota(0U, 6U)) {
+        for (auto j : std::views::iota(0U, 6U)) {
+            EXPECT_NEAR(sections[3].C_star[i][j], mass_stiff_array_3_exact[i][j], 1.e-15);
+        }
+    }
+
+    for (auto i : std::views::iota(0U, 6U)) {
+        for (auto j : std::views::iota(0U, 6U)) {
+            EXPECT_NEAR(sections[4].C_star[i][j], mass_stiff_array_4_exact[i][j], 1.e-15);
+        }
+    }
+}
+
+TEST(BeamComponentTest, Section_GLL_ThreeSections_OneRefinement_LinearTwist_ConstantSection) {
+    auto model = kynema::Model();
+    auto beam_input = kynema::interfaces::components::BeamInput{};
+
+    beam_input.element_order = 2UL;
+
+    beam_input.ref_axis.coordinate_grid = std::vector{0., 1.0};
+    beam_input.ref_axis.coordinates = std::vector{std::array{0., 0., 0.}, std::array{1., 0., 0.}};
+    beam_input.ref_axis.twist_grid = std::vector{0., 1.0};
+    beam_input.ref_axis.twist = std::vector{0., 180.};
+
+    constexpr auto mass_stiff_array_0 =
+        std::array{std::array{1., 0., 0., 0., 0., 0.}, std::array{0., 2., 0., 0., 0., 0.},
+                   std::array{0., 0., 3., 0., 0., 0.}, std::array{0., 0., 0., 4., 0., 0.},
+                   std::array{0., 0., 0., 0., 5., 0.}, std::array{0., 0., 0., 0., 0., 6.}};
+    constexpr auto mass_stiff_array_2 =
+        std::array{std::array{2., 0., 0., 0., 0., 0.}, std::array{0., 3., 0., 0., 0., 0.},
+                   std::array{0., 0., 4., 0., 0., 0.}, std::array{0., 0., 0., 5., 0., 0.},
+                   std::array{0., 0., 0., 0., 6., 0.}, std::array{0., 0., 0., 0., 0., 7.}};
+    constexpr auto mass_stiff_array_4 =
+        std::array{std::array{4., 0., 0., 0., 0., 0.}, std::array{0., 5., 0., 0., 0., 0.},
+                   std::array{0., 0., 6., 0., 0., 0.}, std::array{0., 0., 0., 7., 0., 0.},
+                   std::array{0., 0., 0., 0., 8., 0.}, std::array{0., 0., 0., 0., 0., 9.}};
+    beam_input.sections = std::vector{
+        kynema::interfaces::components::Section(0., mass_stiff_array_0, mass_stiff_array_0),
+        kynema::interfaces::components::Section(.5, mass_stiff_array_2, mass_stiff_array_2),
+        kynema::interfaces::components::Section(1., mass_stiff_array_4, mass_stiff_array_4)
+    };
+
+    beam_input.section_refinement = 1UL;
+
+    const auto beam = kynema::interfaces::components::Beam(beam_input, model);
+    const auto beam_elements = model.GetBeamElements();
+    const auto& sections = beam_elements.front().sections;
+
+    EXPECT_EQ(sections.size(), 5UL);
+
+    EXPECT_NEAR(sections[0].position, 0., 1.e-15);
+    EXPECT_NEAR(sections[1].position, .25, 1.e-15);
+    EXPECT_NEAR(sections[2].position, .5, 1.e-15);
+    EXPECT_NEAR(sections[3].position, .75, 1.e-15);
+    EXPECT_NEAR(sections[4].position, 1., 1.e-15);
+
+    constexpr auto mass_stiff_array_0_exact =
+        std::array{std::array{1., 0., 0., 0., 0., 0.}, std::array{0., 2., 0., 0., 0., 0.},
+                   std::array{0., 0., 3., 0., 0., 0.}, std::array{0., 0., 0., 4., 0., 0.},
+                   std::array{0., 0., 0., 0., 5., 0.}, std::array{0., 0., 0., 0., 0., 6.}};
+    constexpr auto mass_stiff_array_1_exact =
+        std::array{std::array{1.5, 0., 0., 0., 0., 0.}, std::array{0., 3., -.5, 0., 0., 0.},
+                   std::array{0., -.5, 3., 0., 0., 0.}, std::array{0., 0., 0., 4.5, 0., 0.},
+                   std::array{0., 0., 0., 0., 6., -.5}, std::array{0., 0., 0., 0., -.5, 6.}};
+    constexpr auto mass_stiff_array_2_exact =
+        std::array{std::array{2., 0., 0., 0., 0., 0.}, std::array{0., 4., 0., 0., 0., 0.},
+                   std::array{0., 0., 3., 0., 0., 0.}, std::array{0., 0., 0., 5., 0., 0.},
+                   std::array{0., 0., 0., 0., 7., 0.}, std::array{0., 0., 0., 0., 0., 6.}};
+    constexpr auto mass_stiff_array_3_exact =
+        std::array{std::array{3., 0., 0., 0., 0., 0.},  std::array{0., 4.5, .5, 0., 0., 0.},
+                   std::array{0., .5, 4.5, 0., 0., 0.}, std::array{0., 0., 0., 6., 0., 0.},
+                   std::array{0., 0., 0., 0., 7.5, .5}, std::array{0., 0., 0., 0., .5, 7.5}};
+    constexpr auto mass_stiff_array_4_exact =
+        std::array{std::array{4., 0., 0., 0., 0., 0.}, std::array{0., 5., 0., 0., 0., 0.},
+                   std::array{0., 0., 6., 0., 0., 0.}, std::array{0., 0., 0., 7., 0., 0.},
+                   std::array{0., 0., 0., 0., 8., 0.}, std::array{0., 0., 0., 0., 0., 9.}};
+
+    for (auto i : std::views::iota(0U, 6U)) {
+        for (auto j : std::views::iota(0U, 6U)) {
+            EXPECT_NEAR(sections[0].M_star[i][j], mass_stiff_array_0_exact[i][j], 1.e-15);
+        }
+    }
+
+    for (auto i : std::views::iota(0U, 6U)) {
+        for (auto j : std::views::iota(0U, 6U)) {
+            EXPECT_NEAR(sections[1].M_star[i][j], mass_stiff_array_1_exact[i][j], 1.e-15);
+        }
+    }
+
+    for (auto i : std::views::iota(0U, 6U)) {
+        for (auto j : std::views::iota(0U, 6U)) {
+            EXPECT_NEAR(sections[2].M_star[i][j], mass_stiff_array_2_exact[i][j], 1.e-15);
+        }
+    }
+
+    for (auto i : std::views::iota(0U, 6U)) {
+        for (auto j : std::views::iota(0U, 6U)) {
+            EXPECT_NEAR(sections[3].M_star[i][j], mass_stiff_array_3_exact[i][j], 1.e-15);
+        }
+    }
+
+    for (auto i : std::views::iota(0U, 6U)) {
+        for (auto j : std::views::iota(0U, 6U)) {
+            EXPECT_NEAR(sections[4].M_star[i][j], mass_stiff_array_4_exact[i][j], 1.e-15);
+        }
+    }
+
+    for (auto i : std::views::iota(0U, 6U)) {
+        for (auto j : std::views::iota(0U, 6U)) {
+            EXPECT_NEAR(sections[0].C_star[i][j], mass_stiff_array_0_exact[i][j], 1.e-15);
+        }
+    }
+
+    for (auto i : std::views::iota(0U, 6U)) {
+        for (auto j : std::views::iota(0U, 6U)) {
+            EXPECT_NEAR(sections[1].C_star[i][j], mass_stiff_array_1_exact[i][j], 1.e-15);
+        }
+    }
+
+    for (auto i : std::views::iota(0U, 6U)) {
+        for (auto j : std::views::iota(0U, 6U)) {
+            EXPECT_NEAR(sections[2].C_star[i][j], mass_stiff_array_2_exact[i][j], 1.e-15);
+        }
+    }
+
+    for (auto i : std::views::iota(0U, 6U)) {
+        for (auto j : std::views::iota(0U, 6U)) {
+            EXPECT_NEAR(sections[3].C_star[i][j], mass_stiff_array_3_exact[i][j], 1.e-15);
+        }
+    }
+
+    for (auto i : std::views::iota(0U, 6U)) {
+        for (auto j : std::views::iota(0U, 6U)) {
+            EXPECT_NEAR(sections[4].C_star[i][j], mass_stiff_array_4_exact[i][j], 1.e-15);
+        }
+    }
+}
+
+TEST(BeamComponentTest, Section_GLL_ThreeSections_OneRefinement_BiLinearTwist_ConstantSection) {
+    auto model = kynema::Model();
+    auto beam_input = kynema::interfaces::components::BeamInput{};
+
+    beam_input.element_order = 2UL;
+
+    beam_input.ref_axis.coordinate_grid = std::vector{0., 1.0};
+    beam_input.ref_axis.coordinates = std::vector{std::array{0., 0., 0.}, std::array{1., 0., 0.}};
+    beam_input.ref_axis.twist_grid = std::vector{0., .5, 1.0};
+    beam_input.ref_axis.twist = std::vector{0., 90., 0.};
+
+    constexpr auto mass_stiff_array_0 =
+        std::array{std::array{1., 0., 0., 0., 0., 0.}, std::array{0., 2., 0., 0., 0., 0.},
+                   std::array{0., 0., 3., 0., 0., 0.}, std::array{0., 0., 0., 4., 0., 0.},
+                   std::array{0., 0., 0., 0., 5., 0.}, std::array{0., 0., 0., 0., 0., 6.}};
+    constexpr auto mass_stiff_array_2 =
+        std::array{std::array{2., 0., 0., 0., 0., 0.}, std::array{0., 3., 0., 0., 0., 0.},
+                   std::array{0., 0., 4., 0., 0., 0.}, std::array{0., 0., 0., 5., 0., 0.},
+                   std::array{0., 0., 0., 0., 6., 0.}, std::array{0., 0., 0., 0., 0., 7.}};
+    constexpr auto mass_stiff_array_4 =
+        std::array{std::array{4., 0., 0., 0., 0., 0.}, std::array{0., 5., 0., 0., 0., 0.},
+                   std::array{0., 0., 6., 0., 0., 0.}, std::array{0., 0., 0., 7., 0., 0.},
+                   std::array{0., 0., 0., 0., 8., 0.}, std::array{0., 0., 0., 0., 0., 9.}};
+    beam_input.sections = std::vector{
+        kynema::interfaces::components::Section(0., mass_stiff_array_0, mass_stiff_array_0),
+        kynema::interfaces::components::Section(.5, mass_stiff_array_2, mass_stiff_array_2),
+        kynema::interfaces::components::Section(1., mass_stiff_array_4, mass_stiff_array_4)
+    };
+
+    beam_input.section_refinement = 1UL;
+
+    const auto beam = kynema::interfaces::components::Beam(beam_input, model);
+    const auto beam_elements = model.GetBeamElements();
+    const auto& sections = beam_elements.front().sections;
+
+    EXPECT_EQ(sections.size(), 5UL);
+
+    EXPECT_NEAR(sections[0].position, 0., 1.e-15);
+    EXPECT_NEAR(sections[1].position, .25, 1.e-15);
+    EXPECT_NEAR(sections[2].position, .5, 1.e-15);
+    EXPECT_NEAR(sections[3].position, .75, 1.e-15);
+    EXPECT_NEAR(sections[4].position, 1., 1.e-15);
+
+    constexpr auto mass_stiff_array_0_exact =
+        std::array{std::array{1., 0., 0., 0., 0., 0.}, std::array{0., 2., 0., 0., 0., 0.},
+                   std::array{0., 0., 3., 0., 0., 0.}, std::array{0., 0., 0., 4., 0., 0.},
+                   std::array{0., 0., 0., 0., 5., 0.}, std::array{0., 0., 0., 0., 0., 6.}};
+    constexpr auto mass_stiff_array_1_exact =
+        std::array{std::array{1.5, 0., 0., 0., 0., 0.}, std::array{0., 3., -.5, 0., 0., 0.},
+                   std::array{0., -.5, 3., 0., 0., 0.}, std::array{0., 0., 0., 4.5, 0., 0.},
+                   std::array{0., 0., 0., 0., 6., -.5}, std::array{0., 0., 0., 0., -.5, 6.}};
+    constexpr auto mass_stiff_array_2_exact =
+        std::array{std::array{2., 0., 0., 0., 0., 0.}, std::array{0., 4., 0., 0., 0., 0.},
+                   std::array{0., 0., 3., 0., 0., 0.}, std::array{0., 0., 0., 5., 0., 0.},
+                   std::array{0., 0., 0., 0., 7., 0.}, std::array{0., 0., 0., 0., 0., 6.}};
+    constexpr auto mass_stiff_array_3_exact =
+        std::array{std::array{3., 0., 0., 0., 0., 0.},   std::array{0., 4.5, -.5, 0., 0., 0.},
+                   std::array{0., -.5, 4.5, 0., 0., 0.}, std::array{0., 0., 0., 6., 0., 0.},
+                   std::array{0., 0., 0., 0., 7.5, -.5}, std::array{0., 0., 0., 0., -.5, 7.5}};
+    constexpr auto mass_stiff_array_4_exact =
+        std::array{std::array{4., 0., 0., 0., 0., 0.}, std::array{0., 5., 0., 0., 0., 0.},
+                   std::array{0., 0., 6., 0., 0., 0.}, std::array{0., 0., 0., 7., 0., 0.},
+                   std::array{0., 0., 0., 0., 8., 0.}, std::array{0., 0., 0., 0., 0., 9.}};
+
+    for (auto i : std::views::iota(0U, 6U)) {
+        for (auto j : std::views::iota(0U, 6U)) {
+            EXPECT_NEAR(sections[0].M_star[i][j], mass_stiff_array_0_exact[i][j], 1.e-15);
+        }
+    }
+
+    for (auto i : std::views::iota(0U, 6U)) {
+        for (auto j : std::views::iota(0U, 6U)) {
+            EXPECT_NEAR(sections[1].M_star[i][j], mass_stiff_array_1_exact[i][j], 1.e-15);
+        }
+    }
+
+    for (auto i : std::views::iota(0U, 6U)) {
+        for (auto j : std::views::iota(0U, 6U)) {
+            EXPECT_NEAR(sections[2].M_star[i][j], mass_stiff_array_2_exact[i][j], 1.e-15);
+        }
+    }
+
+    for (auto i : std::views::iota(0U, 6U)) {
+        for (auto j : std::views::iota(0U, 6U)) {
+            EXPECT_NEAR(sections[3].M_star[i][j], mass_stiff_array_3_exact[i][j], 1.e-15);
+        }
+    }
+
+    for (auto i : std::views::iota(0U, 6U)) {
+        for (auto j : std::views::iota(0U, 6U)) {
+            EXPECT_NEAR(sections[4].M_star[i][j], mass_stiff_array_4_exact[i][j], 1.e-15);
+        }
+    }
+
+    for (auto i : std::views::iota(0U, 6U)) {
+        for (auto j : std::views::iota(0U, 6U)) {
+            EXPECT_NEAR(sections[0].C_star[i][j], mass_stiff_array_0_exact[i][j], 1.e-15);
+        }
+    }
+
+    for (auto i : std::views::iota(0U, 6U)) {
+        for (auto j : std::views::iota(0U, 6U)) {
+            EXPECT_NEAR(sections[1].C_star[i][j], mass_stiff_array_1_exact[i][j], 1.e-15);
+        }
+    }
+
+    for (auto i : std::views::iota(0U, 6U)) {
+        for (auto j : std::views::iota(0U, 6U)) {
+            EXPECT_NEAR(sections[2].C_star[i][j], mass_stiff_array_2_exact[i][j], 1.e-15);
+        }
+    }
+
+    for (auto i : std::views::iota(0U, 6U)) {
+        for (auto j : std::views::iota(0U, 6U)) {
+            EXPECT_NEAR(sections[3].C_star[i][j], mass_stiff_array_3_exact[i][j], 1.e-15);
+        }
+    }
+
+    for (auto i : std::views::iota(0U, 6U)) {
+        for (auto j : std::views::iota(0U, 6U)) {
+            EXPECT_NEAR(sections[4].C_star[i][j], mass_stiff_array_4_exact[i][j], 1.e-15);
+        }
+    }
+}
 }  // namespace kynema::tests
