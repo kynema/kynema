@@ -120,7 +120,7 @@ void Beam::CreateBeamElement(const BeamInput& input, Model& model) {
         [&](auto node) {
             const auto& pos = this->node_coordinates[node];
             const auto twist = math::LinearInterp(
-                node_xi[node], input.ref_axis.twist_grid, input.ref_axis.twist
+                (node_xi[node] + 1.) / 2., input.ref_axis.twist_grid, input.ref_axis.twist
             );
             const auto q_rot = math::TangentTwistToQuaternion(this->node_tangents[node], twist);
             return model.AddNode()
