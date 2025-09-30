@@ -119,7 +119,10 @@ void Beam::CreateBeamElement(const BeamInput& input, Model& model) {
         std::views::iota(0U, this->node_xi.size()), std::begin(node_ids),
         [&](auto node) {
             const auto& pos = this->node_coordinates[node];
-            const auto q_rot = math::TangentTwistToQuaternion(this->node_tangents[node], 0.);
+            const auto twist = math::LinearInterp(
+                node_xi[node], input.ref_axis.twist_grid, input.ref_axis.twist
+            );
+            const auto q_rot = math::TangentTwistToQuaternion(this->node_tangents[node], twist);
             return model.AddNode()
                 .SetElemLocation((this->node_xi[node] + 1.) / 2.)
                 .SetPosition(pos[0], pos[1], pos[2], q_rot[0], q_rot[1], q_rot[2], q_rot[3])
