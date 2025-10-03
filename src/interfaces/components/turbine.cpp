@@ -385,7 +385,7 @@ void Turbine::AddConstraints(const TurbineInput& input, Model& model) {
 
     // Shaft axis constraint - add revolute joint between shaft base and azimuth node
     const auto shaft_axis =
-        std::array{-cos(input.shaft_tilt_angle), 0., sin(input.shaft_tilt_angle)};
+        std::array{cos(input.shaft_tilt_angle), 0., -sin(input.shaft_tilt_angle)};
     this->shaft_base_to_azimuth = ConstraintData{model.AddRevoluteJointConstraint(
         {this->shaft_base_node.id, this->azimuth_node.id}, shaft_axis, &torque_control
     )};
@@ -528,8 +528,8 @@ void Turbine::SetInitialRotorVelocity(const TurbineInput& input, Model& model) {
     const auto hub_position = model.GetNode(this->hub_node.id).DisplacedPosition();
     const auto shaft_base_position = model.GetNode(this->shaft_base_node.id).DisplacedPosition();
     const auto shaft_axis = math::UnitVector(
-        {hub_position[0] - shaft_base_position[0], hub_position[1] - shaft_base_position[1],
-         hub_position[2] - shaft_base_position[2]}
+        {shaft_base_position[0] - hub_position[0], shaft_base_position[1] - hub_position[1],
+         shaft_base_position[2] - hub_position[2]}
     );
 
     // Collect all rotor node IDs (hub, azimuth, blade nodes, and apex nodes)
