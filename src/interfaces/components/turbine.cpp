@@ -48,6 +48,13 @@ void Turbine::GetMotion(const HostState<DeviceType>& host_state) {
         blade.GetMotion(host_state);
     }
     this->tower.GetMotion(host_state);
+    this->hub_node.GetMotion(host_state);
+    this->azimuth_node.GetMotion(host_state);
+    this->shaft_base_node.GetMotion(host_state);
+    this->yaw_bearing_node.GetMotion(host_state);
+    for (auto& apex_node : this->apex_nodes) {
+        apex_node.GetMotion(host_state);
+    }
 }
 
 void Turbine::SetLoads(HostState<DeviceType>& host_state) const {
@@ -55,6 +62,13 @@ void Turbine::SetLoads(HostState<DeviceType>& host_state) const {
         blade.SetLoads(host_state);
     }
     this->tower.SetLoads(host_state);
+    this->hub_node.SetLoads(host_state);
+    this->azimuth_node.SetLoads(host_state);
+    this->shaft_base_node.SetLoads(host_state);
+    this->yaw_bearing_node.SetLoads(host_state);
+    for (auto& apex_node : this->apex_nodes) {
+        apex_node.SetLoads(host_state);
+    }
 }
 
 const TurbineInput& Turbine::GetTurbineInput() const {
