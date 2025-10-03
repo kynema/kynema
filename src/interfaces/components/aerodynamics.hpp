@@ -174,32 +174,37 @@ public:
 
         // Calculate global rotation of each section
         for (auto i = 0U; i < qqr_motion_map.size(); ++i) {
-            const auto xr = std::array{
+            const auto xr = Eigen::Quaternion<double>{
                 xr_motion_map[i][3], xr_motion_map[i][4], xr_motion_map[i][5], xr_motion_map[i][6]
             };
-            const auto u = std::array{
+            const auto u = Eigen::Quaternion<double>{
                 u_motion_map[i][3], u_motion_map[i][4], u_motion_map[i][5], u_motion_map[i][6]
             };
-            const auto qqr = math::QuaternionCompose(xr, u);
-            for (auto component = 0U; component < 4U; ++component) {
-                qqr_motion_map[i][component] = qqr[component];
-            }
+            const auto qqr = xr * u;
+            qqr_motion_map[i][0] = qqr.w();
+            qqr_motion_map[i][1] = qqr.x();
+            qqr_motion_map[i][2] = qqr.y();
+            qqr_motion_map[i][3] = qqr.z();
         }
 
         // Calculate motion of aerodynamic centers in global coordinates
         for (auto i = 0U; i < x_motion.size(); ++i) {
-            const auto qqr_con = math::RotateVectorByQuaternion(qqr_motion_map[i], con_motion[i]);
+            const auto qqr_mm = Eigen::Quaternion<double>(
+                qqr_motion_map[i][0], qqr_motion_map[0][1], qqr_motion_map[0][2],
+                qqr_motion_map[0][3]
+            );
+            const auto con_m = Eigen::Matrix<double, 3, 1>(con_motion[i].data());
+            const auto qqr_con = qqr_mm._transformVector(con_m);
 
             for (auto component = 0U; component < 3U; ++component) {
                 x_motion[i][component] =
-                    xr_motion_map[i][component] + u_motion_map[i][component] + qqr_con[component];
+                    xr_motion_map[i][component] + u_motion_map[i][component] + qqr_con(component);
             }
 
-            const auto omega =
-                std::array{v_motion_map[i][3], v_motion_map[i][4], v_motion_map[i][5]};
-            const auto omega_qqr_con = math::CrossProduct(omega, qqr_con);
+            const auto omega = Eigen::Matrix<double, 3, 1>(v_motion_map[i].data());
+            const auto omega_qqr_con = omega.cross(qqr_con);
             for (auto component = 0U; component < 3U; ++component) {
-                v_motion[i][component] = v_motion_map[i][component] + omega_qqr_con[component];
+                v_motion[i][component] = v_motion_map[i][component] + omega_qqr_con(component);
             }
         }
 

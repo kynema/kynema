@@ -25,7 +25,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ${{ github.workspace }}/spack
-        key: linux-spack_v5
+        key: linux-spack_v6
     - name: Install Dependencies
       if: steps.cache-dependencies.outputs.cache-hit != 'true'
       run: |
@@ -42,6 +42,7 @@ jobs:
         spack install rosco
         spack install openfast
         spack install kokkos-kernels
+        spack install eigen
     - name: Clone
       uses: actions/checkout@v4
       with:
@@ -60,6 +61,7 @@ jobs:
         spack load lapack
         spack load rosco
         spack load openfast
+        spack load eigen
         cd kynema
         mkdir build
         cd build

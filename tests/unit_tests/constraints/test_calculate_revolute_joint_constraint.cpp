@@ -1,3 +1,5 @@
+#include <ranges>
+
 #include <Kokkos_Core.hpp>
 #include <gtest/gtest.h>
 

@@ -44,14 +44,16 @@ TEST(NodeTest, DisplacedPosition_RotationOnly) {
     constexpr auto init_position = std::array{1., 2., 3.};
     constexpr auto init_orientation = std::array{1., 0., 0., 0.};  // identity quaternion
     // 90° rotation around z-axis
-    const auto rotation = math::RotationVectorToQuaternion({0., 0., std::numbers::pi / 2.});
+    const auto rotation = Eigen::Quaternion<double>(
+        Eigen::AngleAxis<double>(std::numbers::pi / 2., Eigen::Matrix<double, 3, 1>::Unit(2))
+    );
     auto node_id =
         model.AddNode()
             .SetPosition(
                 init_position[0], init_position[1], init_position[2], init_orientation[0],
                 init_orientation[1], init_orientation[2], init_orientation[3]
             )
-            .SetDisplacement(0., 0., 0., rotation[0], rotation[1], rotation[2], rotation[3])
+            .SetDisplacement(0., 0., 0., rotation.w(), rotation.x(), rotation.y(), rotation.z())
             .Build();
 
     auto node = model.GetNode(node_id);
@@ -62,10 +64,10 @@ TEST(NodeTest, DisplacedPosition_RotationOnly) {
     ASSERT_NEAR(displaced_position[1], init_position[1], 1e-12);
     ASSERT_NEAR(displaced_position[2], init_position[2], 1e-12);
     // Orientation should be the displacement rotation (90° around z)
-    ASSERT_NEAR(displaced_position[3], rotation[0], 1e-12);
-    ASSERT_NEAR(displaced_position[4], rotation[1], 1e-12);
-    ASSERT_NEAR(displaced_position[5], rotation[2], 1e-12);
-    ASSERT_NEAR(displaced_position[6], rotation[3], 1e-12);
+    ASSERT_NEAR(displaced_position[3], rotation.w(), 1e-12);
+    ASSERT_NEAR(displaced_position[4], rotation.x(), 1e-12);
+    ASSERT_NEAR(displaced_position[5], rotation.y(), 1e-12);
+    ASSERT_NEAR(displaced_position[6], rotation.z(), 1e-12);
 }
 
 TEST(NodeTest, DisplacedPosition_TranslationAndRotation) {
@@ -73,21 +75,23 @@ TEST(NodeTest, DisplacedPosition_TranslationAndRotation) {
 
     // Create node with both translational and rotational displacement
     constexpr auto init_position = std::array{1., 0., 0.};
-    constexpr auto init_orientation = std::array{1., 0., 0., 0.};
+    const auto init_orientation = Eigen::Quaternion<double>(1., 0., 0., 0.);
     constexpr auto disp_position = std::array{1., 2., 3.};
-    const auto disp_rotation =
-        math::RotationVectorToQuaternion({0., std::numbers::pi / 3., 0.});  // 60° around y axis
+    const auto disp_rotation = Eigen::Quaternion<double>(
+        Eigen::AngleAxis<double>(std::numbers::pi / 3., Eigen::Matrix<double, 3, 1>::Unit(1))
+    );
 
-    auto node_id = model.AddNode()
-                       .SetPosition(
-                           init_position[0], init_position[1], init_position[2], init_orientation[0],
-                           init_orientation[1], init_orientation[2], init_orientation[3]
-                       )
-                       .SetDisplacement(
-                           disp_position[0], disp_position[1], disp_position[2], disp_rotation[0],
-                           disp_rotation[1], disp_rotation[2], disp_rotation[3]
-                       )
-                       .Build();
+    auto node_id =
+        model.AddNode()
+            .SetPosition(
+                init_position[0], init_position[1], init_position[2], init_orientation.w(),
+                init_orientation.x(), init_orientation.y(), init_orientation.z()
+            )
+            .SetDisplacement(
+                disp_position[0], disp_position[1], disp_position[2], disp_rotation.w(),
+                disp_rotation.x(), disp_rotation.y(), disp_rotation.z()
+            )
+            .Build();
 
     auto node = model.GetNode(node_id);
     auto displaced_position = node.DisplacedPosition();
@@ -98,11 +102,11 @@ TEST(NodeTest, DisplacedPosition_TranslationAndRotation) {
     ASSERT_NEAR(displaced_position[2], init_position[2] + disp_position[2], 1e-12);  // 3.
 
     // Check rotation composition
-    auto expected_orientation = math::QuaternionCompose(init_orientation, disp_rotation);
-    ASSERT_NEAR(displaced_position[3], expected_orientation[0], 1e-12);
-    ASSERT_NEAR(displaced_position[4], expected_orientation[1], 1e-12);
-    ASSERT_NEAR(displaced_position[5], expected_orientation[2], 1e-12);
-    ASSERT_NEAR(displaced_position[6], expected_orientation[3], 1e-12);
+    const auto expected_orientation = init_orientation * disp_rotation;
+    ASSERT_NEAR(displaced_position[3], expected_orientation.w(), 1e-12);
+    ASSERT_NEAR(displaced_position[4], expected_orientation.x(), 1e-12);
+    ASSERT_NEAR(displaced_position[5], expected_orientation.y(), 1e-12);
+    ASSERT_NEAR(displaced_position[6], expected_orientation.z(), 1e-12);
 }
 
 TEST(NodeTest, Translate) {
@@ -148,19 +152,19 @@ TEST(NodeTest, RotateAboutPoint) {
 
     // Translate the node to {1., 0., 0.}
     auto node_0 = model.GetNode(node_id);
-    node_0.Translate({1., 0., 0.});
+    node_0.Translate(std::array{1., 0., 0.});
 
     // Now rotate the node 90 degrees around the z-axis
-    node_0.RotateAboutPoint(std::array<double, 3>{0., 0., std::numbers::pi / 2.}, {0., 0., 0.});
+    node_0.RotateAboutPoint(std::array{0., 0., std::numbers::pi / 2.}, std::array{0., 0., 0.});
     ASSERT_NEAR(node_0.x0[0], 0., 1e-12);
     ASSERT_NEAR(node_0.x0[1], 1., 1e-12);
     ASSERT_NEAR(node_0.x0[2], 0., 1e-12);
 
     // Return the node to {1., 0., 0.}
-    node_0.Translate({1., -1., 0.});
+    node_0.Translate(std::array{1., -1., 0.});
 
     // Now rotate the node 45 degrees around the z-axis using a quaternion
-    node_0.RotateAboutPoint({0.92388, 0., 0., 0.382683}, {0., 0., 0.});
+    node_0.RotateAboutPoint(std::array{0.92388, 0., 0., 0.382683}, std::array{0., 0., 0.});
     ASSERT_NEAR(node_0.x0[0], 0.707107, 1e-6);
     ASSERT_NEAR(node_0.x0[1], 0.707107, 1e-6);
     ASSERT_NEAR(node_0.x0[2], 0., 1e-6);
@@ -207,7 +211,7 @@ TEST(NodeTest, RotateDisplacementAboutPoint) {
     // Rotate displacement 90 degrees around z-axis about origin
     auto node_0 = model.GetNode(node_id);
     node_0.RotateDisplacementAboutPoint(
-        std::array<double, 3>{0., 0., std::numbers::pi / 2.}, {0., 0., 0.}
+        std::array{0., 0., std::numbers::pi / 2.}, std::array{0., 0., 0.}
     );
     // Check that the displacement is now (0, 1, 0)
     ASSERT_NEAR(node_0.u[0], 0., 1e-12);
@@ -220,7 +224,7 @@ TEST(NodeTest, RotateDisplacementAboutPoint) {
     ASSERT_NEAR(node_0.u[6], 0.707107, 1e-6);
 
     // Return displacement to (1, 0, 0)
-    node_0.TranslateDisplacement({1., -1., 0.});
+    node_0.TranslateDisplacement(std::array{1., -1., 0.});
     // Return orientation to initial state (1, 0, 0, 0)
     node_0.u[3] = 1.;
     node_0.u[4] = 0.;
@@ -228,7 +232,9 @@ TEST(NodeTest, RotateDisplacementAboutPoint) {
     node_0.u[6] = 0.;
 
     // Rotate displacement 45 degrees around z-axis about origin
-    node_0.RotateDisplacementAboutPoint({0.92388, 0., 0., 0.382683}, {0., 0., 0.});
+    node_0.RotateDisplacementAboutPoint(
+        std::array{0.92388, 0., 0., 0.382683}, std::array{0., 0., 0.}
+    );
     // Check that the displacement is now (0.707107, 0.707107, 0)
     ASSERT_NEAR(node_0.u[0], 0.707107, 1e-6);
     ASSERT_NEAR(node_0.u[1], 0.707107, 1e-6);

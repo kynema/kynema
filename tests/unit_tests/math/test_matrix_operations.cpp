@@ -1,4 +1,5 @@
 #include <numbers>
+#include <ranges>
 
 #include <Kokkos_Core.hpp>
 #include <gtest/gtest.h>
@@ -133,8 +134,11 @@ TEST(MatrixTest, RotateMatrix6_3) {
         },
 
     };
-    const auto q = math::RotationVectorToQuaternion({0., std::numbers::pi / 4., 0.});
-    const auto m_act = math::RotateMatrix6(m, q);
+    const auto q = Eigen::Quaternion<double>(
+        Eigen::AngleAxis<double>(std::numbers::pi / 4., Eigen::Matrix<double, 3, 1>::Unit(1))
+    );
+    const auto q_array = std::array{q.w(), q.x(), q.y(), q.z()};
+    const auto m_act = math::RotateMatrix6(m, q_array);
     for (auto i : std::views::iota(0U, 6U)) {
         for (auto j : std::views::iota(0U, 6U)) {
             EXPECT_NEAR(m_act[i][j], m_exp[i][j], 1.e-12);

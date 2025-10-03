@@ -40,11 +40,15 @@ Model CreateIEA15Blades(const std::array<double, 3>& omega) {
     constexpr auto origin = std::array{0., 0., 0.};
 
     for (auto blade_number : std::views::iota(0U, num_blades)) {
-        const auto rotation_quaternion = math::RotationVectorToQuaternion(
-            {0., 0.,
-             -2. * std::numbers::pi * static_cast<double>(blade_number) /
-                 static_cast<double>(num_blades)}
+        const auto rotation_speed = -2. * std::numbers::pi * static_cast<double>(blade_number) /
+                                    static_cast<double>(num_blades);
+        const auto rotation_quaternion = Eigen::Quaternion<double>(
+            Eigen::AngleAxis(rotation_speed, Eigen::Matrix<double, 3, 1>::Unit(2))
         );
+        const auto rotation_quaternion_array = std::array{
+            rotation_quaternion.w(), rotation_quaternion.x(), rotation_quaternion.y(),
+            rotation_quaternion.z()
+        };
 
         auto beam_node_ids = std::vector<size_t>(num_nodes);
 
@@ -60,7 +64,7 @@ Model CreateIEA15Blades(const std::array<double, 3>& omega) {
         auto blade_elem_id =
             model.AddBeamElement(beam_node_ids, material_sections, trapz_quadrature);
         model.TranslateBeam(blade_elem_id, hub_rad);
-        model.RotateBeamAboutPoint(blade_elem_id, rotation_quaternion, origin);
+        model.RotateBeamAboutPoint(blade_elem_id, rotation_quaternion_array, origin);
         model.SetBeamVelocityAboutPoint(blade_elem_id, velocity, origin);
     }
 
@@ -86,7 +90,8 @@ void WriteMatrixToFile(const std::vector<std::vector<T>>& data, const std::strin
 
 TEST(RotorTest, IEA15Rotor) {
     // Rotor angular velocity in rad/s
-    constexpr auto omega = std::array{0., 0., -0.79063415025};
+    constexpr auto omega = -.79063415025;
+    const auto omega_axis = Eigen::Matrix<double, 3, 1>::Unit(2);
 
     // Solution parameters
     constexpr bool is_dynamic_solve(true);
@@ -97,7 +102,7 @@ TEST(RotorTest, IEA15Rotor) {
     constexpr auto num_steps = static_cast<size_t>(t_end / step_size + 1.0);
 
     constexpr size_t num_blades = 3;
-    auto model = CreateIEA15Blades<num_blades>(omega);
+    auto model = CreateIEA15Blades<num_blades>(std::array{0., 0., omega});
 
     auto prescribed_bc_ids = std::array<size_t, num_blades>{};
     std::ranges::transform(
@@ -116,14 +121,12 @@ TEST(RotorTest, IEA15Rotor) {
     // Perform time steps and check for convergence within max_iter iterations
     for (auto i : std::views::iota(0U, num_steps)) {
         // Calculate hub rotation for this time step
-        const auto q_hub = math::RotationVectorToQuaternion(
-            {omega[0] * step_size * static_cast<double>(i + 1),
-             omega[1] * step_size * static_cast<double>(i + 1),
-             omega[2] * step_size * static_cast<double>(i + 1)}
+        const auto q_hub = Eigen::Quaternion<double>(
+            Eigen::AngleAxis<double>(omega * step_size * static_cast<double>(i + 1), omega_axis)
         );
 
         // Define hub translation/rotation displacement
-        const auto u_hub = std::array{0., 0., 0., q_hub[0], q_hub[1], q_hub[2], q_hub[3]};
+        const auto u_hub = std::array{0., 0., 0., q_hub.w(), q_hub.x(), q_hub.y(), q_hub.z()};
 
         // Update prescribed displacement constraint on beam root nodes
         for (const auto bc_id : prescribed_bc_ids) {
@@ -190,7 +193,8 @@ TEST(RotorTest, IEA15Rotor) {
 
 TEST(RotorTest, IEA15RotorHub) {
     // Rotor angular velocity in rad/s
-    constexpr auto omega = std::array{0., 0., -0.79063415025};
+    constexpr auto omega = -0.79063415025;
+    const auto omega_axis = Eigen::Matrix<double, 3, 1>::Unit(2);
 
     // Solution parameters
     constexpr bool is_dynamic_solve(true);
@@ -204,12 +208,12 @@ TEST(RotorTest, IEA15RotorHub) {
     // Calculate displacement, velocity, acceleration assuming a
     // 1 rad/s angular velocity around the z axis
     constexpr size_t num_blades = 3;
-    auto model = CreateIEA15Blades<num_blades>(omega);
+    auto model = CreateIEA15Blades<num_blades>(std::array{0., 0., omega});
 
     // Define hub node and associated constraints
     auto hub_node_id = model.AddNode().SetPosition(0., 0., 0., 1., 0., 0., 0.).Build();
     for (const auto& beam_elem : model.GetBeamElements()) {
-        model.AddRigidJointConstraint({hub_node_id, beam_elem.node_ids[0]});
+        model.AddRigidJointConstraint(std::array{hub_node_id, beam_elem.node_ids[0]});
     }
     auto hub_bc_id = model.AddPrescribedBC(hub_node_id);
 
@@ -222,14 +226,11 @@ TEST(RotorTest, IEA15RotorHub) {
     // Perform time steps and check for convergence within max_iter iterations
     for (auto i : std::views::iota(0U, num_steps)) {
         // Calculate hub rotation for this time step
-        const auto q_hub = math::RotationVectorToQuaternion(
-            {omega[0] * step_size * static_cast<double>(i + 1),
-             omega[1] * step_size * static_cast<double>(i + 1),
-             omega[2] * step_size * static_cast<double>(i + 1)}
-        );
+        const auto hub_speed = omega * step_size * static_cast<double>(i + 1);
+        const auto q_hub = Eigen::Quaternion<double>(Eigen::AngleAxis(hub_speed, omega_axis));
 
         // Define hub translation/rotation displacement
-        const auto u_hub = std::array{0., 0., 0., q_hub[0], q_hub[1], q_hub[2], q_hub[3]};
+        const auto u_hub = std::array{0., 0., 0., q_hub.w(), q_hub.x(), q_hub.y(), q_hub.z()};
 
         // Update prescribed displacement constraint on hub
         constraints.UpdateDisplacement(hub_bc_id, u_hub);
@@ -244,19 +245,19 @@ TEST(RotorTest, IEA15RotorHub) {
 
 TEST(RotorTest, IEA15RotorController) {
     // Rotor angular velocity in rad/s
-    constexpr auto angular_speed = 0.79063415025;
-    constexpr auto omega = std::array{0., 0., -angular_speed};
+    constexpr auto omega = -0.79063415025;
+    const auto omega_axis = Eigen::Matrix<double, 3, 1>::Unit(2);
 
     // Solution parameters
     constexpr bool is_dynamic_solve(true);
     constexpr size_t max_iter(6);
     constexpr double step_size(0.01);  // seconds
     constexpr double rho_inf(0.0);
-    constexpr double t_end(0.01 * 2.0 * std::numbers::pi / angular_speed);  // 3 revolutions
+    constexpr double t_end(0.01 * 2.0 * std::numbers::pi / -omega);  // 3 revolutions
     constexpr auto num_steps = static_cast<size_t>(t_end / step_size + 1.);
 
     constexpr size_t num_blades = 3;
-    auto model = CreateIEA15Blades<num_blades>(omega);
+    auto model = CreateIEA15Blades<num_blades>(std::array{0., 0., omega});
 
     // Add logic related to TurbineController
     // provide shared library path and controller function name to clamp
@@ -279,11 +280,14 @@ TEST(RotorTest, IEA15RotorController) {
     for (const auto& beam_elem : model.GetBeamElements()) {
         const auto rotation_fraction =
             static_cast<double>(beam_elem.ID) / static_cast<double>(num_blades);
-        const auto q_root =
-            math::RotationVectorToQuaternion({0., 0., -2. * std::numbers::pi * rotation_fraction});
-        const auto pitch_axis = math::RotateVectorByQuaternion(q_root, std::array{1., 0., 0.});
+        const auto q_root = Eigen::Quaternion<double>(Eigen::AngleAxis<double>(
+            -2. * std::numbers::pi * rotation_fraction, Eigen::Matrix<double, 3, 1>::Unit(2)
+        ));
+        const auto pitch_axis = q_root._transformVector(Eigen::Matrix<double, 3, 1>::Unit(0));
         model.AddRotationControl(
-            {hub_node_id, beam_elem.node_ids[0]}, pitch_axis, blade_pitch_command[beam_elem.ID]
+            std::array{hub_node_id, beam_elem.node_ids[0]},
+            std::array{pitch_axis(0), pitch_axis(1), pitch_axis(2)},
+            blade_pitch_command[beam_elem.ID]
         );
     }
     auto hub_bc_id = model.AddPrescribedBC(hub_node_id);
@@ -298,11 +302,11 @@ TEST(RotorTest, IEA15RotorController) {
         const double t = step_size * static_cast<double>(i + 1);
 
         // Calculate hub rotation for this time step
-        const auto q_hub =
-            math::RotationVectorToQuaternion({omega[0] * t, omega[1] * t, omega[2] * t});
+        const auto hub_angle = omega * t;
+        const auto q_hub = Eigen::Quaternion<double>(Eigen::AngleAxis(hub_angle, omega_axis));
 
         // Update prescribed displacement constraint on hub
-        const auto u_hub = std::array{0., 0., 0., q_hub[0], q_hub[1], q_hub[2], q_hub[3]};
+        const auto u_hub = std::array{0., 0., 0., q_hub.w(), q_hub.x(), q_hub.y(), q_hub.z()};
         constraints.UpdateDisplacement(hub_bc_id, u_hub);
 
         // Update time in controller
@@ -321,7 +325,8 @@ TEST(RotorTest, IEA15RotorController) {
 
 TEST(RotorTest, IEA15RotorHost) {
     // Rotor angular velocity in rad/s
-    constexpr auto omega = std::array{0., 0., -0.79063415025};
+    constexpr auto omega = -0.79063415025;
+    const auto omega_axis = Eigen::Matrix<double, 3, 1>::Unit(2);
 
     // Solution parameters
     constexpr bool is_dynamic_solve(true);
@@ -332,7 +337,7 @@ TEST(RotorTest, IEA15RotorHost) {
     constexpr auto num_steps = static_cast<size_t>(t_end / step_size + 1.0);
 
     constexpr size_t num_blades = 3;
-    auto model = CreateIEA15Blades<num_blades>(omega);
+    auto model = CreateIEA15Blades<num_blades>(std::array{0., 0., omega});
 
     //    auto prescribed_bc_ids = std::array<size_t, num_blades>{};
     auto prescribed_bc_ids = std::vector<size_t>(num_blades);
@@ -354,14 +359,12 @@ TEST(RotorTest, IEA15RotorHost) {
     // Perform time steps and check for convergence within max_iter iterations
     for (auto i : std::views::iota(0U, num_steps)) {
         // Calculate hub rotation for this time step
-        const auto q_hub = math::RotationVectorToQuaternion(
-            {omega[0] * step_size * static_cast<double>(i + 1),
-             omega[1] * step_size * static_cast<double>(i + 1),
-             omega[2] * step_size * static_cast<double>(i + 1)}
-        );
+        const auto hub_angle = omega * step_size * static_cast<double>(i + 1);
+        const auto q_hub =
+            Eigen::Quaternion<double>(Eigen::AngleAxis<double>(hub_angle, omega_axis));
 
         // Define hub translation/rotation displacement
-        const auto u_hub = std::array{0., 0., 0., q_hub[0], q_hub[1], q_hub[2], q_hub[3]};
+        const auto u_hub = std::array{0., 0., 0., q_hub.w(), q_hub.x(), q_hub.y(), q_hub.z()};
 
         // Update prescribed displacement constraint on beam root nodes
         for (const auto bc_id : prescribed_bc_ids) {
