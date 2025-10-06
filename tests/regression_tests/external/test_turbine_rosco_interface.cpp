@@ -64,10 +64,10 @@ TEST(TurbineInterfaceTest, IEA15_ROSCOControllerWithAero) {
     turbine_builder.SetAzimuthAngle(0.)
         .SetRotorApexToHub(0.)
         .SetHubDiameter(wio_hub["diameter"].as<double>())
-        .SetConeAngle(wio_hub["cone_angle"].as<double>())
-        //.SetBladePitchAngle(std::numbers:;pi / 2.)
-        .SetShaftTiltAngle(wio_nacelle["drivetrain"]["uptilt"].as<double>())
-        //.SetNacelleYawAngle(std::numbers:;pi)
+        .SetConeAngle(wio_hub["cone_angle"].as<double>() * std::numbers::pi / 180)
+        .SetShaftTiltAngle(
+            wio_nacelle["drivetrain"]["uptilt"].as<double>() * std::numbers::pi / 180.
+        )
         .SetTowerAxisToRotorApex(wio_nacelle["drivetrain"]["overhang"].as<double>())
         .SetTowerTopToRotorApex(wio_nacelle["drivetrain"]["distance_tt_hub"].as<double>())
         .SetRotorSpeed(rotor_speed_init)
