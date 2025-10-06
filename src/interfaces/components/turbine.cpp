@@ -384,7 +384,8 @@ void Turbine::AddConstraints(const TurbineInput& input, Model& model) {
         ConstraintData{model.AddRigidJointConstraint({this->azimuth_node.id, this->hub_node.id})};
 
     // Shaft axis constraint - add revolute joint between shaft base and azimuth node
-    const auto shaft_axis = std::array{cos(input.shaft_tilt_angle), 0., sin(input.shaft_tilt_angle)};
+    const auto shaft_axis =
+        std::array{cos(input.shaft_tilt_angle), 0., -sin(input.shaft_tilt_angle)};
     this->shaft_base_to_azimuth = ConstraintData{model.AddRevoluteJointConstraint(
         {this->shaft_base_node.id, this->azimuth_node.id}, shaft_axis, &torque_control
     )};
