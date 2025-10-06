@@ -1,7 +1,8 @@
-Curved-beam problem described in Bathe and Bolourchi (1979).
-------------------------------------------------------------
+Static bending of a curved beam
+-------------------------------
 
-Beam lies in the x-z plane with a tip force of 600 lbs acting in the 
+In this benchmark problem, we examine the tip deflection of a tip-loaded curved beam, which is described in detail in [@Bathe-Bolourchi:1979].
+The beam lies in the x-z plane with a tip force of 600 lbs acting in the 
 positive y direction.  Beam is curved on a radius of 100 inches in the positive 
 x direction through a 45 degree arc.
 
@@ -25,16 +26,36 @@ Diagonal stiffness matrix entries
 
 Results
 
-Tip displacement reported by Bathe and Bolourchi (1979): 
+Tip displacement reported by [@Bathe-Bolourchi:1979]:
 (-13.4, 53.4, -23.5)
 
-BeamDyn tip displacement reported by Wang et al. (2015): 
-(-13.5, 53.4, -23.7)
 
-References
+The following table show the tip displacement calculated with a single Legendre Spectral Finite Element (LSFE) with the number of nodes shown. N-Point Gauss-Legendre quadrature was employed, where N is the number of nodes. The results show the expected spectral convergence to a converged solution.
 
-- Bathe, K.-J., Bolourchi, S., Large displacement analysis of three-dimensional beam structures, International Journal for Numerical Methods in Engineering, Vol. 14, 961-986 (1979)
-- Wang, Q., Sprague, M., Jonkman, J., Johnson, N., BeamDyn: A high-fidelity wind turbine blade solver in the FAST modular framework, proceedings of SciTech 2015 Kissimmee, Florida, January 5‒9, 2015.   Also published as NREL technical report NREL/CP-5000-63165.
++----------------------+-------------------------+-------------------------+-------------------------+
+| Number of Nodes (N)  |           u1            |           u2            |           u3            |
++======================+=========================+=========================+=========================+
+|          3           | -1.390261363798350E+00  |   2.264633130098760E+01 |   3.168614893736530E+01 |
++----------------------+-------------------------+-------------------------+-------------------------+
+|          6           | -2.362791403924360E+01  |   1.372486827629740E+01 |   5.356617784705440E+01 |
++----------------------+-------------------------+-------------------------+-------------------------+
+|          9           | -2.364597006589220E+01  |   1.372080411971940E+01 |   5.357763167143680E+01 |
++----------------------+-------------------------+-------------------------+-------------------------+
+|         12           | -2.364597159890480E+01  |   1.372080060483760E+01 |   5.357764506053460E+01 |
++----------------------+-------------------------+-------------------------+-------------------------+
+|         15           | -2.364597160090470E+01  |   1.372080060400580E+01 |   5.357764506269870E+01 |
++----------------------+-------------------------+-------------------------+-------------------------+
+|         18           | -2.364597160090480E+01  |   1.372080060400580E+01 |   5.357764506269890E+01 |
++----------------------+-------------------------+-------------------------+-------------------------+
 
-Last update
-2018-03-09 Michael.A.Sprague@nrel.gov
+
+_References_
+
+   .. container:: csl-entry
+      :name: ref-Bathe-Bolourchi:1979
+
+      Bathe, K.-J., and S. Bolourchi. 1979. “Large displacement analysis
+      of three-dimensional beam structures."
+      *International Journal for Numerical Methods in Engineering* 14:
+      961-986.
+

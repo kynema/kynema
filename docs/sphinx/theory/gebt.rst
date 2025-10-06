@@ -494,5 +494,6 @@ where :math:`\underline{\dot{\epsilon}}` and :math:`\underline{\dot{\kappa}}` ar
 
       Wang, Q., M. A. Sprague, J. Jonkman, N. Johnson, and B. Jonkman.
       2017. “BeamDyn: A High-Fidelity Wind Turbine Blade Solver in the
-      FAST Modular Framework.” *Wind Energy*.
-      https://doi.org/10.1002/we.2101.
+      FAST Modular Framework.” *Wind Energy* 20: 1439-1462.
+      https://onlinelibrary.wiley.com/doi/pdf/10.1002/we.2101
+
