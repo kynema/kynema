@@ -230,8 +230,8 @@ with [@Geradin-Cardona:2001]
 
       Brüls, O., A. Cardona, and M. Arnold. 2012. “Lie Group
       Generalized-:math:`\alpha` Time Integration Fo Constrained
-      Flexible Multibody Systems.” *Mechanism and Machine Theory*,
-      121–37.
+      Flexible Multibody Systems.” *Mechanism and Machine Theory* 48:
+      121–137.
 
    .. container:: csl-entry
       :name: ref-Geradin-Cardona:2001
