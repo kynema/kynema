@@ -58,23 +58,12 @@ std::array<double, 6> CalculateAerodynamicLoad(
 
     const auto dynamic_pressure = .5 * fluid_density * velocity_magnitude * velocity_magnitude;
 
-    const auto drag_vector = std::array{
-        v_rel[0] / velocity_magnitude, v_rel[1] / velocity_magnitude, v_rel[2] / velocity_magnitude
-    };
-    const auto lift_vector = math::CrossProduct(
-        std::array{
-            -1.,
-            0.,
-            0.,
-        },
-        drag_vector
-    );
+    const auto cz = cl * cos(aoa) + cd * sin(aoa);
+    const auto cy = cl * sin(aoa) - cd * cos(aoa);
 
-    auto force_local = std::array<double, 3>{};
-    for (auto direction = 0U; direction < 3U; ++direction) {
-        force_local[direction] = dynamic_pressure * chord * delta_s *
-                                 (cl * lift_vector[direction] + cd * drag_vector[direction]);
-    }
+    auto force_local = std::array<double, 3>{
+        0., -dynamic_pressure * chord * delta_s * cy, -dynamic_pressure * chord * delta_s * cz
+    };
     const auto moment_local = std::array{cm * dynamic_pressure * chord * chord * delta_s, 0., 0.};
 
     const auto load_force = math::RotateVectorByQuaternion(qqr, force_local);
@@ -83,7 +72,7 @@ std::array<double, 6> CalculateAerodynamicLoad(
     const auto force_moment = math::CrossProduct(force_local, con_force);
     auto ref_axis_moment_local = std::array<double, 3>{};
     for (auto component = 0U; component < 3U; ++component) {
-        ref_axis_moment_local[component] = force_moment[component] + moment_local[component];
+        ref_axis_moment_local[component] = -(force_moment[component] + moment_local[component]);
     }
 
     const auto moment = math::RotateVectorByQuaternion(qqr, ref_axis_moment_local);
@@ -191,7 +180,6 @@ std::vector<double> AerodynamicBody::ComputeMotionInterp(
     const auto n_sections = section_xi.size();
     const auto n_nodes = beam_node_xi.size();
     auto interp = std::vector<double>(n_sections * n_nodes);
-    interp.resize(n_sections * n_nodes);
     auto weights = std::vector<double>{};
     for (auto i = 0U; i < n_sections; ++i) {
         math::LagrangePolynomialInterpWeights(section_xi[i], beam_node_xi, weights);
@@ -222,11 +210,15 @@ void AerodynamicBody::InterpolateQuaternionFromNodesToSections(
     const auto n_nodes = node_x.size();
     const auto n_sections = xr.size();
 
-    // Interpolate
-    for (auto i = 0U; i < n_sections; ++i) {
-        for (auto component = 0U; component < 7U; ++component) {
-            xr[i][component] = 0.;
+    // Set section positions to zero
+    for (auto& node : xr) {
+        for (auto& component : node) {
+            component = 0.;
         }
+    }
+
+    // Interpolate node values to sections
+    for (auto i = 0U; i < n_sections; ++i) {
         for (auto j = 0U; j < n_nodes; ++j) {
             const auto coeff = interp[i * n_nodes + j];
             for (auto component = 0U; component < 7U; ++component) {
@@ -491,26 +483,26 @@ void AerodynamicBody::CalculateAerodynamicLoads(double fluid_density) {
 }
 
 void AerodynamicBody::CalculateNodalLoads() {
-    for (auto node = 0U; node < node_f.size(); ++node) {
-        for (auto component = 0U; component < 3U; ++component) {
-            node_f[node][component] = 0.;
+    for (auto& nf : node_f) {
+        for (auto& component : nf) {
+            component = 0.;
         }
+    }
+
+    for (auto node = 0U; node < node_f.size(); ++node) {
         for (auto section = 0U; section < loads.size(); ++section) {
+            auto coeff = motion_interp[section * node_f.size() + node];
             for (auto component = 0U; component < 3U; ++component) {
-                node_f[node][component] +=
-                    motion_interp[section * node_f.size() + node] * loads[section][component];
+                node_f[node][component] += coeff * loads[section][component];
             }
         }
     }
 
     for (auto node = 0U; node < node_f.size(); ++node) {
-        for (auto component = 0U; component < 3U; ++component) {
-            node_f[node][component + 3U] = 0.;
-        }
         for (auto section = 0U; section < ref_axis_moments.size(); ++section) {
+            auto coeff = motion_interp[section * node_f.size() + node];
             for (auto component = 0U; component < 3U; ++component) {
-                node_f[node][component + 3U] += motion_interp[section * node_f.size() + node] *
-                                                ref_axis_moments[section][component];
+                node_f[node][component + 3U] += coeff * ref_axis_moments[section][component];
             }
         }
     }

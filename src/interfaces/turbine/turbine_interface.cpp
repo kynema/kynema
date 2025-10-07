@@ -197,7 +197,9 @@ double TurbineInterface::CalculateRotorSpeed() const {
 }
 
 std::array<double, 3> TurbineInterface::GetHubNodePosition() const {
-    return std::array{turbine.hub_node.position[0], turbine.hub_node.position[1], turbine.hub_node.position[2]};
+    return std::array{
+        turbine.hub_node.position[0], turbine.hub_node.position[1], turbine.hub_node.position[2]
+    };
 }
 
 void TurbineInterface::InitializeController(
@@ -234,7 +236,7 @@ void TurbineInterface::InitializeController(
     // Make first call to controller to initialize
     controller->CallController();
 
-    this->turbine.torque_control = controller->io.generator_torque_actual;
+    this->turbine.torque_control = controller->io.generator_torque_command;
     this->turbine.blade_pitch_control[0] = turbine_input.blade_pitch_angle;
     this->turbine.blade_pitch_control[1] = turbine_input.blade_pitch_angle;
     this->turbine.blade_pitch_control[2] = turbine_input.blade_pitch_angle;
@@ -261,7 +263,7 @@ void TurbineInterface::ApplyController(double t, double hub_wind_speed) {
     const double generator_speed = controller->io.generator_speed_actual;
     const double generator_torque = this->turbine.torque_control;
     controller->io.horizontal_wind_speed = hub_wind_speed;
-    controller->io.generator_torque_actual = this->turbine.torque_control;
+    controller->io.generator_torque_actual = generator_torque;
     controller->io.generator_power_actual = generator_speed * generator_torque;
     controller->io.pitch_blade1_actual = this->turbine.blade_pitch_control[0];
     controller->io.pitch_blade2_actual = this->turbine.blade_pitch_control[1];

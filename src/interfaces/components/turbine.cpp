@@ -357,12 +357,13 @@ void Turbine::AddConstraints(const TurbineInput& input, Model& model) {
         const auto& root_node =
             model.GetNode(this->blades[beam].nodes[0].id);  // first node of blade
 
-        // Calculate the pitch axis for the blade (from apex to root)
-        const auto pitch_axis = std::array{
+        // Calculate the pitch axis for the blade
+        // (from root to apex so that positive pitch angles point the leading edge into the wind)
+        const auto pitch_axis = math::UnitVector({
             root_node.x0[0] - apex_node.x0[0],
             root_node.x0[1] - apex_node.x0[1],
             root_node.x0[2] - apex_node.x0[2],
-        };
+        });
 
         // Create pitch control constraint
         this->blade_pitch.emplace_back(ConstraintData{model.AddRotationControl(
@@ -383,9 +384,19 @@ void Turbine::AddConstraints(const TurbineInput& input, Model& model) {
     this->azimuth_to_hub =
         ConstraintData{model.AddRigidJointConstraint({this->azimuth_node.id, this->hub_node.id})};
 
-    // Shaft axis constraint - add revolute joint between shaft base and azimuth node
-    const auto shaft_axis =
-        std::array{cos(input.shaft_tilt_angle), 0., -sin(input.shaft_tilt_angle)};
+    // Get the blade apex node
+    const auto& shaft_base_position = model.GetNode(this->shaft_base_node.id).DisplacedPosition();
+
+    // Get the hub node
+    const auto& hub_position = model.GetNode(this->hub_node.id).DisplacedPosition();
+
+    // Shaft axis constraint - add revolute joint between shaft base and hub node
+    // Points from hub to shaft base, CCW rotation of rotor is positive rotation;
+    // which requires a negative torque to counteract rotation
+    const auto shaft_axis = math::UnitVector(
+        {shaft_base_position[0] - hub_position[0], shaft_base_position[1] - hub_position[1],
+         shaft_base_position[2] - hub_position[2]}
+    );
     this->shaft_base_to_azimuth = ConstraintData{model.AddRevoluteJointConstraint(
         {this->shaft_base_node.id, this->azimuth_node.id}, shaft_axis, &torque_control
     )};
@@ -434,18 +445,16 @@ void Turbine::SetInitialDisplacements(const TurbineInput& input, Model& model) {
         const auto& apex_node = model.GetNode(this->apex_nodes[beam].id);
 
         // Calculate the pitch axis
-        const auto pitch_axis = std::array{
+        const auto pitch_axis = math::UnitVector({
             root_node.x0[0] - apex_node.x0[0],
             root_node.x0[1] - apex_node.x0[1],
             root_node.x0[2] - apex_node.x0[2],
-        };
+        });
 
         // Create rotation vector about the pitch axis
-        const auto pitch_axis_unit = math::UnitVector(pitch_axis);
         const auto rotation_vector = std::array{
-            input.blade_pitch_angle * pitch_axis_unit[0],
-            input.blade_pitch_angle * pitch_axis_unit[1],
-            input.blade_pitch_angle * pitch_axis_unit[2]
+            input.blade_pitch_angle * pitch_axis[0], input.blade_pitch_angle * pitch_axis[1],
+            input.blade_pitch_angle * pitch_axis[2]
         };
 
         // Calculate pitch rotation quaternion
@@ -525,8 +534,8 @@ void Turbine::SetInitialDisplacements(const TurbineInput& input, Model& model) {
 
 void Turbine::SetInitialRotorVelocity(const TurbineInput& input, Model& model) {
     // Calculate shaft axis in current configuration
-    const auto hub_position = model.GetNode(this->hub_node.id).DisplacedPosition();
     const auto shaft_base_position = model.GetNode(this->shaft_base_node.id).DisplacedPosition();
+    const auto hub_position = model.GetNode(this->hub_node.id).DisplacedPosition();
     const auto shaft_axis = math::UnitVector(
         {shaft_base_position[0] - hub_position[0], shaft_base_position[1] - hub_position[1],
          shaft_base_position[2] - hub_position[2]}

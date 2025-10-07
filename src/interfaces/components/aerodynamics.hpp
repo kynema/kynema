@@ -180,7 +180,7 @@ public:
             const auto u = std::array{
                 u_motion_map[i][3], u_motion_map[i][4], u_motion_map[i][5], u_motion_map[i][6]
             };
-            const auto qqr = math::QuaternionCompose(xr, u);
+            const auto qqr = math::QuaternionCompose(u, xr);
             for (auto component = 0U; component < 4U; ++component) {
                 qqr_motion_map[i][component] = qqr[component];
             }

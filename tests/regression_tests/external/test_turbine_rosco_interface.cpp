@@ -18,16 +18,16 @@ TEST(TurbineInterfaceTest, IEA15_ROSCOControllerWithAero) {
     // Conversions
     constexpr auto rpm_to_radps{0.104719755};  // RPM to rad/s
 
-    constexpr auto duration{100.};       // Simulation duration in seconds
-    constexpr auto time_step{0.01};      // Time step for the simulation
-    constexpr auto n_blades{3U};         // Number of blades in turbine
-    constexpr auto n_blade_nodes{11};    // Number of nodes per blade
-    constexpr auto n_tower_nodes{11};    // Number of nodes in tower
+    constexpr auto duration{100.};                         // Simulation duration in seconds
+    constexpr auto time_step{0.01};                        // Time step for the simulation
+    constexpr auto n_blades{3U};                           // Number of blades in turbine
+    constexpr auto n_blade_nodes{11};                      // Number of nodes per blade
+    constexpr auto n_tower_nodes{11};                      // Number of nodes in tower
     constexpr auto gear_box_ratio{1.};                     // Gear box ratio (-)
     constexpr auto rotor_speed_init{7.56 * rpm_to_radps};  // Rotor speed (rad/s)
-    constexpr double hub_wind_speed_init{10.6};             // Hub height wind speed (m/s)
-    constexpr double generator_power_init{0.};           // Generator power (W)
-    constexpr auto write_output{false};  // Write output file
+    constexpr double hub_wind_speed_init{10.6};            // Hub height wind speed (m/s)
+    constexpr double generator_power_init{15.0e6};         // Generator power (W)
+    constexpr auto write_output{false};                    // Write output file
 
     // Create interface builder
     auto builder = interfaces::TurbineInterfaceBuilder{};
@@ -64,10 +64,8 @@ TEST(TurbineInterfaceTest, IEA15_ROSCOControllerWithAero) {
     turbine_builder.SetAzimuthAngle(0.)
         .SetRotorApexToHub(0.)
         .SetHubDiameter(wio_hub["diameter"].as<double>())
-        .SetConeAngle(wio_hub["cone_angle"].as<double>() * std::numbers::pi / 180)
-        .SetShaftTiltAngle(
-            wio_nacelle["drivetrain"]["uptilt"].as<double>() * std::numbers::pi / 180.
-        )
+        .SetConeAngle(wio_hub["cone_angle"].as<double>())
+        .SetShaftTiltAngle(wio_nacelle["drivetrain"]["uptilt"].as<double>())
         .SetTowerAxisToRotorApex(wio_nacelle["drivetrain"]["overhang"].as<double>())
         .SetTowerTopToRotorApex(wio_nacelle["drivetrain"]["distance_tt_hub"].as<double>())
         .SetRotorSpeed(rotor_speed_init)
@@ -228,38 +226,35 @@ TEST(TurbineInterfaceTest, IEA15_ROSCOControllerWithAero) {
 
     // Construct 6x6 inertia matrix for yaw bearing node
     const auto total_mass = system_mass + yaw_mass;
-    const auto nacelle_inertia_matrix = std::array<std::array<double, 6>, 6>{
-        {{total_mass, 0., 0., 0., 0., 0.},
-         {0., total_mass, 0., 0., 0., 0.},
-         {0., 0., total_mass, 0., 0., 0.},
-         {0., 0., 0., system_inertia_tt[0], system_inertia_tt[3], system_inertia_tt[4]},
-         {0., 0., 0., system_inertia_tt[3], system_inertia_tt[1], system_inertia_tt[5]},
-         {0., 0., 0., system_inertia_tt[4], system_inertia_tt[5], system_inertia_tt[2]}}
-    };
 
     // Set the nacelle inertia matrix in the turbine builder
-    turbine_builder.SetYawBearingInertiaMatrix(nacelle_inertia_matrix);
+    turbine_builder.SetYawBearingInertiaMatrix(
+        {{{total_mass, 0., 0., 0., 0., 0.},
+          {0., total_mass, 0., 0., 0., 0.},
+          {0., 0., total_mass, 0., 0., 0.},
+          {0., 0., 0., system_inertia_tt[0], system_inertia_tt[3], system_inertia_tt[4]},
+          {0., 0., 0., system_inertia_tt[3], system_inertia_tt[1], system_inertia_tt[5]},
+          {0., 0., 0., system_inertia_tt[4], system_inertia_tt[5], system_inertia_tt[2]}}}
+    );
 
     // Get hub mass properties from WindIO
     const auto& hub_props = wio_hub["elastic_properties_mb"];
     const auto hub_mass = hub_props["system_mass"].as<double>();
     const auto hub_inertia = hub_props["system_inertia"].as<std::vector<double>>();
 
-    // Construct 6x6 inertia matrix for hub node
-    const auto hub_inertia_matrix = std::array<std::array<double, 6>, 6>{
-        {{hub_mass, 0., 0., 0., 0., 0.},
-         {0., hub_mass, 0., 0., 0., 0.},
-         {0., 0., hub_mass, 0., 0., 0.},
-         {0., 0., 0., hub_inertia[0], hub_inertia[3], hub_inertia[4]},
-         {0., 0., 0., hub_inertia[3], hub_inertia[1], hub_inertia[5]},
-         {0., 0., 0., hub_inertia[4], hub_inertia[5], hub_inertia[2]}}
-    };
-
     // Set the hub inertia matrix in the turbine builder
-    turbine_builder.SetHubInertiaMatrix(hub_inertia_matrix);
+    turbine_builder.SetHubInertiaMatrix(
+        {{{hub_mass, 0., 0., 0., 0., 0.},
+          {0., hub_mass, 0., 0., 0., 0.},
+          {0., 0., hub_mass, 0., 0., 0.},
+          {0., 0., 0., hub_inertia[0], hub_inertia[3], hub_inertia[4]},
+          {0., 0., 0., hub_inertia[3], hub_inertia[1], hub_inertia[5]},
+          {0., 0., 0., hub_inertia[4], hub_inertia[5], hub_inertia[2]}}}
+    );
 
     // Setup the controller and its input file
-    const auto controller_shared_lib_path = std::string{static_cast<const char*>(Kynema_ROSCO_LIBRARY)};
+    const auto controller_shared_lib_path =
+        std::string{static_cast<const char*>(Kynema_ROSCO_LIBRARY)};
     const auto controller_function_name = std::string{"DISCON"};
     const auto controller_input_file = std::string{"./IEA-15-240-RWT/DISCON.IN"};
     const auto controller_output_file = std::string{"./IEA-15-240-RWT"};
@@ -276,7 +271,6 @@ TEST(TurbineInterfaceTest, IEA15_ROSCOControllerWithAero) {
         );
 
     {
-        
         const YAML::Node wio_aero = YAML::LoadFile("interfaces_test_files/IEA-15-240-RWT-aero.yaml");
         const auto& airfoil_io = wio_aero["airfoils"];
         auto aero_sections = std::vector<interfaces::components::AerodynamicSection>{};
@@ -349,9 +343,11 @@ TEST(TurbineInterfaceTest, IEA15_ROSCOControllerWithAero) {
         ASSERT_EQ(converged, true);
 
         if (i % 100 == 0) {
-            std::cout << "Time: " << t << ", Azimuth: " << interface.CalculateAzimuthAngle() << ", Rotor Speed: " << interface.CalculateRotorSpeed() << std::endl;
+            std::cout << "Time: " << t << ", Azimuth: " << interface.CalculateAzimuthAngle()
+                      << ", Rotor Speed (RPM): " << interface.CalculateRotorSpeed() / rpm_to_radps
+                      << ", Blade Pitch: " << interface.Turbine().blade_pitch_control[0]
+                      << ", Generator Torque: " << interface.Turbine().torque_control << std::endl;
         }
     }
-
 }
-}
+}  // namespace kynema::tests
