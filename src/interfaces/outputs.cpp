@@ -125,14 +125,11 @@ void Outputs::WriteNodeOutputsAtTimestep(const HostState<DeviceType>& host_state
     );
 }
 
-void Outputs::WriteRotorTimeSeriesAtTimestep(
-    size_t timestep, double azimuth_angle, double rotor_speed
+void Outputs::WriteValueAtTimestep(
+    const size_t timestep, const std::string& name, const double value
 ) {
-    if (!this->time_series_writer_) {
-        return;
+    if (this->time_series_writer_) {
+        this->time_series_writer_->WriteValueAtTimestep(name, timestep, value);
     }
-
-    this->time_series_writer_->WriteValueAtTimestep("rotor_azimuth_angle", timestep, azimuth_angle);
-    this->time_series_writer_->WriteValueAtTimestep("rotor_speed", timestep, rotor_speed);
 }
 }  // namespace kynema::interfaces

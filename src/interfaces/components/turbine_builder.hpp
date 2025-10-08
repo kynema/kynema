@@ -57,6 +57,16 @@ public:
      */
     TurbineBuilder& SetHubInertiaMatrix(const std::array<std::array<double, 6>, 6>& matrix);
 
+    /**
+     * @brief Set the nacelle inertia matrix (6x6) and center of mass offset (3x1)
+     * @param matrix The inertia matrix to set, includes mass and inertia
+     * @param cm_offset The nacelle center of mass offset from the yaw bearing (meters)
+     * @return Reference to the builder for method chaining
+     */
+    TurbineBuilder& SetNacelleInertiaMatrix(
+        const std::array<std::array<double, 6>, 6>& matrix, const std::array<double, 3>& cm_offset
+    );
+
     //--------------------------------------------------------------------------
     // Build geometric configuration of the turbine
     //--------------------------------------------------------------------------

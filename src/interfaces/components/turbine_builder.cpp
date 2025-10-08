@@ -48,6 +48,14 @@ TurbineBuilder& TurbineBuilder::SetHubInertiaMatrix(
     return *this;
 }
 
+TurbineBuilder& TurbineBuilder::SetNacelleInertiaMatrix(
+    const std::array<std::array<double, 6>, 6>& matrix, const std::array<double, 3>& cm_offset
+) {
+    this->input.nacelle_inertia_matrix = matrix;
+    this->input.nacelle_cm_offset = cm_offset;
+    return *this;
+}
+
 TurbineBuilder& TurbineBuilder::SetTowerBasePosition(const std::array<double, 7>& position) {
     this->input.tower_base_position = position;
     return *this;

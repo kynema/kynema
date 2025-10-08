@@ -18,16 +18,15 @@ TEST(TurbineInterfaceTest, IEA15_ROSCOControllerWithAero) {
     // Conversions
     constexpr auto rpm_to_radps{0.104719755};  // RPM to rad/s
 
-    constexpr auto duration{100.};                         // Simulation duration in seconds
+    constexpr auto duration{20.};                          // Simulation duration in seconds
     constexpr auto time_step{0.01};                        // Time step for the simulation
     constexpr auto n_blades{3U};                           // Number of blades in turbine
     constexpr auto n_blade_nodes{11};                      // Number of nodes per blade
     constexpr auto n_tower_nodes{11};                      // Number of nodes in tower
-    constexpr auto gear_box_ratio{1.};                     // Gear box ratio (-)
     constexpr auto rotor_speed_init{7.56 * rpm_to_radps};  // Rotor speed (rad/s)
     constexpr double hub_wind_speed_init{10.6};            // Hub height wind speed (m/s)
     constexpr double generator_power_init{15.0e6};         // Generator power (W)
-    constexpr auto write_output{false};                    // Write output file
+    constexpr auto write_output{true};                     // Write output file
 
     // Create interface builder
     auto builder = interfaces::TurbineInterfaceBuilder{};
@@ -38,22 +37,23 @@ TEST(TurbineInterfaceTest, IEA15_ROSCOControllerWithAero) {
         .SetTimeStep(time_step)
         .SetDampingFactor(0.0)
         .SetGravity({0., 0., -9.81})
-        .SetMaximumNonlinearIterations(6)
-        .SetAbsoluteErrorTolerance(1e-6)
-        .SetRelativeErrorTolerance(1e-4);
+        .SetMaximumNonlinearIterations(12)
+        .SetAbsoluteErrorTolerance(1e-7)
+        .SetRelativeErrorTolerance(1e-6);
 
     if (write_output) {
         builder.Solution().SetOutputFile("TurbineInterfaceTest.IEA15");
     }
 
     // Read WindIO yaml file
-    const YAML::Node wio = YAML::LoadFile("interfaces_test_files/IEA-15-240-RWT.yaml");
+    const YAML::Node wio = YAML::LoadFile("interfaces_test_files/IEA-15-240-RWT-aero.yaml");
 
     // WindIO components
-    const auto& wio_tower = wio["components"]["tower"];
-    const auto& wio_nacelle = wio["components"]["nacelle"];
     const auto& wio_blade = wio["components"]["blade"];
+    const auto& wio_tower = wio["components"]["tower"];
+    const auto& wio_drivetrain = wio["components"]["drivetrain"];
     const auto& wio_hub = wio["components"]["hub"];
+    const auto& wio_yaw = wio["components"]["yaw"];
 
     //--------------------------------------------------------------------------
     // Build Turbine
@@ -64,12 +64,14 @@ TEST(TurbineInterfaceTest, IEA15_ROSCOControllerWithAero) {
     turbine_builder.SetAzimuthAngle(0.)
         .SetRotorApexToHub(0.)
         .SetHubDiameter(wio_hub["diameter"].as<double>())
-        .SetConeAngle(wio_hub["cone_angle"].as<double>())
-        .SetShaftTiltAngle(wio_nacelle["drivetrain"]["uptilt"].as<double>())
-        .SetTowerAxisToRotorApex(wio_nacelle["drivetrain"]["overhang"].as<double>())
-        .SetTowerTopToRotorApex(wio_nacelle["drivetrain"]["distance_tt_hub"].as<double>())
+        .SetConeAngle(wio_hub["cone_angle"].as<double>() * std::numbers::pi / 180.)
+        .SetShaftTiltAngle(
+            wio_drivetrain["outer_shape"]["uptilt"].as<double>() * std::numbers::pi / 180.
+        )
+        .SetTowerAxisToRotorApex(wio_drivetrain["outer_shape"]["overhang"].as<double>())
+        .SetTowerTopToRotorApex(wio_drivetrain["outer_shape"]["distance_tt_hub"].as<double>())
+        .SetGearBoxRatio(wio_drivetrain["gearbox"]["gear_ratio"].as<double>())
         .SetRotorSpeed(rotor_speed_init)
-        .SetGearBoxRatio(gear_box_ratio)
         .SetGeneratorPower(generator_power_init)
         .SetHubWindSpeed(hub_wind_speed_init);
 
@@ -86,7 +88,7 @@ TEST(TurbineInterfaceTest, IEA15_ROSCOControllerWithAero) {
         blade_builder.SetElementOrder(n_blade_nodes - 1).PrescribedRootMotion(false);
 
         // Add reference axis coordinates (WindIO uses Z-axis as reference axis)
-        const auto ref_axis = wio_blade["outer_shape_bem"]["reference_axis"];
+        const auto ref_axis = wio_blade["reference_axis"];
         const auto axis_grid = ref_axis["x"]["grid"].as<std::vector<double>>();
         const auto x_values = ref_axis["x"]["values"].as<std::vector<double>>();
         const auto y_values = ref_axis["y"]["values"].as<std::vector<double>>();
@@ -99,18 +101,19 @@ TEST(TurbineInterfaceTest, IEA15_ROSCOControllerWithAero) {
         }
 
         // Add reference axis twist
-        const auto twist = wio_blade["outer_shape_bem"]["twist"];
-        const auto twist_grid = twist["grid"].as<std::vector<double>>();
-        const auto twist_values = twist["values"].as<std::vector<double>>();
+        const auto blade_twist = wio_blade["outer_shape"]["twist"];
+        const auto twist_grid = blade_twist["grid"].as<std::vector<double>>();
+        const auto twist_values = blade_twist["values"].as<std::vector<double>>();
         for (auto i : std::views::iota(0U, twist_grid.size())) {
             blade_builder.AddRefAxisTwist(twist_grid[i], twist_values[i] * std::numbers::pi / 180.);
         }
 
+        const auto inertia_matrix = wio_blade["structure"]["elastic_properties"]["inertia_matrix"];
+        const auto stiffness_matrix =
+            wio_blade["structure"]["elastic_properties"]["stiffness_matrix"];
+
         // Add blade section properties
-        const auto stiff_matrix = wio_blade["elastic_properties_mb"]["six_x_six"]["stiff_matrix"];
-        const auto inertia_matrix =
-            wio_blade["elastic_properties_mb"]["six_x_six"]["inertia_matrix"];
-        const auto k_grid = stiff_matrix["grid"].as<std::vector<double>>();
+        const auto k_grid = stiffness_matrix["grid"].as<std::vector<double>>();
         const auto m_grid = inertia_matrix["grid"].as<std::vector<double>>();
         const auto n_sections = k_grid.size();
         if (m_grid.size() != k_grid.size()) {
@@ -120,25 +123,53 @@ TEST(TurbineInterfaceTest, IEA15_ROSCOControllerWithAero) {
             if (abs(m_grid[i] - k_grid[i]) > 1e-8) {
                 throw std::runtime_error("stiffness and mass matrices not on same grid");
             }
-            const auto m = inertia_matrix["values"][i].as<std::vector<double>>();
-            const auto k = stiff_matrix["values"][i].as<std::vector<double>>();
+            const auto mass = inertia_matrix["mass"][i].as<double>();
+            const auto cm_x = inertia_matrix["cm_x"][i].as<double>();
+            const auto cm_y = inertia_matrix["cm_y"][i].as<double>();
+            const auto i_cp = inertia_matrix["i_cp"][i].as<double>();
+            const auto i_edge = inertia_matrix["i_edge"][i].as<double>();
+            const auto i_flap = inertia_matrix["i_flap"][i].as<double>();
+            const auto i_plr = inertia_matrix["i_plr"][i].as<double>();
+
+            const auto k11 = stiffness_matrix["K11"][i].as<double>();
+            const auto k12 = stiffness_matrix["K12"][i].as<double>();
+            const auto k13 = stiffness_matrix["K13"][i].as<double>();
+            const auto k14 = stiffness_matrix["K14"][i].as<double>();
+            const auto k15 = stiffness_matrix["K15"][i].as<double>();
+            const auto k16 = stiffness_matrix["K16"][i].as<double>();
+            const auto k22 = stiffness_matrix["K22"][i].as<double>();
+            const auto k23 = stiffness_matrix["K23"][i].as<double>();
+            const auto k24 = stiffness_matrix["K24"][i].as<double>();
+            const auto k25 = stiffness_matrix["K25"][i].as<double>();
+            const auto k26 = stiffness_matrix["K26"][i].as<double>();
+            const auto k33 = stiffness_matrix["K33"][i].as<double>();
+            const auto k34 = stiffness_matrix["K34"][i].as<double>();
+            const auto k35 = stiffness_matrix["K35"][i].as<double>();
+            const auto k36 = stiffness_matrix["K36"][i].as<double>();
+            const auto k44 = stiffness_matrix["K44"][i].as<double>();
+            const auto k45 = stiffness_matrix["K45"][i].as<double>();
+            const auto k46 = stiffness_matrix["K46"][i].as<double>();
+            const auto k55 = stiffness_matrix["K55"][i].as<double>();
+            const auto k56 = stiffness_matrix["K56"][i].as<double>();
+            const auto k66 = stiffness_matrix["K66"][i].as<double>();
+
             blade_builder.AddSection(
                 m_grid[i],
                 {{
-                    {m[0], m[1], m[2], m[3], m[4], m[5]},
-                    {m[1], m[6], m[7], m[8], m[9], m[10]},
-                    {m[2], m[7], m[11], m[12], m[13], m[14]},
-                    {m[3], m[8], m[12], m[15], m[16], m[17]},
-                    {m[4], m[9], m[13], m[16], m[18], m[19]},
-                    {m[5], m[10], m[14], m[17], m[19], m[20]},
+                    {mass, 0., 0., 0., 0., -mass * cm_y},
+                    {0., mass, 0., 0., 0., mass * cm_x},
+                    {0., 0., mass, mass * cm_y, -mass * cm_x, 0.},
+                    {0., 0., mass * cm_y, i_edge, -i_cp, 0.},
+                    {0., 0., -mass * cm_x, -i_cp, i_flap, 0.},
+                    {-mass * cm_y, mass * cm_x, 0., 0., 0., i_plr},
                 }},
                 {{
-                    {k[0], k[1], k[2], k[3], k[4], k[5]},
-                    {k[1], k[6], k[7], k[8], k[9], k[10]},
-                    {k[2], k[7], k[11], k[12], k[13], k[14]},
-                    {k[3], k[8], k[12], k[15], k[16], k[17]},
-                    {k[4], k[9], k[13], k[16], k[18], k[19]},
-                    {k[5], k[10], k[14], k[17], k[19], k[20]},
+                    {k11, k12, k13, k14, k15, k16},
+                    {k12, k22, k23, k24, k25, k26},
+                    {k13, k23, k33, k34, k35, k36},
+                    {k14, k24, k34, k44, k45, k46},
+                    {k15, k25, k35, k45, k55, k56},
+                    {k16, k26, k36, k46, k56, k66},
                 }},
                 interfaces::components::ReferenceAxisOrientation::Z
             );
@@ -158,7 +189,7 @@ TEST(TurbineInterfaceTest, IEA15_ROSCOControllerWithAero) {
         .PrescribedRootMotion(false);        // Fix displacement of tower base node
 
     // Add reference axis coordinates (WindIO uses Z-axis as reference axis)
-    const auto t_ref_axis = wio_tower["outer_shape_bem"]["reference_axis"];
+    const auto t_ref_axis = wio_tower["reference_axis"];
     const auto axis_grid = t_ref_axis["x"]["grid"].as<std::vector<double>>();
     const auto x_values = t_ref_axis["x"]["values"].as<std::vector<double>>();
     const auto y_values = t_ref_axis["y"]["values"].as<std::vector<double>>();
@@ -171,45 +202,46 @@ TEST(TurbineInterfaceTest, IEA15_ROSCOControllerWithAero) {
     }
 
     // Set tower base position from first reference axis point
-    const auto tower_base_position =
-        std::array<double, 7>{x_values[0], y_values[0], z_values[0], 1., 0., 0., 0.};
-    turbine_builder.SetTowerBasePosition(tower_base_position);
+    turbine_builder.SetTowerBasePosition({x_values[0], y_values[0], z_values[0], 1., 0., 0., 0.});
 
     // Add reference axis twist (zero for tower)
     tower_builder.AddRefAxisTwist(0.0, 0.0).AddRefAxisTwist(1.0, 0.0);
 
     // Find the tower material properties
-    const auto t_layer = wio_tower["internal_structure_2d_fem"]["layers"][0];
-    const auto t_material_name = t_layer["material"].as<std::string>();
-    YAML::Node t_material;
+    const auto tower_diameter = wio_tower["outer_shape"]["outer_diameter"];
+    const auto tower_wall_thickness = wio_tower["structure"]["layers"][0]["thickness"];
+    const auto tower_material_name =
+        wio_tower["structure"]["layers"][0]["material"].as<std::string>();
+
+    YAML::Node tower_material;
     for (const auto& m : wio["materials"]) {
-        if (m["name"] && m["name"].as<std::string>() == t_material_name) {
-            t_material = m.as<YAML::Node>();
+        if (m["name"] && m["name"].as<std::string>() == tower_material_name) {
+            tower_material = m.as<YAML::Node>();
             break;
         }
     }
-    if (!t_material) {
+    if (!tower_material) {
         throw std::runtime_error(
-            "Material '" + t_material_name + "' not found in materials section"
+            "Material '" + tower_material_name + "' not found in materials section"
         );
     }
 
     // Add tower section properties
-    const auto t_diameter = wio_tower["outer_shape_bem"]["outer_diameter"];
-    const auto t_diameter_grid = t_diameter["grid"].as<std::vector<double>>();
-    const auto t_diameter_values = t_diameter["values"].as<std::vector<double>>();
-    const auto t_wall_thickness = t_layer["thickness"]["values"].as<std::vector<double>>();
-    for (auto i : std::views::iota(0U, t_diameter_grid.size())) {
+    const auto elastic_modulus = tower_material["E"].as<double>();
+    const auto shear_modulus = tower_material["G"].as<double>();
+    const auto poisson_ratio = tower_material["nu"].as<double>();
+    const auto density = tower_material["rho"].as<double>();
+    for (auto i : std::views::iota(0U, tower_diameter["grid"].size())) {
         // Create section mass and stiffness matrices
         const auto section = beams::GenerateHollowCircleSection(
-            t_diameter_grid[i], t_material["E"].as<double>(), t_material["G"].as<double>(),
-            t_material["rho"].as<double>(), t_diameter_values[i], t_wall_thickness[i],
-            t_material["nu"].as<double>()
+            tower_diameter["grid"][i].as<double>(), elastic_modulus, shear_modulus, density,
+            tower_diameter["values"][i].as<double>(), tower_wall_thickness["values"][i].as<double>(),
+            poisson_ratio
         );
 
         // Add section
         tower_builder.AddSection(
-            t_diameter_grid[i], section.M_star, section.C_star,
+            tower_diameter["grid"][i].as<double>(), section.M_star, section.C_star,
             interfaces::components::ReferenceAxisOrientation::Z
         );
     }
@@ -219,28 +251,40 @@ TEST(TurbineInterfaceTest, IEA15_ROSCOControllerWithAero) {
     //--------------------------------------------------------------------------
 
     // Get nacelle mass properties from WindIO
-    const auto& nacelle_props = wio_nacelle["elastic_properties_mb"];
-    const auto system_mass = nacelle_props["system_mass"].as<double>();
-    const auto yaw_mass = nacelle_props["yaw_mass"].as<double>();
-    const auto system_inertia_tt = nacelle_props["system_inertia_tt"].as<std::vector<double>>();
-
-    // Construct 6x6 inertia matrix for yaw bearing node
-    const auto total_mass = system_mass + yaw_mass;
+    const auto nacelle_props = wio_drivetrain["elastic_properties"];
+    const auto nacelle_mass = nacelle_props["mass"].as<double>();
+    const auto nacelle_inertia = nacelle_props["inertia"].as<std::vector<double>>();
+    const auto nacelle_location = nacelle_props["location"].as<std::vector<double>>();
 
     // Set the nacelle inertia matrix in the turbine builder
+    turbine_builder.SetNacelleInertiaMatrix(
+        {{{nacelle_mass, 0., 0., 0., 0., 0.},
+          {0., nacelle_mass, 0., 0., 0., 0.},
+          {0., 0., nacelle_mass, 0., 0., 0.},
+          {0., 0., 0., nacelle_inertia[0], nacelle_inertia[3], nacelle_inertia[4]},
+          {0., 0., 0., nacelle_inertia[3], nacelle_inertia[1], nacelle_inertia[5]},
+          {0., 0., 0., nacelle_inertia[4], nacelle_inertia[5], nacelle_inertia[2]}}},
+        {nacelle_location[0], nacelle_location[1], nacelle_location[2]}
+    );
+
+    // Get yaw bearing mass properties from WindIO
+    const auto yaw_bearing_mass = wio_yaw["elastic_properties"]["mass"].as<double>();
+    const auto yaw_bearing_inertia =
+        wio_yaw["elastic_properties"]["inertia"].as<std::vector<double>>();
+
+    // Set the yaw bearing inertia matrix in the turbine builder
     turbine_builder.SetYawBearingInertiaMatrix(
-        {{{total_mass, 0., 0., 0., 0., 0.},
-          {0., total_mass, 0., 0., 0., 0.},
-          {0., 0., total_mass, 0., 0., 0.},
-          {0., 0., 0., system_inertia_tt[0], system_inertia_tt[3], system_inertia_tt[4]},
-          {0., 0., 0., system_inertia_tt[3], system_inertia_tt[1], system_inertia_tt[5]},
-          {0., 0., 0., system_inertia_tt[4], system_inertia_tt[5], system_inertia_tt[2]}}}
+        {{{yaw_bearing_mass, 0., 0., 0., 0., 0.},
+          {0., yaw_bearing_mass, 0., 0., 0., 0.},
+          {0., 0., yaw_bearing_mass, 0., 0., 0.},
+          {0., 0., 0., yaw_bearing_inertia[0], 0., 0.},
+          {0., 0., 0., 0., yaw_bearing_inertia[1], 0.},
+          {0., 0., 0., 0., 0., yaw_bearing_inertia[2]}}}
     );
 
     // Get hub mass properties from WindIO
-    const auto& hub_props = wio_hub["elastic_properties_mb"];
-    const auto hub_mass = hub_props["system_mass"].as<double>();
-    const auto hub_inertia = hub_props["system_inertia"].as<std::vector<double>>();
+    const auto hub_mass = wio_hub["elastic_properties"]["mass"].as<double>();
+    const auto hub_inertia = wio_hub["elastic_properties"]["inertia"].as<std::vector<double>>();
 
     // Set the hub inertia matrix in the turbine builder
     turbine_builder.SetHubInertiaMatrix(
@@ -271,8 +315,7 @@ TEST(TurbineInterfaceTest, IEA15_ROSCOControllerWithAero) {
         );
 
     {
-        const YAML::Node wio_aero = YAML::LoadFile("interfaces_test_files/IEA-15-240-RWT-aero.yaml");
-        const auto& airfoil_io = wio_aero["airfoils"];
+        const auto& airfoil_io = wio["airfoils"];
         auto aero_sections = std::vector<interfaces::components::AerodynamicSection>{};
         auto id = 0UL;
         for (const auto& af : airfoil_io) {

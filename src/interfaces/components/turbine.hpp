@@ -119,6 +119,7 @@ public:
     NodeData hub_node;                 //< Hub node
     NodeData azimuth_node;             //< Azimuth node
     NodeData shaft_base_node;          //< Shaft base node
+    NodeData nacelle_cm_node;          //< Nacelle center of mass node
     NodeData yaw_bearing_node;         //< Yaw bearing node
 
     //--------------------------------------------------------------------------
@@ -128,6 +129,7 @@ public:
     ConstraintData tower_base;                 //< Tower base constraint
     ConstraintData tower_top_to_yaw_bearing;   //< Tower top to yaw bearing constraint
     ConstraintData yaw_bearing_to_shaft_base;  //< Yaw bearing to shaft base constraint
+    ConstraintData yaw_bearing_to_nacelle_cm;  //< Yaw bearing to nacelle center of mass constraint
     ConstraintData shaft_base_to_azimuth;      //< Nacelle mass to generator constraint
     ConstraintData azimuth_to_hub;             //< Azimuth to hub constraint
     std::vector<ConstraintData> blade_pitch;   //< Blade root to apex constraints
@@ -171,11 +173,19 @@ public:
      * @param host_state Host state containing position, displacement, velocity, and acceleration
      */
     void GetMotion(const HostState<DeviceType>& host_state);
+
+    /**
+     * @brief Populate constraint loads from host constraints
+     * @param host_constraints Host constraints containing constraint forces/moments
+     */
+    void GetLoads(const HostConstraints<DeviceType>& host_constraints);
+
     /**
      * @brief Update the host state with current node forces and moments
      * @param host_state Host state to update
      */
     void SetLoads(HostState<DeviceType>& host_state) const;
+
     /**
      * @brief Get the turbine input configuration
      * @return Turbine input configuration

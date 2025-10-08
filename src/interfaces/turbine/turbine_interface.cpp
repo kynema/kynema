@@ -1,6 +1,7 @@
 #include "turbine_interface.hpp"
 
 #include <filesystem>
+#include <format>
 #include <numbers>
 
 #include "interfaces/components/solution_input.hpp"
@@ -27,7 +28,8 @@ TurbineInterface::TurbineInterface(
       ),
       solver(CreateSolver(state, elements, constraints)),
       state_save(CloneState(state)),
-      host_state(state) {
+      host_state(state),
+      host_constraints(constraints) {
     if (aerodynamics_input.is_enabled) {
         auto aero_inputs = std::vector<components::AerodynamicBodyInput>{};
         const auto num_turbine_blades = turbine.blades.size();
@@ -89,9 +91,7 @@ TurbineInterface::TurbineInterface(
         this->outputs->WriteNodeOutputsAtTimestep(this->host_state, this->state.time_step);
 
         // Write initial time-series data (test values)
-        this->outputs->WriteRotorTimeSeriesAtTimestep(
-            this->state.time_step, turbine_input.azimuth_angle, turbine_input.rotor_speed
-        );
+        this->WriteTimeSeriesData();
     }
 }
 
@@ -121,7 +121,7 @@ bool TurbineInterface::Step() {
     if (this->aerodynamics) {
         this->aerodynamics->AddNodalLoadsToState(this->host_state);
     }
-    Kokkos::deep_copy(this->state.f, this->host_state.f);
+    this->host_state.CopyForcesToState(this->state);
 
     // Solve for state at end of step
     auto converged =
@@ -138,13 +138,19 @@ bool TurbineInterface::Step() {
     // Update the turbine node motion based on the host state
     this->turbine.GetMotion(this->host_state);
 
+    // Update the host constraints with current constraint loads
+    this->host_constraints.CopyFromConstraints(this->constraints);
+
+    // Update the turbine constraint loads based on the host constraints
+    this->turbine.GetLoads(this->host_constraints);
+
     // Write outputs and increment timestep counter
     if (this->outputs) {
         // Write node state outputs
         this->outputs->WriteNodeOutputsAtTimestep(this->host_state, this->state.time_step);
 
         // Calculate rotor azimuth and speed -> write rotor time-series data
-        this->WriteRotorTimeSeriesData();
+        this->WriteTimeSeriesData();
     }
 
     return true;
@@ -165,17 +171,110 @@ void TurbineInterface::RestoreState() {
     this->turbine.GetMotion(this->host_state);
 }
 
-void TurbineInterface::WriteRotorTimeSeriesData() {
+void TurbineInterface::WriteTimeSeriesData() {
     if (!this->outputs) {
         return;
     }
 
-    // Write the calculated values to time-series output
-    this->outputs->WriteRotorTimeSeriesAtTimestep(
-        this->state.time_step,
-        this->CalculateAzimuthAngle(),  // azimuth angle (radians)
-        this->CalculateRotorSpeed()     // rotor speed (rad/s)
+    constexpr auto rpm_to_radps{0.104719755};  // RPM to rad/s
+
+    this->outputs->WriteValueAtTimestep(
+        this->state.time_step, "Time (s)", this->state.time_step * this->parameters.h
     );
+    this->outputs->WriteValueAtTimestep(
+        this->state.time_step, "ConvIter (-)", this->solver.convergence_err.size()
+    );
+    this->outputs->WriteValueAtTimestep(
+        this->state.time_step, "ConvError (-)",
+        this->solver.convergence_err.empty() ? 0. : this->solver.convergence_err.back()
+    );
+    this->outputs->WriteValueAtTimestep(
+        this->state.time_step, "Azimuth (deg)",
+        this->CalculateAzimuthAngle() * 180. / std::numbers::pi
+    );
+    this->outputs->WriteValueAtTimestep(
+        this->state.time_step, "RotSpeed (rpm)", this->CalculateRotorSpeed() / rpm_to_radps
+    );
+
+    // Tower top displacements
+    this->outputs->WriteValueAtTimestep(
+        this->state.time_step, "YawBrTDxt (m)", this->turbine.yaw_bearing_node.displacement[0]
+    );
+    this->outputs->WriteValueAtTimestep(
+        this->state.time_step, "YawBrTDyt (m)", this->turbine.yaw_bearing_node.displacement[1]
+    );
+    this->outputs->WriteValueAtTimestep(
+        this->state.time_step, "YawBrTDzt (m)", this->turbine.yaw_bearing_node.displacement[2]
+    );
+
+    // Tower top velocities
+    this->outputs->WriteValueAtTimestep(
+        this->state.time_step, "YawBrTVxp (m_s)", this->turbine.yaw_bearing_node.velocity[0]
+    );
+    this->outputs->WriteValueAtTimestep(
+        this->state.time_step, "YawBrTVyp (m_s)", this->turbine.yaw_bearing_node.velocity[1]
+    );
+    this->outputs->WriteValueAtTimestep(
+        this->state.time_step, "YawBrTVzp (m_s)", this->turbine.yaw_bearing_node.velocity[2]
+    );
+
+    // Tower top accelerations
+    this->outputs->WriteValueAtTimestep(
+        this->state.time_step, "YawBrTAxp (m_s^2)", this->turbine.yaw_bearing_node.acceleration[0]
+    );
+    this->outputs->WriteValueAtTimestep(
+        this->state.time_step, "YawBrTAyp (m_s^2)", this->turbine.yaw_bearing_node.acceleration[1]
+    );
+    this->outputs->WriteValueAtTimestep(
+        this->state.time_step, "YawBrTAzp (m_s^2)", this->turbine.yaw_bearing_node.acceleration[2]
+    );
+
+    // Tower base forces
+    this->outputs->WriteValueAtTimestep(
+        this->state.time_step, "TwrBsFxt (kN)",
+        this->turbine.tower_top_to_yaw_bearing.loads[0] / 1000.
+    );
+    this->outputs->WriteValueAtTimestep(
+        this->state.time_step, "TwrBsFyt (kN)",
+        this->turbine.tower_top_to_yaw_bearing.loads[1] / 1000.
+    );
+    this->outputs->WriteValueAtTimestep(
+        this->state.time_step, "TwrBsFzt (kN)",
+        this->turbine.tower_top_to_yaw_bearing.loads[2] / 1000.
+    );
+
+    // Tower base moments
+    this->outputs->WriteValueAtTimestep(
+        this->state.time_step, "TwrBsMxt (kN-m)",
+        this->turbine.tower_top_to_yaw_bearing.loads[3] / 1000.
+    );
+    this->outputs->WriteValueAtTimestep(
+        this->state.time_step, "TwrBsMyt (kN-m)",
+        this->turbine.tower_top_to_yaw_bearing.loads[4] / 1000.
+    );
+    this->outputs->WriteValueAtTimestep(
+        this->state.time_step, "TwrBsMzt (kN-m)",
+        this->turbine.tower_top_to_yaw_bearing.loads[5] / 1000.
+    );
+
+    // Blade pitch angles
+    for (auto i : std::views::iota(0U, this->turbine.blade_pitch.size())) {
+        this->outputs->WriteValueAtTimestep(
+            this->state.time_step, std::format("BldPitch{} (rpm)", i + 1),
+            this->turbine.blade_pitch_control[i] * 180. / std::numbers::pi
+        );
+    }
+
+    // Generator torque and power if controller is present
+    if (this->controller) {
+        this->outputs->WriteValueAtTimestep(
+            this->state.time_step, "GenTq (kN-m)",
+            this->controller->io.generator_torque_command / 1000.
+        );
+        this->outputs->WriteValueAtTimestep(
+            this->state.time_step, "GenPwr (kW)", this->controller->io.generator_power_actual / 1000.
+        );
+    }
 }
 
 double TurbineInterface::CalculateAzimuthAngle() const {

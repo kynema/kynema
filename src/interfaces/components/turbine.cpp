@@ -18,10 +18,12 @@ Turbine::Turbine(const TurbineInput& input, Model& model)
       hub_node(invalid_id),
       azimuth_node(invalid_id),
       shaft_base_node(invalid_id),
+      nacelle_cm_node(invalid_id),
       yaw_bearing_node(invalid_id),
       tower_base{invalid_id},
       tower_top_to_yaw_bearing{invalid_id},
       yaw_bearing_to_shaft_base{invalid_id},
+      yaw_bearing_to_nacelle_cm{invalid_id},
       shaft_base_to_azimuth{invalid_id},
       azimuth_to_hub{invalid_id},
       blade_pitch_control(input.blades.size(), input.blade_pitch_angle) {
@@ -54,6 +56,20 @@ void Turbine::GetMotion(const HostState<DeviceType>& host_state) {
     this->yaw_bearing_node.GetMotion(host_state);
     for (auto& apex_node : this->apex_nodes) {
         apex_node.GetMotion(host_state);
+    }
+}
+
+void Turbine::GetLoads(const HostConstraints<DeviceType>& host_constraints) {
+    this->tower_base.GetLoads(host_constraints);
+    this->tower_top_to_yaw_bearing.GetLoads(host_constraints);
+    this->yaw_bearing_to_shaft_base.GetLoads(host_constraints);
+    this->shaft_base_to_azimuth.GetLoads(host_constraints);
+    this->azimuth_to_hub.GetLoads(host_constraints);
+    for (auto& pitch_constraint : this->blade_pitch) {
+        pitch_constraint.GetLoads(host_constraints);
+    }
+    for (auto& apex_constraint : this->apex_to_hub) {
+        apex_constraint.GetLoads(host_constraints);
     }
 }
 
@@ -232,6 +248,17 @@ void Turbine::CreateIntermediateNodes(const TurbineInput& input, Model& model) {
         model.AddNode().SetPosition(tower_top_node.x0).SetOrientation({1., 0., 0., 0.}).Build()
     );
 
+    // Create nacelle center of mass node at tower top position
+    this->nacelle_cm_node =
+        NodeData(model.AddNode()
+                     .SetPosition(
+                         {tower_top_node.x0[0] + input.nacelle_cm_offset[0],
+                          tower_top_node.x0[1] + input.nacelle_cm_offset[1],
+                          tower_top_node.x0[2] + input.nacelle_cm_offset[2], 1., 0., 0., 0.}
+                     )
+
+                     .Build());
+
     //--------------------------------------------------------------------------
     // Create blade apex nodes
     //--------------------------------------------------------------------------
@@ -404,6 +431,11 @@ void Turbine::AddConstraints(const TurbineInput& input, Model& model) {
     // Add rigid constraint from yaw bearing to shaft base
     this->yaw_bearing_to_shaft_base = ConstraintData{
         model.AddRigidJointConstraint({this->yaw_bearing_node.id, this->shaft_base_node.id})
+    };
+
+    // Add rigid constraint from yaw bearing to nacelle center of mass
+    this->yaw_bearing_to_nacelle_cm = ConstraintData{
+        model.AddRigidJointConstraint({this->yaw_bearing_node.id, this->nacelle_cm_node.id})
     };
 
     //--------------------------------------------------------------------------

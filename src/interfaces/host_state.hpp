@@ -53,6 +53,10 @@ struct HostState {
         Kokkos::deep_copy(this->v, state.v);
         Kokkos::deep_copy(this->vd, state.vd);
     }
+
+    /// @brief Set forces in state from host state
+    /// @param state State to update
+    void CopyForcesToState(State<DeviceType>& state) const { Kokkos::deep_copy(state.f, this->f); }
 };
 
 }  // namespace kynema::interfaces

@@ -4,6 +4,7 @@
 #include "interfaces/components/aerodynamics_input.hpp"
 #include "interfaces/components/controller_input.hpp"
 #include "interfaces/components/turbine.hpp"
+#include "interfaces/host_constraints.hpp"
 #include "interfaces/host_state.hpp"
 #include "interfaces/outputs.hpp"
 #include "model/model.hpp"
@@ -56,7 +57,7 @@ public:
         double fluid_density,
         const std::function<std::array<double, 3>(const std::array<double, 3>&)>& inflow_function
     );
-    
+
     std::array<double, 3> GetHubNodePosition() const;
 
     /**
@@ -110,8 +111,9 @@ private:
     Solver<DeviceType> solver;            ///< Kynema class for solving the dynamic system
     State<DeviceType> state_save;         ///< Kynema class state class for temporarily saving state
     HostState<DeviceType> host_state;     ///< Host local copy of node state data
-    std::unique_ptr<Outputs> outputs;     ///< handle to Output for writing to NetCDF
-    std::unique_ptr<util::TurbineController> controller;     ///< DISCON-style controller
+    HostConstraints<DeviceType> host_constraints;         ///< Host local copy of constraint data
+    std::unique_ptr<Outputs> outputs;                     ///< handle to Output for writing to NetCDF
+    std::unique_ptr<util::TurbineController> controller;  ///< DISCON-style controller
     std::unique_ptr<components::Aerodynamics> aerodynamics;  ///< Aerodynamics component
 
     /**
@@ -123,7 +125,7 @@ private:
      * - Index 0: Azimuth angle (radians)
      * - Index 1: Rotor speed (rad/s)
      */
-    void WriteRotorTimeSeriesData();
+    void WriteTimeSeriesData();
 
     /**
      * @brief Initialize controller with turbine parameters and connect to constraints
