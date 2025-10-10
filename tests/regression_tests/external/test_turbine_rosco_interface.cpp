@@ -18,15 +18,21 @@ TEST(TurbineInterfaceTest, IEA15_ROSCOControllerWithAero) {
     // Conversions
     constexpr auto rpm_to_radps{0.104719755};  // RPM to rad/s
 
-    constexpr auto duration{20.};                          // Simulation duration in seconds
+    constexpr auto duration{50.};                          // Simulation duration in seconds
     constexpr auto time_step{0.01};                        // Time step for the simulation
     constexpr auto n_blades{3U};                           // Number of blades in turbine
-    constexpr auto n_blade_nodes{11};                      // Number of nodes per blade
-    constexpr auto n_tower_nodes{11};                      // Number of nodes in tower
+    constexpr auto n_blade_nodes{11U};                     // Number of nodes per blade
+    constexpr auto n_tower_nodes{6U};                      // Number of nodes in tower
     constexpr auto rotor_speed_init{7.56 * rpm_to_radps};  // Rotor speed (rad/s)
     constexpr double hub_wind_speed_init{10.6};            // Hub height wind speed (m/s)
     constexpr double generator_power_init{15.0e6};         // Generator power (W)
     constexpr auto write_output{true};                     // Write output file
+
+    constexpr auto fluid_density = 1.225;
+    constexpr auto vel_h = hub_wind_speed_init;
+    constexpr auto h_ref = 150.;
+    constexpr auto pl_exp = 0.12;
+    constexpr auto flow_angle = 0.;
 
     // Create interface builder
     auto builder = interfaces::TurbineInterfaceBuilder{};
@@ -85,7 +91,9 @@ TEST(TurbineInterfaceTest, IEA15_ROSCOControllerWithAero) {
         auto& blade_builder = turbine_builder.Blade(j);
 
         // Set blade parameters
-        blade_builder.SetElementOrder(n_blade_nodes - 1).PrescribedRootMotion(false);
+        blade_builder.SetElementOrder(n_blade_nodes - 1)
+            .PrescribedRootMotion(false)
+            .SetSectionRefinement(2);
 
         // Add reference axis coordinates (WindIO uses Z-axis as reference axis)
         const auto ref_axis = wio_blade["reference_axis"];
@@ -185,7 +193,8 @@ TEST(TurbineInterfaceTest, IEA15_ROSCOControllerWithAero) {
 
     // Set tower parameters
     tower_builder
-        .SetElementOrder(n_tower_nodes - 1)  // Set element order to num nodes -1
+        .SetElementOrder(n_tower_nodes - 1)  // Set element order to num nodes - 1
+        .SetSectionRefinement(1)             // Add one section between each specified section
         .PrescribedRootMotion(false);        // Fix displacement of tower base node
 
     // Add reference axis coordinates (WindIO uses Z-axis as reference axis)
@@ -254,7 +263,9 @@ TEST(TurbineInterfaceTest, IEA15_ROSCOControllerWithAero) {
     const auto nacelle_props = wio_drivetrain["elastic_properties"];
     const auto nacelle_mass = nacelle_props["mass"].as<double>();
     const auto nacelle_inertia = nacelle_props["inertia"].as<std::vector<double>>();
-    const auto nacelle_location = nacelle_props["location"].as<std::vector<double>>();
+
+    // Nacelle center of mass offset from yaw bearing
+    const auto nacelle_cm_offset = nacelle_props["location"].as<std::vector<double>>();
 
     // Set the nacelle inertia matrix in the turbine builder
     turbine_builder.SetNacelleInertiaMatrix(
@@ -264,7 +275,7 @@ TEST(TurbineInterfaceTest, IEA15_ROSCOControllerWithAero) {
           {0., 0., 0., nacelle_inertia[0], nacelle_inertia[3], nacelle_inertia[4]},
           {0., 0., 0., nacelle_inertia[3], nacelle_inertia[1], nacelle_inertia[5]},
           {0., 0., 0., nacelle_inertia[4], nacelle_inertia[5], nacelle_inertia[2]}}},
-        {nacelle_location[0], nacelle_location[1], nacelle_location[2]}
+        {nacelle_cm_offset[0], nacelle_cm_offset[1], nacelle_cm_offset[2]}
     );
 
     // Get yaw bearing mass properties from WindIO
@@ -282,6 +293,11 @@ TEST(TurbineInterfaceTest, IEA15_ROSCOControllerWithAero) {
           {0., 0., 0., 0., 0., yaw_bearing_inertia[2]}}}
     );
 
+    // Get generator rotational inertia and gearbox ratio from WindIO
+    const auto generator_inertia =
+        wio_drivetrain["generator"]["elastic_properties"]["inertia"].as<std::vector<double>>();
+    const auto gearbox_ratio = wio_drivetrain["gearbox"]["gear_ratio"].as<double>();
+
     // Get hub mass properties from WindIO
     const auto hub_mass = wio_hub["elastic_properties"]["mass"].as<double>();
     const auto hub_inertia = wio_hub["elastic_properties"]["inertia"].as<std::vector<double>>();
@@ -291,7 +307,8 @@ TEST(TurbineInterfaceTest, IEA15_ROSCOControllerWithAero) {
         {{{hub_mass, 0., 0., 0., 0., 0.},
           {0., hub_mass, 0., 0., 0., 0.},
           {0., 0., hub_mass, 0., 0., 0.},
-          {0., 0., 0., hub_inertia[0], hub_inertia[3], hub_inertia[4]},
+          {0., 0., 0., hub_inertia[0] + gearbox_ratio * generator_inertia[0], hub_inertia[3],
+           hub_inertia[4]},
           {0., 0., 0., hub_inertia[3], hub_inertia[1], hub_inertia[5]},
           {0., 0., 0., hub_inertia[4], hub_inertia[5], hub_inertia[2]}}}
     );
@@ -350,11 +367,6 @@ TEST(TurbineInterfaceTest, IEA15_ROSCOControllerWithAero) {
     // Build turbine interface
     auto interface = builder.Build();
 
-    constexpr auto fluid_density = 1.225;
-    constexpr auto vel_h = 10.6;
-    constexpr auto h_ref = 150.;
-    constexpr auto pl_exp = 0.12;
-    constexpr auto flow_angle = 0.;
     auto inflow = interfaces::components::Inflow::SteadyWind(vel_h, h_ref, pl_exp, flow_angle);
 
     //--------------------------------------------------------------------------

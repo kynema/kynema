@@ -362,9 +362,13 @@ void Turbine::CreateIntermediateNodes(const TurbineInput& input, Model& model) {
 }
 
 void Turbine::AddMassElements(const TurbineInput& input, Model& model) {
-    // Add mass element at yaw bearing node (nacelle mass + yaw bearing mass)
+    // Add mass element at yaw bearing node
     this->yaw_bearing_mass_element_id =
         model.AddMassElement(this->yaw_bearing_node.id, input.yaw_bearing_inertia_matrix);
+
+    // Add mass element at nacelle CM node
+    this->nacelle_cm_mass_element_id =
+        model.AddMassElement(this->nacelle_cm_node.id, input.nacelle_inertia_matrix);
 
     // Add mass element at hub node (hub assembly mass)
     this->hub_mass_element_id = model.AddMassElement(this->hub_node.id, input.hub_inertia_matrix);
@@ -387,14 +391,14 @@ void Turbine::AddConstraints(const TurbineInput& input, Model& model) {
         // Calculate the pitch axis for the blade
         // (from root to apex so that positive pitch angles point the leading edge into the wind)
         const auto pitch_axis = math::UnitVector({
-            root_node.x0[0] - apex_node.x0[0],
-            root_node.x0[1] - apex_node.x0[1],
-            root_node.x0[2] - apex_node.x0[2],
+            apex_node.x0[0] - root_node.x0[0],
+            apex_node.x0[1] - root_node.x0[1],
+            apex_node.x0[2] - root_node.x0[2],
         });
 
         // Create pitch control constraint
         this->blade_pitch.emplace_back(ConstraintData{model.AddRotationControl(
-            {root_node.id, apex_node.id}, pitch_axis, &this->blade_pitch_control[beam]
+            {apex_node.id, root_node.id}, pitch_axis, &this->blade_pitch_control[beam]
         )});
 
         // Add rigid constraint between hub and blade apex
@@ -439,7 +443,7 @@ void Turbine::AddConstraints(const TurbineInput& input, Model& model) {
     };
 
     //--------------------------------------------------------------------------
-    // Nacelle control constraints
+    // Nacelle constraints
     //--------------------------------------------------------------------------
 
     // Add constraint from tower top to yaw bearing

@@ -109,6 +109,7 @@ public:
     std::vector<Beam> blades;                        //< Blades in the turbine
     Beam tower;                                      //< Tower in the turbine
     size_t hub_mass_element_id{invalid_id};          //< Hub mass element ID
+    size_t nacelle_cm_mass_element_id{invalid_id};   //< Nacelle center of mass mass element ID
     size_t yaw_bearing_mass_element_id{invalid_id};  //< Yaw bearing mass element ID
 
     //--------------------------------------------------------------------------
