@@ -11,7 +11,8 @@ std::array<double, 6> CalculateAerodynamicLoad(
     std::span<const double, 3> v_motion, std::span<const double> aoa_polar,
     std::span<const double> cl_polar, std::span<const double> cd_polar,
     std::span<const double> cm_polar, double chord, double delta_s, double fluid_density,
-    std::span<const double, 3> con_force, std::span<const double, 4> qqr
+    std::span<const double, 3> con_force, std::span<const double, 4> qqr,
+    std::array<double, 3>& v_rel, double& aoa, double& cn, double& ct, double& cm
 ) {
     assert(aoa_polar.size() == cl_polar.size());
     assert(aoa_polar.size() == cd_polar.size());
@@ -23,12 +24,12 @@ std::array<double, 6> CalculateAerodynamicLoad(
     }
 
     const auto qqr_inv = math::QuaternionInverse(qqr);
-    auto v_rel = math::RotateVectorByQuaternion(qqr_inv, v_rel_global);
+    v_rel = math::RotateVectorByQuaternion(qqr_inv, v_rel_global);
     v_rel[0] = 0.;
 
     const auto velocity_magnitude = math::Norm(v_rel);
 
-    const auto aoa = CalculateAngleOfAttack(v_rel);
+    aoa = CalculateAngleOfAttack(v_rel);
 
     const auto polar_iterator =
         std::find_if(std::cbegin(aoa_polar), std::cend(aoa_polar), [aoa](auto polar) {
@@ -52,17 +53,16 @@ std::array<double, 6> CalculateAerodynamicLoad(
     const auto cd = (is_end)
                         ? cd_polar.back()
                         : (1. - alpha) * cd_polar[polar_index] + alpha * cd_polar[polar_index + 1];
-    const auto cm = (is_end)
-                        ? cm_polar.back()
-                        : (1. - alpha) * cm_polar[polar_index] + alpha * cm_polar[polar_index + 1];
+    cm = (is_end) ? cm_polar.back()
+                  : (1. - alpha) * cm_polar[polar_index] + alpha * cm_polar[polar_index + 1];
 
     const auto dynamic_pressure = .5 * fluid_density * velocity_magnitude * velocity_magnitude;
 
-    const auto cz = cl * cos(aoa) + cd * sin(aoa);
-    const auto cy = cl * sin(aoa) - cd * cos(aoa);
+    cn = cl * cos(aoa) + cd * sin(aoa);
+    ct = cl * sin(aoa) - cd * cos(aoa);
 
     auto force_local = std::array<double, 3>{
-        0., -dynamic_pressure * chord * delta_s * cy, -dynamic_pressure * chord * delta_s * cz
+        0., -dynamic_pressure * chord * delta_s * ct, -dynamic_pressure * chord * delta_s * cn
     };
     const auto moment_local = std::array{cm * dynamic_pressure * chord * chord * delta_s, 0., 0.};
 
@@ -390,6 +390,11 @@ AerodynamicBody::AerodynamicBody(const AerodynamicBodyInput& input, std::span<co
       qqr_motion_map(input.aero_sections.size()),
       x_motion(input.aero_sections.size()),
       v_motion(input.aero_sections.size()),
+      v_rel(input.aero_sections.size()),
+      alpha(input.aero_sections.size()),
+      cn(input.aero_sections.size()),
+      ct(input.aero_sections.size()),
+      cm(input.aero_sections.size()),
       loads(input.aero_sections.size()),
       ref_axis_moments(input.aero_sections.size()),
       v_inflow(input.aero_sections.size()) {
@@ -434,13 +439,13 @@ AerodynamicBody::AerodynamicBody(const AerodynamicBodyInput& input, std::span<co
     aoa = ExtractPolar(n_sections, [&](size_t section) {
         return input.aero_sections[section].aoa;
     });
-    cl = ExtractPolar(n_sections, [&](size_t section) {
+    cl_polar = ExtractPolar(n_sections, [&](size_t section) {
         return input.aero_sections[section].cl;
     });
-    cd = ExtractPolar(n_sections, [&](size_t section) {
+    cd_polar = ExtractPolar(n_sections, [&](size_t section) {
         return input.aero_sections[section].cd;
     });
-    cm = ExtractPolar(n_sections, [&](size_t section) {
+    cm_polar = ExtractPolar(n_sections, [&](size_t section) {
         return input.aero_sections[section].cm;
     });
 
@@ -472,9 +477,10 @@ void AerodynamicBody::SetAerodynamicLoads(std::span<const std::array<double, 6>>
 void AerodynamicBody::CalculateAerodynamicLoads(double fluid_density) {
     for (auto node = 0U; node < loads.size(); ++node) {
         const auto load = CalculateAerodynamicLoad(
-            ref_axis_moments[node], v_inflow[node], v_motion[node], aoa[node], cl[node], cd[node],
-            cm[node], chord[node], delta_s[node], fluid_density, con_force[node],
-            qqr_motion_map[node]
+            ref_axis_moments[node], v_inflow[node], v_motion[node], aoa[node], cl_polar[node],
+            cd_polar[node], cm_polar[node], chord[node], delta_s[node], fluid_density,
+            con_force[node], qqr_motion_map[node], v_rel[node], alpha[node], cn[node], ct[node],
+            cm[node]
         );
         for (auto component = 0U; component < 6U; ++component) {
             loads[node][component] = load[component];

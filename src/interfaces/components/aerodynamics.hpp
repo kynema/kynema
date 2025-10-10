@@ -24,7 +24,8 @@ std::array<double, 6> CalculateAerodynamicLoad(
     std::span<const double, 3> v_motion, std::span<const double> aoa_polar,
     std::span<const double> cl_polar, std::span<const double> cd_polar,
     std::span<const double> cm_polar, double chord, double delta_s, double fluid_density,
-    std::span<const double, 3> con_force, std::span<const double, 4> qqr
+    std::span<const double, 3> con_force, std::span<const double, 4> qqr,
+    std::array<double, 3>& v_rel, double& alpha, double& cl, double& cd, double& cm
 );
 
 std::array<double, 3> CalculateConMotionVector(
@@ -56,20 +57,24 @@ public:
     std::vector<std::array<double, 3>> v_motion;
 
     std::vector<std::array<double, 3>> con_force;
+    std::vector<std::array<double, 3>> v_rel;
+    std::vector<double> alpha;
+    std::vector<double> cn;
+    std::vector<double> ct;
+    std::vector<double> cm;
     std::vector<std::array<double, 6>> loads;
     std::vector<std::array<double, 3>> ref_axis_moments;
 
     std::vector<double> jacobian_xi;
     std::vector<std::array<double, 3>> v_inflow;
-    std::vector<std::array<double, 3>> v_rel;
     std::vector<double> twist;
     std::vector<double> chord;
     std::vector<double> delta_s;
     std::vector<size_t> polar_size;
     std::vector<std::vector<double>> aoa;
-    std::vector<std::vector<double>> cl;
-    std::vector<std::vector<double>> cd;
-    std::vector<std::vector<double>> cm;
+    std::vector<std::vector<double>> cl_polar;
+    std::vector<std::vector<double>> cd_polar;
+    std::vector<std::vector<double>> cm_polar;
 
     std::vector<double> motion_interp;
     std::vector<double> shape_deriv_jac;

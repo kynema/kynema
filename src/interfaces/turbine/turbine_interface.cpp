@@ -5,6 +5,7 @@
 #include <numbers>
 
 #include "interfaces/components/solution_input.hpp"
+#include "math/quaternion_operations.hpp"
 #include "state/clone_state.hpp"
 #include "state/copy_state_data.hpp"
 #include "step/step.hpp"
@@ -176,7 +177,8 @@ void TurbineInterface::WriteTimeSeriesData() {
         return;
     }
 
-    constexpr auto rpm_to_radps{0.104719755};  // RPM to rad/s
+    constexpr auto rpm_to_radps{0.104719755};            // RPM to rad/s
+    constexpr auto deg_to_rad{std::numbers::pi / 180.};  // Degrees to radians
 
     this->outputs->WriteValueAtTimestep(
         this->state.time_step, "Time (s)", this->state.time_step * this->parameters.h
@@ -231,37 +233,112 @@ void TurbineInterface::WriteTimeSeriesData() {
 
     // Tower base forces
     this->outputs->WriteValueAtTimestep(
-        this->state.time_step, "TwrBsFxt (kN)",
-        this->turbine.tower_top_to_yaw_bearing.loads[0] / 1000.
+        this->state.time_step, "TwrBsFxt (kN)", this->turbine.tower_base.loads[0] / 1000.
     );
     this->outputs->WriteValueAtTimestep(
-        this->state.time_step, "TwrBsFyt (kN)",
-        this->turbine.tower_top_to_yaw_bearing.loads[1] / 1000.
+        this->state.time_step, "TwrBsFyt (kN)", this->turbine.tower_base.loads[1] / 1000.
     );
     this->outputs->WriteValueAtTimestep(
-        this->state.time_step, "TwrBsFzt (kN)",
-        this->turbine.tower_top_to_yaw_bearing.loads[2] / 1000.
+        this->state.time_step, "TwrBsFzt (kN)", this->turbine.tower_base.loads[2] / 1000.
     );
 
     // Tower base moments
     this->outputs->WriteValueAtTimestep(
-        this->state.time_step, "TwrBsMxt (kN-m)",
-        this->turbine.tower_top_to_yaw_bearing.loads[3] / 1000.
+        this->state.time_step, "TwrBsMxt (kN-m)", this->turbine.tower_base.loads[3] / 1000.
     );
     this->outputs->WriteValueAtTimestep(
-        this->state.time_step, "TwrBsMyt (kN-m)",
-        this->turbine.tower_top_to_yaw_bearing.loads[4] / 1000.
+        this->state.time_step, "TwrBsMyt (kN-m)", this->turbine.tower_base.loads[4] / 1000.
     );
     this->outputs->WriteValueAtTimestep(
-        this->state.time_step, "TwrBsMzt (kN-m)",
-        this->turbine.tower_top_to_yaw_bearing.loads[5] / 1000.
+        this->state.time_step, "TwrBsMzt (kN-m)", this->turbine.tower_base.loads[5] / 1000.
     );
 
-    // Blade pitch angles
-    for (auto i : std::views::iota(0U, this->turbine.blade_pitch.size())) {
+    // Rotor thrust
+    {
+        const auto q_global_local =
+            math::QuaternionInverse(std::span{this->turbine.azimuth_node.position}.subspan<3, 4>());
+        const auto shaft_forces = math::RotateVectorByQuaternion(
+            q_global_local, std::span{this->turbine.shaft_base_to_azimuth.loads}.subspan<0, 3>()
+        );
         this->outputs->WriteValueAtTimestep(
-            this->state.time_step, std::format("BldPitch{} (rpm)", i + 1),
+            this->state.time_step, "RotThrust (kN)", shaft_forces[0] / 1000.
+        );
+    }
+
+    // Blade based data
+    for (auto i : std::views::iota(0U, this->turbine.blades.size())) {
+        // Get rotation from global to blade local coordinates
+        const auto q_global_to_local = math::QuaternionCompose(
+            math::RotationVectorToQuaternion({0., -90. * deg_to_rad, 0.}),
+            math::QuaternionInverse(
+                std::span{this->turbine.blades[i].nodes[0].position}.subspan<3, 4>()
+            )
+        );
+
+        // Blade root forces in blade coordinates
+        const auto blade_root_forces = math::RotateVectorByQuaternion(
+            q_global_to_local, std::span{this->turbine.blade_pitch[i].loads}.subspan<0, 3>()
+        );
+
+        // Blade root forces angles
+        this->outputs->WriteValueAtTimestep(
+            this->state.time_step, std::format("B{}RootFxr (N)", i + 1), blade_root_forces[0]
+        );
+        this->outputs->WriteValueAtTimestep(
+            this->state.time_step, std::format("B{}RootFyr (N)", i + 1), blade_root_forces[1]
+        );
+        this->outputs->WriteValueAtTimestep(
+            this->state.time_step, std::format("B{}RootFzr (N)", i + 1), blade_root_forces[2]
+        );
+
+        // Blade root moments in blade coordinates
+        const auto blade_root_moments = math::RotateVectorByQuaternion(
+            q_global_to_local, std::span{this->turbine.blade_pitch[i].loads}.subspan<3, 3>()
+        );
+
+        // Blade root moments angles
+        this->outputs->WriteValueAtTimestep(
+            this->state.time_step, std::format("B{}RootMxr (N-m)", i + 1), blade_root_moments[0]
+        );
+        this->outputs->WriteValueAtTimestep(
+            this->state.time_step, std::format("B{}RootMyr (N-m)", i + 1), blade_root_moments[1]
+        );
+        this->outputs->WriteValueAtTimestep(
+            this->state.time_step, std::format("B{}RootMzr (N-m)", i + 1), blade_root_moments[2]
+        );
+
+        // Blade pitch angles
+        this->outputs->WriteValueAtTimestep(
+            this->state.time_step, std::format("BldPitch{} (deg)", i + 1),
             this->turbine.blade_pitch_control[i] * 180. / std::numbers::pi
+        );
+
+        // Blade tip translational velocity in inertial frame
+        this->outputs->WriteValueAtTimestep(
+            this->state.time_step, std::format("B{}TipTVXg (m_s)", i + 1),
+            this->turbine.blades[i].nodes.back().velocity[0]
+        );
+        this->outputs->WriteValueAtTimestep(
+            this->state.time_step, std::format("B{}TipTVYg (m_s)", i + 1),
+            this->turbine.blades[i].nodes.back().velocity[1]
+        );
+        this->outputs->WriteValueAtTimestep(
+            this->state.time_step, std::format("B{}TipTVZg (m_s)", i + 1),
+            this->turbine.blades[i].nodes.back().velocity[2]
+        );
+
+        // Blade tip rotational velocity in inertial frame
+        this->outputs->WriteValueAtTimestep(
+            this->state.time_step, std::format("B{}TipRVXg (deg_s)", i + 1),
+            this->turbine.blades[i].nodes.back().velocity[3] / deg_to_rad
+        );
+        this->outputs->WriteValueAtTimestep(
+            this->state.time_step, std::format("B{}TipRVYg (deg_s)", i + 1),
+            this->turbine.blades[i].nodes.back().velocity[4] / deg_to_rad
+        );
+        this->outputs->WriteValueAtTimestep(
+            this->state.time_step, std::format("B{}TipRVZg (deg_s)", i + 1),
+            this->turbine.blades[i].nodes.back().velocity[5] / deg_to_rad
         );
     }
 
@@ -274,6 +351,34 @@ void TurbineInterface::WriteTimeSeriesData() {
         this->outputs->WriteValueAtTimestep(
             this->state.time_step, "GenPwr (kW)", this->controller->io.generator_power_actual / 1000.
         );
+    }
+
+    // Aerodynamic data
+    if (this->aerodynamics) {
+        for (auto i : std::views::iota(0U, this->aerodynamics->bodies.size())) {
+            for (auto j : std::views::iota(0U, this->aerodynamics->bodies[i].loads.size())) {
+                this->outputs->WriteValueAtTimestep(
+                    this->state.time_step, std::format("AB{}N{:03}Vrel (m_s)", i + 1, j + 1),
+                    math::Norm(this->aerodynamics->bodies[i].v_rel[j])
+                );
+                this->outputs->WriteValueAtTimestep(
+                    this->state.time_step, std::format("AB{}N{:03}Alpha (deg)", i + 1, j + 1),
+                    this->aerodynamics->bodies[i].alpha[j] / deg_to_rad
+                );
+                this->outputs->WriteValueAtTimestep(
+                    this->state.time_step, std::format("AB{}N{:03}Cn (-)", i + 1, j + 1),
+                    this->aerodynamics->bodies[i].cn[j]
+                );
+                this->outputs->WriteValueAtTimestep(
+                    this->state.time_step, std::format("AB{}N{:03}Ct (-)", i + 1, j + 1),
+                    this->aerodynamics->bodies[i].ct[j]
+                );
+                this->outputs->WriteValueAtTimestep(
+                    this->state.time_step, std::format("AB{}N{:03}Cm (-)", i + 1, j + 1),
+                    this->aerodynamics->bodies[i].cm[j]
+                );
+            }
+        }
     }
 }
 
