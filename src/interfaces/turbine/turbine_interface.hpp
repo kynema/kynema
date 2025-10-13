@@ -125,7 +125,7 @@ private:
      * - Index 0: Azimuth angle (radians)
      * - Index 1: Rotor speed (rad/s)
      */
-    void WriteTimeSeriesData();
+    void WriteTimeSeriesData() const;
 
     /**
      * @brief Initialize controller with turbine parameters and connect to constraints

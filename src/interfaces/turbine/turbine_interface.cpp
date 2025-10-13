@@ -172,7 +172,7 @@ void TurbineInterface::RestoreState() {
     this->turbine.GetMotion(this->host_state);
 }
 
-void TurbineInterface::WriteTimeSeriesData() {
+void TurbineInterface::WriteTimeSeriesData() const {
     if (!this->outputs) {
         return;
     }
@@ -354,32 +354,57 @@ void TurbineInterface::WriteTimeSeriesData() {
     }
 
     // Aerodynamic data
-    if (this->aerodynamics) {
-        for (auto i : std::views::iota(0U, this->aerodynamics->bodies.size())) {
-            for (auto j : std::views::iota(0U, this->aerodynamics->bodies[i].loads.size())) {
-                this->outputs->WriteValueAtTimestep(
-                    this->state.time_step, std::format("AB{}N{:03}Vrel (m_s)", i + 1, j + 1),
-                    math::Norm(this->aerodynamics->bodies[i].v_rel[j])
-                );
-                this->outputs->WriteValueAtTimestep(
-                    this->state.time_step, std::format("AB{}N{:03}Alpha (deg)", i + 1, j + 1),
-                    this->aerodynamics->bodies[i].alpha[j] / deg_to_rad
-                );
-                this->outputs->WriteValueAtTimestep(
-                    this->state.time_step, std::format("AB{}N{:03}Cn (-)", i + 1, j + 1),
-                    this->aerodynamics->bodies[i].cn[j]
-                );
-                this->outputs->WriteValueAtTimestep(
-                    this->state.time_step, std::format("AB{}N{:03}Ct (-)", i + 1, j + 1),
-                    this->aerodynamics->bodies[i].ct[j]
-                );
-                this->outputs->WriteValueAtTimestep(
-                    this->state.time_step, std::format("AB{}N{:03}Cm (-)", i + 1, j + 1),
-                    this->aerodynamics->bodies[i].cm[j]
-                );
-            }
-        }
-    }
+    // if (this->aerodynamics) {
+    //     for (auto i : std::views::iota(0U, this->aerodynamics->bodies.size())) {
+    //         const auto& body = this->aerodynamics->bodies[i];
+    //         for (auto j : std::views::iota(0U, body.loads.size())) {
+    //             this->outputs->WriteValueAtTimestep(
+    //                 this->state.time_step, std::format("AB{}N{:03}Vrel (m_s)", i + 1, j + 1),
+    //                 math::Norm(body.v_rel[j])
+    //             );
+    //             this->outputs->WriteValueAtTimestep(
+    //                 this->state.time_step, std::format("AB{}N{:03}Alpha (deg)", i + 1, j + 1),
+    //                 body.alpha[j] / deg_to_rad
+    //             );
+    //             this->outputs->WriteValueAtTimestep(
+    //                 this->state.time_step, std::format("AB{}N{:03}Cn (-)", i + 1, j + 1),
+    //                 body.cn[j]
+    //             );
+    //             this->outputs->WriteValueAtTimestep(
+    //                 this->state.time_step, std::format("AB{}N{:03}Ct (-)", i + 1, j + 1),
+    //                 body.ct[j]
+    //             );
+    //             this->outputs->WriteValueAtTimestep(
+    //                 this->state.time_step, std::format("AB{}N{:03}Cm (-)", i + 1, j + 1),
+    //                 body.cm[j]
+    //             );
+    //             this->outputs->WriteValueAtTimestep(
+    //                 this->state.time_step, std::format("AB{}N{:03}Fxi (N_m)", i + 1, j + 1),
+    //                 body.loads[j][0] / body.delta_s[j]
+    //             );
+    //             this->outputs->WriteValueAtTimestep(
+    //                 this->state.time_step, std::format("AB{}N{:03}Fyi (N_m)", i + 1, j + 1),
+    //                 body.loads[j][1] / body.delta_s[j]
+    //             );
+    //             this->outputs->WriteValueAtTimestep(
+    //                 this->state.time_step, std::format("AB{}N{:03}Fzi (N_m)", i + 1, j + 1),
+    //                 body.loads[j][2] / body.delta_s[j]
+    //             );
+    //             this->outputs->WriteValueAtTimestep(
+    //                 this->state.time_step, std::format("AB{}N{:03}Mxi (N_m)", i + 1, j + 1),
+    //                 body.loads[j][3] / body.delta_s[j]
+    //             );
+    //             this->outputs->WriteValueAtTimestep(
+    //                 this->state.time_step, std::format("AB{}N{:03}Myi (N_m)", i + 1, j + 1),
+    //                 body.loads[j][4] / body.delta_s[j]
+    //             );
+    //             this->outputs->WriteValueAtTimestep(
+    //                 this->state.time_step, std::format("AB{}N{:03}Mzi (N_m)", i + 1, j + 1),
+    //                 body.loads[j][5] / body.delta_s[j]
+    //             );
+    //         }
+    //     }
+    // }
 }
 
 double TurbineInterface::CalculateAzimuthAngle() const {

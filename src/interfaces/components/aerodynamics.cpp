@@ -72,7 +72,7 @@ std::array<double, 6> CalculateAerodynamicLoad(
     const auto force_moment = math::CrossProduct(force_local, con_force);
     auto ref_axis_moment_local = std::array<double, 3>{};
     for (auto component = 0U; component < 3U; ++component) {
-        ref_axis_moment_local[component] = -(force_moment[component] + moment_local[component]);
+        ref_axis_moment_local[component] = force_moment[component] + moment_local[component];
     }
 
     const auto moment = math::RotateVectorByQuaternion(qqr, ref_axis_moment_local);

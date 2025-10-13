@@ -22,7 +22,7 @@ TEST(TurbineInterfaceTest, IEA15_ROSCOControllerWithAero) {
     constexpr auto time_step{0.01};                        // Time step for the simulation
     constexpr auto n_blades{3U};                           // Number of blades in turbine
     constexpr auto n_blade_nodes{11U};                     // Number of nodes per blade
-    constexpr auto n_tower_nodes{6U};                      // Number of nodes in tower
+    constexpr auto n_tower_nodes{11U};                     // Number of nodes in tower
     constexpr auto rotor_speed_init{7.56 * rpm_to_radps};  // Rotor speed (rad/s)
     constexpr double hub_wind_speed_init{10.6};            // Hub height wind speed (m/s)
     constexpr double generator_power_init{15.0e6};         // Generator power (W)
