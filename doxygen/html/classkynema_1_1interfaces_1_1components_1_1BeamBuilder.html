@@ -184,6 +184,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:af55bf3fb45dbf22620ded18987698f98" id="r_af55bf3fb45dbf22620ded18987698f98"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1BeamBuilder.html">BeamBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1BeamBuilder.html#af55bf3fb45dbf22620ded18987698f98">SetElementOrder</a> (size_t element_order)</td></tr>
 <tr class="memdesc:af55bf3fb45dbf22620ded18987698f98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the prder of the beam elements.  <br /></td></tr>
 <tr class="separator:af55bf3fb45dbf22620ded18987698f98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10132440e02e8a8a1c9e97daebfe9571" id="r_a10132440e02e8a8a1c9e97daebfe9571"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1BeamBuilder.html">BeamBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1BeamBuilder.html#a10132440e02e8a8a1c9e97daebfe9571">SetQuadratureRule</a> (<a class="el" href="structkynema_1_1interfaces_1_1components_1_1BeamInput.html#a2adbd4d176562ab5a7d106f3a9788897">BeamInput::QuadratureRule</a> rule)</td></tr>
+<tr class="memdesc:a10132440e02e8a8a1c9e97daebfe9571"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the Quadrature rule to use for this beam.  <br /></td></tr>
+<tr class="separator:a10132440e02e8a8a1c9e97daebfe9571"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a958325037abc0fc4928ac3dba8e75f8a" id="r_a958325037abc0fc4928ac3dba8e75f8a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1BeamBuilder.html">BeamBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1BeamBuilder.html#a958325037abc0fc4928ac3dba8e75f8a">SetSectionRefinement</a> (size_t section_refinement)</td></tr>
 <tr class="memdesc:a958325037abc0fc4928ac3dba8e75f8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the number of section refinements to perform.  <br /></td></tr>
 <tr class="separator:a958325037abc0fc4928ac3dba8e75f8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -496,6 +499,28 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a10132440e02e8a8a1c9e97daebfe9571" name="a10132440e02e8a8a1c9e97daebfe9571"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10132440e02e8a8a1c9e97daebfe9571">&#9670;&#160;</a></span>SetQuadratureRule()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1BeamBuilder.html">BeamBuilder</a> &amp; kynema::interfaces::components::BeamBuilder::SetQuadratureRule </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structkynema_1_1interfaces_1_1components_1_1BeamInput.html#a2adbd4d176562ab5a7d106f3a9788897">BeamInput::QuadratureRule</a>&#160;</td>
+          <td class="paramname"><em>rule</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the Quadrature rule to use for this beam. </p>
+<p>There are currently two supported Quadrature rules: Gauss Lobatto (default) and Gauss Legendre.</p>
+<dl class="section return"><dt>Returns</dt><dd>A reference to this <a class="el" href="classkynema_1_1interfaces_1_1components_1_1BeamBuilder.html" title="Builder class for creating Blade objects.">BeamBuilder</a> </dd></dl>
+
+</div>
+</div>
 <a id="a9807518cec19cf0b7cb814cf1395fb97" name="a9807518cec19cf0b7cb814cf1395fb97"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9807518cec19cf0b7cb814cf1395fb97">&#9670;&#160;</a></span>SetRootAcceleration()</h2>
 
@@ -594,7 +619,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Sets the number of section refinements to perform. </p>
-<p>This adds additional quadrature points between the supplied sections and sets their physical properties using linear interpolation. This is used to achieve sufficiently accurate quadrature for high order elements even when the physical properties have a relatively simple distribution.</p>
+<p>This adds additional quadrature points between the supplied sections and sets their physical properties using linear interpolation.</p>
 <dl class="section return"><dt>Returns</dt><dd>A reference to this <a class="el" href="classkynema_1_1interfaces_1_1components_1_1BeamBuilder.html" title="Builder class for creating Blade objects.">BeamBuilder</a> </dd></dl>
 
 </div>

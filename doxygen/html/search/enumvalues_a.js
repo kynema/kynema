@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['umfpack_0',['UMFPACK',['../namespacekynema_1_1dss.html#a80f774692ab0d512e96cf414a121b3d2ad2a602ed8582b78e22141784e4a86165',1,'kynema::dss']]],
-  ['uniform_1',['Uniform',['../namespacekynema_1_1interfaces_1_1components.html#a34d83ed40d4df2d23beb02afde0c9cb2af19516d11f2946f894070e92fcb56b6d',1,'kynema::interfaces::components']]]
+  ['superlu_0',['SUPERLU',['../namespacekynema_1_1dss.html#a80f774692ab0d512e96cf414a121b3d2ae85f79ff3d82385beca51faebc04ab92',1,'kynema::dss']]],
+  ['superlu_5fmt_1',['SUPERLU_MT',['../namespacekynema_1_1dss.html#a80f774692ab0d512e96cf414a121b3d2a2b5fb6f9206e24cb33edd6cf64195c31',1,'kynema::dss']]]
 ];

@@ -1,0 +1,14 @@
+.. meta::dbba628165a6bb15292160371fe4e42a4f1211ffe97ddce35ef8a9e09ed553892ac8cc62497d2197bf52430c87cff3e0ffa63af5a30e89a8e1da61e2d7f7506c
+
+:orphan:
+
+.. title:: Kynema API: /home/runner/work/kynema/kynema/kynema/src/math/gl_quadrature.hpp File Reference
+
+/home/runner/work/kynema/kynema/kynema/src/math/gl\_quadrature.hpp File Reference
+=================================================================================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: gl__quadrature_8hpp.html

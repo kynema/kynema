@@ -251,11 +251,11 @@ Functions</h2></td></tr>
 <tr class="memitem:a214c993e533aa7f86308b9f988ba6605" id="r_a214c993e533aa7f86308b9f988ba6605"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::array&lt; double, 2 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacekynema_1_1beams.html#a214c993e533aa7f86308b9f988ba6605">CreateTrapezoidalQuadrature</a> (std::span&lt; const double &gt; grid)</td></tr>
 <tr class="memdesc:a214c993e533aa7f86308b9f988ba6605"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a trapezoidal quadrature rule based on a given grid.  <br /></td></tr>
 <tr class="separator:a214c993e533aa7f86308b9f988ba6605"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2b4190d863adc6f2238e0c88f6138da2" id="r_a2b4190d863adc6f2238e0c88f6138da2"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::array&lt; double, 2 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacekynema_1_1beams.html#a2b4190d863adc6f2238e0c88f6138da2">CreateGaussLegendreLobattoQuadrature</a> (std::span&lt; const double &gt; grid, size_t order)</td></tr>
-<tr class="separator:a2b4190d863adc6f2238e0c88f6138da2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a62401a37eee1564cd6bd4db1a2d894cb" id="r_a62401a37eee1564cd6bd4db1a2d894cb"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::array&lt; double, 2 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacekynema_1_1beams.html#a62401a37eee1564cd6bd4db1a2d894cb">CreateGaussLegendreQuadrature</a> (const size_t order)</td></tr>
-<tr class="memdesc:a62401a37eee1564cd6bd4db1a2d894cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates Gauss-Legendre (GL) quadrature points and weights on [-1, 1].  <br /></td></tr>
-<tr class="separator:a62401a37eee1564cd6bd4db1a2d894cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15ea179a4bce0219b3f7ea6703786bd7" id="r_a15ea179a4bce0219b3f7ea6703786bd7"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::array&lt; double, 2 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacekynema_1_1beams.html#a15ea179a4bce0219b3f7ea6703786bd7">CreateGaussLegendreLobattoQuadrature</a> (std::span&lt; const double &gt; grid, std::span&lt; const double &gt; original_grid, size_t order)</td></tr>
+<tr class="separator:a15ea179a4bce0219b3f7ea6703786bd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88a50af7da0775b6889dc5edd6e196de" id="r_a88a50af7da0775b6889dc5edd6e196de"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::array&lt; double, 2 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacekynema_1_1beams.html#a88a50af7da0775b6889dc5edd6e196de">CreateGaussLegendreQuadrature</a> (std::span&lt; const double &gt; grid, std::span&lt; const double &gt; original_grid, size_t order)</td></tr>
+<tr class="memdesc:a88a50af7da0775b6889dc5edd6e196de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates Gauss-Legendre (GL) quadrature points and weights on [-1, 1].  <br /></td></tr>
+<tr class="separator:a88a50af7da0775b6889dc5edd6e196de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8cb02b6f7d0ef23479f3bf80cba0cac9" id="r_a8cb02b6f7d0ef23479f3bf80cba0cac9"><td class="memItemLeft" align="right" valign="top">static std::array&lt; std::array&lt; double, 6 &gt;, 6 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacekynema_1_1beams.html#a8cb02b6f7d0ef23479f3bf80cba0cac9">GenerateStiffnessMatrix</a> (double EA, double EI_x, double EI_y, double GKt, double GA, double kxs, double kys, double x_C, double y_C, double theta_p, double x_S, double y_S, double theta_s)</td></tr>
 <tr class="memdesc:a8cb02b6f7d0ef23479f3bf80cba0cac9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a 6x6 cross-sectional stiffness matrix for use in beam elements.  <br /></td></tr>
 <tr class="separator:a8cb02b6f7d0ef23479f3bf80cba0cac9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -362,8 +362,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a2b4190d863adc6f2238e0c88f6138da2" name="a2b4190d863adc6f2238e0c88f6138da2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2b4190d863adc6f2238e0c88f6138da2">&#9670;&#160;</a></span>CreateGaussLegendreLobattoQuadrature()</h2>
+<a id="a15ea179a4bce0219b3f7ea6703786bd7" name="a15ea179a4bce0219b3f7ea6703786bd7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15ea179a4bce0219b3f7ea6703786bd7">&#9670;&#160;</a></span>CreateGaussLegendreLobattoQuadrature()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -376,6 +376,12 @@ Functions</h2></td></tr>
           <td>(</td>
           <td class="paramtype">std::span&lt; const double &gt;&#160;</td>
           <td class="paramname"><em>grid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::span&lt; const double &gt;&#160;</td>
+          <td class="paramname"><em>original_grid</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -398,8 +404,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a62401a37eee1564cd6bd4db1a2d894cb" name="a62401a37eee1564cd6bd4db1a2d894cb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a62401a37eee1564cd6bd4db1a2d894cb">&#9670;&#160;</a></span>CreateGaussLegendreQuadrature()</h2>
+<a id="a88a50af7da0775b6889dc5edd6e196de" name="a88a50af7da0775b6889dc5edd6e196de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88a50af7da0775b6889dc5edd6e196de">&#9670;&#160;</a></span>CreateGaussLegendreQuadrature()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -410,9 +416,25 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">std::vector&lt; std::array&lt; double, 2 &gt; &gt; kynema::beams::CreateGaussLegendreQuadrature </td>
           <td>(</td>
-          <td class="paramtype">const size_t&#160;</td>
-          <td class="paramname"><em>order</em></td><td>)</td>
+          <td class="paramtype">std::span&lt; const double &gt;&#160;</td>
+          <td class="paramname"><em>grid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">std::span&lt; const double &gt;&#160;</td>
+          <td class="paramname"><em>original_grid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>order</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -426,6 +448,8 @@ Functions</h2></td></tr>
 <p>GL quadrature provides optimal accuracy for polynomial integration. The points are roots of P_n(x) where P_n is the nth Legendre polynomial. GL quadrature does NOT include the endpoints (-1, 1).</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
+    <tr><td class="paramname">grid</td><td>grid locations of each quadrature point </td></tr>
+    <tr><td class="paramname">original_grid</td><td>grid locations of the origionally specified sections </td></tr>
     <tr><td class="paramname">order</td><td>Number of quadrature points (n &gt;= 1). Returns n quadrature points. </td></tr>
   </table>
   </dd>
