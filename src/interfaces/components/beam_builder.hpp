@@ -36,12 +36,20 @@ public:
     BeamBuilder& SetElementOrder(size_t element_order);
 
     /**
+     * @brief Sets the Quadrature rule to use for this beam
+     *
+     * @details There are currently two supported Quadrature rules: Gauss Lobatto (default)
+     * and Gauss Legendre.
+     *
+     * @return A reference to this BeamBuilder
+     */
+    BeamBuilder& SetQuadratureRule(BeamInput::QuadratureRule rule);
+
+    /**
      * @brief Sets the number of section refinements to perform
      *
      * @details This adds additional quadrature points between the supplied sections and sets their
-     * physical properties using linear interpolation.  This is used to achieve sufficiently accurate
-     * quadrature for high order elements even when the physical properties have a relatively simple
-     * distribution.
+     * physical properties using linear interpolation.
      *
      * @return A reference to this BeamBuilder
      */

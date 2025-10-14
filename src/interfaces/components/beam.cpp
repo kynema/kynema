@@ -130,6 +130,14 @@ void Beam::CreateBeamElement(const BeamInput& input, Model& model) {
         return NodeData(node_id);
     });
 
+    auto original_section_grid = std::vector<double>(input.sections.size());
+    std::ranges::transform(
+        input.sections, std::begin(original_section_grid),
+        [](const auto& section) {
+            return section.location;
+        }
+    );
+
     // Build beam sections
     const auto sections = BuildBeamSections(input);
     auto section_grid = std::vector<double>(sections.size());
@@ -138,11 +146,17 @@ void Beam::CreateBeamElement(const BeamInput& input, Model& model) {
     });
 
     // Calculate trapezoidal quadrature based on section locations
-    const auto gll_quadrature =
-        beams::CreateGaussLegendreLobattoQuadrature(section_grid, input.section_refinement + 1U);
+    const auto quadrature =
+        (input.quadrature_rule == BeamInput::QuadratureRule::GaussLobatto)
+            ? beams::CreateGaussLegendreLobattoQuadrature(
+                  section_grid, original_section_grid, input.section_refinement + 1U
+              )
+            : beams::CreateGaussLegendreQuadrature(
+                  section_grid, original_section_grid, input.section_refinement + 1U
+              );
 
     // Add beam element and get ID
-    this->beam_element_id = model.AddBeamElement(node_ids, sections, gll_quadrature);
+    this->beam_element_id = model.AddBeamElement(node_ids, sections, quadrature);
 }
 
 void Beam::PositionBladeInSpace(const BeamInput& input, Model& model) const {
@@ -215,30 +229,41 @@ std::vector<BeamSection> Beam::BuildBeamSections(const BeamInput& input) {
     std::vector<BeamSection> sections;
 
     // Add first section after rotating matrices to account for twist
-    auto twist = math::LinearInterp(
-        input.sections[0].location, input.ref_axis.twist_grid, input.ref_axis.twist
-    );
-    auto q_twist = math::RotationVectorToQuaternion({twist * std::numbers::pi / 180., 0., 0.});
-    sections.emplace_back(
-        input.sections[0].location, math::RotateMatrix6(input.sections[0].mass_matrix, q_twist),
-        math::RotateMatrix6(input.sections[0].stiffness_matrix, q_twist)
-    );
+    if (input.quadrature_rule == BeamInput::QuadratureRule::GaussLobatto) {
+        const auto twist = math::LinearInterp(
+            input.sections[0].location, input.ref_axis.twist_grid, input.ref_axis.twist
+        );
+        const auto q_twist =
+            math::RotationVectorToQuaternion({twist * std::numbers::pi / 180., 0., 0.});
+        sections.emplace_back(
+            input.sections[0].location, math::RotateMatrix6(input.sections[0].mass_matrix, q_twist),
+            math::RotateMatrix6(input.sections[0].stiffness_matrix, q_twist)
+        );
+    }
 
     // Loop through remaining section locations
-    const auto gll_locations = math::GetGllLocations(input.section_refinement + 1U);
+    const auto quad_locations = (input.quadrature_rule == BeamInput::QuadratureRule::GaussLobatto)
+                                    ? math::GetGllLocations(input.section_refinement + 1U)
+                                    : math::GetGlLocations(input.section_refinement + 1U);
+    const auto interior_nodes = (input.quadrature_rule == BeamInput::QuadratureRule::GaussLobatto)
+                                    ? input.section_refinement
+                                    : input.section_refinement + 1U;
     for (auto section : std::views::iota(1U, input.sections.size())) {
         const auto section_location = input.sections[section].location;
         const auto section_mass_matrix = input.sections[section].mass_matrix;
         const auto section_stiffness_matrix = input.sections[section].stiffness_matrix;
 
         // Add refinement sections if requested
-        for (auto refinement : std::views::iota(0U, input.section_refinement)) {
+
+        for (auto refinement : std::views::iota(0U, interior_nodes)) {
             const auto left_location = input.sections[section - 1].location;
             const auto left_mass_matrix = input.sections[section - 1].mass_matrix;
             const auto left_stiffness_matrix = input.sections[section - 1].stiffness_matrix;
 
             // Calculate interpolation ratio between bounding sections
-            const auto alpha = (gll_locations[refinement + 1] + 1.) / 2.;
+            const auto alpha = (input.quadrature_rule == BeamInput::QuadratureRule::GaussLobatto)
+                                   ? (quad_locations[refinement + 1] + 1.) / 2.
+                                   : (quad_locations[refinement] + 1.) / 2.;
 
             // Interpolate grid location
             const auto grid_value = (1. - alpha) * left_location + alpha * section_location;
@@ -258,12 +283,13 @@ std::vector<BeamSection> Beam::BuildBeamSections(const BeamInput& input) {
             }
 
             // Calculate twist at current section location via linear interpolation
-            twist = math::LinearInterp(
+            const auto twist = math::LinearInterp(
                 section_location, input.ref_axis.twist_grid, input.ref_axis.twist
             );
 
             // Add refinement section
-            q_twist = math::RotationVectorToQuaternion({twist * std::numbers::pi / 180., 0., 0.});
+            const auto q_twist =
+                math::RotationVectorToQuaternion({twist * std::numbers::pi / 180., 0., 0.});
             sections.emplace_back(
                 grid_value, math::RotateMatrix6(mass_matrix, q_twist),
                 math::RotateMatrix6(stiffness_matrix, q_twist)
@@ -271,13 +297,17 @@ std::vector<BeamSection> Beam::BuildBeamSections(const BeamInput& input) {
         }
 
         // Add ending section
-        twist =
-            math::LinearInterp(section_location, input.ref_axis.twist_grid, input.ref_axis.twist);
-        q_twist = math::RotationVectorToQuaternion({twist * std::numbers::pi / 180., 0., 0.});
-        sections.emplace_back(
-            section_location, math::RotateMatrix6(section_mass_matrix, q_twist),
-            math::RotateMatrix6(section_stiffness_matrix, q_twist)
-        );
+        if (input.quadrature_rule == BeamInput::QuadratureRule::GaussLobatto) {
+            const auto twist = math::LinearInterp(
+                section_location, input.ref_axis.twist_grid, input.ref_axis.twist
+            );
+            const auto q_twist =
+                math::RotationVectorToQuaternion({twist * std::numbers::pi / 180., 0., 0.});
+            sections.emplace_back(
+                section_location, math::RotateMatrix6(section_mass_matrix, q_twist),
+                math::RotateMatrix6(section_stiffness_matrix, q_twist)
+            );
+        }
     }
 
     return sections;

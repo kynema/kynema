@@ -1,6 +1,7 @@
 #pragma once
 
 #include <array>
+#include <cstdint>
 #include <stdexcept>
 #include <vector>
 
@@ -82,10 +83,17 @@ struct Root {
  * Defines the input configuration for a turbine beam
  */
 struct BeamInput {
+    enum class QuadratureRule : std::uint8_t {
+        GaussLegendre,
+        GaussLobatto
+    };
     /// @brief Spectral element order (num nodes - 1)
     size_t element_order{10};
 
-    /// @brief Trapezoidal quadrature point refinement (0 = none)
+    /// @brief Quadrature Rule
+    QuadratureRule quadrature_rule{QuadratureRule::GaussLobatto};
+
+    /// @brief Quadrature point refinement
     size_t section_refinement{0};
 
     /// @brief Structural reference axis data
