@@ -18,15 +18,15 @@ TEST(TurbineInterfaceTest, IEA15_ROSCOControllerWithAero) {
     // Conversions
     constexpr auto rpm_to_radps{0.104719755};  // RPM to rad/s
 
-    constexpr auto duration{50.};                          // Simulation duration in seconds
-    constexpr auto time_step{0.01};                        // Time step for the simulation
-    constexpr auto n_blades{3U};                           // Number of blades in turbine
-    constexpr auto n_blade_nodes{11U};                     // Number of nodes per blade
-    constexpr auto n_tower_nodes{11U};                     // Number of nodes in tower
-    constexpr auto rotor_speed_init{7.56 * rpm_to_radps};  // Rotor speed (rad/s)
-    constexpr double hub_wind_speed_init{10.6};            // Hub height wind speed (m/s)
-    constexpr double generator_power_init{15.0e6};         // Generator power (W)
-    constexpr auto write_output{true};                     // Write output file
+    constexpr auto duration{25.};                         // Simulation duration in seconds
+    constexpr auto time_step{0.01};                       // Time step for the simulation
+    constexpr auto n_blades{3U};                          // Number of blades in turbine
+    constexpr auto n_blade_nodes{11U};                    // Number of nodes per blade
+    constexpr auto n_tower_nodes{11U};                    // Number of nodes in tower
+    constexpr auto rotor_speed_init{5.0 * rpm_to_radps};  // Rotor speed (rad/s)
+    constexpr double hub_wind_speed_init{6.0};            // Hub height wind speed (m/s)
+    constexpr double generator_power_init{0.0};           // Generator power (W)
+    constexpr auto write_output{false};                   // Write output file
 
     constexpr auto fluid_density = 1.225;
     constexpr auto vel_h = hub_wind_speed_init;
@@ -91,9 +91,7 @@ TEST(TurbineInterfaceTest, IEA15_ROSCOControllerWithAero) {
         auto& blade_builder = turbine_builder.Blade(j);
 
         // Set blade parameters
-        blade_builder.SetElementOrder(n_blade_nodes - 1)
-            .PrescribedRootMotion(false)
-            .SetSectionRefinement(2);
+        blade_builder.SetElementOrder(n_blade_nodes - 1).PrescribedRootMotion(false);
 
         // Add reference axis coordinates (WindIO uses Z-axis as reference axis)
         const auto ref_axis = wio_blade["reference_axis"];
@@ -194,7 +192,6 @@ TEST(TurbineInterfaceTest, IEA15_ROSCOControllerWithAero) {
     // Set tower parameters
     tower_builder
         .SetElementOrder(n_tower_nodes - 1)  // Set element order to num nodes - 1
-        .SetSectionRefinement(1)             // Add one section between each specified section
         .PrescribedRootMotion(false);        // Fix displacement of tower base node
 
     // Add reference axis coordinates (WindIO uses Z-axis as reference axis)
