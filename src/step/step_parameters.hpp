@@ -22,7 +22,7 @@ struct StepParameters {
     double conditioner;               //< diagonal preconditioner value
     double absolute_convergence_tol;  //< absolute convergence tolerance
     double relative_convergence_tol;  //< relative convergence tolerance
-    size_t max_load_retries;          //< maximum number of load reduction attempts
+    size_t static_load_retries;  //< maximum number of load reduction attempts for static analysis
 
     /**
      * @brief Constructor for the StepParameters object
@@ -34,11 +34,11 @@ struct StepParameters {
      * parameters
      * @param a_tol the absolute error convergence tolerance
      * @param r_tol the relative error convergence tolerance
-     * @param max_load_retries_ the maximum number of load reduction attempts
+     * @param num_retries the maximum number of load reduction attempts for static solves
      */
     StepParameters(
         bool is_dynamic_solve_, size_t max_iter_, double h_, double rho_inf, double a_tol = 1e-5,
-        double r_tol = 1e-3, size_t max_load_retries_ = 20
+        double r_tol = 1e-3, size_t num_retries = 20
     )
         : is_dynamic_solve(is_dynamic_solve_),
           max_iter(max_iter_),
@@ -52,7 +52,7 @@ struct StepParameters {
           conditioner(beta * h * h),
           absolute_convergence_tol(a_tol),
           relative_convergence_tol(r_tol),
-          max_load_retries(max_load_retries_) {}
+          static_load_retries(num_retries) {}
 };
 
 }  // namespace kynema

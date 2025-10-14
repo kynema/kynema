@@ -126,7 +126,12 @@ inline bool SolveStep(
 }
 
 /**
- * @brief Advance the solution by one time step, optionally using a load reduction mechanism
+ * @brief Advance solution by one time step with bisection-based load reduction for static analysis
+ *
+ * For static analysis, uses bisection search to find the maximum load factor that allows
+ * convergence. Scales external loads and maintains converged state for rollback on failure.
+ * For dynamic analysis, performs a single nonlinear solve.
+ *
  * @return true if a converged solution is found at load factor 1.0, otherwise false
  */
 template <typename DeviceType>
@@ -142,48 +147,54 @@ inline bool Step(
     }
 
     //--------------------------------------------------------------------------
-    // Static analysis (with load reduction strategy)
+    // Static analysis -> load reduction strategy to help with convergence
     //--------------------------------------------------------------------------
-    Kokkos::View<double* [6], DeviceType> loads_baseline("loads_baseline", state.f.extent(0));
+    const Kokkos::View<double* [6], DeviceType> loads_baseline("loads_baseline", state.f.extent(0));
     Kokkos::deep_copy(loads_baseline, state.f);
 
-    // Load reduction variables
+    // Load reduction variables initialization
     bool solved{false};
     double load_factor_low{0.};      // lower bound for the load factor
     double load_factor_current{1.};  // current load factor
     double load_factor_high{1.};     // upper bound for the load factor
 
-    // Load reduction loop to help with convergence -- bisection method
+    //-------------------------------
+    // Bisection method
+    //-------------------------------
+    // Load reduction loop to help with convergence
     auto state_last_converged = CloneState<DeviceType>(state);
-    for (size_t j = 0; j < parameters.max_load_retries; ++j) {
+    for (size_t j = 0; j < parameters.static_load_retries; ++j) {
         // Scale the external loads
         Kokkos::parallel_for(
             "ScaleLoads",
             Kokkos::RangePolicy<typename DeviceType::execution_space>(0, state.f.extent(0)),
             KOKKOS_LAMBDA(const int i) {
-                for (int k = 0; k < 6; ++k)
+                for (int k = 0; k < 6; ++k) {
                     state.f(i, k) = loads_baseline(i, k) * load_factor_current;
+                }
             }
         );
 
         // TODO Scale the gravity load as well?
 
         // Attempt a single nonlinear solve at the current load factor
-        bool converged = SolveStep(parameters, solver, elements, state, constraints);
+        const bool converged = SolveStep(parameters, solver, elements, state, constraints);
 
         if (converged) {
-            // Record the last converged state, if we're at full load our work is done
+            // Record the last converged state - if we're at full load our work is done
             CopyStateData<DeviceType>(state_last_converged, state);
             if (std::abs(load_factor_current - 1.) < 1e-10) {
                 solved = true;
                 break;
             }
-            // We have a successful converged lower bound, jump to full load next
+            // We have a successful converged lower bound -> increase lower bound
+            // to current load factor + set current load factor to full load
             load_factor_low = load_factor_current;
             load_factor_current = 1.;
         } else {
             // Not converged -> shrink load interval by bisection i.e. upper bounds is reduced to
-            // current load factor and new current load factor is set to the average of the bounds
+            // current load factor + new current load factor is set to the average of the bounds i.e.
+            // bisected
             load_factor_high = load_factor_current;
             load_factor_current = 0.5 * (load_factor_low + load_factor_high);
             // Roll back to the last converged state
