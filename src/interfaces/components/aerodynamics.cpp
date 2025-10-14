@@ -77,7 +77,6 @@ std::array<double, 6> CalculateAerodynamicLoad(
 
     const auto moment = math::RotateVectorByQuaternion(qqr, ref_axis_moment_local);
     std::ranges::copy(moment, std::begin(ref_axis_moment));
-    //    ref_axis_moment = math::RotateVectorByQuaternion(qqr, ref_axis_moment_local);
 
     return {load_force[0],  load_force[1],  load_force[2],
             load_moment[0], load_moment[1], load_moment[2]};
@@ -327,7 +326,7 @@ std::vector<std::array<double, 3>> AerodynamicBody::ComputeConMotion(
     for (auto section = 0U; section < n_sections; ++section) {
         const auto& node = input.aero_sections[section];
         const auto vec = CalculateConMotionVector(
-            node.section_offset_y - node.aerodynamic_center, node.section_offset_x
+            node.section_offset_y - node.aerodynamic_center * node.chord, node.section_offset_x
         );
         for (auto component = 0U; component < 3U; ++component) {
             con_motion[section][component] = vec[component];
@@ -419,7 +418,7 @@ AerodynamicBody::AerodynamicBody(const AerodynamicBodyInput& input, std::span<co
 
     jacobian_xi = CalculateJacobianXi(section_xi);
 
-    // Calculate shae derivative matrix to calculate jacobians
+    // Calculate shape derivative matrix to calculate jacobians
     shape_deriv_jac = ComputeShapeDerivJacobian(jacobian_xi, beam_node_xi);
 
     // Calculate aero point widths
