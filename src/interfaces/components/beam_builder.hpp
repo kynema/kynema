@@ -36,12 +36,36 @@ public:
     BeamBuilder& SetElementOrder(size_t element_order);
 
     /**
+     * @brief Sets the Quadrature rule to use for this beam
+     *
+     * @details There are currently two supported Quadrature rules: Gauss Lobatto (default)
+     * and Gauss Legendre.
+     *
+     * @return A reference to this BeamBuilder
+     */
+    BeamBuilder& SetQuadratureRule(BeamInput::QuadratureRule rule);
+
+    /**
+     * @brief Sets the Quadrature style to use for this beam
+     *
+     * @details Segmented applies the quadrature rule between each of the specified
+     * sectional properties.  WholeBeam has just one quadrautre applied to the enire beam.
+     *
+     * Combining GLL quadrature with the Segmented style wil preserve the user's specified
+     * sectional properties at their exact locations.  This is expected to give better
+     * performance for complex property distrubutions.
+     *
+     * WholeBeam will likely be the most efficient for simple property distributions.
+     *
+     * @return A reference to this BeamBuilder
+     */
+    BeamBuilder& SetQuadratureStyle(BeamInput::QuadratureStyle style);
+
+    /**
      * @brief Sets the number of section refinements to perform
      *
      * @details This adds additional quadrature points between the supplied sections and sets their
-     * physical properties using linear interpolation.  This is used to achieve sufficiently accurate
-     * quadrature for high order elements even when the physical properties have a relatively simple
-     * distribution.
+     * physical properties using linear interpolation.
      *
      * @return A reference to this BeamBuilder
      */
@@ -73,7 +97,7 @@ public:
      * actual beam element
      *
      * @param grid_location The location where the twist is specified
-     * @param twist The twist about the reference axis in degrees
+     * @param twist The twist about the reference axis in radians
      * @return A reference to this BeamBuilder
      */
     BeamBuilder& AddRefAxisTwist(double grid_location, double twist);

@@ -329,7 +329,7 @@ Kokkos::Array<double, 4> NormalizeQuaternion(const Kokkos::Array<double, 4>& q) 
 }
 
 /**
- * @brief Returns a 4-D quaternion from provided tangent vector and twist (degrees) about tangent
+ * @brief Returns a 4-D quaternion from provided tangent vector and twist (radians) about tangent
  */
 inline std::array<double, 4> TangentTwistToQuaternion(
     const std::array<double, 3>& tangent, const double twist
@@ -354,9 +354,7 @@ inline std::array<double, 4> TangentTwistToQuaternion(
         {e1[2], e2[2], e3[2]},
     }});
 
-    const auto twist_rad = twist * std::numbers::pi / 180.;
-    auto q_twist =
-        RotationVectorToQuaternion({e1[0] * twist_rad, e1[1] * twist_rad, e1[2] * twist_rad});
+    auto q_twist = RotationVectorToQuaternion({e1[0] * twist, e1[1] * twist, e1[2] * twist});
 
     return QuaternionCompose(q_twist, q_tan);
 }
