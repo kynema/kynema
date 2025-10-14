@@ -45,6 +45,7 @@ Table of contents
    user/user
    theory/index
    developer/index
+   testing/index
    acknowledgement
 
 Indices and tables
