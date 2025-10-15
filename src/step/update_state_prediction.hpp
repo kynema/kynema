@@ -28,6 +28,8 @@ inline void UpdateStatePrediction(
     auto region = Kokkos::Profiling::ScopedRegion("Update State Prediction");
     using RangePolicy = Kokkos::RangePolicy<typename DeviceType::execution_space>;
     auto range_policy = RangePolicy(0, solver.num_system_nodes);
+
+    // Update the state prediction for a DYNAMIC solve
     if (parameters.is_dynamic_solve) {
         Kokkos::parallel_for(
             "UpdateDynamicPrediction", range_policy,
@@ -44,6 +46,7 @@ inline void UpdateStatePrediction(
             }
         );
     } else {
+        // Update the state prediction for a STATIC solve
         Kokkos::parallel_for(
             "UpdateStaticPrediction", range_policy,
             state::UpdateStaticPrediction<DeviceType>{
