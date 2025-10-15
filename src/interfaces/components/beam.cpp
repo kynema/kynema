@@ -407,7 +407,7 @@ std::vector<BeamSection> Beam::BuildBeamSections_WholeBeam(
         const auto q_twist =
             math::RotationVectorToQuaternion({twist * std::numbers::pi / 180., 0., 0.});
 
-        const auto left_bound = std::ranges::find_if(input.sections, [grid_value](auto& s) {
+        const auto left_bound = std::ranges::find_if(input.sections, [grid_value](const auto& s) {
             return s.location <= grid_value;
         });
         if (left_bound->location == grid_value) {
