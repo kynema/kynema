@@ -62,7 +62,7 @@ TEST(StaticVerificationTest, CompositeBeamBending) {
         .SetQuadratureStyle(interfaces::components::BeamInput::QuadratureStyle::WholeBeam)
         .PrescribedRootMotion(true);  // Root node is fixed (clamped BC)
 
-    // No twist along beam reference axis (straight beam)
+    // No twist along beam reference axis
     builder.Blade()
         .AddRefAxisTwist(0., 0.)   // s = 0: twist = 0
         .AddRefAxisTwist(1., 0.);  // s = 1: twist = 0
@@ -80,7 +80,7 @@ TEST(StaticVerificationTest, CompositeBeamBending) {
     // beam cross-section properties
     //----------------------------------
 
-    // sectional mass matrix (6x6)
+    // sectional mass matrix (6 x 6)
     constexpr auto mass_matrix = std::array{
         std::array{8.538e-2, 0., 0., 0., 0., 0.},    //
         std::array{0., 8.538e-2, 0., 0., 0., 0.},    //
@@ -90,7 +90,7 @@ TEST(StaticVerificationTest, CompositeBeamBending) {
         std::array{0., 0., 0., 0., 0., 1.0336e-2},   //
     };
 
-    // sectional stiffness matrix
+    // sectional stiffness matrix (6 x 6)
     constexpr auto stiffness_matrix = std::array{
         std::array{1368.17e3, 0., 0., 0., 0., 0.},
         std::array{0., 88.56e3, 0., 0., 0., 0.},
@@ -111,7 +111,7 @@ TEST(StaticVerificationTest, CompositeBeamBending) {
     auto interface = builder.Build();
 
     //-------------------------------------------
-    // Apply transverse tip load
+    // apply transverse tip load
     //-------------------------------------------
     // Point force P_z = 150 lbs
     auto& tip_node = interface.Blade().nodes[interface.Blade().nodes.size() - 1];
@@ -124,7 +124,7 @@ TEST(StaticVerificationTest, CompositeBeamBending) {
     ASSERT_EQ(converged, true);
 
     //-------------------------------------------
-    // Verify tip displacements
+    // verify tip displacements
     //-------------------------------------------
     EXPECT_NEAR(
         tip_node.displacement[0], -9.02726627566299E-02, 1e-12

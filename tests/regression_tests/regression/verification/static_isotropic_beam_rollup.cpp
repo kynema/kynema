@@ -57,7 +57,7 @@ TEST(StaticVerificationTest, IsotropicBeamRollup) {
         .SetQuadratureStyle(interfaces::components::BeamInput::QuadratureStyle::WholeBeam)
         .PrescribedRootMotion(true);  // Root node is fixed (clamped BC)
 
-    // No twist along beam reference axis i.e. a straight beam
+    // No twist along beam reference axis
     builder.Blade()
         .AddRefAxisTwist(0., 0.)   // s = 0: twist = 0
         .AddRefAxisTwist(1., 0.);  // s = 1: twist = 0
@@ -104,7 +104,7 @@ TEST(StaticVerificationTest, IsotropicBeamRollup) {
     auto interface = builder.Build();
 
     //-------------------------------------------
-    // Apply moment to create circular rollup
+    // apply moment to create circular rollup
     //-------------------------------------------
     // For a beam to roll into a complete circle -> curvature k = 2π/L, moment = EI * k = EI * 2π/L
     const auto moment = 2. * M_PI * 86.9e3 / 10.;
