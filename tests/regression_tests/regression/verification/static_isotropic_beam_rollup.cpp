@@ -7,6 +7,26 @@
 
 namespace kynema::tests {
 
+/**
+ * @brief Static pure bending benchmark test for an isotropic cantilever beam rolling into a circle
+ *
+ * @details This problem demonstrates Kynema's capability to analyze an isotropic beam with no
+ * initial curvature and with highly nonlinear deflections. In fact, the displacement is so large
+ * that the beam bends into a complete circular shape (2π radians of rotation over the 10-unit
+ * length), providing a rigorous test of the geometrically exact beam formulation.
+ *
+ * The exact analytical solution for the tip displacement in the direction of the beam length
+ * is -10.0, representing a complete circular rollup where the tip returns to the same
+ * x-coordinate as the root.
+ *
+ * @note Details of this benchmark problem are described in:
+ *       J. C. Simo and L. Vu-Quoc (1986). "A three-dimensional finite-strain rod model. Part II."
+ *       Computer Methods in Applied Mechanics and Engineering, 58:79–116.
+ *
+ * @see Kynema documentation for the full benchmark results (we are using the 15-node, 15 quadrature
+ *      points with Gauss-Legendre quadrature case here):
+ *      https://kynema.github.io/kynema/testing/rollup.html
+ */
 TEST(StaticVerificationTest, IsotropicBeamRollup) {
     //----------------------------------
     // solution parameters
@@ -16,10 +36,10 @@ TEST(StaticVerificationTest, IsotropicBeamRollup) {
 
     // Static analysis with tight convergence tolerances for benchmark accuracy
     builder.Solution()
-        .EnableStaticSolve()
-        .SetTimeStep(1.)
-        .SetDampingFactor(1.)
-        .SetMaximumNonlinearIterations(15)
+        .EnableStaticSolve()   // Static analysis
+        .SetTimeStep(1.)       // Step size (irrelevant for static)
+        .SetDampingFactor(1.)  // No numerical damping (ρ_∞ = 1, irrelevant for static)
+        .SetMaximumNonlinearIterations(15)  // Max Newton-Raphson iterations
         .SetAbsoluteErrorTolerance(1e-11)
         .SetRelativeErrorTolerance(1e-9);
     if (write_output) {
@@ -32,7 +52,7 @@ TEST(StaticVerificationTest, IsotropicBeamRollup) {
     const int num_nodes{15};  // number of nodes = n
     builder.Blade()
         .SetElementOrder(num_nodes - 1)       // 15-node LSFE for high accuracy
-        .SetSectionRefinement(num_nodes - 1)  // n-pt Gauss-Legendre quadrature
+        .SetSectionRefinement(num_nodes - 1)  // n-pt Gauss-Legendre quadrature for integration
         .SetQuadratureRule(interfaces::components::BeamInput::QuadratureRule::GaussLegendre)
         .SetQuadratureStyle(interfaces::components::BeamInput::QuadratureStyle::WholeBeam)
         .PrescribedRootMotion(true);  // Root node is fixed (clamped BC)
@@ -86,8 +106,7 @@ TEST(StaticVerificationTest, IsotropicBeamRollup) {
     //-------------------------------------------
     // Apply moment to create circular rollup
     //-------------------------------------------
-    // For a beam to roll into a complete circle:
-    // Curvature κ = 2π/L, Moment M = EI*κ = EI * 2π/L
+    // For a beam to roll into a complete circle -> curvature k = 2π/L, moment = EI * k = EI * 2π/L
     const auto moment = 2. * M_PI * 86.9e3 / 10.;
 
     // Apply moment to tip node about y axis (negative for rollup)
@@ -103,8 +122,8 @@ TEST(StaticVerificationTest, IsotropicBeamRollup) {
     //----------------------------------
     // verify tip displacements
     //----------------------------------
-    EXPECT_NEAR(tip_node.displacement[0], -10.0000000000645, 1e-12);  // Exact soln: -10.
-    EXPECT_NEAR(tip_node.displacement[2], 0., 1e-12);                 // Exact soln: 0.
+    EXPECT_NEAR(tip_node.displacement[0], -10.0000000000645, 1e-12);  // Exact analytical soln: -10.
+    EXPECT_NEAR(tip_node.displacement[2], 0., 1e-12);                 // Exact analytical soln: 0.
 }
 
 }  // namespace kynema::tests
