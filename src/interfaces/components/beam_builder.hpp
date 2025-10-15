@@ -46,6 +46,22 @@ public:
     BeamBuilder& SetQuadratureRule(BeamInput::QuadratureRule rule);
 
     /**
+     * @brief Sets the Quadrature style to use for this beam
+     *
+     * @details Segmented applies the quadrature rule between each of the specified
+     * sectional properties.  WholeBeam has just one quadrautre applied to the enire beam.
+     *
+     * Combining GLL quadrature with the Segmented style wil preserve the user's specified
+     * sectional properties at their exact locations.  This is expected to give better
+     * performance for complex property distrubutions.
+     *
+     * WholeBeam will likely be the most efficient for simple property distributions.
+     *
+     * @return A reference to this BeamBuilder
+     */
+    BeamBuilder& SetQuadratureStyle(BeamInput::QuadratureStyle style);
+
+    /**
      * @brief Sets the number of section refinements to perform
      *
      * @details This adds additional quadrature points between the supplied sections and sets their
