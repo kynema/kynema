@@ -97,7 +97,7 @@ public:
      * actual beam element
      *
      * @param grid_location The location where the twist is specified
-     * @param twist The twist about the reference axis in degrees
+     * @param twist The twist about the reference axis in radians
      * @return A reference to this BeamBuilder
      */
     BeamBuilder& AddRefAxisTwist(double grid_location, double twist);

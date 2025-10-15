@@ -1430,7 +1430,7 @@ TEST(BeamComponentTest, Section_GLL_ThreeSections_OneRefinement_ConstantTwist_Co
     beam_input.ref_axis.coordinate_grid = std::vector{0., 1.0};
     beam_input.ref_axis.coordinates = std::vector{std::array{0., 0., 0.}, std::array{1., 0., 0.}};
     beam_input.ref_axis.twist_grid = std::vector{0., 1.0};
-    beam_input.ref_axis.twist = std::vector{45., 45.};
+    beam_input.ref_axis.twist = std::vector{std::numbers::pi / 4., std::numbers::pi / 4.};
 
     constexpr auto mass_stiff_array_0 =
         std::array{std::array{1., 0., 0., 0., 0., 0.}, std::array{0., 2., 0., 0., 0., 0.},
@@ -1510,7 +1510,7 @@ TEST(BeamComponentTest, Section_GLL_ThreeSections_OneRefinement_LinearTwist_Cons
     beam_input.ref_axis.coordinate_grid = std::vector{0., 1.0};
     beam_input.ref_axis.coordinates = std::vector{std::array{0., 0., 0.}, std::array{1., 0., 0.}};
     beam_input.ref_axis.twist_grid = std::vector{0., 1.0};
-    beam_input.ref_axis.twist = std::vector{0., 180.};
+    beam_input.ref_axis.twist = std::vector{0., std::numbers::pi};
 
     constexpr auto mass_stiff_array_0 =
         std::array{std::array{1., 0., 0., 0., 0., 0.}, std::array{0., 2., 0., 0., 0., 0.},
@@ -1590,7 +1590,7 @@ TEST(BeamComponentTest, Section_GLL_ThreeSections_OneRefinement_BiLinearTwist_Co
     beam_input.ref_axis.coordinate_grid = std::vector{0., 1.0};
     beam_input.ref_axis.coordinates = std::vector{std::array{0., 0., 0.}, std::array{1., 0., 0.}};
     beam_input.ref_axis.twist_grid = std::vector{0., .5, 1.0};
-    beam_input.ref_axis.twist = std::vector{0., 90., 0.};
+    beam_input.ref_axis.twist = std::vector{0., std::numbers::pi / 2., 0.};
 
     constexpr auto mass_stiff_array_0 =
         std::array{std::array{1., 0., 0., 0., 0., 0.}, std::array{0., 2., 0., 0., 0., 0.},
