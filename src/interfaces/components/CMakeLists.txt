@@ -16,6 +16,7 @@ install(FILES
         beam.hpp
         beam_builder.hpp
         beam_input.hpp
+        controller_builder.hpp
         controller_input.hpp
         inflow.hpp
         solution_builder.hpp

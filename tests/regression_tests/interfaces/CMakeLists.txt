@@ -5,6 +5,7 @@ target_sources(
     test_aerodynamics_interface.cpp
     test_cfd_interface.cpp
     test_turbine_interface.cpp
+    test_turbine_controller_interface.cpp
 )
 
 add_subdirectory(blade)
