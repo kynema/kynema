@@ -111,7 +111,7 @@ TEST(TurbineInterfaceTest, IEA15_ROSCOControllerWithAero) {
         const auto twist_grid = blade_twist["grid"].as<std::vector<double>>();
         const auto twist_values = blade_twist["values"].as<std::vector<double>>();
         for (auto i : std::views::iota(0U, twist_grid.size())) {
-            blade_builder.AddRefAxisTwist(twist_grid[i], twist_values[i] * std::numbers::pi / 180.);
+            blade_builder.AddRefAxisTwist(twist_grid[i], -twist_values[i] * std::numbers::pi / 180.);
         }
 
         const auto inertia_matrix = wio_blade["structure"]["elastic_properties"]["inertia_matrix"];
