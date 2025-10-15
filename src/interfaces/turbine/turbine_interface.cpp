@@ -105,6 +105,7 @@ void TurbineInterface::UpdateAerodynamicLoads(
     const std::function<std::array<double, 3>(const std::array<double, 3>&)>& inflow_function
 ) {
     if (aerodynamics) {
+        auto update_region = Kokkos::Profiling::ScopedRegion("Update Aerodynamic Loads");
         aerodynamics->CalculateMotion(host_state);
 
         aerodynamics->SetInflowFromFunction(inflow_function);
@@ -116,13 +117,17 @@ void TurbineInterface::UpdateAerodynamicLoads(
 }
 
 bool TurbineInterface::Step() {
+    auto step_resion = Kokkos::Profiling::ScopedRegion("TurbineInterface::Step");
     // Update the host state with current node loads
-    Kokkos::deep_copy(this->host_state.f, 0.);
-    this->turbine.SetLoads(this->host_state);
-    if (this->aerodynamics) {
-        this->aerodynamics->AddNodalLoadsToState(this->host_state);
+    {
+        auto forces_region = Kokkos::Profiling::ScopedRegion("Update Forces");
+        Kokkos::deep_copy(this->host_state.f, 0.);
+        this->turbine.SetLoads(this->host_state);
+        if (this->aerodynamics) {
+            this->aerodynamics->AddNodalLoadsToState(this->host_state);
+        }
+        this->host_state.CopyForcesToState(this->state);
     }
-    this->host_state.CopyForcesToState(this->state);
 
     // Solve for state at end of step
     auto converged =
@@ -133,20 +138,24 @@ bool TurbineInterface::Step() {
         return false;
     }
 
-    // Update the host state with current node motion
-    this->host_state.CopyFromState(this->state);
+    {
+        auto update_region = Kokkos::Profiling::ScopedRegion("Update Host Values");
+        // Update the host state with current node motion
+        this->host_state.CopyFromState(this->state);
 
-    // Update the turbine node motion based on the host state
-    this->turbine.GetMotion(this->host_state);
+        // Update the turbine node motion based on the host state
+        this->turbine.GetMotion(this->host_state);
 
-    // Update the host constraints with current constraint loads
-    this->host_constraints.CopyFromConstraints(this->constraints);
+        // Update the host constraints with current constraint loads
+        this->host_constraints.CopyFromConstraints(this->constraints);
 
-    // Update the turbine constraint loads based on the host constraints
-    this->turbine.GetLoads(this->host_constraints);
+        // Update the turbine constraint loads based on the host constraints
+        this->turbine.GetLoads(this->host_constraints);
+    }
 
     // Write outputs and increment timestep counter
     if (this->outputs) {
+        auto output_region = Kokkos::Profiling::ScopedRegion("Output Data");
         // Write node state outputs
         this->outputs->WriteNodeOutputsAtTimestep(this->host_state, this->state.time_step);
 
