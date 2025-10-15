@@ -114,9 +114,10 @@ void TurbineInterface::UpdateAerodynamicLoads(
     }
 }
 
-bool TurbineInterface::Step() {
+bool TurbineInterface::Step(double t) {
     // Apply controller if available
     if (controller) {
+        controller->io.time = t;
         ApplyController();
     }
 

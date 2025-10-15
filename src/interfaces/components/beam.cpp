@@ -130,7 +130,8 @@ void Beam::CreateBeamElement(const BeamInput& input, Model& model) {
         return NodeData(node_id);
     });
 
-    auto original_section_grid = std::vector<double>{};
+    auto original_section_grid =
+        std::vector<double>{input.sections.front().location, input.sections.back().location};
     if (input.quadrature_style == BeamInput::QuadratureStyle::Segmented) {
         original_section_grid.resize(input.sections.size());
         std::ranges::transform(
@@ -139,10 +140,6 @@ void Beam::CreateBeamElement(const BeamInput& input, Model& model) {
                 return section.location;
             }
         );
-    } else {
-        original_section_grid.resize(2);
-        original_section_grid[0] = input.sections.front().location;
-        original_section_grid[1] = input.sections.back().location;
     }
 
     // Build beam sections
@@ -299,9 +296,8 @@ std::vector<BeamSection> Beam::BuildBeamSections_SegmentedGLL(const BeamInput& i
             }
 
             // Calculate twist at current section location via linear interpolation
-            const auto twist = math::LinearInterp(
-                grid_value, input.ref_axis.twist_grid, input.ref_axis.twist
-            );
+            const auto twist =
+                math::LinearInterp(grid_value, input.ref_axis.twist_grid, input.ref_axis.twist);
 
             // Add refinement section
             const auto q_twist = math::RotationVectorToQuaternion({twist, 0., 0.});
@@ -366,9 +362,8 @@ std::vector<BeamSection> Beam::BuildBeamSections_SegmentedGL(const BeamInput& in
             }
 
             // Calculate twist at current section location via linear interpolation
-            const auto twist = math::LinearInterp(
-                grid_value, input.ref_axis.twist_grid, input.ref_axis.twist
-            );
+            const auto twist =
+                math::LinearInterp(grid_value, input.ref_axis.twist_grid, input.ref_axis.twist);
 
             // Add refinement section
             const auto q_twist = math::RotationVectorToQuaternion({twist, 0., 0.});
@@ -402,7 +397,7 @@ std::vector<BeamSection> Beam::BuildBeamSections_WholeBeam(
             math::LinearInterp(grid_value, input.ref_axis.twist_grid, input.ref_axis.twist);
         const auto q_twist = math::RotationVectorToQuaternion({twist, 0., 0.});
 
-        const auto left_bound = std::ranges::find_if(input.sections, [grid_value](auto& s) {
+        const auto left_bound = std::ranges::find_if(input.sections, [grid_value](const auto& s) {
             return s.location <= grid_value;
         });
         if (left_bound->location == grid_value) {
