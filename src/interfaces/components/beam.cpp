@@ -130,7 +130,8 @@ void Beam::CreateBeamElement(const BeamInput& input, Model& model) {
         return NodeData(node_id);
     });
 
-    auto original_section_grid = std::vector<double>{};
+    auto original_section_grid =
+        std::vector<double>{input.sections.front().location, input.sections.back().location};
     if (input.quadrature_style == BeamInput::QuadratureStyle::Segmented) {
         original_section_grid.resize(input.sections.size());
         std::ranges::transform(
@@ -139,10 +140,6 @@ void Beam::CreateBeamElement(const BeamInput& input, Model& model) {
                 return section.location;
             }
         );
-    } else {
-        original_section_grid.resize(2);
-        original_section_grid[0] = input.sections.front().location;
-        original_section_grid[1] = input.sections.back().location;
     }
 
     // Build beam sections
