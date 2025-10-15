@@ -1,4 +1,3 @@
-
 #include <gtest/gtest.h>
 
 #include "interfaces/blade/blade_interface.hpp"
@@ -7,29 +6,30 @@
 
 namespace kynema::tests {
 
-TEST(StaticVerificationTest, IsotropicBeamRollup) {
+TEST(StaticVerificationTest, CompositeBeamBending) {
     //----------------------------------
     // solution parameters
     //----------------------------------
     auto builder = interfaces::BladeInterfaceBuilder{};
     const auto write_output{false};
 
-    // Static analysis with tight convergence tolerances for benchmark accuracy
+    // Static analysis with tight convergence tolerances
     builder.Solution()
-        .EnableStaticSolve()
-        .SetTimeStep(1.)
-        .SetDampingFactor(1.)
-        .SetMaximumNonlinearIterations(15)
+        .EnableStaticSolve()   // Static analysis
+        .SetTimeStep(1.)       // Step size (irrelevant for static)
+        .SetDampingFactor(1.)  // No numerical damping (ρ_∞ = 1, irrerelevant for static)
+        .SetMaximumNonlinearIterations(15)  // Max Newton-Raphson iterations
         .SetAbsoluteErrorTolerance(1e-11)
         .SetRelativeErrorTolerance(1e-9);
+
     if (write_output) {
-        builder.Solution().SetOutputFile("StaticVerificationTest.IsotropicBeamRollup");
+        builder.Solution().SetOutputFile("StaticVerificationTest.CompositeBeamBending");
     }
 
     //----------------------------------
     // beam element
     //----------------------------------
-    const int num_nodes{15};  // number of nodes = n
+    const int num_nodes{15};  // 15-node LSFE
     builder.Blade()
         .SetElementOrder(num_nodes - 1)       // 15-node LSFE for high accuracy
         .SetSectionRefinement(num_nodes - 1)  // n-pt Gauss-Legendre quadrature
@@ -37,7 +37,7 @@ TEST(StaticVerificationTest, IsotropicBeamRollup) {
         .SetQuadratureStyle(interfaces::components::BeamInput::QuadratureStyle::WholeBeam)
         .PrescribedRootMotion(true);  // Root node is fixed (clamped BC)
 
-    // No twist along beam reference axis i.e. a straight beam
+    // No twist along beam reference axis (straight beam)
     builder.Blade()
         .AddRefAxisTwist(0., 0.)   // s = 0: twist = 0
         .AddRefAxisTwist(1., 0.);  // s = 1: twist = 0
@@ -54,57 +54,57 @@ TEST(StaticVerificationTest, IsotropicBeamRollup) {
     //----------------------------------
     // beam cross-section properties
     //----------------------------------
+
+    // Mass matrix
+    constexpr auto mass_matrix = std::array{
+        std::array{8.538e-2, 0., 0., 0., 0., 0.},   std::array{0., 8.538e-2, 0., 0., 0., 0.},
+        std::array{0., 0., 8.538e-2, 0., 0., 0.},   std::array{0., 0., 0., 1.4433e-2, 0., 0.},
+        std::array{0., 0., 0., 0., 0.40972e-2, 0.}, std::array{0., 0., 0., 0., 0., 1.0336e-2},
+    };
+
+    // Stiffness matrix
+    constexpr auto stiffness_matrix = std::array{
+        std::array{1368.17e3, 0., 0., 0., 0., 0.},
+        std::array{0., 88.56e3, 0., 0., 0., 0.},
+        std::array{0., 0., 38.78e3, 0., 0., 0.},
+        std::array{0., 0., 0., 16.9600e3, 17.6100e3, -0.3510e3},
+        std::array{0., 0., 0., 17.6100e3, 59.1200e3, -0.3700e3},
+        std::array{0., 0., 0., -0.3510e3, -0.3700e3, 141.470e3},
+    };
+
+    // Apply uniform properties along entire beam length
     const std::vector<double> section_s{0., 1.};
-    // Add reference axis coordinates and twist
     for (const auto s : section_s) {
         builder.Blade().AddSection(
-            s,
-            // mass matrix -- just a placeholder for static analysis
-            std::array{
-                std::array{1., 0., 0., 0., 0., 0.},
-                std::array{0., 1., 0., 0., 0., 0.},
-                std::array{0., 0., 1., 0., 0., 0.},
-                std::array{0., 0., 0., 1., 0., 0.},
-                std::array{0., 0., 0., 0., 1., 0.},
-                std::array{0., 0., 0., 0., 0., 1.},
-            },
-            // stiffness matrix -- isotropic beam
-            std::array{
-                std::array{1770.e3, 0., 0., 0., 0., 0.},
-                std::array{0., 1770.e3, 0., 0., 0., 0.},
-                std::array{0., 0., 1770.e3, 0., 0., 0.},
-                std::array{0., 0., 0., 8.16e3, 0., 0.},
-                std::array{0., 0., 0., 0., 86.9e3, 0.},
-                std::array{0., 0., 0., 0., 0., 215.e3},
-            },
-            interfaces::components::ReferenceAxisOrientation::X
+            s, mass_matrix, stiffness_matrix, interfaces::components::ReferenceAxisOrientation::X
         );
     }
 
     auto interface = builder.Build();
 
     //-------------------------------------------
-    // Apply moment to create circular rollup
+    // Apply transverse tip load
     //-------------------------------------------
-    // For a beam to roll into a complete circle:
-    // Curvature κ = 2π/L, Moment M = EI*κ = EI * 2π/L
-    const auto moment = 2. * M_PI * 86.9e3 / 10.;
-
-    // Apply moment to tip node about y axis (negative for rollup)
+    // Point force P_z = 150 lbs
     auto& tip_node = interface.Blade().nodes[interface.Blade().nodes.size() - 1];
-    tip_node.loads[4] = -moment;
+    tip_node.loads[2] = 150.;
 
     // Static step
     const auto converged = interface.Step();
 
-    // Check convergence
+    // Verify convergence
     ASSERT_EQ(converged, true);
 
-    //----------------------------------
-    // verify tip displacements
-    //----------------------------------
-    EXPECT_NEAR(tip_node.displacement[0], -10.0000000000645, 1e-12);  // Exact soln: -10.
-    EXPECT_NEAR(tip_node.displacement[2], 0., 1e-12);                 // Exact soln: 0.
+    //-------------------------------------------
+    // Verify tip displacements
+    //-------------------------------------------
+    EXPECT_NEAR(
+        tip_node.displacement[0], -9.02726627566299E-02, 1e-12
+    );  // Beamdyn soln: -0.09064180058
+    EXPECT_NEAR(
+        tip_node.displacement[1], -6.47488486259036E-02, 1e-12
+    );  // Beamdyn soln: -0.0648265579
+    EXPECT_NEAR(tip_node.displacement[2], 1.22973648292371E+00, 1e-12);  // Beamdyn soln: 1.229985112
 }
 
 }  // namespace kynema::tests
