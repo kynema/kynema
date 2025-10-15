@@ -300,8 +300,7 @@ std::vector<BeamSection> Beam::BuildBeamSections_SegmentedGLL(const BeamInput& i
                 math::LinearInterp(grid_value, input.ref_axis.twist_grid, input.ref_axis.twist);
 
             // Add refinement section
-            const auto q_twist =
-                math::RotationVectorToQuaternion({twist, 0., 0.});
+            const auto q_twist = math::RotationVectorToQuaternion({twist, 0., 0.});
             sections.emplace_back(
                 grid_value, math::RotateMatrix6(mass_matrix, q_twist),
                 math::RotateMatrix6(stiffness_matrix, q_twist)
@@ -313,8 +312,7 @@ std::vector<BeamSection> Beam::BuildBeamSections_SegmentedGLL(const BeamInput& i
             const auto twist = math::LinearInterp(
                 section_location, input.ref_axis.twist_grid, input.ref_axis.twist
             );
-            const auto q_twist =
-                math::RotationVectorToQuaternion({twist, 0., 0.});
+            const auto q_twist = math::RotationVectorToQuaternion({twist, 0., 0.});
             sections.emplace_back(
                 section_location, math::RotateMatrix6(section_mass_matrix, q_twist),
                 math::RotateMatrix6(section_stiffness_matrix, q_twist)
