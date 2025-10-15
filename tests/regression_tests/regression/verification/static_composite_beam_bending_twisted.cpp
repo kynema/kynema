@@ -43,14 +43,14 @@ TEST(StaticVerificationTest, CompositeBeamBending_TwistedBeam) {
     auto builder = interfaces::BladeInterfaceBuilder{};
     const auto write_output{false};
 
-    // Static analysis with standard convergence tolerances
+    // Static analysis with tight convergence tolerances
     builder.Solution()
         .EnableStaticSolve()                // Static equilibrium problem
         .SetTimeStep(1.)                    // Step size (irrelevant for static)
         .SetDampingFactor(1.)               // No numerical damping (ρ_∞ = 1)
         .SetMaximumNonlinearIterations(15)  // Max Newton-Raphson iterations
-        .SetAbsoluteErrorTolerance(1e-5)    // Absolute tolerance
-        .SetRelativeErrorTolerance(1e-3);   // Relative tolerance
+        .SetAbsoluteErrorTolerance(1e-11)   // Absolute tolerance
+        .SetRelativeErrorTolerance(1e-9);   // Relative tolerance
 
     if (write_output) {
         builder.Solution().SetOutputFile("StaticVerificationTest.CompositeBeamBending_TwistedBeam");
@@ -64,7 +64,7 @@ TEST(StaticVerificationTest, CompositeBeamBending_TwistedBeam) {
         .SetElementOrder(num_nodes - 1)       // 15-node LSFE for high accuracy
         .SetSectionRefinement(num_nodes - 1)  // n-pt Gauss-Legendre quadrature for integration
         .SetQuadratureRule(interfaces::components::BeamInput::QuadratureRule::GaussLegendre)
-        .SetQuadratureStyle(interfaces::components::BeamInput::QuadratureStyle::WholeBeam)
+        .SetQuadratureStyle(interfaces::components::BeamInput::QuadratureStyle::Segmented)
         .PrescribedRootMotion(true);  // Root node is fixed (clamped BC)
 
     // Helper function to convert degrees to radians
@@ -90,14 +90,14 @@ TEST(StaticVerificationTest, CompositeBeamBending_TwistedBeam) {
     // beam cross-section properties
     //----------------------------------
 
-    // Sectional mass matrix (6x6) - uniform along beam
+    // Sectional mass matrix (6x6) - placeholder for static analysis
     constexpr auto mass_matrix = std::array{
-        std::array{8.538e-2, 0., 0., 0., 0., 0.},    //
-        std::array{0., 8.538e-2, 0., 0., 0., 0.},    //
-        std::array{0., 0., 8.538e-2, 0., 0., 0.},    //
-        std::array{0., 0., 0., 1.4433e-2, 0., 0.},   //
-        std::array{0., 0., 0., 0., 0.40972e-2, 0.},  //
-        std::array{0., 0., 0., 0., 0., 1.0336e-2},   //
+        std::array{1., 0., 0., 0., 0., 0.},  //
+        std::array{0., 1., 0., 0., 0., 0.},  //
+        std::array{0., 0., 1., 0., 0., 0.},  //
+        std::array{0., 0., 0., 1., 0., 0.},  //
+        std::array{0., 0., 0., 0., 1., 0.},  //
+        std::array{0., 0., 0., 0., 0., 1.},  //
     };
 
     // Sectional stiffness matrix (6x6) - transversely isotropic (diagonal, no material coupling)

@@ -59,7 +59,7 @@ TEST(StaticVerificationTest, CompositeBeamBending) {
         .SetElementOrder(num_nodes - 1)       // 15-node LSFE for high accuracy
         .SetSectionRefinement(num_nodes - 1)  // n-pt Gauss-Legendre quadrature for integration
         .SetQuadratureRule(interfaces::components::BeamInput::QuadratureRule::GaussLegendre)
-        .SetQuadratureStyle(interfaces::components::BeamInput::QuadratureStyle::WholeBeam)
+        .SetQuadratureStyle(interfaces::components::BeamInput::QuadratureStyle::Segmented)
         .PrescribedRootMotion(true);  // Root node is fixed (clamped BC)
 
     // No twist along beam reference axis
@@ -80,17 +80,17 @@ TEST(StaticVerificationTest, CompositeBeamBending) {
     // beam cross-section properties
     //----------------------------------
 
-    // sectional mass matrix (6 x 6)
+    // Sectional mass matrix (6x6) - placeholder for static analysis
     constexpr auto mass_matrix = std::array{
-        std::array{8.538e-2, 0., 0., 0., 0., 0.},    //
-        std::array{0., 8.538e-2, 0., 0., 0., 0.},    //
-        std::array{0., 0., 8.538e-2, 0., 0., 0.},    //
-        std::array{0., 0., 0., 1.4433e-2, 0., 0.},   //
-        std::array{0., 0., 0., 0., 0.40972e-2, 0.},  //
-        std::array{0., 0., 0., 0., 0., 1.0336e-2},   //
+        std::array{1., 0., 0., 0., 0., 0.},  //
+        std::array{0., 1., 0., 0., 0., 0.},  //
+        std::array{0., 0., 1., 0., 0., 0.},  //
+        std::array{0., 0., 0., 1., 0., 0.},  //
+        std::array{0., 0., 0., 0., 1., 0.},  //
+        std::array{0., 0., 0., 0., 0., 1.},  //
     };
 
-    // sectional stiffness matrix (6 x 6)
+    // sectional stiffness matrix (6x6)
     constexpr auto stiffness_matrix = std::array{
         std::array{1368.17e3, 0., 0., 0., 0., 0.},
         std::array{0., 88.56e3, 0., 0., 0., 0.},

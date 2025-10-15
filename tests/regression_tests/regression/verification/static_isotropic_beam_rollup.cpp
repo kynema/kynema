@@ -54,7 +54,7 @@ TEST(StaticVerificationTest, IsotropicBeamRollup) {
         .SetElementOrder(num_nodes - 1)       // 15-node LSFE for high accuracy
         .SetSectionRefinement(num_nodes - 1)  // n-pt Gauss-Legendre quadrature for integration
         .SetQuadratureRule(interfaces::components::BeamInput::QuadratureRule::GaussLegendre)
-        .SetQuadratureStyle(interfaces::components::BeamInput::QuadratureStyle::WholeBeam)
+        .SetQuadratureStyle(interfaces::components::BeamInput::QuadratureStyle::Segmented)
         .PrescribedRootMotion(true);  // Root node is fixed (clamped BC)
 
     // No twist along beam reference axis

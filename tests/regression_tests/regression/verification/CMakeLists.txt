@@ -5,4 +5,5 @@ target_sources(
     static_isotropic_beam_rollup.cpp
     static_composite_beam_bending.cpp
     static_composite_beam_bending_twisted.cpp
+    static_composite_beam_bending_curved.cpp
 )
