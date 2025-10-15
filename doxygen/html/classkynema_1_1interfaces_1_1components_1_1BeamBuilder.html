@@ -187,6 +187,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a10132440e02e8a8a1c9e97daebfe9571" id="r_a10132440e02e8a8a1c9e97daebfe9571"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1BeamBuilder.html">BeamBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1BeamBuilder.html#a10132440e02e8a8a1c9e97daebfe9571">SetQuadratureRule</a> (<a class="el" href="structkynema_1_1interfaces_1_1components_1_1BeamInput.html#a2adbd4d176562ab5a7d106f3a9788897">BeamInput::QuadratureRule</a> rule)</td></tr>
 <tr class="memdesc:a10132440e02e8a8a1c9e97daebfe9571"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the Quadrature rule to use for this beam.  <br /></td></tr>
 <tr class="separator:a10132440e02e8a8a1c9e97daebfe9571"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0eaa4304e3607f32e1f576229748724e" id="r_a0eaa4304e3607f32e1f576229748724e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1BeamBuilder.html">BeamBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1BeamBuilder.html#a0eaa4304e3607f32e1f576229748724e">SetQuadratureStyle</a> (<a class="el" href="structkynema_1_1interfaces_1_1components_1_1BeamInput.html#ac49a5295fe85b58c3da217f2cc8b27cc">BeamInput::QuadratureStyle</a> style)</td></tr>
+<tr class="memdesc:a0eaa4304e3607f32e1f576229748724e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the Quadrature style to use for this beam.  <br /></td></tr>
+<tr class="separator:a0eaa4304e3607f32e1f576229748724e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a958325037abc0fc4928ac3dba8e75f8a" id="r_a958325037abc0fc4928ac3dba8e75f8a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1BeamBuilder.html">BeamBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1BeamBuilder.html#a958325037abc0fc4928ac3dba8e75f8a">SetSectionRefinement</a> (size_t section_refinement)</td></tr>
 <tr class="memdesc:a958325037abc0fc4928ac3dba8e75f8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the number of section refinements to perform.  <br /></td></tr>
 <tr class="separator:a958325037abc0fc4928ac3dba8e75f8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -517,6 +520,30 @@ Public Member Functions</h2></td></tr>
 
 <p>Sets the Quadrature rule to use for this beam. </p>
 <p>There are currently two supported Quadrature rules: Gauss Lobatto (default) and Gauss Legendre.</p>
+<dl class="section return"><dt>Returns</dt><dd>A reference to this <a class="el" href="classkynema_1_1interfaces_1_1components_1_1BeamBuilder.html" title="Builder class for creating Blade objects.">BeamBuilder</a> </dd></dl>
+
+</div>
+</div>
+<a id="a0eaa4304e3607f32e1f576229748724e" name="a0eaa4304e3607f32e1f576229748724e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0eaa4304e3607f32e1f576229748724e">&#9670;&#160;</a></span>SetQuadratureStyle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1BeamBuilder.html">BeamBuilder</a> &amp; kynema::interfaces::components::BeamBuilder::SetQuadratureStyle </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structkynema_1_1interfaces_1_1components_1_1BeamInput.html#ac49a5295fe85b58c3da217f2cc8b27cc">BeamInput::QuadratureStyle</a>&#160;</td>
+          <td class="paramname"><em>style</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the Quadrature style to use for this beam. </p>
+<p>Segmented applies the quadrature rule between each of the specified sectional properties. WholeBeam has just one quadrautre applied to the enire beam.</p>
+<p>Combining GLL quadrature with the Segmented style wil preserve the user's specified sectional properties at their exact locations. This is expected to give better performance for complex property distrubutions.</p>
+<p>WholeBeam will likely be the most efficient for simple property distributions.</p>
 <dl class="section return"><dt>Returns</dt><dd>A reference to this <a class="el" href="classkynema_1_1interfaces_1_1components_1_1BeamBuilder.html" title="Builder class for creating Blade objects.">BeamBuilder</a> </dd></dl>
 
 </div>

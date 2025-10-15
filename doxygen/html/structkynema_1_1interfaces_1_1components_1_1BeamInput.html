@@ -186,6 +186,10 @@ Public Types</h2></td></tr>
 , <a class="el" href="structkynema_1_1interfaces_1_1components_1_1BeamInput.html#a2adbd4d176562ab5a7d106f3a9788897a8d79a6cd40b3cc60da789f4c167526b9">GaussLobatto</a>
  }</td></tr>
 <tr class="separator:a2adbd4d176562ab5a7d106f3a9788897"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac49a5295fe85b58c3da217f2cc8b27cc" id="r_ac49a5295fe85b58c3da217f2cc8b27cc"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema_1_1interfaces_1_1components_1_1BeamInput.html#ac49a5295fe85b58c3da217f2cc8b27cc">QuadratureStyle</a> : std::uint8_t { <a class="el" href="structkynema_1_1interfaces_1_1components_1_1BeamInput.html#ac49a5295fe85b58c3da217f2cc8b27cca8484a13cbb8a8a53d6c4285938d21f60">Segmented</a>
+, <a class="el" href="structkynema_1_1interfaces_1_1components_1_1BeamInput.html#ac49a5295fe85b58c3da217f2cc8b27cca93ec6f0fa83ffc002434e4a96a0083f6">WholeBeam</a>
+ }</td></tr>
+<tr class="separator:ac49a5295fe85b58c3da217f2cc8b27cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -195,6 +199,9 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a54ccfc6af5da4b5b7addc3eb6e042075" id="r_a54ccfc6af5da4b5b7addc3eb6e042075"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema_1_1interfaces_1_1components_1_1BeamInput.html#a2adbd4d176562ab5a7d106f3a9788897">QuadratureRule</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema_1_1interfaces_1_1components_1_1BeamInput.html#a54ccfc6af5da4b5b7addc3eb6e042075">quadrature_rule</a> {<a class="el" href="structkynema_1_1interfaces_1_1components_1_1BeamInput.html#a2adbd4d176562ab5a7d106f3a9788897a8d79a6cd40b3cc60da789f4c167526b9">QuadratureRule::GaussLobatto</a>}</td></tr>
 <tr class="memdesc:a54ccfc6af5da4b5b7addc3eb6e042075"><td class="mdescLeft">&#160;</td><td class="mdescRight">Quadrature Rule.  <br /></td></tr>
 <tr class="separator:a54ccfc6af5da4b5b7addc3eb6e042075"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f28811726e3dc91d15025aea9b11b89" id="r_a2f28811726e3dc91d15025aea9b11b89"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema_1_1interfaces_1_1components_1_1BeamInput.html#ac49a5295fe85b58c3da217f2cc8b27cc">QuadratureStyle</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema_1_1interfaces_1_1components_1_1BeamInput.html#a2f28811726e3dc91d15025aea9b11b89">quadrature_style</a> {<a class="el" href="structkynema_1_1interfaces_1_1components_1_1BeamInput.html#ac49a5295fe85b58c3da217f2cc8b27cca8484a13cbb8a8a53d6c4285938d21f60">QuadratureStyle::Segmented</a>}</td></tr>
+<tr class="memdesc:a2f28811726e3dc91d15025aea9b11b89"><td class="mdescLeft">&#160;</td><td class="mdescRight">Quadrature stype.  <br /></td></tr>
+<tr class="separator:a2f28811726e3dc91d15025aea9b11b89"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a418e6e5274495d6b30bfbc8e44f88e6c" id="r_a418e6e5274495d6b30bfbc8e44f88e6c"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema_1_1interfaces_1_1components_1_1BeamInput.html#a418e6e5274495d6b30bfbc8e44f88e6c">section_refinement</a> {0}</td></tr>
 <tr class="memdesc:a418e6e5274495d6b30bfbc8e44f88e6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Quadrature point refinement.  <br /></td></tr>
 <tr class="separator:a418e6e5274495d6b30bfbc8e44f88e6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -238,6 +245,32 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="ac49a5295fe85b58c3da217f2cc8b27cc" name="ac49a5295fe85b58c3da217f2cc8b27cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac49a5295fe85b58c3da217f2cc8b27cc">&#9670;&#160;</a></span>QuadratureStyle</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="structkynema_1_1interfaces_1_1components_1_1BeamInput.html#ac49a5295fe85b58c3da217f2cc8b27cc">kynema::interfaces::components::BeamInput::QuadratureStyle</a> : std::uint8_t</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ac49a5295fe85b58c3da217f2cc8b27cca8484a13cbb8a8a53d6c4285938d21f60" name="ac49a5295fe85b58c3da217f2cc8b27cca8484a13cbb8a8a53d6c4285938d21f60"></a>Segmented&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ac49a5295fe85b58c3da217f2cc8b27cca93ec6f0fa83ffc002434e4a96a0083f6" name="ac49a5295fe85b58c3da217f2cc8b27cca93ec6f0fa83ffc002434e4a96a0083f6"></a>WholeBeam&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
 <h2 class="groupheader">Member Data Documentation</h2>
 <a id="a5a91c4dfb8212420a149a408ee4eb6a8" name="a5a91c4dfb8212420a149a408ee4eb6a8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5a91c4dfb8212420a149a408ee4eb6a8">&#9670;&#160;</a></span>element_order</h2>
@@ -268,6 +301,22 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Quadrature Rule. </p>
+
+</div>
+</div>
+<a id="a2f28811726e3dc91d15025aea9b11b89" name="a2f28811726e3dc91d15025aea9b11b89"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f28811726e3dc91d15025aea9b11b89">&#9670;&#160;</a></span>quadrature_style</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema_1_1interfaces_1_1components_1_1BeamInput.html#ac49a5295fe85b58c3da217f2cc8b27cc">QuadratureStyle</a> kynema::interfaces::components::BeamInput::quadrature_style {<a class="el" href="structkynema_1_1interfaces_1_1components_1_1BeamInput.html#ac49a5295fe85b58c3da217f2cc8b27cca8484a13cbb8a8a53d6c4285938d21f60">QuadratureStyle::Segmented</a>}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Quadrature stype. </p>
 
 </div>
 </div>
