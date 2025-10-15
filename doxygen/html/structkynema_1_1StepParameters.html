@@ -182,9 +182,9 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a5755386e4800d0b87d19901054e3c4eb" id="r_a5755386e4800d0b87d19901054e3c4eb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema_1_1StepParameters.html#a5755386e4800d0b87d19901054e3c4eb">StepParameters</a> (bool is_dynamic_solve_, size_t max_iter_, double h_, double rho_inf, double a_tol=1e-5, double r_tol=1e-3)</td></tr>
-<tr class="memdesc:a5755386e4800d0b87d19901054e3c4eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for the <a class="el" href="structkynema_1_1StepParameters.html" title="A Struct containing the paramters used to control the time stepping process.">StepParameters</a> object.  <br /></td></tr>
-<tr class="separator:a5755386e4800d0b87d19901054e3c4eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ddf1d52e85e742589cb918a29ca9c84" id="r_a4ddf1d52e85e742589cb918a29ca9c84"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema_1_1StepParameters.html#a4ddf1d52e85e742589cb918a29ca9c84">StepParameters</a> (bool is_dynamic_solve_, size_t max_iter_, double h_, double rho_inf, double a_tol=1e-5, double r_tol=1e-3, size_t num_retries=20)</td></tr>
+<tr class="memdesc:a4ddf1d52e85e742589cb918a29ca9c84"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for the <a class="el" href="structkynema_1_1StepParameters.html" title="A Struct containing the paramters used to control the time stepping process.">StepParameters</a> object.  <br /></td></tr>
+<tr class="separator:a4ddf1d52e85e742589cb918a29ca9c84"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -212,13 +212,15 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a9ecbe74f9700828cd2c630149021d0d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a46fbde4cc7efc9260bcd825653409f14" id="r_a46fbde4cc7efc9260bcd825653409f14"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema_1_1StepParameters.html#a46fbde4cc7efc9260bcd825653409f14">relative_convergence_tol</a></td></tr>
 <tr class="separator:a46fbde4cc7efc9260bcd825653409f14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b255a3af16fd045981a115c4de57de3" id="r_a1b255a3af16fd045981a115c4de57de3"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema_1_1StepParameters.html#a1b255a3af16fd045981a115c4de57de3">static_load_retries</a></td></tr>
+<tr class="separator:a1b255a3af16fd045981a115c4de57de3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A Struct containing the paramters used to control the time stepping process. </p>
 <p>These paramteres </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a5755386e4800d0b87d19901054e3c4eb" name="a5755386e4800d0b87d19901054e3c4eb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5755386e4800d0b87d19901054e3c4eb">&#9670;&#160;</a></span>StepParameters()</h2>
+<a id="a4ddf1d52e85e742589cb918a29ca9c84" name="a4ddf1d52e85e742589cb918a29ca9c84"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4ddf1d52e85e742589cb918a29ca9c84">&#9670;&#160;</a></span>StepParameters()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -260,7 +262,13 @@ Public Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>r_tol</em> = <code>1e-3</code>&#160;</td>
+          <td class="paramname"><em>r_tol</em> = <code>1e-3</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>num_retries</em> = <code>20</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -284,6 +292,7 @@ Public Attributes</h2></td></tr>
     <tr><td class="paramname">rho_inf</td><td>the numerical damping pactor, used to set the generalized alpha solver parameters </td></tr>
     <tr><td class="paramname">a_tol</td><td>the absolute error convergence tolerance </td></tr>
     <tr><td class="paramname">r_tol</td><td>the relative error convergence tolerance </td></tr>
+    <tr><td class="paramname">num_retries</td><td>the maximum number of load reduction attempts for static solves </td></tr>
   </table>
   </dd>
 </dl>
@@ -453,6 +462,20 @@ Public Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">double kynema::StepParameters::relative_convergence_tol</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1b255a3af16fd045981a115c4de57de3" name="a1b255a3af16fd045981a115c4de57de3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1b255a3af16fd045981a115c4de57de3">&#9670;&#160;</a></span>static_load_retries</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t kynema::StepParameters::static_load_retries</td>
         </tr>
       </table>
 </div><div class="memdoc">

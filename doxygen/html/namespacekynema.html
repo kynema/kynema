@@ -293,9 +293,13 @@ Functions</h2></td></tr>
 <tr class="memitem:a4b908135d02040dd18b783b67c3b32ed"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacekynema.html#a4b908135d02040dd18b783b67c3b32ed">WriteStateToFile</a> (std::ostream &amp;output, const <a class="el" href="structkynema_1_1State.html">State</a>&lt; DeviceType &gt; &amp;state)</td></tr>
 <tr class="memdesc:a4b908135d02040dd18b783b67c3b32ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes <a class="el" href="structkynema_1_1State.html" title="Container for storing the complete system state of the simulation at a given time increment.">State</a> data into a minimal restart file.  <br /></td></tr>
 <tr class="separator:a4b908135d02040dd18b783b67c3b32ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a899b6ce87a037a0cf1a2f37daa875f94" id="r_a899b6ce87a037a0cf1a2f37daa875f94"><td class="memTemplParams" colspan="2">template&lt;typename DeviceType &gt; </td></tr>
+<tr class="memitem:a899b6ce87a037a0cf1a2f37daa875f94"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacekynema.html#a899b6ce87a037a0cf1a2f37daa875f94">SolveStep</a> (<a class="el" href="structkynema_1_1StepParameters.html">StepParameters</a> &amp;parameters, <a class="el" href="structkynema_1_1Solver.html">Solver</a>&lt; DeviceType &gt; &amp;solver, <a class="el" href="structkynema_1_1Elements.html">Elements</a>&lt; DeviceType &gt; &amp;elements, <a class="el" href="structkynema_1_1State.html">State</a>&lt; DeviceType &gt; &amp;state, <a class="el" href="structkynema_1_1Constraints.html">Constraints</a>&lt; DeviceType &gt; &amp;constraints)</td></tr>
+<tr class="memdesc:a899b6ce87a037a0cf1a2f37daa875f94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attempts to complete a single time step in the dynamic/static FEA simulation.  <br /></td></tr>
+<tr class="separator:a899b6ce87a037a0cf1a2f37daa875f94"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a73eccf662cde2124f47291d88e40c575" id="r_a73eccf662cde2124f47291d88e40c575"><td class="memTemplParams" colspan="2">template&lt;typename DeviceType &gt; </td></tr>
 <tr class="memitem:a73eccf662cde2124f47291d88e40c575"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacekynema.html#a73eccf662cde2124f47291d88e40c575">Step</a> (<a class="el" href="structkynema_1_1StepParameters.html">StepParameters</a> &amp;parameters, <a class="el" href="structkynema_1_1Solver.html">Solver</a>&lt; DeviceType &gt; &amp;solver, <a class="el" href="structkynema_1_1Elements.html">Elements</a>&lt; DeviceType &gt; &amp;elements, <a class="el" href="structkynema_1_1State.html">State</a>&lt; DeviceType &gt; &amp;state, <a class="el" href="structkynema_1_1Constraints.html">Constraints</a>&lt; DeviceType &gt; &amp;constraints)</td></tr>
-<tr class="memdesc:a73eccf662cde2124f47291d88e40c575"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attempts to complete a single time step in the dynamic FEA simulation.  <br /></td></tr>
+<tr class="memdesc:a73eccf662cde2124f47291d88e40c575"><td class="mdescLeft">&#160;</td><td class="mdescRight">Advance solution by one time step with bisection-based load reduction for static analysis.  <br /></td></tr>
 <tr class="separator:a73eccf662cde2124f47291d88e40c575"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
@@ -673,6 +677,75 @@ template&lt;typename DeviceType &gt; </div>
 
 </div>
 </div>
+<a id="a899b6ce87a037a0cf1a2f37daa875f94" name="a899b6ce87a037a0cf1a2f37daa875f94"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a899b6ce87a037a0cf1a2f37daa875f94">&#9670;&#160;</a></span>SolveStep()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename DeviceType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool kynema::SolveStep </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structkynema_1_1StepParameters.html">StepParameters</a> &amp;&#160;</td>
+          <td class="paramname"><em>parameters</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structkynema_1_1Solver.html">Solver</a>&lt; DeviceType &gt; &amp;&#160;</td>
+          <td class="paramname"><em>solver</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structkynema_1_1Elements.html">Elements</a>&lt; DeviceType &gt; &amp;&#160;</td>
+          <td class="paramname"><em>elements</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structkynema_1_1State.html">State</a>&lt; DeviceType &gt; &amp;&#160;</td>
+          <td class="paramname"><em>state</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structkynema_1_1Constraints.html">Constraints</a>&lt; DeviceType &gt; &amp;&#160;</td>
+          <td class="paramname"><em>constraints</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Attempts to complete a single time step in the dynamic/static FEA simulation. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parameters</td><td>Simulation step parameters including time step size and convergence criteria </td></tr>
+    <tr><td class="paramname">solver</td><td><a class="el" href="structkynema_1_1Solver.html" title="This object manages the assembly and solution of linear system arising from the generalized-alpha bas...">Solver</a> object containing system matrices and solution methods </td></tr>
+    <tr><td class="paramname">elements</td><td>Collection of elements (beams, masses etc.) in the FE mesh </td></tr>
+    <tr><td class="paramname">state</td><td>Current state of the system (positions, velocities, accelerations etc.) </td></tr>
+    <tr><td class="paramname">constraints</td><td>System constraints and their associated data</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the step converged within the maximum allowed iterations, otherwise false </dd></dl>
+
+</div>
+</div>
 <a id="a73eccf662cde2124f47291d88e40c575" name="a73eccf662cde2124f47291d88e40c575"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a73eccf662cde2124f47291d88e40c575">&#9670;&#160;</a></span>Step()</h2>
 
@@ -727,18 +800,9 @@ template&lt;typename DeviceType &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Attempts to complete a single time step in the dynamic FEA simulation. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">parameters</td><td>Simulation step parameters including time step size and convergence criteria </td></tr>
-    <tr><td class="paramname">solver</td><td><a class="el" href="structkynema_1_1Solver.html" title="This object manages the assembly and solution of linear system arising from the generalized-alpha bas...">Solver</a> object containing system matrices and solution methods </td></tr>
-    <tr><td class="paramname">elements</td><td>Collection of elements (beams, masses etc.) in the FE mesh </td></tr>
-    <tr><td class="paramname">state</td><td>Current state of the system (positions, velocities, accelerations etc.) </td></tr>
-    <tr><td class="paramname">constraints</td><td>System constraints and their associated data</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>true if the step converged within the maximum allowed iterations, otherwise false </dd></dl>
+<p>Advance solution by one time step with bisection-based load reduction for static analysis. </p>
+<p>For static analysis, uses bisection search to find the maximum load factor that allows convergence. Scales external loads and maintains converged state for rollback on failure. For dynamic analysis, performs a single nonlinear solve.</p>
+<dl class="section return"><dt>Returns</dt><dd>true if a converged solution is found at load factor 1.0, otherwise false </dd></dl>
 
 </div>
 </div>

@@ -197,47 +197,50 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keyword">auto</span> region = Kokkos::Profiling::ScopedRegion(<span class="stringliteral">&quot;Update State Prediction&quot;</span>);</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keyword">using </span>RangePolicy = Kokkos::RangePolicy&lt;typename DeviceType::execution_space&gt;;</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keyword">auto</span> range_policy = RangePolicy(0, solver.<a class="code hl_variable" href="structkynema_1_1Solver.html#a02476890968a850809177b2d2e11e388">num_system_nodes</a>);</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keywordflow">if</span> (parameters.<a class="code hl_variable" href="structkynema_1_1StepParameters.html#ad6ba3ce000d86bb44721a99efd968f4b">is_dynamic_solve</a>) {</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        Kokkos::parallel_for(</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>            <span class="stringliteral">&quot;UpdateDynamicPrediction&quot;</span>, range_policy,</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>            <a class="code hl_struct" href="structkynema_1_1state_1_1UpdateDynamicPrediction.html">state::UpdateDynamicPrediction&lt;DeviceType&gt;</a>{</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>                parameters.<a class="code hl_variable" href="structkynema_1_1StepParameters.html#aefd02d75e9e77d11646491aa66799a38">h</a>,</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>                parameters.<a class="code hl_variable" href="structkynema_1_1StepParameters.html#a3169fc4a1fb378a3545c03b19b1e6cbf">beta_prime</a>,</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>                parameters.<a class="code hl_variable" href="structkynema_1_1StepParameters.html#a12a319e2d25c3bad651e1f74a3dadc86">gamma_prime</a>,</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>                state.<a class="code hl_variable" href="structkynema_1_1State.html#aa39c22d3c13dc756fe4424c540e6bc90">node_freedom_allocation_table</a>,</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>                state.<a class="code hl_variable" href="structkynema_1_1State.html#ace10d34346b7ab581116143a9af9b869">node_freedom_map_table</a>,</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>                solver.<a class="code hl_variable" href="structkynema_1_1Solver.html#a373647cabfa178f13bce0b938713cdb2">x</a>,</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>                state.<a class="code hl_variable" href="structkynema_1_1State.html#a611a8567fb7ff561ca7b156268bf2392">q_delta</a>,</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>                state.<a class="code hl_variable" href="structkynema_1_1State.html#a0a5cd22330b63406098812a2f305822c">v</a>,</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>                state.<a class="code hl_variable" href="structkynema_1_1State.html#a8656e84c6a4d9c8639e2c1352ca993b9">vd</a>,</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>            }</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        );</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        Kokkos::parallel_for(</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>            <span class="stringliteral">&quot;UpdateStaticPrediction&quot;</span>, range_policy,</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>            <a class="code hl_struct" href="structkynema_1_1state_1_1UpdateStaticPrediction.html">state::UpdateStaticPrediction&lt;DeviceType&gt;</a>{</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>                parameters.<a class="code hl_variable" href="structkynema_1_1StepParameters.html#aefd02d75e9e77d11646491aa66799a38">h</a>,</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>                state.<a class="code hl_variable" href="structkynema_1_1State.html#aa39c22d3c13dc756fe4424c540e6bc90">node_freedom_allocation_table</a>,</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>                state.<a class="code hl_variable" href="structkynema_1_1State.html#ace10d34346b7ab581116143a9af9b869">node_freedom_map_table</a>,</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>                solver.<a class="code hl_variable" href="structkynema_1_1Solver.html#a373647cabfa178f13bce0b938713cdb2">x</a>,</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>                state.<a class="code hl_variable" href="structkynema_1_1State.html#a611a8567fb7ff561ca7b156268bf2392">q_delta</a>,</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>            }</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        );</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    }</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    Kokkos::parallel_for(</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        <span class="stringliteral">&quot;CalculateDisplacement&quot;</span>, range_policy,</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        <a class="code hl_struct" href="structkynema_1_1state_1_1CalculateDisplacement.html">state::CalculateDisplacement&lt;DeviceType&gt;</a>{</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>            parameters.<a class="code hl_variable" href="structkynema_1_1StepParameters.html#aefd02d75e9e77d11646491aa66799a38">h</a>,</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>            state.<a class="code hl_variable" href="structkynema_1_1State.html#a611a8567fb7ff561ca7b156268bf2392">q_delta</a>,</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>            state.<a class="code hl_variable" href="structkynema_1_1State.html#a29b170f3e02714818d2cd9b06f8489a2">q_prev</a>,</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>            state.<a class="code hl_variable" href="structkynema_1_1State.html#a6c90d6102d1361688af7eb0564ee7333">q</a>,</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        }</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    );</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>}</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="comment">// Update the state prediction for a DYNAMIC solve</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keywordflow">if</span> (parameters.<a class="code hl_variable" href="structkynema_1_1StepParameters.html#ad6ba3ce000d86bb44721a99efd968f4b">is_dynamic_solve</a>) {</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        Kokkos::parallel_for(</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>            <span class="stringliteral">&quot;UpdateDynamicPrediction&quot;</span>, range_policy,</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>            <a class="code hl_struct" href="structkynema_1_1state_1_1UpdateDynamicPrediction.html">state::UpdateDynamicPrediction&lt;DeviceType&gt;</a>{</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>                parameters.<a class="code hl_variable" href="structkynema_1_1StepParameters.html#aefd02d75e9e77d11646491aa66799a38">h</a>,</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>                parameters.<a class="code hl_variable" href="structkynema_1_1StepParameters.html#a3169fc4a1fb378a3545c03b19b1e6cbf">beta_prime</a>,</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>                parameters.<a class="code hl_variable" href="structkynema_1_1StepParameters.html#a12a319e2d25c3bad651e1f74a3dadc86">gamma_prime</a>,</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>                state.<a class="code hl_variable" href="structkynema_1_1State.html#aa39c22d3c13dc756fe4424c540e6bc90">node_freedom_allocation_table</a>,</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>                state.<a class="code hl_variable" href="structkynema_1_1State.html#ace10d34346b7ab581116143a9af9b869">node_freedom_map_table</a>,</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>                solver.<a class="code hl_variable" href="structkynema_1_1Solver.html#a373647cabfa178f13bce0b938713cdb2">x</a>,</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>                state.<a class="code hl_variable" href="structkynema_1_1State.html#a611a8567fb7ff561ca7b156268bf2392">q_delta</a>,</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>                state.<a class="code hl_variable" href="structkynema_1_1State.html#a0a5cd22330b63406098812a2f305822c">v</a>,</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>                state.<a class="code hl_variable" href="structkynema_1_1State.html#a8656e84c6a4d9c8639e2c1352ca993b9">vd</a>,</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>            }</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        );</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        <span class="comment">// Update the state prediction for a STATIC solve</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        Kokkos::parallel_for(</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>            <span class="stringliteral">&quot;UpdateStaticPrediction&quot;</span>, range_policy,</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>            <a class="code hl_struct" href="structkynema_1_1state_1_1UpdateStaticPrediction.html">state::UpdateStaticPrediction&lt;DeviceType&gt;</a>{</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>                parameters.<a class="code hl_variable" href="structkynema_1_1StepParameters.html#aefd02d75e9e77d11646491aa66799a38">h</a>,</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>                state.<a class="code hl_variable" href="structkynema_1_1State.html#aa39c22d3c13dc756fe4424c540e6bc90">node_freedom_allocation_table</a>,</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>                state.<a class="code hl_variable" href="structkynema_1_1State.html#ace10d34346b7ab581116143a9af9b869">node_freedom_map_table</a>,</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>                solver.<a class="code hl_variable" href="structkynema_1_1Solver.html#a373647cabfa178f13bce0b938713cdb2">x</a>,</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>                state.<a class="code hl_variable" href="structkynema_1_1State.html#a611a8567fb7ff561ca7b156268bf2392">q_delta</a>,</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>            }</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        );</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    }</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    Kokkos::parallel_for(</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        <span class="stringliteral">&quot;CalculateDisplacement&quot;</span>, range_policy,</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        <a class="code hl_struct" href="structkynema_1_1state_1_1CalculateDisplacement.html">state::CalculateDisplacement&lt;DeviceType&gt;</a>{</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>            parameters.<a class="code hl_variable" href="structkynema_1_1StepParameters.html#aefd02d75e9e77d11646491aa66799a38">h</a>,</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>            state.<a class="code hl_variable" href="structkynema_1_1State.html#a611a8567fb7ff561ca7b156268bf2392">q_delta</a>,</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>            state.<a class="code hl_variable" href="structkynema_1_1State.html#a29b170f3e02714818d2cd9b06f8489a2">q_prev</a>,</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>            state.<a class="code hl_variable" href="structkynema_1_1State.html#a6c90d6102d1361688af7eb0564ee7333">q</a>,</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        }</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    );</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>}</div>
 </div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>}  <span class="comment">// namespace kynema::step</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>}  <span class="comment">// namespace kynema::step</span></div>
 <div class="ttc" id="acalculate__displacement_8hpp_html"><div class="ttname"><a href="calculate__displacement_8hpp.html">calculate_displacement.hpp</a></div></div>
 <div class="ttc" id="anamespacekynema_1_1step_html"><div class="ttname"><a href="namespacekynema_1_1step.html">kynema::step</a></div><div class="ttdef"><b>Definition</b> assemble_constraints_matrix.hpp:11</div></div>
 <div class="ttc" id="anamespacekynema_1_1step_html_acffb4fca461c3794df0bb8bffee8d1b6"><div class="ttname"><a href="namespacekynema_1_1step.html#acffb4fca461c3794df0bb8bffee8d1b6">kynema::step::UpdateStatePrediction</a></div><div class="ttdeci">void UpdateStatePrediction(StepParameters &amp;parameters, const Solver&lt; DeviceType &gt; &amp;solver, State&lt; DeviceType &gt; &amp;state)</div><div class="ttdoc">Updates the predicted next state values, based on computed solver solution, solver....</div><div class="ttdef"><b>Definition</b> update_state_prediction.hpp:25</div></div>

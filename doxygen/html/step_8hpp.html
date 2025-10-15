@@ -188,6 +188,8 @@ $(function() {
 <code>#include &quot;<a class="el" href="reset__solver_8hpp_source.html">reset_solver.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="solve__system_8hpp_source.html">solve_system.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="solver_8hpp_source.html">solver/solver.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="clone__state_8hpp_source.html">state/clone_state.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="copy__state__data_8hpp_source.html">state/copy_state_data.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="state_8hpp_source.html">state/state.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="update__algorithmic__acceleration_8hpp_source.html">state/update_algorithmic_acceleration.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="update__global__position_8hpp_source.html">state/update_global_position.hpp</a>&quot;</code><br />
@@ -207,9 +209,13 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a899b6ce87a037a0cf1a2f37daa875f94" id="r_a899b6ce87a037a0cf1a2f37daa875f94"><td class="memTemplParams" colspan="2">template&lt;typename DeviceType &gt; </td></tr>
+<tr class="memitem:a899b6ce87a037a0cf1a2f37daa875f94"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacekynema.html#a899b6ce87a037a0cf1a2f37daa875f94">kynema::SolveStep</a> (<a class="el" href="structkynema_1_1StepParameters.html">StepParameters</a> &amp;parameters, <a class="el" href="structkynema_1_1Solver.html">Solver</a>&lt; DeviceType &gt; &amp;solver, <a class="el" href="structkynema_1_1Elements.html">Elements</a>&lt; DeviceType &gt; &amp;elements, <a class="el" href="structkynema_1_1State.html">State</a>&lt; DeviceType &gt; &amp;state, <a class="el" href="structkynema_1_1Constraints.html">Constraints</a>&lt; DeviceType &gt; &amp;constraints)</td></tr>
+<tr class="memdesc:a899b6ce87a037a0cf1a2f37daa875f94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attempts to complete a single time step in the dynamic/static FEA simulation.  <br /></td></tr>
+<tr class="separator:a899b6ce87a037a0cf1a2f37daa875f94"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a73eccf662cde2124f47291d88e40c575" id="r_a73eccf662cde2124f47291d88e40c575"><td class="memTemplParams" colspan="2">template&lt;typename DeviceType &gt; </td></tr>
 <tr class="memitem:a73eccf662cde2124f47291d88e40c575"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacekynema.html#a73eccf662cde2124f47291d88e40c575">kynema::Step</a> (<a class="el" href="structkynema_1_1StepParameters.html">StepParameters</a> &amp;parameters, <a class="el" href="structkynema_1_1Solver.html">Solver</a>&lt; DeviceType &gt; &amp;solver, <a class="el" href="structkynema_1_1Elements.html">Elements</a>&lt; DeviceType &gt; &amp;elements, <a class="el" href="structkynema_1_1State.html">State</a>&lt; DeviceType &gt; &amp;state, <a class="el" href="structkynema_1_1Constraints.html">Constraints</a>&lt; DeviceType &gt; &amp;constraints)</td></tr>
-<tr class="memdesc:a73eccf662cde2124f47291d88e40c575"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attempts to complete a single time step in the dynamic FEA simulation.  <br /></td></tr>
+<tr class="memdesc:a73eccf662cde2124f47291d88e40c575"><td class="mdescLeft">&#160;</td><td class="mdescRight">Advance solution by one time step with bisection-based load reduction for static analysis.  <br /></td></tr>
 <tr class="separator:a73eccf662cde2124f47291d88e40c575"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
