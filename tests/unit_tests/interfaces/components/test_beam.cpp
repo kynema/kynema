@@ -1249,23 +1249,8 @@ TEST(BeamComponentTest, Section_GLL_TwoSections_NoRefinement_NoTwist_ConstantSec
     for (auto i : std::views::iota(0U, 6U)) {
         for (auto j : std::views::iota(0U, 6U)) {
             EXPECT_NEAR(sections[0].M_star[i][j], mass_stiff_array[i][j], 1.e-15);
-        }
-    }
-
-    for (auto i : std::views::iota(0U, 6U)) {
-        for (auto j : std::views::iota(0U, 6U)) {
             EXPECT_NEAR(sections[1].M_star[i][j], mass_stiff_array[i][j], 1.e-15);
-        }
-    }
-
-    for (auto i : std::views::iota(0U, 6U)) {
-        for (auto j : std::views::iota(0U, 6U)) {
             EXPECT_NEAR(sections[0].C_star[i][j], mass_stiff_array[i][j], 1.e-15);
-        }
-    }
-
-    for (auto i : std::views::iota(0U, 6U)) {
-        for (auto j : std::views::iota(0U, 6U)) {
             EXPECT_NEAR(sections[1].C_star[i][j], mass_stiff_array[i][j], 1.e-15);
         }
     }
@@ -1309,23 +1294,8 @@ TEST(BeamComponentTest, Section_GLL_TwoSections_NoRefinement_NoTwist_LinearSecti
     for (auto i : std::views::iota(0U, 6U)) {
         for (auto j : std::views::iota(0U, 6U)) {
             EXPECT_NEAR(sections[0].M_star[i][j], mass_stiff_array_0[i][j], 1.e-15);
-        }
-    }
-
-    for (auto i : std::views::iota(0U, 6U)) {
-        for (auto j : std::views::iota(0U, 6U)) {
             EXPECT_NEAR(sections[1].M_star[i][j], mass_stiff_array_1[i][j], 1.e-15);
-        }
-    }
-
-    for (auto i : std::views::iota(0U, 6U)) {
-        for (auto j : std::views::iota(0U, 6U)) {
             EXPECT_NEAR(sections[0].C_star[i][j], mass_stiff_array_0[i][j], 1.e-15);
-        }
-    }
-
-    for (auto i : std::views::iota(0U, 6U)) {
-        for (auto j : std::views::iota(0U, 6U)) {
             EXPECT_NEAR(sections[1].C_star[i][j], mass_stiff_array_1[i][j], 1.e-15);
         }
     }
@@ -1375,35 +1345,10 @@ TEST(BeamComponentTest, Section_GLL_ThreeSections_NoRefinement_NoTwist_LinearSec
     for (auto i : std::views::iota(0U, 6U)) {
         for (auto j : std::views::iota(0U, 6U)) {
             EXPECT_NEAR(sections[0].M_star[i][j], mass_stiff_array_0[i][j], 1.e-15);
-        }
-    }
-
-    for (auto i : std::views::iota(0U, 6U)) {
-        for (auto j : std::views::iota(0U, 6U)) {
             EXPECT_NEAR(sections[1].M_star[i][j], mass_stiff_array_1[i][j], 1.e-15);
-        }
-    }
-
-    for (auto i : std::views::iota(0U, 6U)) {
-        for (auto j : std::views::iota(0U, 6U)) {
             EXPECT_NEAR(sections[2].M_star[i][j], mass_stiff_array_2[i][j], 1.e-15);
-        }
-    }
-
-    for (auto i : std::views::iota(0U, 6U)) {
-        for (auto j : std::views::iota(0U, 6U)) {
             EXPECT_NEAR(sections[0].C_star[i][j], mass_stiff_array_0[i][j], 1.e-15);
-        }
-    }
-
-    for (auto i : std::views::iota(0U, 6U)) {
-        for (auto j : std::views::iota(0U, 6U)) {
             EXPECT_NEAR(sections[1].C_star[i][j], mass_stiff_array_1[i][j], 1.e-15);
-        }
-    }
-
-    for (auto i : std::views::iota(0U, 6U)) {
-        for (auto j : std::views::iota(0U, 6U)) {
             EXPECT_NEAR(sections[2].C_star[i][j], mass_stiff_array_2[i][j], 1.e-15);
         }
     }
@@ -1463,59 +1408,14 @@ TEST(BeamComponentTest, Section_GLL_ThreeSections_OneRefinement_NoTwist_LinearSe
     for (auto i : std::views::iota(0U, 6U)) {
         for (auto j : std::views::iota(0U, 6U)) {
             EXPECT_NEAR(sections[0].M_star[i][j], mass_stiff_array_0[i][j], 1.e-15);
-        }
-    }
-
-    for (auto i : std::views::iota(0U, 6U)) {
-        for (auto j : std::views::iota(0U, 6U)) {
             EXPECT_NEAR(sections[1].M_star[i][j], mass_stiff_array_1[i][j], 1.e-15);
-        }
-    }
-
-    for (auto i : std::views::iota(0U, 6U)) {
-        for (auto j : std::views::iota(0U, 6U)) {
             EXPECT_NEAR(sections[2].M_star[i][j], mass_stiff_array_2[i][j], 1.e-15);
-        }
-    }
-
-    for (auto i : std::views::iota(0U, 6U)) {
-        for (auto j : std::views::iota(0U, 6U)) {
             EXPECT_NEAR(sections[3].M_star[i][j], mass_stiff_array_3[i][j], 1.e-15);
-        }
-    }
-
-    for (auto i : std::views::iota(0U, 6U)) {
-        for (auto j : std::views::iota(0U, 6U)) {
             EXPECT_NEAR(sections[4].M_star[i][j], mass_stiff_array_4[i][j], 1.e-15);
-        }
-    }
-
-    for (auto i : std::views::iota(0U, 6U)) {
-        for (auto j : std::views::iota(0U, 6U)) {
             EXPECT_NEAR(sections[0].C_star[i][j], mass_stiff_array_0[i][j], 1.e-15);
-        }
-    }
-
-    for (auto i : std::views::iota(0U, 6U)) {
-        for (auto j : std::views::iota(0U, 6U)) {
             EXPECT_NEAR(sections[1].C_star[i][j], mass_stiff_array_1[i][j], 1.e-15);
-        }
-    }
-
-    for (auto i : std::views::iota(0U, 6U)) {
-        for (auto j : std::views::iota(0U, 6U)) {
             EXPECT_NEAR(sections[2].C_star[i][j], mass_stiff_array_2[i][j], 1.e-15);
-        }
-    }
-
-    for (auto i : std::views::iota(0U, 6U)) {
-        for (auto j : std::views::iota(0U, 6U)) {
             EXPECT_NEAR(sections[3].C_star[i][j], mass_stiff_array_3[i][j], 1.e-15);
-        }
-    }
-
-    for (auto i : std::views::iota(0U, 6U)) {
-        for (auto j : std::views::iota(0U, 6U)) {
             EXPECT_NEAR(sections[4].C_star[i][j], mass_stiff_array_4[i][j], 1.e-15);
         }
     }
@@ -1588,59 +1488,14 @@ TEST(BeamComponentTest, Section_GLL_ThreeSections_OneRefinement_ConstantTwist_Co
     for (auto i : std::views::iota(0U, 6U)) {
         for (auto j : std::views::iota(0U, 6U)) {
             EXPECT_NEAR(sections[0].M_star[i][j], mass_stiff_array_0_exact[i][j], 1.e-15);
-        }
-    }
-
-    for (auto i : std::views::iota(0U, 6U)) {
-        for (auto j : std::views::iota(0U, 6U)) {
             EXPECT_NEAR(sections[1].M_star[i][j], mass_stiff_array_1_exact[i][j], 1.e-15);
-        }
-    }
-
-    for (auto i : std::views::iota(0U, 6U)) {
-        for (auto j : std::views::iota(0U, 6U)) {
             EXPECT_NEAR(sections[2].M_star[i][j], mass_stiff_array_2_exact[i][j], 1.e-15);
-        }
-    }
-
-    for (auto i : std::views::iota(0U, 6U)) {
-        for (auto j : std::views::iota(0U, 6U)) {
             EXPECT_NEAR(sections[3].M_star[i][j], mass_stiff_array_3_exact[i][j], 1.e-15);
-        }
-    }
-
-    for (auto i : std::views::iota(0U, 6U)) {
-        for (auto j : std::views::iota(0U, 6U)) {
             EXPECT_NEAR(sections[4].M_star[i][j], mass_stiff_array_4_exact[i][j], 1.e-15);
-        }
-    }
-
-    for (auto i : std::views::iota(0U, 6U)) {
-        for (auto j : std::views::iota(0U, 6U)) {
             EXPECT_NEAR(sections[0].C_star[i][j], mass_stiff_array_0_exact[i][j], 1.e-15);
-        }
-    }
-
-    for (auto i : std::views::iota(0U, 6U)) {
-        for (auto j : std::views::iota(0U, 6U)) {
             EXPECT_NEAR(sections[1].C_star[i][j], mass_stiff_array_1_exact[i][j], 1.e-15);
-        }
-    }
-
-    for (auto i : std::views::iota(0U, 6U)) {
-        for (auto j : std::views::iota(0U, 6U)) {
             EXPECT_NEAR(sections[2].C_star[i][j], mass_stiff_array_2_exact[i][j], 1.e-15);
-        }
-    }
-
-    for (auto i : std::views::iota(0U, 6U)) {
-        for (auto j : std::views::iota(0U, 6U)) {
             EXPECT_NEAR(sections[3].C_star[i][j], mass_stiff_array_3_exact[i][j], 1.e-15);
-        }
-    }
-
-    for (auto i : std::views::iota(0U, 6U)) {
-        for (auto j : std::views::iota(0U, 6U)) {
             EXPECT_NEAR(sections[4].C_star[i][j], mass_stiff_array_4_exact[i][j], 1.e-15);
         }
     }
@@ -1713,59 +1568,14 @@ TEST(BeamComponentTest, Section_GLL_ThreeSections_OneRefinement_LinearTwist_Cons
     for (auto i : std::views::iota(0U, 6U)) {
         for (auto j : std::views::iota(0U, 6U)) {
             EXPECT_NEAR(sections[0].M_star[i][j], mass_stiff_array_0_exact[i][j], 1.e-15);
-        }
-    }
-
-    for (auto i : std::views::iota(0U, 6U)) {
-        for (auto j : std::views::iota(0U, 6U)) {
             EXPECT_NEAR(sections[1].M_star[i][j], mass_stiff_array_1_exact[i][j], 1.e-15);
-        }
-    }
-
-    for (auto i : std::views::iota(0U, 6U)) {
-        for (auto j : std::views::iota(0U, 6U)) {
             EXPECT_NEAR(sections[2].M_star[i][j], mass_stiff_array_2_exact[i][j], 1.e-15);
-        }
-    }
-
-    for (auto i : std::views::iota(0U, 6U)) {
-        for (auto j : std::views::iota(0U, 6U)) {
             EXPECT_NEAR(sections[3].M_star[i][j], mass_stiff_array_3_exact[i][j], 1.e-15);
-        }
-    }
-
-    for (auto i : std::views::iota(0U, 6U)) {
-        for (auto j : std::views::iota(0U, 6U)) {
             EXPECT_NEAR(sections[4].M_star[i][j], mass_stiff_array_4_exact[i][j], 1.e-15);
-        }
-    }
-
-    for (auto i : std::views::iota(0U, 6U)) {
-        for (auto j : std::views::iota(0U, 6U)) {
             EXPECT_NEAR(sections[0].C_star[i][j], mass_stiff_array_0_exact[i][j], 1.e-15);
-        }
-    }
-
-    for (auto i : std::views::iota(0U, 6U)) {
-        for (auto j : std::views::iota(0U, 6U)) {
             EXPECT_NEAR(sections[1].C_star[i][j], mass_stiff_array_1_exact[i][j], 1.e-15);
-        }
-    }
-
-    for (auto i : std::views::iota(0U, 6U)) {
-        for (auto j : std::views::iota(0U, 6U)) {
             EXPECT_NEAR(sections[2].C_star[i][j], mass_stiff_array_2_exact[i][j], 1.e-15);
-        }
-    }
-
-    for (auto i : std::views::iota(0U, 6U)) {
-        for (auto j : std::views::iota(0U, 6U)) {
             EXPECT_NEAR(sections[3].C_star[i][j], mass_stiff_array_3_exact[i][j], 1.e-15);
-        }
-    }
-
-    for (auto i : std::views::iota(0U, 6U)) {
-        for (auto j : std::views::iota(0U, 6U)) {
             EXPECT_NEAR(sections[4].C_star[i][j], mass_stiff_array_4_exact[i][j], 1.e-15);
         }
     }
@@ -1838,59 +1648,14 @@ TEST(BeamComponentTest, Section_GLL_ThreeSections_OneRefinement_BiLinearTwist_Co
     for (auto i : std::views::iota(0U, 6U)) {
         for (auto j : std::views::iota(0U, 6U)) {
             EXPECT_NEAR(sections[0].M_star[i][j], mass_stiff_array_0_exact[i][j], 1.e-15);
-        }
-    }
-
-    for (auto i : std::views::iota(0U, 6U)) {
-        for (auto j : std::views::iota(0U, 6U)) {
             EXPECT_NEAR(sections[1].M_star[i][j], mass_stiff_array_1_exact[i][j], 1.e-15);
-        }
-    }
-
-    for (auto i : std::views::iota(0U, 6U)) {
-        for (auto j : std::views::iota(0U, 6U)) {
             EXPECT_NEAR(sections[2].M_star[i][j], mass_stiff_array_2_exact[i][j], 1.e-15);
-        }
-    }
-
-    for (auto i : std::views::iota(0U, 6U)) {
-        for (auto j : std::views::iota(0U, 6U)) {
             EXPECT_NEAR(sections[3].M_star[i][j], mass_stiff_array_3_exact[i][j], 1.e-15);
-        }
-    }
-
-    for (auto i : std::views::iota(0U, 6U)) {
-        for (auto j : std::views::iota(0U, 6U)) {
             EXPECT_NEAR(sections[4].M_star[i][j], mass_stiff_array_4_exact[i][j], 1.e-15);
-        }
-    }
-
-    for (auto i : std::views::iota(0U, 6U)) {
-        for (auto j : std::views::iota(0U, 6U)) {
             EXPECT_NEAR(sections[0].C_star[i][j], mass_stiff_array_0_exact[i][j], 1.e-15);
-        }
-    }
-
-    for (auto i : std::views::iota(0U, 6U)) {
-        for (auto j : std::views::iota(0U, 6U)) {
             EXPECT_NEAR(sections[1].C_star[i][j], mass_stiff_array_1_exact[i][j], 1.e-15);
-        }
-    }
-
-    for (auto i : std::views::iota(0U, 6U)) {
-        for (auto j : std::views::iota(0U, 6U)) {
             EXPECT_NEAR(sections[2].C_star[i][j], mass_stiff_array_2_exact[i][j], 1.e-15);
-        }
-    }
-
-    for (auto i : std::views::iota(0U, 6U)) {
-        for (auto j : std::views::iota(0U, 6U)) {
             EXPECT_NEAR(sections[3].C_star[i][j], mass_stiff_array_3_exact[i][j], 1.e-15);
-        }
-    }
-
-    for (auto i : std::views::iota(0U, 6U)) {
-        for (auto j : std::views::iota(0U, 6U)) {
             EXPECT_NEAR(sections[4].C_star[i][j], mass_stiff_array_4_exact[i][j], 1.e-15);
         }
     }

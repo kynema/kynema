@@ -88,7 +88,7 @@ Install required Python packages using pip:
 
 .. code-block:: bash
 
-    $ pip install sphinx sphinx_rtd_theme sphinx_toolbox sphinx_copybutton pyenchant sphinxcontrib-spelling doxysphinx
+    $ pip install sphinx sphinx_rtd_theme sphinx_toolbox sphinx_copybutton pyenchant sphinxcontrib-spelling sphinxcontrib-bibtex sphinxcontrib.doxylink  sphinxcontrib.mermaid sphinxcontrib.youtube doxysphinx
 
 Building Documentation
 ```````````````````````````
