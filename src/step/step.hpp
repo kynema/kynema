@@ -16,6 +16,8 @@
 #include "reset_solver.hpp"
 #include "solve_system.hpp"
 #include "solver/solver.hpp"
+#include "state/clone_state.hpp"
+#include "state/copy_state_data.hpp"
 #include "state/state.hpp"
 #include "state/update_algorithmic_acceleration.hpp"
 #include "state/update_global_position.hpp"
@@ -29,7 +31,7 @@
 namespace kynema {
 
 /**
- * @brief Attempts to complete a single time step in the dynamic FEA simulation
+ * @brief Attempts to complete a single time step in the dynamic/static FEA simulation
  *
  * @param parameters Simulation step parameters including time step size and convergence criteria
  * @param solver     Solver object containing system matrices and solution methods
@@ -40,11 +42,11 @@ namespace kynema {
  * @return true if the step converged within the maximum allowed iterations, otherwise false
  */
 template <typename DeviceType>
-inline bool Step(
+inline bool SolveStep(
     StepParameters& parameters, Solver<DeviceType>& solver, Elements<DeviceType>& elements,
     State<DeviceType>& state, Constraints<DeviceType>& constraints
 ) {
-    auto region = Kokkos::Profiling::ScopedRegion("Step");
+    auto region = Kokkos::Profiling::ScopedRegion("SolveStep");
 
     step::PredictNextState(parameters, state);
     step::ResetConstraints(constraints);
@@ -121,6 +123,85 @@ inline bool Step(
     Kokkos::deep_copy(constraints.host_output, constraints.output);
 
     return true;
+}
+
+/**
+ * @brief Advance solution by one time step with bisection-based load reduction for static analysis
+ *
+ * For static analysis, uses bisection search to find the maximum load factor that allows
+ * convergence. Scales external loads and maintains converged state for rollback on failure.
+ * For dynamic analysis, performs a single nonlinear solve.
+ *
+ * @return true if a converged solution is found at load factor 1.0, otherwise false
+ */
+template <typename DeviceType>
+inline bool Step(
+    StepParameters& parameters, Solver<DeviceType>& solver, Elements<DeviceType>& elements,
+    State<DeviceType>& state, Constraints<DeviceType>& constraints
+) {
+    //--------------------------------------------------------------------------
+    // Dynamic analysis -> just do a single nonlinear increment
+    //--------------------------------------------------------------------------
+    if (parameters.is_dynamic_solve) {
+        return SolveStep(parameters, solver, elements, state, constraints);
+    }
+
+    //--------------------------------------------------------------------------
+    // Static analysis -> load reduction strategy to help with convergence
+    //--------------------------------------------------------------------------
+    const Kokkos::View<double* [6], DeviceType> loads_baseline("loads_baseline", state.f.extent(0));
+    Kokkos::deep_copy(loads_baseline, state.f);
+
+    // Load reduction variables initialization
+    bool solved{false};
+    double load_factor_low{0.};      // lower bound for the load factor
+    double load_factor_current{1.};  // current load factor
+    double load_factor_high{1.};     // upper bound for the load factor
+
+    //-------------------------------
+    // Bisection method
+    //-------------------------------
+    // Load reduction loop to help with convergence
+    auto state_last_converged = CloneState<DeviceType>(state);
+    for (size_t j = 0; j < parameters.static_load_retries; ++j) {
+        // Scale the external loads
+        Kokkos::parallel_for(
+            "ScaleLoads",
+            Kokkos::RangePolicy<typename DeviceType::execution_space>(0, state.f.extent(0)),
+            KOKKOS_LAMBDA(const int i) {
+                for (int k = 0; k < 6; ++k) {
+                    state.f(i, k) = loads_baseline(i, k) * load_factor_current;
+                }
+            }
+        );
+
+        // TODO Scale the gravity load as well?
+
+        // Attempt a single nonlinear solve at the current load factor
+        const bool converged = SolveStep(parameters, solver, elements, state, constraints);
+
+        if (converged) {
+            // Record the last converged state - if we're at full load our work is done
+            CopyStateData<DeviceType>(state_last_converged, state);
+            if (std::abs(load_factor_current - 1.) < 1e-10) {
+                solved = true;
+                break;
+            }
+            // We have a successful converged lower bound -> increase lower bound
+            // to current load factor + set current load factor to full load
+            load_factor_low = load_factor_current;
+            load_factor_current = 1.;
+        } else {
+            // Not converged -> shrink load interval by bisection i.e. upper bounds is reduced to
+            // current load factor + new current load factor is set to the average of the bounds i.e.
+            // bisected
+            load_factor_high = load_factor_current;
+            load_factor_current = 0.5 * (load_factor_low + load_factor_high);
+            // Roll back to the last converged state
+            CopyStateData<DeviceType>(state, state_last_converged);
+        }
+    }
+    return solved;
 }
 
 }  // namespace kynema
