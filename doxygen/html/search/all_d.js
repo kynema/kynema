@@ -11,7 +11,7 @@ var searchData=
   ['mass_5felement_5fid_8',['mass_element_id',['../structkynema_1_1interfaces_1_1cfd_1_1FloatingPlatform.html#aabf579294d24597f84a37db91153264c',1,'kynema::interfaces::cfd::FloatingPlatform']]],
   ['mass_5fmatrix_9',['mass_matrix',['../structkynema_1_1interfaces_1_1components_1_1Section.html#a913aadcde43ab7a9cde3c58082ca568d',1,'kynema::interfaces::components::Section::mass_matrix'],['../structkynema_1_1interfaces_1_1cfd_1_1FloatingPlatformInput.html#ab239887cdc28e56b530ae585340a85e1',1,'kynema::interfaces::cfd::FloatingPlatformInput::mass_matrix']]],
   ['masselement_10',['masselement',['../structkynema_1_1MassElement.html#ace6c81de06d19f8a7239468478637c79',1,'kynema::MassElement::MassElement()'],['../structkynema_1_1MassElement.html',1,'kynema::MassElement']]],
-  ['masses_11',['masses',['../structkynema_1_1Masses.html',1,'kynema::Masses&lt; DeviceType &gt;'],['../structkynema_1_1Elements.html#a45cbe237a396cc863d5614e89badb790',1,'kynema::Elements::masses'],['../structkynema_1_1Masses.html#a678bd17e81550c25864b9bf484086ce8',1,'kynema::Masses::Masses()']]],
+  ['masses_11',['masses',['../structkynema_1_1Masses.html',1,'kynema::Masses&lt; DeviceType &gt;'],['../structkynema_1_1Masses.html#a678bd17e81550c25864b9bf484086ce8',1,'kynema::Masses::Masses()'],['../structkynema_1_1Elements.html#a45cbe237a396cc863d5614e89badb790',1,'kynema::Elements::masses']]],
   ['masses_2ehpp_12',['masses.hpp',['../masses_8hpp.html',1,'']]],
   ['masses_5finput_2ehpp_13',['masses_input.hpp',['../masses__input_8hpp.html',1,'']]],
   ['massesinput_14',['massesinput',['../structkynema_1_1MassesInput.html',1,'kynema::MassesInput'],['../structkynema_1_1MassesInput.html#a758a759b77ebb5409bd5045ece36a9da',1,'kynema::MassesInput::MassesInput()']]],
