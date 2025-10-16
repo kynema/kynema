@@ -57,8 +57,11 @@ TEST(AerodynamicsComponentTest, CalculateAerodynamicLoad_Case1) {
     constexpr auto qqr = std::array{1., 0., 0., 0.};
     constexpr auto con_force = std::array{0., -.5, 0.};
 
-    double alpha, cn, ct, cm;
-    std::array<double, 3> v_rel;
+    auto alpha = 0.;
+    auto cn = 0.;
+    auto ct = 0.;
+    auto cm = 0.;
+    auto v_rel = std::array<double, 3>{};
 
     auto ref_axis_moment = std::array<double, 3>{};
     auto load = kynema::interfaces::components::CalculateAerodynamicLoad(
@@ -95,8 +98,11 @@ TEST(AerodynamicsComponentTest, CalculateAerodynamicLoad_Case2) {
     constexpr auto qqr = std::array{1., 0., 0., 0.};
     constexpr auto con_force = std::array{0., -.5, 0.};
 
-    double alpha, cn, ct, cm;
-    std::array<double, 3> v_rel;
+    auto alpha = 0.;
+    auto cn = 0.;
+    auto ct = 0.;
+    auto cm = 0.;
+    auto v_rel = std::array<double, 3>{};
 
     auto ref_axis_moment = std::array<double, 3>{};
     auto load = kynema::interfaces::components::CalculateAerodynamicLoad(

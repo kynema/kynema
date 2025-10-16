@@ -68,8 +68,6 @@ public:
     /**
      * @brief Steps forward in time
      *
-     * @param t The current time in seconds
-     *
      * @return true if solver converged, false otherwise
      * @note This function updates the host state with current node loads,
      *       solves the dynamic system, and updates the node motion with the new state.
