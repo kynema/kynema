@@ -125,9 +125,7 @@ void Outputs::WriteNodeOutputsAtTimestep(const HostState<DeviceType>& host_state
     );
 }
 
-void Outputs::WriteValueAtTimestep(
-    const size_t timestep, const std::string& name, const double value
-) {
+void Outputs::WriteValueAtTimestep(size_t timestep, const std::string& name, double value) {
     if (this->time_series_writer_) {
         this->time_series_writer_->WriteValueAtTimestep(name, timestep, value);
     }

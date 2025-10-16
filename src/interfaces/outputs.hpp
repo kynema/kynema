@@ -90,7 +90,7 @@ public:
      * @param name The name of the variable to write (e.g., "azimuth_angle", "rotor_speed")
      * @param value The current value of the variable
      */
-    void WriteValueAtTimestep(const size_t timestep, const std::string& name, const double value);
+    void WriteValueAtTimestep(size_t timestep, const std::string& name, double value);
 
 private:
     std::unique_ptr<util::NodeStateWriter> output_writer_;        ///< Output writer
