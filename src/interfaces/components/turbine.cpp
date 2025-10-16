@@ -18,10 +18,12 @@ Turbine::Turbine(const TurbineInput& input, Model& model)
       hub_node(invalid_id),
       azimuth_node(invalid_id),
       shaft_base_node(invalid_id),
+      nacelle_cm_node(invalid_id),
       yaw_bearing_node(invalid_id),
       tower_base{invalid_id},
       tower_top_to_yaw_bearing{invalid_id},
       yaw_bearing_to_shaft_base{invalid_id},
+      yaw_bearing_to_nacelle_cm{invalid_id},
       shaft_base_to_azimuth{invalid_id},
       azimuth_to_hub{invalid_id},
       blade_pitch_control(input.blades.size(), input.blade_pitch_angle) {
@@ -48,6 +50,27 @@ void Turbine::GetMotion(const HostState<DeviceType>& host_state) {
         blade.GetMotion(host_state);
     }
     this->tower.GetMotion(host_state);
+    this->hub_node.GetMotion(host_state);
+    this->azimuth_node.GetMotion(host_state);
+    this->shaft_base_node.GetMotion(host_state);
+    this->yaw_bearing_node.GetMotion(host_state);
+    for (auto& apex_node : this->apex_nodes) {
+        apex_node.GetMotion(host_state);
+    }
+}
+
+void Turbine::GetLoads(const HostConstraints<DeviceType>& host_constraints) {
+    this->tower_base.GetLoads(host_constraints);
+    this->tower_top_to_yaw_bearing.GetLoads(host_constraints);
+    this->yaw_bearing_to_shaft_base.GetLoads(host_constraints);
+    this->shaft_base_to_azimuth.GetLoads(host_constraints);
+    this->azimuth_to_hub.GetLoads(host_constraints);
+    for (auto& pitch_constraint : this->blade_pitch) {
+        pitch_constraint.GetLoads(host_constraints);
+    }
+    for (auto& apex_constraint : this->apex_to_hub) {
+        apex_constraint.GetLoads(host_constraints);
+    }
 }
 
 void Turbine::SetLoads(HostState<DeviceType>& host_state) const {
@@ -55,6 +78,13 @@ void Turbine::SetLoads(HostState<DeviceType>& host_state) const {
         blade.SetLoads(host_state);
     }
     this->tower.SetLoads(host_state);
+    this->hub_node.SetLoads(host_state);
+    this->azimuth_node.SetLoads(host_state);
+    this->shaft_base_node.SetLoads(host_state);
+    this->yaw_bearing_node.SetLoads(host_state);
+    for (const auto& apex_node : this->apex_nodes) {
+        apex_node.SetLoads(host_state);
+    }
 }
 
 const TurbineInput& Turbine::GetTurbineInput() const {
@@ -218,6 +248,17 @@ void Turbine::CreateIntermediateNodes(const TurbineInput& input, Model& model) {
         model.AddNode().SetPosition(tower_top_node.x0).SetOrientation({1., 0., 0., 0.}).Build()
     );
 
+    // Create nacelle center of mass node at tower top position
+    this->nacelle_cm_node =
+        NodeData(model.AddNode()
+                     .SetPosition(
+                         {tower_top_node.x0[0] + input.nacelle_cm_offset[0],
+                          tower_top_node.x0[1] + input.nacelle_cm_offset[1],
+                          tower_top_node.x0[2] + input.nacelle_cm_offset[2], 1., 0., 0., 0.}
+                     )
+
+                     .Build());
+
     //--------------------------------------------------------------------------
     // Create blade apex nodes
     //--------------------------------------------------------------------------
@@ -321,9 +362,13 @@ void Turbine::CreateIntermediateNodes(const TurbineInput& input, Model& model) {
 }
 
 void Turbine::AddMassElements(const TurbineInput& input, Model& model) {
-    // Add mass element at yaw bearing node (nacelle mass + yaw bearing mass)
+    // Add mass element at yaw bearing node
     this->yaw_bearing_mass_element_id =
         model.AddMassElement(this->yaw_bearing_node.id, input.yaw_bearing_inertia_matrix);
+
+    // Add mass element at nacelle CM node
+    this->nacelle_cm_mass_element_id =
+        model.AddMassElement(this->nacelle_cm_node.id, input.nacelle_inertia_matrix);
 
     // Add mass element at hub node (hub assembly mass)
     this->hub_mass_element_id = model.AddMassElement(this->hub_node.id, input.hub_inertia_matrix);
@@ -343,21 +388,22 @@ void Turbine::AddConstraints(const TurbineInput& input, Model& model) {
         const auto& root_node =
             model.GetNode(this->blades[beam].nodes[0].id);  // first node of blade
 
-        // Calculate the pitch axis for the blade (from apex to root)
-        const auto pitch_axis = std::array{
-            root_node.x0[0] - apex_node.x0[0],
-            root_node.x0[1] - apex_node.x0[1],
-            root_node.x0[2] - apex_node.x0[2],
-        };
+        // Calculate the pitch axis for the blade
+        // (from root to apex so that positive pitch angles point the leading edge into the wind)
+        const auto pitch_axis = math::UnitVector({
+            apex_node.x0[0] - root_node.x0[0],
+            apex_node.x0[1] - root_node.x0[1],
+            apex_node.x0[2] - root_node.x0[2],
+        });
 
         // Create pitch control constraint
-        this->blade_pitch.emplace_back(ConstraintData{model.AddRotationControl(
-            {root_node.id, apex_node.id}, pitch_axis, &this->blade_pitch_control[beam]
-        )});
+        this->blade_pitch.emplace_back(model.AddRotationControl(
+            {apex_node.id, root_node.id}, pitch_axis, &this->blade_pitch_control[beam]
+        ));
 
         // Add rigid constraint between hub and blade apex
         this->apex_to_hub.emplace_back(
-            ConstraintData{model.AddRigidJointConstraint({this->hub_node.id, apex_node.id})}
+            model.AddRigidJointConstraint({this->hub_node.id, apex_node.id})
         );
     }
 
@@ -369,9 +415,19 @@ void Turbine::AddConstraints(const TurbineInput& input, Model& model) {
     this->azimuth_to_hub =
         ConstraintData{model.AddRigidJointConstraint({this->azimuth_node.id, this->hub_node.id})};
 
-    // Shaft axis constraint - add revolute joint between shaft base and azimuth node
-    const auto shaft_axis =
-        std::array{-cos(input.shaft_tilt_angle), 0., sin(input.shaft_tilt_angle)};
+    // Get the blade apex node
+    const auto& shaft_base_position = model.GetNode(this->shaft_base_node.id).DisplacedPosition();
+
+    // Get the hub node
+    const auto& hub_position = model.GetNode(this->hub_node.id).DisplacedPosition();
+
+    // Shaft axis constraint - add revolute joint between shaft base and hub node
+    // Points from hub to shaft base, CCW rotation of rotor is positive rotation;
+    // which requires a negative torque to counteract rotation
+    const auto shaft_axis = math::UnitVector(
+        {shaft_base_position[0] - hub_position[0], shaft_base_position[1] - hub_position[1],
+         shaft_base_position[2] - hub_position[2]}
+    );
     this->shaft_base_to_azimuth = ConstraintData{model.AddRevoluteJointConstraint(
         {this->shaft_base_node.id, this->azimuth_node.id}, shaft_axis, &torque_control
     )};
@@ -381,8 +437,13 @@ void Turbine::AddConstraints(const TurbineInput& input, Model& model) {
         model.AddRigidJointConstraint({this->yaw_bearing_node.id, this->shaft_base_node.id})
     };
 
+    // Add rigid constraint from yaw bearing to nacelle center of mass
+    this->yaw_bearing_to_nacelle_cm = ConstraintData{
+        model.AddRigidJointConstraint({this->yaw_bearing_node.id, this->nacelle_cm_node.id})
+    };
+
     //--------------------------------------------------------------------------
-    // Nacelle control constraints
+    // Nacelle constraints
     //--------------------------------------------------------------------------
 
     // Add constraint from tower top to yaw bearing
@@ -420,18 +481,16 @@ void Turbine::SetInitialDisplacements(const TurbineInput& input, Model& model) {
         const auto& apex_node = model.GetNode(this->apex_nodes[beam].id);
 
         // Calculate the pitch axis
-        const auto pitch_axis = std::array{
+        const auto pitch_axis = math::UnitVector({
             root_node.x0[0] - apex_node.x0[0],
             root_node.x0[1] - apex_node.x0[1],
             root_node.x0[2] - apex_node.x0[2],
-        };
+        });
 
         // Create rotation vector about the pitch axis
-        const auto pitch_axis_unit = math::UnitVector(pitch_axis);
         const auto rotation_vector = std::array{
-            input.blade_pitch_angle * pitch_axis_unit[0],
-            input.blade_pitch_angle * pitch_axis_unit[1],
-            input.blade_pitch_angle * pitch_axis_unit[2]
+            input.blade_pitch_angle * pitch_axis[0], input.blade_pitch_angle * pitch_axis[1],
+            input.blade_pitch_angle * pitch_axis[2]
         };
 
         // Calculate pitch rotation quaternion
@@ -511,11 +570,11 @@ void Turbine::SetInitialDisplacements(const TurbineInput& input, Model& model) {
 
 void Turbine::SetInitialRotorVelocity(const TurbineInput& input, Model& model) {
     // Calculate shaft axis in current configuration
-    const auto hub_position = model.GetNode(this->hub_node.id).DisplacedPosition();
     const auto shaft_base_position = model.GetNode(this->shaft_base_node.id).DisplacedPosition();
+    const auto hub_position = model.GetNode(this->hub_node.id).DisplacedPosition();
     const auto shaft_axis = math::UnitVector(
-        {hub_position[0] - shaft_base_position[0], hub_position[1] - shaft_base_position[1],
-         hub_position[2] - shaft_base_position[2]}
+        {shaft_base_position[0] - hub_position[0], shaft_base_position[1] - hub_position[1],
+         shaft_base_position[2] - hub_position[2]}
     );
 
     // Collect all rotor node IDs (hub, azimuth, blade nodes, and apex nodes)

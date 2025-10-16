@@ -48,6 +48,17 @@ struct TurbineInput {
      */
     std::array<std::array<double, 6>, 6> hub_inertia_matrix{};
 
+    /**
+     * @brief Nacelle inertia matrix (6x6)
+     * @details Includes nacelle mass and inertia properties
+     */
+    std::array<std::array<double, 6>, 6> nacelle_inertia_matrix{};
+
+    /**
+     * @brief Nacelle center of mass offset from the yaw bearing (meters)
+     */
+    std::array<double, 3> nacelle_cm_offset{};
+
     //--------------------------------------------------------------------------
     // Geometric configuration inputs
     //--------------------------------------------------------------------------

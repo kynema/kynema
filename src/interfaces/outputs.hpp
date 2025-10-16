@@ -87,10 +87,10 @@ public:
      * @brief Write rotor time-series data at specified timestep
      *
      * @param timestep The timestep number to write data to
-     * @param azimuth_angle The current azimuth angle
-     * @param rotor_speed The current rotor speed
+     * @param name The name of the variable to write (e.g., "azimuth_angle", "rotor_speed")
+     * @param value The current value of the variable
      */
-    void WriteRotorTimeSeriesAtTimestep(size_t timestep, double azimuth_angle, double rotor_speed);
+    void WriteValueAtTimestep(size_t timestep, const std::string& name, double value);
 
 private:
     std::unique_ptr<util::NodeStateWriter> output_writer_;        ///< Output writer

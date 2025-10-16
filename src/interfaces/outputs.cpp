@@ -109,16 +109,25 @@ void Outputs::WriteNodeOutputsAtTimestep(const HostState<DeviceType>& host_state
         timestep, "a", this->x_data_, this->y_data_, this->z_data_, this->i_data_, this->j_data_,
         this->k_data_
     );
+
+    // Force data
+    for (auto node : std::views::iota(0U, num_nodes_)) {
+        this->x_data_[node] = host_state.f(node, 0);
+        this->y_data_[node] = host_state.f(node, 1);
+        this->z_data_[node] = host_state.f(node, 2);
+        this->i_data_[node] = host_state.f(node, 3);
+        this->j_data_[node] = host_state.f(node, 4);
+        this->k_data_[node] = host_state.f(node, 5);
+    }
+    this->output_writer_->WriteStateDataAtTimestep(
+        timestep, "f", this->x_data_, this->y_data_, this->z_data_, this->i_data_, this->j_data_,
+        this->k_data_
+    );
 }
 
-void Outputs::WriteRotorTimeSeriesAtTimestep(
-    size_t timestep, double azimuth_angle, double rotor_speed
-) {
-    if (!this->time_series_writer_) {
-        return;
+void Outputs::WriteValueAtTimestep(size_t timestep, const std::string& name, double value) {
+    if (this->time_series_writer_) {
+        this->time_series_writer_->WriteValueAtTimestep(name, timestep, value);
     }
-
-    this->time_series_writer_->WriteValueAtTimestep("rotor_azimuth_angle", timestep, azimuth_angle);
-    this->time_series_writer_->WriteValueAtTimestep("rotor_speed", timestep, rotor_speed);
 }
 }  // namespace kynema::interfaces

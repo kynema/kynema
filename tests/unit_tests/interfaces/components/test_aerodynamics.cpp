@@ -57,10 +57,16 @@ TEST(AerodynamicsComponentTest, CalculateAerodynamicLoad_Case1) {
     constexpr auto qqr = std::array{1., 0., 0., 0.};
     constexpr auto con_force = std::array{0., -.5, 0.};
 
+    auto alpha = 0.;
+    auto cn = 0.;
+    auto ct = 0.;
+    auto cm = 0.;
+    auto v_rel = std::array<double, 3>{};
+
     auto ref_axis_moment = std::array<double, 3>{};
     auto load = kynema::interfaces::components::CalculateAerodynamicLoad(
         ref_axis_moment, v_inflow, v_motion, aoa_polar, cl_polar, cd_polar, cm_polar, chord, delta_s,
-        fluid_density, con_force, qqr
+        fluid_density, con_force, qqr, v_rel, alpha, cn, ct, cm
     );
 
     constexpr auto expected_load = std::array{0., 45.9375, -91.875, -7.35, 0., 0.};
@@ -92,10 +98,16 @@ TEST(AerodynamicsComponentTest, CalculateAerodynamicLoad_Case2) {
     constexpr auto qqr = std::array{1., 0., 0., 0.};
     constexpr auto con_force = std::array{0., -.5, 0.};
 
+    auto alpha = 0.;
+    auto cn = 0.;
+    auto ct = 0.;
+    auto cm = 0.;
+    auto v_rel = std::array<double, 3>{};
+
     auto ref_axis_moment = std::array<double, 3>{};
     auto load = kynema::interfaces::components::CalculateAerodynamicLoad(
         ref_axis_moment, v_inflow, v_motion, aoa_polar, cl_polar, cd_polar, cm_polar, chord, delta_s,
-        fluid_density, con_force, qqr
+        fluid_density, con_force, qqr, v_rel, alpha, cn, ct, cm
     );
 
     constexpr auto expected_load =

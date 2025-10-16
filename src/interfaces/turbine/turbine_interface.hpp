@@ -4,6 +4,7 @@
 #include "interfaces/components/aerodynamics_input.hpp"
 #include "interfaces/components/controller_input.hpp"
 #include "interfaces/components/turbine.hpp"
+#include "interfaces/host_constraints.hpp"
 #include "interfaces/host_state.hpp"
 #include "interfaces/outputs.hpp"
 #include "model/model.hpp"
@@ -57,17 +58,22 @@ public:
         const std::function<std::array<double, 3>(const std::array<double, 3>&)>& inflow_function
     );
 
+    std::array<double, 3> GetHubNodePosition() const;
+
+    /**
+     * @brief Update controller inputs from current system state
+     */
+    void ApplyController(double t, double hub_wind_speed);
+
     /**
      * @brief Steps forward in time
-     *
-     * @param t The current time in seconds
      *
      * @return true if solver converged, false otherwise
      * @note This function updates the host state with current node loads,
      *       solves the dynamic system, and updates the node motion with the new state.
      *       If the solver does not converge, the motion is not updated.
      */
-    [[nodiscard]] bool Step(double t = 0.);
+    [[nodiscard]] bool Step();
 
     /// @brief Saves the current state for potential restoration (in correction step)
     void SaveState();
@@ -103,8 +109,9 @@ private:
     Solver<DeviceType> solver;            ///< Kynema class for solving the dynamic system
     State<DeviceType> state_save;         ///< Kynema class state class for temporarily saving state
     HostState<DeviceType> host_state;     ///< Host local copy of node state data
-    std::unique_ptr<Outputs> outputs;     ///< handle to Output for writing to NetCDF
-    std::unique_ptr<util::TurbineController> controller;     ///< DISCON-style controller
+    HostConstraints<DeviceType> host_constraints;         ///< Host local copy of constraint data
+    std::unique_ptr<Outputs> outputs;                     ///< handle to Output for writing to NetCDF
+    std::unique_ptr<util::TurbineController> controller;  ///< DISCON-style controller
     std::unique_ptr<components::Aerodynamics> aerodynamics;  ///< Aerodynamics component
 
     /**
@@ -116,7 +123,7 @@ private:
      * - Index 0: Azimuth angle (radians)
      * - Index 1: Rotor speed (rad/s)
      */
-    void WriteRotorTimeSeriesData();
+    void WriteTimeSeriesData() const;
 
     /**
      * @brief Initialize controller with turbine parameters and connect to constraints
@@ -126,13 +133,6 @@ private:
         const components::TurbineInput& turbine_input,
         const components::SolutionInput& solution_input
     );
-
-    void ApplyController();
-
-    /**
-     * @brief Update controller inputs from current system state
-     */
-    void UpdateControllerInputs();
 };
 
 }  // namespace kynema::interfaces

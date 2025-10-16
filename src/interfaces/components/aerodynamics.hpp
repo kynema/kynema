@@ -24,7 +24,8 @@ std::array<double, 6> CalculateAerodynamicLoad(
     std::span<const double, 3> v_motion, std::span<const double> aoa_polar,
     std::span<const double> cl_polar, std::span<const double> cd_polar,
     std::span<const double> cm_polar, double chord, double delta_s, double fluid_density,
-    std::span<const double, 3> con_force, std::span<const double, 4> qqr
+    std::span<const double, 3> con_force, std::span<const double, 4> qqr,
+    std::array<double, 3>& v_rel, double& aoa, double& cn, double& ct, double& cm
 );
 
 std::array<double, 3> CalculateConMotionVector(
@@ -56,20 +57,24 @@ public:
     std::vector<std::array<double, 3>> v_motion;
 
     std::vector<std::array<double, 3>> con_force;
+    std::vector<std::array<double, 3>> v_rel;
+    std::vector<double> alpha;
+    std::vector<double> cn;
+    std::vector<double> ct;
+    std::vector<double> cm;
     std::vector<std::array<double, 6>> loads;
     std::vector<std::array<double, 3>> ref_axis_moments;
 
     std::vector<double> jacobian_xi;
     std::vector<std::array<double, 3>> v_inflow;
-    std::vector<std::array<double, 3>> v_rel;
     std::vector<double> twist;
     std::vector<double> chord;
     std::vector<double> delta_s;
     std::vector<size_t> polar_size;
     std::vector<std::vector<double>> aoa;
-    std::vector<std::vector<double>> cl;
-    std::vector<std::vector<double>> cd;
-    std::vector<std::vector<double>> cm;
+    std::vector<std::vector<double>> cl_polar;
+    std::vector<std::vector<double>> cd_polar;
+    std::vector<std::vector<double>> cm_polar;
 
     std::vector<double> motion_interp;
     std::vector<double> shape_deriv_jac;
@@ -123,11 +128,11 @@ private:
     template <typename T>
     static std::vector<std::vector<double>> ExtractPolar(size_t n_sections, T polar_extractor) {
         auto output = std::vector<std::vector<double>>(n_sections);
-        for (auto section = 0U; section < n_sections; ++section) {
+        for (auto section : std::views::iota(0U, n_sections)) {
             const auto& polar_data = polar_extractor(section);
             const auto n_polar_points = polar_data.size();
             output[section].resize(n_polar_points);
-            for (auto polar = 0U; polar < n_polar_points; ++polar) {
+            for (auto polar : std::views::iota(0U, n_polar_points)) {
                 output[section][polar] = polar_data[polar];
             }
         }
@@ -144,15 +149,15 @@ public:
     template <typename DeviceType>
     void CalculateMotion(const HostState<DeviceType>& state) {
         // Copy beam node displacements from state
-        for (auto node = 0U; node < node_u.size(); ++node) {
-            for (auto component = 0U; component < 7U; ++component) {
+        for (auto node : std::views::iota(0U, node_u.size())) {
+            for (auto component : std::views::iota(0U, 7U)) {
                 node_u[node][component] = state.q(node_ids[node], component);
             }
         }
 
         // Copy beam node velocities from state
-        for (auto node = 0U; node < node_v.size(); ++node) {
-            for (auto component = 0U; component < 6U; ++component) {
+        for (auto node : std::views::iota(0U, node_v.size())) {
+            for (auto component : std::views::iota(0U, 6U)) {
                 node_v[node][component] = state.v(node_ids[node], component);
             }
         }
@@ -160,37 +165,37 @@ public:
         InterpolateQuaternionFromNodesToSections(u_motion_map, node_u, motion_interp);
 
         // Interpolate beam node velocities to aerodynamic sections on the reference axis
-        for (auto i = 0U; i < v_motion_map.size(); ++i) {
-            for (auto component = 0U; component < 6U; ++component) {
+        for (auto i : std::views::iota(0U, v_motion_map.size())) {
+            for (auto component : std::views::iota(0U, 6U)) {
                 v_motion_map[i][component] = 0.;
             }
-            for (auto j = 0U; j < node_v.size(); ++j) {
+            for (auto j : std::views::iota(0U, node_v.size())) {
                 const auto coeff = motion_interp[i * node_v.size() + j];
-                for (auto component = 0U; component < 6U; ++component) {
+                for (auto component : std::views::iota(0U, 6U)) {
                     v_motion_map[i][component] += coeff * node_v[j][component];
                 }
             }
         }
 
         // Calculate global rotation of each section
-        for (auto i = 0U; i < qqr_motion_map.size(); ++i) {
+        for (auto i : std::views::iota(0U, qqr_motion_map.size())) {
             const auto xr = std::array{
                 xr_motion_map[i][3], xr_motion_map[i][4], xr_motion_map[i][5], xr_motion_map[i][6]
             };
             const auto u = std::array{
                 u_motion_map[i][3], u_motion_map[i][4], u_motion_map[i][5], u_motion_map[i][6]
             };
-            const auto qqr = math::QuaternionCompose(xr, u);
+            const auto qqr = math::QuaternionCompose(u, xr);
             for (auto component = 0U; component < 4U; ++component) {
                 qqr_motion_map[i][component] = qqr[component];
             }
         }
 
         // Calculate motion of aerodynamic centers in global coordinates
-        for (auto i = 0U; i < x_motion.size(); ++i) {
+        for (auto i : std::views::iota(0U, x_motion.size())) {
             const auto qqr_con = math::RotateVectorByQuaternion(qqr_motion_map[i], con_motion[i]);
 
-            for (auto component = 0U; component < 3U; ++component) {
+            for (auto component : std::views::iota(0U, 3U)) {
                 x_motion[i][component] =
                     xr_motion_map[i][component] + u_motion_map[i][component] + qqr_con[component];
             }
@@ -198,14 +203,14 @@ public:
             const auto omega =
                 std::array{v_motion_map[i][3], v_motion_map[i][4], v_motion_map[i][5]};
             const auto omega_qqr_con = math::CrossProduct(omega, qqr_con);
-            for (auto component = 0U; component < 3U; ++component) {
+            for (auto component : std::views::iota(0U, 3U)) {
                 v_motion[i][component] = v_motion_map[i][component] + omega_qqr_con[component];
             }
         }
 
         auto node_x = std::vector<double>(node_u.size() * 3U);
-        for (auto node = 0U; node < node_u.size(); ++node) {
-            for (auto component = 0U; component < 3U; ++component) {
+        for (auto node : std::views::iota(0U, node_f.size())) {
+            for (auto component : std::views::iota(0U, 3U)) {
                 node_x[component * node_u.size() + node] = state.x(node_ids[node], component);
             }
         }
@@ -233,8 +238,8 @@ public:
 
     template <typename DeviceType>
     void AddNodalLoadsToState(HostState<DeviceType>& state) {
-        for (auto node = 0U; node < node_f.size(); ++node) {
-            for (auto component = 0U; component < 6U; ++component) {
+        for (auto node : std::views::iota(0U, node_f.size())) {
+            for (auto component : std::views::iota(0U, 6U)) {
                 state.f(node_ids[node], component) += node_f[node][component];
             }
         }

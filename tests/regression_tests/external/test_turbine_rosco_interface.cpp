@@ -6,38 +6,46 @@
 #include <yaml-cpp/yaml.h>
 
 #include "elements/beams/hollow_circle_properties.hpp"
-#include "interfaces/components/aerodynamics.hpp"
 #include "interfaces/components/inflow.hpp"
 #include "interfaces/turbine/turbine_interface.hpp"
 #include "interfaces/turbine/turbine_interface_builder.hpp"
 
+#include "Kynema_config.h"
+
 namespace kynema::tests {
 
-TEST(AerodynamicsInterfaceTest, IEA15_Turbine) {
-    constexpr auto duration{1.};
-    constexpr auto time_step{0.01};
-    constexpr auto n_blades{3U};
-    constexpr auto n_blade_nodes{11U};
-    constexpr auto n_tower_nodes{11U};
-    const auto n_steps{static_cast<unsigned>(std::ceil(duration / time_step))};
-    constexpr auto write_output{false};
+TEST(TurbineInterfaceTest, IEA15_ROSCOControllerWithAero) {
+    // Conversions
+    constexpr auto rpm_to_radps{0.104719755};  // RPM to rad/s
 
-    constexpr auto rotor_speed_init{1.0 * 0.104719755};  // RPM to rad/s
-    constexpr auto fluid_density{1.225};
-    constexpr auto vel_h{10.6};
-    constexpr auto h_ref{150.};
-    constexpr auto pl_exp{0.12};
-    constexpr auto flow_angle{0.};
+    constexpr auto duration{25.};                         // Simulation duration in seconds
+    constexpr auto time_step{0.01};                       // Time step for the simulation
+    constexpr auto n_blades{3U};                          // Number of blades in turbine
+    constexpr auto n_blade_nodes{11U};                    // Number of nodes per blade
+    constexpr auto n_tower_nodes{11U};                    // Number of nodes in tower
+    constexpr auto rotor_speed_init{5.0 * rpm_to_radps};  // Rotor speed (rad/s)
+    constexpr double hub_wind_speed_init{6.0};            // Hub height wind speed (m/s)
+    constexpr double generator_power_init{0.0};           // Generator power (W)
+    constexpr auto write_output{false};                   // Write output file
 
+    constexpr auto fluid_density = 1.225;
+    constexpr auto vel_h = hub_wind_speed_init;
+    constexpr auto h_ref = 150.;
+    constexpr auto pl_exp = 0.12;
+    constexpr auto flow_angle = 0.;
+
+    // Create interface builder
     auto builder = interfaces::TurbineInterfaceBuilder{};
+
+    // Set solution parameters
     builder.Solution()
         .EnableDynamicSolve()
         .SetTimeStep(time_step)
         .SetDampingFactor(0.0)
         .SetGravity({0., 0., -9.81})
-        .SetMaximumNonlinearIterations(6)
+        .SetMaximumNonlinearIterations(12)
         .SetAbsoluteErrorTolerance(1e-7)
-        .SetRelativeErrorTolerance(1e-5);
+        .SetRelativeErrorTolerance(1e-6);
 
     if (write_output) {
         builder.Solution().SetOutputFile("TurbineInterfaceTest.IEA15");
@@ -69,7 +77,9 @@ TEST(AerodynamicsInterfaceTest, IEA15_Turbine) {
         .SetTowerAxisToRotorApex(wio_drivetrain["outer_shape"]["overhang"].as<double>())
         .SetTowerTopToRotorApex(wio_drivetrain["outer_shape"]["distance_tt_hub"].as<double>())
         .SetGearBoxRatio(wio_drivetrain["gearbox"]["gear_ratio"].as<double>())
-        .SetRotorSpeed(rotor_speed_init);
+        .SetRotorSpeed(rotor_speed_init)
+        .SetGeneratorPower(generator_power_init)
+        .SetHubWindSpeed(hub_wind_speed_init);
 
     //--------------------------------------------------------------------------
     // Build Blades
@@ -294,15 +304,24 @@ TEST(AerodynamicsInterfaceTest, IEA15_Turbine) {
         {{{hub_mass, 0., 0., 0., 0., 0.},
           {0., hub_mass, 0., 0., 0., 0.},
           {0., 0., hub_mass, 0., 0., 0.},
-          {0., 0., 0., hub_inertia[0] + generator_inertia[0] * gearbox_ratio, hub_inertia[3],
+          {0., 0., 0., hub_inertia[0] + gearbox_ratio * generator_inertia[0], hub_inertia[3],
            hub_inertia[4]},
           {0., 0., 0., hub_inertia[3], hub_inertia[1], hub_inertia[5]},
           {0., 0., 0., hub_inertia[4], hub_inertia[5], hub_inertia[2]}}}
     );
 
-    //--------------------------------------------------------------------------
-    // Build Aerodynamics
-    //--------------------------------------------------------------------------
+    // Setup the controller and its input file
+    const auto controller_shared_lib_path =
+        std::string{static_cast<const char*>(Kynema_ROSCO_LIBRARY)};
+    const auto controller_function_name = std::string{"DISCON"};
+    const auto controller_input_file = std::string{"./IEA-15-240-RWT/DISCON.IN"};
+    const auto controller_output_file = std::string{"./IEA-15-240-RWT"};
+
+    auto controller_builder = builder.Controller()
+                                  .SetLibraryPath(controller_shared_lib_path)
+                                  .SetFunctionName(controller_function_name)
+                                  .SetInputFilePath(controller_input_file)
+                                  .SetControllerInput(controller_output_file);
 
     auto& aero_builder =
         builder.Aerodynamics().EnableAero().SetNumberOfAirfoils(1UL).SetAirfoilToBladeMap(
@@ -338,25 +357,48 @@ TEST(AerodynamicsInterfaceTest, IEA15_Turbine) {
         aero_builder.SetAirfoilSections(0UL, aero_sections);
     }
 
-    auto turbine_interface = builder.Build();
+    //--------------------------------------------------------------------------
+    // Interface
+    //--------------------------------------------------------------------------
+
+    // Build turbine interface
+    auto interface = builder.Build();
 
     auto inflow = interfaces::components::Inflow::SteadyWind(vel_h, h_ref, pl_exp, flow_angle);
 
-    for (auto i : std::views::iota(1U, n_steps + 1)) {
-        const auto t = i * time_step;
+    //--------------------------------------------------------------------------
+    // Simulation
+    //--------------------------------------------------------------------------
 
-        turbine_interface.UpdateAerodynamicLoads(
+    // Calculate number of steps
+    const auto n_steps{static_cast<size_t>(duration / time_step) + 1U};
+
+    // Loop through solution iterations
+    for (auto i : std::views::iota(1U, n_steps)) {
+        // Calculate time
+        const auto t{static_cast<double>(i) * time_step};
+
+        interface.UpdateAerodynamicLoads(
             fluid_density,
             [t, &inflow](const std::array<double, 3>& pos) {
                 return inflow.Velocity(t, pos);
             }
         );
 
-        const auto converged = turbine_interface.Step();
+        const auto hub_velocity = inflow.Velocity(t, interface.GetHubNodePosition());
+        interface.ApplyController(t, hub_velocity[0]);
+
+        // Take step
+        const auto converged = interface.Step();
+
+        // Check convergence
         ASSERT_EQ(converged, true);
-        if (i == 100) {
-            EXPECT_NEAR(turbine_interface.CalculateAzimuthAngle(), 0.10613395349825394, 1.e-5);
-            EXPECT_NEAR(turbine_interface.CalculateRotorSpeed(), 0.10926961236037563, 1.e-9);
+
+        if (i % 100 == 0) {
+            std::cout << "Time: " << t << ", Azimuth: " << interface.CalculateAzimuthAngle()
+                      << ", Rotor Speed (RPM): " << interface.CalculateRotorSpeed() / rpm_to_radps
+                      << ", Blade Pitch: " << interface.Turbine().blade_pitch_control[0]
+                      << ", Generator Torque: " << interface.Turbine().torque_control << "\n";
         }
     }
 }

@@ -277,8 +277,10 @@ TEST(TurbineInterfaceTest, IEA15_Controller) {
         // Calculate time
         const auto t{static_cast<double>(i) * time_step};
 
+        interface.ApplyController(t, 0.);
+
         // Take step
-        const auto converged = interface.Step(t);
+        const auto converged = interface.Step();
 
         // Check convergence
         ASSERT_EQ(converged, true);

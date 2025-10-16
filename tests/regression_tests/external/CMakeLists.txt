@@ -5,6 +5,7 @@ if (Kynema_ENABLE_ROSCO_CONTROLLER AND
         kynema_regression_tests
         PRIVATE
         test_rosco_controller.cpp
+        test_turbine_rosco_interface.cpp
     )
 endif()
 
