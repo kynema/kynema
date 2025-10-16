@@ -3,8 +3,13 @@
 Static bending of a twisted beam
 --------------------------------
 
-For this benchmark problem, we examine the static tip deflection of a straight, but twisted beam. Details are provided in
-[@Wang-etal:2017].  The benchmark solution is a highly refined solid-element model solved in ANSYS.  The following table show the tip displacement calculated with a single Legendre Spectral Finite Element (LSFE) with the number of nodes shown. N-Point Gauss-Legendre quadrature was employed, where N is the number of nodes. The results show the expected spectral convergence a solution that is in good agreement with the ANSYS solid-element solution.  The results are also identical, within machine precision, to those produced with BeamDyn.
+For this benchmark problem, we examine the static tip deflection of a straight, but twisted beam.
+Details are provided in [@Wang-etal:2017]. The benchmark solution is a highly refined solid-element
+model solved in ANSYS. The following table shows the tip displacement calculated with a single
+Legendre Spectral Finite Element (LSFE) with the number of nodes shown. N-Point Gauss-Legendre
+quadrature was employed, where N is the number of nodes. The results show the expected spectral
+convergence to a solution that is in good agreement with the ANSYS solid-element solution.
+The results are also identical, within machine precision, to those produced with BeamDyn.
 
 
 ANSYS Solid-Element Solution: u1=-1.134192, u2= -1.714467, u3=-3.58423
@@ -27,10 +32,18 @@ ANSYS Solid-Element Solution: u1=-1.134192, u2= -1.714467, u3=-3.58423
 +----------------------+------------------------+------------------------+------------------------+
 
 
-   .. container:: csl-entry
-      :name: ref-Wang-etal:2017
+.. note::
 
-      Wang, Q., M. A. Sprague, J. Jonkman, N. Johnson, and B. Jonkman.
-      2017. “BeamDyn: A High-Fidelity Wind Turbine Blade Solver in the
-      FAST Modular Framework.” *Wind Energy* 20: 1439-1462.
-      https://onlinelibrary.wiley.com/doi/pdf/10.1002/we.2101
+   This benchmark is included as a regression test in the Kynema code base.
+   The test is implemented in:
+
+     https://github.com/kynema/kynema/blob/main/tests/regression_tests/regression/verification/static_composite_beam_bending_twisted.cpp
+
+
+.. container:: csl-entry
+   :name: ref-Wang-etal:2017
+
+   Wang, Q., M. A. Sprague, J. Jonkman, N. Johnson, and B. Jonkman.
+   2017. “BeamDyn: A High-Fidelity Wind Turbine Blade Solver in the
+   FAST Modular Framework.” *Wind Energy* 20: 1439-1462.
+   https://onlinelibrary.wiley.com/doi/pdf/10.1002/we.2101
