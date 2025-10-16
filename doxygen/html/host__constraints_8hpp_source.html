@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kynema API: /home/runner/work/kynema/kynema/kynema/src/interfaces/host_constraints.hpp Source File &mdash; Kynema 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Kynema
+              <img src="../../_static/oturb_logo_v2.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/user.html">User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../theory/index.html">Theory Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/index.html">Developer Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/index.html">Benchmark Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../acknowledgement.html">Acknowledgements</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Kynema</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Kynema API: /home/runner/work/kynema/kynema/kynema/src/interfaces/host_constraints.hpp Source File</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/doxygen/html/host__constraints_8hpp_source.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="home-runner-work-kynema-kynema-kynema-src-interfaces-host-constraints-hpp-source-file">
+<h1>/home/runner/work/kynema/kynema/kynema/src/interfaces/host_constraints.hpp Source File<a class="headerlink" href="#home-runner-work-kynema-kynema-kynema-src-interfaces-host-constraints-hpp-source-file" title="Permalink to this heading"></a></h1>
+<div class="doxygen-content docutils container">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Kynema API: /home/runner/work/kynema/kynema/kynema/src/interfaces/host_constraints.hpp Source File</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Kynema API
+   </div>
+   <div id="projectbrief">A flexible multibody structural dynamics code for wind turbines</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_ee3f1a7951c308657a65f8199076c1d6.html">interfaces</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">host_constraints.hpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="host__constraints_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="constraints_8hpp.html">constraints/constraints.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacekynema_1_1interfaces.html">kynema::interfaces</a> {</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> DeviceType&gt;</div>
+<div class="foldopen" id="foldopen00021" data-start="{" data-end="};">
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="structkynema_1_1interfaces_1_1HostConstraints.html">   21</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structkynema_1_1interfaces_1_1HostConstraints.html">HostConstraints</a> {</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> ValueType&gt;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="structkynema_1_1interfaces_1_1HostConstraints.html#abb45612feb6a13855e5d798a5419f5a2">   23</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="structkynema_1_1interfaces_1_1HostConstraints.html#abb45612feb6a13855e5d798a5419f5a2">HostView</a> = <span class="keyword">typename</span> Kokkos::View&lt;ValueType, DeviceType&gt;::HostMirror;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="structkynema_1_1interfaces_1_1HostConstraints.html#a4665559020ac1ee7878777c4c08e2e09">   26</a></span>    <a class="code hl_typedef" href="structkynema_1_1interfaces_1_1HostConstraints.html#abb45612feb6a13855e5d798a5419f5a2">HostView&lt;double* [7]&gt;</a> <a class="code hl_variable" href="structkynema_1_1interfaces_1_1HostConstraints.html#a4665559020ac1ee7878777c4c08e2e09">input</a>;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="structkynema_1_1interfaces_1_1HostConstraints.html#aa5bf34430967cb2216334069697c056e">   29</a></span>    <a class="code hl_typedef" href="structkynema_1_1interfaces_1_1HostConstraints.html#abb45612feb6a13855e5d798a5419f5a2">HostView&lt;double* [3]&gt;</a> <a class="code hl_variable" href="structkynema_1_1interfaces_1_1HostConstraints.html#aa5bf34430967cb2216334069697c056e">output</a>;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="structkynema_1_1interfaces_1_1HostConstraints.html#a0ca67d3b8cc93b649a785cc3a6787723">   32</a></span>    <a class="code hl_typedef" href="structkynema_1_1interfaces_1_1HostConstraints.html#abb45612feb6a13855e5d798a5419f5a2">HostView&lt;double* [6]&gt;</a> <a class="code hl_variable" href="structkynema_1_1interfaces_1_1HostConstraints.html#a0ca67d3b8cc93b649a785cc3a6787723">loads</a>;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="foldopen" id="foldopen00035" data-start="{" data-end="}">
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="structkynema_1_1interfaces_1_1HostConstraints.html#a80abdd0ee0cb505bfbbe6a7b89350179">   35</a></span>    <span class="keyword">explicit</span> <a class="code hl_function" href="structkynema_1_1interfaces_1_1HostConstraints.html#a80abdd0ee0cb505bfbbe6a7b89350179">HostConstraints</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structkynema_1_1Constraints.html">Constraints&lt;DeviceType&gt;</a>&amp; constraints)</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        : <a class="code hl_variable" href="structkynema_1_1interfaces_1_1HostConstraints.html#a4665559020ac1ee7878777c4c08e2e09">input</a>(Kokkos::create_mirror_view(Kokkos::WithoutInitializing, constraints.<a class="code hl_variable" href="structkynema_1_1interfaces_1_1HostConstraints.html#a4665559020ac1ee7878777c4c08e2e09">input</a>)),</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>          <a class="code hl_variable" href="structkynema_1_1interfaces_1_1HostConstraints.html#aa5bf34430967cb2216334069697c056e">output</a>(Kokkos::create_mirror_view(Kokkos::WithoutInitializing, constraints.<a class="code hl_variable" href="structkynema_1_1interfaces_1_1HostConstraints.html#aa5bf34430967cb2216334069697c056e">output</a>)),</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>          <a class="code hl_variable" href="structkynema_1_1interfaces_1_1HostConstraints.html#a0ca67d3b8cc93b649a785cc3a6787723">loads</a>(Kokkos::create_mirror_view(Kokkos::WithoutInitializing, constraints.lambda)) {}</div>
+</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="foldopen" id="foldopen00041" data-start="{" data-end="}">
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="structkynema_1_1interfaces_1_1HostConstraints.html#a8f4191f1554ab5df1f6c0156676e5b25">   41</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="structkynema_1_1interfaces_1_1HostConstraints.html#a8f4191f1554ab5df1f6c0156676e5b25">CopyFromConstraints</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structkynema_1_1Constraints.html">Constraints&lt;DeviceType&gt;</a>&amp; constraints) {</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        Kokkos::deep_copy(this-&gt;input, constraints.<a class="code hl_variable" href="structkynema_1_1Constraints.html#a5ab2f7bbca3ce65d11f88af0f4e3c775">input</a>);</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        Kokkos::deep_copy(this-&gt;output, constraints.<a class="code hl_variable" href="structkynema_1_1Constraints.html#a0e8e84d9424a46370dded24323e53d75">output</a>);</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        Kokkos::deep_copy(this-&gt;loads, constraints.<a class="code hl_variable" href="structkynema_1_1Constraints.html#a04a64626c23c3dd49c2b58971abb4998">lambda</a>);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    }</div>
+</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="foldopen" id="foldopen00049" data-start="{" data-end="}">
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="structkynema_1_1interfaces_1_1HostConstraints.html#a754d66544f2a7774ea8c8b31571efe50">   49</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="structkynema_1_1interfaces_1_1HostConstraints.html#a754d66544f2a7774ea8c8b31571efe50">CopyInputsToConstraints</a>(<a class="code hl_struct" href="structkynema_1_1Constraints.html">Constraints&lt;DeviceType&gt;</a>&amp; constraints)<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        Kokkos::deep_copy(constraints.<a class="code hl_variable" href="structkynema_1_1Constraints.html#a5ab2f7bbca3ce65d11f88af0f4e3c775">input</a>, this-&gt;input);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    }</div>
+</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>};</div>
+</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>}  <span class="comment">// namespace kynema::interfaces</span></div>
+<div class="ttc" id="aconstraints_8hpp_html"><div class="ttname"><a href="constraints_8hpp.html">constraints.hpp</a></div></div>
+<div class="ttc" id="anamespacekynema_1_1interfaces_html"><div class="ttname"><a href="namespacekynema_1_1interfaces.html">kynema::interfaces</a></div><div class="ttdef"><b>Definition</b> blade_interface.cpp:9</div></div>
+<div class="ttc" id="astructkynema_1_1Constraints_html"><div class="ttname"><a href="structkynema_1_1Constraints.html">kynema::Constraints</a></div><div class="ttdoc">Container class for managing multiple constraints in a simulation.</div><div class="ttdef"><b>Definition</b> constraints.hpp:29</div></div>
+<div class="ttc" id="astructkynema_1_1Constraints_html_a04a64626c23c3dd49c2b58971abb4998"><div class="ttname"><a href="structkynema_1_1Constraints.html#a04a64626c23c3dd49c2b58971abb4998">kynema::Constraints::lambda</a></div><div class="ttdeci">View&lt; double *[6]&gt; lambda</div><div class="ttdef"><b>Definition</b> constraints.hpp:60</div></div>
+<div class="ttc" id="astructkynema_1_1Constraints_html_a0e8e84d9424a46370dded24323e53d75"><div class="ttname"><a href="structkynema_1_1Constraints.html#a0e8e84d9424a46370dded24323e53d75">kynema::Constraints::output</a></div><div class="ttdeci">View&lt; double *[3]&gt; output</div><div class="ttdef"><b>Definition</b> constraints.hpp:59</div></div>
+<div class="ttc" id="astructkynema_1_1Constraints_html_a5ab2f7bbca3ce65d11f88af0f4e3c775"><div class="ttname"><a href="structkynema_1_1Constraints.html#a5ab2f7bbca3ce65d11f88af0f4e3c775">kynema::Constraints::input</a></div><div class="ttdeci">View&lt; double *[7]&gt; input</div><div class="ttdef"><b>Definition</b> constraints.hpp:58</div></div>
+<div class="ttc" id="astructkynema_1_1interfaces_1_1HostConstraints_html"><div class="ttname"><a href="structkynema_1_1interfaces_1_1HostConstraints.html">kynema::interfaces::HostConstraints</a></div><div class="ttdoc">Host-side mirror of the constraint input, output, and loads for a given time increment.</div><div class="ttdef"><b>Definition</b> host_constraints.hpp:21</div></div>
+<div class="ttc" id="astructkynema_1_1interfaces_1_1HostConstraints_html_a0ca67d3b8cc93b649a785cc3a6787723"><div class="ttname"><a href="structkynema_1_1interfaces_1_1HostConstraints.html#a0ca67d3b8cc93b649a785cc3a6787723">kynema::interfaces::HostConstraints::loads</a></div><div class="ttdeci">HostView&lt; double *[6]&gt; loads</div><div class="ttdoc">Host local copy of current loads.</div><div class="ttdef"><b>Definition</b> host_constraints.hpp:32</div></div>
+<div class="ttc" id="astructkynema_1_1interfaces_1_1HostConstraints_html_a4665559020ac1ee7878777c4c08e2e09"><div class="ttname"><a href="structkynema_1_1interfaces_1_1HostConstraints.html#a4665559020ac1ee7878777c4c08e2e09">kynema::interfaces::HostConstraints::input</a></div><div class="ttdeci">HostView&lt; double *[7]&gt; input</div><div class="ttdoc">Host local copy of current inputs.</div><div class="ttdef"><b>Definition</b> host_constraints.hpp:26</div></div>
+<div class="ttc" id="astructkynema_1_1interfaces_1_1HostConstraints_html_a754d66544f2a7774ea8c8b31571efe50"><div class="ttname"><a href="structkynema_1_1interfaces_1_1HostConstraints.html#a754d66544f2a7774ea8c8b31571efe50">kynema::interfaces::HostConstraints::CopyInputsToConstraints</a></div><div class="ttdeci">void CopyInputsToConstraints(Constraints&lt; DeviceType &gt; &amp;constraints) const</div><div class="ttdoc">Set inputs in constraints from host constraints.</div><div class="ttdef"><b>Definition</b> host_constraints.hpp:49</div></div>
+<div class="ttc" id="astructkynema_1_1interfaces_1_1HostConstraints_html_a80abdd0ee0cb505bfbbe6a7b89350179"><div class="ttname"><a href="structkynema_1_1interfaces_1_1HostConstraints.html#a80abdd0ee0cb505bfbbe6a7b89350179">kynema::interfaces::HostConstraints::HostConstraints</a></div><div class="ttdeci">HostConstraints(const Constraints&lt; DeviceType &gt; &amp;constraints)</div><div class="ttdoc">Construct host state from state.</div><div class="ttdef"><b>Definition</b> host_constraints.hpp:35</div></div>
+<div class="ttc" id="astructkynema_1_1interfaces_1_1HostConstraints_html_a8f4191f1554ab5df1f6c0156676e5b25"><div class="ttname"><a href="structkynema_1_1interfaces_1_1HostConstraints.html#a8f4191f1554ab5df1f6c0156676e5b25">kynema::interfaces::HostConstraints::CopyFromConstraints</a></div><div class="ttdeci">void CopyFromConstraints(const Constraints&lt; DeviceType &gt; &amp;constraints)</div><div class="ttdoc">Copy state data to host state.</div><div class="ttdef"><b>Definition</b> host_constraints.hpp:41</div></div>
+<div class="ttc" id="astructkynema_1_1interfaces_1_1HostConstraints_html_aa5bf34430967cb2216334069697c056e"><div class="ttname"><a href="structkynema_1_1interfaces_1_1HostConstraints.html#aa5bf34430967cb2216334069697c056e">kynema::interfaces::HostConstraints::output</a></div><div class="ttdeci">HostView&lt; double *[3]&gt; output</div><div class="ttdoc">Host local copy of current outputs.</div><div class="ttdef"><b>Definition</b> host_constraints.hpp:29</div></div>
+<div class="ttc" id="astructkynema_1_1interfaces_1_1HostConstraints_html_abb45612feb6a13855e5d798a5419f5a2"><div class="ttname"><a href="structkynema_1_1interfaces_1_1HostConstraints.html#abb45612feb6a13855e5d798a5419f5a2">kynema::interfaces::HostConstraints::HostView</a></div><div class="ttdeci">typename Kokkos::View&lt; ValueType, DeviceType &gt;::HostMirror HostView</div><div class="ttdef"><b>Definition</b> host_constraints.hpp:23</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023 - Present, MIT License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

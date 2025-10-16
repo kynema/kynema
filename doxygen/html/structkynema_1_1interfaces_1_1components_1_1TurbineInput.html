@@ -193,6 +193,12 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a1b8430b5420cbd18d79d755f11cdc51f" id="r_a1b8430b5420cbd18d79d755f11cdc51f"><td class="memItemLeft" align="right" valign="top">std::array&lt; std::array&lt; double, 6 &gt;, 6 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema_1_1interfaces_1_1components_1_1TurbineInput.html#a1b8430b5420cbd18d79d755f11cdc51f">hub_inertia_matrix</a> {}</td></tr>
 <tr class="memdesc:a1b8430b5420cbd18d79d755f11cdc51f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Hub inertia matrix (6x6)  <br /></td></tr>
 <tr class="separator:a1b8430b5420cbd18d79d755f11cdc51f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73551fd763dafac86c894b96a2a63d71" id="r_a73551fd763dafac86c894b96a2a63d71"><td class="memItemLeft" align="right" valign="top">std::array&lt; std::array&lt; double, 6 &gt;, 6 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema_1_1interfaces_1_1components_1_1TurbineInput.html#a73551fd763dafac86c894b96a2a63d71">nacelle_inertia_matrix</a> {}</td></tr>
+<tr class="memdesc:a73551fd763dafac86c894b96a2a63d71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nacelle inertia matrix (6x6)  <br /></td></tr>
+<tr class="separator:a73551fd763dafac86c894b96a2a63d71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35d93e9333fd8337ca6dffb42b266928" id="r_a35d93e9333fd8337ca6dffb42b266928"><td class="memItemLeft" align="right" valign="top">std::array&lt; double, 3 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema_1_1interfaces_1_1components_1_1TurbineInput.html#a35d93e9333fd8337ca6dffb42b266928">nacelle_cm_offset</a> {}</td></tr>
+<tr class="memdesc:a35d93e9333fd8337ca6dffb42b266928"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nacelle center of mass offset from the yaw bearing (meters)  <br /></td></tr>
+<tr class="separator:a35d93e9333fd8337ca6dffb42b266928"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a74e0a66e7f29dbebee3026e47cb45714" id="r_a74e0a66e7f29dbebee3026e47cb45714"><td class="memItemLeft" align="right" valign="top">std::array&lt; double, 7 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema_1_1interfaces_1_1components_1_1TurbineInput.html#a74e0a66e7f29dbebee3026e47cb45714">tower_base_position</a> {0., 0., 0., 1., 0., 0., 0.}</td></tr>
 <tr class="memdesc:a74e0a66e7f29dbebee3026e47cb45714"><td class="mdescLeft">&#160;</td><td class="mdescRight">Position of the tower base node in the global coordinate system.  <br /></td></tr>
 <tr class="separator:a74e0a66e7f29dbebee3026e47cb45714"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -390,6 +396,39 @@ Public Attributes</h2></td></tr>
 
 <p>Hub height wind speed (m/s) </p>
 <p>Wind speed at the hub height </p>
+
+</div>
+</div>
+<a id="a35d93e9333fd8337ca6dffb42b266928" name="a35d93e9333fd8337ca6dffb42b266928"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35d93e9333fd8337ca6dffb42b266928">&#9670;&#160;</a></span>nacelle_cm_offset</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::array&lt;double, 3&gt; kynema::interfaces::components::TurbineInput::nacelle_cm_offset {}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Nacelle center of mass offset from the yaw bearing (meters) </p>
+
+</div>
+</div>
+<a id="a73551fd763dafac86c894b96a2a63d71" name="a73551fd763dafac86c894b96a2a63d71"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a73551fd763dafac86c894b96a2a63d71">&#9670;&#160;</a></span>nacelle_inertia_matrix</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::array&lt;std::array&lt;double, 6&gt;, 6&gt; kynema::interfaces::components::TurbineInput::nacelle_inertia_matrix {}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Nacelle inertia matrix (6x6) </p>
+<p>Includes nacelle mass and inertia properties </p>
 
 </div>
 </div>

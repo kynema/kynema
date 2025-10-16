@@ -10,5 +10,6 @@ var searchData=
   ['handle_3c_20algorithm_3a_3asuperlu_5fmt_20_3e_7',['Handle&lt; Algorithm::SUPERLU_MT &gt;',['../classkynema_1_1dss_1_1Handle_3_01Algorithm_1_1SUPERLU__MT_01_4.html',1,'kynema::dss']]],
   ['handle_3c_20algorithm_3a_3aumfpack_20_3e_8',['Handle&lt; Algorithm::UMFPACK &gt;',['../classkynema_1_1dss_1_1Handle_3_01Algorithm_1_1UMFPACK_01_4.html',1,'kynema::dss']]],
   ['hollowcircleproperties_9',['HollowCircleProperties',['../structkynema_1_1beams_1_1HollowCircleProperties.html',1,'kynema::beams']]],
-  ['hoststate_10',['HostState',['../structkynema_1_1interfaces_1_1HostState.html',1,'kynema::interfaces']]]
+  ['hostconstraints_10',['HostConstraints',['../structkynema_1_1interfaces_1_1HostConstraints.html',1,'kynema::interfaces']]],
+  ['hoststate_11',['HostState',['../structkynema_1_1interfaces_1_1HostState.html',1,'kynema::interfaces']]]
 ];

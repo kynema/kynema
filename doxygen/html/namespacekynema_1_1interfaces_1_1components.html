@@ -253,8 +253,8 @@ Enumerations</h2></td></tr>
 Functions</h2></td></tr>
 <tr class="memitem:ac61fccc56b0d3dc851537ae0e58609d8" id="r_ac61fccc56b0d3dc851537ae0e58609d8"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacekynema_1_1interfaces_1_1components.html#ac61fccc56b0d3dc851537ae0e58609d8">CalculateAngleOfAttack</a> (std::span&lt; const double, 3 &gt; v_rel)</td></tr>
 <tr class="separator:ac61fccc56b0d3dc851537ae0e58609d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0e314350d5a5dab128aa8625b540b21b" id="r_a0e314350d5a5dab128aa8625b540b21b"><td class="memItemLeft" align="right" valign="top">std::array&lt; double, 6 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacekynema_1_1interfaces_1_1components.html#a0e314350d5a5dab128aa8625b540b21b">CalculateAerodynamicLoad</a> (std::span&lt; double, 3 &gt; ref_axis_moment, std::span&lt; const double, 3 &gt; v_inflow, std::span&lt; const double, 3 &gt; v_motion, std::span&lt; const double &gt; aoa_polar, std::span&lt; const double &gt; cl_polar, std::span&lt; const double &gt; cd_polar, std::span&lt; const double &gt; cm_polar, double chord, double delta_s, double fluid_density, std::span&lt; const double, 3 &gt; con_force, std::span&lt; const double, 4 &gt; qqr)</td></tr>
-<tr class="separator:a0e314350d5a5dab128aa8625b540b21b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a6ba7dc330ff550de910772464934b2" id="r_a2a6ba7dc330ff550de910772464934b2"><td class="memItemLeft" align="right" valign="top">std::array&lt; double, 6 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacekynema_1_1interfaces_1_1components.html#a2a6ba7dc330ff550de910772464934b2">CalculateAerodynamicLoad</a> (std::span&lt; double, 3 &gt; ref_axis_moment, std::span&lt; const double, 3 &gt; v_inflow, std::span&lt; const double, 3 &gt; v_motion, std::span&lt; const double &gt; aoa_polar, std::span&lt; const double &gt; cl_polar, std::span&lt; const double &gt; cd_polar, std::span&lt; const double &gt; cm_polar, double chord, double delta_s, double fluid_density, std::span&lt; const double, 3 &gt; con_force, std::span&lt; const double, 4 &gt; qqr, std::array&lt; double, 3 &gt; &amp;v_rel, double &amp;aoa, double &amp;cn, double &amp;ct, double &amp;cm)</td></tr>
+<tr class="separator:a2a6ba7dc330ff550de910772464934b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a08a5b75f80094cbd2cb41e58bfb38a60" id="r_a08a5b75f80094cbd2cb41e58bfb38a60"><td class="memItemLeft" align="right" valign="top">std::array&lt; double, 3 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacekynema_1_1interfaces_1_1components.html#a08a5b75f80094cbd2cb41e58bfb38a60">CalculateConMotionVector</a> (double ac_to_ref_axis_horizontal, double chord_to_ref_axis_vertical)</td></tr>
 <tr class="separator:a08a5b75f80094cbd2cb41e58bfb38a60"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab7cb8909ef6a62e0da9bf40b21b89126" id="r_ab7cb8909ef6a62e0da9bf40b21b89126"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacekynema_1_1interfaces_1_1components.html#ab7cb8909ef6a62e0da9bf40b21b89126">CalculateJacobianXi</a> (std::span&lt; const double &gt; aero_node_xi)</td></tr>
@@ -320,8 +320,8 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a0e314350d5a5dab128aa8625b540b21b" name="a0e314350d5a5dab128aa8625b540b21b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0e314350d5a5dab128aa8625b540b21b">&#9670;&#160;</a></span>CalculateAerodynamicLoad()</h2>
+<a id="a2a6ba7dc330ff550de910772464934b2" name="a2a6ba7dc330ff550de910772464934b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a6ba7dc330ff550de910772464934b2">&#9670;&#160;</a></span>CalculateAerodynamicLoad()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -396,7 +396,37 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">std::span&lt; const double, 4 &gt;&#160;</td>
-          <td class="paramname"><em>qqr</em>&#160;</td>
+          <td class="paramname"><em>qqr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::array&lt; double, 3 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>v_rel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double &amp;&#160;</td>
+          <td class="paramname"><em>aoa</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double &amp;&#160;</td>
+          <td class="paramname"><em>cn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double &amp;&#160;</td>
+          <td class="paramname"><em>ct</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double &amp;&#160;</td>
+          <td class="paramname"><em>cm</em>&#160;</td>
         </tr>
         <tr>
           <td></td>

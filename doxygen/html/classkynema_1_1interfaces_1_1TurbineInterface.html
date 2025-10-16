@@ -196,9 +196,14 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ad08aba57891c9e129fe1fd043955e76f" id="r_ad08aba57891c9e129fe1fd043955e76f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1TurbineInterface.html#ad08aba57891c9e129fe1fd043955e76f">UpdateAerodynamicLoads</a> (double fluid_density, const std::function&lt; std::array&lt; double, 3 &gt;(const std::array&lt; double, 3 &gt; &amp;)&gt; &amp;inflow_function)</td></tr>
 <tr class="memdesc:ad08aba57891c9e129fe1fd043955e76f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the aerodynamic loads to be applied to the sturcture based on a provided function.  <br /></td></tr>
 <tr class="separator:ad08aba57891c9e129fe1fd043955e76f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af6fcab454f051823ac46f7ac2f6d7ebb" id="r_af6fcab454f051823ac46f7ac2f6d7ebb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1TurbineInterface.html#af6fcab454f051823ac46f7ac2f6d7ebb">Step</a> (double t=0.)</td></tr>
-<tr class="memdesc:af6fcab454f051823ac46f7ac2f6d7ebb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Steps forward in time.  <br /></td></tr>
-<tr class="separator:af6fcab454f051823ac46f7ac2f6d7ebb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14addb58e02fecee00c435a67ce2ac1e" id="r_a14addb58e02fecee00c435a67ce2ac1e"><td class="memItemLeft" align="right" valign="top">std::array&lt; double, 3 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1TurbineInterface.html#a14addb58e02fecee00c435a67ce2ac1e">GetHubNodePosition</a> () const</td></tr>
+<tr class="separator:a14addb58e02fecee00c435a67ce2ac1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a413fb38d3096f4d24b0824970b7c5e6d" id="r_a413fb38d3096f4d24b0824970b7c5e6d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1TurbineInterface.html#a413fb38d3096f4d24b0824970b7c5e6d">ApplyController</a> (double t, double hub_wind_speed)</td></tr>
+<tr class="memdesc:a413fb38d3096f4d24b0824970b7c5e6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update controller inputs from current system state.  <br /></td></tr>
+<tr class="separator:a413fb38d3096f4d24b0824970b7c5e6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8caa3bfc58501516877c0e623d498f26" id="r_a8caa3bfc58501516877c0e623d498f26"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1TurbineInterface.html#a8caa3bfc58501516877c0e623d498f26">Step</a> ()</td></tr>
+<tr class="memdesc:a8caa3bfc58501516877c0e623d498f26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Steps forward in time.  <br /></td></tr>
+<tr class="separator:a8caa3bfc58501516877c0e623d498f26"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a24245f8c2ea5ff231c52a365be6fc02b" id="r_a24245f8c2ea5ff231c52a365be6fc02b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1TurbineInterface.html#a24245f8c2ea5ff231c52a365be6fc02b">SaveState</a> ()</td></tr>
 <tr class="memdesc:a24245f8c2ea5ff231c52a365be6fc02b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Saves the current state for potential restoration (in correction step)  <br /></td></tr>
 <tr class="separator:a24245f8c2ea5ff231c52a365be6fc02b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -297,6 +302,36 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a413fb38d3096f4d24b0824970b7c5e6d" name="a413fb38d3096f4d24b0824970b7c5e6d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a413fb38d3096f4d24b0824970b7c5e6d">&#9670;&#160;</a></span>ApplyController()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema::interfaces::TurbineInterface::ApplyController </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>t</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>hub_wind_speed</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Update controller inputs from current system state. </p>
+
+</div>
+</div>
 <a id="ad50cc650e8cd1fac44fbf66d2557301f" name="ad50cc650e8cd1fac44fbf66d2557301f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad50cc650e8cd1fac44fbf66d2557301f">&#9670;&#160;</a></span>CalculateAzimuthAngle()</h2>
 
@@ -361,6 +396,23 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Return a reference to this interface's host state. </p>
+
+</div>
+</div>
+<a id="a14addb58e02fecee00c435a67ce2ac1e" name="a14addb58e02fecee00c435a67ce2ac1e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14addb58e02fecee00c435a67ce2ac1e">&#9670;&#160;</a></span>GetHubNodePosition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::array&lt; double, 3 &gt; kynema::interfaces::TurbineInterface::GetHubNodePosition </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -429,8 +481,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="af6fcab454f051823ac46f7ac2f6d7ebb" name="af6fcab454f051823ac46f7ac2f6d7ebb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af6fcab454f051823ac46f7ac2f6d7ebb">&#9670;&#160;</a></span>Step()</h2>
+<a id="a8caa3bfc58501516877c0e623d498f26" name="a8caa3bfc58501516877c0e623d498f26"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8caa3bfc58501516877c0e623d498f26">&#9670;&#160;</a></span>Step()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -438,20 +490,13 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">bool kynema::interfaces::TurbineInterface::Step </td>
           <td>(</td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>t</em> = <code>0.</code></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Steps forward in time. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">t</td><td>The current time in seconds</td></tr>
-  </table>
-  </dd>
-</dl>
 <dl class="section return"><dt>Returns</dt><dd>true if solver converged, false otherwise </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>This function updates the host state with current node loads, solves the dynamic system, and updates the node motion with the new state. If the solver does not converge, the motion is not updated. </dd></dl>
 

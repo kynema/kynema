@@ -1,0 +1,14 @@
+.. meta::bcba6cbd0c6ef0310966711a088c054984f76a1210bc7df996d3a4239f789e7a94a618d2258c2c0a8153bce76562e7bb318b575bc28e9c42d8e39715676bc7c9
+
+:orphan:
+
+.. title:: Kynema API: kynema::interfaces::HostConstraints&lt; DeviceType &gt; Struct Template Reference
+
+HostConstraints&lt; DeviceType &gt; Struct Template Reference
+=============================================================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: structkynema_1_1interfaces_1_1HostConstraints.html

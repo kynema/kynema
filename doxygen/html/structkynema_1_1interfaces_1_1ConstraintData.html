@@ -168,6 +168,8 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
+<a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="structkynema_1_1interfaces_1_1ConstraintData-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">kynema::interfaces::ConstraintData Struct Reference</div></div>
@@ -179,14 +181,173 @@ $(function() {
 
 <p><code>#include &lt;<a class="el" href="constraint__data_8hpp_source.html">constraint_data.hpp</a>&gt;</code></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a9ee48a945ab15ad069c66b457ff4b1c6" id="r_a9ee48a945ab15ad069c66b457ff4b1c6"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema_1_1interfaces_1_1ConstraintData.html#a9ee48a945ab15ad069c66b457ff4b1c6">DeviceType</a> = Kokkos::Device&lt; Kokkos::DefaultExecutionSpace, Kokkos::DefaultExecutionSpace::memory_space &gt;</td></tr>
+<tr class="separator:a9ee48a945ab15ad069c66b457ff4b1c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a0372ebc9ca941a6683bd6d95f291551b" id="r_a0372ebc9ca941a6683bd6d95f291551b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema_1_1interfaces_1_1ConstraintData.html#a0372ebc9ca941a6683bd6d95f291551b">ConstraintData</a> (size_t id_)</td></tr>
+<tr class="memdesc:a0372ebc9ca941a6683bd6d95f291551b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constraint data constructor.  <br /></td></tr>
+<tr class="separator:a0372ebc9ca941a6683bd6d95f291551b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a190060ba4c4f73103d3024f87cad032d" id="r_a190060ba4c4f73103d3024f87cad032d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema_1_1interfaces_1_1ConstraintData.html#a190060ba4c4f73103d3024f87cad032d">GetLoads</a> (const <a class="el" href="structkynema_1_1interfaces_1_1HostConstraints.html">HostConstraints</a>&lt; <a class="el" href="structkynema_1_1interfaces_1_1ConstraintData.html#a9ee48a945ab15ad069c66b457ff4b1c6">DeviceType</a> &gt; &amp;host_constraints)</td></tr>
+<tr class="memdesc:a190060ba4c4f73103d3024f87cad032d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Populates constraint Loads from state data.  <br /></td></tr>
+<tr class="separator:a190060ba4c4f73103d3024f87cad032d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31d5b300db1a14eab7913ee0c6551bd5" id="r_a31d5b300db1a14eab7913ee0c6551bd5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema_1_1interfaces_1_1ConstraintData.html#a31d5b300db1a14eab7913ee0c6551bd5">GetOutputs</a> (const <a class="el" href="structkynema_1_1interfaces_1_1HostConstraints.html">HostConstraints</a>&lt; <a class="el" href="structkynema_1_1interfaces_1_1ConstraintData.html#a9ee48a945ab15ad069c66b457ff4b1c6">DeviceType</a> &gt; &amp;host_constraints)</td></tr>
+<tr class="memdesc:a31d5b300db1a14eab7913ee0c6551bd5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Populates constraint outputs from state data.  <br /></td></tr>
+<tr class="separator:a31d5b300db1a14eab7913ee0c6551bd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6fc591347168da7482066f7ebfabbefa" id="r_a6fc591347168da7482066f7ebfabbefa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema_1_1interfaces_1_1ConstraintData.html#a6fc591347168da7482066f7ebfabbefa">SetInputs</a> (<a class="el" href="structkynema_1_1interfaces_1_1HostConstraints.html">HostConstraints</a>&lt; <a class="el" href="structkynema_1_1interfaces_1_1ConstraintData.html#a9ee48a945ab15ad069c66b457ff4b1c6">DeviceType</a> &gt; &amp;host_constraints) const</td></tr>
+<tr class="memdesc:a6fc591347168da7482066f7ebfabbefa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the constraint inputs in the host constraints.  <br /></td></tr>
+<tr class="separator:a6fc591347168da7482066f7ebfabbefa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:ae8b8354b1dc966d512ad845cf3d29d27" id="r_ae8b8354b1dc966d512ad845cf3d29d27"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema_1_1interfaces_1_1ConstraintData.html#ae8b8354b1dc966d512ad845cf3d29d27">id</a></td></tr>
+<tr class="memdesc:ae8b8354b1dc966d512ad845cf3d29d27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constraint identifier in model.  <br /></td></tr>
 <tr class="separator:ae8b8354b1dc966d512ad845cf3d29d27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe97eff2ea6e92a9b802305ea43a73ad" id="r_abe97eff2ea6e92a9b802305ea43a73ad"><td class="memItemLeft" align="right" valign="top">std::array&lt; double, 6 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema_1_1interfaces_1_1ConstraintData.html#abe97eff2ea6e92a9b802305ea43a73ad">inputs</a> {0., 0., 0., 0., 0., 0.}</td></tr>
+<tr class="memdesc:abe97eff2ea6e92a9b802305ea43a73ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constraint inputs.  <br /></td></tr>
+<tr class="separator:abe97eff2ea6e92a9b802305ea43a73ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4511d9a904afe88c86572fe414d823fd" id="r_a4511d9a904afe88c86572fe414d823fd"><td class="memItemLeft" align="right" valign="top">std::array&lt; double, 3 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema_1_1interfaces_1_1ConstraintData.html#a4511d9a904afe88c86572fe414d823fd">outputs</a> {0., 0., 0.}</td></tr>
+<tr class="memdesc:a4511d9a904afe88c86572fe414d823fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constraint outputs.  <br /></td></tr>
+<tr class="separator:a4511d9a904afe88c86572fe414d823fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc4290ad6a96e5cf45db9d599d7c8867" id="r_adc4290ad6a96e5cf45db9d599d7c8867"><td class="memItemLeft" align="right" valign="top">std::array&lt; double, 6 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema_1_1interfaces_1_1ConstraintData.html#adc4290ad6a96e5cf45db9d599d7c8867">loads</a> {0., 0., 0., 0., 0., 0.}</td></tr>
+<tr class="memdesc:adc4290ad6a96e5cf45db9d599d7c8867"><td class="mdescLeft">&#160;</td><td class="mdescRight">Point loads/moment applied by constraint in global coordinates.  <br /></td></tr>
+<tr class="separator:adc4290ad6a96e5cf45db9d599d7c8867"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A wrapper around the Constraint ID of a given constraint. </p>
-</div><h2 class="groupheader">Member Data Documentation</h2>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="a9ee48a945ab15ad069c66b457ff4b1c6" name="a9ee48a945ab15ad069c66b457ff4b1c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ee48a945ab15ad069c66b457ff4b1c6">&#9670;&#160;</a></span>DeviceType</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="structkynema_1_1interfaces_1_1ConstraintData.html#a9ee48a945ab15ad069c66b457ff4b1c6">kynema::interfaces::ConstraintData::DeviceType</a> =  Kokkos::Device&lt;Kokkos::DefaultExecutionSpace, Kokkos::DefaultExecutionSpace::memory_space&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a0372ebc9ca941a6683bd6d95f291551b" name="a0372ebc9ca941a6683bd6d95f291551b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0372ebc9ca941a6683bd6d95f291551b">&#9670;&#160;</a></span>ConstraintData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">kynema::interfaces::ConstraintData::ConstraintData </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>id_</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constraint data constructor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id_</td><td>Constraint identifier in model </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a190060ba4c4f73103d3024f87cad032d" name="a190060ba4c4f73103d3024f87cad032d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a190060ba4c4f73103d3024f87cad032d">&#9670;&#160;</a></span>GetLoads()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema::interfaces::ConstraintData::GetLoads </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structkynema_1_1interfaces_1_1HostConstraints.html">HostConstraints</a>&lt; <a class="el" href="structkynema_1_1interfaces_1_1ConstraintData.html#a9ee48a945ab15ad069c66b457ff4b1c6">DeviceType</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>host_constraints</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Populates constraint Loads from state data. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">host_constraints</td><td>Host constraints from which to obtain data </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a31d5b300db1a14eab7913ee0c6551bd5" name="a31d5b300db1a14eab7913ee0c6551bd5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31d5b300db1a14eab7913ee0c6551bd5">&#9670;&#160;</a></span>GetOutputs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema::interfaces::ConstraintData::GetOutputs </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structkynema_1_1interfaces_1_1HostConstraints.html">HostConstraints</a>&lt; <a class="el" href="structkynema_1_1interfaces_1_1ConstraintData.html#a9ee48a945ab15ad069c66b457ff4b1c6">DeviceType</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>host_constraints</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Populates constraint outputs from state data. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">host_constraints</td><td>Host constraints from which to obtain data </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a6fc591347168da7482066f7ebfabbefa" name="a6fc591347168da7482066f7ebfabbefa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6fc591347168da7482066f7ebfabbefa">&#9670;&#160;</a></span>SetInputs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema::interfaces::ConstraintData::SetInputs </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structkynema_1_1interfaces_1_1HostConstraints.html">HostConstraints</a>&lt; <a class="el" href="structkynema_1_1interfaces_1_1ConstraintData.html#a9ee48a945ab15ad069c66b457ff4b1c6">DeviceType</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>host_constraints</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the constraint inputs in the host constraints. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">host_constraints</td><td>Host constraints to update </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
 <a id="ae8b8354b1dc966d512ad845cf3d29d27" name="ae8b8354b1dc966d512ad845cf3d29d27"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae8b8354b1dc966d512ad845cf3d29d27">&#9670;&#160;</a></span>id</h2>
 
@@ -199,10 +360,61 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Constraint identifier in model. </p>
+
 </div>
 </div>
-<hr/>The documentation for this struct was generated from the following file:<ul>
+<a id="abe97eff2ea6e92a9b802305ea43a73ad" name="abe97eff2ea6e92a9b802305ea43a73ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe97eff2ea6e92a9b802305ea43a73ad">&#9670;&#160;</a></span>inputs</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::array&lt;double, 6&gt; kynema::interfaces::ConstraintData::inputs {0., 0., 0., 0., 0., 0.}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constraint inputs. </p>
+
+</div>
+</div>
+<a id="adc4290ad6a96e5cf45db9d599d7c8867" name="adc4290ad6a96e5cf45db9d599d7c8867"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc4290ad6a96e5cf45db9d599d7c8867">&#9670;&#160;</a></span>loads</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::array&lt;double, 6&gt; kynema::interfaces::ConstraintData::loads {0., 0., 0., 0., 0., 0.}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Point loads/moment applied by constraint in global coordinates. </p>
+
+</div>
+</div>
+<a id="a4511d9a904afe88c86572fe414d823fd" name="a4511d9a904afe88c86572fe414d823fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4511d9a904afe88c86572fe414d823fd">&#9670;&#160;</a></span>outputs</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::array&lt;double, 3&gt; kynema::interfaces::ConstraintData::outputs {0., 0., 0.}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constraint outputs. </p>
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following files:<ul>
 <li>/home/runner/work/kynema/kynema/kynema/src/interfaces/<a class="el" href="constraint__data_8hpp_source.html">constraint_data.hpp</a></li>
+<li>/home/runner/work/kynema/kynema/kynema/src/interfaces/<a class="el" href="constraint__data_8cpp.html">constraint_data.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

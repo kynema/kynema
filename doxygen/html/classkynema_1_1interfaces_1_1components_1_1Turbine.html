@@ -195,6 +195,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a41622d564305d8853065db50165dacb6" id="r_a41622d564305d8853065db50165dacb6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1Turbine.html#a41622d564305d8853065db50165dacb6">GetMotion</a> (const <a class="el" href="structkynema_1_1interfaces_1_1HostState.html">HostState</a>&lt; <a class="el" href="classkynema_1_1interfaces_1_1components_1_1Turbine.html#a9e6e6bcbb96de6941e07a90ae89fc927">DeviceType</a> &gt; &amp;host_state)</td></tr>
 <tr class="memdesc:a41622d564305d8853065db50165dacb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Populate node motion from host state.  <br /></td></tr>
 <tr class="separator:a41622d564305d8853065db50165dacb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4101156c5cd7e182ed8cd3d0dfa64694" id="r_a4101156c5cd7e182ed8cd3d0dfa64694"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1Turbine.html#a4101156c5cd7e182ed8cd3d0dfa64694">GetLoads</a> (const <a class="el" href="structkynema_1_1interfaces_1_1HostConstraints.html">HostConstraints</a>&lt; <a class="el" href="classkynema_1_1interfaces_1_1components_1_1Turbine.html#a9e6e6bcbb96de6941e07a90ae89fc927">DeviceType</a> &gt; &amp;host_constraints)</td></tr>
+<tr class="memdesc:a4101156c5cd7e182ed8cd3d0dfa64694"><td class="mdescLeft">&#160;</td><td class="mdescRight">Populate constraint loads from host constraints.  <br /></td></tr>
+<tr class="separator:a4101156c5cd7e182ed8cd3d0dfa64694"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a657b01cc067474c245655eccc335ee61" id="r_a657b01cc067474c245655eccc335ee61"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1Turbine.html#a657b01cc067474c245655eccc335ee61">SetLoads</a> (<a class="el" href="structkynema_1_1interfaces_1_1HostState.html">HostState</a>&lt; <a class="el" href="classkynema_1_1interfaces_1_1components_1_1Turbine.html#a9e6e6bcbb96de6941e07a90ae89fc927">DeviceType</a> &gt; &amp;host_state) const</td></tr>
 <tr class="memdesc:a657b01cc067474c245655eccc335ee61"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update the host state with current node forces and moments.  <br /></td></tr>
 <tr class="separator:a657b01cc067474c245655eccc335ee61"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -210,6 +213,8 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a6eac88b438fea51cd8175be06cf6532d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeda28d883be18f2e4b176985bb60cfa2" id="r_aeda28d883be18f2e4b176985bb60cfa2"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1Turbine.html#aeda28d883be18f2e4b176985bb60cfa2">hub_mass_element_id</a> {<a class="el" href="classkynema_1_1interfaces_1_1components_1_1Turbine.html#ac3c274fc19911471e7b2ab584ddb578b">invalid_id</a>}</td></tr>
 <tr class="separator:aeda28d883be18f2e4b176985bb60cfa2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd01622f6b20481248cdd431ee8be08f" id="r_abd01622f6b20481248cdd431ee8be08f"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1Turbine.html#abd01622f6b20481248cdd431ee8be08f">nacelle_cm_mass_element_id</a> {<a class="el" href="classkynema_1_1interfaces_1_1components_1_1Turbine.html#ac3c274fc19911471e7b2ab584ddb578b">invalid_id</a>}</td></tr>
+<tr class="separator:abd01622f6b20481248cdd431ee8be08f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8c16743479bf03e16bcec31b923768d6" id="r_a8c16743479bf03e16bcec31b923768d6"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1Turbine.html#a8c16743479bf03e16bcec31b923768d6">yaw_bearing_mass_element_id</a> {<a class="el" href="classkynema_1_1interfaces_1_1components_1_1Turbine.html#ac3c274fc19911471e7b2ab584ddb578b">invalid_id</a>}</td></tr>
 <tr class="separator:a8c16743479bf03e16bcec31b923768d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adfbba78f2a99887d9d4ba5c469e74780" id="r_adfbba78f2a99887d9d4ba5c469e74780"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structkynema_1_1interfaces_1_1NodeData.html">NodeData</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1Turbine.html#adfbba78f2a99887d9d4ba5c469e74780">apex_nodes</a></td></tr>
@@ -220,6 +225,8 @@ Public Attributes</h2></td></tr>
 <tr class="separator:ab532ffc31851dc6992a67fa3cc7273a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a31be6045aef0b9f2c4ada7793c971ad2" id="r_a31be6045aef0b9f2c4ada7793c971ad2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema_1_1interfaces_1_1NodeData.html">NodeData</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1Turbine.html#a31be6045aef0b9f2c4ada7793c971ad2">shaft_base_node</a></td></tr>
 <tr class="separator:a31be6045aef0b9f2c4ada7793c971ad2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae79331952259ea47ffeffbe1e86c8796" id="r_ae79331952259ea47ffeffbe1e86c8796"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema_1_1interfaces_1_1NodeData.html">NodeData</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1Turbine.html#ae79331952259ea47ffeffbe1e86c8796">nacelle_cm_node</a></td></tr>
+<tr class="separator:ae79331952259ea47ffeffbe1e86c8796"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6c7fbc9ac9497360ba7f6d603b1d375b" id="r_a6c7fbc9ac9497360ba7f6d603b1d375b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema_1_1interfaces_1_1NodeData.html">NodeData</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1Turbine.html#a6c7fbc9ac9497360ba7f6d603b1d375b">yaw_bearing_node</a></td></tr>
 <tr class="separator:a6c7fbc9ac9497360ba7f6d603b1d375b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6a37f75330a810b11ae8feb6c4307539" id="r_a6a37f75330a810b11ae8feb6c4307539"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema_1_1interfaces_1_1ConstraintData.html">ConstraintData</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1Turbine.html#a6a37f75330a810b11ae8feb6c4307539">tower_base</a></td></tr>
@@ -228,6 +235,8 @@ Public Attributes</h2></td></tr>
 <tr class="separator:ab1d387da0e2c870a572e16f9a37c70ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a05247d65a9ff62243ee85dd71558c571" id="r_a05247d65a9ff62243ee85dd71558c571"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema_1_1interfaces_1_1ConstraintData.html">ConstraintData</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1Turbine.html#a05247d65a9ff62243ee85dd71558c571">yaw_bearing_to_shaft_base</a></td></tr>
 <tr class="separator:a05247d65a9ff62243ee85dd71558c571"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2bf5f0e89b9aae5ad608c0b8668e9b90" id="r_a2bf5f0e89b9aae5ad608c0b8668e9b90"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema_1_1interfaces_1_1ConstraintData.html">ConstraintData</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1Turbine.html#a2bf5f0e89b9aae5ad608c0b8668e9b90">yaw_bearing_to_nacelle_cm</a></td></tr>
+<tr class="separator:a2bf5f0e89b9aae5ad608c0b8668e9b90"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7aac501b074612927a70b68b067f8a94" id="r_a7aac501b074612927a70b68b067f8a94"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema_1_1interfaces_1_1ConstraintData.html">ConstraintData</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1Turbine.html#a7aac501b074612927a70b68b067f8a94">shaft_base_to_azimuth</a></td></tr>
 <tr class="separator:a7aac501b074612927a70b68b067f8a94"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a76d0877429a506b0292a82ee68829704" id="r_a76d0877429a506b0292a82ee68829704"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema_1_1interfaces_1_1ConstraintData.html">ConstraintData</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1Turbine.html#a76d0877429a506b0292a82ee68829704">azimuth_to_hub</a></td></tr>
@@ -362,6 +371,32 @@ Static Public Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a4101156c5cd7e182ed8cd3d0dfa64694" name="a4101156c5cd7e182ed8cd3d0dfa64694"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4101156c5cd7e182ed8cd3d0dfa64694">&#9670;&#160;</a></span>GetLoads()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema::interfaces::components::Turbine::GetLoads </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structkynema_1_1interfaces_1_1HostConstraints.html">HostConstraints</a>&lt; <a class="el" href="classkynema_1_1interfaces_1_1components_1_1Turbine.html#a9e6e6bcbb96de6941e07a90ae89fc927">DeviceType</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>host_constraints</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Populate constraint loads from host constraints. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">host_constraints</td><td>Host constraints containing constraint forces/moments </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a41622d564305d8853065db50165dacb6" name="a41622d564305d8853065db50165dacb6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a41622d564305d8853065db50165dacb6">&#9670;&#160;</a></span>GetMotion()</h2>
 
@@ -633,6 +668,34 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="abd01622f6b20481248cdd431ee8be08f" name="abd01622f6b20481248cdd431ee8be08f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd01622f6b20481248cdd431ee8be08f">&#9670;&#160;</a></span>nacelle_cm_mass_element_id</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t kynema::interfaces::components::Turbine::nacelle_cm_mass_element_id {<a class="el" href="classkynema_1_1interfaces_1_1components_1_1Turbine.html#ac3c274fc19911471e7b2ab584ddb578b">invalid_id</a>}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae79331952259ea47ffeffbe1e86c8796" name="ae79331952259ea47ffeffbe1e86c8796"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae79331952259ea47ffeffbe1e86c8796">&#9670;&#160;</a></span>nacelle_cm_node</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema_1_1interfaces_1_1NodeData.html">NodeData</a> kynema::interfaces::components::Turbine::nacelle_cm_node</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a31be6045aef0b9f2c4ada7793c971ad2" name="a31be6045aef0b9f2c4ada7793c971ad2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a31be6045aef0b9f2c4ada7793c971ad2">&#9670;&#160;</a></span>shaft_base_node</h2>
 
@@ -739,6 +802,20 @@ Static Public Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="structkynema_1_1interfaces_1_1NodeData.html">NodeData</a> kynema::interfaces::components::Turbine::yaw_bearing_node</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2bf5f0e89b9aae5ad608c0b8668e9b90" name="a2bf5f0e89b9aae5ad608c0b8668e9b90"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2bf5f0e89b9aae5ad608c0b8668e9b90">&#9670;&#160;</a></span>yaw_bearing_to_nacelle_cm</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema_1_1interfaces_1_1ConstraintData.html">ConstraintData</a> kynema::interfaces::components::Turbine::yaw_bearing_to_nacelle_cm</td>
         </tr>
       </table>
 </div><div class="memdoc">

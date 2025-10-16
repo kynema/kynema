@@ -210,9 +210,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a778d26801259ab43aa8e5c4f365de1c2" id="r_a778d26801259ab43aa8e5c4f365de1c2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1Outputs.html#a778d26801259ab43aa8e5c4f365de1c2">WriteNodeOutputsAtTimestep</a> (const <a class="el" href="structkynema_1_1interfaces_1_1HostState.html">HostState</a>&lt; <a class="el" href="classkynema_1_1interfaces_1_1Outputs.html#a4644108269d8a020942368acac4f649d">DeviceType</a> &gt; &amp;host_state, size_t timestep)</td></tr>
 <tr class="memdesc:a778d26801259ab43aa8e5c4f365de1c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write node state outputs to NetCDF file at specified timestep.  <br /></td></tr>
 <tr class="separator:a778d26801259ab43aa8e5c4f365de1c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af60645bf9e64cc7243cb05d428b33f01" id="r_af60645bf9e64cc7243cb05d428b33f01"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1Outputs.html#af60645bf9e64cc7243cb05d428b33f01">WriteRotorTimeSeriesAtTimestep</a> (size_t timestep, double azimuth_angle, double rotor_speed)</td></tr>
-<tr class="memdesc:af60645bf9e64cc7243cb05d428b33f01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write rotor time-series data at specified timestep.  <br /></td></tr>
-<tr class="separator:af60645bf9e64cc7243cb05d428b33f01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a86b8a6de065f98377b373f421c1cbf" id="r_a8a86b8a6de065f98377b373f421c1cbf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1Outputs.html#a8a86b8a6de065f98377b373f421c1cbf">WriteValueAtTimestep</a> (size_t timestep, const std::string &amp;name, double value)</td></tr>
+<tr class="memdesc:a8a86b8a6de065f98377b373f421c1cbf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write rotor time-series data at specified timestep.  <br /></td></tr>
+<tr class="separator:a8a86b8a6de065f98377b373f421c1cbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A class that handles writing state data to disk for analysis/visualization. </p>
@@ -456,14 +456,14 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="af60645bf9e64cc7243cb05d428b33f01" name="af60645bf9e64cc7243cb05d428b33f01"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af60645bf9e64cc7243cb05d428b33f01">&#9670;&#160;</a></span>WriteRotorTimeSeriesAtTimestep()</h2>
+<a id="a8a86b8a6de065f98377b373f421c1cbf" name="a8a86b8a6de065f98377b373f421c1cbf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a86b8a6de065f98377b373f421c1cbf">&#9670;&#160;</a></span>WriteValueAtTimestep()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void kynema::interfaces::Outputs::WriteRotorTimeSeriesAtTimestep </td>
+          <td class="memname">void kynema::interfaces::Outputs::WriteValueAtTimestep </td>
           <td>(</td>
           <td class="paramtype">size_t&#160;</td>
           <td class="paramname"><em>timestep</em>, </td>
@@ -471,14 +471,14 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>azimuth_angle</em>, </td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>rotor_speed</em>&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -492,8 +492,8 @@ Public Member Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">timestep</td><td>The timestep number to write data to </td></tr>
-    <tr><td class="paramname">azimuth_angle</td><td>The current azimuth angle </td></tr>
-    <tr><td class="paramname">rotor_speed</td><td>The current rotor speed </td></tr>
+    <tr><td class="paramname">name</td><td>The name of the variable to write (e.g., "azimuth_angle", "rotor_speed") </td></tr>
+    <tr><td class="paramname">value</td><td>The current value of the variable </td></tr>
   </table>
   </dd>
 </dl>

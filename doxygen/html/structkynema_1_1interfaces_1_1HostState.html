@@ -195,6 +195,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ad5abf1c4ccbdd4b786f0086492434d00" id="r_ad5abf1c4ccbdd4b786f0086492434d00"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema_1_1interfaces_1_1HostState.html#ad5abf1c4ccbdd4b786f0086492434d00">CopyFromState</a> (const <a class="el" href="structkynema_1_1State.html">State</a>&lt; DeviceType &gt; &amp;state) const</td></tr>
 <tr class="memdesc:ad5abf1c4ccbdd4b786f0086492434d00"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy state data to host state.  <br /></td></tr>
 <tr class="separator:ad5abf1c4ccbdd4b786f0086492434d00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c3df46ba1025c155796eb3892db654e" id="r_a4c3df46ba1025c155796eb3892db654e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema_1_1interfaces_1_1HostState.html#a4c3df46ba1025c155796eb3892db654e">CopyForcesToState</a> (<a class="el" href="structkynema_1_1State.html">State</a>&lt; DeviceType &gt; &amp;state) const</td></tr>
+<tr class="memdesc:a4c3df46ba1025c155796eb3892db654e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set forces in state from host state.  <br /></td></tr>
+<tr class="separator:a4c3df46ba1025c155796eb3892db654e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -275,6 +278,42 @@ template&lt;typename DeviceType &gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a4c3df46ba1025c155796eb3892db654e" name="a4c3df46ba1025c155796eb3892db654e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c3df46ba1025c155796eb3892db654e">&#9670;&#160;</a></span>CopyForcesToState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename DeviceType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="structkynema_1_1interfaces_1_1HostState.html">kynema::interfaces::HostState</a>&lt; DeviceType &gt;::CopyForcesToState </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structkynema_1_1State.html">State</a>&lt; DeviceType &gt; &amp;&#160;</td>
+          <td class="paramname"><em>state</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set forces in state from host state. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">state</td><td><a class="el" href="structkynema_1_1State.html" title="Container for storing the complete system state of the simulation at a given time increment.">State</a> to update </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="ad5abf1c4ccbdd4b786f0086492434d00" name="ad5abf1c4ccbdd4b786f0086492434d00"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad5abf1c4ccbdd4b786f0086492434d00">&#9670;&#160;</a></span>CopyFromState()</h2>
 
