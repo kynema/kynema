@@ -75,7 +75,7 @@ public:
      *       solves the dynamic system, and updates the node motion with the new state.
      *       If the solver does not converge, the motion is not updated.
      */
-    [[nodiscard]] bool Step();
+    [[nodiscard]] bool Step(double t = 0.);
 
     /// @brief Saves the current state for potential restoration (in correction step)
     void SaveState();

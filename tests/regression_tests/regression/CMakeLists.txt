@@ -16,3 +16,5 @@ target_sources(
     test_utilities.cpp
     test_netcdf_outputs_writer.cpp
 )
+
+add_subdirectory(verification)
