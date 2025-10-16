@@ -398,7 +398,7 @@ TEST(TurbineInterfaceTest, IEA15_ROSCOControllerWithAero) {
             std::cout << "Time: " << t << ", Azimuth: " << interface.CalculateAzimuthAngle()
                       << ", Rotor Speed (RPM): " << interface.CalculateRotorSpeed() / rpm_to_radps
                       << ", Blade Pitch: " << interface.Turbine().blade_pitch_control[0]
-                      << ", Generator Torque: " << interface.Turbine().torque_control << std::endl;
+                      << ", Generator Torque: " << interface.Turbine().torque_control << "\n";
         }
     }
 }
