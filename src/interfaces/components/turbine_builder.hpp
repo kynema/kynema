@@ -170,7 +170,7 @@ public:
 
     /**
      * @brief Set the controller wind speed
-     * @param ratio between generator speed and rotor speed
+     * @param speed The wind speed at the hub
      * @return Reference to the builder for method chaining
      */
     TurbineBuilder& SetHubWindSpeed(double speed);
