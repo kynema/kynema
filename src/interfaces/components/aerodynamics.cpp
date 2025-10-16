@@ -211,9 +211,7 @@ void AerodynamicBody::InterpolateQuaternionFromNodesToSections(
 
     // Set section positions to zero
     for (auto& node : xr) {
-        for (auto& component : node) {
-            component = 0.;
-        }
+        std::ranges::fill(node, 0.);
     }
 
     // Interpolate node values to sections
@@ -489,9 +487,7 @@ void AerodynamicBody::CalculateAerodynamicLoads(double fluid_density) {
 
 void AerodynamicBody::CalculateNodalLoads() {
     for (auto& nf : node_f) {
-        for (auto& component : nf) {
-            component = 0.;
-        }
+        std::ranges::fill(nf, 0.);
     }
 
     for (auto node = 0U; node < node_f.size(); ++node) {
