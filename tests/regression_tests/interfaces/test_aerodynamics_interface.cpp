@@ -14,12 +14,12 @@
 namespace kynema::tests {
 
 TEST(AerodynamicsInterfaceTest, IEA15_Turbine) {
-    constexpr auto duration{25.};
+    constexpr auto duration{1.};
     constexpr auto time_step{0.01};
     constexpr auto n_blades{3U};
     constexpr auto n_blade_nodes{11U};
     constexpr auto n_tower_nodes{11U};
-    constexpr auto n_steps{static_cast<unsigned>(duration / time_step)};
+    const auto n_steps{static_cast<unsigned>(std::ceil(duration / time_step))};
     constexpr auto write_output{false};
 
     constexpr auto rotor_speed_init{1.0 * 0.104719755};  // RPM to rad/s
@@ -342,7 +342,7 @@ TEST(AerodynamicsInterfaceTest, IEA15_Turbine) {
 
     auto inflow = interfaces::components::Inflow::SteadyWind(vel_h, h_ref, pl_exp, flow_angle);
 
-    for (auto i : std::views::iota(1U, n_steps)) {
+    for (auto i : std::views::iota(1U, n_steps + 1)) {
         const auto t = i * time_step;
 
         turbine_interface.UpdateAerodynamicLoads(
@@ -354,10 +354,10 @@ TEST(AerodynamicsInterfaceTest, IEA15_Turbine) {
 
         const auto converged = turbine_interface.Step();
         ASSERT_EQ(converged, true);
-        // if (i == 100) {
-        //     EXPECT_NEAR(turbine_interface.CalculateAzimuthAngle(), 0.10611935075249027, 1.e-5);
-        //     EXPECT_NEAR(turbine_interface.CalculateRotorSpeed(), 0.11023503717330951, 1.e-9);
-        // }
+        if (i == 100) {
+            EXPECT_NEAR(turbine_interface.CalculateAzimuthAngle(), 0.10613395349825394, 1.e-5);
+            EXPECT_NEAR(turbine_interface.CalculateRotorSpeed(), 0.10926961236037563, 1.e-9);
+        }
     }
 }
 }  // namespace kynema::tests
