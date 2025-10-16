@@ -189,12 +189,12 @@ void TurbineInterface::WriteTimeSeriesData() const {
     constexpr auto rpm_to_radps{0.104719755};            // RPM to rad/s
     constexpr auto deg_to_rad{std::numbers::pi / 180.};  // Degrees to radians
 
+    const auto time_step = static_cast<double>(this->state.time_step);
     this->outputs->WriteValueAtTimestep(
-        this->state.time_step, "Time (s)", this->state.time_step * this->parameters.h
+        this->state.time_step, "Time (s)", time_step * this->parameters.h
     );
-    this->outputs->WriteValueAtTimestep(
-        this->state.time_step, "ConvIter (-)", this->solver.convergence_err.size()
-    );
+    const auto num_iterations = static_cast<double>(this->solver.convergence_err.size());
+    this->outputs->WriteValueAtTimestep(this->state.time_step, "ConvIter (-)", num_iterations);
     this->outputs->WriteValueAtTimestep(
         this->state.time_step, "ConvError (-)",
         this->solver.convergence_err.empty() ? 0. : this->solver.convergence_err.back()

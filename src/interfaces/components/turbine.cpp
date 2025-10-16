@@ -82,7 +82,7 @@ void Turbine::SetLoads(HostState<DeviceType>& host_state) const {
     this->azimuth_node.SetLoads(host_state);
     this->shaft_base_node.SetLoads(host_state);
     this->yaw_bearing_node.SetLoads(host_state);
-    for (auto& apex_node : this->apex_nodes) {
+    for (const auto& apex_node : this->apex_nodes) {
         apex_node.SetLoads(host_state);
     }
 }
@@ -397,13 +397,13 @@ void Turbine::AddConstraints(const TurbineInput& input, Model& model) {
         });
 
         // Create pitch control constraint
-        this->blade_pitch.emplace_back(ConstraintData{model.AddRotationControl(
+        this->blade_pitch.emplace_back(model.AddRotationControl(
             {apex_node.id, root_node.id}, pitch_axis, &this->blade_pitch_control[beam]
-        )});
+        ));
 
         // Add rigid constraint between hub and blade apex
         this->apex_to_hub.emplace_back(
-            ConstraintData{model.AddRigidJointConstraint({this->hub_node.id, apex_node.id})}
+            model.AddRigidJointConstraint({this->hub_node.id, apex_node.id})
         );
     }
 
