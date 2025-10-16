@@ -25,7 +25,7 @@ std::array<double, 6> CalculateAerodynamicLoad(
     std::span<const double> cl_polar, std::span<const double> cd_polar,
     std::span<const double> cm_polar, double chord, double delta_s, double fluid_density,
     std::span<const double, 3> con_force, std::span<const double, 4> qqr,
-    std::array<double, 3>& v_rel, double& alpha, double& cl, double& cd, double& cm
+    std::array<double, 3>& v_rel, double& aoa, double& cn, double& ct, double& cm
 );
 
 std::array<double, 3> CalculateConMotionVector(
