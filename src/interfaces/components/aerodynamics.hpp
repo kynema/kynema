@@ -43,40 +43,125 @@ class AerodynamicBody {
 public:
     size_t id;
 
+    //--------------------------------------------------------------------------
+    // Node data
+    //--------------------------------------------------------------------------
+
+    /// @brief IDs of the beam nodes in this aerodynamic body
     std::vector<size_t> node_ids;
+
+    /// @brief Displacements of the beam nodes (copied from state based on node_ids)
     std::vector<std::array<double, 7>> node_u;
+
+    /// @brief Velocities of the beam nodes (copied from state based on node_ids)
     std::vector<std::array<double, 6>> node_v;
+
+    /// @brief Aerodynamic forces at the beam nodes with moment arm applied from aerodynamic center
+    /// to reference axis (output)
     std::vector<std::array<double, 6>> node_f;
 
+    //--------------------------------------------------------------------------
+    // Aerodynamic section data
+    //--------------------------------------------------------------------------
+
+    /// @brief Initial position and orientation of beam reference axis at aerodynamic sections
     std::vector<std::array<double, 7>> xr_motion_map;
+
+    /// @brief Displacements of beam reference axis at aerodynamic sections
     std::vector<std::array<double, 7>> u_motion_map;
+
+    /// @brief Velocities of beam reference axis at aerodynamic sections
     std::vector<std::array<double, 6>> v_motion_map;
+
+    /// @brief Total rotation quaternion of beam reference axis at aerodynamic sections (reference +
+    /// displacement)
     std::vector<std::array<double, 4>> qqr_motion_map;
+
+    /// @brief Vectors from reference axis to aerodynamic center at aerodynamic sections in reference
+    /// configuration (includes twist)
     std::vector<std::array<double, 3>> con_motion;
+
+    /// @brief Positions of aerodynamic centers at aerodynamic sections in global coordinates
     std::vector<std::array<double, 3>> x_motion;
+
+    /// @brief Velocities of aerodynamic centers at aerodynamic sections in global coordinates
     std::vector<std::array<double, 3>> v_motion;
 
+    /// @brief Vectors from aerodynamic center to reference axis at aerodynamic sections in reference
+    /// configuration (negative of con_motion)
     std::vector<std::array<double, 3>> con_force;
+
+    /// @brief Inflow velocity at aerodynamic sections
+    std::vector<std::array<double, 3>> v_inflow;
+
+    /// @brief Relative velocity at aerodynamic sections (v_inflow - v_motion) (output)
     std::vector<std::array<double, 3>> v_rel;
+
+    //--------------------------------------------------------------------------
+    // Aerodynamic section output
+    //--------------------------------------------------------------------------
+
+    /// @brief Angle of attack at aerodynamic sections (output)
     std::vector<double> alpha;
+
+    /// @brief Normal force coefficient at aerodynamic sections (perpendicular to airfoil chord)
+    /// (output)
     std::vector<double> cn;
+
+    /// @brief Tangent force coefficient at aerodynamic sections (parallel to airfoil chord) (output)
     std::vector<double> ct;
+
+    /// @brief Moment coefficient at aerodynamic sections (output)
     std::vector<double> cm;
+
+    /// @brief Aerodynamic loads (forces and moments) at aerodynamic centers (output)
     std::vector<std::array<double, 6>> loads;
+
+    /// @brief Total moment about beam reference axis at aerodynamic sections (accounting for AC
+    /// moment arm and aerodynamic moment) (output)
     std::vector<std::array<double, 3>> ref_axis_moments;
 
-    std::vector<double> jacobian_xi;
-    std::vector<std::array<double, 3>> v_inflow;
+    //--------------------------------------------------------------------------
+    // Aerodynamic section properties
+    //--------------------------------------------------------------------------
+
+    /// @brief Aerodynamic section twist
     std::vector<double> twist;
+
+    /// @brief Aerodynamic section chord length
     std::vector<double> chord;
+
+    /// @brief Aerodynamic section width for force/moment calculation
     std::vector<double> delta_s;
+
+    /// @brief Number of points in each aerodynamic polar
     std::vector<size_t> polar_size;
+
+    /// @brief Angle of attack polar at each aerodynamic section
     std::vector<std::vector<double>> aoa;
+
+    /// @brief Lift coefficient polar at each aerodynamic section
     std::vector<std::vector<double>> cl_polar;
+
+    /// @brief Drag coefficient polar at each aerodynamic section
     std::vector<std::vector<double>> cd_polar;
+
+    /// @brief Moment coefficient polar at each aerodynamic section
     std::vector<std::vector<double>> cm_polar;
 
+    //--------------------------------------------------------------------------
+    // Interpolation data
+    //--------------------------------------------------------------------------
+
+    /// @brief Locations of aerodynamic section width boundaries along the beam (used for section
+    /// width calculation)
+    std::vector<double> jacobian_xi;
+
+    /// @brief Flattened matrix to interpolate motion from beam nodes to aerodynamic sections
     std::vector<double> motion_interp;
+
+    /// @brief Flattened matrix to interpolate motion derivatives from beam nodes to aerodynamic
+    /// sections (used for section width calculation)
     std::vector<double> shape_deriv_jac;
 
 private:

@@ -18,21 +18,22 @@ TEST(TurbineInterfaceTest, IEA15_ROSCOControllerWithAero) {
     // Conversions
     constexpr auto rpm_to_radps{0.104719755};  // RPM to rad/s
 
-    constexpr auto duration{25.};                         // Simulation duration in seconds
-    constexpr auto time_step{0.01};                       // Time step for the simulation
-    constexpr auto n_blades{3U};                          // Number of blades in turbine
-    constexpr auto n_blade_nodes{11U};                    // Number of nodes per blade
-    constexpr auto n_tower_nodes{11U};                    // Number of nodes in tower
-    constexpr auto rotor_speed_init{5.0 * rpm_to_radps};  // Rotor speed (rad/s)
-    constexpr double hub_wind_speed_init{6.0};            // Hub height wind speed (m/s)
-    constexpr double generator_power_init{0.0};           // Generator power (W)
-    constexpr auto write_output{false};                   // Write output file
+    constexpr auto duration{1.0};                          // Simulation duration in seconds
+    constexpr auto time_step{0.005};                       // Time step for the simulation
+    constexpr auto n_blades{3U};                           // Number of blades in turbine
+    constexpr auto n_blade_nodes{11U};                     // Number of nodes per blade
+    constexpr auto n_tower_nodes{11U};                     // Number of nodes in tower
+    constexpr auto rotor_speed_init{7.56 * rpm_to_radps};  // Rotor speed (rad/s)
+    constexpr double hub_wind_speed_init{10.6};            // Initial Hub height wind speed (m/s)
+    constexpr double hub_wind_speed_final{25.0};           // Final Hub height wind speed (m/s)
+    constexpr double generator_power_init{0.};             // Generator power (W)
+    constexpr auto write_output{false};                    // Write output file
 
     constexpr auto fluid_density = 1.225;
-    constexpr auto vel_h = hub_wind_speed_init;
     constexpr auto h_ref = 150.;
     constexpr auto pl_exp = 0.12;
-    constexpr auto flow_angle = 0.;
+    constexpr auto flow_angle_init = 0.;
+    constexpr auto flow_angle_final = 0.;
 
     // Create interface builder
     auto builder = interfaces::TurbineInterfaceBuilder{};
@@ -91,7 +92,9 @@ TEST(TurbineInterfaceTest, IEA15_ROSCOControllerWithAero) {
         auto& blade_builder = turbine_builder.Blade(j);
 
         // Set blade parameters
-        blade_builder.SetElementOrder(n_blade_nodes - 1).PrescribedRootMotion(false);
+        blade_builder.SetElementOrder(n_blade_nodes - 1)
+            .PrescribedRootMotion(false)
+            .SetSectionRefinement(2);
 
         // Add reference axis coordinates (WindIO uses Z-axis as reference axis)
         const auto ref_axis = wio_blade["reference_axis"];
@@ -321,7 +324,8 @@ TEST(TurbineInterfaceTest, IEA15_ROSCOControllerWithAero) {
                                   .SetLibraryPath(controller_shared_lib_path)
                                   .SetFunctionName(controller_function_name)
                                   .SetInputFilePath(controller_input_file)
-                                  .SetControllerInput(controller_output_file);
+                                  .SetControllerInput(controller_output_file)
+                                  .EnableYawControl(true);
 
     auto& aero_builder =
         builder.Aerodynamics().EnableAero().SetNumberOfAirfoils(1UL).SetAirfoilToBladeMap(
@@ -364,7 +368,18 @@ TEST(TurbineInterfaceTest, IEA15_ROSCOControllerWithAero) {
     // Build turbine interface
     auto interface = builder.Build();
 
-    auto inflow = interfaces::components::Inflow::SteadyWind(vel_h, h_ref, pl_exp, flow_angle);
+    // Create uniform inflow which starts at rated wind speed of 10.59 m/s at hub height
+    // and ramps up to 20 m/s at 15 seconds
+    const auto inflow = interfaces::components::Inflow{
+        interfaces::components::InflowType::Uniform,
+        interfaces::components::UniformFlow{
+            std::vector<interfaces::components::UniformFlowParameters>{
+                {0., hub_wind_speed_init, h_ref, pl_exp, flow_angle_init},
+                {5.0, hub_wind_speed_init, h_ref, pl_exp, flow_angle_init},
+                {30.0, hub_wind_speed_final, h_ref, pl_exp, flow_angle_final}
+            }
+        }
+    };
 
     //--------------------------------------------------------------------------
     // Simulation
@@ -378,6 +393,7 @@ TEST(TurbineInterfaceTest, IEA15_ROSCOControllerWithAero) {
         // Calculate time
         const auto t{static_cast<double>(i) * time_step};
 
+        // Update aerodynamic loads based on inflow
         interface.UpdateAerodynamicLoads(
             fluid_density,
             [t, &inflow](const std::array<double, 3>& pos) {
@@ -385,8 +401,8 @@ TEST(TurbineInterfaceTest, IEA15_ROSCOControllerWithAero) {
             }
         );
 
-        const auto hub_velocity = inflow.Velocity(t, interface.GetHubNodePosition());
-        interface.ApplyController(t, hub_velocity[0]);
+        // Call controller update and apply output to turbine
+        interface.ApplyController(t);
 
         // Take step
         const auto converged = interface.Step();
@@ -394,11 +410,10 @@ TEST(TurbineInterfaceTest, IEA15_ROSCOControllerWithAero) {
         // Check convergence
         ASSERT_EQ(converged, true);
 
-        if (i % 100 == 0) {
-            std::cout << "Time: " << t << ", Azimuth: " << interface.CalculateAzimuthAngle()
-                      << ", Rotor Speed (RPM): " << interface.CalculateRotorSpeed() / rpm_to_radps
-                      << ", Blade Pitch: " << interface.Turbine().blade_pitch_control[0]
-                      << ", Generator Torque: " << interface.Turbine().torque_control << "\n";
+        if (i == 100) {
+            EXPECT_NEAR(interface.CalculateAzimuthAngle(), 0.38739641940509217, 1.e-4);
+            EXPECT_NEAR(interface.CalculateRotorSpeed(), 0.78296280436836629, 1.e-3);
+            EXPECT_NEAR(interface.Turbine().torque_control, 19786768., 1.e-5);
         }
     }
 }
