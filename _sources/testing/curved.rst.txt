@@ -1,10 +1,10 @@
 Static bending of a curved beam
 -------------------------------
 
-In this benchmark problem, we examine the tip deflection of a tip-loaded curved beam, which is described in detail in [@Bathe-Bolourchi:1979].
-The beam lies in the x-z plane with a tip force of 600 lbs acting in the 
-positive y direction.  Beam is curved on a radius of 100 inches in the positive 
-x direction through a 45 degree arc.
+In this benchmark problem, we examine the tip deflection of a tip-loaded curved beam,
+which is described in detail in [@Bathe-Bolourchi:1979]. The beam lies in the x-z plane
+with a tip force of 600 lbs acting in the positive y direction. The beam is curved on a
+radius of 100 inches in the positive x direction through a 45-degree arc.
 
 Geometric properties
 
@@ -30,7 +30,9 @@ Tip displacement reported by [@Bathe-Bolourchi:1979]:
 (-13.4, 53.4, -23.5)
 
 
-The following table show the tip displacement calculated with a single Legendre Spectral Finite Element (LSFE) with the number of nodes shown. N-Point Gauss-Legendre quadrature was employed, where N is the number of nodes. The results show the expected spectral convergence to a converged solution.
+The following table show the tip displacement calculated with a single Legendre Spectral Finite Element (LSFE)
+with the number of nodes shown. N-Point Gauss-Legendre quadrature was employed, where N is the number of nodes.
+The results show the expected spectral convergence to a converged solution.
 
 +----------------------+-------------------------+-------------------------+-------------------------+
 | Number of Nodes (N)  |           u1            |           u2            |           u3            |
@@ -49,13 +51,19 @@ The following table show the tip displacement calculated with a single Legendre 
 +----------------------+-------------------------+-------------------------+-------------------------+
 
 
-_References_
+.. note::
 
-   .. container:: csl-entry
-      :name: ref-Bathe-Bolourchi:1979
+   This benchmark is included as a regression test in the Kynema code base.
+   The test is implemented in:
 
-      Bathe, K.-J., and S. Bolourchi. 1979. “Large displacement analysis
-      of three-dimensional beam structures."
-      *International Journal for Numerical Methods in Engineering* 14:
-      961-986.
+     https://github.com/kynema/kynema/blob/main/tests/regression_tests/regression/verification/static_composite_beam_bending_curved.cpp
+
+
+.. container:: csl-entry
+   :name: ref-Bathe-Bolourchi:1979
+
+   Bathe, K.-J., and S. Bolourchi. 1979. “Large displacement analysis
+   of three-dimensional beam structures."
+   *International Journal for Numerical Methods in Engineering* 14:
+   961-986.
 

@@ -56,10 +56,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../theory/index.html">Theory Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../developer/index.html">Developer Documentation</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Benchmark Testing</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="rollup.html">Static rollup of an isotropic beam</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Static bending of a straight composite beam</a></li>
-<li class="toctree-l2"><a class="reference internal" href="curved.html">Static bending of a curved beam</a></li>
-<li class="toctree-l2"><a class="reference internal" href="twisted.html">Static bending of a twisted beam</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#verification-overview">Verification Overview</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="rollup.html">Static rollup of an isotropic beam</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Static bending of a straight composite beam</a></li>
+<li class="toctree-l3"><a class="reference internal" href="curved.html">Static bending of a curved beam</a></li>
+<li class="toctree-l3"><a class="reference internal" href="twisted.html">Static bending of a twisted beam</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../acknowledgement.html">Acknowledgements</a></li>
@@ -145,14 +148,20 @@ machine precision) of those produced with BeamDyn.</p>
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This benchmark is included as a regression test in the Kynema code base.
+The test is implemented in:</p>
 <blockquote>
-<div><div class="csl-entry docutils container" id="ref-wang-etal-2017">
+<div><p><a class="reference external" href="https://github.com/kynema/kynema/blob/main/tests/regression_tests/regression/verification/static_composite_beam_bending.cpp">https://github.com/kynema/kynema/blob/main/tests/regression_tests/regression/verification/static_composite_beam_bending.cpp</a></p>
+</div></blockquote>
+</div>
+<div class="csl-entry docutils container" id="ref-wang-etal-2017">
 <p>Wang, Q., M.A. Sprague, J. Jonkman, N. Johnson, B. Johnkman. 2017. “BeamDyn:
 a high-fidelity wind turbine blade solver in the FAST modular framework.”
 <em>Wind Energy</em> 20: 1439-1462.
 <a class="reference external" href="https://onlinelibrary.wiley.com/doi/pdf/10.1002/we.2101">https://onlinelibrary.wiley.com/doi/pdf/10.1002/we.2101</a></p>
 </div>
-</div></blockquote>
 </div>
 
 

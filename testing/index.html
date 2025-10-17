@@ -56,10 +56,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../theory/index.html">Theory Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../developer/index.html">Developer Documentation</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Benchmark Testing</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="rollup.html">Static rollup of an isotropic beam</a></li>
-<li class="toctree-l2"><a class="reference internal" href="composite.html">Static bending of a straight composite beam</a></li>
-<li class="toctree-l2"><a class="reference internal" href="curved.html">Static bending of a curved beam</a></li>
-<li class="toctree-l2"><a class="reference internal" href="twisted.html">Static bending of a twisted beam</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#verification-overview">Verification Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="rollup.html">Static rollup of an isotropic beam</a></li>
+<li class="toctree-l3"><a class="reference internal" href="composite.html">Static bending of a straight composite beam</a></li>
+<li class="toctree-l3"><a class="reference internal" href="curved.html">Static bending of a curved beam</a></li>
+<li class="toctree-l3"><a class="reference internal" href="twisted.html">Static bending of a twisted beam</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../acknowledgement.html">Acknowledgements</a></li>
@@ -92,6 +95,13 @@
   <div class="section" id="benchmark-testing">
 <h1>Benchmark Testing<a class="headerlink" href="#benchmark-testing" title="Permalink to this heading"></a></h1>
 <p>This section describes the testing results for Kynema, including code verification, code-to-code comparisons, and validation.</p>
+<div class="section" id="verification-overview">
+<h2>Verification Overview<a class="headerlink" href="#verification-overview" title="Permalink to this heading"></a></h2>
+<p>In the context of the Kynema documentation, “verification” refers to the comparison of code-to-code
+and code-to-analytical results. Verification ensures that Kynema correctly implements the underlying
+mathematical models and numerical methods, i.e., there are no implementation errors/bugs in the
+code and the error introduced by the discretization and numerical computation is within acceptable
+limits.</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="rollup.html">Static rollup of an isotropic beam</a></li>
@@ -99,6 +109,7 @@
 <li class="toctree-l1"><a class="reference internal" href="curved.html">Static bending of a curved beam</a></li>
 <li class="toctree-l1"><a class="reference internal" href="twisted.html">Static bending of a twisted beam</a></li>
 </ul>
+</div>
 </div>
 </div>
 

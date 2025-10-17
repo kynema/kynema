@@ -56,10 +56,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../theory/index.html">Theory Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../developer/index.html">Developer Documentation</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Benchmark Testing</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="rollup.html">Static rollup of an isotropic beam</a></li>
-<li class="toctree-l2"><a class="reference internal" href="composite.html">Static bending of a straight composite beam</a></li>
-<li class="toctree-l2"><a class="reference internal" href="curved.html">Static bending of a curved beam</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Static bending of a twisted beam</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#verification-overview">Verification Overview</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="rollup.html">Static rollup of an isotropic beam</a></li>
+<li class="toctree-l3"><a class="reference internal" href="composite.html">Static bending of a straight composite beam</a></li>
+<li class="toctree-l3"><a class="reference internal" href="curved.html">Static bending of a curved beam</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Static bending of a twisted beam</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../acknowledgement.html">Acknowledgements</a></li>
@@ -92,8 +95,13 @@
              
   <div class="section" id="static-bending-of-a-twisted-beam">
 <span id="sec-twisted"></span><h1>Static bending of a twisted beam<a class="headerlink" href="#static-bending-of-a-twisted-beam" title="Permalink to this heading"></a></h1>
-<p>For this benchmark problem, we examine the static tip deflection of a straight, but twisted beam. Details are provided in
-[&#64;Wang-etal:2017].  The benchmark solution is a highly refined solid-element model solved in ANSYS.  The following table show the tip displacement calculated with a single Legendre Spectral Finite Element (LSFE) with the number of nodes shown. N-Point Gauss-Legendre quadrature was employed, where N is the number of nodes. The results show the expected spectral convergence a solution that is in good agreement with the ANSYS solid-element solution.  The results are also identical, within machine precision, to those produced with BeamDyn.</p>
+<p>For this benchmark problem, we examine the static tip deflection of a straight, but twisted beam.
+Details are provided in [&#64;Wang-etal:2017]. The benchmark solution is a highly refined solid-element
+model solved in ANSYS. The following table shows the tip displacement calculated with a single
+Legendre Spectral Finite Element (LSFE) with the number of nodes shown. N-Point Gauss-Legendre
+quadrature was employed, where N is the number of nodes. The results show the expected spectral
+convergence to a solution that is in good agreement with the ANSYS solid-element solution.
+The results are also identical, within machine precision, to those produced with BeamDyn.</p>
 <p>ANSYS Solid-Element Solution: u1=-1.134192, u2= -1.714467, u3=-3.58423</p>
 <table class="docutils align-default">
 <colgroup>
@@ -142,14 +150,20 @@
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This benchmark is included as a regression test in the Kynema code base.
+The test is implemented in:</p>
 <blockquote>
-<div><div class="csl-entry docutils container" id="ref-wang-etal-2017">
+<div><p><a class="reference external" href="https://github.com/kynema/kynema/blob/main/tests/regression_tests/regression/verification/static_composite_beam_bending_twisted.cpp">https://github.com/kynema/kynema/blob/main/tests/regression_tests/regression/verification/static_composite_beam_bending_twisted.cpp</a></p>
+</div></blockquote>
+</div>
+<div class="csl-entry docutils container" id="ref-wang-etal-2017">
 <p>Wang, Q., M. A. Sprague, J. Jonkman, N. Johnson, and B. Jonkman.
 2017. “BeamDyn: A High-Fidelity Wind Turbine Blade Solver in the
 FAST Modular Framework.” <em>Wind Energy</em> 20: 1439-1462.
 <a class="reference external" href="https://onlinelibrary.wiley.com/doi/pdf/10.1002/we.2101">https://onlinelibrary.wiley.com/doi/pdf/10.1002/we.2101</a></p>
 </div>
-</div></blockquote>
 </div>
 
 
