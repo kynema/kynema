@@ -63,7 +63,7 @@ public:
     /**
      * @brief Update controller inputs from current system state
      */
-    void ApplyController(double t, double hub_wind_speed);
+    void ApplyController(double t);
 
     /**
      * @brief Steps forward in time
@@ -113,6 +113,7 @@ private:
     std::unique_ptr<Outputs> outputs;                     ///< handle to Output for writing to NetCDF
     std::unique_ptr<util::TurbineController> controller;  ///< DISCON-style controller
     std::unique_ptr<components::Aerodynamics> aerodynamics;  ///< Aerodynamics component
+    std::array<double, 3> hub_inflow{0., 0., 0.};            ///< Inflow velocity at the hub node
 
     /**
      * @brief Write rotor time-series data based on constraint outputs

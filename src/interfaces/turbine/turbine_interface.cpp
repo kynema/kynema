@@ -54,7 +54,8 @@ TurbineInterface::TurbineInterface(
         try {
             controller = std::make_unique<util::TurbineController>(
                 controller_input.shared_lib_path, controller_input.function_name,
-                controller_input.input_file_path, controller_input.simulation_name
+                controller_input.input_file_path, controller_input.simulation_name,
+                controller_input.yaw_control_enabled
             );
 
             // Initialize controller with turbine and solution parameters
@@ -104,6 +105,12 @@ void TurbineInterface::UpdateAerodynamicLoads(
     double fluid_density,
     const std::function<std::array<double, 3>(const std::array<double, 3>&)>& inflow_function
 ) {
+    // Get the inflow velocity at the hub node
+    this->hub_inflow = inflow_function(
+        {this->turbine.hub_node.position[0], this->turbine.hub_node.position[1],
+         this->turbine.hub_node.position[2]}
+    );
+
     if (aerodynamics) {
         auto update_region = Kokkos::Profiling::ScopedRegion("Update Aerodynamic Loads");
         aerodynamics->CalculateMotion(host_state);
@@ -205,6 +212,11 @@ void TurbineInterface::WriteTimeSeriesData() const {
     );
     this->outputs->WriteValueAtTimestep(
         this->state.time_step, "RotSpeed (rpm)", this->CalculateRotorSpeed() / rpm_to_radps
+    );
+
+    // Yaw angle
+    this->outputs->WriteValueAtTimestep(
+        this->state.time_step, "YawPzn (deg)", this->turbine.yaw_control * 180. / std::numbers::pi
     );
 
     // Tower top displacements
@@ -362,9 +374,21 @@ void TurbineInterface::WriteTimeSeriesData() const {
         );
     }
 
+    // Hub inflow velocities in inertial frame
+    this->outputs->WriteValueAtTimestep(
+        this->state.time_step, "WindHubVelX (m_s)", this->hub_inflow[0]
+    );
+    this->outputs->WriteValueAtTimestep(
+        this->state.time_step, "WindHubVelY (m_s)", this->hub_inflow[1]
+    );
+    this->outputs->WriteValueAtTimestep(
+        this->state.time_step, "WindHubVelZ (m_s)", this->hub_inflow[2]
+    );
+
     // Aerodynamic data
     if (this->aerodynamics) {
-        for (auto i : std::views::iota(0U, this->aerodynamics->bodies.size())) {
+        const auto n_blades = 0U;  // this->aerodynamics->bodies.size()
+        for (auto i : std::views::iota(0U, n_blades)) {
             const auto& body = this->aerodynamics->bodies[i];
             for (auto j : std::views::iota(0U, body.loads.size())) {
                 this->outputs->WriteValueAtTimestep(
@@ -451,11 +475,11 @@ void TurbineInterface::InitializeController(
     controller->io.n_blades = turbine_input.blades.size();  // Number of blades
 
     // Set controller initial values
-    controller->io.time = 0.;                                              // Current time (seconds)
-    controller->io.azimuth_angle = turbine_input.azimuth_angle;            // Initial azimuth
-    controller->io.pitch_blade1_actual = turbine_input.blade_pitch_angle;  // Blade pitch (rad)
-    controller->io.pitch_blade2_actual = turbine_input.blade_pitch_angle;  // Blade pitch (rad)
-    controller->io.pitch_blade3_actual = turbine_input.blade_pitch_angle;  // Blade pitch (rad)
+    controller->io.time = 0.;                                    // Current time (seconds)
+    controller->io.azimuth_angle = turbine_input.azimuth_angle;  // Initial azimuth
+    controller->io.pitch_blade1_actual = this->turbine.blade_pitch_control[0];  // Blade pitch (rad)
+    controller->io.pitch_blade2_actual = this->turbine.blade_pitch_control[1];  // Blade pitch (rad)
+    controller->io.pitch_blade3_actual = this->turbine.blade_pitch_control[2];  // Blade pitch (rad)
     controller->io.generator_speed_actual =
         turbine_input.rotor_speed * turbine_input.gear_box_ratio;  // Generator speed (rad/s)
     controller->io.generator_torque_actual =
@@ -464,6 +488,7 @@ void TurbineInterface::InitializeController(
     controller->io.generator_power_actual = turbine_input.generator_power;  // Generator power (W)
     controller->io.rotor_speed_actual = turbine_input.rotor_speed;          // Rotor speed (rad/s)
     controller->io.horizontal_wind_speed = turbine_input.hub_wind_speed;    // Hub wind speed (m/s)
+    controller->io.yaw_angle_actual = this->turbine.yaw_control;            // Yaw angle (rad)
 
     // Signal first call to controller
     controller->io.status = 0;
@@ -477,7 +502,7 @@ void TurbineInterface::InitializeController(
     this->turbine.blade_pitch_control[2] = turbine_input.blade_pitch_angle;
 }
 
-void TurbineInterface::ApplyController(double t, double hub_wind_speed) {
+void TurbineInterface::ApplyController(double t) {
     if (!controller) {
         return;
     }
@@ -497,12 +522,37 @@ void TurbineInterface::ApplyController(double t, double hub_wind_speed) {
     // Update generator power and torque
     const double generator_speed = controller->io.generator_speed_actual;
     const double generator_torque = this->turbine.torque_control;
-    controller->io.horizontal_wind_speed = hub_wind_speed;
+    controller->io.horizontal_wind_speed = sqrt(
+        this->hub_inflow[0] * this->hub_inflow[0] + this->hub_inflow[1] * this->hub_inflow[1] +
+        this->hub_inflow[2] * this->hub_inflow[2]
+    );
     controller->io.generator_torque_actual = generator_torque;
     controller->io.generator_power_actual = generator_speed * generator_torque;
     controller->io.pitch_blade1_actual = this->turbine.blade_pitch_control[0];
     controller->io.pitch_blade2_actual = this->turbine.blade_pitch_control[1];
     controller->io.pitch_blade3_actual = this->turbine.blade_pitch_control[2];
+
+    // Loop through blades and calculate out of plane root bending moments
+    for (auto i : std::views::iota(0U, this->turbine.blades.size())) {
+        // Get rotation from global to blade root coordinates
+        // Apex node orientation is the same as blade root node without pitch angle
+        const auto q_global_to_local =
+            math::QuaternionInverse(std::span{this->turbine.apex_nodes[i].position}.subspan<3, 4>());
+
+        // Rotate blade root moments into blade root coordinates
+        const auto blade_root_moments = math::RotateVectorByQuaternion(
+            q_global_to_local, std::span{this->turbine.blade_pitch[i].loads}.subspan<3, 3>()
+        );
+
+        // Set out-of-plane root bending moment for each blade (y-axis in blade coords)
+        if (i == 0) {
+            controller->io.out_of_plane_root_bending_moment_blade1 = blade_root_moments[1];
+        } else if (i == 1) {
+            controller->io.out_of_plane_root_bending_moment_blade2 = blade_root_moments[1];
+        } else if (i == 2) {
+            controller->io.out_of_plane_root_bending_moment_blade3 = blade_root_moments[1];
+        }
+    }
 
     // Call the controller
     controller->CallController();
@@ -511,5 +561,6 @@ void TurbineInterface::ApplyController(double t, double hub_wind_speed) {
     this->turbine.blade_pitch_control[0] = controller->io.pitch_collective_command;
     this->turbine.blade_pitch_control[1] = controller->io.pitch_collective_command;
     this->turbine.blade_pitch_control[2] = controller->io.pitch_collective_command;
+    this->turbine.yaw_control = controller->YawAngleCommand();
 }
 }  // namespace kynema::interfaces
