@@ -11,7 +11,7 @@ namespace kynema::util {
 
 TurbineController::TurbineController(
     std::string shared_lib_path, std::string controller_function_name, std::string input_file_path,
-    std::string output_file_path
+    std::string output_file_path, bool yaw_control_enabled
 )
     : io{},
       input_file_path_(std::move(input_file_path)),
@@ -63,6 +63,11 @@ void TurbineController::CallController() {
         throw std::runtime_error("Error raised in controller: " + message);
     } else if (status > 0) {
         std::cout << "Warning from controller: " << message << "\n";
+    }
+
+    // Integrate yaw angle command from yaw rate command
+    if (this->yaw_control_enabled_) {
+        this->yaw_angle_command_ += this->io.nacelle_yaw_rate_command * this->io.dt;
     }
 }
 
