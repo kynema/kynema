@@ -19,24 +19,51 @@ std::array<double, 3> UniformFlowParameters::Velocity(const std::array<double, 3
 std::array<double, 3> UniformFlow::Velocity(
     [[maybe_unused]] double t, const std::array<double, 3>& position
 ) const {
-    // If there is only one time point, use the uniform flow parameters
-    if (time.size() == 1) {
+    // If no data is available, throw an error
+    if (data.empty()) {
+        throw std::runtime_error("No uniform flow data available");
+    }
+
+    // If there is only one data point or time is less than the first data point's time,
+    // use the first uniform flow parameters
+    if (data.size() == 1 || t <= data.front().time) {
         return data[0].Velocity(position);
     }
 
-    // Multiple time points are not supported yet
-    throw std::runtime_error("Time-dependent uniform flow not implemented yet");
+    // If time is greater than the last data point's time, use the last uniform flow parameters
+    if (t >= data.back().time) {
+        return data.back().Velocity(position);
+    }
+
+    // If time is between the first and last data points, interpolate between them
+    for (std::size_t i = 1; i < data.size(); ++i) {
+        if (t < data[i].time) {
+            // Linear interpolation
+            const double alpha = (t - data[i - 1].time) / (data[i].time - data[i - 1].time);
+
+            // Create interpolated UniformFlowParameters at given time
+            const auto t_data = UniformFlowParameters{
+                t,
+                data[i - 1].velocity_horizontal * (1 - alpha) + data[i].velocity_horizontal * alpha,
+                data[i - 1].height_reference * (1 - alpha) + data[i].height_reference * alpha,
+                data[i - 1].shear_vertical * (1 - alpha) + data[i].shear_vertical * alpha,
+                data[i - 1].flow_angle_horizontal * (1 - alpha) +
+                    data[i].flow_angle_horizontal * alpha
+            };
+
+            return t_data.Velocity(position);
+        }
+    }
+
+    // This point should never be reached
+    throw std::runtime_error("Time interpolation error in uniform flow");
 }
 
 Inflow Inflow::SteadyWind(double vh, double z_ref, double alpha, double angle_h) {
     return Inflow(
-        InflowType::Uniform,
-        UniformFlow{
-            std::vector<double>{0.},
-            std::vector<UniformFlowParameters>{
-                {vh, z_ref, alpha, angle_h}  // Use aggregate initialization
-            }
-        }
+        InflowType::Uniform, UniformFlow{std::vector<UniformFlowParameters>{
+                                 {0., vh, z_ref, alpha, angle_h}  // Use aggregate initialization
+                             }}
     );
 }
 
