@@ -35,28 +35,27 @@ std::array<double, 3> UniformFlow::Velocity(
         return data.back().Velocity(position);
     }
 
-    // If time is between the first and last data points, interpolate between them
-    for (std::size_t i = 1; i < data.size(); ++i) {
-        if (t < data[i].time) {
-            // Linear interpolation
-            const double alpha = (t - data[i - 1].time) / (data[i].time - data[i - 1].time);
+    const auto time_iterator = std::find_if(std::cbegin(data), std::cend(data), [t](auto d) {
+        return d.time > t;
+    });
 
-            // Create interpolated UniformFlowParameters at given time
-            const auto t_data = UniformFlowParameters{
-                t,
-                data[i - 1].velocity_horizontal * (1 - alpha) + data[i].velocity_horizontal * alpha,
-                data[i - 1].height_reference * (1 - alpha) + data[i].height_reference * alpha,
-                data[i - 1].shear_vertical * (1 - alpha) + data[i].shear_vertical * alpha,
-                data[i - 1].flow_angle_horizontal * (1 - alpha) +
-                    data[i].flow_angle_horizontal * alpha
-            };
+    const auto t_index = static_cast<std::size_t>(std::distance(std::cbegin(data), time_iterator));
 
-            return t_data.Velocity(position);
-        }
-    }
+    const double alpha =
+        (t - data[t_index - 1].time) / (data[t_index].time - data[t_index - 1].time);
 
-    // This point should never be reached
-    throw std::runtime_error("Time interpolation error in uniform flow");
+    // Create interpolated UniformFlowParameters at given time
+    const auto t_data = UniformFlowParameters{
+        t,
+        data[t_index - 1].velocity_horizontal * (1 - alpha) +
+            data[t_index].velocity_horizontal * alpha,
+        data[t_index - 1].height_reference * (1 - alpha) + data[t_index].height_reference * alpha,
+        data[t_index - 1].shear_vertical * (1 - alpha) + data[t_index].shear_vertical * alpha,
+        data[t_index - 1].flow_angle_horizontal * (1 - alpha) +
+            data[t_index].flow_angle_horizontal * alpha
+    };
+
+    return t_data.Velocity(position);
 }
 
 Inflow Inflow::SteadyWind(double vh, double z_ref, double alpha, double angle_h) {
