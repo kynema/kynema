@@ -44,10 +44,18 @@ public:
     );
 
     /// @brief Returns a reference to the turbine model
-    [[nodiscard]] components::Turbine& Turbine();
+    [[nodiscard]] components::Turbine& Turbine() { return this->turbine; }
+
+    /// @brief Returns a reference to the aerodynamics model
+    [[nodiscard]] components::Aerodynamics& Aerodynamics() {
+        if (!aerodynamics) {
+            throw std::runtime_error("Aerodynamics component not initialized in TurbineInterface.");
+        }
+        return *aerodynamics;
+    }
 
     /**
-     * @brief Updates the aerodynamic loads to be applied to the sturcture based on a provided
+     * @brief Updates the aerodynamic loads to be applied to the structure based on a provided
      * function
      *
      * @param fluid_density The density of the air (assumed constant)
