@@ -18,7 +18,8 @@ TurbineController::TurbineController(
       output_file_path_(std::move(output_file_path)),
       shared_lib_path_(std::move(shared_lib_path)),
       controller_function_name_(std::move(controller_function_name)),
-      lib_(shared_lib_path_, util::dylib::no_filename_decorations) {
+      lib_(shared_lib_path_, util::dylib::no_filename_decorations),
+      yaw_control_enabled_(yaw_control_enabled) {
     // Make sure we have a valid shared library path + controller function name
     try {
         lib_.get_function<void(
