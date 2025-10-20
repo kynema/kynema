@@ -10,6 +10,7 @@ namespace kynema::interfaces::components {
  * @brief Parameters defining uniform flow characteristics
  */
 struct UniformFlowParameters {
+    double time;                   ///< Time (s)
     double velocity_horizontal;    ///< Horizontal inflow velocity (m/s)
     double height_reference;       ///< Reference height (m)
     double shear_vertical;         ///< Vertical shear exponent
@@ -27,7 +28,6 @@ struct UniformFlowParameters {
  * @brief Uniform flow with time-dependent parameters
  */
 struct UniformFlow {
-    std::vector<double> time;  ///< Time vector for uniform flow parameters
     std::vector<UniformFlowParameters> data;
 
     /**
@@ -66,6 +66,15 @@ struct Inflow {
      * @param angle_h Flow angle relative to x axis (radians)
      */
     static Inflow SteadyWind(double vh, double z_ref, double alpha, double angle_h);
+
+    /**
+     * @brief Creates a uniform wind inflow
+     * @param vh Horizontal inflow velocity (m/s)
+     * @param z_ref Reference height (m)
+     * @param alpha Vertical shear exponent
+     * @param angle_h Flow angle relative to x axis (radians)
+     */
+    static Inflow UniformWind(double vh, double z_ref, double alpha, double angle_h);
 
     /**
      * @brief Calculates velocity vector at a given time and position

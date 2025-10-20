@@ -31,6 +31,11 @@ public:
         return *this;
     }
 
+    ControllerBuilder& EnableYawControl(bool enable = true) {
+        input.yaw_control_enabled = enable;
+        return *this;
+    }
+
 private:
     ControllerInput input;
 };

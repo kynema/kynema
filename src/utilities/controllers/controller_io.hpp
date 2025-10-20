@@ -19,30 +19,36 @@ struct ControllerIO {
     double rotor_speed_actual = 0.;       // Input: Measured rotor speed (rad/s)
     double generator_torque_actual = 0.;  // Input: Measured generator torque (Nm)
     double yaw_error_actual = 0.;         // Input: Measured yaw error (rad)
-    double horizontal_wind_speed = 0.;    // Input: Horizontal hub-heigh wind speed (m/s)
+    double horizontal_wind_speed = 0.;    // Input: Horizontal hub-height wind speed (m/s)
     double pitch_control_type = 0.;       // Input: Pitch control type [0=collective, 1=individual]
-    double pitch_blade2_actual = 0.;      // Input: Blade 2 pitch
-    double pitch_blade3_actual = 0.;      // Input: Blade 3 pitch
-    int generator_contactor_status = 0;   // Output: Generator contactor status
-    int shaft_brake_status = 0;           // Input: Shaft brake status [0=off, 1=on]
-    double yaw_angle_actual = 0;          // Input: Nacelle yaw angle from North (rad)
-    double yaw_actuator_torque_command = 0.;   // Output: Demanded yaw actuator torque
-    double pitch_blade1_command = 0.;          // Output: pitch command (rad)
-    double pitch_blade2_command = 0.;          // Output: pitch command (rad)
-    double pitch_blade3_command = 0.;          // Output: pitch command (rad)
-    double pitch_collective_command = 0.;      // Output: pitch collective command (rad)
-    double pitch_rate_command = 0.;            // Output: Demanded pitch rate (Collective pitch)
-    double generator_torque_command = 0.;      // Output: Demanded generator torque
-    double nacelle_yaw_rate_command = 0.;      // Output: Demanded nacelle yaw rate
-    size_t message_array_size = 0U;            // Input: avcMSG array size
-    size_t infile_array_size = 0U;             // Input: avcINFILE array size
-    size_t outname_array_size = 0U;            // Input: avcOUTNAME array size
-    double tower_top_fore_aft_accel = 0.;      // Input: Tower top fore-aft  acceleration (m/s^2)
-    int pitch_override = 0;                    // Input: Pitch override: 0=yes
-    int torque_override = 0;                   // Input: Torque override: 0=yes
-    double azimuth_angle = 0.;                 // Input: Azimuth angle (rad)
-    size_t n_blades = 0U;                      // Input: Number of blades
-    size_t n_log_variables = 0U;               // Input: Number of variables returned for logging
+    double out_of_plane_root_bending_moment_blade1 =
+        0.;  // Input: Out-of-plane root bending moment blade 1 (Nm)
+    double out_of_plane_root_bending_moment_blade2 =
+        0.;  // Input: Out-of-plane root bending moment blade 2 (Nm)
+    double out_of_plane_root_bending_moment_blade3 =
+        0.;                                   // Input: Out-of-plane root bending moment blade 3 (Nm)
+    double pitch_blade2_actual = 0.;          // Input: Blade 2 pitch
+    double pitch_blade3_actual = 0.;          // Input: Blade 3 pitch
+    int generator_contactor_status = 0;       // Output: Generator contactor status
+    int shaft_brake_status = 0;               // Input: Shaft brake status [0=off, 1=on]
+    double yaw_angle_actual = 0;              // Input: Nacelle yaw angle from North (rad)
+    double yaw_actuator_torque_command = 0.;  // Output: Demanded yaw actuator torque
+    double pitch_blade1_command = 0.;         // Output: pitch command (rad)
+    double pitch_blade2_command = 0.;         // Output: pitch command (rad)
+    double pitch_blade3_command = 0.;         // Output: pitch command (rad)
+    double pitch_collective_command = 0.;     // Output: pitch collective command (rad)
+    double pitch_rate_command = 0.;           // Output: Demanded pitch rate (Collective pitch)
+    double generator_torque_command = 0.;     // Output: Demanded generator torque
+    double nacelle_yaw_rate_command = 0.;     // Output: Demanded nacelle yaw rate
+    size_t message_array_size = 0U;           // Input: avcMSG array size
+    size_t infile_array_size = 0U;            // Input: avcINFILE array size
+    size_t outname_array_size = 0U;           // Input: avcOUTNAME array size
+    double tower_top_fore_aft_accel = 0.;     // Input: Tower top fore-aft  acceleration (m/s^2)
+    int pitch_override = 0;                   // Input: Pitch override: 0=yes
+    int torque_override = 0;                  // Input: Torque override: 0=yes
+    double azimuth_angle = 0.;                // Input: Azimuth angle (rad)
+    size_t n_blades = 0U;                     // Input: Number of blades
+    size_t n_log_variables = 0U;              // Input: Number of variables returned for logging
     double generator_startup_resistance = 0.;  // Input: Generator start-up resistance
     int loads_request = 0;                     // Input: Request for loads: 0=none
     int variable_slip_status = 0;              // Input: Variable slip current status
@@ -62,6 +68,9 @@ struct ControllerIO {
         swap_array[23] = static_cast<float>(yaw_error_actual);
         swap_array[26] = static_cast<float>(horizontal_wind_speed);
         swap_array[27] = static_cast<float>(pitch_control_type);
+        swap_array[29] = static_cast<float>(out_of_plane_root_bending_moment_blade1);
+        swap_array[30] = static_cast<float>(out_of_plane_root_bending_moment_blade2);
+        swap_array[31] = static_cast<float>(out_of_plane_root_bending_moment_blade3);
         swap_array[32] = static_cast<float>(pitch_blade2_actual);
         swap_array[33] = static_cast<float>(pitch_blade3_actual);
         swap_array[34] = static_cast<float>(generator_contactor_status);
@@ -104,6 +113,9 @@ struct ControllerIO {
         yaw_error_actual = static_cast<double>(swap_array[23]);
         horizontal_wind_speed = static_cast<double>(swap_array[26]);
         pitch_control_type = static_cast<int>(swap_array[27]);
+        out_of_plane_root_bending_moment_blade1 = static_cast<double>(swap_array[29]);
+        out_of_plane_root_bending_moment_blade2 = static_cast<double>(swap_array[30]);
+        out_of_plane_root_bending_moment_blade3 = static_cast<double>(swap_array[31]);
         pitch_blade2_actual = static_cast<double>(swap_array[32]);
         pitch_blade3_actual = static_cast<double>(swap_array[33]);
         generator_contactor_status = static_cast<int>(swap_array[34]);
