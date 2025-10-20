@@ -277,7 +277,7 @@ TEST(TurbineInterfaceTest, IEA15_Controller) {
         // Calculate time
         const auto t{static_cast<double>(i) * time_step};
 
-        interface.ApplyController(t, 0.);
+        interface.ApplyController(t);
 
         // Take step
         const auto converged = interface.Step();

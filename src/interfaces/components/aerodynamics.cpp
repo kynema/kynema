@@ -387,14 +387,14 @@ AerodynamicBody::AerodynamicBody(const AerodynamicBodyInput& input, std::span<co
       qqr_motion_map(input.aero_sections.size()),
       x_motion(input.aero_sections.size()),
       v_motion(input.aero_sections.size()),
+      v_inflow(input.aero_sections.size()),
       v_rel(input.aero_sections.size()),
       alpha(input.aero_sections.size()),
       cn(input.aero_sections.size()),
       ct(input.aero_sections.size()),
       cm(input.aero_sections.size()),
       loads(input.aero_sections.size()),
-      ref_axis_moments(input.aero_sections.size()),
-      v_inflow(input.aero_sections.size()) {
+      ref_axis_moments(input.aero_sections.size()) {
     // Get aerodynamic section location along beam
     const auto section_xi = ExtractSectionXi(input);
 
