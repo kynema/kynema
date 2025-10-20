@@ -6,9 +6,10 @@ var searchData=
   ['enabledynamicsolve_3',['EnableDynamicSolve',['../structkynema_1_1interfaces_1_1components_1_1SolutionBuilder.html#a848aad6862b6339254d982b8e9f35dc0',1,'kynema::interfaces::components::SolutionBuilder']]],
   ['enablefloatingplatform_4',['EnableFloatingPlatform',['../structkynema_1_1interfaces_1_1cfd_1_1InterfaceBuilder.html#a519fa31a15cf61cf1a4ac2fab8b7a7b6',1,'kynema::interfaces::cfd::InterfaceBuilder']]],
   ['enablestaticsolve_5',['EnableStaticSolve',['../structkynema_1_1interfaces_1_1components_1_1SolutionBuilder.html#ad8ebc319ae5224aeda24f65bb96bb6dc',1,'kynema::interfaces::components::SolutionBuilder']]],
-  ['exportmeshconnectivitytoyaml_6',['ExportMeshConnectivityToYAML',['../classkynema_1_1Model.html#a2e956296aa212412701f393e20ec96d3',1,'kynema::Model']]],
-  ['exporttoyaml_7',['exporttoyaml',['../classkynema_1_1model_1_1MeshConnectivity.html#a8664a801e2a4a82221e894d5c1d06f3e',1,'kynema::model::MeshConnectivity::ExportToYAML(std::ostream &amp;file) const'],['../classkynema_1_1model_1_1MeshConnectivity.html#a6e558bd9a1faa264e8dee6796e7d0826',1,'kynema::model::MeshConnectivity::ExportToYAML(const std::string &amp;filename) const']]],
-  ['extract_5fcoordinate_5fdata_8',['extract_coordinate_data',['../namespacepreprocess__windio__for__BE.html#a7c4f9bad6bbff74d786654e0b9f962e9',1,'preprocess_windio_for_BE']]],
-  ['extract_5fdata_9',['extract_data',['../namespacevisualize__windio__airfoils.html#a8d75e8994352f8e57bb54a7e1045c211',1,'visualize_windio_airfoils']]],
-  ['extract_5fpolar_5fcoefficients_5fdata_10',['extract_polar_coefficients_data',['../namespacepreprocess__windio__for__BE.html#a4115f3e5cc3cbe04f2d25b083fb3be07',1,'preprocess_windio_for_BE']]]
+  ['enableyawcontrol_6',['EnableYawControl',['../classkynema_1_1interfaces_1_1components_1_1ControllerBuilder.html#a4864911f03cc49e9128f673dbd75307f',1,'kynema::interfaces::components::ControllerBuilder']]],
+  ['exportmeshconnectivitytoyaml_7',['ExportMeshConnectivityToYAML',['../classkynema_1_1Model.html#a2e956296aa212412701f393e20ec96d3',1,'kynema::Model']]],
+  ['exporttoyaml_8',['exporttoyaml',['../classkynema_1_1model_1_1MeshConnectivity.html#a8664a801e2a4a82221e894d5c1d06f3e',1,'kynema::model::MeshConnectivity::ExportToYAML(std::ostream &amp;file) const'],['../classkynema_1_1model_1_1MeshConnectivity.html#a6e558bd9a1faa264e8dee6796e7d0826',1,'kynema::model::MeshConnectivity::ExportToYAML(const std::string &amp;filename) const']]],
+  ['extract_5fcoordinate_5fdata_9',['extract_coordinate_data',['../namespacepreprocess__windio__for__BE.html#a7c4f9bad6bbff74d786654e0b9f962e9',1,'preprocess_windio_for_BE']]],
+  ['extract_5fdata_10',['extract_data',['../namespacevisualize__windio__airfoils.html#a8d75e8994352f8e57bb54a7e1045c211',1,'visualize_windio_airfoils']]],
+  ['extract_5fpolar_5fcoefficients_5fdata_11',['extract_polar_coefficients_data',['../namespacepreprocess__windio__for__BE.html#a4115f3e5cc3cbe04f2d25b083fb3be07',1,'preprocess_windio_for_BE']]]
 ];

@@ -204,66 +204,97 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a3017cbb08433960886704bbb4f7f309c" id="r_a3017cbb08433960886704bbb4f7f309c"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1AerodynamicBody.html#a3017cbb08433960886704bbb4f7f309c">id</a></td></tr>
 <tr class="separator:a3017cbb08433960886704bbb4f7f309c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa72528699de2e90ce92295d446cab1a0" id="r_aa72528699de2e90ce92295d446cab1a0"><td class="memItemLeft" align="right" valign="top">std::vector&lt; size_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1AerodynamicBody.html#aa72528699de2e90ce92295d446cab1a0">node_ids</a></td></tr>
+<tr class="memdesc:aa72528699de2e90ce92295d446cab1a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">IDs of the beam nodes in this aerodynamic body.  <br /></td></tr>
 <tr class="separator:aa72528699de2e90ce92295d446cab1a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a42ac3b8fea64f83056ed7de1b02bd79f" id="r_a42ac3b8fea64f83056ed7de1b02bd79f"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::array&lt; double, 7 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1AerodynamicBody.html#a42ac3b8fea64f83056ed7de1b02bd79f">node_u</a></td></tr>
+<tr class="memdesc:a42ac3b8fea64f83056ed7de1b02bd79f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displacements of the beam nodes (copied from state based on node_ids)  <br /></td></tr>
 <tr class="separator:a42ac3b8fea64f83056ed7de1b02bd79f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe69d151cc60df4e455c2b19aad9ccf4" id="r_afe69d151cc60df4e455c2b19aad9ccf4"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::array&lt; double, 6 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1AerodynamicBody.html#afe69d151cc60df4e455c2b19aad9ccf4">node_v</a></td></tr>
+<tr class="memdesc:afe69d151cc60df4e455c2b19aad9ccf4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Velocities of the beam nodes (copied from state based on node_ids)  <br /></td></tr>
 <tr class="separator:afe69d151cc60df4e455c2b19aad9ccf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad2765b9da00d17fdfbb4cb1e918515c8" id="r_ad2765b9da00d17fdfbb4cb1e918515c8"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::array&lt; double, 6 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1AerodynamicBody.html#ad2765b9da00d17fdfbb4cb1e918515c8">node_f</a></td></tr>
+<tr class="memdesc:ad2765b9da00d17fdfbb4cb1e918515c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aerodynamic forces at the beam nodes with moment arm applied from aerodynamic center to reference axis (output)  <br /></td></tr>
 <tr class="separator:ad2765b9da00d17fdfbb4cb1e918515c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a155f354c52a52477e80b34a4b7de27a7" id="r_a155f354c52a52477e80b34a4b7de27a7"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::array&lt; double, 7 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1AerodynamicBody.html#a155f354c52a52477e80b34a4b7de27a7">xr_motion_map</a></td></tr>
+<tr class="memdesc:a155f354c52a52477e80b34a4b7de27a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initial position and orientation of beam reference axis at aerodynamic sections.  <br /></td></tr>
 <tr class="separator:a155f354c52a52477e80b34a4b7de27a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab28b1331585f1360b3165dcd8cdf1202" id="r_ab28b1331585f1360b3165dcd8cdf1202"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::array&lt; double, 7 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1AerodynamicBody.html#ab28b1331585f1360b3165dcd8cdf1202">u_motion_map</a></td></tr>
+<tr class="memdesc:ab28b1331585f1360b3165dcd8cdf1202"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displacements of beam reference axis at aerodynamic sections.  <br /></td></tr>
 <tr class="separator:ab28b1331585f1360b3165dcd8cdf1202"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a95e35546527e49dacaeca2b25c75392e" id="r_a95e35546527e49dacaeca2b25c75392e"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::array&lt; double, 6 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1AerodynamicBody.html#a95e35546527e49dacaeca2b25c75392e">v_motion_map</a></td></tr>
+<tr class="memdesc:a95e35546527e49dacaeca2b25c75392e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Velocities of beam reference axis at aerodynamic sections.  <br /></td></tr>
 <tr class="separator:a95e35546527e49dacaeca2b25c75392e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a02b688107fae92e71bb330a5ef428307" id="r_a02b688107fae92e71bb330a5ef428307"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::array&lt; double, 4 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1AerodynamicBody.html#a02b688107fae92e71bb330a5ef428307">qqr_motion_map</a></td></tr>
+<tr class="memdesc:a02b688107fae92e71bb330a5ef428307"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total rotation quaternion of beam reference axis at aerodynamic sections (reference + displacement)  <br /></td></tr>
 <tr class="separator:a02b688107fae92e71bb330a5ef428307"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad7ae6d424868fa58384693725d6d93da" id="r_ad7ae6d424868fa58384693725d6d93da"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::array&lt; double, 3 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1AerodynamicBody.html#ad7ae6d424868fa58384693725d6d93da">con_motion</a></td></tr>
+<tr class="memdesc:ad7ae6d424868fa58384693725d6d93da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vectors from reference axis to aerodynamic center at aerodynamic sections in reference configuration (includes twist)  <br /></td></tr>
 <tr class="separator:ad7ae6d424868fa58384693725d6d93da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a829d0d865859db42072025c03381ff8b" id="r_a829d0d865859db42072025c03381ff8b"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::array&lt; double, 3 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1AerodynamicBody.html#a829d0d865859db42072025c03381ff8b">x_motion</a></td></tr>
+<tr class="memdesc:a829d0d865859db42072025c03381ff8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Positions of aerodynamic centers at aerodynamic sections in global coordinates.  <br /></td></tr>
 <tr class="separator:a829d0d865859db42072025c03381ff8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa7842ea7df54392d59b217f2c6fdd26a" id="r_aa7842ea7df54392d59b217f2c6fdd26a"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::array&lt; double, 3 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1AerodynamicBody.html#aa7842ea7df54392d59b217f2c6fdd26a">v_motion</a></td></tr>
+<tr class="memdesc:aa7842ea7df54392d59b217f2c6fdd26a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Velocities of aerodynamic centers at aerodynamic sections in global coordinates.  <br /></td></tr>
 <tr class="separator:aa7842ea7df54392d59b217f2c6fdd26a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acb1a2d8352d47275d6209c8a1b967812" id="r_acb1a2d8352d47275d6209c8a1b967812"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::array&lt; double, 3 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1AerodynamicBody.html#acb1a2d8352d47275d6209c8a1b967812">con_force</a></td></tr>
+<tr class="memdesc:acb1a2d8352d47275d6209c8a1b967812"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vectors from aerodynamic center to reference axis at aerodynamic sections in reference configuration (negative of con_motion)  <br /></td></tr>
 <tr class="separator:acb1a2d8352d47275d6209c8a1b967812"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc7cc9b1c2e20451190196eee7364e29" id="r_acc7cc9b1c2e20451190196eee7364e29"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::array&lt; double, 3 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1AerodynamicBody.html#acc7cc9b1c2e20451190196eee7364e29">v_inflow</a></td></tr>
+<tr class="memdesc:acc7cc9b1c2e20451190196eee7364e29"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structkynema_1_1interfaces_1_1components_1_1Inflow.html" title="Wind inflow model for turbine simulations.">Inflow</a> velocity at aerodynamic sections.  <br /></td></tr>
+<tr class="separator:acc7cc9b1c2e20451190196eee7364e29"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4e0c820d99150ad97f1774bc781d95f0" id="r_a4e0c820d99150ad97f1774bc781d95f0"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::array&lt; double, 3 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1AerodynamicBody.html#a4e0c820d99150ad97f1774bc781d95f0">v_rel</a></td></tr>
+<tr class="memdesc:a4e0c820d99150ad97f1774bc781d95f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Relative velocity at aerodynamic sections (v_inflow - v_motion) (output)  <br /></td></tr>
 <tr class="separator:a4e0c820d99150ad97f1774bc781d95f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2b01c7aa2383fb7a89fa95635fec336e" id="r_a2b01c7aa2383fb7a89fa95635fec336e"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1AerodynamicBody.html#a2b01c7aa2383fb7a89fa95635fec336e">alpha</a></td></tr>
+<tr class="memdesc:a2b01c7aa2383fb7a89fa95635fec336e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Angle of attack at aerodynamic sections (output)  <br /></td></tr>
 <tr class="separator:a2b01c7aa2383fb7a89fa95635fec336e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7260c6da4c4d234a5f81f1dffe620753" id="r_a7260c6da4c4d234a5f81f1dffe620753"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1AerodynamicBody.html#a7260c6da4c4d234a5f81f1dffe620753">cn</a></td></tr>
+<tr class="memdesc:a7260c6da4c4d234a5f81f1dffe620753"><td class="mdescLeft">&#160;</td><td class="mdescRight">Normal force coefficient at aerodynamic sections (perpendicular to airfoil chord) (output)  <br /></td></tr>
 <tr class="separator:a7260c6da4c4d234a5f81f1dffe620753"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac1984fc3388235e3cffbc08be699b4a6" id="r_ac1984fc3388235e3cffbc08be699b4a6"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1AerodynamicBody.html#ac1984fc3388235e3cffbc08be699b4a6">ct</a></td></tr>
+<tr class="memdesc:ac1984fc3388235e3cffbc08be699b4a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tangent force coefficient at aerodynamic sections (parallel to airfoil chord) (output)  <br /></td></tr>
 <tr class="separator:ac1984fc3388235e3cffbc08be699b4a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4468575771d4367656394ffcabd3b39c" id="r_a4468575771d4367656394ffcabd3b39c"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1AerodynamicBody.html#a4468575771d4367656394ffcabd3b39c">cm</a></td></tr>
+<tr class="memdesc:a4468575771d4367656394ffcabd3b39c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Moment coefficient at aerodynamic sections (output)  <br /></td></tr>
 <tr class="separator:a4468575771d4367656394ffcabd3b39c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adfdc7c39d6f6c868a3896c8482ff219a" id="r_adfdc7c39d6f6c868a3896c8482ff219a"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::array&lt; double, 6 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1AerodynamicBody.html#adfdc7c39d6f6c868a3896c8482ff219a">loads</a></td></tr>
+<tr class="memdesc:adfdc7c39d6f6c868a3896c8482ff219a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aerodynamic loads (forces and moments) at aerodynamic centers (output)  <br /></td></tr>
 <tr class="separator:adfdc7c39d6f6c868a3896c8482ff219a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a62336d5ecb8d77ab6d14ae68aaa16b81" id="r_a62336d5ecb8d77ab6d14ae68aaa16b81"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::array&lt; double, 3 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1AerodynamicBody.html#a62336d5ecb8d77ab6d14ae68aaa16b81">ref_axis_moments</a></td></tr>
+<tr class="memdesc:a62336d5ecb8d77ab6d14ae68aaa16b81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total moment about beam reference axis at aerodynamic sections (accounting for AC moment arm and aerodynamic moment) (output)  <br /></td></tr>
 <tr class="separator:a62336d5ecb8d77ab6d14ae68aaa16b81"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeb3bab7bcf5a32febca22423a035dbb3" id="r_aeb3bab7bcf5a32febca22423a035dbb3"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1AerodynamicBody.html#aeb3bab7bcf5a32febca22423a035dbb3">jacobian_xi</a></td></tr>
-<tr class="separator:aeb3bab7bcf5a32febca22423a035dbb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acc7cc9b1c2e20451190196eee7364e29" id="r_acc7cc9b1c2e20451190196eee7364e29"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::array&lt; double, 3 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1AerodynamicBody.html#acc7cc9b1c2e20451190196eee7364e29">v_inflow</a></td></tr>
-<tr class="separator:acc7cc9b1c2e20451190196eee7364e29"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7aae8da47b851007c99d751f368fb788" id="r_a7aae8da47b851007c99d751f368fb788"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1AerodynamicBody.html#a7aae8da47b851007c99d751f368fb788">twist</a></td></tr>
+<tr class="memdesc:a7aae8da47b851007c99d751f368fb788"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aerodynamic section twist.  <br /></td></tr>
 <tr class="separator:a7aae8da47b851007c99d751f368fb788"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa844cb9566a6335c58a415cb6aae20fb" id="r_aa844cb9566a6335c58a415cb6aae20fb"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1AerodynamicBody.html#aa844cb9566a6335c58a415cb6aae20fb">chord</a></td></tr>
+<tr class="memdesc:aa844cb9566a6335c58a415cb6aae20fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aerodynamic section chord length.  <br /></td></tr>
 <tr class="separator:aa844cb9566a6335c58a415cb6aae20fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae6b62a342e4555677c762978eaa37131" id="r_ae6b62a342e4555677c762978eaa37131"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1AerodynamicBody.html#ae6b62a342e4555677c762978eaa37131">delta_s</a></td></tr>
+<tr class="memdesc:ae6b62a342e4555677c762978eaa37131"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aerodynamic section width for force/moment calculation.  <br /></td></tr>
 <tr class="separator:ae6b62a342e4555677c762978eaa37131"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3b6687fa0380effcf9b0aa135551933f" id="r_a3b6687fa0380effcf9b0aa135551933f"><td class="memItemLeft" align="right" valign="top">std::vector&lt; size_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1AerodynamicBody.html#a3b6687fa0380effcf9b0aa135551933f">polar_size</a></td></tr>
+<tr class="memdesc:a3b6687fa0380effcf9b0aa135551933f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of points in each aerodynamic polar.  <br /></td></tr>
 <tr class="separator:a3b6687fa0380effcf9b0aa135551933f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aae7bc754e8367e25894951a2ee8c9657" id="r_aae7bc754e8367e25894951a2ee8c9657"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1AerodynamicBody.html#aae7bc754e8367e25894951a2ee8c9657">aoa</a></td></tr>
+<tr class="memdesc:aae7bc754e8367e25894951a2ee8c9657"><td class="mdescLeft">&#160;</td><td class="mdescRight">Angle of attack polar at each aerodynamic section.  <br /></td></tr>
 <tr class="separator:aae7bc754e8367e25894951a2ee8c9657"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a462f38f3d53c39fc1d7fdad67f640f9e" id="r_a462f38f3d53c39fc1d7fdad67f640f9e"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1AerodynamicBody.html#a462f38f3d53c39fc1d7fdad67f640f9e">cl_polar</a></td></tr>
+<tr class="memdesc:a462f38f3d53c39fc1d7fdad67f640f9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lift coefficient polar at each aerodynamic section.  <br /></td></tr>
 <tr class="separator:a462f38f3d53c39fc1d7fdad67f640f9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab4fdfaa1593be5ef40240f57d8c9ac93" id="r_ab4fdfaa1593be5ef40240f57d8c9ac93"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1AerodynamicBody.html#ab4fdfaa1593be5ef40240f57d8c9ac93">cd_polar</a></td></tr>
+<tr class="memdesc:ab4fdfaa1593be5ef40240f57d8c9ac93"><td class="mdescLeft">&#160;</td><td class="mdescRight">Drag coefficient polar at each aerodynamic section.  <br /></td></tr>
 <tr class="separator:ab4fdfaa1593be5ef40240f57d8c9ac93"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aed209c3257a0708ee8cefc527cba425a" id="r_aed209c3257a0708ee8cefc527cba425a"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1AerodynamicBody.html#aed209c3257a0708ee8cefc527cba425a">cm_polar</a></td></tr>
+<tr class="memdesc:aed209c3257a0708ee8cefc527cba425a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Moment coefficient polar at each aerodynamic section.  <br /></td></tr>
 <tr class="separator:aed209c3257a0708ee8cefc527cba425a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb3bab7bcf5a32febca22423a035dbb3" id="r_aeb3bab7bcf5a32febca22423a035dbb3"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1AerodynamicBody.html#aeb3bab7bcf5a32febca22423a035dbb3">jacobian_xi</a></td></tr>
+<tr class="memdesc:aeb3bab7bcf5a32febca22423a035dbb3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Locations of aerodynamic section width boundaries along the beam (used for section width calculation)  <br /></td></tr>
+<tr class="separator:aeb3bab7bcf5a32febca22423a035dbb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a86ae0c461f720162a20f91ebf35b6f5f" id="r_a86ae0c461f720162a20f91ebf35b6f5f"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1AerodynamicBody.html#a86ae0c461f720162a20f91ebf35b6f5f">motion_interp</a></td></tr>
+<tr class="memdesc:a86ae0c461f720162a20f91ebf35b6f5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flattened matrix to interpolate motion from beam nodes to aerodynamic sections.  <br /></td></tr>
 <tr class="separator:a86ae0c461f720162a20f91ebf35b6f5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa80eed74101d51b99626f35e105caaa0" id="r_aa80eed74101d51b99626f35e105caaa0"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1AerodynamicBody.html#aa80eed74101d51b99626f35e105caaa0">shape_deriv_jac</a></td></tr>
+<tr class="memdesc:aa80eed74101d51b99626f35e105caaa0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flattened matrix to interpolate motion derivatives from beam nodes to aerodynamic sections (used for section width calculation)  <br /></td></tr>
 <tr class="separator:aa80eed74101d51b99626f35e105caaa0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
@@ -464,6 +495,8 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
+<p>Angle of attack at aerodynamic sections (output) </p>
+
 </div>
 </div>
 <a id="aae7bc754e8367e25894951a2ee8c9657" name="aae7bc754e8367e25894951a2ee8c9657"></a>
@@ -477,6 +510,8 @@ template&lt;typename T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Angle of attack polar at each aerodynamic section. </p>
 
 </div>
 </div>
@@ -492,6 +527,8 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
+<p>Drag coefficient polar at each aerodynamic section. </p>
+
 </div>
 </div>
 <a id="aa844cb9566a6335c58a415cb6aae20fb" name="aa844cb9566a6335c58a415cb6aae20fb"></a>
@@ -505,6 +542,8 @@ template&lt;typename T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Aerodynamic section chord length. </p>
 
 </div>
 </div>
@@ -520,6 +559,8 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
+<p>Lift coefficient polar at each aerodynamic section. </p>
+
 </div>
 </div>
 <a id="a4468575771d4367656394ffcabd3b39c" name="a4468575771d4367656394ffcabd3b39c"></a>
@@ -533,6 +574,8 @@ template&lt;typename T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Moment coefficient at aerodynamic sections (output) </p>
 
 </div>
 </div>
@@ -548,6 +591,8 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
+<p>Moment coefficient polar at each aerodynamic section. </p>
+
 </div>
 </div>
 <a id="a7260c6da4c4d234a5f81f1dffe620753" name="a7260c6da4c4d234a5f81f1dffe620753"></a>
@@ -561,6 +606,8 @@ template&lt;typename T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Normal force coefficient at aerodynamic sections (perpendicular to airfoil chord) (output) </p>
 
 </div>
 </div>
@@ -576,6 +623,8 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
+<p>Vectors from aerodynamic center to reference axis at aerodynamic sections in reference configuration (negative of con_motion) </p>
+
 </div>
 </div>
 <a id="ad7ae6d424868fa58384693725d6d93da" name="ad7ae6d424868fa58384693725d6d93da"></a>
@@ -589,6 +638,8 @@ template&lt;typename T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Vectors from reference axis to aerodynamic center at aerodynamic sections in reference configuration (includes twist) </p>
 
 </div>
 </div>
@@ -604,6 +655,8 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
+<p>Tangent force coefficient at aerodynamic sections (parallel to airfoil chord) (output) </p>
+
 </div>
 </div>
 <a id="ae6b62a342e4555677c762978eaa37131" name="ae6b62a342e4555677c762978eaa37131"></a>
@@ -617,6 +670,8 @@ template&lt;typename T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Aerodynamic section width for force/moment calculation. </p>
 
 </div>
 </div>
@@ -646,6 +701,8 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
+<p>Locations of aerodynamic section width boundaries along the beam (used for section width calculation) </p>
+
 </div>
 </div>
 <a id="adfdc7c39d6f6c868a3896c8482ff219a" name="adfdc7c39d6f6c868a3896c8482ff219a"></a>
@@ -659,6 +716,8 @@ template&lt;typename T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Aerodynamic loads (forces and moments) at aerodynamic centers (output) </p>
 
 </div>
 </div>
@@ -674,6 +733,8 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
+<p>Flattened matrix to interpolate motion from beam nodes to aerodynamic sections. </p>
+
 </div>
 </div>
 <a id="ad2765b9da00d17fdfbb4cb1e918515c8" name="ad2765b9da00d17fdfbb4cb1e918515c8"></a>
@@ -687,6 +748,8 @@ template&lt;typename T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Aerodynamic forces at the beam nodes with moment arm applied from aerodynamic center to reference axis (output) </p>
 
 </div>
 </div>
@@ -702,6 +765,8 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
+<p>IDs of the beam nodes in this aerodynamic body. </p>
+
 </div>
 </div>
 <a id="a42ac3b8fea64f83056ed7de1b02bd79f" name="a42ac3b8fea64f83056ed7de1b02bd79f"></a>
@@ -715,6 +780,8 @@ template&lt;typename T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Displacements of the beam nodes (copied from state based on node_ids) </p>
 
 </div>
 </div>
@@ -730,6 +797,8 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
+<p>Velocities of the beam nodes (copied from state based on node_ids) </p>
+
 </div>
 </div>
 <a id="a3b6687fa0380effcf9b0aa135551933f" name="a3b6687fa0380effcf9b0aa135551933f"></a>
@@ -743,6 +812,8 @@ template&lt;typename T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Number of points in each aerodynamic polar. </p>
 
 </div>
 </div>
@@ -758,6 +829,8 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
+<p>Total rotation quaternion of beam reference axis at aerodynamic sections (reference + displacement) </p>
+
 </div>
 </div>
 <a id="a62336d5ecb8d77ab6d14ae68aaa16b81" name="a62336d5ecb8d77ab6d14ae68aaa16b81"></a>
@@ -771,6 +844,8 @@ template&lt;typename T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Total moment about beam reference axis at aerodynamic sections (accounting for AC moment arm and aerodynamic moment) (output) </p>
 
 </div>
 </div>
@@ -786,6 +861,8 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
+<p>Flattened matrix to interpolate motion derivatives from beam nodes to aerodynamic sections (used for section width calculation) </p>
+
 </div>
 </div>
 <a id="a7aae8da47b851007c99d751f368fb788" name="a7aae8da47b851007c99d751f368fb788"></a>
@@ -799,6 +876,8 @@ template&lt;typename T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Aerodynamic section twist. </p>
 
 </div>
 </div>
@@ -814,6 +893,8 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
+<p>Displacements of beam reference axis at aerodynamic sections. </p>
+
 </div>
 </div>
 <a id="acc7cc9b1c2e20451190196eee7364e29" name="acc7cc9b1c2e20451190196eee7364e29"></a>
@@ -827,6 +908,8 @@ template&lt;typename T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p><a class="el" href="structkynema_1_1interfaces_1_1components_1_1Inflow.html" title="Wind inflow model for turbine simulations.">Inflow</a> velocity at aerodynamic sections. </p>
 
 </div>
 </div>
@@ -842,6 +925,8 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
+<p>Velocities of aerodynamic centers at aerodynamic sections in global coordinates. </p>
+
 </div>
 </div>
 <a id="a95e35546527e49dacaeca2b25c75392e" name="a95e35546527e49dacaeca2b25c75392e"></a>
@@ -855,6 +940,8 @@ template&lt;typename T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Velocities of beam reference axis at aerodynamic sections. </p>
 
 </div>
 </div>
@@ -870,6 +957,8 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
+<p>Relative velocity at aerodynamic sections (v_inflow - v_motion) (output) </p>
+
 </div>
 </div>
 <a id="a829d0d865859db42072025c03381ff8b" name="a829d0d865859db42072025c03381ff8b"></a>
@@ -884,6 +973,8 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
+<p>Positions of aerodynamic centers at aerodynamic sections in global coordinates. </p>
+
 </div>
 </div>
 <a id="a155f354c52a52477e80b34a4b7de27a7" name="a155f354c52a52477e80b34a4b7de27a7"></a>
@@ -897,6 +988,8 @@ template&lt;typename T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Initial position and orientation of beam reference axis at aerodynamic sections. </p>
 
 </div>
 </div>

@@ -138,7 +138,7 @@ var searchData=
   ['springs_5finput_2ehpp_135',['springs_input.hpp',['../springs__input_8hpp.html',1,'']]],
   ['springsinput_136',['springsinput',['../structkynema_1_1SpringsInput.html',1,'kynema::SpringsInput'],['../structkynema_1_1SpringsInput.html#a59de4bfbfc76e28d4ea76bc4c36a12c4',1,'kynema::SpringsInput::SpringsInput()']]],
   ['start_5frow_137',['start_row',['../structkynema_1_1solver_1_1CopyConstraintsResidualToVector.html#a441228e67e8791cb430b31213344c722',1,'kynema::solver::CopyConstraintsResidualToVector']]],
-  ['state_138',['state',['../structkynema_1_1State.html',1,'kynema::State&lt; DeviceType &gt;'],['../structkynema_1_1State.html#afc788202311f68c953311a2f553f1b1c',1,'kynema::State::State()'],['../classkynema_1_1interfaces_1_1cfd_1_1Interface.html#a231b7fc70250c45b1fa0b91d0946dc85',1,'kynema::interfaces::cfd::Interface::state']]],
+  ['state_138',['state',['../structkynema_1_1State.html',1,'kynema::State&lt; DeviceType &gt;'],['../classkynema_1_1interfaces_1_1cfd_1_1Interface.html#a231b7fc70250c45b1fa0b91d0946dc85',1,'kynema::interfaces::cfd::Interface::state'],['../structkynema_1_1State.html#afc788202311f68c953311a2f553f1b1c',1,'kynema::State::State()']]],
   ['state_2ehpp_139',['state.hpp',['../state_8hpp.html',1,'']]],
   ['state_5findices_140',['state_indices',['../structkynema_1_1Masses.html#a49415b4d75687e4602fa9fff14488a64',1,'kynema::Masses']]],
   ['state_5fsave_141',['state_save',['../classkynema_1_1interfaces_1_1cfd_1_1Interface.html#a0ddaf57a75a15a7cdc1731dc0b1b90fb',1,'kynema::interfaces::cfd::Interface']]],

@@ -179,11 +179,15 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a45e227034541283d600542a4b8e0fc2d" id="r_a45e227034541283d600542a4b8e0fc2d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1TurbineController.html#a45e227034541283d600542a4b8e0fc2d">TurbineController</a> (std::string shared_lib_path, std::string controller_function_name, std::string input_file_path, std::string output_file_path)</td></tr>
-<tr class="memdesc:a45e227034541283d600542a4b8e0fc2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for the <a class="el" href="classkynema_1_1util_1_1TurbineController.html">TurbineController</a> class.  <br /></td></tr>
-<tr class="separator:a45e227034541283d600542a4b8e0fc2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b2455c45ebd604d4b55f7d8471511a2" id="r_a9b2455c45ebd604d4b55f7d8471511a2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1TurbineController.html#a9b2455c45ebd604d4b55f7d8471511a2">TurbineController</a> (std::string shared_lib_path, std::string controller_function_name, std::string input_file_path, std::string output_file_path, bool yaw_control_enabled=false)</td></tr>
+<tr class="memdesc:a9b2455c45ebd604d4b55f7d8471511a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for the <a class="el" href="classkynema_1_1util_1_1TurbineController.html">TurbineController</a> class.  <br /></td></tr>
+<tr class="separator:a9b2455c45ebd604d4b55f7d8471511a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afbcfe3fbf06db83ec21d278fdd352a7c" id="r_afbcfe3fbf06db83ec21d278fdd352a7c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1TurbineController.html#afbcfe3fbf06db83ec21d278fdd352a7c">CallController</a> ()</td></tr>
+<tr class="memdesc:afbcfe3fbf06db83ec21d278fdd352a7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method to call the controller function from the shared library.  <br /></td></tr>
 <tr class="separator:afbcfe3fbf06db83ec21d278fdd352a7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6cd48a8c6042654a700661e51145cff8" id="r_a6cd48a8c6042654a700661e51145cff8"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1TurbineController.html#a6cd48a8c6042654a700661e51145cff8">YawAngleCommand</a> () const</td></tr>
+<tr class="memdesc:a6cd48a8c6042654a700661e51145cff8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the commanded yaw angle (rad) integrated from yaw rate command.  <br /></td></tr>
+<tr class="separator:a6cd48a8c6042654a700661e51145cff8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -194,8 +198,8 @@ Public Attributes</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A turbine controller class that works as a wrapper around the shared library containing the controller logic </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a45e227034541283d600542a4b8e0fc2d" name="a45e227034541283d600542a4b8e0fc2d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a45e227034541283d600542a4b8e0fc2d">&#9670;&#160;</a></span>TurbineController()</h2>
+<a id="a9b2455c45ebd604d4b55f7d8471511a2" name="a9b2455c45ebd604d4b55f7d8471511a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b2455c45ebd604d4b55f7d8471511a2">&#9670;&#160;</a></span>TurbineController()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -222,7 +226,13 @@ Public Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">std::string&#160;</td>
-          <td class="paramname"><em>output_file_path</em>&#160;</td>
+          <td class="paramname"><em>output_file_path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>yaw_control_enabled</em> = <code>false</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -239,6 +249,7 @@ Public Attributes</h2></td></tr>
     <tr><td class="paramname">controller_function_name</td><td>Name of the controller function in the shared library </td></tr>
     <tr><td class="paramname">input_file_path</td><td>Path to the input file </td></tr>
     <tr><td class="paramname">output_file_path</td><td>Path to the output file </td></tr>
+    <tr><td class="paramname">yaw_control_enabled</td><td>Flag to enable yaw control </td></tr>
   </table>
   </dd>
 </dl>
@@ -260,6 +271,35 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Method to call the controller function from the shared library. </p>
+
+</div>
+</div>
+<a id="a6cd48a8c6042654a700661e51145cff8" name="a6cd48a8c6042654a700661e51145cff8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6cd48a8c6042654a700661e51145cff8">&#9670;&#160;</a></span>YawAngleCommand()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double kynema::util::TurbineController::YawAngleCommand </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the commanded yaw angle (rad) integrated from yaw rate command. </p>
 
 </div>
 </div>

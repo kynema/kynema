@@ -195,6 +195,9 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:ad6b679ca6e9a01c6c1eb5a2c55f9032e" id="r_ad6b679ca6e9a01c6c1eb5a2c55f9032e"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structkynema_1_1interfaces_1_1components_1_1Inflow.html">Inflow</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema_1_1interfaces_1_1components_1_1Inflow.html#ad6b679ca6e9a01c6c1eb5a2c55f9032e">SteadyWind</a> (double vh, double z_ref, double alpha, double angle_h)</td></tr>
 <tr class="memdesc:ad6b679ca6e9a01c6c1eb5a2c55f9032e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a steady wind inflow.  <br /></td></tr>
 <tr class="separator:ad6b679ca6e9a01c6c1eb5a2c55f9032e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0cf9ad9a8f436635f0979eacbb8b2329" id="r_a0cf9ad9a8f436635f0979eacbb8b2329"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structkynema_1_1interfaces_1_1components_1_1Inflow.html">Inflow</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema_1_1interfaces_1_1components_1_1Inflow.html#a0cf9ad9a8f436635f0979eacbb8b2329">UniformWind</a> (double vh, double z_ref, double alpha, double angle_h)</td></tr>
+<tr class="memdesc:a0cf9ad9a8f436635f0979eacbb8b2329"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a uniform wind inflow.  <br /></td></tr>
+<tr class="separator:a0cf9ad9a8f436635f0979eacbb8b2329"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -294,6 +297,65 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Creates a steady wind inflow. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vh</td><td>Horizontal inflow velocity (m/s) </td></tr>
+    <tr><td class="paramname">z_ref</td><td>Reference height (m) </td></tr>
+    <tr><td class="paramname">alpha</td><td>Vertical shear exponent </td></tr>
+    <tr><td class="paramname">angle_h</td><td>Flow angle relative to x axis (radians) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a0cf9ad9a8f436635f0979eacbb8b2329" name="a0cf9ad9a8f436635f0979eacbb8b2329"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0cf9ad9a8f436635f0979eacbb8b2329">&#9670;&#160;</a></span>UniformWind()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="structkynema_1_1interfaces_1_1components_1_1Inflow.html">Inflow</a> kynema::interfaces::components::Inflow::UniformWind </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>vh</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>z_ref</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>alpha</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>angle_h</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Creates a uniform wind inflow. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">vh</td><td>Horizontal inflow velocity (m/s) </td></tr>

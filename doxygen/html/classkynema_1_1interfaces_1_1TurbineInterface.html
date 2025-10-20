@@ -193,14 +193,17 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aad16bc5146ea5649e6fb23cb5f097591" id="r_aad16bc5146ea5649e6fb23cb5f097591"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1Turbine.html">components::Turbine</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1TurbineInterface.html#aad16bc5146ea5649e6fb23cb5f097591">Turbine</a> ()</td></tr>
 <tr class="memdesc:aad16bc5146ea5649e6fb23cb5f097591"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a reference to the turbine model.  <br /></td></tr>
 <tr class="separator:aad16bc5146ea5649e6fb23cb5f097591"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41a6ee1a892487e5a107cc0191494d27" id="r_a41a6ee1a892487e5a107cc0191494d27"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1Aerodynamics.html">components::Aerodynamics</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1TurbineInterface.html#a41a6ee1a892487e5a107cc0191494d27">Aerodynamics</a> ()</td></tr>
+<tr class="memdesc:a41a6ee1a892487e5a107cc0191494d27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a reference to the aerodynamics model.  <br /></td></tr>
+<tr class="separator:a41a6ee1a892487e5a107cc0191494d27"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad08aba57891c9e129fe1fd043955e76f" id="r_ad08aba57891c9e129fe1fd043955e76f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1TurbineInterface.html#ad08aba57891c9e129fe1fd043955e76f">UpdateAerodynamicLoads</a> (double fluid_density, const std::function&lt; std::array&lt; double, 3 &gt;(const std::array&lt; double, 3 &gt; &amp;)&gt; &amp;inflow_function)</td></tr>
-<tr class="memdesc:ad08aba57891c9e129fe1fd043955e76f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the aerodynamic loads to be applied to the sturcture based on a provided function.  <br /></td></tr>
+<tr class="memdesc:ad08aba57891c9e129fe1fd043955e76f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the aerodynamic loads to be applied to the structure based on a provided function.  <br /></td></tr>
 <tr class="separator:ad08aba57891c9e129fe1fd043955e76f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a14addb58e02fecee00c435a67ce2ac1e" id="r_a14addb58e02fecee00c435a67ce2ac1e"><td class="memItemLeft" align="right" valign="top">std::array&lt; double, 3 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1TurbineInterface.html#a14addb58e02fecee00c435a67ce2ac1e">GetHubNodePosition</a> () const</td></tr>
 <tr class="separator:a14addb58e02fecee00c435a67ce2ac1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a413fb38d3096f4d24b0824970b7c5e6d" id="r_a413fb38d3096f4d24b0824970b7c5e6d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1TurbineInterface.html#a413fb38d3096f4d24b0824970b7c5e6d">ApplyController</a> (double t, double hub_wind_speed)</td></tr>
-<tr class="memdesc:a413fb38d3096f4d24b0824970b7c5e6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update controller inputs from current system state.  <br /></td></tr>
-<tr class="separator:a413fb38d3096f4d24b0824970b7c5e6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5dac418b10f1d451305b8668d833f4a8" id="r_a5dac418b10f1d451305b8668d833f4a8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1TurbineInterface.html#a5dac418b10f1d451305b8668d833f4a8">ApplyController</a> (double t)</td></tr>
+<tr class="memdesc:a5dac418b10f1d451305b8668d833f4a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update controller inputs from current system state.  <br /></td></tr>
+<tr class="separator:a5dac418b10f1d451305b8668d833f4a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8caa3bfc58501516877c0e623d498f26" id="r_a8caa3bfc58501516877c0e623d498f26"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1TurbineInterface.html#a8caa3bfc58501516877c0e623d498f26">Step</a> ()</td></tr>
 <tr class="memdesc:a8caa3bfc58501516877c0e623d498f26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Steps forward in time.  <br /></td></tr>
 <tr class="separator:a8caa3bfc58501516877c0e623d498f26"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -302,8 +305,35 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a413fb38d3096f4d24b0824970b7c5e6d" name="a413fb38d3096f4d24b0824970b7c5e6d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a413fb38d3096f4d24b0824970b7c5e6d">&#9670;&#160;</a></span>ApplyController()</h2>
+<a id="a41a6ee1a892487e5a107cc0191494d27" name="a41a6ee1a892487e5a107cc0191494d27"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41a6ee1a892487e5a107cc0191494d27">&#9670;&#160;</a></span>Aerodynamics()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1Aerodynamics.html">components::Aerodynamics</a> &amp; kynema::interfaces::TurbineInterface::Aerodynamics </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns a reference to the aerodynamics model. </p>
+
+</div>
+</div>
+<a id="a5dac418b10f1d451305b8668d833f4a8" name="a5dac418b10f1d451305b8668d833f4a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5dac418b10f1d451305b8668d833f4a8">&#9670;&#160;</a></span>ApplyController()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -312,18 +342,8 @@ Public Member Functions</h2></td></tr>
           <td class="memname">void kynema::interfaces::TurbineInterface::ApplyController </td>
           <td>(</td>
           <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>t</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"><em>t</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>hub_wind_speed</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -507,6 +527,9 @@ Public Member Functions</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1Turbine.html">components::Turbine</a> &amp; kynema::interfaces::TurbineInterface::Turbine </td>
@@ -515,6 +538,11 @@ Public Member Functions</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Returns a reference to the turbine model. </p>
@@ -547,7 +575,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Updates the aerodynamic loads to be applied to the sturcture based on a provided function. </p>
+<p>Updates the aerodynamic loads to be applied to the structure based on a provided function. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">fluid_density</td><td>The density of the air (assumed constant) </td></tr>

@@ -190,30 +190,38 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="keyword">public</span>:</div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="classkynema_1_1util_1_1TurbineController.html#ad3bf012233a4f66ecd9b745a18c0a12b">   16</a></span>    <a class="code hl_struct" href="structkynema_1_1util_1_1ControllerIO.html">ControllerIO</a> <a class="code hl_variable" href="classkynema_1_1util_1_1TurbineController.html#ad3bf012233a4f66ecd9b745a18c0a12b">io</a>;</div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <a class="code hl_class" href="classkynema_1_1util_1_1TurbineController.html">TurbineController</a>(</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        std::string shared_lib_path, std::string controller_function_name,</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        std::string input_file_path, std::string output_file_path</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    );</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="comment">// Method to call the controller function from the shared library</span></div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classkynema_1_1util_1_1TurbineController.html#afbcfe3fbf06db83ec21d278fdd352a7c">CallController</a>();</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    std::string input_file_path_;           <span class="comment">//&lt; Path to the input file</span></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    std::string output_file_path_;          <span class="comment">//&lt; Path to the output file</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    std::string shared_lib_path_;           <span class="comment">//&lt; Path to shared library</span></div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    std::string controller_function_name_;  <span class="comment">//&lt; Name of the controller function in the shared library</span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <a class="code hl_class" href="classkynema_1_1util_1_1dylib.html">util::dylib</a> lib_;  <span class="comment">//&lt; Handle to the shared library</span></div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    std::function&lt;void(<span class="keywordtype">float</span>*, <span class="keywordtype">int</span>*, <span class="keyword">const</span> <span class="keywordtype">char</span>* <span class="keyword">const</span>, <span class="keywordtype">char</span>* <span class="keyword">const</span>, <span class="keywordtype">char</span>* <span class="keyword">const</span>)&gt;</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        controller_function_;  <span class="comment">//&lt; Function pointer to the controller function</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>};</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <a class="code hl_class" href="classkynema_1_1util_1_1TurbineController.html">TurbineController</a>(</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        std::string shared_lib_path, std::string controller_function_name,</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        std::string input_file_path, std::string output_file_path, <span class="keywordtype">bool</span> yaw_control_enabled = <span class="keyword">false</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    );</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classkynema_1_1util_1_1TurbineController.html#afbcfe3fbf06db83ec21d278fdd352a7c">CallController</a>();</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="classkynema_1_1util_1_1TurbineController.html#a6cd48a8c6042654a700661e51145cff8">   33</a></span>    [[nodiscard]] <span class="keywordtype">double</span> <a class="code hl_function" href="classkynema_1_1util_1_1TurbineController.html#a6cd48a8c6042654a700661e51145cff8">YawAngleCommand</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> this-&gt;yaw_angle_command_; }</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    std::string input_file_path_;           <span class="comment">//&lt; Path to the input file</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    std::string output_file_path_;          <span class="comment">//&lt; Path to the output file</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    std::string shared_lib_path_;           <span class="comment">//&lt; Path to shared library</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    std::string controller_function_name_;  <span class="comment">//&lt; Name of the controller function in the shared library</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <a class="code hl_class" href="classkynema_1_1util_1_1dylib.html">util::dylib</a> lib_;  <span class="comment">//&lt; Handle to the shared library</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    std::function&lt;void(<span class="keywordtype">float</span>*, <span class="keywordtype">int</span>*, <span class="keyword">const</span> <span class="keywordtype">char</span>* <span class="keyword">const</span>, <span class="keywordtype">char</span>* <span class="keyword">const</span>, <span class="keywordtype">char</span>* <span class="keyword">const</span>)&gt;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        controller_function_;  <span class="comment">//&lt; Function pointer to the controller function</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="comment">//&lt; Commanded yaw angle (rad) integrated from yaw rate command</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keywordtype">double</span> yaw_angle_command_{0.0};</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="comment">//&lt; Flag to enable yaw control</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keywordtype">bool</span> yaw_control_enabled_{<span class="keyword">false</span>};</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>};</div>
 </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>}  <span class="comment">// namespace kynema::util</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>}  <span class="comment">// namespace kynema::util</span></div>
 <div class="ttc" id="aclasskynema_1_1util_1_1TurbineController_html"><div class="ttname"><a href="classkynema_1_1util_1_1TurbineController.html">kynema::util::TurbineController</a></div><div class="ttdef"><b>Definition</b> turbine_controller.hpp:13</div></div>
+<div class="ttc" id="aclasskynema_1_1util_1_1TurbineController_html_a6cd48a8c6042654a700661e51145cff8"><div class="ttname"><a href="classkynema_1_1util_1_1TurbineController.html#a6cd48a8c6042654a700661e51145cff8">kynema::util::TurbineController::YawAngleCommand</a></div><div class="ttdeci">double YawAngleCommand() const</div><div class="ttdoc">Get the commanded yaw angle (rad) integrated from yaw rate command.</div><div class="ttdef"><b>Definition</b> turbine_controller.hpp:33</div></div>
 <div class="ttc" id="aclasskynema_1_1util_1_1TurbineController_html_ad3bf012233a4f66ecd9b745a18c0a12b"><div class="ttname"><a href="classkynema_1_1util_1_1TurbineController.html#ad3bf012233a4f66ecd9b745a18c0a12b">kynema::util::TurbineController::io</a></div><div class="ttdeci">ControllerIO io</div><div class="ttdoc">Pointer to structure mapping swap array -&gt; named fields i.e. ControllerIO.</div><div class="ttdef"><b>Definition</b> turbine_controller.hpp:16</div></div>
-<div class="ttc" id="aclasskynema_1_1util_1_1TurbineController_html_afbcfe3fbf06db83ec21d278fdd352a7c"><div class="ttname"><a href="classkynema_1_1util_1_1TurbineController.html#afbcfe3fbf06db83ec21d278fdd352a7c">kynema::util::TurbineController::CallController</a></div><div class="ttdeci">void CallController()</div><div class="ttdef"><b>Definition</b> turbine_controller.cpp:52</div></div>
+<div class="ttc" id="aclasskynema_1_1util_1_1TurbineController_html_afbcfe3fbf06db83ec21d278fdd352a7c"><div class="ttname"><a href="classkynema_1_1util_1_1TurbineController.html#afbcfe3fbf06db83ec21d278fdd352a7c">kynema::util::TurbineController::CallController</a></div><div class="ttdeci">void CallController()</div><div class="ttdoc">Method to call the controller function from the shared library.</div><div class="ttdef"><b>Definition</b> turbine_controller.cpp:53</div></div>
 <div class="ttc" id="aclasskynema_1_1util_1_1dylib_html"><div class="ttname"><a href="classkynema_1_1util_1_1dylib.html">kynema::util::dylib</a></div><div class="ttdef"><b>Definition</b> dylib.hpp:62</div></div>
 <div class="ttc" id="acontroller__io_8hpp_html"><div class="ttname"><a href="controller__io_8hpp.html">controller_io.hpp</a></div></div>
 <div class="ttc" id="adylib_8hpp_html"><div class="ttname"><a href="dylib_8hpp.html">dylib.hpp</a></div><div class="ttdoc">C++ cross-platform wrapper around dynamic loading of shared libraries.</div></div>

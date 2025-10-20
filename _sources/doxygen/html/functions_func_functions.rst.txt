@@ -33,6 +33,7 @@ Functions
       u <functions_func_u>
       v <functions_func_v>
       w <functions_func_w>
+      y <functions_func_y>
       ~ <functions_func_~>
 
    .. raw:: html
