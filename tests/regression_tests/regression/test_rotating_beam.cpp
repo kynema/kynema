@@ -515,9 +515,9 @@ TEST(RotatingBeamTest, CompoundRotationControlConstraint) {
         const auto t = step_size * static_cast<double>(i + 1);
         pitch = t * std::numbers::pi / 2.;
         azimuth = 0.5 * t * std::numbers::pi / 2.;
-        const auto q =
-            Eigen::Quaternion<double>(Eigen::AngleAxis(azimuth, Eigen::Matrix<double, 3, 1>::Unit(2))
-            );
+        const auto q = Eigen::Quaternion<double>(
+            Eigen::AngleAxis(azimuth, Eigen::Matrix<double, 3, 1>::Unit(2))
+        );
         const auto displacement = std::array{0., 0., 0., q.w(), q.x(), q.y(), q.z()};
         constraints.UpdateDisplacement(hub_bc_id, displacement);
         const auto converged = Step(parameters, solver, elements, state, constraints);
