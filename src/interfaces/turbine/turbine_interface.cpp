@@ -387,9 +387,9 @@ void TurbineInterface::WriteTimeSeriesData() const {
             const auto& body = this->aerodynamics->bodies[i];
             for (auto j : std::views::iota(0U, body.loads.size())) {
                 // Construct the node label
-                std::string node_num = std::to_string(j + 1);
-                std::string node_label = std::string("AB") + std::to_string(i + 1) + "N" +
-                                         std::string(3 - node_num.size(), '0') + node_num;
+                const std::string node_num = std::to_string(j + 1);
+                const std::string node_label = std::string("AB") + std::to_string(i + 1) + "N" +
+                                               std::string(3 - node_num.size(), '0') + node_num;
 
                 this->outputs->WriteValueAtTimestep(
                     this->state.time_step, node_label + "Vrel (m_s)", math::Norm(body.v_rel[j])
