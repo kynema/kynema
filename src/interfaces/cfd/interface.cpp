@@ -124,14 +124,12 @@ FloatingPlatform CreateFloatingPlatform(const FloatingPlatformInput& input, Mode
                 0.,
                 0.
             };
-            const auto anchor_velocity = std::array{
-                ml_input.anchor_velocity[0],
-                ml_input.anchor_velocity[1],
-                ml_input.anchor_velocity[2],
-                0.,
-                0.,
-                0.
-            };
+            const auto anchor_velocity = std::array{ml_input.anchor_velocity[0],
+                                                    ml_input.anchor_velocity[1],
+                                                    ml_input.anchor_velocity[2],
+                                                    0.,
+                                                    0.,
+                                                    0.};
             const auto anchor_acceleration = std::array{
                 ml_input.anchor_acceleration[0],
                 ml_input.anchor_acceleration[1],
