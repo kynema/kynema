@@ -217,7 +217,8 @@ void Beam::CalcNodeTangents() {
 
     // Normalize tangent vectors
     std::ranges::transform(
-        this->node_tangents, this->node_tangents.begin(), [](const std::array<double, 3>& tangent) {
+        this->node_tangents, this->node_tangents.begin(),
+        [](const std::array<double, 3>& tangent) {
             const auto normalized = Eigen::Matrix<double, 3, 1>(tangent.data()).normalized();
             return std::array{normalized(0), normalized(1), normalized(2)};
         }
@@ -249,9 +250,9 @@ std::vector<BeamSection> Beam::BuildBeamSections_SegmentedGLL(const BeamInput& i
         const auto twist = math::LinearInterp(
             input.sections[0].location, input.ref_axis.twist_grid, input.ref_axis.twist
         );
-        const auto q_twist = Eigen::Quaternion<double>(Eigen::AngleAxis<double>(
-            twist, Eigen::Matrix<double, 3, 1>::Unit(0)
-        ));
+        const auto q_twist = Eigen::Quaternion<double>(
+            Eigen::AngleAxis<double>(twist, Eigen::Matrix<double, 3, 1>::Unit(0))
+        );
         const auto q_twist_array = std::array{q_twist.w(), q_twist.x(), q_twist.y(), q_twist.z()};
         sections.emplace_back(
             input.sections[0].location,
@@ -300,10 +301,11 @@ std::vector<BeamSection> Beam::BuildBeamSections_SegmentedGLL(const BeamInput& i
                 math::LinearInterp(grid_value, input.ref_axis.twist_grid, input.ref_axis.twist);
 
             // Add refinement section
-            const auto q_twist = Eigen::Quaternion<double>(Eigen::AngleAxis<double>(
-                twist, Eigen::Matrix<double, 3, 1>::Unit(0)
-            ));
-            const auto q_twist_array = std::array{q_twist.w(), q_twist.x(), q_twist.y(), q_twist.z()};
+            const auto q_twist = Eigen::Quaternion<double>(
+                Eigen::AngleAxis<double>(twist, Eigen::Matrix<double, 3, 1>::Unit(0))
+            );
+            const auto q_twist_array =
+                std::array{q_twist.w(), q_twist.x(), q_twist.y(), q_twist.z()};
             sections.emplace_back(
                 grid_value, math::RotateMatrix6(mass_matrix, q_twist_array),
                 math::RotateMatrix6(stiffness_matrix, q_twist_array)
@@ -312,12 +314,14 @@ std::vector<BeamSection> Beam::BuildBeamSections_SegmentedGLL(const BeamInput& i
 
         // Add ending section
         {
-            const auto twist =
-                math::LinearInterp(section_location, input.ref_axis.twist_grid, input.ref_axis.twist);
+            const auto twist = math::LinearInterp(
+                section_location, input.ref_axis.twist_grid, input.ref_axis.twist
+            );
             const auto q_twist = Eigen::Quaternion<double>(Eigen::AngleAxis<double>(
                 twist, Eigen::Matrix<double, 3, 1>::Unit(0)
             ));
-            const auto q_twist_array = std::array{q_twist.w(), q_twist.x(), q_twist.y(), q_twist.z()};
+            const auto q_twist_array =
+                std::array{q_twist.w(), q_twist.x(), q_twist.y(), q_twist.z()};
             sections.emplace_back(
                 section_location, math::RotateMatrix6(section_mass_matrix, q_twist_array),
                 math::RotateMatrix6(section_stiffness_matrix, q_twist_array)
@@ -371,10 +375,11 @@ std::vector<BeamSection> Beam::BuildBeamSections_SegmentedGL(const BeamInput& in
                 math::LinearInterp(grid_value, input.ref_axis.twist_grid, input.ref_axis.twist);
 
             // Add refinement section
-            const auto q_twist = Eigen::Quaternion<double>(Eigen::AngleAxis<double>(
-                twist, Eigen::Matrix<double, 3, 1>::Unit(0)
-            ));
-            const auto q_twist_array = std::array{q_twist.w(), q_twist.x(), q_twist.y(), q_twist.z()};
+            const auto q_twist = Eigen::Quaternion<double>(
+                Eigen::AngleAxis<double>(twist, Eigen::Matrix<double, 3, 1>::Unit(0))
+            );
+            const auto q_twist_array =
+                std::array{q_twist.w(), q_twist.x(), q_twist.y(), q_twist.z()};
             sections.emplace_back(
                 grid_value, math::RotateMatrix6(mass_matrix, q_twist_array),
                 math::RotateMatrix6(stiffness_matrix, q_twist_array)
@@ -403,9 +408,9 @@ std::vector<BeamSection> Beam::BuildBeamSections_WholeBeam(
     for (auto grid_value : grid_locations) {
         const auto twist =
         math::LinearInterp(grid_value, input.ref_axis.twist_grid, input.ref_axis.twist);
-        const auto q_twist = Eigen::Quaternion<double>(Eigen::AngleAxis<double>(
-            twist, Eigen::Matrix<double, 3, 1>::Unit(0)
-        ));
+        const auto q_twist = Eigen::Quaternion<double>(
+            Eigen::AngleAxis<double>(twist, Eigen::Matrix<double, 3, 1>::Unit(0))
+        );
         const auto q_twist_array = std::array{q_twist.w(), q_twist.x(), q_twist.y(), q_twist.z()};
 
         const auto left_bound = std::ranges::find_if(input.sections, [grid_value](const auto& s) {

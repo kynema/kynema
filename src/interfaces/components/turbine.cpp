@@ -261,19 +261,21 @@ void Turbine::CreateIntermediateNodes(const TurbineInput& input, Model& model) {
     );
 
     // Create yaw bearing node at tower top position
-    const auto yaw_position = std::array{tower_top_node.x0[0], tower_top_node.x0[1], tower_top_node.x0[2], 1., 0., 0., 0.};
-    this->yaw_bearing_node = NodeData(model.AddNode()
-                                          .SetPosition(yaw_position)
-                                          .Build());
+    const auto yaw_position =
+        std::array{tower_top_node.x0[0], tower_top_node.x0[1], tower_top_node.x0[2], 1., 0., 0., 0.};
+    this->yaw_bearing_node = NodeData(model.AddNode().SetPosition(yaw_position).Build());
 
     // Create nacelle center of mass node at tower top position
-    const auto nacelle_position = std::array{tower_top_node.x0[0] + input.nacelle_cm_offset[0],
-                          tower_top_node.x0[1] + input.nacelle_cm_offset[1],
-                          tower_top_node.x0[2] + input.nacelle_cm_offset[2], 1., 0., 0., 0.};
-    this->nacelle_cm_node =
-        NodeData(model.AddNode()
-                     .SetPosition(nacelle_position)
-                     .Build());
+    const auto nacelle_position = std::array{
+        tower_top_node.x0[0] + input.nacelle_cm_offset[0],
+        tower_top_node.x0[1] + input.nacelle_cm_offset[1],
+        tower_top_node.x0[2] + input.nacelle_cm_offset[2],
+        1.,
+        0.,
+        0.,
+        0.
+    };
+    this->nacelle_cm_node = NodeData(model.AddNode().SetPosition(nacelle_position).Build());
 
     //--------------------------------------------------------------------------
     // Create blade apex nodes
@@ -407,11 +409,14 @@ void Turbine::AddConstraints(const TurbineInput& input, Model& model) {
 
         // Calculate the pitch axis for the blade
         // (from root to apex so that positive pitch angles point the leading edge into the wind)
-        const auto pitch_axis = (Eigen::Matrix<double, 3, 1>(apex_node.x0.data()) - Eigen::Matrix<double, 3, 1>(root_node.x0.data())).normalized();
+        const auto pitch_axis = (Eigen::Matrix<double, 3, 1>(apex_node.x0.data()) -
+                                 Eigen::Matrix<double, 3, 1>(root_node.x0.data()))
+                                    .normalized();
 
         // Create pitch control constraint
         this->blade_pitch.emplace_back(model.AddRotationControl(
-            std::array{apex_node.id, root_node.id}, std::span<const double, 3>{pitch_axis.data(), 3}, &this->blade_pitch_control[beam]
+            std::array{apex_node.id, root_node.id}, std::span<const double, 3>{pitch_axis.data(), 3},
+            &this->blade_pitch_control[beam]
         ));
 
         // Add rigid constraint between hub and blade apex
@@ -438,9 +443,12 @@ void Turbine::AddConstraints(const TurbineInput& input, Model& model) {
     // Shaft axis constraint - add revolute joint between shaft base and hub node
     // Points from hub to shaft base, CCW rotation of rotor is positive rotation;
     // which requires a negative torque to counteract rotation
-    const auto shaft_axis = (Eigen::Matrix<double, 3, 1>(shaft_base_position.data()) - Eigen::Matrix<double, 3, 1>(hub_position.data())).normalized();
+    const auto shaft_axis = (Eigen::Matrix<double, 3, 1>(shaft_base_position.data()) -
+                             Eigen::Matrix<double, 3, 1>(hub_position.data()))
+                                .normalized();
     this->shaft_base_to_azimuth = ConstraintData{model.AddRevoluteJointConstraint(
-        std::array{this->shaft_base_node.id, this->azimuth_node.id}, std::span<const double, 3>{shaft_axis.data(), 3}, &torque_control
+        std::array{this->shaft_base_node.id, this->azimuth_node.id},
+        std::span<const double, 3>{shaft_axis.data(), 3}, &torque_control
     )};
 
     // Add rigid constraint from yaw bearing to shaft base
@@ -449,9 +457,9 @@ void Turbine::AddConstraints(const TurbineInput& input, Model& model) {
     )};
 
     // Add rigid constraint from yaw bearing to nacelle center of mass
-    this->yaw_bearing_to_nacelle_cm = ConstraintData{
-        model.AddRigidJointConstraint(std::array{this->yaw_bearing_node.id, this->nacelle_cm_node.id})
-    };
+    this->yaw_bearing_to_nacelle_cm = ConstraintData{model.AddRigidJointConstraint(
+        std::array{this->yaw_bearing_node.id, this->nacelle_cm_node.id}
+    )};
 
     //--------------------------------------------------------------------------
     // Nacelle constraints

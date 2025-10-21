@@ -272,8 +272,10 @@ void TurbineInterface::WriteTimeSeriesData() const {
     // Rotor thrust
     {
         const auto position = this->turbine.azimuth_node.position;
-        const auto q_global_local = Eigen::Quaternion<double>(position[3], position[4], position[5], position[6]).inverse();
-        const auto shaft_loads = Eigen::Matrix<double, 3, 1>(this->turbine.shaft_base_to_azimuth.loads.data());
+        const auto q_global_local =
+            Eigen::Quaternion<double>(position[3], position[4], position[5], position[6]).inverse();
+        const auto shaft_loads =
+            Eigen::Matrix<double, 3, 1>(this->turbine.shaft_base_to_azimuth.loads.data());
         const auto shaft_forces = q_global_local._transformVector(shaft_loads);
         this->outputs->WriteValueAtTimestep(
             this->state.time_step, "RotThrust (kN)", shaft_forces[0] / 1000.
@@ -284,12 +286,17 @@ void TurbineInterface::WriteTimeSeriesData() const {
     for (auto i : std::views::iota(0U, this->turbine.blades.size())) {
         // Get rotation from global to blade local coordinates
         const auto position = this->turbine.blades[i].nodes[0].position;
-        const auto rotation = Eigen::Quaternion<double>(Eigen::AngleAxis<double>(-90. * deg_to_rad, Eigen::Matrix<double, 3, 1>::Unit(1)));
-        const auto orientation = Eigen::Quaternion<double>(position[3], position[4], position[5], position[6]).inverse();
+        const auto rotation = Eigen::Quaternion<double>(
+            Eigen::AngleAxis<double>(-90. * deg_to_rad, Eigen::Matrix<double, 3, 1>::Unit(1))
+        );
+        const auto orientation =
+            Eigen::Quaternion<double>(position[3], position[4], position[5], position[6]).inverse();
         const auto q_global_to_local = rotation * orientation;
 
         // Blade root forces in blade coordinates
-        const auto blade_root_forces = q_global_to_local._transformVector(Eigen::Matrix<double, 3, 1>(this->turbine.blade_pitch[i].loads.data()));
+        const auto blade_root_forces = q_global_to_local._transformVector(
+            Eigen::Matrix<double, 3, 1>(this->turbine.blade_pitch[i].loads.data())
+        );
 
         // Blade root forces angles
         this->outputs->WriteValueAtTimestep(
@@ -303,7 +310,9 @@ void TurbineInterface::WriteTimeSeriesData() const {
         );
 
         // Blade root moments in blade coordinates
-        const auto blade_root_moments = q_global_to_local._transformVector(Eigen::Matrix<double, 3, 1>(&this->turbine.blade_pitch[i].loads[3]));
+        const auto blade_root_moments = q_global_to_local._transformVector(
+            Eigen::Matrix<double, 3, 1>(&this->turbine.blade_pitch[i].loads[3])
+        );
 
         // Blade root moments angles
         this->outputs->WriteValueAtTimestep(

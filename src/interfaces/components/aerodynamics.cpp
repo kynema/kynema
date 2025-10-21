@@ -64,7 +64,8 @@ std::array<double, 6> CalculateAerodynamicLoad(
     const auto force_local = Eigen::Matrix<double, 3, 1>{
         0., -dynamic_pressure * chord * delta_s * ct, -dynamic_pressure * chord * delta_s * cn
     };
-    const auto moment_local = Eigen::Matrix<double, 3, 1>{cm * dynamic_pressure * chord * chord * delta_s, 0., 0.};
+    const auto moment_local =
+        Eigen::Matrix<double, 3, 1>{cm * dynamic_pressure * chord * chord * delta_s, 0., 0.};
     const auto load_force = qqr_quat._transformVector(force_local);
     const auto load_moment = qqr_quat._transformVector(moment_local);
     const auto force_moment = force_local.cross(Eigen::Matrix<double, 3, 1>(con_force.data()));

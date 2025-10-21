@@ -302,51 +302,6 @@ public:
         return this->SetPosition(std::array{x, y, z, w, i, j, k});
     }
 
-    /*
-     * @brief Sets the node position from translational components
-     * @param x X position component
-     * @param y Y position component
-     * @param z Z position component
-     */
-//    NodeBuilder& SetPosition(std::span<const double, 3> p) {
-//        std::ranges::copy(p, std::begin(node.x0));
-//        return *this;
-//    }
-
-    /*
-     * @brief Sets the node position from translational components
-     * @param x X position component
-     * @param y Y position component
-     * @param z Z position component
-     */
-//    NodeBuilder& SetPosition(double x, double y, double z) {
-//        return this->SetPosition(std::array{x, y, z});
-//    }
-
-    //--------------------------------------------------------------------------
-    // Set orientation
-    //--------------------------------------------------------------------------
-
-    /*
-     * @brief Sets the node orientation from quaternion
-     * @param p quaternion (w,i,j,k)
-     */
-//    NodeBuilder& SetOrientation(std::span<const double, 4> p) {
-//        std::ranges::copy(p, &node.x0[3]);
-//        return *this;
-//    }
-
-    /*
-     * @brief Sets the node orientation from quaternion components
-     * @param w quaternion w component (scalar part)
-     * @param i quaternion i component (x vector part)
-     * @param j quaternion j component (y vector part)
-     * @param k quaternion k component (z vector part)
-     */
-//    NodeBuilder& SetOrientation(double w, double i, double j, double k) {
-//        return this->SetOrientation(std::array{w, i, j, k});
-//    }
-
     //--------------------------------------------------------------------------
     // Set displacement
     //--------------------------------------------------------------------------
@@ -376,27 +331,6 @@ public:
         return this->SetDisplacement(std::array{x, y, z, w, i, j, k});
     }
 
-    /*
-     * @brief Sets the node displacement from translational components
-     * @param x displacement X component
-     * @param y displacement Y component
-     * @param z displacement Z component
-     */
-//    NodeBuilder& SetDisplacement(std::span<const double, 3> p) {
-//        std::ranges::copy(p, std::begin(node.u));
-//        return *this;
-//    }
-
-    /*
-     * @brief Sets the node displacement from translational components
-     * @param x displacement X component
-     * @param y displacement Y component
-     * @param z displacement Z component
-     */
-//    NodeBuilder& SetDisplacement(double x, double y, double z) {
-//        return this->SetDisplacement(std::array{x, y, z});
-//    }
-
     //--------------------------------------------------------------------------
     // Set velocity
     //--------------------------------------------------------------------------
@@ -424,26 +358,6 @@ public:
         return *this;
     }
 
-    /*
-     * @brief Sets the node velocity from 3 vector components
-     * @param x x-component of translational velocity
-     * @param y y-component of translational velocity
-     * @param z z-component of translational velocity
-     */
-//    NodeBuilder& SetVelocity(double x, double y, double z) {
-//        SetVelocity(std::array{x, y, z});
-//        return *this;
-//    }
-
-    /*
-     * @brief Sets the node velocity from a 3 x 1 vector
-     * @param v -> 3D vector (x, y, z)
-     */
-//    NodeBuilder& SetVelocity(std::span<const double, 3> v) {
-//        std::ranges::copy(v, std::begin(node.v));
-//        return *this;
-//    }
-
     //--------------------------------------------------------------------------
     // Set acceleration
     //--------------------------------------------------------------------------
@@ -470,26 +384,6 @@ public:
         std::ranges::copy(v, std::begin(node.vd));
         return *this;
     }
-
-    /*
-     * @brief Sets the node acceleration from vector components
-     * @param x x-component of acceleration
-     * @param y y-component of acceleration
-     * @param z z-component of acceleration
-     */
-//    NodeBuilder& SetAcceleration(double x, double y, double z) {
-//        SetAcceleration(std::array{x, y, z});
-//        return *this;
-//    }
-
-    /*
-     * @brief Sets the node acceleration from a vector
-     * @param v -> 3 x 1 vector (x, y, z)
-     */
-//    NodeBuilder& SetAcceleration(const std::array<double, 3>& v) {
-//        std::ranges::copy(v, std::begin(node.vd));
-//        return *this;
-//    }
 
     //--------------------------------------------------------------------------
     // Element location
