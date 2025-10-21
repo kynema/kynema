@@ -392,8 +392,12 @@ void TurbineInterface::WriteTimeSeriesData() const {
                 // Construct the node label
                 const auto blade_number = std::to_string(i + 1);
                 const auto node_number = std::to_string(j + 1);
-                const auto node_label = "AB"s + blade_number + "N"s +
-                                        std::string(3 - node_number.size(), '0') + node_number;
+                const auto extra_zeros = std::string(3 - node_number.size(), '0');
+                auto node_label = "AB"s;
+                node_label += blade_number;
+                node_label += "N"s;
+                node_label += extra_zeros;
+                node_label += node_number;
 
                 this->outputs->WriteValueAtTimestep(
                     this->state.time_step, node_label + "Vrel (m_s)", math::Norm(body.v_rel[j])
