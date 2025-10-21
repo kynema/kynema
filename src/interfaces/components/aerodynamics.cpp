@@ -24,9 +24,9 @@ std::array<double, 6> CalculateAerodynamicLoad(
 
     const auto qqr_quat = Eigen::Quaternion<double>(qqr[0], qqr[1], qqr[2], qqr[3]);
     const auto qqr_inv = qqr_quat.inverse();
-    auto v_rel_l = Eigen::Matrix<double, 3, 1>(v_rel.data());
-    v_rel_l = qqr_inv._transformVector(v_rel_global);
+    auto v_rel_l = qqr_inv._transformVector(v_rel_global);
     v_rel_l(0) = 0.;
+    std::ranges::copy(v_rel_l, std::begin(v_rel));
 
     const auto velocity_magnitude = v_rel_l.norm();
 
