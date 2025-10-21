@@ -317,9 +317,9 @@ std::vector<BeamSection> Beam::BuildBeamSections_SegmentedGLL(const BeamInput& i
             const auto twist = math::LinearInterp(
                 section_location, input.ref_axis.twist_grid, input.ref_axis.twist
             );
-            const auto q_twist = Eigen::Quaternion<double>(Eigen::AngleAxis<double>(
-                twist, Eigen::Matrix<double, 3, 1>::Unit(0)
-            ));
+            const auto q_twist = Eigen::Quaternion<double>(
+                Eigen::AngleAxis<double>(twist, Eigen::Matrix<double, 3, 1>::Unit(0))
+            );
             const auto q_twist_array =
                 std::array{q_twist.w(), q_twist.x(), q_twist.y(), q_twist.z()};
             sections.emplace_back(
@@ -407,7 +407,7 @@ std::vector<BeamSection> Beam::BuildBeamSections_WholeBeam(
 
     for (auto grid_value : grid_locations) {
         const auto twist =
-        math::LinearInterp(grid_value, input.ref_axis.twist_grid, input.ref_axis.twist);
+            math::LinearInterp(grid_value, input.ref_axis.twist_grid, input.ref_axis.twist);
         const auto q_twist = Eigen::Quaternion<double>(
             Eigen::AngleAxis<double>(twist, Eigen::Matrix<double, 3, 1>::Unit(0))
         );

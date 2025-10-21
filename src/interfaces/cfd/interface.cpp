@@ -83,9 +83,31 @@ FloatingPlatform CreateFloatingPlatform(const FloatingPlatformInput& input, Mode
         input.mooring_lines, std::back_inserter(platform.mooring_lines),
         [&](const MooringLineInput& ml_input) {
             // Add fairlead node
-            const auto fairlead_position = std::array{ml_input.fairlead_position[0], ml_input.fairlead_position[1], ml_input.fairlead_position[2], 1., 0., 0., 0.};
-            const auto fairlead_velocity = std::array{ml_input.fairlead_velocity[0], ml_input.fairlead_velocity[1], ml_input.fairlead_velocity[2], 0., 0., 0.};
-            const auto fairlead_acceleration = std::array{ml_input.fairlead_acceleration[0], ml_input.fairlead_acceleration[1], ml_input.fairlead_acceleration[2], 0., 0., 0.};
+            const auto fairlead_position = std::array{
+                ml_input.fairlead_position[0],
+                ml_input.fairlead_position[1],
+                ml_input.fairlead_position[2],
+                1.,
+                0.,
+                0.,
+                0.
+            };
+            const auto fairlead_velocity = std::array{
+                ml_input.fairlead_velocity[0],
+                ml_input.fairlead_velocity[1],
+                ml_input.fairlead_velocity[2],
+                0.,
+                0.,
+                0.
+            };
+            const auto fairlead_acceleration = std::array{
+                ml_input.fairlead_acceleration[0],
+                ml_input.fairlead_acceleration[1],
+                ml_input.fairlead_acceleration[2],
+                0.,
+                0.,
+                0.
+            };
             auto fairlead_node_id = model.AddNode()
                                         .SetPosition(fairlead_position)
                                         .SetVelocity(fairlead_velocity)
@@ -93,9 +115,31 @@ FloatingPlatform CreateFloatingPlatform(const FloatingPlatformInput& input, Mode
                                         .Build();
 
             // Add anchor node
-            const auto anchor_position = std::array{ml_input.anchor_position[0], ml_input.anchor_position[1], ml_input.anchor_position[2], 1., 0., 0., 0.};
-            const auto anchor_velocity = std::array{ml_input.anchor_velocity[0], ml_input.anchor_velocity[1], ml_input.anchor_velocity[2], 0., 0., 0.};
-            const auto anchor_acceleration = std::array{ml_input.anchor_acceleration[0], ml_input.anchor_acceleration[1], ml_input.anchor_acceleration[2], 0., 0., 0.};
+            const auto anchor_position = std::array{
+                ml_input.anchor_position[0],
+                ml_input.anchor_position[1],
+                ml_input.anchor_position[2],
+                1.,
+                0.,
+                0.,
+                0.
+            };
+            const auto anchor_velocity = std::array{
+                ml_input.anchor_velocity[0],
+                ml_input.anchor_velocity[1],
+                ml_input.anchor_velocity[2],
+                0.,
+                0.,
+                0.
+            };
+            const auto anchor_acceleration = std::array{
+                ml_input.anchor_acceleration[0],
+                ml_input.anchor_acceleration[1],
+                ml_input.anchor_acceleration[2],
+                0.,
+                0.,
+                0.
+            };
             auto anchor_node_id = model.AddNode()
                                       .SetPosition(anchor_position)
                                       .SetVelocity(anchor_velocity)

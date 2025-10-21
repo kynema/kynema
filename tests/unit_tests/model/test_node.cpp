@@ -155,7 +155,10 @@ TEST(NodeTest, RotateAboutPoint) {
     node_0.Translate(std::array{1., 0., 0.});
 
     // Now rotate the node 90 degrees around the z-axis
-    node_0.RotateAboutPoint(std::array{std::numbers::sqrt2 / 2., 0., 0., std::numbers::sqrt2 / 2.}, std::array{0., 0., 0.});
+    node_0.RotateAboutPoint(
+        std::array{std::numbers::sqrt2 / 2., 0., 0., std::numbers::sqrt2 / 2.},
+        std::array{0., 0., 0.}
+    );
     ASSERT_NEAR(node_0.x0[0], 0., 1e-12);
     ASSERT_NEAR(node_0.x0[1], 1., 1e-12);
     ASSERT_NEAR(node_0.x0[2], 0., 1e-12);
@@ -211,7 +214,8 @@ TEST(NodeTest, RotateDisplacementAboutPoint) {
     // Rotate displacement 90 degrees around z-axis about origin
     auto node_0 = model.GetNode(node_id);
     node_0.RotateDisplacementAboutPoint(
-        std::array{std::numbers::sqrt2 / 2., 0., 0., std::numbers::sqrt2 / 2.}, std::array{0., 0., 0.}
+        std::array{std::numbers::sqrt2 / 2., 0., 0., std::numbers::sqrt2 / 2.},
+        std::array{0., 0., 0.}
     );
     // Check that the displacement is now (0, 1, 0)
     ASSERT_NEAR(node_0.u[0], 0., 1e-12);
