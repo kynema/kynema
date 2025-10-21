@@ -9,7 +9,7 @@ find_dependency(KokkosKernels REQUIRED)
 find_dependency(yaml-cpp REQUIRED)
 find_dependency(NetCDF REQUIRED)
 find_dependency(LAPACK REQUIRED)
-find_dependency(Eigen3::Eigen REQUIRED)
+find_dependency(Eigen3 REQUIRED)
 
 if(@Kynema_ENABLE_SUPERLU@)
   find_dependency(superlu REQUIRED)
