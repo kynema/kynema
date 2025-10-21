@@ -537,12 +537,13 @@ void TurbineInterface::ApplyController(double t) {
     for (auto i : std::views::iota(0U, this->turbine.blades.size())) {
         // Get rotation from global to blade root coordinates
         // Apex node orientation is the same as blade root node without pitch angle
+        const auto position = this->turbine.apex_nodes[i].position;
         const auto q_global_to_local =
-            math::QuaternionInverse(std::span{this->turbine.apex_nodes[i].position}.subspan<3, 4>());
+            Eigen::Quaternion<double>(position[3], position[4], position[5], position[6]).inverse();
 
         // Rotate blade root moments into blade root coordinates
-        const auto blade_root_moments = math::RotateVectorByQuaternion(
-            q_global_to_local, std::span{this->turbine.blade_pitch[i].loads}.subspan<3, 3>()
+        const auto blade_root_moments = q_global_to_local._transformVector(
+            Eigen::Matrix<double, 3, 1>(&this->turbine.blade_pitch[i].loads[3])
         );
 
         // Set out-of-plane root bending moment for each blade (y-axis in blade coords)
