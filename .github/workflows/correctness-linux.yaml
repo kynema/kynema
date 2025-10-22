@@ -38,7 +38,6 @@ jobs:
         spack install yaml-cpp
         spack install suite-sparse
         spack install superlu
-        spack install lapack
         spack install rosco
         spack install openfast
         spack install kokkos-kernels
@@ -58,7 +57,6 @@ jobs:
         spack load cppcheck
         spack load netcdf-c
         spack load yaml-cpp
-        spack load lapack
         spack load rosco
         spack load openfast
         spack load eigen
