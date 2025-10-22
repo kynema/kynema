@@ -8,7 +8,6 @@
 
 #include "interfaces/components/turbine_input.hpp"
 #include "math/quaternion_operations.hpp"
-#include "math/vector_operations.hpp"
 #include "model/model.hpp"
 
 namespace kynema::interfaces::components {

@@ -4,7 +4,6 @@
 
 #include "beam.hpp"
 #include "math/matrix_operations.hpp"
-#include "math/quaternion_operations.hpp"
 
 namespace kynema::interfaces::components {
 BeamBuilder& BeamBuilder::SetElementOrder(size_t element_order) {

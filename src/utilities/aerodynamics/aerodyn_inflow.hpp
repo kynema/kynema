@@ -2,14 +2,12 @@
 
 #include <array>
 #include <cmath>
-#include <numbers>
 #include <numeric>
 #include <span>
 #include <stdexcept>
 #include <string>
 #include <vector>
 
-#include "math/quaternion_operations.hpp"
 #include "vendor/dylib/dylib.hpp"
 
 namespace kynema::util {

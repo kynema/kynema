@@ -1,6 +1,5 @@
 #pragma once
 
-#include <algorithm>
 #include <array>
 #include <cassert>
 #include <cmath>
@@ -10,9 +9,6 @@
 
 #include "aerodynamics_input.hpp"
 #include "interfaces/host_state.hpp"
-#include "math/interpolation.hpp"
-#include "math/quaternion_operations.hpp"
-#include "math/vector_operations.hpp"
 #include "model/node.hpp"
 
 namespace kynema::interfaces::components {

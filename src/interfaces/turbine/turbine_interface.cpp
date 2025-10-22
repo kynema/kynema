@@ -4,7 +4,6 @@
 #include <numbers>
 
 #include "interfaces/components/solution_input.hpp"
-#include "math/quaternion_operations.hpp"
 #include "state/clone_state.hpp"
 #include "state/copy_state_data.hpp"
 #include "step/step.hpp"

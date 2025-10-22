@@ -1,6 +1,5 @@
 #include "beam.hpp"
 
-#include <numbers>
 #include <stdexcept>
 
 #include "elements/beams/beam_quadrature.hpp"

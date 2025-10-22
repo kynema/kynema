@@ -1,5 +1,7 @@
 #include "aerodynamics.hpp"
 
+#include "math/interpolation.hpp"
+
 namespace kynema::interfaces::components {
 
 double CalculateAngleOfAttack(std::span<const double, 3> v_rel) {
