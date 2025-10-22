@@ -7,6 +7,7 @@ This extra complexity is the trade-off required for unlimited freedom.
 For the most up to date and working version of this code, see ``tests/documentation_tests/three_blade_rotor/``.
 
 As with any C++ program, start with the includes.
+To set up problems like this one, you might need to perform some linear algebra - we'll include ``Eigen/Dense`` to perform these operations, but you can use any libraries or hand written code as you see fit.
 As a Kokkos-based library, you'll need to include ``Kokkos_Core.hpp`` for setup, teardown, and working with Kynema's data structures.
 From Kynema, you'll have to include ``model.hpp`` for the Model class, our tool for setting up and creating the system, and ``step.hpp`` for the Step function which performs the action of system asembly and solve.
 
@@ -14,6 +15,8 @@ From Kynema, you'll have to include ``model.hpp`` for the Model class, our tool 
 
     #include <array>
     #include <cassert>
+
+    #include <Eigen/Dense>
     #include <Kokkos_Core.hpp>
     #include <model/model.hpp>
     #include <step/step.hpp>
@@ -122,11 +125,16 @@ rotor like one would see on a wind turbine.
             }
         );
         auto blade_elem_id = model.AddBeamElement(beam_node_ids, sections, quadrature);
-        auto rotation_quaternion = kynema::math::RotationVectorToQuaternion(
-            {0., 0., 2. * M_PI * blade_number / num_blades}
+        const auto rotation_angle = 2. * std::numbers::pi * blade_number / num_blades;
+        const auto rotation_quaternion = Eigen::Quaternion<double>(
+            Eigen::AngleAxis(rotation_angle, Eigen::Matrix<double, 3, 1>::Unit(2))
         );
-        model.TranslateBeam(blade_elem_id, {hub_radius, 0., 0.});
-        model.RotateBeamAboutPoint(blade_elem_id, rotation_quaternion, origin);
+        const auto rotation_quaternion_array = std::array{
+            rotation_quaternion.w(), rotation_quaternion.x(), rotation_quaternion.y(),
+            rotation_quaternion.z()
+        };
+        model.TranslateBeam(blade_elem_id, std::array{hub_radius, 0., 0.});
+        model.RotateBeamAboutPoint(blade_elem_id, rotation_quaternion_array, origin);
         model.SetBeamVelocityAboutPoint(blade_elem_id, velocity, origin);
     }
 

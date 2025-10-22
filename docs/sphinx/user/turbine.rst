@@ -214,7 +214,7 @@ This acts much like the Blade builder class, but there is only one Tower.
         );
     }
     const auto tower_base_position =
-        std::array<double, 7>{x_values[0], y_values[0], z_values[0], 1., 0., 0., 0.};
+        std::array{x_values[0], y_values[0], z_values[0], 1., 0., 0., 0.};
     turbine_builder.SetTowerBasePosition(tower_base_position);
     tower_builder.AddRefAxisTwist(0.0, 0.0).AddRefAxisTwist(1.0, 0.0);
     const auto t_layer = wio_tower["internal_structure_2d_fem"]["layers"][0];
