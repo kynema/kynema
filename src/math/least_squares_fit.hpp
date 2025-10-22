@@ -7,7 +7,6 @@
 #include <vector>
 
 #include <Eigen/Dense>
-#include <Kokkos_Core.hpp>
 
 #include "interpolation.hpp"
 

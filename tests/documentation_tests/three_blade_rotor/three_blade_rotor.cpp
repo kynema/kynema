@@ -2,6 +2,7 @@
 #include <cassert>
 
 #include <Kokkos_Core.hpp>
+#include <Eigen/Dense>
 #include <model/model.hpp>
 #include <step/step.hpp>
 
@@ -84,11 +85,16 @@ int main() {
                 }
             );
             auto blade_elem_id = model.AddBeamElement(beam_node_ids, sections, quadrature);
-            auto rotation_quaternion = kynema::math::RotationVectorToQuaternion(
-                {0., 0., 2. * M_PI * blade_number / num_blades}
+            const auto rotation_angle = 2. * std::numbers::pi * blade_number / num_blades;
+            const auto rotation_quaternion = Eigen::Quaternion<double>(
+                Eigen::AngleAxis(rotation_angle, Eigen::Matrix<double, 3, 1>::Unit(2))
             );
-            model.TranslateBeam(blade_elem_id, {hub_radius, 0., 0.});
-            model.RotateBeamAboutPoint(blade_elem_id, rotation_quaternion, origin);
+            const auto rotation_quaternion_array = std::array{
+                rotation_quaternion.w(), rotation_quaternion.x(), rotation_quaternion.y(),
+                rotation_quaternion.z()
+            };
+            model.TranslateBeam(blade_elem_id, std::array{hub_radius, 0., 0.});
+            model.RotateBeamAboutPoint(blade_elem_id, rotation_quaternion_array, origin);
             model.SetBeamVelocityAboutPoint(blade_elem_id, velocity, origin);
         }
 
@@ -98,7 +104,7 @@ int main() {
         // modify during time stepping to create rotation.
         auto hub_node_id = model.AddNode().SetPosition(0., 0., 0., 1., 0., 0., 0.).Build();
         for (const auto& beam_element : model.GetBeamElements()) {
-            model.AddRigidJointConstraint({hub_node_id, beam_element.node_ids.front()});
+            model.AddRigidJointConstraint(std::array{hub_node_id, beam_element.node_ids.front()});
         }
         auto hub_bc_id = model.AddPrescribedBC(hub_node_id);
 
@@ -140,11 +146,13 @@ int main() {
         // For this problem, we will prescribe a rotation on the hub boundary condition, which will
         // be transmitted to the blades through their respective constraints.
         for (auto i = 0U; i < num_steps; ++i) {
-            const auto q_hub = kynema::math::RotationVectorToQuaternion(
-                {step_size * (i + 1) * velocity[3], step_size * (i + 1) * velocity[4],
-                 step_size * (i + 1) * velocity[5]}
+            const auto omega_vector = Eigen::Matrix<double, 3, 1>(&velocity[3]);
+            const auto omega_axis = omega_vector.normalized();
+            const auto omega = omega_vector.norm() * step_size * static_cast<double>(i + 1);
+            const auto q_hub = Eigen::Quaternion<double>(
+                Eigen::AngleAxis<double>(omega, omega_axis)
             );
-            const auto u_hub = std::array{0., 0., 0., q_hub[0], q_hub[1], q_hub[2], q_hub[3]};
+            const auto u_hub = std::array{0., 0., 0., q_hub.w(), q_hub.x(), q_hub.y(), q_hub.z()};
             constraints.UpdateDisplacement(hub_bc_id, u_hub);
             [[maybe_unused]] const auto converged =
                 kynema::Step(parameters, solver, elements, state, constraints);
