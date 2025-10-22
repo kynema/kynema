@@ -1,6 +1,7 @@
 #include <array>
 #include <cassert>
 
+#include <Eigen/Dense>
 #include <Kokkos_Core.hpp>
 #include <model/model.hpp>
 #include <step/step.hpp>
@@ -14,9 +15,10 @@ int main() {
         // We first set some initial values and physical properties for this problem.
         constexpr auto mass = 15.;                                         // mass
         constexpr auto inertia = std::array{0.234375, 0.46875, 0.234375};  // inertia matrix
-        const auto x = std::array{0., 1., 0.};                             // initial position
-        const auto omega = std::array{0., 150., -4.61538};        // initial angular velocity
-        const auto x_dot = kynema::math::CrossProduct(omega, x);  // initial velocity
+        const auto x = Eigen::Matrix<double, 3, 1>(0., 1., 0.);            // initial position
+        const auto omega =
+            Eigen::Matrix<double, 3, 1>(0., 150., -4.61538);  // initial angular velocity
+        const auto x_dot = omega.cross(x);                    // initial velocity
         const auto omega_dot =
             std::array{661.3461692307691919, 0., 0.};  // initial anguluar acceleration
         const auto x_ddot =
@@ -62,7 +64,7 @@ int main() {
         // This problem requires two constraints: a rigid joint prescribing that the center of
         // mass remains a constant distance from the ground node and a prescribed boundary
         // condition forcing the ground node to remain stationary.
-        model.AddRigidJoint6DOFsTo3DOFs({mass_node_id, ground_node_id});
+        model.AddRigidJoint6DOFsTo3DOFs(std::array{mass_node_id, ground_node_id});
         model.AddPrescribedBC3DOFs(ground_node_id);
 
         // The gravity vector for the problem is set using the well named SetGravity method
