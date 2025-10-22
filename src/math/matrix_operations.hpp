@@ -1,11 +1,9 @@
 #pragma once
 
 #include <array>
-#include <ranges>
 
+#include <Eigen/Geometry>
 #include <Kokkos_Core.hpp>
-
-#include "math/quaternion_operations.hpp"
 
 namespace kynema::math {
 
@@ -53,39 +51,35 @@ KOKKOS_INLINE_FUNCTION void AxialVectorOfMatrix(const Matrix& m, const Vector& v
 inline std::array<std::array<double, 6>, 6> RotateMatrix6(
     const std::array<std::array<double, 6>, 6>& m, const std::array<double, 4>& q
 ) {
-    const auto rm = QuaternionToRotationMatrix(q);
-    std::array<std::array<double, 6>, 6> r{{
-        {rm[0][0], rm[0][1], rm[0][2], 0., 0., 0.},
-        {rm[1][0], rm[1][1], rm[1][2], 0., 0., 0.},
-        {rm[2][0], rm[2][1], rm[2][2], 0., 0., 0.},
-        {0., 0., 0., rm[0][0], rm[0][1], rm[0][2]},
-        {0., 0., 0., rm[1][0], rm[1][1], rm[1][2]},
-        {0., 0., 0., rm[2][0], rm[2][1], rm[2][2]},
-    }};
+    const auto quat = Eigen::Quaternion<double>(q[0], q[1], q[2], q[3]);
+    auto rm = quat.toRotationMatrix();
 
-    // matmul(r,m)
-    std::array<std::array<double, 6>, 6> mt{};
-    for (auto i : std::views::iota(0U, 6U)) {
-        for (auto j : std::views::iota(0U, 6U)) {
-            mt[i][j] = 0.;
-            for (auto k : std::views::iota(0U, 6U)) {
-                mt[i][j] += r[i][k] * m[k][j];
-            }
-        }
-    }
+    const auto m_mat = Eigen::Matrix<double, 6, 6>({
+        {m[0][0], m[0][1], m[0][2], m[0][3], m[0][4], m[0][5]},
+        {m[1][0], m[1][1], m[1][2], m[1][3], m[1][4], m[1][5]},
+        {m[2][0], m[2][1], m[2][2], m[2][3], m[2][4], m[2][5]},
+        {m[3][0], m[3][1], m[3][2], m[3][3], m[3][4], m[3][5]},
+        {m[4][0], m[4][1], m[4][2], m[4][3], m[4][4], m[4][5]},
+        {m[5][0], m[5][1], m[5][2], m[5][3], m[5][4], m[5][5]},
+    });
 
-    // matmul(matmul(r,m),r^T)
-    std::array<std::array<double, 6>, 6> mo{};
-    for (auto i : std::views::iota(0U, 6U)) {
-        for (auto j : std::views::iota(0U, 6U)) {
-            mo[i][j] = 0.;
-            for (auto k : std::views::iota(0U, 6U)) {
-                mo[i][j] += mt[i][k] * r[j][k];
-            }
-        }
-    }
+    auto mt = Eigen::Matrix<double, 6, 6>();
+    mt.block<3, 6>(0, 0) = rm * m_mat.block<3, 6>(0, 0);
+    mt.block<3, 6>(3, 0) = rm * m_mat.block<3, 6>(3, 0);
 
-    return mo;
+    rm.transposeInPlace();
+    auto mo = Eigen::Matrix<double, 6, 6>();
+    mo.block<6, 3>(0, 0) = mt.block<6, 3>(0, 0) * rm;
+    mo.block<6, 3>(0, 3) = mt.block<6, 3>(0, 3) * rm;
+
+    return std::array{
+        std::array{mo(0, 0), mo(0, 1), mo(0, 2), mo(0, 3), mo(0, 4), mo(0, 5)},
+        std::array{mo(1, 0), mo(1, 1), mo(1, 2), mo(1, 3), mo(1, 4), mo(1, 5)},
+        std::array{mo(2, 0), mo(2, 1), mo(2, 2), mo(2, 3), mo(2, 4), mo(2, 5)},
+        std::array{mo(3, 0), mo(3, 1), mo(3, 2), mo(3, 3), mo(3, 4), mo(3, 5)},
+        std::array{mo(4, 0), mo(4, 1), mo(4, 2), mo(4, 3), mo(4, 4), mo(4, 5)},
+        std::array{mo(5, 0), mo(5, 1), mo(5, 2), mo(5, 3), mo(5, 4), mo(5, 5)},
+    };
 }
 
 }  // namespace kynema::math

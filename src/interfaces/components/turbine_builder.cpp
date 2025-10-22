@@ -1,5 +1,6 @@
 #include "turbine_builder.hpp"
 
+#include "model/model.hpp"
 #include "turbine.hpp"
 
 namespace kynema::interfaces::components {

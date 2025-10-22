@@ -203,7 +203,7 @@ int main() {
 
         // Set tower base position from first reference axis point
         const auto tower_base_position =
-            std::array<double, 7>{x_values[0], y_values[0], z_values[0], 1., 0., 0., 0.};
+            std::array{x_values[0], y_values[0], z_values[0], 1., 0., 0., 0.};
         turbine_builder.SetTowerBasePosition(tower_base_position);
 
         // Add reference axis twist (zero for tower)

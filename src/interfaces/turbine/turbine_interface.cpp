@@ -5,7 +5,6 @@
 #include <string>
 
 #include "interfaces/components/solution_input.hpp"
-#include "math/quaternion_operations.hpp"
 #include "state/clone_state.hpp"
 #include "state/copy_state_data.hpp"
 #include "step/step.hpp"
@@ -273,11 +272,12 @@ void TurbineInterface::WriteTimeSeriesData() const {
 
     // Rotor thrust
     {
+        const auto position = this->turbine.azimuth_node.position;
         const auto q_global_local =
-            math::QuaternionInverse(std::span{this->turbine.azimuth_node.position}.subspan<3, 4>());
-        const auto shaft_forces = math::RotateVectorByQuaternion(
-            q_global_local, std::span{this->turbine.shaft_base_to_azimuth.loads}.subspan<0, 3>()
-        );
+            Eigen::Quaternion<double>(position[3], position[4], position[5], position[6]).inverse();
+        const auto shaft_loads =
+            Eigen::Matrix<double, 3, 1>(this->turbine.shaft_base_to_azimuth.loads.data());
+        const auto shaft_forces = q_global_local._transformVector(shaft_loads);
         this->outputs->WriteValueAtTimestep(
             this->state.time_step, "RotThrust (kN)", shaft_forces[0] / 1000.
         );
@@ -286,16 +286,17 @@ void TurbineInterface::WriteTimeSeriesData() const {
     // Blade based data
     for (auto i : std::views::iota(0U, this->turbine.blades.size())) {
         // Get rotation from global to blade local coordinates
-        const auto q_global_to_local = math::QuaternionCompose(
-            math::RotationVectorToQuaternion({0., -90. * deg_to_rad, 0.}),
-            math::QuaternionInverse(
-                std::span{this->turbine.blades[i].nodes[0].position}.subspan<3, 4>()
-            )
+        const auto position = this->turbine.blades[i].nodes[0].position;
+        const auto rotation = Eigen::Quaternion<double>(
+            Eigen::AngleAxis<double>(-90. * deg_to_rad, Eigen::Matrix<double, 3, 1>::Unit(1))
         );
+        const auto orientation =
+            Eigen::Quaternion<double>(position[3], position[4], position[5], position[6]).inverse();
+        const auto q_global_to_local = rotation * orientation;
 
         // Blade root forces in blade coordinates
-        const auto blade_root_forces = math::RotateVectorByQuaternion(
-            q_global_to_local, std::span{this->turbine.blade_pitch[i].loads}.subspan<0, 3>()
+        const auto blade_root_forces = q_global_to_local._transformVector(
+            Eigen::Matrix<double, 3, 1>(this->turbine.blade_pitch[i].loads.data())
         );
 
         // Blade root forces angles
@@ -311,8 +312,8 @@ void TurbineInterface::WriteTimeSeriesData() const {
         );
 
         // Blade root moments in blade coordinates
-        const auto blade_root_moments = math::RotateVectorByQuaternion(
-            q_global_to_local, std::span{this->turbine.blade_pitch[i].loads}.subspan<3, 3>()
+        const auto blade_root_moments = q_global_to_local._transformVector(
+            Eigen::Matrix<double, 3, 1>(&this->turbine.blade_pitch[i].loads[3])
         );
 
         // Blade root moments angles
@@ -400,7 +401,8 @@ void TurbineInterface::WriteTimeSeriesData() const {
                 node_label += node_number;
 
                 this->outputs->WriteValueAtTimestep(
-                    this->state.time_step, node_label + "Vrel (m_s)", math::Norm(body.v_rel[j])
+                    this->state.time_step, node_label + "Vrel (m_s)",
+                    Eigen::Matrix<double, 3, 1>(body.v_rel[j].data()).norm()
                 );
                 this->outputs->WriteValueAtTimestep(
                     this->state.time_step, node_label + "Alpha (deg)", body.alpha[j] / deg_to_rad
@@ -542,12 +544,13 @@ void TurbineInterface::ApplyController(double t) {
     for (auto i : std::views::iota(0U, this->turbine.blades.size())) {
         // Get rotation from global to blade root coordinates
         // Apex node orientation is the same as blade root node without pitch angle
+        const auto position = this->turbine.apex_nodes[i].position;
         const auto q_global_to_local =
-            math::QuaternionInverse(std::span{this->turbine.apex_nodes[i].position}.subspan<3, 4>());
+            Eigen::Quaternion<double>(position[3], position[4], position[5], position[6]).inverse();
 
         // Rotate blade root moments into blade root coordinates
-        const auto blade_root_moments = math::RotateVectorByQuaternion(
-            q_global_to_local, std::span{this->turbine.blade_pitch[i].loads}.subspan<3, 3>()
+        const auto blade_root_moments = q_global_to_local._transformVector(
+            Eigen::Matrix<double, 3, 1>(&this->turbine.blade_pitch[i].loads[3])
         );
 
         // Set out-of-plane root bending moment for each blade (y-axis in blade coords)

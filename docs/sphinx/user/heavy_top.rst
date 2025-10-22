@@ -8,6 +8,7 @@ The heavy top problem is one of the simplest problems you'll want to solve with 
 For the most up to date and working version of this code, see ``tests/documentation_tests/heavy_top/``.
 
 As with any C++ program, start with the includes.
+To set up problems like this one, you might need to perform some linear algebra - we'll include ``Eigen/Dense`` to perform these operations, but you can use any libraries or hand written code as you see fit.
 As a Kokkos-based library, you'll need to include ``Kokkos_Core.hpp`` for setup, teardown, and working with Kynema's data structures.
 From Kynema, you'll have to include ``model.hpp`` for the Model class, our tool for setting up and creating the system, and ``step.hpp`` for the Step function which performs the action of system asembly and solve.
 
@@ -15,6 +16,8 @@ From Kynema, you'll have to include ``model.hpp`` for the Model class, our tool 
 
     #include <array>
     #include <cassert>
+
+    #include <Eigen/Dense>
     #include <Kokkos_Core.hpp>
     #include <model/model.hpp>
     #include <step/step.hpp>
@@ -41,9 +44,9 @@ Now, we define the mass matrix and initial position, velocity, and acceleration.
 
     constexpr auto mass = 15.;
     constexpr auto inertia = std::array{0.234375, 0.46875, 0.234375};
-    const auto x = std::array{0., 1., 0.};
-    const auto omega = std::array{0., 150., -4.61538};
-    const auto x_dot = kynema::math::CrossProduct(omega, x);
+    const auto x = Eigen::Matrix<double, 3, 1>(0., 1., 0.);
+    const auto omega = Eigen::Matrix<double, 3, 1>(0., 150., -4.61538);
+    const auto x_dot = omega.cross(x);
     const auto omega_dot = std::array{661.3461692307691919, 0., 0.};
     const auto x_ddot = std::array{0., -21.3017325444000001, -30.9608307692308244};
 
@@ -90,7 +93,7 @@ This problem requires two constraints: a rigid joint prescribing that the center
 
 .. code-block:: cpp
 
-    model.AddRigidJoint6DOFsTo3DOFs({mass_node_id, ground_node_id});
+    model.AddRigidJoint6DOFsTo3DOFs(std::array{mass_node_id, ground_node_id});
     model.AddPrescribedBC3DOFs(ground_node_id);
 
 The gravity vector for the problem is set using the well named SetGravity method
