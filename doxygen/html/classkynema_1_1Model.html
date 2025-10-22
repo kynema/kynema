@@ -228,18 +228,18 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a07dc9cede11ebdf65044c44e04adb948"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structkynema_1_1Beams.html">Beams</a>&lt; DeviceType &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classkynema_1_1Model.html#a07dc9cede11ebdf65044c44e04adb948">CreateBeams</a> () const</td></tr>
 <tr class="memdesc:a07dc9cede11ebdf65044c44e04adb948"><td class="mdescLeft">&#160;</td><td class="mdescRight">Createsa <a class="el" href="structkynema_1_1Beams.html" title="Contains the field variables needed to compute the per-element contributions to the residual vector a...">Beams</a> structure based on the beam elements in the model.  <br /></td></tr>
 <tr class="separator:a07dc9cede11ebdf65044c44e04adb948"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a276624f8fa4ff4387ab4a9af44f0a1df" id="r_a276624f8fa4ff4387ab4a9af44f0a1df"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1Model.html#a276624f8fa4ff4387ab4a9af44f0a1df">TranslateBeam</a> (size_t beam_elem_id, const std::array&lt; double, 3 &gt; &amp;displacement)</td></tr>
-<tr class="memdesc:a276624f8fa4ff4387ab4a9af44f0a1df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Translate all beam nodes by given displacement.  <br /></td></tr>
-<tr class="separator:a276624f8fa4ff4387ab4a9af44f0a1df"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af131d36210c4ba33193cd204944e91b3" id="r_af131d36210c4ba33193cd204944e91b3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1Model.html#af131d36210c4ba33193cd204944e91b3">RotateBeamAboutPoint</a> (size_t beam_elem_id, const std::array&lt; double, 4 &gt; &amp;displacement_quaternion, const std::array&lt; double, 3 &gt; &amp;point)</td></tr>
-<tr class="memdesc:af131d36210c4ba33193cd204944e91b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rotate all beam nodes by given quaternion about a given point.  <br /></td></tr>
-<tr class="separator:af131d36210c4ba33193cd204944e91b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7965bf66fcbfd71cce2d4da68dc46526" id="r_a7965bf66fcbfd71cce2d4da68dc46526"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1Model.html#a7965bf66fcbfd71cce2d4da68dc46526">SetBeamVelocityAboutPoint</a> (size_t beam_elem_id, const std::array&lt; double, 6 &gt; &amp;velocity, const std::array&lt; double, 3 &gt; &amp;point)</td></tr>
-<tr class="memdesc:a7965bf66fcbfd71cce2d4da68dc46526"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the translational and rotational velocity of the beam about a given point.  <br /></td></tr>
-<tr class="separator:a7965bf66fcbfd71cce2d4da68dc46526"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a30fc1b2ceae4d5e97c598d686d0db9c0" id="r_a30fc1b2ceae4d5e97c598d686d0db9c0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1Model.html#a30fc1b2ceae4d5e97c598d686d0db9c0">SetBeamAccelerationAboutPoint</a> (size_t beam_elem_id, const std::array&lt; double, 6 &gt; &amp;acceleration, const std::array&lt; double, 3 &gt; &amp;omega, const std::array&lt; double, 3 &gt; &amp;point)</td></tr>
-<tr class="memdesc:a30fc1b2ceae4d5e97c598d686d0db9c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the acceleration of the beam about a given point.  <br /></td></tr>
-<tr class="separator:a30fc1b2ceae4d5e97c598d686d0db9c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abed0a9ec3ca5f3bd4b845f6116fbb725" id="r_abed0a9ec3ca5f3bd4b845f6116fbb725"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1Model.html#abed0a9ec3ca5f3bd4b845f6116fbb725">TranslateBeam</a> (size_t beam_elem_id, std::span&lt; const double, 3 &gt; displacement)</td></tr>
+<tr class="memdesc:abed0a9ec3ca5f3bd4b845f6116fbb725"><td class="mdescLeft">&#160;</td><td class="mdescRight">Translate all beam nodes by given displacement.  <br /></td></tr>
+<tr class="separator:abed0a9ec3ca5f3bd4b845f6116fbb725"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06929e1192c7400ea0bc0cfaf16e1495" id="r_a06929e1192c7400ea0bc0cfaf16e1495"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1Model.html#a06929e1192c7400ea0bc0cfaf16e1495">RotateBeamAboutPoint</a> (size_t beam_elem_id, std::span&lt; const double, 4 &gt; displacement_quaternion, std::span&lt; const double, 3 &gt; point)</td></tr>
+<tr class="memdesc:a06929e1192c7400ea0bc0cfaf16e1495"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rotate all beam nodes by given quaternion about a given point.  <br /></td></tr>
+<tr class="separator:a06929e1192c7400ea0bc0cfaf16e1495"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad800545a59c3a43f0b8a4509f8142859" id="r_ad800545a59c3a43f0b8a4509f8142859"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1Model.html#ad800545a59c3a43f0b8a4509f8142859">SetBeamVelocityAboutPoint</a> (size_t beam_elem_id, std::span&lt; const double, 6 &gt; velocity, std::span&lt; const double, 3 &gt; point)</td></tr>
+<tr class="memdesc:ad800545a59c3a43f0b8a4509f8142859"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the translational and rotational velocity of the beam about a given point.  <br /></td></tr>
+<tr class="separator:ad800545a59c3a43f0b8a4509f8142859"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7369bdb29a8fec61da8b8c030db279d5" id="r_a7369bdb29a8fec61da8b8c030db279d5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1Model.html#a7369bdb29a8fec61da8b8c030db279d5">SetBeamAccelerationAboutPoint</a> (size_t beam_elem_id, std::span&lt; const double, 6 &gt; acceleration, std::span&lt; const double, 3 &gt; omega, std::span&lt; const double, 3 &gt; point)</td></tr>
+<tr class="memdesc:a7369bdb29a8fec61da8b8c030db279d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the acceleration of the beam about a given point.  <br /></td></tr>
+<tr class="separator:a7369bdb29a8fec61da8b8c030db279d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa5b9c103f429dc7071298254cbd3a38f" id="r_aa5b9c103f429dc7071298254cbd3a38f"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1Model.html#aa5b9c103f429dc7071298254cbd3a38f">AddMassElement</a> (const size_t node_id, const std::array&lt; std::array&lt; double, 6 &gt;, 6 &gt; &amp;mass)</td></tr>
 <tr class="memdesc:aa5b9c103f429dc7071298254cbd3a38f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a mass element to the model.  <br /></td></tr>
 <tr class="separator:aa5b9c103f429dc7071298254cbd3a38f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -289,24 +289,24 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a11109f65e79fb1b749e0c26c834bf53a" id="r_a11109f65e79fb1b749e0c26c834bf53a"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1Model.html#a11109f65e79fb1b749e0c26c834bf53a">AddPrescribedBC</a> (const size_t node_id, const std::array&lt; double, 7 &gt; &amp;initial_displacement={0., 0., 0., 1., 0., 0., 0.})</td></tr>
 <tr class="memdesc:a11109f65e79fb1b749e0c26c834bf53a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a prescribed boundary condition constraint to the model and returns the ID.  <br /></td></tr>
 <tr class="separator:a11109f65e79fb1b749e0c26c834bf53a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a94647c3450b9b2863542f1a9485e9bae" id="r_a94647c3450b9b2863542f1a9485e9bae"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1Model.html#a94647c3450b9b2863542f1a9485e9bae">AddRigidJointConstraint</a> (const std::array&lt; size_t, 2 &gt; &amp;node_ids)</td></tr>
-<tr class="memdesc:a94647c3450b9b2863542f1a9485e9bae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a rigid constraint to the model and returns the ID.  <br /></td></tr>
-<tr class="separator:a94647c3450b9b2863542f1a9485e9bae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab361d751aa202cb2f09089db7ce18999" id="r_ab361d751aa202cb2f09089db7ce18999"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1Model.html#ab361d751aa202cb2f09089db7ce18999">AddRevoluteJointConstraint</a> (const std::array&lt; size_t, 2 &gt; &amp;node_ids, const std::array&lt; double, 3 &gt; &amp;axis, double *torque)</td></tr>
-<tr class="memdesc:ab361d751aa202cb2f09089db7ce18999"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a revolute/hinge constraint to the model and returns the ID.  <br /></td></tr>
-<tr class="separator:ab361d751aa202cb2f09089db7ce18999"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a242e202b02f3d32e1ce04e1b53e9864c" id="r_a242e202b02f3d32e1ce04e1b53e9864c"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1Model.html#a242e202b02f3d32e1ce04e1b53e9864c">AddRotationControl</a> (const std::array&lt; size_t, 2 &gt; &amp;node_ids, const std::array&lt; double, 3 &gt; &amp;axis, double *control)</td></tr>
-<tr class="memdesc:a242e202b02f3d32e1ce04e1b53e9864c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a rotation control constraint to the model and returns the ID.  <br /></td></tr>
-<tr class="separator:a242e202b02f3d32e1ce04e1b53e9864c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6f557be2f99a322beebcda849cd3b14" id="r_af6f557be2f99a322beebcda849cd3b14"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1Model.html#af6f557be2f99a322beebcda849cd3b14">AddRigidJointConstraint</a> (std::span&lt; const size_t, 2 &gt; node_ids)</td></tr>
+<tr class="memdesc:af6f557be2f99a322beebcda849cd3b14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a rigid constraint to the model and returns the ID.  <br /></td></tr>
+<tr class="separator:af6f557be2f99a322beebcda849cd3b14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad45b00f7b7d32fbe8a9dfe7f74594ad7" id="r_ad45b00f7b7d32fbe8a9dfe7f74594ad7"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1Model.html#ad45b00f7b7d32fbe8a9dfe7f74594ad7">AddRevoluteJointConstraint</a> (std::span&lt; const size_t, 2 &gt; node_ids, std::span&lt; const double, 3 &gt; axis, double *torque)</td></tr>
+<tr class="memdesc:ad45b00f7b7d32fbe8a9dfe7f74594ad7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a revolute/hinge constraint to the model and returns the ID.  <br /></td></tr>
+<tr class="separator:ad45b00f7b7d32fbe8a9dfe7f74594ad7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3bfe97d8d9d5e85e7e010658796a64cf" id="r_a3bfe97d8d9d5e85e7e010658796a64cf"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1Model.html#a3bfe97d8d9d5e85e7e010658796a64cf">AddRotationControl</a> (std::span&lt; const size_t, 2 &gt; node_ids, std::span&lt; const double, 3 &gt; axis, double *control)</td></tr>
+<tr class="memdesc:a3bfe97d8d9d5e85e7e010658796a64cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a rotation control constraint to the model and returns the ID.  <br /></td></tr>
+<tr class="separator:a3bfe97d8d9d5e85e7e010658796a64cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a261eb435ceabb4ded3bd355d8550ebe0" id="r_a261eb435ceabb4ded3bd355d8550ebe0"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1Model.html#a261eb435ceabb4ded3bd355d8550ebe0">AddFixedBC3DOFs</a> (const size_t node_id)</td></tr>
 <tr class="memdesc:a261eb435ceabb4ded3bd355d8550ebe0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a fixed boundary condition constraint (6DOFs to 3DOFs) to the model and returns the ID.  <br /></td></tr>
 <tr class="separator:a261eb435ceabb4ded3bd355d8550ebe0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0ac414d77a57a4fede4c8e289d66829b" id="r_a0ac414d77a57a4fede4c8e289d66829b"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1Model.html#a0ac414d77a57a4fede4c8e289d66829b">AddPrescribedBC3DOFs</a> (const size_t node_id)</td></tr>
 <tr class="memdesc:a0ac414d77a57a4fede4c8e289d66829b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a prescribed boundary condition constraint (6DOFs to 3DOFs) to the model and returns the ID.  <br /></td></tr>
 <tr class="separator:a0ac414d77a57a4fede4c8e289d66829b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a01b5fe52f9285aee4e27d9c2392a1791" id="r_a01b5fe52f9285aee4e27d9c2392a1791"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1Model.html#a01b5fe52f9285aee4e27d9c2392a1791">AddRigidJoint6DOFsTo3DOFs</a> (const std::array&lt; size_t, 2 &gt; &amp;node_ids)</td></tr>
-<tr class="memdesc:a01b5fe52f9285aee4e27d9c2392a1791"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a rigid joint constraint (6DOFs to 3DOFs) to the model and returns the ID.  <br /></td></tr>
-<tr class="separator:a01b5fe52f9285aee4e27d9c2392a1791"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d18e82aab9e55a5a22c1cc16d9ee57f" id="r_a9d18e82aab9e55a5a22c1cc16d9ee57f"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1Model.html#a9d18e82aab9e55a5a22c1cc16d9ee57f">AddRigidJoint6DOFsTo3DOFs</a> (std::span&lt; const size_t, 2 &gt; node_ids)</td></tr>
+<tr class="memdesc:a9d18e82aab9e55a5a22c1cc16d9ee57f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a rigid joint constraint (6DOFs to 3DOFs) to the model and returns the ID.  <br /></td></tr>
+<tr class="separator:a9d18e82aab9e55a5a22c1cc16d9ee57f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af8964523ad6ec7c6693c2c7566062bdb" id="r_af8964523ad6ec7c6693c2c7566062bdb"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1Model.html#af8964523ad6ec7c6693c2c7566062bdb">NumConstraints</a> () const</td></tr>
 <tr class="memdesc:af8964523ad6ec7c6693c2c7566062bdb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the number of constraints present in the model.  <br /></td></tr>
 <tr class="separator:af8964523ad6ec7c6693c2c7566062bdb"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -682,8 +682,8 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ab361d751aa202cb2f09089db7ce18999" name="ab361d751aa202cb2f09089db7ce18999"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab361d751aa202cb2f09089db7ce18999">&#9670;&#160;</a></span>AddRevoluteJointConstraint()</h2>
+<a id="ad45b00f7b7d32fbe8a9dfe7f74594ad7" name="ad45b00f7b7d32fbe8a9dfe7f74594ad7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad45b00f7b7d32fbe8a9dfe7f74594ad7">&#9670;&#160;</a></span>AddRevoluteJointConstraint()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -694,13 +694,13 @@ Static Public Attributes</h2></td></tr>
         <tr>
           <td class="memname">size_t kynema::Model::AddRevoluteJointConstraint </td>
           <td>(</td>
-          <td class="paramtype">const std::array&lt; size_t, 2 &gt; &amp;&#160;</td>
+          <td class="paramtype">std::span&lt; const size_t, 2 &gt;&#160;</td>
           <td class="paramname"><em>node_ids</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::array&lt; double, 3 &gt; &amp;&#160;</td>
+          <td class="paramtype">std::span&lt; const double, 3 &gt;&#160;</td>
           <td class="paramname"><em>axis</em>, </td>
         </tr>
         <tr>
@@ -735,8 +735,8 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a01b5fe52f9285aee4e27d9c2392a1791" name="a01b5fe52f9285aee4e27d9c2392a1791"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a01b5fe52f9285aee4e27d9c2392a1791">&#9670;&#160;</a></span>AddRigidJoint6DOFsTo3DOFs()</h2>
+<a id="a9d18e82aab9e55a5a22c1cc16d9ee57f" name="a9d18e82aab9e55a5a22c1cc16d9ee57f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d18e82aab9e55a5a22c1cc16d9ee57f">&#9670;&#160;</a></span>AddRigidJoint6DOFsTo3DOFs()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -747,7 +747,7 @@ Static Public Attributes</h2></td></tr>
         <tr>
           <td class="memname">size_t kynema::Model::AddRigidJoint6DOFsTo3DOFs </td>
           <td>(</td>
-          <td class="paramtype">const std::array&lt; size_t, 2 &gt; &amp;&#160;</td>
+          <td class="paramtype">std::span&lt; const size_t, 2 &gt;&#160;</td>
           <td class="paramname"><em>node_ids</em></td><td>)</td>
           <td></td>
         </tr>
@@ -770,8 +770,8 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a94647c3450b9b2863542f1a9485e9bae" name="a94647c3450b9b2863542f1a9485e9bae"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a94647c3450b9b2863542f1a9485e9bae">&#9670;&#160;</a></span>AddRigidJointConstraint()</h2>
+<a id="af6f557be2f99a322beebcda849cd3b14" name="af6f557be2f99a322beebcda849cd3b14"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af6f557be2f99a322beebcda849cd3b14">&#9670;&#160;</a></span>AddRigidJointConstraint()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -782,7 +782,7 @@ Static Public Attributes</h2></td></tr>
         <tr>
           <td class="memname">size_t kynema::Model::AddRigidJointConstraint </td>
           <td>(</td>
-          <td class="paramtype">const std::array&lt; size_t, 2 &gt; &amp;&#160;</td>
+          <td class="paramtype">std::span&lt; const size_t, 2 &gt;&#160;</td>
           <td class="paramname"><em>node_ids</em></td><td>)</td>
           <td></td>
         </tr>
@@ -805,8 +805,8 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a242e202b02f3d32e1ce04e1b53e9864c" name="a242e202b02f3d32e1ce04e1b53e9864c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a242e202b02f3d32e1ce04e1b53e9864c">&#9670;&#160;</a></span>AddRotationControl()</h2>
+<a id="a3bfe97d8d9d5e85e7e010658796a64cf" name="a3bfe97d8d9d5e85e7e010658796a64cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3bfe97d8d9d5e85e7e010658796a64cf">&#9670;&#160;</a></span>AddRotationControl()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -817,13 +817,13 @@ Static Public Attributes</h2></td></tr>
         <tr>
           <td class="memname">size_t kynema::Model::AddRotationControl </td>
           <td>(</td>
-          <td class="paramtype">const std::array&lt; size_t, 2 &gt; &amp;&#160;</td>
+          <td class="paramtype">std::span&lt; const size_t, 2 &gt;&#160;</td>
           <td class="paramname"><em>node_ids</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::array&lt; double, 3 &gt; &amp;&#160;</td>
+          <td class="paramtype">std::span&lt; const double, 3 &gt;&#160;</td>
           <td class="paramname"><em>axis</em>, </td>
         </tr>
         <tr>
@@ -1828,8 +1828,8 @@ template&lt;typename DeviceType  = Kokkos::Device&lt;            Kokkos::Default
 
 </div>
 </div>
-<a id="af131d36210c4ba33193cd204944e91b3" name="af131d36210c4ba33193cd204944e91b3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af131d36210c4ba33193cd204944e91b3">&#9670;&#160;</a></span>RotateBeamAboutPoint()</h2>
+<a id="a06929e1192c7400ea0bc0cfaf16e1495" name="a06929e1192c7400ea0bc0cfaf16e1495"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06929e1192c7400ea0bc0cfaf16e1495">&#9670;&#160;</a></span>RotateBeamAboutPoint()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1846,13 +1846,13 @@ template&lt;typename DeviceType  = Kokkos::Device&lt;            Kokkos::Default
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::array&lt; double, 4 &gt; &amp;&#160;</td>
+          <td class="paramtype">std::span&lt; const double, 4 &gt;&#160;</td>
           <td class="paramname"><em>displacement_quaternion</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::array&lt; double, 3 &gt; &amp;&#160;</td>
+          <td class="paramtype">std::span&lt; const double, 3 &gt;&#160;</td>
           <td class="paramname"><em>point</em>&#160;</td>
         </tr>
         <tr>
@@ -1880,8 +1880,8 @@ template&lt;typename DeviceType  = Kokkos::Device&lt;            Kokkos::Default
 
 </div>
 </div>
-<a id="a30fc1b2ceae4d5e97c598d686d0db9c0" name="a30fc1b2ceae4d5e97c598d686d0db9c0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a30fc1b2ceae4d5e97c598d686d0db9c0">&#9670;&#160;</a></span>SetBeamAccelerationAboutPoint()</h2>
+<a id="a7369bdb29a8fec61da8b8c030db279d5" name="a7369bdb29a8fec61da8b8c030db279d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7369bdb29a8fec61da8b8c030db279d5">&#9670;&#160;</a></span>SetBeamAccelerationAboutPoint()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1898,19 +1898,19 @@ template&lt;typename DeviceType  = Kokkos::Device&lt;            Kokkos::Default
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::array&lt; double, 6 &gt; &amp;&#160;</td>
+          <td class="paramtype">std::span&lt; const double, 6 &gt;&#160;</td>
           <td class="paramname"><em>acceleration</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::array&lt; double, 3 &gt; &amp;&#160;</td>
+          <td class="paramtype">std::span&lt; const double, 3 &gt;&#160;</td>
           <td class="paramname"><em>omega</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::array&lt; double, 3 &gt; &amp;&#160;</td>
+          <td class="paramtype">std::span&lt; const double, 3 &gt;&#160;</td>
           <td class="paramname"><em>point</em>&#160;</td>
         </tr>
         <tr>
@@ -1939,8 +1939,8 @@ template&lt;typename DeviceType  = Kokkos::Device&lt;            Kokkos::Default
 
 </div>
 </div>
-<a id="a7965bf66fcbfd71cce2d4da68dc46526" name="a7965bf66fcbfd71cce2d4da68dc46526"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7965bf66fcbfd71cce2d4da68dc46526">&#9670;&#160;</a></span>SetBeamVelocityAboutPoint()</h2>
+<a id="ad800545a59c3a43f0b8a4509f8142859" name="ad800545a59c3a43f0b8a4509f8142859"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad800545a59c3a43f0b8a4509f8142859">&#9670;&#160;</a></span>SetBeamVelocityAboutPoint()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1957,13 +1957,13 @@ template&lt;typename DeviceType  = Kokkos::Device&lt;            Kokkos::Default
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::array&lt; double, 6 &gt; &amp;&#160;</td>
+          <td class="paramtype">std::span&lt; const double, 6 &gt;&#160;</td>
           <td class="paramname"><em>velocity</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::array&lt; double, 3 &gt; &amp;&#160;</td>
+          <td class="paramtype">std::span&lt; const double, 3 &gt;&#160;</td>
           <td class="paramname"><em>point</em>&#160;</td>
         </tr>
         <tr>
@@ -2043,8 +2043,8 @@ template&lt;typename DeviceType  = Kokkos::Device&lt;            Kokkos::Default
 
 </div>
 </div>
-<a id="a276624f8fa4ff4387ab4a9af44f0a1df" name="a276624f8fa4ff4387ab4a9af44f0a1df"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a276624f8fa4ff4387ab4a9af44f0a1df">&#9670;&#160;</a></span>TranslateBeam()</h2>
+<a id="abed0a9ec3ca5f3bd4b845f6116fbb725" name="abed0a9ec3ca5f3bd4b845f6116fbb725"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abed0a9ec3ca5f3bd4b845f6116fbb725">&#9670;&#160;</a></span>TranslateBeam()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2061,7 +2061,7 @@ template&lt;typename DeviceType  = Kokkos::Device&lt;            Kokkos::Default
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::array&lt; double, 3 &gt; &amp;&#160;</td>
+          <td class="paramtype">std::span&lt; const double, 3 &gt;&#160;</td>
           <td class="paramname"><em>displacement</em>&#160;</td>
         </tr>
         <tr>

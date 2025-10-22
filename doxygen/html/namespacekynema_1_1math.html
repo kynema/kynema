@@ -210,9 +210,9 @@ Functions</h2></td></tr>
 <tr class="memitem:aeb7f27e797612c16751b40e66523f33c" id="r_aeb7f27e797612c16751b40e66523f33c"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacekynema_1_1math.html#aeb7f27e797612c16751b40e66523f33c">ComputeShapeFunctionDerivatives</a> (std::span&lt; const double &gt; input_points, std::span&lt; const double &gt; output_points)</td></tr>
 <tr class="memdesc:aeb7f27e797612c16751b40e66523f33c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes shape function derivatives dϕg relating points ξb to ξg At least two input points are required and it is assumed that there are more output points than input points.  <br /></td></tr>
 <tr class="separator:aeb7f27e797612c16751b40e66523f33c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8ab24abfc64d85df30632483da92982e" id="r_a8ab24abfc64d85df30632483da92982e"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::array&lt; double, 3 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacekynema_1_1math.html#a8ab24abfc64d85df30632483da92982e">PerformLeastSquaresFitting</a> (size_t p, std::span&lt; const std::vector&lt; double &gt; &gt; shape_functions, std::span&lt; const std::array&lt; double, 3 &gt; &gt; points_to_fit)</td></tr>
-<tr class="memdesc:a8ab24abfc64d85df30632483da92982e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs least squares fitting to determine interpolation coefficients.  <br /></td></tr>
-<tr class="separator:a8ab24abfc64d85df30632483da92982e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61be35286083ec1cb31e827143dc5438" id="r_a61be35286083ec1cb31e827143dc5438"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::array&lt; double, 3 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacekynema_1_1math.html#a61be35286083ec1cb31e827143dc5438">PerformLeastSquaresFitting</a> (std::span&lt; const std::vector&lt; double &gt; &gt; shape_functions, std::span&lt; const std::array&lt; double, 3 &gt; &gt; points_to_fit)</td></tr>
+<tr class="memdesc:a61be35286083ec1cb31e827143dc5438"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs least squares fitting to determine interpolation coefficients.  <br /></td></tr>
+<tr class="separator:a61be35286083ec1cb31e827143dc5438"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1459d47d860f610931a8ede98a78e280" id="r_a1459d47d860f610931a8ede98a78e280"><td class="memTemplParams" colspan="2">template&lt;typename Matrix &gt; </td></tr>
 <tr class="memitem:a1459d47d860f610931a8ede98a78e280"><td class="memTemplItemLeft" align="right" valign="top">KOKKOS_INLINE_FUNCTION void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacekynema_1_1math.html#a1459d47d860f610931a8ede98a78e280">AX_Matrix</a> (const Matrix &amp;A, const Matrix &amp;AX_A)</td></tr>
 <tr class="memdesc:a1459d47d860f610931a8ede98a78e280"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes AX(A) of a square matrix.  <br /></td></tr>
@@ -230,19 +230,10 @@ Functions</h2></td></tr>
 <tr class="memitem:adf373b0e69059a2cf9c9b4b15977aa7b"><td class="memTemplItemLeft" align="right" valign="top">KOKKOS_INLINE_FUNCTION void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacekynema_1_1math.html#adf373b0e69059a2cf9c9b4b15977aa7b">QuaternionToRotationMatrix</a> (const Quaternion &amp;q, const RotationMatrix &amp;R)</td></tr>
 <tr class="memdesc:adf373b0e69059a2cf9c9b4b15977aa7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a 4x1 quaternion to a 3x3 rotation matrix and returns the result.  <br /></td></tr>
 <tr class="separator:adf373b0e69059a2cf9c9b4b15977aa7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7287ec3ae4409a3ce3130c90b6f8a58c" id="r_a7287ec3ae4409a3ce3130c90b6f8a58c"><td class="memItemLeft" align="right" valign="top">std::array&lt; std::array&lt; double, 3 &gt;, 3 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacekynema_1_1math.html#a7287ec3ae4409a3ce3130c90b6f8a58c">QuaternionToRotationMatrix</a> (const std::array&lt; double, 4 &gt; &amp;q)</td></tr>
-<tr class="memdesc:a7287ec3ae4409a3ce3130c90b6f8a58c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a 4x1 quaternion to a 3x3 rotation matrix and returns the result.  <br /></td></tr>
-<tr class="separator:a7287ec3ae4409a3ce3130c90b6f8a58c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3cfbc31bd5c1916e12111325d79bb947" id="r_a3cfbc31bd5c1916e12111325d79bb947"><td class="memItemLeft" align="right" valign="top">std::array&lt; double, 4 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacekynema_1_1math.html#a3cfbc31bd5c1916e12111325d79bb947">RotationMatrixToQuaternion</a> (const std::array&lt; std::array&lt; double, 3 &gt;, 3 &gt; &amp;m)</td></tr>
-<tr class="memdesc:a3cfbc31bd5c1916e12111325d79bb947"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a 3x3 rotation matrix to a 4x1 quaternion and returns the result, see <a href="https://www.euclideanspace.com/maths/geometry/rotations/conversions/matrixToQuaternion/">https://www.euclideanspace.com/maths/geometry/rotations/conversions/matrixToQuaternion/</a> for implementation details.  <br /></td></tr>
-<tr class="separator:a3cfbc31bd5c1916e12111325d79bb947"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa000e1f3373e87b8744b1552b83ad232" id="r_aa000e1f3373e87b8744b1552b83ad232"><td class="memTemplParams" colspan="2">template&lt;typename Quaternion , typename View1 , typename View2 &gt; </td></tr>
 <tr class="memitem:aa000e1f3373e87b8744b1552b83ad232"><td class="memTemplItemLeft" align="right" valign="top">KOKKOS_INLINE_FUNCTION void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacekynema_1_1math.html#aa000e1f3373e87b8744b1552b83ad232">RotateVectorByQuaternion</a> (const Quaternion &amp;q, const View1 &amp;v, const View2 &amp;v_rot)</td></tr>
 <tr class="memdesc:aa000e1f3373e87b8744b1552b83ad232"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rotates provided vector by provided <em>unit</em> quaternion and returns the result.  <br /></td></tr>
 <tr class="separator:aa000e1f3373e87b8744b1552b83ad232"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9e8cb68447e1c691d8adeb2a9f30c1a1" id="r_a9e8cb68447e1c691d8adeb2a9f30c1a1"><td class="memItemLeft" align="right" valign="top">std::array&lt; double, 3 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacekynema_1_1math.html#a9e8cb68447e1c691d8adeb2a9f30c1a1">RotateVectorByQuaternion</a> (std::span&lt; const double, 4 &gt; q, std::span&lt; const double, 3 &gt; v)</td></tr>
-<tr class="memdesc:a9e8cb68447e1c691d8adeb2a9f30c1a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rotates provided vector by provided <em>unit</em> quaternion and returns the result.  <br /></td></tr>
-<tr class="separator:a9e8cb68447e1c691d8adeb2a9f30c1a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae69056e5ab2dff263866d8301e212b77" id="r_ae69056e5ab2dff263866d8301e212b77"><td class="memTemplParams" colspan="2">template&lt;typename Quaternion , typename Matrix &gt; </td></tr>
 <tr class="memitem:ae69056e5ab2dff263866d8301e212b77"><td class="memTemplItemLeft" align="right" valign="top">KOKKOS_INLINE_FUNCTION void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacekynema_1_1math.html#ae69056e5ab2dff263866d8301e212b77">QuaternionDerivative</a> (const Quaternion &amp;q, const Matrix &amp;m)</td></tr>
 <tr class="memdesc:ae69056e5ab2dff263866d8301e212b77"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the derivative of a quaternion and stores the result in a 3x4 matrix.  <br /></td></tr>
@@ -251,16 +242,10 @@ Functions</h2></td></tr>
 <tr class="memitem:af87bcca912aeb86bd49db57abe613f14"><td class="memTemplItemLeft" align="right" valign="top">KOKKOS_INLINE_FUNCTION void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacekynema_1_1math.html#af87bcca912aeb86bd49db57abe613f14">QuaternionInverse</a> (const QuaternionInput &amp;q_in, const QuaternionOutput &amp;q_out)</td></tr>
 <tr class="memdesc:af87bcca912aeb86bd49db57abe613f14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the inverse of a quaternion.  <br /></td></tr>
 <tr class="separator:af87bcca912aeb86bd49db57abe613f14"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0cc13c59521ea1e732fdbc637b4a7f2f" id="r_a0cc13c59521ea1e732fdbc637b4a7f2f"><td class="memItemLeft" align="right" valign="top">std::array&lt; double, 4 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacekynema_1_1math.html#a0cc13c59521ea1e732fdbc637b4a7f2f">QuaternionInverse</a> (std::span&lt; const double, 4 &gt; quaternion)</td></tr>
-<tr class="memdesc:a0cc13c59521ea1e732fdbc637b4a7f2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the inverse of a quaternion.  <br /></td></tr>
-<tr class="separator:a0cc13c59521ea1e732fdbc637b4a7f2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1ee21a28df439eabcc9f3c5bacf27d70" id="r_a1ee21a28df439eabcc9f3c5bacf27d70"><td class="memTemplParams" colspan="2">template&lt;typename Quaternion1 , typename Quaternion2 , typename QuaternionN &gt; </td></tr>
 <tr class="memitem:a1ee21a28df439eabcc9f3c5bacf27d70"><td class="memTemplItemLeft" align="right" valign="top">KOKKOS_INLINE_FUNCTION void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacekynema_1_1math.html#a1ee21a28df439eabcc9f3c5bacf27d70">QuaternionCompose</a> (const Quaternion1 &amp;q1, const Quaternion2 &amp;q2, QuaternionN &amp;qn)</td></tr>
 <tr class="memdesc:a1ee21a28df439eabcc9f3c5bacf27d70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Composes (i.e. multiplies) two quaternions and stores the result in a third quaternion.  <br /></td></tr>
 <tr class="separator:a1ee21a28df439eabcc9f3c5bacf27d70"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a06c851fd2350d6d04647a4a6cc4e86ae" id="r_a06c851fd2350d6d04647a4a6cc4e86ae"><td class="memItemLeft" align="right" valign="top">std::array&lt; double, 4 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacekynema_1_1math.html#a06c851fd2350d6d04647a4a6cc4e86ae">QuaternionCompose</a> (const std::array&lt; double, 4 &gt; &amp;q1, const std::array&lt; double, 4 &gt; &amp;q2)</td></tr>
-<tr class="memdesc:a06c851fd2350d6d04647a4a6cc4e86ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Composes (i.e. multiplies) two quaternions and returns the result.  <br /></td></tr>
-<tr class="separator:a06c851fd2350d6d04647a4a6cc4e86ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a735a2c2c1e0b67cb7feab767c3f1c0bd" id="r_a735a2c2c1e0b67cb7feab767c3f1c0bd"><td class="memTemplParams" colspan="2">template&lt;typename Vector , typename Quaternion &gt; </td></tr>
 <tr class="memitem:a735a2c2c1e0b67cb7feab767c3f1c0bd"><td class="memTemplItemLeft" align="right" valign="top">KOKKOS_INLINE_FUNCTION void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacekynema_1_1math.html#a735a2c2c1e0b67cb7feab767c3f1c0bd">RotationVectorToQuaternion</a> (const Vector &amp;phi, const Quaternion &amp;quaternion)</td></tr>
 <tr class="memdesc:a735a2c2c1e0b67cb7feab767c3f1c0bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a 4-D quaternion from provided 3-D rotation vector, i.e. the exponential map.  <br /></td></tr>
@@ -269,21 +254,12 @@ Functions</h2></td></tr>
 <tr class="memitem:a06d59782b98eb0421bc143aea3f00d1a"><td class="memTemplItemLeft" align="right" valign="top">KOKKOS_INLINE_FUNCTION void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacekynema_1_1math.html#a06d59782b98eb0421bc143aea3f00d1a">QuaternionToRotationVector</a> (const Quaternion &amp;quaternion, const Vector &amp;phi)</td></tr>
 <tr class="memdesc:a06d59782b98eb0421bc143aea3f00d1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a 3-D rotation vector from provided 4-D quaternion, i.e. the logarithmic map.  <br /></td></tr>
 <tr class="separator:a06d59782b98eb0421bc143aea3f00d1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac6a0ce44a4462dd3a42ce2b1c28f3c14" id="r_ac6a0ce44a4462dd3a42ce2b1c28f3c14"><td class="memItemLeft" align="right" valign="top">std::array&lt; double, 3 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacekynema_1_1math.html#ac6a0ce44a4462dd3a42ce2b1c28f3c14">QuaternionToRotationVector</a> (const std::array&lt; double, 4 &gt; &amp;quaternion)</td></tr>
-<tr class="memdesc:ac6a0ce44a4462dd3a42ce2b1c28f3c14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a 3-D rotation vector from provided 4-D quaternion.  <br /></td></tr>
-<tr class="separator:ac6a0ce44a4462dd3a42ce2b1c28f3c14"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac5f4d3a64e66434c86c9722122fea24e" id="r_ac5f4d3a64e66434c86c9722122fea24e"><td class="memItemLeft" align="right" valign="top">std::array&lt; double, 4 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacekynema_1_1math.html#ac5f4d3a64e66434c86c9722122fea24e">RotationVectorToQuaternion</a> (const std::array&lt; double, 3 &gt; &amp;phi)</td></tr>
-<tr class="memdesc:ac5f4d3a64e66434c86c9722122fea24e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a 4-D quaternion from provided 3-D rotation vector, i.e. the exponential map.  <br /></td></tr>
-<tr class="separator:ac5f4d3a64e66434c86c9722122fea24e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9b5ea67b94098aeeadb3a0cb4bf345e1" id="r_a9b5ea67b94098aeeadb3a0cb4bf345e1"><td class="memItemLeft" align="right" valign="top">KOKKOS_INLINE_FUNCTION Kokkos::Array&lt; double, 4 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacekynema_1_1math.html#a9b5ea67b94098aeeadb3a0cb4bf345e1">NormalizeQuaternion</a> (const Kokkos::Array&lt; double, 4 &gt; &amp;q)</td></tr>
 <tr class="memdesc:a9b5ea67b94098aeeadb3a0cb4bf345e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Normalizes a quaternion to ensure it is a unit quaternion.  <br /></td></tr>
 <tr class="separator:a9b5ea67b94098aeeadb3a0cb4bf345e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1641bfc02c962ed37d49b043dc20f3be" id="r_a1641bfc02c962ed37d49b043dc20f3be"><td class="memItemLeft" align="right" valign="top">std::array&lt; double, 4 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacekynema_1_1math.html#a1641bfc02c962ed37d49b043dc20f3be">TangentTwistToQuaternion</a> (const std::array&lt; double, 3 &gt; &amp;tangent, const double twist)</td></tr>
 <tr class="memdesc:a1641bfc02c962ed37d49b043dc20f3be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a 4-D quaternion from provided tangent vector and twist (radians) about tangent.  <br /></td></tr>
 <tr class="separator:a1641bfc02c962ed37d49b043dc20f3be"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4c68027e8253476d01f7ff4924caf9fe" id="r_a4c68027e8253476d01f7ff4924caf9fe"><td class="memItemLeft" align="right" valign="top">std::array&lt; double, 4 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacekynema_1_1math.html#a4c68027e8253476d01f7ff4924caf9fe">AxisAngleToQuaternion</a> (const std::array&lt; double, 3 &gt; &amp;axis, double angle)</td></tr>
-<tr class="memdesc:a4c68027e8253476d01f7ff4924caf9fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a quaternion from the axis vector and angle (radians)  <br /></td></tr>
-<tr class="separator:a4c68027e8253476d01f7ff4924caf9fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a990d8f612553ef53c1492a2821ca12fa" id="r_a990d8f612553ef53c1492a2821ca12fa"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacekynema_1_1math.html#a990d8f612553ef53c1492a2821ca12fa">IsIdentityQuaternion</a> (const std::array&lt; double, 4 &gt; &amp;q, double tolerance=1e-12)</td></tr>
 <tr class="memdesc:a990d8f612553ef53c1492a2821ca12fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a quaternion is approximately the identity quaternion [1, 0, 0, 0].  <br /></td></tr>
 <tr class="separator:a990d8f612553ef53c1492a2821ca12fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -295,22 +271,10 @@ Functions</h2></td></tr>
 <tr class="memitem:a8d869cbb485659b560364301b6f84379"><td class="memTemplItemLeft" align="right" valign="top">KOKKOS_INLINE_FUNCTION double&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacekynema_1_1math.html#a8d869cbb485659b560364301b6f84379">DotProduct</a> (const AVectorType &amp;a, const BVectorType &amp;b)</td></tr>
 <tr class="memdesc:a8d869cbb485659b560364301b6f84379"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the dot product between two vector views.  <br /></td></tr>
 <tr class="separator:a8d869cbb485659b560364301b6f84379"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aea10e6ca7ef91b245f012755a3d9c5ee" id="r_aea10e6ca7ef91b245f012755a3d9c5ee"><td class="memItemLeft" align="right" valign="top">constexpr double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacekynema_1_1math.html#aea10e6ca7ef91b245f012755a3d9c5ee">DotProduct</a> (const std::array&lt; double, 3 &gt; &amp;a, const std::array&lt; double, 3 &gt; &amp;b)</td></tr>
-<tr class="memdesc:aea10e6ca7ef91b245f012755a3d9c5ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the dot product between two vector views.  <br /></td></tr>
-<tr class="separator:aea10e6ca7ef91b245f012755a3d9c5ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1237209d5686aa38024e89425909e3f9" id="r_a1237209d5686aa38024e89425909e3f9"><td class="memTemplParams" colspan="2">template&lt;typename VectorType &gt; </td></tr>
 <tr class="memitem:a1237209d5686aa38024e89425909e3f9"><td class="memTemplItemLeft" align="right" valign="top">KOKKOS_INLINE_FUNCTION void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacekynema_1_1math.html#a1237209d5686aa38024e89425909e3f9">CrossProduct</a> (const VectorType &amp;a, const VectorType &amp;b, const VectorType &amp;c)</td></tr>
 <tr class="memdesc:a1237209d5686aa38024e89425909e3f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the cross product between two vector views.  <br /></td></tr>
 <tr class="separator:a1237209d5686aa38024e89425909e3f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a99792ad60aad06d8f1b5fd19f12802b4" id="r_a99792ad60aad06d8f1b5fd19f12802b4"><td class="memItemLeft" align="right" valign="top">constexpr std::array&lt; double, 3 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacekynema_1_1math.html#a99792ad60aad06d8f1b5fd19f12802b4">CrossProduct</a> (std::span&lt; const double, 3 &gt; a, std::span&lt; const double, 3 &gt; b)</td></tr>
-<tr class="memdesc:a99792ad60aad06d8f1b5fd19f12802b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the cross product between two vectors.  <br /></td></tr>
-<tr class="separator:a99792ad60aad06d8f1b5fd19f12802b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab88b47af8a54430f9f529981dd5aee47" id="r_ab88b47af8a54430f9f529981dd5aee47"><td class="memItemLeft" align="right" valign="top">constexpr double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacekynema_1_1math.html#ab88b47af8a54430f9f529981dd5aee47">Norm</a> (const std::array&lt; double, 3 &gt; &amp;v)</td></tr>
-<tr class="memdesc:ab88b47af8a54430f9f529981dd5aee47"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the norm of a given vector.  <br /></td></tr>
-<tr class="separator:ab88b47af8a54430f9f529981dd5aee47"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad92a2d56ed92c20ce8847c18a988af44" id="r_ad92a2d56ed92c20ce8847c18a988af44"><td class="memItemLeft" align="right" valign="top">constexpr std::array&lt; double, 3 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacekynema_1_1math.html#ad92a2d56ed92c20ce8847c18a988af44">UnitVector</a> (const std::array&lt; double, 3 &gt; &amp;v)</td></tr>
-<tr class="memdesc:ad92a2d56ed92c20ce8847c18a988af44"><td class="mdescLeft">&#160;</td><td class="mdescRight">UnitVector returns the unit vector of the given vector.  <br /></td></tr>
-<tr class="separator:ad92a2d56ed92c20ce8847c18a988af44"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a1459d47d860f610931a8ede98a78e280" name="a1459d47d860f610931a8ede98a78e280"></a>
@@ -389,44 +353,6 @@ template&lt;typename Matrix , typename Vector &gt; </div>
   </dd>
 </dl>
 <dl class="section pre"><dt>Precondition</dt><dd>Matrix m must be 3x3 and vector v must have size 3 </dd></dl>
-
-</div>
-</div>
-<a id="a4c68027e8253476d01f7ff4924caf9fe" name="a4c68027e8253476d01f7ff4924caf9fe"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4c68027e8253476d01f7ff4924caf9fe">&#9670;&#160;</a></span>AxisAngleToQuaternion()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::array&lt; double, 4 &gt; kynema::math::AxisAngleToQuaternion </td>
-          <td>(</td>
-          <td class="paramtype">const std::array&lt; double, 3 &gt; &amp;&#160;</td>
-          <td class="paramname"><em>axis</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>angle</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Returns a quaternion from the axis vector and angle (radians) </p>
 
 </div>
 </div>
@@ -523,7 +449,7 @@ template&lt;typename Matrix , typename Vector &gt; </div>
 </div>
 </div>
 <a id="a1237209d5686aa38024e89425909e3f9" name="a1237209d5686aa38024e89425909e3f9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1237209d5686aa38024e89425909e3f9">&#9670;&#160;</a></span>CrossProduct() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a1237209d5686aa38024e89425909e3f9">&#9670;&#160;</a></span>CrossProduct()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -560,46 +486,8 @@ template&lt;typename VectorType &gt; </div>
 
 </div>
 </div>
-<a id="a99792ad60aad06d8f1b5fd19f12802b4" name="a99792ad60aad06d8f1b5fd19f12802b4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a99792ad60aad06d8f1b5fd19f12802b4">&#9670;&#160;</a></span>CrossProduct() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr std::array&lt; double, 3 &gt; kynema::math::CrossProduct </td>
-          <td>(</td>
-          <td class="paramtype">std::span&lt; const double, 3 &gt;&#160;</td>
-          <td class="paramname"><em>a</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::span&lt; const double, 3 &gt;&#160;</td>
-          <td class="paramname"><em>b</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Calculate the cross product between two vectors. </p>
-
-</div>
-</div>
 <a id="a8d869cbb485659b560364301b6f84379" name="a8d869cbb485659b560364301b6f84379"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8d869cbb485659b560364301b6f84379">&#9670;&#160;</a></span>DotProduct() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d869cbb485659b560364301b6f84379">&#9670;&#160;</a></span>DotProduct()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -624,44 +512,6 @@ template&lt;typename AVectorType , typename BVectorType &gt; </div>
           <td></td><td></td>
         </tr>
       </table>
-</div><div class="memdoc">
-
-<p>Calculate the dot product between two vector views. </p>
-
-</div>
-</div>
-<a id="aea10e6ca7ef91b245f012755a3d9c5ee" name="aea10e6ca7ef91b245f012755a3d9c5ee"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aea10e6ca7ef91b245f012755a3d9c5ee">&#9670;&#160;</a></span>DotProduct() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr double kynema::math::DotProduct </td>
-          <td>(</td>
-          <td class="paramtype">const std::array&lt; double, 3 &gt; &amp;&#160;</td>
-          <td class="paramname"><em>a</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const std::array&lt; double, 3 &gt; &amp;&#160;</td>
-          <td class="paramname"><em>b</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Calculate the dot product between two vector views. </p>
@@ -1152,34 +1002,6 @@ template&lt;typename AVectorType , typename BVectorType &gt; </div>
 
 </div>
 </div>
-<a id="ab88b47af8a54430f9f529981dd5aee47" name="ab88b47af8a54430f9f529981dd5aee47"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab88b47af8a54430f9f529981dd5aee47">&#9670;&#160;</a></span>Norm()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr double kynema::math::Norm </td>
-          <td>(</td>
-          <td class="paramtype">const std::array&lt; double, 3 &gt; &amp;&#160;</td>
-          <td class="paramname"><em>v</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Calculate the norm of a given vector. </p>
-
-</div>
-</div>
 <a id="a9b5ea67b94098aeeadb3a0cb4bf345e1" name="a9b5ea67b94098aeeadb3a0cb4bf345e1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9b5ea67b94098aeeadb3a0cb4bf345e1">&#9670;&#160;</a></span>NormalizeQuaternion()</h2>
 
@@ -1208,8 +1030,8 @@ template&lt;typename AVectorType , typename BVectorType &gt; </div>
 
 </div>
 </div>
-<a id="a8ab24abfc64d85df30632483da92982e" name="a8ab24abfc64d85df30632483da92982e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8ab24abfc64d85df30632483da92982e">&#9670;&#160;</a></span>PerformLeastSquaresFitting()</h2>
+<a id="a61be35286083ec1cb31e827143dc5438" name="a61be35286083ec1cb31e827143dc5438"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61be35286083ec1cb31e827143dc5438">&#9670;&#160;</a></span>PerformLeastSquaresFitting()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1220,12 +1042,6 @@ template&lt;typename AVectorType , typename BVectorType &gt; </div>
         <tr>
           <td class="memname">std::vector&lt; std::array&lt; double, 3 &gt; &gt; kynema::math::PerformLeastSquaresFitting </td>
           <td>(</td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>p</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
           <td class="paramtype">std::span&lt; const std::vector&lt; double &gt; &gt;&#160;</td>
           <td class="paramname"><em>shape_functions</em>, </td>
         </tr>
@@ -1252,7 +1068,6 @@ template&lt;typename AVectorType , typename BVectorType &gt; </div>
 <p>Performs least squares fitting to determine interpolation coefficients by solving a dense linear system [A][X] = [B], where [A] is the shape function matrix (p x n), [B] is the input points (n x 3), and [X] is the interpolation coefficients (p x 3)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">p</td><td>Number of points representing the polynomial of order p-1 </td></tr>
     <tr><td class="paramname">shape_functions</td><td>Shape function matrix (p x n) </td></tr>
     <tr><td class="paramname">points_to_fit</td><td>x,y,z coordinates of the points to fit (n x 3) </td></tr>
   </table>
@@ -1321,7 +1136,7 @@ template&lt;typename AVectorType , typename BVectorType &gt; </div>
 </div>
 </div>
 <a id="a1ee21a28df439eabcc9f3c5bacf27d70" name="a1ee21a28df439eabcc9f3c5bacf27d70"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1ee21a28df439eabcc9f3c5bacf27d70">&#9670;&#160;</a></span>QuaternionCompose() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ee21a28df439eabcc9f3c5bacf27d70">&#9670;&#160;</a></span>QuaternionCompose()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1358,44 +1173,6 @@ template&lt;typename Quaternion1 , typename Quaternion2 , typename QuaternionN &
 
 </div>
 </div>
-<a id="a06c851fd2350d6d04647a4a6cc4e86ae" name="a06c851fd2350d6d04647a4a6cc4e86ae"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a06c851fd2350d6d04647a4a6cc4e86ae">&#9670;&#160;</a></span>QuaternionCompose() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::array&lt; double, 4 &gt; kynema::math::QuaternionCompose </td>
-          <td>(</td>
-          <td class="paramtype">const std::array&lt; double, 4 &gt; &amp;&#160;</td>
-          <td class="paramname"><em>q1</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const std::array&lt; double, 4 &gt; &amp;&#160;</td>
-          <td class="paramname"><em>q2</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Composes (i.e. multiplies) two quaternions and returns the result. </p>
-
-</div>
-</div>
 <a id="ae69056e5ab2dff263866d8301e212b77" name="ae69056e5ab2dff263866d8301e212b77"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae69056e5ab2dff263866d8301e212b77">&#9670;&#160;</a></span>QuaternionDerivative()</h2>
 
@@ -1429,7 +1206,7 @@ template&lt;typename Quaternion , typename Matrix &gt; </div>
 </div>
 </div>
 <a id="af87bcca912aeb86bd49db57abe613f14" name="af87bcca912aeb86bd49db57abe613f14"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af87bcca912aeb86bd49db57abe613f14">&#9670;&#160;</a></span>QuaternionInverse() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#af87bcca912aeb86bd49db57abe613f14">&#9670;&#160;</a></span>QuaternionInverse()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1460,36 +1237,8 @@ template&lt;typename QuaternionInput , typename QuaternionOutput &gt; </div>
 
 </div>
 </div>
-<a id="a0cc13c59521ea1e732fdbc637b4a7f2f" name="a0cc13c59521ea1e732fdbc637b4a7f2f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0cc13c59521ea1e732fdbc637b4a7f2f">&#9670;&#160;</a></span>QuaternionInverse() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::array&lt; double, 4 &gt; kynema::math::QuaternionInverse </td>
-          <td>(</td>
-          <td class="paramtype">std::span&lt; const double, 4 &gt;&#160;</td>
-          <td class="paramname"><em>quaternion</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Computes the inverse of a quaternion. </p>
-
-</div>
-</div>
 <a id="adf373b0e69059a2cf9c9b4b15977aa7b" name="adf373b0e69059a2cf9c9b4b15977aa7b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adf373b0e69059a2cf9c9b4b15977aa7b">&#9670;&#160;</a></span>QuaternionToRotationMatrix() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#adf373b0e69059a2cf9c9b4b15977aa7b">&#9670;&#160;</a></span>QuaternionToRotationMatrix()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1520,36 +1269,8 @@ template&lt;typename Quaternion , typename RotationMatrix &gt; </div>
 
 </div>
 </div>
-<a id="a7287ec3ae4409a3ce3130c90b6f8a58c" name="a7287ec3ae4409a3ce3130c90b6f8a58c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7287ec3ae4409a3ce3130c90b6f8a58c">&#9670;&#160;</a></span>QuaternionToRotationMatrix() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::array&lt; std::array&lt; double, 3 &gt;, 3 &gt; kynema::math::QuaternionToRotationMatrix </td>
-          <td>(</td>
-          <td class="paramtype">const std::array&lt; double, 4 &gt; &amp;&#160;</td>
-          <td class="paramname"><em>q</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Converts a 4x1 quaternion to a 3x3 rotation matrix and returns the result. </p>
-
-</div>
-</div>
 <a id="a06d59782b98eb0421bc143aea3f00d1a" name="a06d59782b98eb0421bc143aea3f00d1a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a06d59782b98eb0421bc143aea3f00d1a">&#9670;&#160;</a></span>QuaternionToRotationVector() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a06d59782b98eb0421bc143aea3f00d1a">&#9670;&#160;</a></span>QuaternionToRotationVector()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1577,34 +1298,6 @@ template&lt;typename Quaternion , typename Vector &gt; </div>
 </div><div class="memdoc">
 
 <p>Returns a 3-D rotation vector from provided 4-D quaternion, i.e. the logarithmic map. </p>
-
-</div>
-</div>
-<a id="ac6a0ce44a4462dd3a42ce2b1c28f3c14" name="ac6a0ce44a4462dd3a42ce2b1c28f3c14"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac6a0ce44a4462dd3a42ce2b1c28f3c14">&#9670;&#160;</a></span>QuaternionToRotationVector() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::array&lt; double, 3 &gt; kynema::math::QuaternionToRotationVector </td>
-          <td>(</td>
-          <td class="paramtype">const std::array&lt; double, 4 &gt; &amp;&#160;</td>
-          <td class="paramname"><em>quaternion</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Returns a 3-D rotation vector from provided 4-D quaternion. </p>
 
 </div>
 </div>
@@ -1645,7 +1338,7 @@ template&lt;typename Quaternion , typename Vector &gt; </div>
 </div>
 </div>
 <a id="aa000e1f3373e87b8744b1552b83ad232" name="aa000e1f3373e87b8744b1552b83ad232"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa000e1f3373e87b8744b1552b83ad232">&#9670;&#160;</a></span>RotateVectorByQuaternion() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aa000e1f3373e87b8744b1552b83ad232">&#9670;&#160;</a></span>RotateVectorByQuaternion()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1682,102 +1375,8 @@ template&lt;typename Quaternion , typename View1 , typename View2 &gt; </div>
 
 </div>
 </div>
-<a id="a9e8cb68447e1c691d8adeb2a9f30c1a1" name="a9e8cb68447e1c691d8adeb2a9f30c1a1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9e8cb68447e1c691d8adeb2a9f30c1a1">&#9670;&#160;</a></span>RotateVectorByQuaternion() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::array&lt; double, 3 &gt; kynema::math::RotateVectorByQuaternion </td>
-          <td>(</td>
-          <td class="paramtype">std::span&lt; const double, 4 &gt;&#160;</td>
-          <td class="paramname"><em>q</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::span&lt; const double, 3 &gt;&#160;</td>
-          <td class="paramname"><em>v</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Rotates provided vector by provided <em>unit</em> quaternion and returns the result. </p>
-
-</div>
-</div>
-<a id="a3cfbc31bd5c1916e12111325d79bb947" name="a3cfbc31bd5c1916e12111325d79bb947"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3cfbc31bd5c1916e12111325d79bb947">&#9670;&#160;</a></span>RotationMatrixToQuaternion()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::array&lt; double, 4 &gt; kynema::math::RotationMatrixToQuaternion </td>
-          <td>(</td>
-          <td class="paramtype">const std::array&lt; std::array&lt; double, 3 &gt;, 3 &gt; &amp;&#160;</td>
-          <td class="paramname"><em>m</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Converts a 3x3 rotation matrix to a 4x1 quaternion and returns the result, see <a href="https://www.euclideanspace.com/maths/geometry/rotations/conversions/matrixToQuaternion/">https://www.euclideanspace.com/maths/geometry/rotations/conversions/matrixToQuaternion/</a> for implementation details. </p>
-
-</div>
-</div>
-<a id="ac5f4d3a64e66434c86c9722122fea24e" name="ac5f4d3a64e66434c86c9722122fea24e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac5f4d3a64e66434c86c9722122fea24e">&#9670;&#160;</a></span>RotationVectorToQuaternion() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::array&lt; double, 4 &gt; kynema::math::RotationVectorToQuaternion </td>
-          <td>(</td>
-          <td class="paramtype">const std::array&lt; double, 3 &gt; &amp;&#160;</td>
-          <td class="paramname"><em>phi</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Returns a 4-D quaternion from provided 3-D rotation vector, i.e. the exponential map. </p>
-
-</div>
-</div>
 <a id="a735a2c2c1e0b67cb7feab767c3f1c0bd" name="a735a2c2c1e0b67cb7feab767c3f1c0bd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a735a2c2c1e0b67cb7feab767c3f1c0bd">&#9670;&#160;</a></span>RotationVectorToQuaternion() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a735a2c2c1e0b67cb7feab767c3f1c0bd">&#9670;&#160;</a></span>RotationVectorToQuaternion()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1843,34 +1442,6 @@ template&lt;typename Vector , typename Quaternion &gt; </div>
 </div><div class="memdoc">
 
 <p>Returns a 4-D quaternion from provided tangent vector and twist (radians) about tangent. </p>
-
-</div>
-</div>
-<a id="ad92a2d56ed92c20ce8847c18a988af44" name="ad92a2d56ed92c20ce8847c18a988af44"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad92a2d56ed92c20ce8847c18a988af44">&#9670;&#160;</a></span>UnitVector()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr std::array&lt; double, 3 &gt; kynema::math::UnitVector </td>
-          <td>(</td>
-          <td class="paramtype">const std::array&lt; double, 3 &gt; &amp;&#160;</td>
-          <td class="paramname"><em>v</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>UnitVector returns the unit vector of the given vector. </p>
 
 </div>
 </div>

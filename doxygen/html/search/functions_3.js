@@ -75,5 +75,5 @@ var searchData=
   ['createsystemwithsolver_72',['CreateSystemWithSolver',['../classkynema_1_1Model.html#ab62a7023353b3ac54774b5e52c1864e7',1,'kynema::Model']]],
   ['createtrapezoidalquadrature_73',['CreateTrapezoidalQuadrature',['../namespacekynema_1_1beams.html#a214c993e533aa7f86308b9f988ba6605',1,'kynema::beams']]],
   ['createturbine_74',['CreateTurbine',['../namespacekynema_1_1interfaces_1_1cfd.html#a4b687150f79bf199dda19aed803a9dea',1,'kynema::interfaces::cfd']]],
-  ['crossproduct_75',['crossproduct',['../namespacekynema_1_1math.html#a1237209d5686aa38024e89425909e3f9',1,'kynema::math::CrossProduct(const VectorType &amp;a, const VectorType &amp;b, const VectorType &amp;c)'],['../namespacekynema_1_1math.html#a99792ad60aad06d8f1b5fd19f12802b4',1,'kynema::math::CrossProduct(std::span&lt; const double, 3 &gt; a, std::span&lt; const double, 3 &gt; b)']]]
+  ['crossproduct_75',['CrossProduct',['../namespacekynema_1_1math.html#a1237209d5686aa38024e89425909e3f9',1,'kynema::math']]]
 ];

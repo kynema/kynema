@@ -61,7 +61,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#dependencies">Dependencies</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#installing-third-party-libraries">Installing Third Party Libraries</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#clone-the-spack-repository-load-the-spack-environment-and-let-spack-learn-about-your-system">Clone the spack repository, load the spack environment, and let spack learn about your system</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#install-googletest-netcdf-suite-sparse-and-lapack">Install GoogleTest, netCDF, Suite-Sparse, and LAPACK</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#install-googletest-netcdf-suite-sparse-and-eigen">Install GoogleTest, netCDF, Suite-Sparse, and Eigen</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#install-kokkos-and-kokkos-kernels">Install Kokkos and Kokkos Kernels</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#load-the-tpls-into-your-environment">Load the TPLs into your environment</a></li>
 </ul>
@@ -191,7 +191,7 @@ The main complication here is that developers will have to manage their environm
 <li><p><a class="reference external" href="https://github.com/kokkos/kokkoskernels">KokkosKernels</a>: performance portable linear algebra library</p></li>
 <li><p><a class="reference external" href="https://github.com/Unidata/netcdf-c">netCDF</a>: I/O data Format</p></li>
 <li><p><a class="reference external" href="https://github.com/DrTimothyAldenDavis/SuiteSparse">Suite-Sparse</a>: For the KLU sparse direct solver.  Other solvers, such as SuperLU are also possible to use.</p></li>
-<li><p>A LAPACK implementation, such as <a class="reference external" href="https://github.com/OpenMathLib/OpenBLAS">OpenBLAS</a> or <a class="reference external" href="https://github.com/Reference-LAPACK/lapack">netlib-lapack</a></p></li>
+<li><p><a class="reference external" href="http://eigen.tuxfamily.org/">Eigen</a>: For the Eigen linear algebra package</p></li>
 <li><p><a class="reference external" href="https://github.com/jbeder/yaml-cpp">yaml-cpp</a>: A package for reading YAML files, to be used by regression tests</p></li>
 <li><p><a class="reference external" href="https://github.com/google/googletest">GoogleTest</a>: unit testing package</p></li>
 </ul>
@@ -210,11 +210,11 @@ spack<span class="w"> </span>external<span class="w"> </span>find
 </pre></div>
 </div>
 </div>
-<div class="section" id="install-googletest-netcdf-suite-sparse-and-lapack">
-<h3>Install GoogleTest, netCDF, Suite-Sparse, and LAPACK<a class="headerlink" href="#install-googletest-netcdf-suite-sparse-and-lapack" title="Permalink to this heading"></a></h3>
+<div class="section" id="install-googletest-netcdf-suite-sparse-and-eigen">
+<h3>Install GoogleTest, netCDF, Suite-Sparse, and Eigen<a class="headerlink" href="#install-googletest-netcdf-suite-sparse-and-eigen" title="Permalink to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>spack<span class="w"> </span>install<span class="w"> </span>googletest
 spack<span class="w"> </span>install<span class="w"> </span>netcdf-c
-spack<span class="w"> </span>install<span class="w"> </span>lapack
+spack<span class="w"> </span>install<span class="w"> </span>eigen
 spack<span class="w"> </span>install<span class="w"> </span>suite-sparse
 </pre></div>
 </div>
@@ -247,7 +247,7 @@ spack<span class="w"> </span>install<span class="w"> </span>kokkos-kernels+rocbl
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>spack<span class="w"> </span>load<span class="w"> </span>googletest
 spack<span class="w"> </span>load<span class="w"> </span>suite-sparse
 spack<span class="w"> </span>load<span class="w"> </span>netcdf-c
-spack<span class="w"> </span>load<span class="w"> </span>lapack
+spack<span class="w"> </span>load<span class="w"> </span>eigen
 spack<span class="w"> </span>load<span class="w"> </span>kokkos
 spack<span class="w"> </span>load<span class="w"> </span>kokkos-kernels
 </pre></div>

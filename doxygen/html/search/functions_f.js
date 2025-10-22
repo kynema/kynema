@@ -1,9 +1,9 @@
 var searchData=
 [
   ['quaternion_5fto_5frotation_5fmatrix_0',['quaternion_to_rotation_matrix',['../namespacegenerate__vtk__output.html#ad02b6509c9d0e3e508d4a9d3fab40c07',1,'generate_vtk_output']]],
-  ['quaternioncompose_1',['quaternioncompose',['../namespacekynema_1_1math.html#a1ee21a28df439eabcc9f3c5bacf27d70',1,'kynema::math::QuaternionCompose(const Quaternion1 &amp;q1, const Quaternion2 &amp;q2, QuaternionN &amp;qn)'],['../namespacekynema_1_1math.html#a06c851fd2350d6d04647a4a6cc4e86ae',1,'kynema::math::QuaternionCompose(const std::array&lt; double, 4 &gt; &amp;q1, const std::array&lt; double, 4 &gt; &amp;q2)']]],
+  ['quaternioncompose_1',['QuaternionCompose',['../namespacekynema_1_1math.html#a1ee21a28df439eabcc9f3c5bacf27d70',1,'kynema::math']]],
   ['quaternionderivative_2',['QuaternionDerivative',['../namespacekynema_1_1math.html#ae69056e5ab2dff263866d8301e212b77',1,'kynema::math']]],
-  ['quaternioninverse_3',['quaternioninverse',['../namespacekynema_1_1math.html#af87bcca912aeb86bd49db57abe613f14',1,'kynema::math::QuaternionInverse(const QuaternionInput &amp;q_in, const QuaternionOutput &amp;q_out)'],['../namespacekynema_1_1math.html#a0cc13c59521ea1e732fdbc637b4a7f2f',1,'kynema::math::QuaternionInverse(std::span&lt; const double, 4 &gt; quaternion)']]],
-  ['quaterniontorotationmatrix_4',['quaterniontorotationmatrix',['../namespacekynema_1_1math.html#adf373b0e69059a2cf9c9b4b15977aa7b',1,'kynema::math::QuaternionToRotationMatrix(const Quaternion &amp;q, const RotationMatrix &amp;R)'],['../namespacekynema_1_1math.html#a7287ec3ae4409a3ce3130c90b6f8a58c',1,'kynema::math::QuaternionToRotationMatrix(const std::array&lt; double, 4 &gt; &amp;q)']]],
-  ['quaterniontorotationvector_5',['quaterniontorotationvector',['../namespacekynema_1_1math.html#a06d59782b98eb0421bc143aea3f00d1a',1,'kynema::math::QuaternionToRotationVector(const Quaternion &amp;quaternion, const Vector &amp;phi)'],['../namespacekynema_1_1math.html#ac6a0ce44a4462dd3a42ce2b1c28f3c14',1,'kynema::math::QuaternionToRotationVector(const std::array&lt; double, 4 &gt; &amp;quaternion)']]]
+  ['quaternioninverse_3',['QuaternionInverse',['../namespacekynema_1_1math.html#af87bcca912aeb86bd49db57abe613f14',1,'kynema::math']]],
+  ['quaterniontorotationmatrix_4',['QuaternionToRotationMatrix',['../namespacekynema_1_1math.html#adf373b0e69059a2cf9c9b4b15977aa7b',1,'kynema::math']]],
+  ['quaterniontorotationvector_5',['QuaternionToRotationVector',['../namespacekynema_1_1math.html#a06d59782b98eb0421bc143aea3f00d1a',1,'kynema::math']]]
 ];

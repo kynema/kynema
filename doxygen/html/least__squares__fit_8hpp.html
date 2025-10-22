@@ -178,8 +178,7 @@ $(function() {
 <code>#include &lt;span&gt;</code><br />
 <code>#include &lt;stdexcept&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
-<code>#include &lt;Kokkos_Core.hpp&gt;</code><br />
-<code>#include &quot;Kynema_config.h&quot;</code><br />
+<code>#include &lt;Eigen/Dense&gt;</code><br />
 <code>#include &quot;<a class="el" href="interpolation_8hpp_source.html">interpolation.hpp</a>&quot;</code><br />
 </div>
 <p><a href="least__squares__fit_8hpp_source.html">Go to the source code of this file.</a></p>
@@ -202,9 +201,9 @@ Functions</h2></td></tr>
 <tr class="memitem:aeb7f27e797612c16751b40e66523f33c" id="r_aeb7f27e797612c16751b40e66523f33c"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacekynema_1_1math.html#aeb7f27e797612c16751b40e66523f33c">kynema::math::ComputeShapeFunctionDerivatives</a> (std::span&lt; const double &gt; input_points, std::span&lt; const double &gt; output_points)</td></tr>
 <tr class="memdesc:aeb7f27e797612c16751b40e66523f33c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes shape function derivatives dϕg relating points ξb to ξg At least two input points are required and it is assumed that there are more output points than input points.  <br /></td></tr>
 <tr class="separator:aeb7f27e797612c16751b40e66523f33c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8ab24abfc64d85df30632483da92982e" id="r_a8ab24abfc64d85df30632483da92982e"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::array&lt; double, 3 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacekynema_1_1math.html#a8ab24abfc64d85df30632483da92982e">kynema::math::PerformLeastSquaresFitting</a> (size_t p, std::span&lt; const std::vector&lt; double &gt; &gt; shape_functions, std::span&lt; const std::array&lt; double, 3 &gt; &gt; points_to_fit)</td></tr>
-<tr class="memdesc:a8ab24abfc64d85df30632483da92982e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs least squares fitting to determine interpolation coefficients.  <br /></td></tr>
-<tr class="separator:a8ab24abfc64d85df30632483da92982e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61be35286083ec1cb31e827143dc5438" id="r_a61be35286083ec1cb31e827143dc5438"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::array&lt; double, 3 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacekynema_1_1math.html#a61be35286083ec1cb31e827143dc5438">kynema::math::PerformLeastSquaresFitting</a> (std::span&lt; const std::vector&lt; double &gt; &gt; shape_functions, std::span&lt; const std::array&lt; double, 3 &gt; &gt; points_to_fit)</td></tr>
+<tr class="memdesc:a61be35286083ec1cb31e827143dc5438"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs least squares fitting to determine interpolation coefficients.  <br /></td></tr>
+<tr class="separator:a61be35286083ec1cb31e827143dc5438"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 <!-- start footer part -->

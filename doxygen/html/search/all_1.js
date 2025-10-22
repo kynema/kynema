@@ -24,10 +24,10 @@ var searchData=
   ['addprescribedbc3dofs_21',['AddPrescribedBC3DOFs',['../classkynema_1_1Model.html#a0ac414d77a57a4fede4c8e289d66829b',1,'kynema::Model']]],
   ['addrefaxispoint_22',['AddRefAxisPoint',['../classkynema_1_1interfaces_1_1components_1_1BeamBuilder.html#ada924d936c994ef14cdefa9995aa5f67',1,'kynema::interfaces::components::BeamBuilder']]],
   ['addrefaxistwist_23',['AddRefAxisTwist',['../classkynema_1_1interfaces_1_1components_1_1BeamBuilder.html#a6ca589607f41d4009bba8c600d9533cb',1,'kynema::interfaces::components::BeamBuilder']]],
-  ['addrevolutejointconstraint_24',['AddRevoluteJointConstraint',['../classkynema_1_1Model.html#ab361d751aa202cb2f09089db7ce18999',1,'kynema::Model']]],
-  ['addrigidjoint6dofsto3dofs_25',['AddRigidJoint6DOFsTo3DOFs',['../classkynema_1_1Model.html#a01b5fe52f9285aee4e27d9c2392a1791',1,'kynema::Model']]],
-  ['addrigidjointconstraint_26',['AddRigidJointConstraint',['../classkynema_1_1Model.html#a94647c3450b9b2863542f1a9485e9bae',1,'kynema::Model']]],
-  ['addrotationcontrol_27',['AddRotationControl',['../classkynema_1_1Model.html#a242e202b02f3d32e1ce04e1b53e9864c',1,'kynema::Model']]],
+  ['addrevolutejointconstraint_24',['AddRevoluteJointConstraint',['../classkynema_1_1Model.html#ad45b00f7b7d32fbe8a9dfe7f74594ad7',1,'kynema::Model']]],
+  ['addrigidjoint6dofsto3dofs_25',['AddRigidJoint6DOFsTo3DOFs',['../classkynema_1_1Model.html#a9d18e82aab9e55a5a22c1cc16d9ee57f',1,'kynema::Model']]],
+  ['addrigidjointconstraint_26',['AddRigidJointConstraint',['../classkynema_1_1Model.html#af6f557be2f99a322beebcda849cd3b14',1,'kynema::Model']]],
+  ['addrotationcontrol_27',['AddRotationControl',['../classkynema_1_1Model.html#a3bfe97d8d9d5e85e7e010658796a64cf',1,'kynema::Model']]],
   ['addsection_28',['AddSection',['../classkynema_1_1interfaces_1_1components_1_1BeamBuilder.html#aa7784ac19578a71e2f275645cb353ceb',1,'kynema::interfaces::components::BeamBuilder']]],
   ['addspringelement_29',['AddSpringElement',['../classkynema_1_1Model.html#ae776db17c3146243afcf119f775498d2',1,'kynema::Model']]],
   ['addspringelementconnectivity_30',['AddSpringElementConnectivity',['../classkynema_1_1model_1_1MeshConnectivity.html#a4d942a49ff4fa24b35ffa590983e8743',1,'kynema::model::MeshConnectivity']]],
@@ -89,8 +89,7 @@ var searchData=
   ['axes_5f_86',['axes_',['../structkynema_1_1constraints_1_1CalculateConstraintResidualGradient.html#a295f5af3566b19742ef3ae07b960deb7',1,'kynema::constraints::CalculateConstraintResidualGradient']]],
   ['axialvectorofmatrix_87',['AxialVectorOfMatrix',['../namespacekynema_1_1math.html#afbf0e2026878c8edf141f7c4ad011119',1,'kynema::math']]],
   ['axis_5fvector_88',['axis_vector',['../structkynema_1_1constraints_1_1Constraint.html#a7b4ecc2b9bb649e76eb384945ffbf2d8',1,'kynema::constraints::Constraint']]],
-  ['axisangletoquaternion_89',['AxisAngleToQuaternion',['../namespacekynema_1_1math.html#a4c68027e8253476d01f7ff4924caf9fe',1,'kynema::math']]],
-  ['azimuth_5fangle_90',['azimuth_angle',['../structkynema_1_1util_1_1ControllerIO.html#a6e6156fde71a76e01506611256076493',1,'kynema::util::ControllerIO::azimuth_angle'],['../structkynema_1_1interfaces_1_1components_1_1TurbineInput.html#aca635d1aba0f1e6ec1967d8b980fea04',1,'kynema::interfaces::components::TurbineInput::azimuth_angle']]],
-  ['azimuth_5fnode_91',['azimuth_node',['../classkynema_1_1interfaces_1_1components_1_1Turbine.html#ab532ffc31851dc6992a67fa3cc7273a7',1,'kynema::interfaces::components::Turbine']]],
-  ['azimuth_5fto_5fhub_92',['azimuth_to_hub',['../classkynema_1_1interfaces_1_1components_1_1Turbine.html#a76d0877429a506b0292a82ee68829704',1,'kynema::interfaces::components::Turbine']]]
+  ['azimuth_5fangle_89',['azimuth_angle',['../structkynema_1_1util_1_1ControllerIO.html#a6e6156fde71a76e01506611256076493',1,'kynema::util::ControllerIO::azimuth_angle'],['../structkynema_1_1interfaces_1_1components_1_1TurbineInput.html#aca635d1aba0f1e6ec1967d8b980fea04',1,'kynema::interfaces::components::TurbineInput::azimuth_angle']]],
+  ['azimuth_5fnode_90',['azimuth_node',['../classkynema_1_1interfaces_1_1components_1_1Turbine.html#ab532ffc31851dc6992a67fa3cc7273a7',1,'kynema::interfaces::components::Turbine']]],
+  ['azimuth_5fto_5fhub_91',['azimuth_to_hub',['../classkynema_1_1interfaces_1_1components_1_1Turbine.html#a76d0877429a506b0292a82ee68829704',1,'kynema::interfaces::components::Turbine']]]
 ];
