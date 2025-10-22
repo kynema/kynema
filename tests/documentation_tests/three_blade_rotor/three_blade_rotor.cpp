@@ -1,8 +1,8 @@
 #include <array>
 #include <cassert>
 
-#include <Kokkos_Core.hpp>
 #include <Eigen/Dense>
+#include <Kokkos_Core.hpp>
 #include <model/model.hpp>
 #include <step/step.hpp>
 
@@ -149,9 +149,8 @@ int main() {
             const auto omega_vector = Eigen::Matrix<double, 3, 1>(&velocity[3]);
             const auto omega_axis = omega_vector.normalized();
             const auto omega = omega_vector.norm() * step_size * static_cast<double>(i + 1);
-            const auto q_hub = Eigen::Quaternion<double>(
-                Eigen::AngleAxis<double>(omega, omega_axis)
-            );
+            const auto q_hub =
+                Eigen::Quaternion<double>(Eigen::AngleAxis<double>(omega, omega_axis));
             const auto u_hub = std::array{0., 0., 0., q_hub.w(), q_hub.x(), q_hub.y(), q_hub.z()};
             constraints.UpdateDisplacement(hub_bc_id, u_hub);
             [[maybe_unused]] const auto converged =

@@ -1,7 +1,7 @@
 #include "turbine_builder.hpp"
 
-#include "turbine.hpp"
 #include "model/model.hpp"
+#include "turbine.hpp"
 
 namespace kynema::interfaces::components {
 [[nodiscard]] const TurbineInput& TurbineBuilder::Input() {
