@@ -94,9 +94,8 @@ void Beam::CreateNodeGeometry(const BeamInput& input) {
         const auto kp_xi = math::MapGeometricLocations(input.ref_axis.coordinate_grid);
         const auto gll_points = math::GenerateGLLPoints(n_geometry_pts - 1);
         const auto phi_kn_geometry = math::ComputeShapeFunctionValues(kp_xi, gll_points);
-        const auto geometry_points = math::PerformLeastSquaresFitting(
-            n_geometry_pts, phi_kn_geometry, input.ref_axis.coordinates
-        );
+        const auto geometry_points =
+            math::PerformLeastSquaresFitting(phi_kn_geometry, input.ref_axis.coordinates);
         this->node_coordinates =
             math::ProjectPointsToTargetPolynomial(n_geometry_pts, n_nodes, geometry_points);
 
@@ -105,7 +104,7 @@ void Beam::CreateNodeGeometry(const BeamInput& input) {
         const auto kp_xi = math::MapGeometricLocations(input.ref_axis.coordinate_grid);
         const auto phi_kn = math::ComputeShapeFunctionValues(kp_xi, this->node_xi);
         this->node_coordinates =
-            math::PerformLeastSquaresFitting(n_nodes, phi_kn, input.ref_axis.coordinates);
+            math::PerformLeastSquaresFitting(phi_kn, input.ref_axis.coordinates);
     }
 
     // Calculate tangent vectors at each node

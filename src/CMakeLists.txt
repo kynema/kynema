@@ -58,7 +58,6 @@ endif()
 #--------------------------------------------------------------------------
 target_link_system_libraries(kynema_library PUBLIC
   KokkosKernels::kokkoskernels
-  LAPACK::LAPACK
   Eigen3::Eigen
   ${YAML_CPP_TARGET}
   ${FS_LIB}
@@ -115,15 +114,6 @@ add_shared_library(DISCON_ROTOR_TEST_CONTROLLER)
 #----------------------------------------
 # Set include directories
 #----------------------------------------
-if(Kynema_ENABLE_MKL)
-else()
-find_path(LAPACKE_INCLUDE_DIRS lapacke.h)
-target_include_directories(kynema_library SYSTEM
- PUBLIC
-${LAPACKE_INCLUDE_DIRS}
-)
-endif()
-
 target_include_directories(kynema_library
   PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>
