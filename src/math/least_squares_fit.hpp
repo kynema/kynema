@@ -115,7 +115,6 @@ inline std::vector<std::vector<double>> ComputeShapeFunctionDerivatives(
  *          function matrix (p x n), [B] is the input points (n x 3), and [X] is the
  *          interpolation coefficients (p x 3)
  *
- * @param p Number of points representing the polynomial of order p-1
  * @param shape_functions Shape function matrix (p x n)
  * @param points_to_fit x,y,z coordinates of the points to fit (n x 3)
  * @return Interpolation coefficients (p x 3)
@@ -124,7 +123,7 @@ inline std::vector<std::array<double, 3>> PerformLeastSquaresFitting(
     std::span<const std::vector<double>> shape_functions,
     std::span<const std::array<double, 3>> points_to_fit
 ) {
-    const auto p = shape_functions.size();
+    const auto p = static_cast<unsigned>(shape_functions.size());
     const auto n = shape_functions.front().size();
     if (std::ranges::any_of(shape_functions, [n](const auto& row) {
             return row.size() != n;
