@@ -6,7 +6,7 @@
 #include "step/step.hpp"
 #include "step/step_parameters.hpp"
 
-namespace kynema::tests {
+namespace {
 
 /*
  * A simple spring-mass system with one mass attached to a fixed point by a spring.
@@ -22,7 +22,7 @@ namespace kynema::tests {
  */
 template <typename DeviceType>
 inline auto SetUpSpringMassSystem() {
-    auto model = Model();
+    auto model = kynema::Model();
 
     // Add two nodes for the spring element
     const auto fixed_node_id =
@@ -62,7 +62,7 @@ inline auto SetUpSpringMassSystem() {
     constexpr size_t max_iter(6);
     constexpr double rho_inf(0.);                                // No damping
     const double step_size(T / static_cast<double>(num_steps));  // Calculate step size
-    auto parameters = StepParameters(is_dynamic_solve, max_iter, step_size, rho_inf);
+    auto parameters = kynema::StepParameters(is_dynamic_solve, max_iter, step_size, rho_inf);
 
     // Create solver, elements, constraints, and state
     auto [state, elements, constraints, solver] = model.CreateSystemWithSolver<DeviceType>();
@@ -93,17 +93,6 @@ inline auto SetUpSpringMassSystem() {
     }
 }
 
-TEST(SpringMassSystemTest, FinalDisplacement) {
-    using DeviceType =
-        Kokkos::Device<Kokkos::DefaultExecutionSpace, Kokkos::DefaultExecutionSpace::memory_space>;
-    SetUpSpringMassSystem<DeviceType>();
-}
-
-TEST(SpringMassSystemTest, FinalDisplacement_Host) {
-    using DeviceType = Kokkos::Device<Kokkos::Serial, Kokkos::HostSpace>;
-    SetUpSpringMassSystem<DeviceType>();
-}
-
 /*
  * A chain of identical masses held together by identical springs and anchored at both ends.
  * When the masses are equidistant from eachother, the system shoud stay in perfect static
@@ -115,7 +104,7 @@ TEST(SpringMassSystemTest, FinalDisplacement_Host) {
  * A ---/\/\/--- M ---/\/\/--- M ---/\/\/--- M ---/\/\/--- A
  */
 inline auto SetUpSpringMassChainSystem() {
-    auto model = Model();
+    auto model = kynema::Model();
 
     // Add nodes for each mass and an anchor point on each side
     constexpr auto number_of_masses = 10U;
@@ -166,7 +155,7 @@ inline auto SetUpSpringMassChainSystem() {
     constexpr double rho_inf(0.);
     const double final_time = 2. * std::numbers::pi * sqrt(m / k);
     const double step_size(final_time / static_cast<double>(num_steps));
-    auto parameters = StepParameters(is_dynamic_solve, max_iter, step_size, rho_inf);
+    auto parameters = kynema::StepParameters(is_dynamic_solve, max_iter, step_size, rho_inf);
 
     auto q = Kokkos::create_mirror_view(Kokkos::WithoutInitializing, state.q);
 
@@ -179,6 +168,21 @@ inline auto SetUpSpringMassChainSystem() {
             EXPECT_NEAR(q(node, 0), 0., 1.e-14);
         }
     }
+}
+
+}  // namespace
+
+namespace kynema::tests {
+
+TEST(SpringMassSystemTest, FinalDisplacement) {
+    using DeviceType =
+        Kokkos::Device<Kokkos::DefaultExecutionSpace, Kokkos::DefaultExecutionSpace::memory_space>;
+    SetUpSpringMassSystem<DeviceType>();
+}
+
+TEST(SpringMassSystemTest, FinalDisplacement_Host) {
+    using DeviceType = Kokkos::Device<Kokkos::Serial, Kokkos::HostSpace>;
+    SetUpSpringMassSystem<DeviceType>();
 }
 
 TEST(SpringMassChainSystemTest, FinalDisplacement) {

@@ -39,7 +39,7 @@ struct IntegrateInertiaMatrixElement {
 
         constexpr auto width = simd_type::size();
         const auto extra_component = num_nodes % width == 0U ? 0U : 1U;
-        const auto num_simd_nodes = num_nodes / width + extra_component;
+        const auto num_simd_nodes = (num_nodes / width) + extra_component;
         const auto node = node_simd_node / num_simd_nodes;
         const auto simd_node = (node_simd_node % num_simd_nodes) * width;
 
@@ -59,7 +59,7 @@ struct IntegrateInertiaMatrixElement {
             const auto Guu_local = subview(qp_Guu, qp, ALL);
             for (auto component = 0; component < 36; ++component) {
                 const auto contribution = simd_type(
-                    beta_prime_ * Muu_local(component) + gamma_prime_ * Guu_local(component)
+                    (beta_prime_ * Muu_local(component)) + (gamma_prime_ * Guu_local(component))
                 );
                 local_M[component] = local_M[component] + coeff * contribution;
             }

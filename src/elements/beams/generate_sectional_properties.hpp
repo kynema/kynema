@@ -48,8 +48,10 @@ static std::array<std::array<double, 6>, 6> GenerateStiffnessMatrix(
     const double sin_theta_s = std::sin(theta_s);
 
     // Calculate bending stiffness in principal frame
-    const double bending_xx = EI_x * cos_theta_p * cos_theta_p + EI_y * sin_theta_p * sin_theta_p;
-    const double bending_yy = EI_x * sin_theta_p * sin_theta_p + EI_y * cos_theta_p * cos_theta_p;
+    const double bending_xx =
+        (EI_x * cos_theta_p * cos_theta_p) + (EI_y * sin_theta_p * sin_theta_p);
+    const double bending_yy =
+        (EI_x * sin_theta_p * sin_theta_p) + (EI_y * cos_theta_p * cos_theta_p);
     const double bending_xy = (EI_y - EI_x) * sin_theta_p * cos_theta_p;
 
     // Calculate shear stiffness in principal frame
@@ -131,8 +133,8 @@ static std::array<std::array<double, 6>, 6> GenerateMassMatrix(
     const double sin_theta_i = std::sin(theta_i);
 
     // Calculate mass moments of inertia in reference frame
-    const double inertia_xx = I_x * cos_theta_i * cos_theta_i + I_y * sin_theta_i * sin_theta_i;
-    const double inertia_yy = I_x * sin_theta_i * sin_theta_i + I_y * cos_theta_i * cos_theta_i;
+    const double inertia_xx = (I_x * cos_theta_i * cos_theta_i) + (I_y * sin_theta_i * sin_theta_i);
+    const double inertia_yy = (I_x * sin_theta_i * sin_theta_i) + (I_y * cos_theta_i * cos_theta_i);
     const double inertia_xy = (I_y - I_x) * sin_theta_i * cos_theta_i;
 
     //--------------------------------------------------------------------------

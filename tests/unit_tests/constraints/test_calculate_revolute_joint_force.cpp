@@ -34,7 +34,12 @@ TEST(CalculateRevoluteJointForceTests, OneConstraint) {
 
     Kokkos::parallel_for(
         "CalculateRevoluteJointConstraint", 1,
-        ExecuteCalculateRevoluteJointForce{axes, constraint_inputs, node_u, residual_terms}
+        ExecuteCalculateRevoluteJointForce{
+            .axes = axes,
+            .constraint_inputs = constraint_inputs,
+            .node_u = node_u,
+            .residual_terms = residual_terms
+        }
     );
 
     const auto residual_terms_mirror =

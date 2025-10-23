@@ -8,7 +8,7 @@
 
 #include "solver/compute_row_ptrs.hpp"
 
-namespace kynema::solver::tests {
+namespace {
 
 template <typename ValueType, typename DataType>
 typename Kokkos::View<ValueType>::const_type CreateView(
@@ -21,6 +21,10 @@ typename Kokkos::View<ValueType>::const_type CreateView(
     Kokkos::deep_copy(view, mirror);
     return view;
 }
+
+}  // namespace
+
+namespace kynema::solver::tests {
 
 TEST(ComputeRowPtrs, OneElementOneNode) {
     constexpr auto num_system_dofs = 6U;
@@ -146,11 +150,11 @@ TEST(ComputeRowPtrs, TwoElementTwoNodesOverlap) {
     }
 
     for (auto row : std::views::iota(0U, 6U)) {
-        EXPECT_EQ(row_ptrs_mirror(row + 7U), 72U + (row + 1) * 18U);
+        EXPECT_EQ(row_ptrs_mirror(row + 7U), 72U + ((row + 1) * 18U));
     }
 
     for (auto row : std::views::iota(0U, 6U)) {
-        EXPECT_EQ(row_ptrs_mirror(row + 13U), 180U + (row + 1) * 12U);
+        EXPECT_EQ(row_ptrs_mirror(row + 13U), 180U + ((row + 1) * 12U));
     }
 }
 
@@ -230,7 +234,7 @@ TEST(ComputeRowPtrs, OneElementOneNode_TwoConstraint) {
     }
 
     for (auto row : std::views::iota(7U, num_dofs + 1UL)) {
-        EXPECT_EQ(row_ptrs_mirror(row), 6U * 18U + (row - 6U) * 12U);
+        EXPECT_EQ(row_ptrs_mirror(row), (6U * 18U) + ((row - 6U) * 12U));
     }
 }
 

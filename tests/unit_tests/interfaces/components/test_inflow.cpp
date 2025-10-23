@@ -24,11 +24,15 @@ TEST(InflowTest, SteadyWindWithoutShear) {
     );
 
     constexpr auto test_cases = std::array{
-        TestCase{0., {0., 0., 0.}, {10., 0., 0.}},  // Test case at time 0 and at ground level
         TestCase{
-            1., {0., 0., ref_height}, {10., 0., 0.}
+            .time = 0., .position = {0., 0., 0.}, .vel_exp = {10., 0., 0.}
+        },  // Test case at time 0 and at ground level
+        TestCase{
+            .time = 1., .position = {0., 0., ref_height}, .vel_exp = {10., 0., 0.}
         },  // Test case at time 1 and at reference height
-        TestCase{1000., {100., 100., 100.}, {10., 0., 0.}}  // Test case at time 1000 and at far away
+        TestCase{
+            .time = 1000., .position = {100., 100., 100.}, .vel_exp = {10., 0., 0.}
+        }  // Test case at time 1000 and at far away
     };
 
     for (const auto& test_case : test_cases) {
@@ -51,11 +55,19 @@ TEST(InflowTest, SteadyWindWithShearNonzeroFlowAngle) {
 
     constexpr auto test_cases = std::array{
         // Test case at time 0 and at reference height
-        TestCase{0., {0., 0., ref_height}, {7.0710678118654755, -7.0710678118654755, 0.}},
+        TestCase{
+            .time = 0.,
+            .position = {0., 0., ref_height},
+            .vel_exp = {7.0710678118654755, -7.0710678118654755, 0.}
+        },
         // Test case at time 1 and at ground level
-        TestCase{1., {0., 0., 0.}, {0., 0., 0.}},
+        TestCase{.time = 1., .position = {0., 0., 0.}, .vel_exp = {0., 0., 0.}},
         // Test case at time 100 and at half ref height
-        TestCase{100., {100., 100., ref_height / 2.}, {6.597539553864471, -6.597539553864471, 0.}}
+        TestCase{
+            .time = 100.,
+            .position = {100., 100., ref_height / 2.},
+            .vel_exp = {6.597539553864471, -6.597539553864471, 0.}
+        }
     };
 
     for (const auto& test_case : test_cases) {
@@ -76,14 +88,18 @@ TEST(InflowTest, SteadyWindWithShear) {
         vel_h, ref_height, power_law_exp, flow_angle_horizontal
     );
 
-    constexpr auto test_cases =
-        std::array{// Test case at time 0 and at reference height
-                   TestCase{0., {0., 0., ref_height}, {10., 0., 0.}},
-                   // Test case at time 1 and at ground level
-                   TestCase{1., {0., 0., 0.}, {0., 0., 0.}},
-                   // Test case at time 100 and at half ref height
-                   TestCase{100., {100., 100., ref_height / 2.}, {9.330329915368074, 0., 0.}}
-        };
+    constexpr auto test_cases = std::array{
+        // Test case at time 0 and at reference height
+        TestCase{.time = 0., .position = {0., 0., ref_height}, .vel_exp = {10., 0., 0.}},
+        // Test case at time 1 and at ground level
+        TestCase{.time = 1., .position = {0., 0., 0.}, .vel_exp = {0., 0., 0.}},
+        // Test case at time 100 and at half ref height
+        TestCase{
+            .time = 100.,
+            .position = {100., 100., ref_height / 2.},
+            .vel_exp = {9.330329915368074, 0., 0.}
+        }
+    };
 
     for (const auto& test_case : test_cases) {
         const auto velocity = inflow.Velocity(test_case.time, test_case.position);

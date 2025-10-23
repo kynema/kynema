@@ -294,7 +294,7 @@ TEST(AerodynamicsInterfaceTest, IEA15_Turbine) {
         {{{hub_mass, 0., 0., 0., 0., 0.},
           {0., hub_mass, 0., 0., 0., 0.},
           {0., 0., hub_mass, 0., 0., 0.},
-          {0., 0., 0., hub_inertia[0] + generator_inertia[0] * gearbox_ratio, hub_inertia[3],
+          {0., 0., 0., hub_inertia[0] + (generator_inertia[0] * gearbox_ratio), hub_inertia[3],
            hub_inertia[4]},
           {0., 0., 0., hub_inertia[3], hub_inertia[1], hub_inertia[5]},
           {0., 0., 0., hub_inertia[4], hub_inertia[5], hub_inertia[2]}}}

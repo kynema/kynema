@@ -12,19 +12,18 @@
 #include "step/step.hpp"
 #include "utilities/controllers/turbine_controller.hpp"
 
-namespace kynema::tests {
-
+namespace {
 auto ComputeIEA15NodeLocations() {
-    auto node_loc = std::array<double, node_xi.size()>{};
-    std::ranges::transform(node_xi, std::begin(node_loc), [&](auto xi) {
+    auto node_loc = std::array<double, kynema::tests::node_xi.size()>{};
+    std::ranges::transform(kynema::tests::node_xi, std::begin(node_loc), [&](auto xi) {
         return (xi + 1.) / 2.;
     });
     return node_loc;
 }
 
 template <size_t num_blades>
-Model CreateIEA15Blades(const std::array<double, 3>& omega) {
-    auto model = Model();
+kynema::Model CreateIEA15Blades(const std::array<double, 3>& omega) {
+    auto model = kynema::Model();
 
     // Set gravity in model
     model.SetGravity(-9.81, 0., 0.);
@@ -53,16 +52,16 @@ Model CreateIEA15Blades(const std::array<double, 3>& omega) {
         auto beam_node_ids = std::vector<size_t>(num_nodes);
 
         std::ranges::transform(
-            std::views::iota(0U, num_nodes), std::begin(beam_node_ids),
-            [&](const size_t j) {
+            std::views::iota(0U, num_nodes), std::begin(beam_node_ids), [&](const size_t j) {
                 return model.AddNode()
                     .SetElemLocation(node_loc[j])
-                    .SetPosition({node_coords[j]})
+                    .SetPosition({kynema::tests::node_coords[j]})
                     .Build();
             }
         );
-        auto blade_elem_id =
-            model.AddBeamElement(beam_node_ids, material_sections, trapz_quadrature);
+        auto blade_elem_id = model.AddBeamElement(
+            beam_node_ids, kynema::tests::material_sections, kynema::tests::trapz_quadrature
+        );
         model.TranslateBeam(blade_elem_id, hub_rad);
         model.RotateBeamAboutPoint(blade_elem_id, rotation_quaternion_array, origin);
         model.SetBeamVelocityAboutPoint(blade_elem_id, velocity, origin);
@@ -88,6 +87,10 @@ void WriteMatrixToFile(const std::vector<std::vector<T>>& data, const std::strin
     file.close();
 }
 
+}  // namespace
+
+namespace kynema::tests {
+
 TEST(RotorTest, IEA15Rotor) {
     // Rotor angular velocity in rad/s
     constexpr auto omega = -.79063415025;
@@ -99,7 +102,7 @@ TEST(RotorTest, IEA15Rotor) {
     constexpr double step_size(0.01);  // seconds
     constexpr double rho_inf(0.);
     constexpr double t_end(0.1);
-    constexpr auto num_steps = static_cast<size_t>(t_end / step_size + 1.0);
+    constexpr auto num_steps = static_cast<size_t>((t_end / step_size) + 1.0);
 
     constexpr size_t num_blades = 3;
     auto model = CreateIEA15Blades<num_blades>(std::array{0., 0., omega});
@@ -202,7 +205,7 @@ TEST(RotorTest, IEA15RotorHub) {
     constexpr double step_size(0.01);  // seconds
     constexpr double rho_inf(0.0);
     constexpr double t_end(0.1);
-    constexpr auto num_steps = static_cast<size_t>(t_end / step_size + 1.0);
+    constexpr auto num_steps = static_cast<size_t>((t_end / step_size) + 1.0);
 
     // Build vector of nodes (straight along x axis, no rotation)
     // Calculate displacement, velocity, acceleration assuming a
@@ -254,7 +257,7 @@ TEST(RotorTest, IEA15RotorController) {
     constexpr double step_size(0.01);  // seconds
     constexpr double rho_inf(0.0);
     constexpr double t_end(0.01 * 2.0 * std::numbers::pi / -omega);  // 3 revolutions
-    constexpr auto num_steps = static_cast<size_t>(t_end / step_size + 1.);
+    constexpr auto num_steps = static_cast<size_t>((t_end / step_size) + 1.);
 
     constexpr size_t num_blades = 3;
     auto model = CreateIEA15Blades<num_blades>(std::array{0., 0., omega});
@@ -334,7 +337,7 @@ TEST(RotorTest, IEA15RotorHost) {
     constexpr double step_size(0.01);  // seconds
     constexpr double rho_inf(0.0);
     constexpr double t_end(0.1);
-    constexpr auto num_steps = static_cast<size_t>(t_end / step_size + 1.0);
+    constexpr auto num_steps = static_cast<size_t>((t_end / step_size) + 1.0);
 
     constexpr size_t num_blades = 3;
     auto model = CreateIEA15Blades<num_blades>(std::array{0., 0., omega});

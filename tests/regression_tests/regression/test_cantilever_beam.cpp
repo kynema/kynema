@@ -10,8 +10,7 @@
 #include "step/step.hpp"
 #include "test_utilities.hpp"
 
-namespace kynema::tests {
-
+namespace {
 template <typename T>
 void WriteMatrixToFile(const std::vector<std::vector<T>>& data, const std::string& filename) {
     std::ofstream file(filename);
@@ -27,6 +26,10 @@ void WriteMatrixToFile(const std::vector<std::vector<T>>& data, const std::strin
     }
     file.close();
 }
+
+}  // namespace
+
+namespace kynema::tests {
 
 TEST(DynamicBeamTest, CantileverBeamSineLoad) {
     // Mass matrix for uniform composite beam section

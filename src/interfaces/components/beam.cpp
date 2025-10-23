@@ -25,7 +25,7 @@ Beam::Beam(const BeamInput& input, Model& model) {
 
 std::vector<double> Beam::GetNodeWeights(double s) const {
     std::vector<double> weights(this->node_xi.size());
-    auto xi = 2. * s - 1.;
+    auto xi = (2. * s) - 1.;
     math::LagrangePolynomialDerivWeights(xi, this->node_xi, weights);
     return weights;
 }
@@ -278,7 +278,7 @@ std::vector<BeamSection> Beam::BuildBeamSections_SegmentedGLL(const BeamInput& i
             const auto alpha = (quad_locations[refinement + 1] + 1.) / 2.;
 
             // Interpolate grid location
-            const auto grid_value = (1. - alpha) * left_location + alpha * section_location;
+            const auto grid_value = ((1. - alpha) * left_location) + (alpha * section_location);
 
             // Interpolate mass and stiffness matrices from bounding sections
             auto mass_matrix = std::array<std::array<double, 6>, 6>{};
@@ -352,7 +352,7 @@ std::vector<BeamSection> Beam::BuildBeamSections_SegmentedGL(const BeamInput& in
             const auto alpha = (quad_locations[refinement] + 1.) / 2.;
 
             // Interpolate grid location
-            const auto grid_value = (1. - alpha) * left_location + alpha * section_location;
+            const auto grid_value = ((1. - alpha) * left_location) + (alpha * section_location);
 
             // Interpolate mass and stiffness matrices from bounding sections
             auto mass_matrix = std::array<std::array<double, 6>, 6>{};
@@ -399,7 +399,7 @@ std::vector<BeamSection> Beam::BuildBeamSections_WholeBeam(
         quad_locations, std::begin(grid_locations),
         [min_location, max_location](auto x) {
             const auto alpha = (x + 1.) / 2.;
-            return (1. - alpha) * min_location + alpha * max_location;
+            return ((1. - alpha) * min_location) + (alpha * max_location);
         }
     );
 

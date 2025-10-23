@@ -13,8 +13,7 @@
 #include "step/update_constraint_variables.hpp"
 #include "test_utilities.hpp"
 
-namespace kynema::tests {
-
+namespace {
 inline void SetUpSolverAndAssemble() {
     // Mass matrix for uniform composite beam section
     constexpr auto mass_matrix = std::array{
@@ -34,7 +33,7 @@ inline void SetUpSolverAndAssemble() {
     };
 
     // Create model for adding nodes and constraints
-    auto model = Model();
+    auto model = kynema::Model();
 
     // Gravity vector
     model.SetGravity(0., 0., 0.);
@@ -52,7 +51,7 @@ inline void SetUpSolverAndAssemble() {
     constexpr auto omega = 0.1;
     std::vector<size_t> beam_node_ids;
     std::ranges::transform(node_s, std::back_inserter(beam_node_ids), [&](auto s) {
-        const auto x = 10 * s + x0_root[0];
+        const auto x = (10 * s) + x0_root[0];
         return model.AddNode()
             .SetElemLocation(s)
             .SetPosition(x, 0., 0., 1., 0., 0., 0.)
@@ -64,8 +63,8 @@ inline void SetUpSolverAndAssemble() {
     model.AddBeamElement(
         beam_node_ids,
         std::array{
-            BeamSection(0., mass_matrix, stiffness_matrix),
-            BeamSection(1., mass_matrix, stiffness_matrix),
+            kynema::BeamSection(0., mass_matrix, stiffness_matrix),
+            kynema::BeamSection(1., mass_matrix, stiffness_matrix),
         },
         std::array{
             std::array{-0.9491079123427585, 0.1294849661688697},
@@ -86,7 +85,7 @@ inline void SetUpSolverAndAssemble() {
     constexpr auto is_dynamic_solve = true;
     constexpr auto step_size = 0.01;  // seconds
     constexpr auto rho_inf = 0.9;
-    auto parameters = StepParameters(is_dynamic_solve, max_iter, step_size, rho_inf);
+    auto parameters = kynema::StepParameters(is_dynamic_solve, max_iter, step_size, rho_inf);
 
     // Create solver, elements, constraints, and state
     auto [state, elements, constraints] = model.CreateSystem();
@@ -102,87 +101,81 @@ inline void SetUpSolverAndAssemble() {
     constraints.UpdateDisplacement(0, displacement);
 
     // Predict the next state for the solver
-    step::PredictNextState(parameters, state);
-    step::ResetConstraints(constraints);
-    step::ResetSolver(solver);
+    kynema::step::PredictNextState(parameters, state);
+    kynema::step::ResetConstraints(constraints);
+    kynema::step::ResetSolver(solver);
 
     // Update beam elements state from solvers
-    step::UpdateSystemVariables(parameters, elements, state);
-    step::AssembleSystemMatrix(parameters, solver, elements);
-    step::AssembleSystemResidual(solver, elements, state);
+    kynema::step::UpdateSystemVariables(parameters, elements, state);
+    kynema::step::AssembleSystemMatrix(parameters, solver, elements);
+    kynema::step::AssembleSystemResidual(solver, elements, state);
 
-    step::UpdateConstraintVariables(state, constraints);
-    step::AssembleConstraintsMatrix(solver, constraints);
-    step::AssembleConstraintsResidual(solver, constraints);
+    kynema::step::UpdateConstraintVariables(state, constraints);
+    kynema::step::AssembleConstraintsMatrix(solver, constraints);
+    kynema::step::AssembleConstraintsResidual(solver, constraints);
 
-    expect_kokkos_view_2D_equal(constraints.lambda, {{0., 0., 0., 0., 0., 0.}});
-    expect_kokkos_view_2D_equal(
-        state.q_prev,
-        {
-            {0., 0., 0., 1., 0., 0., 0.},
-            {0., 0., 0., 1., 0., 0., 0.},
-            {0., 0., 0., 1., 0., 0., 0.},
-            {0., 0., 0., 1., 0., 0., 0.},
-            {0., 0., 0., 1., 0., 0., 0.},
-            {0., 0., 0., 1., 0., 0., 0.},
-        }
+    kynema::tests::expect_kokkos_view_2D_equal(constraints.lambda, {{0., 0., 0., 0., 0., 0.}});
+    kynema::tests::expect_kokkos_view_2D_equal(
+        state.q_prev, {
+                          {0., 0., 0., 1., 0., 0., 0.},
+                          {0., 0., 0., 1., 0., 0., 0.},
+                          {0., 0., 0., 1., 0., 0., 0.},
+                          {0., 0., 0., 1., 0., 0., 0.},
+                          {0., 0., 0., 1., 0., 0., 0.},
+                          {0., 0., 0., 1., 0., 0., 0.},
+                      }
     );
-    expect_kokkos_view_2D_equal(
-        state.a,
-        {
-            {0., 0., 0., 0., 0., 0.},
-            {0., 0., 0., 0., 0., 0.},
-            {0., 0., 0., 0., 0., 0.},
-            {0., 0., 0., 0., 0., 0.},
-            {0., 0., 0., 0., 0., 0.},
-            {0., 0., 0., 0., 0., 0.},
-        }
+    kynema::tests::expect_kokkos_view_2D_equal(
+        state.a, {
+                     {0., 0., 0., 0., 0., 0.},
+                     {0., 0., 0., 0., 0., 0.},
+                     {0., 0., 0., 0., 0., 0.},
+                     {0., 0., 0., 0., 0., 0.},
+                     {0., 0., 0., 0., 0., 0.},
+                     {0., 0., 0., 0., 0., 0.},
+                 }
     );
-    expect_kokkos_view_2D_equal(
-        state.v,
-        {
-            {0, 0.20000000000000000, 0, 0, 0, 0.1},
-            {0, 0.31747233803526764, 0, 0, 0, 0.1},  // NOLINT
-            {0, 0.55738424175967749, 0, 0, 0, 0.1},
-            {0, 0.84261575824032242, 0, 0, 0, 0.1},
-            {0, 1.08252766196473240, 0, 0, 0, 0.1},
-            {0, 1.20000000000000000, 0, 0, 0, 0.1},
-        }
+    kynema::tests::expect_kokkos_view_2D_equal(
+        state.v, {
+                     {0, 0.20000000000000000, 0, 0, 0, 0.1},
+                     {0, 0.31747233803526764, 0, 0, 0, 0.1},  // NOLINT
+                     {0, 0.55738424175967749, 0, 0, 0, 0.1},
+                     {0, 0.84261575824032242, 0, 0, 0, 0.1},
+                     {0, 1.08252766196473240, 0, 0, 0, 0.1},
+                     {0, 1.20000000000000000, 0, 0, 0, 0.1},
+                 }
     );
-    expect_kokkos_view_2D_equal(
-        state.vd,
-        {
-            {0., 0., 0., 0., 0., 0.},
-            {0., 0., 0., 0., 0., 0.},
-            {0., 0., 0., 0., 0., 0.},
-            {0., 0., 0., 0., 0., 0.},
-            {0., 0., 0., 0., 0., 0.},
-            {0., 0., 0., 0., 0., 0.},
-        }
+    kynema::tests::expect_kokkos_view_2D_equal(
+        state.vd, {
+                      {0., 0., 0., 0., 0., 0.},
+                      {0., 0., 0., 0., 0., 0.},
+                      {0., 0., 0., 0., 0., 0.},
+                      {0., 0., 0., 0., 0., 0.},
+                      {0., 0., 0., 0., 0., 0.},
+                      {0., 0., 0., 0., 0., 0.},
+                  }
     );
-    expect_kokkos_view_2D_equal(
-        state.q_delta,
-        {
-            {0., 0.20000000000000001, 0., 0., 0., 0.10000000000000001},
-            {0., 0.31747233803526764, 0., 0., 0., 0.10000000000000001},  // NOLINT
-            {0., 0.55738424175967749, 0., 0., 0., 0.10000000000000001},
-            {0., 0.84261575824032242, 0., 0., 0., 0.10000000000000001},
-            {0., 1.08252766196473240, 0., 0., 0., 0.10000000000000001},
-            {0., 1.20000000000000020, 0., 0., 0., 0.10000000000000001},
-        }
+    kynema::tests::expect_kokkos_view_2D_equal(
+        state.q_delta, {
+                           {0., 0.20000000000000001, 0., 0., 0., 0.10000000000000001},
+                           {0., 0.31747233803526764, 0., 0., 0., 0.10000000000000001},  // NOLINT
+                           {0., 0.55738424175967749, 0., 0., 0., 0.10000000000000001},
+                           {0., 0.84261575824032242, 0., 0., 0., 0.10000000000000001},
+                           {0., 1.08252766196473240, 0., 0., 0., 0.10000000000000001},
+                           {0., 1.20000000000000020, 0., 0., 0., 0.10000000000000001},
+                       }
     );
-    expect_kokkos_view_2D_equal(
-        state.q,
-        {
-            {0, 0.0020000000000000, 0, 0.999999875, 0, 0, 0.0004999999},
-            {0, 0.0031747233803526, 0, 0.999999875, 0, 0, 0.0004999999},
-            {0, 0.0055738424175967, 0, 0.999999875, 0, 0, 0.0004999999},
-            {0, 0.0084261575824032, 0, 0.999999875, 0, 0, 0.0004999999},
-            {0, 0.0108252766196473, 0, 0.999999875, 0, 0, 0.0004999999},
-            {0, 0.0120000000000000, 0, 0.999999875, 0, 0, 0.0004999999},
-        }
+    kynema::tests::expect_kokkos_view_2D_equal(
+        state.q, {
+                     {0, 0.0020000000000000, 0, 0.999999875, 0, 0, 0.0004999999},
+                     {0, 0.0031747233803526, 0, 0.999999875, 0, 0, 0.0004999999},
+                     {0, 0.0055738424175967, 0, 0.999999875, 0, 0, 0.0004999999},
+                     {0, 0.0084261575824032, 0, 0.999999875, 0, 0, 0.0004999999},
+                     {0, 0.0108252766196473, 0, 0.999999875, 0, 0, 0.0004999999},
+                     {0, 0.0120000000000000, 0, 0.999999875, 0, 0, 0.0004999999},
+                 }
     );
-    expect_kokkos_view_2D_equal(
+    kynema::tests::expect_kokkos_view_2D_equal(
         constraints.residual_terms, {{
                                         9.9999991642896191E-7,
                                         3.3333331667800836E-10,
@@ -192,57 +185,52 @@ inline void SetUpSolverAndAssemble() {
                                         0.,
                                     }}
     );
-    expect_kokkos_view_1D_equal(
-        Kokkos::subview(solver.b, Kokkos::ALL, 0),
-        {
-            -0.68408451644565105,
-            -0.00065456473269251652,
-            0,
-            1.4663215017154278E-17,
-            1.5487939846687054E-17,
-            0.0000098399278916272914,
-            -4.9960036108132044E-16,
-            7.2063733561229804E-15,
-            0,
-            -9.2033949200707357E-18,
-            -9.7210350349908583E-18,
-            0.000055862494393220151,
-            -8.1878948066105295E-16,
-            -3.4811400723838704E-14,
-            0,
-            -4.27839293851558E-18,
-            -4.5190289029179014E-18,
-            0.000081896496420578814,
-            1.7208456881689926E-15,
-            1.0463827612543219E-13,
-            0,
-            1.991039683802277E-17,
-            2.1030246653970917E-17,
-            0.000081896496635873786,
-            -5.1070259132757201E-15,
-            -3.455288355783126E-13,
-            0,
-            -7.9977507519330913E-17,
-            -8.4475800436550718E-17,
-            0.000055862494238845577,
-            0.68408451644565516,
-            0.00065456473296101171,
-            0,
-            5.8885683522740175E-17,
-            6.2197677873801522E-17,
-            0.0000098399277591661938,
-            9.9999991642896191E-7,
-            3.3333331667800836E-10,
-            0,
-            0,
-            0,
-            0,
-        }
+    kynema::tests::expect_kokkos_view_1D_equal(
+        Kokkos::subview(solver.b, Kokkos::ALL, 0), {
+                                                       -0.68408451644565105,
+                                                       -0.00065456473269251652,
+                                                       0,
+                                                       1.4663215017154278E-17,
+                                                       1.5487939846687054E-17,
+                                                       0.0000098399278916272914,
+                                                       -4.9960036108132044E-16,
+                                                       7.2063733561229804E-15,
+                                                       0,
+                                                       -9.2033949200707357E-18,
+                                                       -9.7210350349908583E-18,
+                                                       0.000055862494393220151,
+                                                       -8.1878948066105295E-16,
+                                                       -3.4811400723838704E-14,
+                                                       0,
+                                                       -4.27839293851558E-18,
+                                                       -4.5190289029179014E-18,
+                                                       0.000081896496420578814,
+                                                       1.7208456881689926E-15,
+                                                       1.0463827612543219E-13,
+                                                       0,
+                                                       1.991039683802277E-17,
+                                                       2.1030246653970917E-17,
+                                                       0.000081896496635873786,
+                                                       -5.1070259132757201E-15,
+                                                       -3.455288355783126E-13,
+                                                       0,
+                                                       -7.9977507519330913E-17,
+                                                       -8.4475800436550718E-17,
+                                                       0.000055862494238845577,
+                                                       0.68408451644565516,
+                                                       0.00065456473296101171,
+                                                       0,
+                                                       5.8885683522740175E-17,
+                                                       6.2197677873801522E-17,
+                                                       0.0000098399277591661938,
+                                                       9.9999991642896191E-7,
+                                                       3.3333331667800836E-10,
+                                                       0,
+                                                       0,
+                                                       0,
+                                                       0,
+                                                   }
     );
-}
-
-TEST(NewSolverTest, SolverPredictNextState) {
-    SetUpSolverAndAssemble();
 }
 
 inline void SetupAndTakeNoSteps() {
@@ -264,7 +252,7 @@ inline void SetupAndTakeNoSteps() {
     };
 
     // Create model for adding nodes and constraints
-    auto model = Model();
+    auto model = kynema::Model();
 
     // Gravity vector
     model.SetGravity(0., 0., 0.);
@@ -281,7 +269,7 @@ inline void SetupAndTakeNoSteps() {
     const auto x0_root = Eigen::Matrix<double, 3, 1>(2., 0., 0.);
     std::vector<size_t> beam_node_ids;
     std::ranges::transform(node_s, std::back_inserter(beam_node_ids), [&](auto s) {
-        const auto x = 10 * s + x0_root(0);
+        const auto x = (10 * s) + x0_root(0);
         return model.AddNode()
             .SetElemLocation(s)
             .SetPosition(x, 0., 0., 1., 0., 0., 0.)
@@ -293,8 +281,8 @@ inline void SetupAndTakeNoSteps() {
     model.AddBeamElement(
         beam_node_ids,
         std::array{
-            BeamSection(0., mass_matrix, stiffness_matrix),
-            BeamSection(1., mass_matrix, stiffness_matrix),
+            kynema::BeamSection(0., mass_matrix, stiffness_matrix),
+            kynema::BeamSection(1., mass_matrix, stiffness_matrix),
         },
         std::array{
             std::array{-0.9491079123427585, 0.1294849661688697},
@@ -315,7 +303,7 @@ inline void SetupAndTakeNoSteps() {
     constexpr auto is_dynamic_solve = true;
     constexpr auto step_size = 0.01;  // seconds
     constexpr auto rho_inf = 0.9;
-    auto parameters = StepParameters(is_dynamic_solve, max_iter, step_size, rho_inf);
+    auto parameters = kynema::StepParameters(is_dynamic_solve, max_iter, step_size, rho_inf);
 
     // Create solver, elements, constraints, and state
     auto [state, elements, constraints] = model.CreateSystem();
@@ -333,7 +321,7 @@ inline void SetupAndTakeNoSteps() {
     Step(parameters, solver, elements, state, constraints);
 
     const auto x = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), solver.x);
-    expect_kokkos_view_1D_equal(
+    kynema::tests::expect_kokkos_view_1D_equal(
         Kokkos::subview(solver.x, Kokkos::ALL, 0),
         {
             -9.9999991642894645E-7,    -3.3333331667800779E-10, -2.7693137528041648E-28,
@@ -353,7 +341,7 @@ inline void SetupAndTakeNoSteps() {
         }
     );
     EXPECT_NEAR(solver.convergence_err[0], 1669.0477021697936, 1.e-6);
-    expect_kokkos_view_2D_equal(
+    kynema::tests::expect_kokkos_view_2D_equal(
         state.q_delta,
         {
             {-0.000099999991642894646, 0.19999996666666833, -2.7693137528041646E-26,
@@ -370,7 +358,7 @@ inline void SetupAndTakeNoSteps() {
              -2.6313864405287535E-10, -1.7915982090983507E-11, 0.099999958035748431},
         }
     );
-    expect_kokkos_view_2D_equal(
+    kynema::tests::expect_kokkos_view_2D_equal(
         state.v,
         {
             {-0.00019949998332757481, 0.19999993350000334, -5.5247809368443091E-26,
@@ -387,47 +375,45 @@ inline void SetupAndTakeNoSteps() {
              -5.2496159488548634E-10, -3.5742384271512094E-11, 0.099999916281318101},
         }
     );
-    expect_kokkos_view_2D_equal(
-        state.vd,
-        {
-            {-0.039709996681393474, -0.000013236666005283692, -1.0996944912385341E-23,
-             -2.619041619297952E-25, 5.2380828021710043E-22, 3.0933382853420454E-19},
-            {-0.059425246504629256, -0.000028968596792292381, -1.8042125744160112E-9,
-             -1.2675703982488845E-7, -1.617121853741662E-9, -0.0000088433540149761862},
-            {-0.10039441488979514, -0.000078081019501919665, -1.2300644175683558E-9,
-             -1.9151574911187822E-7, -3.9349062511340432E-9, -0.000016506953187581543},
-            {-0.15101734453237334, -0.00014270050135188576, 2.5577627771236027E-9,
-             -1.4305425754357427E-7, -4.5983912380703506E-9, -0.000017237934670614527},
-            {-0.19591478550134453, -0.00019646890107545141, 1.0001180311677349E-8,
-             -1.0895176284170809E-7, -6.3964066992572377E-9, -0.000016724507946719819},
-            {-0.21887783838736499, -0.00022340063093158737, 1.6975877286895753E-8,
-             -1.0449235555339682E-7, -7.1144364883295513E-9, -0.000016664004302439988},
-        }
+    kynema::tests::expect_kokkos_view_2D_equal(
+        state.vd, {
+                      {-0.039709996681393474, -0.000013236666005283692, -1.0996944912385341E-23,
+                       -2.619041619297952E-25, 5.2380828021710043E-22, 3.0933382853420454E-19},
+                      {-0.059425246504629256, -0.000028968596792292381, -1.8042125744160112E-9,
+                       -1.2675703982488845E-7, -1.617121853741662E-9, -0.0000088433540149761862},
+                      {-0.10039441488979514, -0.000078081019501919665, -1.2300644175683558E-9,
+                       -1.9151574911187822E-7, -3.9349062511340432E-9, -0.000016506953187581543},
+                      {-0.15101734453237334, -0.00014270050135188576, 2.5577627771236027E-9,
+                       -1.4305425754357427E-7, -4.5983912380703506E-9, -0.000017237934670614527},
+                      {-0.19591478550134453, -0.00019646890107545141, 1.0001180311677349E-8,
+                       -1.0895176284170809E-7, -6.3964066992572377E-9, -0.000016724507946719819},
+                      {-0.21887783838736499, -0.00022340063093158737, 1.6975877286895753E-8,
+                       -1.0449235555339682E-7, -7.1144364883295513E-9, -0.000016664004302439988},
+                  }
     );
-    expect_kokkos_view_2D_equal(
-        state.q,
-        {
-            {-9.9999991642894645E-7, 0.0019999996666666834, -2.7693137528041648E-28,
-             0.99999987500000264, -3.2977102872969255E-30, 6.5954200250787654E-27,
-             0.0004999999791666669},
-            {-0.0000014964806473087194, 0.003174722650848854, -4.5434716051775647E-14,
-             0.99999987500005827, -1.5960341795939002E-12, -2.0361644250335121E-14,
-             0.00049999986781747402},
-            {-0.0000025281897479172786, 0.0055738404513157504, -3.0976187800764434E-14,
-             0.99999987500010656, -2.4114296289607408E-12, -4.9545531190880803E-14,
-             0.0004999997713229107},
-            {-0.0000038030054024772931, 0.0084261539888373388, 6.4411049537235008E-14,
-             0.99999987500011112, -1.8012371138628233E-12, -5.7899660620383827E-14,
-             0.0004999997621189143},
-            {-0.000004933638516780269, 0.010825271672054751, 2.5185545987603492E-13,
-             0.99999987500010789, -1.3718428393610572E-12, -8.0538988072784165E-14,
-             0.00049999976858361656},
-            {-0.0000055119072875186336, 0.011999994374197159, 4.2749628020387186E-13,
-             0.99999987500010756, -1.3156931654438724E-12, -8.9579906722424441E-14,
-             0.00049999976934543534},
-        }
+    kynema::tests::expect_kokkos_view_2D_equal(
+        state.q, {
+                     {-9.9999991642894645E-7, 0.0019999996666666834, -2.7693137528041648E-28,
+                      0.99999987500000264, -3.2977102872969255E-30, 6.5954200250787654E-27,
+                      0.0004999999791666669},
+                     {-0.0000014964806473087194, 0.003174722650848854, -4.5434716051775647E-14,
+                      0.99999987500005827, -1.5960341795939002E-12, -2.0361644250335121E-14,
+                      0.00049999986781747402},
+                     {-0.0000025281897479172786, 0.0055738404513157504, -3.0976187800764434E-14,
+                      0.99999987500010656, -2.4114296289607408E-12, -4.9545531190880803E-14,
+                      0.0004999997713229107},
+                     {-0.0000038030054024772931, 0.0084261539888373388, 6.4411049537235008E-14,
+                      0.99999987500011112, -1.8012371138628233E-12, -5.7899660620383827E-14,
+                      0.0004999997621189143},
+                     {-0.000004933638516780269, 0.010825271672054751, 2.5185545987603492E-13,
+                      0.99999987500010789, -1.3718428393610572E-12, -8.0538988072784165E-14,
+                      0.00049999976858361656},
+                     {-0.0000055119072875186336, 0.011999994374197159, 4.2749628020387186E-13,
+                      0.99999987500010756, -1.3156931654438724E-12, -8.9579906722424441E-14,
+                      0.00049999976934543534},
+                 }
     );
-    expect_kokkos_view_2D_equal(
+    kynema::tests::expect_kokkos_view_2D_equal(
         constraints.lambda, {{
                                 0.10816660597819647,
                                 0.000095455157310304377,
@@ -437,10 +423,6 @@ inline void SetupAndTakeNoSteps() {
                                 -0.000033726153743119725,
                             }}
     );
-}
-
-TEST(SolverStep1Test, SolutionVector) {
-    SetupAndTakeNoSteps();
 }
 
 inline auto SetupAndTakeTwoSteps() {
@@ -462,7 +444,7 @@ inline auto SetupAndTakeTwoSteps() {
     };
 
     // Create model for adding nodes and constraints
-    auto model = Model();
+    auto model = kynema::Model();
 
     // Gravity vector
     model.SetGravity(0., 0., 0.);
@@ -490,8 +472,8 @@ inline auto SetupAndTakeTwoSteps() {
     model.AddBeamElement(
         beam_node_ids,
         std::array{
-            BeamSection(0., mass_matrix, stiffness_matrix),
-            BeamSection(1., mass_matrix, stiffness_matrix),
+            kynema::BeamSection(0., mass_matrix, stiffness_matrix),
+            kynema::BeamSection(1., mass_matrix, stiffness_matrix),
         },
         std::array{
             std::array{-0.9491079123427585, 0.1294849661688697},
@@ -512,7 +494,7 @@ inline auto SetupAndTakeTwoSteps() {
     constexpr auto is_dynamic_solve = true;
     constexpr auto step_size = 0.01;  // seconds
     constexpr auto rho_inf = 0.9;
-    auto parameters = StepParameters(is_dynamic_solve, max_iter, step_size, rho_inf);
+    auto parameters = kynema::StepParameters(is_dynamic_solve, max_iter, step_size, rho_inf);
 
     // Create solver, elements, constraints, and state
     auto [state, elements, constraints] = model.CreateSystem();
@@ -526,7 +508,7 @@ inline auto SetupAndTakeTwoSteps() {
 
     Step(parameters, solver, elements, state, constraints);
 
-    expect_kokkos_view_2D_equal(
+    kynema::tests::expect_kokkos_view_2D_equal(
         constraints.residual_terms, {{
                                         0.0,
                                         0.0,
@@ -536,56 +518,55 @@ inline auto SetupAndTakeTwoSteps() {
                                         0.0,
                                     }}
     );
-    expect_kokkos_view_1D_equal(
-        Kokkos::subview(solver.b, Kokkos::ALL, 0),
-        {
-            -1.6976609407260757e-15,
-            -5.288375554255456E-9,
-            1.1889571903333178E-13,
-            -1.1240653642481715E-12,
-            -1.2020880297284837E-12,
-            1.8684840013084998E-9,
-            -3.6875789625611664E-15,
-            -4.1819420587222298E-15,
-            3.7352345516767378E-15,
-            -1.1877649082466982E-15,
-            -1.0506791059026386E-14,
-            -5.8939891699170042E-15,
-            -2.8792767262448265E-16,
-            -1.6256730932454705E-15,
-            -3.7325943099788989E-16,
-            -5.3808016138201058E-16,
-            -1.6282824212620447E-14,
-            -1.1016714995625436E-14,
-            5.2084529364118357E-16,
-            -1.1638779207501438E-16,
-            -1.4881053281336617E-15,
-            9.5313284912395902E-17,
-            -1.0413534631705933E-14,
-            -1.3446531440415119E-14,
-            2.7455938415381741E-15,
-            -2.5729773964724179E-16,
-            -3.7154086685782557E-16,
-            1.5306103158449729E-16,
-            -5.1065389766195233E-15,
-            -9.9765062644864507E-15,
-            -9.9677609771866959E-16,
-            7.3693341584230349E-15,
-            -2.8348323425684356E-15,
-            3.4513177152054705E-17,
-            -8.3796234226909556E-16,
-            -1.8000463717889823E-15,
-            0,
-            0,
-            -2.7693137528041648E-28,
-            -1.3190839500435901E-29,
-            1.3190835103592412E-26,
-            0,
-        }
+    kynema::tests::expect_kokkos_view_1D_equal(
+        Kokkos::subview(solver.b, Kokkos::ALL, 0), {
+                                                       -1.6976609407260757e-15,
+                                                       -5.288375554255456E-9,
+                                                       1.1889571903333178E-13,
+                                                       -1.1240653642481715E-12,
+                                                       -1.2020880297284837E-12,
+                                                       1.8684840013084998E-9,
+                                                       -3.6875789625611664E-15,
+                                                       -4.1819420587222298E-15,
+                                                       3.7352345516767378E-15,
+                                                       -1.1877649082466982E-15,
+                                                       -1.0506791059026386E-14,
+                                                       -5.8939891699170042E-15,
+                                                       -2.8792767262448265E-16,
+                                                       -1.6256730932454705E-15,
+                                                       -3.7325943099788989E-16,
+                                                       -5.3808016138201058E-16,
+                                                       -1.6282824212620447E-14,
+                                                       -1.1016714995625436E-14,
+                                                       5.2084529364118357E-16,
+                                                       -1.1638779207501438E-16,
+                                                       -1.4881053281336617E-15,
+                                                       9.5313284912395902E-17,
+                                                       -1.0413534631705933E-14,
+                                                       -1.3446531440415119E-14,
+                                                       2.7455938415381741E-15,
+                                                       -2.5729773964724179E-16,
+                                                       -3.7154086685782557E-16,
+                                                       1.5306103158449729E-16,
+                                                       -5.1065389766195233E-15,
+                                                       -9.9765062644864507E-15,
+                                                       -9.9677609771866959E-16,
+                                                       7.3693341584230349E-15,
+                                                       -2.8348323425684356E-15,
+                                                       3.4513177152054705E-17,
+                                                       -8.3796234226909556E-16,
+                                                       -1.8000463717889823E-15,
+                                                       0,
+                                                       0,
+                                                       -2.7693137528041648E-28,
+                                                       -1.3190839500435901E-29,
+                                                       1.3190835103592412E-26,
+                                                       0,
+                                                   }
     );
     const auto x = Kokkos::create_mirror_view(solver.x);
     Kokkos::deep_copy(x, solver.x);
-    expect_kokkos_view_1D_equal(
+    kynema::tests::expect_kokkos_view_1D_equal(
         Kokkos::subview(solver.x, Kokkos::ALL, 0),
         {
             2.0701786547467534E-22,  -9.7804349489591981E-26, 2.7272832797488856E-28,
@@ -604,6 +585,18 @@ inline auto SetupAndTakeTwoSteps() {
             4.0632386057053241E-8,   4.3576751058673394E-8,   1.9904737297204642e-10,
         }
     );
+}
+
+}  // namespace
+
+namespace kynema::tests {
+
+TEST(NewSolverTest, SolverPredictNextState) {
+    SetUpSolverAndAssemble();
+}
+
+TEST(SolverStep1Test, SolutionVector) {
+    SetupAndTakeNoSteps();
 }
 
 TEST(SolverStep2Test, ConstraintResidualVector) {

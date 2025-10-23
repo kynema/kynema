@@ -7,7 +7,7 @@
 #include "create_view.hpp"
 #include "state/calculate_next_state.hpp"
 
-namespace kynema::tests {
+namespace {
 
 inline void CompareWithExpected(
     const Kokkos::View<const double**>::host_mirror_type& result,
@@ -19,6 +19,9 @@ inline void CompareWithExpected(
         }
     }
 }
+
+}  // namespace
+namespace kynema::tests {
 
 TEST(CalculateNextState, OneNode) {
     constexpr auto h = 2.;
@@ -36,7 +39,15 @@ TEST(CalculateNextState, OneNode) {
     Kokkos::parallel_for(
         "CalculateNextState", 1,
         state::CalculateNextState<Kokkos::DefaultExecutionSpace>{
-            h, alpha_f, alpha_m, beta, gamma, q_delta, v, vd, a
+            .h = h,
+            .alpha_f = alpha_f,
+            .alpha_m = alpha_m,
+            .beta = beta,
+            .gamma = gamma,
+            .q_delta = q_delta,
+            .v = v,
+            .vd = vd,
+            .a = a
         }
     );
 

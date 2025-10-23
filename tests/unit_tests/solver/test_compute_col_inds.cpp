@@ -9,7 +9,7 @@
 
 #include "solver/compute_col_inds.hpp"
 
-namespace kynema::solver::tests {
+namespace {
 
 template <typename ValueType, typename DataType>
 typename Kokkos::View<ValueType>::const_type CreateView(
@@ -22,6 +22,9 @@ typename Kokkos::View<ValueType>::const_type CreateView(
     Kokkos::deep_copy(view, mirror);
     return view;
 }
+
+}  // namespace
+namespace kynema::solver::tests {
 
 TEST(ComputeColInds, OneElementOneNode) {
     constexpr auto num_non_zero = 36UL;
@@ -51,7 +54,7 @@ TEST(ComputeColInds, OneElementOneNode) {
 
     for (auto row : std::views::iota(0U, 6U)) {
         for (auto col : std::views::iota(0U, 6U)) {
-            EXPECT_EQ(col_inds_mirror(row * 6U + col), col);
+            EXPECT_EQ(col_inds_mirror((row * 6U) + col), col);
         }
     }
 }
@@ -89,7 +92,7 @@ TEST(ComputeColInds, OneElementTwoNodes) {
 
     for (auto row : std::views::iota(0U, 12U)) {
         for (auto col : std::views::iota(0U, 12U)) {
-            EXPECT_EQ(col_inds_mirror(row * 12U + col), col);
+            EXPECT_EQ(col_inds_mirror((row * 12U) + col), col);
         }
     }
 }
@@ -128,13 +131,13 @@ TEST(ComputeColInds, TwoElementsTwoNodesNoOverlap) {
 
     for (auto row : std::views::iota(0U, 12U)) {
         for (auto col : std::views::iota(0U, 12U)) {
-            EXPECT_EQ(col_inds_mirror(row * 12U + col), col);
+            EXPECT_EQ(col_inds_mirror((row * 12U) + col), col);
         }
     }
 
     for (auto row : std::views::iota(0U, 12U)) {
         for (auto col : std::views::iota(0U, 12U)) {
-            EXPECT_EQ(col_inds_mirror(144U + row * 12U + col), 12U + col);
+            EXPECT_EQ(col_inds_mirror(144U + (row * 12U) + col), 12U + col);
         }
     }
 }
@@ -175,19 +178,19 @@ TEST(ComputeColInds, TwoElementsTwoNodesOverlap) {
 
     for (auto row : std::views::iota(0U, 6U)) {
         for (auto col : std::views::iota(0U, 12U)) {
-            EXPECT_EQ(col_inds_mirror(row * 12U + col), col);
+            EXPECT_EQ(col_inds_mirror((row * 12U) + col), col);
         }
     }
 
     for (auto row : std::views::iota(0U, 6U)) {
         for (auto col : std::views::iota(0U, 12U)) {
-            EXPECT_EQ(col_inds_mirror(72U + row * 18U + col), col);
+            EXPECT_EQ(col_inds_mirror(72U + (row * 18U) + col), col);
         }
     }
 
     for (auto row : std::views::iota(0U, 6U)) {
         for (auto col : std::views::iota(0U, 12U)) {
-            EXPECT_EQ(col_inds_mirror(180U + row * 12U + col), 6U + col);
+            EXPECT_EQ(col_inds_mirror(180U + (row * 12U) + col), 6U + col);
         }
     }
 }

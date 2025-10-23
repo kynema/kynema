@@ -531,8 +531,8 @@ void TurbineInterface::ApplyController(double t) {
     const double generator_speed = controller->io.generator_speed_actual;
     const double generator_torque = this->turbine.torque_control;
     controller->io.horizontal_wind_speed = sqrt(
-        this->hub_inflow[0] * this->hub_inflow[0] + this->hub_inflow[1] * this->hub_inflow[1] +
-        this->hub_inflow[2] * this->hub_inflow[2]
+        (this->hub_inflow[0] * this->hub_inflow[0]) + (this->hub_inflow[1] * this->hub_inflow[1]) +
+        (this->hub_inflow[2] * this->hub_inflow[2])
     );
     controller->io.generator_torque_actual = generator_torque;
     controller->io.generator_power_actual = generator_speed * generator_torque;

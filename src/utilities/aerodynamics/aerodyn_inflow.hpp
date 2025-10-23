@@ -6,6 +6,7 @@
 #include <span>
 #include <stdexcept>
 #include <string>
+#include <utility>
 #include <vector>
 
 #include "vendor/dylib/dylib.hpp"
@@ -260,7 +261,7 @@ struct MeshData {
         size_t point_number, std::span<const double, 7> pos, std::span<const double, 6> vel,
         std::span<const double, 6> acc
     ) {
-        if (point_number >= static_cast<size_t>(n_points)) {
+        if (std::cmp_greater_equal(point_number, n_points)) {
             throw std::out_of_range("point number out of range.");
         }
         SetPositionAndOrientation(
@@ -430,7 +431,7 @@ struct TurbineData {
         size_t blade_number, const std::array<double, 7>& position,
         const std::array<double, 6>& velocity, const std::array<double, 6>& acceleration
     ) {
-        if (blade_number >= static_cast<size_t>(n_blades)) {
+        if (std::cmp_greater_equal(blade_number, n_blades)) {
             throw std::out_of_range("Blade number out of range.");
         }
 
@@ -497,7 +498,7 @@ struct TurbineData {
      */
     [[nodiscard]] std::array<double, 6> GetBladeNodeLoad(size_t blade_number, size_t node_number)
         const {
-        if (blade_number >= static_cast<size_t>(n_blades) ||
+        if (std::cmp_greater_equal(blade_number, n_blades) ||
             node_number >= node_indices_by_blade[blade_number].size()) {
             throw std::out_of_range("Blade or node number out of range.");
         }
@@ -821,8 +822,8 @@ public:
         auto inflowwind_input_length = static_cast<int32_t>(sim_controls_.inflowwind_input.size());
 
         // Channel name and channel unit string arrays
-        std::string channel_names_c(20 * 8000 + 1, ' ');  //< Output channel names
-        std::string channel_units_c(20 * 8000 + 1, ' ');  //< Output channel units
+        std::string channel_names_c((20 * 8000) + 1, ' ');  //< Output channel names
+        std::string channel_units_c((20 * 8000) + 1, ' ');  //< Output channel units
 
         // Number of output channels (set by ADI_C_Init)
         int32_t n_channels{0};

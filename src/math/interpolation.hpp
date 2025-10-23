@@ -1,5 +1,6 @@
 #pragma once
 
+#include <algorithm>
 #include <cmath>
 #include <numbers>
 #include <numeric>
@@ -22,7 +23,7 @@ inline void LinearInterpWeights(double x, std::span<const double> xs, std::vecto
     const auto n = xs.size();
     weights.assign(n, 0.);
 
-    const auto lower = std::lower_bound(xs.begin(), xs.end(), x);
+    const auto lower = std::ranges::lower_bound(xs, x);
     // If x is less than the first node, first weight -> 1 and our work is done
     if (lower == xs.begin()) {
         weights.front() = 1.;
@@ -199,7 +200,7 @@ inline std::vector<double> GenerateGLLPoints(const size_t order) {
             }
 
             // Newton update: x_{n+1} = x_n - f(x_n)/f'(x_n)
-            const auto numerator = x_it * legendre_poly[n_nodes - 1] - legendre_poly[n_nodes - 2];
+            const auto numerator = (x_it * legendre_poly[n_nodes - 1]) - legendre_poly[n_nodes - 2];
             const auto denominator = static_cast<double>(n_nodes) * legendre_poly[n_nodes - 1];
             x_it -= numerator / denominator;
 

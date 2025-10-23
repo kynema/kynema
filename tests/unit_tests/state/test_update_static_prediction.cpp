@@ -28,7 +28,11 @@ TEST(UpdateStaticPrediction, TwoNodes) {
     Kokkos::parallel_for(
         "UpdateStaticPrediction", 2,
         state::UpdateStaticPrediction<Kokkos::DefaultExecutionSpace>{
-            h, node_freedom_allocation_table, node_freedom_map_table, x_delta, q_delta
+            .h = h,
+            .node_freedom_allocation_table = node_freedom_allocation_table,
+            .node_freedom_map_table = node_freedom_map_table,
+            .x_delta = x_delta,
+            .q_delta = q_delta
         }
     );
 

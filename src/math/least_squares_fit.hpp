@@ -35,7 +35,7 @@ inline std::vector<double> MapGeometricLocations(std::span<const double> geom_lo
     std::ranges::transform(
         geom_locations, std::begin(mapped_locations),
         [domain_start, domain_span](auto geom_location) {
-            return 2. * (geom_location - domain_start) / domain_span - 1.;
+            return (2. * (geom_location - domain_start) / domain_span) - 1.;
         }
     );
     return mapped_locations;

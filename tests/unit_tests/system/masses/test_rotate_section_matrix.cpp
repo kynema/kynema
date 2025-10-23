@@ -32,7 +32,9 @@ TEST(RotateSectionMatrixMassesTests, OneNode) {
 
     const auto Cuu = Kokkos::View<double[6][6]>("Cuu");
 
-    Kokkos::parallel_for("RotateSectionMatrix", 1, ExecuteRotateSectionMatrix{xr, Cstar, Cuu});
+    Kokkos::parallel_for(
+        "RotateSectionMatrix", 1, ExecuteRotateSectionMatrix{.xr = xr, .Cstar = Cstar, .Cuu = Cuu}
+    );
 
     constexpr auto Cuu_exact_data =
         std::array{2052., 9000.,  12564., 2160., 9540.,  13320., 2700., 7200.,  9900.,
