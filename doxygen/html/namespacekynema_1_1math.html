@@ -201,6 +201,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a30df9c1f4905916f05a5bb87bb6c4dac" id="r_a30df9c1f4905916f05a5bb87bb6c4dac"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacekynema_1_1math.html#a30df9c1f4905916f05a5bb87bb6c4dac">GenerateGLLPoints</a> (const size_t order)</td></tr>
 <tr class="memdesc:a30df9c1f4905916f05a5bb87bb6c4dac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates Gauss-Lobatto-Legendre (GLL) points for spectral element discretization.  <br /></td></tr>
 <tr class="separator:a30df9c1f4905916f05a5bb87bb6c4dac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61be35286083ec1cb31e827143dc5438" id="r_a61be35286083ec1cb31e827143dc5438"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::array&lt; double, 3 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacekynema_1_1math.html#a61be35286083ec1cb31e827143dc5438">PerformLeastSquaresFitting</a> (std::span&lt; const std::vector&lt; double &gt; &gt; shape_functions, std::span&lt; const std::array&lt; double, 3 &gt; &gt; points_to_fit)</td></tr>
+<tr class="memdesc:a61be35286083ec1cb31e827143dc5438"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs least squares fitting to determine interpolation coefficients.  <br /></td></tr>
+<tr class="separator:a61be35286083ec1cb31e827143dc5438"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0e504d583e397e7a36eed8b501e9885f" id="r_a0e504d583e397e7a36eed8b501e9885f"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacekynema_1_1math.html#a0e504d583e397e7a36eed8b501e9885f">MapGeometricLocations</a> (std::span&lt; const double &gt; geom_locations)</td></tr>
 <tr class="memdesc:a0e504d583e397e7a36eed8b501e9885f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maps input geometric locations -&gt; normalized domain using linear mapping.  <br /></td></tr>
 <tr class="separator:a0e504d583e397e7a36eed8b501e9885f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -210,9 +213,6 @@ Functions</h2></td></tr>
 <tr class="memitem:aeb7f27e797612c16751b40e66523f33c" id="r_aeb7f27e797612c16751b40e66523f33c"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacekynema_1_1math.html#aeb7f27e797612c16751b40e66523f33c">ComputeShapeFunctionDerivatives</a> (std::span&lt; const double &gt; input_points, std::span&lt; const double &gt; output_points)</td></tr>
 <tr class="memdesc:aeb7f27e797612c16751b40e66523f33c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes shape function derivatives dϕg relating points ξb to ξg At least two input points are required and it is assumed that there are more output points than input points.  <br /></td></tr>
 <tr class="separator:aeb7f27e797612c16751b40e66523f33c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a61be35286083ec1cb31e827143dc5438" id="r_a61be35286083ec1cb31e827143dc5438"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::array&lt; double, 3 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacekynema_1_1math.html#a61be35286083ec1cb31e827143dc5438">PerformLeastSquaresFitting</a> (std::span&lt; const std::vector&lt; double &gt; &gt; shape_functions, std::span&lt; const std::array&lt; double, 3 &gt; &gt; points_to_fit)</td></tr>
-<tr class="memdesc:a61be35286083ec1cb31e827143dc5438"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs least squares fitting to determine interpolation coefficients.  <br /></td></tr>
-<tr class="separator:a61be35286083ec1cb31e827143dc5438"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1459d47d860f610931a8ede98a78e280" id="r_a1459d47d860f610931a8ede98a78e280"><td class="memTemplParams" colspan="2">template&lt;typename Matrix &gt; </td></tr>
 <tr class="memitem:a1459d47d860f610931a8ede98a78e280"><td class="memTemplItemLeft" align="right" valign="top">KOKKOS_INLINE_FUNCTION void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacekynema_1_1math.html#a1459d47d860f610931a8ede98a78e280">AX_Matrix</a> (const Matrix &amp;A, const Matrix &amp;AX_A)</td></tr>
 <tr class="memdesc:a1459d47d860f610931a8ede98a78e280"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes AX(A) of a square matrix.  <br /></td></tr>
@@ -1035,9 +1035,6 @@ template&lt;typename AVectorType , typename BVectorType &gt; </div>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">std::vector&lt; std::array&lt; double, 3 &gt; &gt; kynema::math::PerformLeastSquaresFitting </td>
@@ -1057,11 +1054,6 @@ template&lt;typename AVectorType , typename BVectorType &gt; </div>
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Performs least squares fitting to determine interpolation coefficients. </p>
