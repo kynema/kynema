@@ -1,6 +1,7 @@
-// #if defined __NVCC__
+#if defined __NVCC__
 #pragma nv_diag_once 20014, 20015
-// #endif
+#pragma nv_diag_suppress 20014, 20015
+#endif
 #include "least_squares_fit.hpp"
 
 #include <Eigen/Dense>
