@@ -21,20 +21,33 @@ namespace kynema::util {
  *   - Force (x, y, z, i, j, k)
  *   - Deformation (x, y, z)
  *
- * Each item is stored as a separate variable in the NetCDF file, organized by timestep
- * and node index. The file structure uses an unlimited time dimension to allow for
- * continuous writing of timesteps during simulation.
+ * @note Each item is stored as a separate variable in the NetCDF file, organized by
+ * timestep and node index. The file structure uses an unlimited time dimension to allow
+ * for continuous writing of timesteps during simulation.
+ *
+ * @note The class includes buffering to improve write performance by batching multiple
+ * timesteps together before writing to disk.
  */
 class NodeStateWriter {
 public:
+    /// Default buffer size (number of timesteps to accumulate before auto-flush)
+    static constexpr size_t kDefaultBufferSize{10};
+
     /**
      * @brief Constructor to create a NodeStateWriter object
      *
      * @param file_path Path to the output NetCDF file
      * @param create Whether to create a new file or open an existing one
      * @param num_nodes Number of nodes in the simulation
+     * @param buffer_size Number of timesteps to accumulate before auto-flush (0 = no buffering)
      */
-    NodeStateWriter(const std::string& file_path, bool create, size_t num_nodes);
+    NodeStateWriter(
+        const std::string& file_path, bool create, size_t num_nodes,
+        size_t buffer_size = kDefaultBufferSize
+    );
+
+    /// @brief Destructor to flush any remaining buffered data
+    ~NodeStateWriter();
 
     /**
      * @brief Writes state data for a specific timestep
@@ -54,7 +67,7 @@ public:
         const std::vector<double>& y, const std::vector<double>& z, const std::vector<double>& i,
         const std::vector<double>& j, const std::vector<double>& k,
         const std::vector<double>& w = std::vector<double>()
-    ) const;
+    );
 
     /**
      * @brief Write deformation data for all nodes at a timestep
@@ -67,7 +80,7 @@ public:
     void WriteDeformationDataAtTimestep(
         size_t timestep, const std::vector<double>& x, const std::vector<double>& y,
         const std::vector<double>& z
-    ) const;
+    );
 
     /// @brief Get the NetCDF file object
     [[nodiscard]] const NetCDFFile& GetFile() const;
@@ -76,8 +89,9 @@ public:
     [[nodiscard]] size_t GetNumNodes() const;
 
 private:
-    NetCDFFile file_;
-    size_t num_nodes_;
+    NetCDFFile file_;     //< NetCDF file object for writing output data
+    size_t num_nodes_;    //< number of nodes in the simulation
+    size_t buffer_size_;  //< number of timesteps to accumulate before auto-flush
 
     /**
      * @brief Defines variables for a state component (position, velocity, etc.)
@@ -89,6 +103,32 @@ private:
     void DefineStateVariables(
         const std::string& prefix, const std::vector<int>& dimensions, bool has_w
     );
+
+    //-----------------------------------
+    // support for buffering
+    //-----------------------------------
+
+    /// Structure to hold one timestep's worth of state data
+    struct StateTimestepData {
+        size_t timestep;
+        std::string component_prefix;             //< prefix for the component
+        std::vector<double> x, y, z, i, j, k, w;  //< data for the component
+    };
+
+    /// Structure to hold one timestep's worth of deformation data
+    struct DeformationTimestepData {
+        size_t timestep;
+        std::vector<double> x, y, z;  //< data for the deformation
+    };
+
+    std::vector<StateTimestepData>
+        state_buffers_[5];  //< buffers for each state component type (x, u, v, a, f)
+    std::vector<DeformationTimestepData> deformation_buffer_;  //< buffer for deformation data
+
+    size_t GetComponentIndex(const std::string& prefix) const;
+    void FlushStateBuffer(size_t component_index);
+    void FlushDeformationBuffer();
+    void FlushAllBuffers();
 };
 
 }  // namespace kynema::util
