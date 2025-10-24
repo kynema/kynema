@@ -8,18 +8,25 @@
 
 namespace kynema::util {
 
-/// @brief Class for managing NetCDF files for writing outputs
+/*
+ * @brief Class for managing NetCDF files for writing outputs
+ *
+ * This class provides a wrapper around the NetCDF library's functions for creating,
+ * writing, and reading NetCDF files. It is primarily used to write Kynema output data
+ * to a NetCDF file.
+ */
 class NetCDFFile {
 public:
     /**
      * @brief Constructor to create a NetCDFFile object
      *
-     * This constructor creates a new NetCDF file if the create flag is true.
-     * Otherwise, it opens an existing NetCDF file.
+     * This is a wrapper around the NetCDF library's "nc_create" function.
+     * It creates a new NetCDF file if the create flag is true. Otherwise,
+     * it opens an existing NetCDF file.
      */
     explicit NetCDFFile(const std::string& file_path, bool create = true);
 
-    // Prevent copying and moving (since we don't want copies made of output file)
+    /// Explicitly prevent copying and moving (since we don't want copies made of the output file)
     NetCDFFile(const NetCDFFile&) = delete;
     NetCDFFile& operator=(const NetCDFFile&) = delete;
     NetCDFFile(NetCDFFile&&) = delete;
@@ -120,6 +127,21 @@ public:
 
     /// @brief Synchronizes (flushes) the NetCDF file to disk
     void Sync() const;
+
+    /**
+     * @brief Configures chunking for a NetCDF variable to optimize I/O and compression performance
+     *
+     * Chunking divides a variable's data into fixed-size multidimensional blocks,
+     * improving efficiency for partial reads and writes. For time-series variables,
+     * it is typically best to chunk along the time dimension.
+     *
+     * This function must be called while the file is in define mode.
+     *
+     * @param var_name   Name of the variable to configure.
+     * @param chunk_sizes Chunk sizes for each dimension, in the same order as the variable’s
+     * dimensions.
+     */
+    void SetChunking(const std::string& var_name, std::span<const size_t> chunk_sizes) const;
 
     //--------------------------------------------------------------------------
     // Getter/Read methods

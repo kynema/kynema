@@ -1,9 +1,11 @@
+#include <array>
 #include <cstddef>
 #include <filesystem>
 #include <string>
 #include <vector>
 
 #include <gtest/gtest.h>
+#include <netcdf.h>
 
 #include "utilities/netcdf/netcdf_file.hpp"
 
@@ -386,6 +388,58 @@ TEST_F(NetCDFFileTest, ReadVariableWithStrideTypeInt) {
     const std::vector<ptrdiff_t> stride = {4};
     EXPECT_NO_THROW(file.ReadVariableWithStride("count", start, count, stride, read_data.data()));
     EXPECT_EQ(read_data, std::vector<int>({3, 7}));
+}
+
+TEST_F(NetCDFFileTest, SetChunking_1D) {
+    const util::NetCDFFile file(test_file);
+
+    const int time_dim = file.AddDimension("time", NC_UNLIMITED);
+    const int var_id = file.AddVariable<double>("state_1d", std::array{time_dim});
+    EXPECT_GE(var_id, 0);
+
+    // Set chunking for the variable to 4 timesteps per chunk
+    const std::array<size_t, 1> expected_chunk = {4};  // 4 timesteps per chunk
+    EXPECT_NO_THROW(file.SetChunking("state_1d", expected_chunk));
+
+    // Verify that NetCDF reports the chunking storage for the variable as expected
+    int storage = NC_CONTIGUOUS;          // default storage is contiguous
+    std::array<size_t, 1> chunk_sizes{};  // chunk sizes for each dimension
+    ASSERT_EQ(
+        nc_inq_var_chunking(
+            file.GetNetCDFId(), file.GetVariableId("state_1d"), &storage, chunk_sizes.data()
+        ),
+        NC_NOERR
+    );
+    EXPECT_EQ(storage, NC_CHUNKED);                // chunked storage is expected
+    EXPECT_EQ(chunk_sizes[0], expected_chunk[0]);  // chunk size for the time dimension is 4
+}
+
+TEST_F(NetCDFFileTest, SetChunking_2D) {
+    const util::NetCDFFile file(test_file);
+
+    const int time_dim = file.AddDimension("time", NC_UNLIMITED);
+    const int node_dim = file.AddDimension("nodes", 8);
+    const std::vector<int> dim_ids = {time_dim, node_dim};
+
+    const int var_id = file.AddVariable<double>("state_2d", dim_ids);
+    EXPECT_GE(var_id, 0);
+
+    // Set chunking for the variable to 3 timesteps per chunk, all 8 nodes
+    const std::array<size_t, 2> expected_chunk = {3, 8};  // 3 timesteps, all nodes
+    EXPECT_NO_THROW(file.SetChunking("state_2d", expected_chunk));
+
+    // Verify that NetCDF reports the chunking storage for the variable as expected
+    int storage = NC_CONTIGUOUS;          // default storage is contiguous
+    std::array<size_t, 2> chunk_sizes{};  // chunk sizes for each dimension
+    ASSERT_EQ(
+        nc_inq_var_chunking(
+            file.GetNetCDFId(), file.GetVariableId("state_2d"), &storage, chunk_sizes.data()
+        ),
+        NC_NOERR
+    );
+    EXPECT_EQ(storage, NC_CHUNKED);                // chunked storage is expected
+    EXPECT_EQ(chunk_sizes[0], expected_chunk[0]);  // chunk size for the time dimension is 3
+    EXPECT_EQ(chunk_sizes[1], expected_chunk[1]);  // chunk size for the nodes dimension is 8
 }
 
 }  // namespace kynema::tests

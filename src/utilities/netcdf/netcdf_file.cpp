@@ -6,14 +6,17 @@
 #include <stdexcept>
 
 namespace {
+
 inline void check_netCDF_error(int status, const std::string& message = "") {
     if (status != NC_NOERR) {
         throw std::runtime_error(message + ": " + nc_strerror(status));
     }
 }
+
 }  // namespace
 
 namespace kynema::util {
+
 NetCDFFile::NetCDFFile(const std::string& file_path, bool create) {
     if (create) {
         check_netCDF_error(
@@ -29,9 +32,10 @@ NetCDFFile::NetCDFFile(const std::string& file_path, bool create) {
 }
 
 NetCDFFile::~NetCDFFile() {
-    // Close if NetCDF file ID is valid
+    // close only if NetCDF file ID is valid
     if (netcdf_id_ != -1) {
         nc_close(netcdf_id_);
+        // set file ID to invalid upon closing
         netcdf_id_ = -1;
     }
 }
@@ -220,6 +224,15 @@ void NetCDFFile::Sync() const {
     check_netCDF_error(nc_sync(netcdf_id_), "Failed to sync NetCDF file");
 }
 
+void NetCDFFile::SetChunking(const std::string& var_name, std::span<const size_t> chunk_sizes)
+    const {
+    const int var_id = GetVariableId(var_name);
+    check_netCDF_error(
+        nc_def_var_chunking(netcdf_id_, var_id, NC_CHUNKED, chunk_sizes.data()),
+        "Failed to set chunking for variable " + var_name
+    );
+}
+
 int NetCDFFile::GetNetCDFId() const {
     return netcdf_id_;
 }
@@ -362,4 +375,5 @@ void NetCDFFile::ReadVariableWithStride(
         "Failed to read int variable with stride " + name
     );
 }
+
 }  // namespace kynema::util
