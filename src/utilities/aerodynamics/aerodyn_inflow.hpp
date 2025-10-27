@@ -142,11 +142,9 @@ struct TurbineConfig {
 
         // Check if there are any nodes defined for each blade
         if (std::ranges::any_of(blade_initial_states, [](auto& blade) {
-            return blade.node_initial_positions.empty();
-        })) {
-            throw std::runtime_error(
-                "No nodes defined for a blade. At least one node is required."
-            );
+                return blade.node_initial_positions.empty();
+            })) {
+            throw std::runtime_error("No nodes defined for a blade. At least one node is required.");
         }
     }
 
