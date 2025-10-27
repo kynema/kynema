@@ -358,9 +358,8 @@ struct TurbineData {
 
         // Check if the total number of blade nodes is valid - should be the same as the number of
         // aggregrated blade nodes
-        size_t total_nodes = 0;
-        std::accumulate(
-            std::begin(node_indices_by_blade), std::end(node_indices_by_blade), total_nodes
+        const auto total_nodes = std::accumulate(
+            std::cbegin(node_indices_by_blade), std::cend(node_indices_by_blade), 0UL
         );
         if (total_nodes != blade_nodes.NumberOfMeshPoints()) {
             throw std::runtime_error("Total number of blade nodes mismatch.");
