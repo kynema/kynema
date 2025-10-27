@@ -674,7 +674,7 @@ public:
      * @param sc Simulation control settings
      * @param vtk VTK output settings
      */
-    AeroDynInflowLibrary(
+    explicit AeroDynInflowLibrary(
         const std::string& shared_lib_path = "aerodyn_inflow_c_binding.dll",
         ErrorHandling eh = ErrorHandling{}, FluidProperties fp = FluidProperties{},
         EnvironmentalConditions ec = EnvironmentalConditions{},
