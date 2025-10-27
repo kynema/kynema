@@ -141,6 +141,9 @@ struct TurbineConfig {
         }
 
         // Check if there are any nodes defined for each blade
+        std::ranges::any_of(blade, [](auto& blade) {
+            return blade.node_initial_positions.empty();
+        });
         for (const auto& blade : blade_initial_states) {
             if (blade.node_initial_positions.empty()) {
                 throw std::runtime_error(
@@ -197,7 +200,7 @@ struct MeshData {
     std::vector<std::array<float, 6>> load;  //< N x 6 array [Fx, Fy, Fz, Mx, My, Mz]
 
     /// Constructor to initialize all mesh data to zero based on provided number of nodes
-    MeshData(size_t n_nodes)
+    explicit MeshData(size_t n_nodes)
         : n_points(static_cast<int32_t>(n_nodes)),
           position(n_nodes, std::array{0.F, 0.F, 0.F}),
           orientation(
@@ -314,7 +317,7 @@ struct TurbineData {
      *
      * @param tc The TurbineConfig object containing the initial state of the turbine
      */
-    TurbineData(const TurbineConfig& tc)
+    explicit TurbineData(const TurbineConfig& tc)
         : n_blades(static_cast<int32_t>(tc.NumberOfBlades())),
           hub(1),
           nacelle(1),
@@ -361,9 +364,9 @@ struct TurbineData {
         // Check if the total number of blade nodes is valid - should be the same as the number of
         // aggregrated blade nodes
         size_t total_nodes = 0;
-        for (const auto& bl : node_indices_by_blade) {
-            total_nodes += bl.size();
-        }
+        std::accumulate(
+            std::begin(node_indices_by_blade), std::end(node_indices_by_blade), total_nodes
+        );
         if (total_nodes != blade_nodes.NumberOfMeshPoints()) {
             throw std::runtime_error("Total number of blade nodes mismatch.");
         }
