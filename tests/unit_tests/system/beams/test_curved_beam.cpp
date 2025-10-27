@@ -64,7 +64,8 @@ void TestCalculateForceFc() {
 
     const auto Fc = Kokkos::View<double[6]>("Fc");
     Kokkos::parallel_for(
-        "CalculateForceFc", 1, KOKKOS_LAMBDA(size_t) {
+        "CalculateForceFc", 1,
+        KOKKOS_LAMBDA(size_t) {
             kynema::beams::CalculateForceFC<Kokkos::DefaultExecutionSpace>::invoke(Cuu, strain, Fc);
         }
     );
@@ -81,7 +82,8 @@ void TestCalculateForceFd() {
 
     const auto Fd = Kokkos::View<double[6]>("Fd");
     Kokkos::parallel_for(
-        "CalculateForceFd", 1, KOKKOS_LAMBDA(size_t) {
+        "CalculateForceFd", 1,
+        KOKKOS_LAMBDA(size_t) {
             kynema::beams::CalculateForceFD<Kokkos::DefaultExecutionSpace>::invoke(x0pupSS, Fc, Fd);
         }
     );
@@ -99,7 +101,8 @@ void TestRotateSectionMatrixForCurvedBeam() {
 
     const auto Cuu = Kokkos::View<double[6][6]>("Cuu");
     Kokkos::parallel_for(
-        "RotateSectionMatrix", 1, KOKKOS_LAMBDA(size_t) {
+        "RotateSectionMatrix", 1,
+        KOKKOS_LAMBDA(size_t) {
             kynema::masses::RotateSectionMatrix<Kokkos::DefaultExecutionSpace>::invoke(
                 xr, Cstar, Cuu
             );
@@ -124,7 +127,8 @@ void TestCalculateOuu() {
 
     const auto Ouu = Kokkos::View<double[6][6]>("Ouu");
     Kokkos::parallel_for(
-        "CalculateOuu", 1, KOKKOS_LAMBDA(size_t) {
+        "CalculateOuu", 1,
+        KOKKOS_LAMBDA(size_t) {
             kynema::beams::CalculateOuu<Kokkos::DefaultExecutionSpace>::invoke(
                 Cuu, x0pupSS, M_tilde, N_tilde, Ouu
             );
@@ -146,7 +150,8 @@ void TestCalculatePuuForCurvedBeam() {
 
     const auto Puu = Kokkos::View<double[6][6]>("Puu");
     Kokkos::parallel_for(
-        "CalculatePuu", 1, KOKKOS_LAMBDA(size_t) {
+        "CalculatePuu", 1,
+        KOKKOS_LAMBDA(size_t) {
             kynema::beams::CalculatePuu<Kokkos::DefaultExecutionSpace>::invoke(
                 Cuu, x0pupSS, N_tilde, Puu
             );
@@ -168,7 +173,8 @@ void TestCalculateQuuForCurvedBeam() {
 
     const auto Quu = Kokkos::View<double[6][6]>("Quu");
     Kokkos::parallel_for(
-        "CalculateQuu", 1, KOKKOS_LAMBDA(size_t) {
+        "CalculateQuu", 1,
+        KOKKOS_LAMBDA(size_t) {
             kynema::beams::CalculateQuu<Kokkos::DefaultExecutionSpace>::invoke(
                 Cuu, x0pupSS, N_tilde, Quu
             );

@@ -33,13 +33,14 @@ TEST(InterpolateQPStateTests, u_OneNodeOneQP) {
     auto node_u = create_node_u_OneNode();
     auto qp_u = Kokkos::View<double[1][num_qp][3]>("qp_u");
     Kokkos::parallel_for(
-        num_qp, InterpolateQPState_u<Kokkos::DefaultExecutionSpace>{
-                    .element = 0U,
-                    .num_nodes = num_nodes,
-                    .shape_interp = shape_interp,
-                    .node_u = node_u,
-                    .qp_u = qp_u
-                }
+        num_qp,
+        InterpolateQPState_u<Kokkos::DefaultExecutionSpace>{
+            .element = 0U,
+            .num_nodes = num_nodes,
+            .shape_interp = shape_interp,
+            .node_u = node_u,
+            .qp_u = qp_u
+        }
     );
     auto qp_u_mirror = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), qp_u);
     constexpr auto tolerance = 1.e-16;
@@ -56,14 +57,15 @@ TEST(InterpolateQPStateTests, uprime_OneNodeOneQP) {
     auto node_u = create_node_u_OneNode();
     auto qp_uprime = Kokkos::View<double[1][num_qp][3]>("qp_uprime");
     Kokkos::parallel_for(
-        num_qp, InterpolateQPState_uprime<Kokkos::DefaultExecutionSpace>{
-                    .element = 0,
-                    .num_nodes = num_nodes,
-                    .shape_deriv = shape_deriv,
-                    .qp_jacobian = jacobian,
-                    .node_u = node_u,
-                    .qp_uprime = qp_uprime
-                }
+        num_qp,
+        InterpolateQPState_uprime<Kokkos::DefaultExecutionSpace>{
+            .element = 0,
+            .num_nodes = num_nodes,
+            .shape_deriv = shape_deriv,
+            .qp_jacobian = jacobian,
+            .node_u = node_u,
+            .qp_uprime = qp_uprime
+        }
     );
     auto qp_uprime_mirror = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), qp_uprime);
     constexpr auto tolerance = 1.e-16;
@@ -79,13 +81,14 @@ TEST(InterpolateQPStateTests, r_OneNodeOneQP) {
     auto node_u = create_node_u_OneNode();
     auto qp_r = Kokkos::View<double[1][num_qp][4]>("qp_r");
     Kokkos::parallel_for(
-        num_qp, InterpolateQPState_r<Kokkos::DefaultExecutionSpace>{
-                    .element = 0,
-                    .num_nodes = num_nodes,
-                    .shape_interp = shape_interp,
-                    .node_u = node_u,
-                    .qp_r = qp_r
-                }
+        num_qp,
+        InterpolateQPState_r<Kokkos::DefaultExecutionSpace>{
+            .element = 0,
+            .num_nodes = num_nodes,
+            .shape_interp = shape_interp,
+            .node_u = node_u,
+            .qp_r = qp_r
+        }
     );
     auto qp_r_mirror = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), qp_r);
     constexpr auto tolerance = 1.e-16;
@@ -103,14 +106,15 @@ TEST(InterpolateQPStateTests, rprime_OneNodeOneQP) {
     auto node_u = create_node_u_OneNode();
     auto qp_rprime = Kokkos::View<double[1][num_qp][4]>("qp_uprime");
     Kokkos::parallel_for(
-        num_qp, InterpolateQPState_rprime<Kokkos::DefaultExecutionSpace>{
-                    .element = 0,
-                    .num_nodes = num_nodes,
-                    .shape_deriv = shape_deriv,
-                    .qp_jacobian = jacobian,
-                    .node_u = node_u,
-                    .qp_rprime = qp_rprime
-                }
+        num_qp,
+        InterpolateQPState_rprime<Kokkos::DefaultExecutionSpace>{
+            .element = 0,
+            .num_nodes = num_nodes,
+            .shape_deriv = shape_deriv,
+            .qp_jacobian = jacobian,
+            .node_u = node_u,
+            .qp_rprime = qp_rprime
+        }
     );
     auto qp_rprime_mirror = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), qp_rprime);
     constexpr auto tolerance = 1.e-16;
@@ -127,13 +131,14 @@ TEST(InterpolateQPStateTests, u_OneNodeTwoQP) {
     auto node_u = create_node_u_OneNode();
     auto qp_u = Kokkos::View<double[1][num_qp][3]>("qp_u");
     Kokkos::parallel_for(
-        num_qp, InterpolateQPState_u<Kokkos::DefaultExecutionSpace>{
-                    .element = 0U,
-                    .num_nodes = num_nodes,
-                    .shape_interp = shape_interp,
-                    .node_u = node_u,
-                    .qp_u = qp_u
-                }
+        num_qp,
+        InterpolateQPState_u<Kokkos::DefaultExecutionSpace>{
+            .element = 0U,
+            .num_nodes = num_nodes,
+            .shape_interp = shape_interp,
+            .node_u = node_u,
+            .qp_u = qp_u
+        }
     );
     auto qp_u_mirror = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), qp_u);
     constexpr auto tolerance = 1.e-16;
@@ -154,14 +159,15 @@ TEST(InterpolateQPStateTests, uprime_OneNodeTwoQP) {
     auto node_u = create_node_u_OneNode();
     auto qp_uprime = Kokkos::View<double[1][num_qp][3]>("qp_uprime");
     Kokkos::parallel_for(
-        num_qp, InterpolateQPState_uprime<Kokkos::DefaultExecutionSpace>{
-                    .element = 0U,
-                    .num_nodes = num_nodes,
-                    .shape_deriv = shape_deriv,
-                    .qp_jacobian = jacobian,
-                    .node_u = node_u,
-                    .qp_uprime = qp_uprime
-                }
+        num_qp,
+        InterpolateQPState_uprime<Kokkos::DefaultExecutionSpace>{
+            .element = 0U,
+            .num_nodes = num_nodes,
+            .shape_deriv = shape_deriv,
+            .qp_jacobian = jacobian,
+            .node_u = node_u,
+            .qp_uprime = qp_uprime
+        }
     );
     auto qp_uprime_mirror = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), qp_uprime);
     constexpr auto tolerance = 1.e-16;
@@ -181,13 +187,14 @@ TEST(InterpolateQPStateTests, r_OneNodeTwoQP) {
     auto node_u = create_node_u_OneNode();
     auto qp_r = Kokkos::View<double[1][num_qp][4]>("qp_r");
     Kokkos::parallel_for(
-        num_qp, InterpolateQPState_r<Kokkos::DefaultExecutionSpace>{
-                    .element = 0,
-                    .num_nodes = num_nodes,
-                    .shape_interp = shape_interp,
-                    .node_u = node_u,
-                    .qp_r = qp_r
-                }
+        num_qp,
+        InterpolateQPState_r<Kokkos::DefaultExecutionSpace>{
+            .element = 0,
+            .num_nodes = num_nodes,
+            .shape_interp = shape_interp,
+            .node_u = node_u,
+            .qp_r = qp_r
+        }
     );
     auto qp_r_mirror = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), qp_r);
     constexpr auto tolerance = 1.e-16;
@@ -210,14 +217,15 @@ TEST(InterpolateQPStateTests, rprime_OneNodeTwoQP) {
     auto node_u = create_node_u_OneNode();
     auto qp_rprime = Kokkos::View<double[1][num_qp][4]>("qp_uprime");
     Kokkos::parallel_for(
-        num_qp, InterpolateQPState_rprime<Kokkos::DefaultExecutionSpace>{
-                    .element = 0U,
-                    .num_nodes = num_nodes,
-                    .shape_deriv = shape_deriv,
-                    .qp_jacobian = jacobian,
-                    .node_u = node_u,
-                    .qp_rprime = qp_rprime
-                }
+        num_qp,
+        InterpolateQPState_rprime<Kokkos::DefaultExecutionSpace>{
+            .element = 0U,
+            .num_nodes = num_nodes,
+            .shape_deriv = shape_deriv,
+            .qp_jacobian = jacobian,
+            .node_u = node_u,
+            .qp_rprime = qp_rprime
+        }
     );
     auto qp_rprime_mirror = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), qp_rprime);
     constexpr auto tolerance = 1.e-16;
@@ -239,13 +247,14 @@ TEST(InterpolateQPStateTests, u_TwoNodeTwoQP) {
     auto node_u = create_node_u_TwoNode();
     auto qp_u = Kokkos::View<double[1][num_qp][3]>("qp_u");
     Kokkos::parallel_for(
-        num_qp, InterpolateQPState_u<Kokkos::DefaultExecutionSpace>{
-                    .element = 0,
-                    .num_nodes = num_nodes,
-                    .shape_interp = shape_interp,
-                    .node_u = node_u,
-                    .qp_u = qp_u
-                }
+        num_qp,
+        InterpolateQPState_u<Kokkos::DefaultExecutionSpace>{
+            .element = 0,
+            .num_nodes = num_nodes,
+            .shape_interp = shape_interp,
+            .node_u = node_u,
+            .qp_u = qp_u
+        }
     );
     auto qp_u_mirror = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), qp_u);
     constexpr auto tolerance = 1.e-16;
@@ -266,14 +275,15 @@ TEST(InterpolateQPStateTests, uprime_TwoNodeTwoQP) {
     auto node_u = create_node_u_TwoNode();
     auto qp_uprime = Kokkos::View<double[1][num_qp][3]>("qp_uprime");
     Kokkos::parallel_for(
-        num_qp, InterpolateQPState_uprime<Kokkos::DefaultExecutionSpace>{
-                    .element = 0,
-                    .num_nodes = num_nodes,
-                    .shape_deriv = shape_deriv,
-                    .qp_jacobian = jacobian,
-                    .node_u = node_u,
-                    .qp_uprime = qp_uprime
-                }
+        num_qp,
+        InterpolateQPState_uprime<Kokkos::DefaultExecutionSpace>{
+            .element = 0,
+            .num_nodes = num_nodes,
+            .shape_deriv = shape_deriv,
+            .qp_jacobian = jacobian,
+            .node_u = node_u,
+            .qp_uprime = qp_uprime
+        }
     );
     auto qp_uprime_mirror = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), qp_uprime);
     constexpr auto tolerance = 1.e-16;
@@ -293,13 +303,14 @@ TEST(InterpolateQPStateTests, r_TwoNodeTwoQP) {
     auto node_u = create_node_u_TwoNode();
     auto qp_r = Kokkos::View<double[1][num_qp][4]>("qp_r");
     Kokkos::parallel_for(
-        num_qp, InterpolateQPState_r<Kokkos::DefaultExecutionSpace>{
-                    .element = 0,
-                    .num_nodes = num_nodes,
-                    .shape_interp = shape_interp,
-                    .node_u = node_u,
-                    .qp_r = qp_r
-                }
+        num_qp,
+        InterpolateQPState_r<Kokkos::DefaultExecutionSpace>{
+            .element = 0,
+            .num_nodes = num_nodes,
+            .shape_interp = shape_interp,
+            .node_u = node_u,
+            .qp_r = qp_r
+        }
     );
     auto qp_r_mirror = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), qp_r);
     constexpr auto tolerance = 1.e-16;
@@ -322,14 +333,15 @@ TEST(InterpolateQPStateTests, rprime_TwoNodeTwoQP) {
     auto node_u = create_node_u_TwoNode();
     auto qp_rprime = Kokkos::View<double[1][num_qp][4]>("qp_uprime");
     Kokkos::parallel_for(
-        num_qp, InterpolateQPState_rprime<Kokkos::DefaultExecutionSpace>{
-                    .element = 0U,
-                    .num_nodes = num_nodes,
-                    .shape_deriv = shape_deriv,
-                    .qp_jacobian = jacobian,
-                    .node_u = node_u,
-                    .qp_rprime = qp_rprime
-                }
+        num_qp,
+        InterpolateQPState_rprime<Kokkos::DefaultExecutionSpace>{
+            .element = 0U,
+            .num_nodes = num_nodes,
+            .shape_deriv = shape_deriv,
+            .qp_jacobian = jacobian,
+            .node_u = node_u,
+            .qp_rprime = qp_rprime
+        }
     );
     auto qp_rprime_mirror = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), qp_rprime);
     constexpr auto tolerance = 1.e-16;

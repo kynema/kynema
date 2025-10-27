@@ -382,10 +382,9 @@ TEST(QuaternionTest, CheckTangentTwistToQuaternion) {
              {
                  .twist = std::numbers::pi / 4.,
                  .tan = {0., 0., 1.},
-                 .q_exp = {
-                     0.65328148243818829, 0.27059805007309845, -0.65328148243818818,
-                     0.27059805007309851
-                 },
+                 .q_exp =
+                     {0.65328148243818829, 0.27059805007309845, -0.65328148243818818,
+                      0.27059805007309851},
              },
          }) {
         const auto q_act = math::TangentTwistToQuaternion(td.tan, td.twist);

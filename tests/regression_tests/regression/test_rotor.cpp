@@ -52,7 +52,8 @@ kynema::Model CreateIEA15Blades(const std::array<double, 3>& omega) {
         auto beam_node_ids = std::vector<size_t>(num_nodes);
 
         std::ranges::transform(
-            std::views::iota(0U, num_nodes), std::begin(beam_node_ids), [&](const size_t j) {
+            std::views::iota(0U, num_nodes), std::begin(beam_node_ids),
+            [&](const size_t j) {
                 return model.AddNode()
                     .SetElemLocation(node_loc[j])
                     .SetPosition({kynema::tests::node_coords[j]})
