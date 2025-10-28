@@ -32,7 +32,7 @@ protected:
 };
 
 TEST_F(NodeStateWriterTest, ConstructorCreatesExpectedDimensionsAndVariables) {
-    util::NodeStateWriter writer(
+    const util::NodeStateWriter writer(
         test_file, true, num_nodes, enabled_state_prefixes, enable_deformation, no_buffering
     );
     const auto& file = writer.GetFile();
@@ -89,7 +89,7 @@ TEST_F(NodeStateWriterTest, ConstructorCreatesExpectedDimensionsAndVariables) {
 }
 
 TEST_F(NodeStateWriterTest, DefaultConstructorBehavior) {
-    util::NodeStateWriter writer(test_file, true, num_nodes);
+    const util::NodeStateWriter writer(test_file, true, num_nodes);
     const auto& file = writer.GetFile();
 
     EXPECT_EQ(writer.GetNumNodes(), num_nodes);
@@ -106,7 +106,7 @@ TEST_F(NodeStateWriterTest, DefaultConstructorBehavior) {
 
 TEST_F(NodeStateWriterTest, ConstructorWith2StatePrefixes) {
     const std::vector<std::string> prefixes{"x", "v"};  // Only position and velocity
-    util::NodeStateWriter writer(test_file, true, num_nodes, prefixes, false, no_buffering);
+    const util::NodeStateWriter writer(test_file, true, num_nodes, prefixes, false, no_buffering);
     const auto& file = writer.GetFile();
 
     // Verify only x and v variables are created
@@ -234,7 +234,7 @@ TEST_F(NodeStateWriterTest, ThrowsOnMismatchedVectorSizes) {
 
 TEST_F(NodeStateWriterTest, SetsChunkingForVariables) {
     const size_t buffer_size{3};
-    util::NodeStateWriter writer(
+    const util::NodeStateWriter writer(
         test_file, true, num_nodes, enabled_state_prefixes, enable_deformation, buffer_size
     );
     const auto& file = writer.GetFile();
@@ -498,8 +498,9 @@ TEST_F(NodeStateWriterTest, StateWritingPerformance_SelectiveVsAllStates) {
 
     auto make_vector = [&](double base) {
         std::vector<double> vector(nodes);
-        for (size_t i = 0; i < nodes; ++i)
+        for (size_t i = 0; i < nodes; ++i) {
             vector[i] = base + static_cast<double>(i) * 0.001;
+        }
         return vector;
     };
 
@@ -591,8 +592,9 @@ TEST_F(NodeStateWriterTest, StateWritingPerformance_BufferedVsUnbuffered) {
     const size_t steps{1000};
     auto make_vector = [&](double base) {
         std::vector<double> vector(nodes);
-        for (size_t i = 0; i < nodes; ++i)
+        for (size_t i = 0; i < nodes; ++i) {
             vector[i] = base + static_cast<double>(i) * 0.001;
+        }
         return vector;
     };
 

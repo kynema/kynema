@@ -53,6 +53,13 @@ public:
     /// @brief Destructor to flush any remaining buffered data
     ~NodeStateWriter();
 
+    // Rule of five -> explicitly delete the copy ctor, copy assignment operator,
+    // move ctor, and move assignment operator
+    NodeStateWriter(const NodeStateWriter&) = delete;
+    NodeStateWriter& operator=(const NodeStateWriter&) = delete;
+    NodeStateWriter(NodeStateWriter&&) = delete;
+    NodeStateWriter& operator=(NodeStateWriter&&) = delete;
+
     /**
      * @brief Writes state data for a specific timestep
      *
@@ -136,7 +143,7 @@ private:
      * @param prefix The string prefix ("x", "u", "v", "a", or "f")
      * @return The index corresponding to the prefix [0, 1, 2, 3, 4]
      */
-    size_t GetComponentIndex(const std::string& prefix) const;
+    [[nodiscard]] static size_t GetComponentIndex(const std::string& prefix);
 
     /**
      * @brief Flushes buffered data for a state component to disk

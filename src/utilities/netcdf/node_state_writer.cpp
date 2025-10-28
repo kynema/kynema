@@ -136,7 +136,7 @@ void NodeStateWriter::WriteStateDataAtTimestep(
     //-----------------------------------
     // write data w/ buffering
     //-----------------------------------
-    const size_t component_index = this->GetComponentIndex(component_prefix);
+    const size_t component_index = GetComponentIndex(component_prefix);
     auto& buffer = this->state_buffers_[component_index];
     buffer.push_back(StateTimestepData{timestep, component_prefix, x, y, z, i, j, k, w});
     if (buffer.size() >= this->buffer_size_) {
@@ -200,7 +200,7 @@ void NodeStateWriter::DefineStateVariables(
     }
 }
 
-size_t NodeStateWriter::GetComponentIndex(const std::string& prefix) const {
+size_t NodeStateWriter::GetComponentIndex(const std::string& prefix) {
     // Map: "x" -> 0, "u" -> 1, "v" -> 2, "a" -> 3, "f" -> 4
     static const std::unordered_map<std::string, size_t> prefix_to_index{
         {"x", 0}, {"u", 1}, {"v", 2}, {"a", 3}, {"f", 4}
