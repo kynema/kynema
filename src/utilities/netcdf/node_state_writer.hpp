@@ -39,11 +39,14 @@ public:
      * @param file_path Path to the output NetCDF file
      * @param create Whether to create a new file or open an existing one
      * @param num_nodes Number of nodes in the simulation
+     * @param enabled_state_prefixes Vector of state component prefixes to enable for writing
+     * @param enable_deformation Writing deformation data to the NetCDF file?
      * @param buffer_size Number of timesteps to accumulate before auto-flush (0 = no buffering)
      */
     NodeStateWriter(
         const std::string& file_path, bool create, size_t num_nodes,
-        size_t buffer_size = kDefaultBufferSize
+        const std::vector<std::string>& enabled_state_prefixes = {"x", "u", "v", "a", "f"},
+        bool enable_deformation = true, size_t buffer_size = kDefaultBufferSize
     );
 
     /// @brief Destructor to flush any remaining buffered data
@@ -89,8 +92,10 @@ public:
     [[nodiscard]] size_t GetNumNodes() const;
 
 private:
-    NetCDFFile file_;     //< NetCDF file object for writing output data
-    size_t num_nodes_;    //< number of nodes in the simulation
+    NetCDFFile file_;                                  //< NetCDF file object for writing output data
+    size_t num_nodes_;                                 //< number of nodes in the simulation
+    std::vector<std::string> enabled_state_prefixes_;  //< prefixes for the state components to write
+    bool enable_deformation_;                          //< write deformation data?
     size_t buffer_size_;  //< number of timesteps to accumulate before auto-flush
 
     /**
@@ -122,12 +127,30 @@ private:
     };
 
     std::vector<StateTimestepData>
-        state_buffers_[5];  //< buffers for each state component type (x, u, v, a, f)
+        state_buffers_[5];  //< buffer for each state component type  -- x, u, v, a, f
     std::vector<DeformationTimestepData> deformation_buffer_;  //< buffer for deformation data
 
+    /**
+     * @brief Gets the index of a state component by its prefix
+     * @param prefix The string prefix ("x", "u", "v", "a", or "f")
+     * @return The index corresponding to the prefix [0-4]
+     */
     size_t GetComponentIndex(const std::string& prefix) const;
+
+    /**
+     * @brief Flushes buffered data for a state component to disk
+     * @param component_index Index of the component (0=x, 1=u, 2=v, 3=a, 4=f)
+     */
     void FlushStateBuffer(size_t component_index);
+
+    /**
+     * @brief Flushes buffered deformation data to disk
+     */
     void FlushDeformationBuffer();
+
+    /**
+     * @brief Flushes all buffered data and syncs the file
+     */
     void FlushAllBuffers();
 };
 

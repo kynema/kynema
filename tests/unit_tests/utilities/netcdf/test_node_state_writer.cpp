@@ -26,11 +26,15 @@ protected:
 
     std::string test_file;
     size_t num_nodes{3};
+    std::vector<std::string> enabled_state_prefixes{"x", "u", "v", "a", "f"};
+    bool enable_deformation{true};
     size_t no_buffering{0};
 };
 
 TEST_F(NodeStateWriterTest, ConstructorCreatesExpectedDimensionsAndVariables) {
-    util::NodeStateWriter writer(test_file, true, num_nodes, no_buffering);
+    util::NodeStateWriter writer(
+        test_file, true, num_nodes, enabled_state_prefixes, enable_deformation, no_buffering
+    );
     const auto& file = writer.GetFile();
 
     EXPECT_EQ(writer.GetNumNodes(), num_nodes);
@@ -84,8 +88,49 @@ TEST_F(NodeStateWriterTest, ConstructorCreatesExpectedDimensionsAndVariables) {
     });
 }
 
+TEST_F(NodeStateWriterTest, DefaultConstructorBehavior) {
+    util::NodeStateWriter writer(test_file, true, num_nodes);
+    const auto& file = writer.GetFile();
+
+    EXPECT_EQ(writer.GetNumNodes(), num_nodes);
+    EXPECT_NO_THROW({
+        // All 5 default state components should be present
+        EXPECT_GE(file.GetVariableId("x_x"), 0);
+        EXPECT_GE(file.GetVariableId("u_x"), 0);
+        EXPECT_GE(file.GetVariableId("v_x"), 0);
+        EXPECT_GE(file.GetVariableId("a_x"), 0);
+        EXPECT_GE(file.GetVariableId("f_x"), 0);
+
+        // Deformation should be present by default
+        EXPECT_GE(file.GetVariableId("deformation_x"), 0);
+    });
+}
+
+TEST_F(NodeStateWriterTest, ConstructorWith2StatePrefixes) {
+    const std::vector<std::string> prefixes{"x", "v"};  // Only position and velocity
+    util::NodeStateWriter writer(test_file, true, num_nodes, prefixes, false, no_buffering);
+    const auto& file = writer.GetFile();
+
+    // Verify only x and v variables are created
+    EXPECT_NO_THROW({
+        EXPECT_GE(file.GetVariableId("x_x"), 0);
+        EXPECT_GE(file.GetVariableId("x_y"), 0);
+        EXPECT_GE(file.GetVariableId("x_w"), 0);
+
+        EXPECT_GE(file.GetVariableId("v_x"), 0);
+        EXPECT_GE(file.GetVariableId("v_y"), 0);
+    });
+
+    // Verify u, a, f variables are NOT created
+    EXPECT_THROW((void)file.GetVariableId("u_x"), std::runtime_error);
+    EXPECT_THROW((void)file.GetVariableId("a_x"), std::runtime_error);
+    EXPECT_THROW((void)file.GetVariableId("f_x"), std::runtime_error);
+}
+
 TEST_F(NodeStateWriterTest, WriteStateDataAtTimestepForPosition) {
-    util::NodeStateWriter writer(test_file, true, num_nodes, no_buffering);
+    util::NodeStateWriter writer(
+        test_file, true, num_nodes, enabled_state_prefixes, enable_deformation, no_buffering
+    );
 
     const std::vector<double> x = {1., 2., 3.};
     const std::vector<double> y = {4., 5., 6.};
@@ -123,7 +168,9 @@ TEST_F(NodeStateWriterTest, WriteStateDataAtTimestepForPosition) {
 }
 
 TEST_F(NodeStateWriterTest, WriteStateDataAtTimestepForVelocity) {
-    util::NodeStateWriter writer(test_file, true, num_nodes, no_buffering);
+    util::NodeStateWriter writer(
+        test_file, true, num_nodes, enabled_state_prefixes, enable_deformation, no_buffering
+    );
 
     const std::vector<double> x = {1., 2., 3.};
     const std::vector<double> y = {4., 5., 6.};
@@ -159,7 +206,9 @@ TEST_F(NodeStateWriterTest, WriteStateDataAtTimestepForVelocity) {
 }
 
 TEST_F(NodeStateWriterTest, ThrowsOnInvalidComponentPrefix) {
-    util::NodeStateWriter writer(test_file, true, num_nodes, no_buffering);
+    util::NodeStateWriter writer(
+        test_file, true, num_nodes, enabled_state_prefixes, enable_deformation, no_buffering
+    );
     const std::vector<double> data(num_nodes, 1.);
 
     EXPECT_THROW(
@@ -169,7 +218,9 @@ TEST_F(NodeStateWriterTest, ThrowsOnInvalidComponentPrefix) {
 }
 
 TEST_F(NodeStateWriterTest, ThrowsOnMismatchedVectorSizes) {
-    util::NodeStateWriter writer(test_file, true, num_nodes, no_buffering);
+    util::NodeStateWriter writer(
+        test_file, true, num_nodes, enabled_state_prefixes, enable_deformation, no_buffering
+    );
 
     const std::vector<double> correct_size(num_nodes, 1.);    // write data to 3 nodes
     const std::vector<double> wrong_size(num_nodes + 1, 1.);  // write data to 4 nodes
@@ -185,7 +236,9 @@ TEST_F(NodeStateWriterTest, ThrowsOnMismatchedVectorSizes) {
 
 TEST_F(NodeStateWriterTest, SetsChunkingForVariables) {
     const size_t buffer_size{3};
-    util::NodeStateWriter writer(test_file, true, num_nodes, buffer_size);
+    util::NodeStateWriter writer(
+        test_file, true, num_nodes, enabled_state_prefixes, enable_deformation, buffer_size
+    );
     const auto& file = writer.GetFile();
 
     const std::array<size_t, 2> expected_chunk = {buffer_size, num_nodes};
@@ -254,7 +307,9 @@ TEST_F(NodeStateWriterTest, SetsChunkingForVariables) {
 
 TEST_F(NodeStateWriterTest, BuffersAndFlushesOnCapacity_State) {
     const size_t buffer_size{2};  // buffer size is 2 timesteps
-    util::NodeStateWriter writer(test_file, true, num_nodes, buffer_size);
+    util::NodeStateWriter writer(
+        test_file, true, num_nodes, enabled_state_prefixes, enable_deformation, buffer_size
+    );
 
     // Data for timestep 0
     const std::vector<double> x0 = {1., 2., 3.};
@@ -315,7 +370,9 @@ TEST_F(NodeStateWriterTest, BuffersAndFlushesOnCapacity_State) {
 
 TEST_F(NodeStateWriterTest, BuffersAndFlushesOnCapacity_Deformation) {
     const size_t buffer_size{2};  // buffer size is 2 timesteps
-    util::NodeStateWriter writer(test_file, true, num_nodes, buffer_size);
+    util::NodeStateWriter writer(
+        test_file, true, num_nodes, enabled_state_prefixes, enable_deformation, buffer_size
+    );
 
     // Data for timestep 0
     const std::vector<double> x0 = {1., 2., 3.};
@@ -357,11 +414,12 @@ TEST_F(NodeStateWriterTest, BuffersAndFlushesOnCapacity_Deformation) {
 }
 
 TEST_F(NodeStateWriterTest, DestructorFlushesRemainingData_State) {
-    // Scope the writer object to ensure it goes out of scope and flushes remaining data in
-    // destructor
+    // Scope the writer object -> buffer is flushed on destruction
     {
         const size_t buffer_size{3};  // buffer size is 3 timesteps
-        util::NodeStateWriter writer(test_file, true, num_nodes, buffer_size);
+        util::NodeStateWriter writer(
+            test_file, true, num_nodes, enabled_state_prefixes, enable_deformation, buffer_size
+        );
 
         // Data for timestep 0
         const std::vector<double> x0 = {1., 2., 3.};
@@ -426,8 +484,102 @@ TEST_F(NodeStateWriterTest, DestructorFlushesRemainingData_State) {
     EXPECT_EQ(read, (std::vector<double>{2., 2., 2.}));
 }
 
-// Disabled by default due to environment variability. Run locally to inspect timings.
-TEST_F(NodeStateWriterTest, DISABLED_BufferedChunkingPerformance) {
+TEST_F(NodeStateWriterTest, SelectiveStateWritingPerformance) {
+    using clock = std::chrono::steady_clock;
+    using ms = std::chrono::milliseconds;
+
+    const std::string all_states_file{test_file + "_all_states.nc"};
+    const std::string position_only_file{test_file + "_position_only.nc"};
+    std::filesystem::remove(all_states_file);
+    std::filesystem::remove(position_only_file);
+
+    // Test parameters
+    const size_t nodes{100};
+    const size_t steps{1000};
+    const size_t buffer_size{0};
+
+    auto make_vector = [&](double base) {
+        std::vector<double> vector(nodes);
+        for (size_t i = 0; i < nodes; ++i)
+            vector[i] = base + static_cast<double>(i) * 0.001;
+        return vector;
+    };
+
+    // Pre-create per-timestep data
+    std::vector<std::array<std::vector<double>, 7>> data;
+    data.reserve(steps);
+    for (size_t t = 0; t < steps; ++t) {
+        data.push_back({
+            make_vector(1. + static_cast<double>(t)), make_vector(2. + static_cast<double>(t)),
+            make_vector(3. + static_cast<double>(t)), make_vector(4. + static_cast<double>(t)),
+            make_vector(5. + static_cast<double>(t)), make_vector(6. + static_cast<double>(t)),
+            make_vector(7. + static_cast<double>(t))  // x, y, z, i, j, k, w
+        });
+    }
+
+    // Default case: Write all 5 state components (x, u, v, a, f) + deformation
+    auto start_all_states = clock::now();
+    {
+        util::NodeStateWriter writer(
+            all_states_file, true, nodes,
+            std::vector<std::string>{"x", "u", "v", "a", "f"},  // All states
+            true,                                               // Enable deformation
+            buffer_size                                         // no buffering
+        );
+        for (size_t t = 0; t < steps; ++t) {
+            const auto& rec = data[t];
+            writer.WriteStateDataAtTimestep(
+                t, "x", rec[0], rec[1], rec[2], rec[3], rec[4], rec[5], rec[6]
+            );
+            writer.WriteStateDataAtTimestep(
+                t, "u", rec[0], rec[1], rec[2], rec[3], rec[4], rec[5], rec[6]
+            );
+            writer.WriteStateDataAtTimestep(t, "v", rec[0], rec[1], rec[2], rec[3], rec[4], rec[5]);
+            writer.WriteStateDataAtTimestep(t, "a", rec[0], rec[1], rec[2], rec[3], rec[4], rec[5]);
+            writer.WriteStateDataAtTimestep(t, "f", rec[0], rec[1], rec[2], rec[3], rec[4], rec[5]);
+            writer.WriteDeformationDataAtTimestep(t, rec[0], rec[1], rec[2]);
+        }
+    }
+    auto end_all_states = clock::now();
+
+    // Write only position (x) + no deformation
+    auto start_position_only = clock::now();
+    {
+        util::NodeStateWriter writer(
+            position_only_file, true, nodes, std::vector<std::string>{"x"},  // Only position
+            false,                                                           // No deformation
+            buffer_size                                                      // no buffering
+        );
+        for (size_t t = 0; t < steps; ++t) {
+            const auto& rec = data[t];
+            writer.WriteStateDataAtTimestep(
+                t, "x", rec[0], rec[1], rec[2], rec[3], rec[4], rec[5], rec[6]
+            );
+        }
+    }
+    auto end_position_only = clock::now();
+
+    const auto all_states_time =
+        std::chrono::duration_cast<ms>(end_all_states - start_all_states).count();
+    const auto position_only_time =
+        std::chrono::duration_cast<ms>(end_position_only - start_position_only).count();
+
+    std::cout << "\nSelective State Writing Performance (" << nodes << " nodes, " << steps
+              << " steps):\n"
+              << "  All states (x,u,v,a,f) + deformation: " << all_states_time << " ms\n"
+              << "  Position only (x):                     " << position_only_time << " ms\n"
+              << "  Speedup: " << std::fixed << std::setprecision(2)
+              << (static_cast<double>(all_states_time) / static_cast<double>(position_only_time))
+              << "x\n";
+
+    // Position-only should be significantly faster
+    // EXPECT_LT(position_only_time, all_states_time);
+
+    std::filesystem::remove(all_states_file);
+    std::filesystem::remove(position_only_file);
+}
+
+TEST_F(NodeStateWriterTest, BufferedChunkingPerformance) {
     using clock = std::chrono::steady_clock;
     using ms = std::chrono::milliseconds;
 
@@ -446,22 +598,25 @@ TEST_F(NodeStateWriterTest, DISABLED_BufferedChunkingPerformance) {
         return vector;
     };
 
-    // Pre-create per-timestep data (keeps timing focused on NetCDF IO)
+    // Pre-create per-timestep data
     std::vector<std::array<std::vector<double>, 6>> data;
     data.reserve(steps);
     for (size_t t = 0; t < steps; ++t) {
-        data.push_back(
-            {make_vector(1. + static_cast<double>(t)), make_vector(2. + static_cast<double>(t)),
-             make_vector(3. + static_cast<double>(t)),  // x, y, z
-             make_vector(4. + static_cast<double>(t)), make_vector(5. + static_cast<double>(t)),
-             make_vector(6. + static_cast<double>(t))}  // i, j, k
-        );
+        data.push_back({
+            make_vector(1. + static_cast<double>(t)), make_vector(2. + static_cast<double>(t)),
+            make_vector(3. + static_cast<double>(t)), make_vector(4. + static_cast<double>(t)),
+            make_vector(5. + static_cast<double>(t)),
+            make_vector(6. + static_cast<double>(t))  // x, y, z, i, j, k
+        });
     }
 
-    // Unbuffered (buffer_size = 0) — chunk size along time will be 1
+    // Unbuffered (buffer_size = 0) —> chunk size along time will be 1
     auto start_time_unbuffered = clock::now();
     {
-        util::NodeStateWriter writer(unbuffered_file, true, nodes, /*buffer_size=*/0);
+        util::NodeStateWriter writer(
+            unbuffered_file, true, nodes, {"v"}, false,
+            /*buffer_size=*/0
+        );
         for (size_t t = 0; t < steps; ++t) {
             const auto& rec = data[t];
             writer.WriteStateDataAtTimestep(t, "v", rec[0], rec[1], rec[2], rec[3], rec[4], rec[5]);
@@ -469,10 +624,13 @@ TEST_F(NodeStateWriterTest, DISABLED_BufferedChunkingPerformance) {
     }
     auto end_time_unbuffered = clock::now();
 
-    // Buffered (buffer_size = 32) — chunk size along time equals buffer size
+    // Buffered (buffer_size = 32) —> chunk size along time equals buffer size
     auto start_time_buffered = clock::now();
     {
-        util::NodeStateWriter writer(buffered_file, true, nodes, /*buffer_size=*/32);
+        util::NodeStateWriter writer(
+            buffered_file, true, nodes, {"v"}, false,
+            /*buffer_size=*/32
+        );
         for (size_t t = 0; t < steps; ++t) {
             const auto& rec = data[t];
             writer.WriteStateDataAtTimestep(t, "v", rec[0], rec[1], rec[2], rec[3], rec[4], rec[5]);
@@ -488,8 +646,12 @@ TEST_F(NodeStateWriterTest, DISABLED_BufferedChunkingPerformance) {
     std::cout << "Performance of NodeStateWriter with " << nodes << " nodes and " << steps
               << " steps: " << "\n"
               << " unbuffered : " << unbuffered_time << " ms" << "\n"
-              << " buffered : " << buffered_time << " ms" << "\n";
-    EXPECT_LT(buffered_time, unbuffered_time);  // buffered should be faster
+              << " buffered   : " << buffered_time << " ms" << "\n"
+              << " speedup    : " << std::fixed << std::setprecision(2)
+              << static_cast<double>(unbuffered_time) / static_cast<double>(buffered_time) << "x\n";
+
+    // buffered should be faster
+    // EXPECT_LT(buffered_time, unbuffered_time);
 
     std::filesystem::remove(unbuffered_file);
     std::filesystem::remove(buffered_file);

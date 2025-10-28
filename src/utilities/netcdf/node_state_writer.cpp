@@ -8,9 +8,15 @@
 namespace kynema::util {
 
 NodeStateWriter::NodeStateWriter(
-    const std::string& file_path, bool create, size_t num_nodes, size_t buffer_size
+    const std::string& file_path, bool create, size_t num_nodes,
+    const std::vector<std::string>& enabled_state_prefixes, bool enable_deformation,
+    size_t buffer_size
 )
-    : file_(file_path, create), num_nodes_(num_nodes), buffer_size_(buffer_size) {
+    : file_(file_path, create),
+      num_nodes_(num_nodes),
+      enabled_state_prefixes_(enabled_state_prefixes),
+      enable_deformation_(enable_deformation),
+      buffer_size_(buffer_size) {
     //-----------------------------------
     // define variables
     //-----------------------------------
@@ -23,14 +29,15 @@ NodeStateWriter::NodeStateWriter(
     const std::vector<int> dimensions = {time_dim, node_dim};
 
     // Define variables for each state component
-    this->DefineStateVariables("x", dimensions, true);   // Position (x, y, z, w, i, j, k)
-    this->DefineStateVariables("u", dimensions, true);   // Displacement (x, y, z, w, i, j, k)
-    this->DefineStateVariables("v", dimensions, false);  // Velocity (x, y, z, i, j, k)
-    this->DefineStateVariables("a", dimensions, false);  // Acceleration (x, y, z, i, j, k)
-    this->DefineStateVariables("f", dimensions, false);  // Force (x, y, z, i, j, k)
+    for (const auto& prefix : enabled_state_prefixes_) {
+        const bool has_w = (prefix == "x" || prefix == "u");
+        this->DefineStateVariables(prefix, dimensions, has_w);
+    }
 
     // Define variables for deformation
-    this->DefineStateVariables("deformation", dimensions, true);  // Deformation (x, y, z)
+    if (enable_deformation_) {
+        this->DefineStateVariables("deformation", dimensions, /*has_w=*/true);  // x,y,z
+    }
 
     //-----------------------------------
     // write in chunks
@@ -38,12 +45,12 @@ NodeStateWriter::NodeStateWriter(
 
     // Set chunking for the state variables
     // position -> x, displacement -> u, velocity -> v, acceleration -> a, force -> f
-    const size_t chunk_size = std::max(this->buffer_size_, size_t(1));  // minimum is 1 timestep
+    const size_t chunk_size =
+        std::max(this->buffer_size_, size_t(1));  // minimum chunk size is 1 timestep
     const std::array<size_t, 2> chunking = {chunk_size, this->num_nodes_};
-    const std::array<std::string_view, 5> state_prefixes = {"x", "u", "v", "a", "f"};
     const std::array<std::string_view, 7> components = {"x", "y", "z", "i", "j", "k", "w"};
 
-    for (const auto& prefix : state_prefixes) {
+    for (const auto& prefix : this->enabled_state_prefixes_) {
         for (const auto& comp : components) {
             const std::string var_name = std::string(prefix) + "_" + std::string(comp);
             // Skip w for velocity, acceleration, and force
@@ -56,14 +63,15 @@ NodeStateWriter::NodeStateWriter(
 
     // Set chunking for the deformation variable
     // deformation_x, deformation_y, deformation_z
-    const std::array<std::string_view, 3> deformation_components = {"x", "y", "z"};
-    for (const auto& comp : deformation_components) {
-        const std::string var_name = std::string("deformation") + "_" + std::string(comp);
-        this->file_.SetChunking(var_name, std::span<const size_t>(chunking));
+    if (this->enable_deformation_) {
+        for (const auto& comp : {"x", "y", "z"}) {
+            const std::string var_name = std::string("deformation") + "_" + std::string(comp);
+            this->file_.SetChunking(var_name, std::span<const size_t>(chunking));
+        }
     }
 
     // Reserve buffer capacity to avoid reallocations during writing
-    if (this->buffer_size_ > 0) {
+    if (this->buffer_size_ > 0U) {
         for (auto& buffer : this->state_buffers_) {
             buffer.reserve(this->buffer_size_);
         }
@@ -73,7 +81,7 @@ NodeStateWriter::NodeStateWriter(
 
 NodeStateWriter::~NodeStateWriter() {
     // flush all remaining buffered data
-    if (this->buffer_size_ > 0) {
+    if (this->buffer_size_ > 0U) {
         this->FlushAllBuffers();
     }
 }
@@ -106,7 +114,7 @@ void NodeStateWriter::WriteStateDataAtTimestep(
     //-----------------------------------
     // No buffering
     //-----------------------------------
-    if (this->buffer_size_ == 0) {
+    if (this->buffer_size_ == 0U) {
         const std::vector<size_t> start = {timestep, 0};  // start at the current timestep and node 0
         const std::vector<size_t> count = {
             1, x.size()
@@ -149,7 +157,7 @@ void NodeStateWriter::WriteDeformationDataAtTimestep(
     //-----------------------------------
     // No buffering
     //-----------------------------------
-    if (this->buffer_size_ == 0) {
+    if (this->buffer_size_ == 0U) {
         const std::vector<size_t> start = {timestep, 0};  // start at the current timestep and node 0
         const std::vector<size_t> count = {
             1, x.size()
@@ -252,7 +260,8 @@ void NodeStateWriter::FlushDeformationBuffer() {
 }
 
 void NodeStateWriter::FlushAllBuffers() {
-    for (size_t component_index = 0; component_index < 5; ++component_index) {
+    // There are 5 state component types: x, u, v, a, f -> flush all
+    for (size_t component_index = 0U; component_index < 5U; ++component_index) {
         this->FlushStateBuffer(component_index);
     }
     this->FlushDeformationBuffer();

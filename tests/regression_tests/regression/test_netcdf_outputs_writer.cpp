@@ -54,7 +54,14 @@ TEST(NetCDFOutputsWriterTest, SpringMassSystemOutputs) {
     // Set up NodeStateWriter with 2 nodes
     const std::string output_file = "spring_mass_system.nc";
     std::filesystem::remove(output_file);  // Remove any existing file
-    const util::NodeStateWriter writer(output_file, true, 2);
+    util::NodeStateWriter writer(
+        output_file,
+        true,   // create new file
+        2,      // 2 nodes
+        {"u"},  // write only displacements
+        false,  // do not write deformation
+        0       // no buffering
+    );
 
     // Run simulation and write outputs
     for (auto time_step : std::views::iota(0U, num_steps + 1U)) {
