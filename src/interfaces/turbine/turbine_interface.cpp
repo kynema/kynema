@@ -84,8 +84,10 @@ TurbineInterface::TurbineInterface(
 
         // Initialize outputs with both node state and time-series files
         this->outputs = std::make_unique<Outputs>(
-            solution_input.output_file_path + "/turbine_interface.nc",
-            solution_input.output_file_path + "/turbine_time_series.nc", this->state.num_system_nodes
+            solution_input.output_file_path + "/turbine_interface.nc", this->state.num_system_nodes,
+            solution_input.output_file_path + "/turbine_time_series.nc",
+            solution_input.output_state_prefixes, solution_input.enable_deformation,
+            solution_input.buffer_size
         );
 
         // Write initial state
