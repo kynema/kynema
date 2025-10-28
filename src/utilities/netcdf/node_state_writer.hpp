@@ -40,13 +40,14 @@ public:
      * @param create Whether to create a new file or open an existing one
      * @param num_nodes Number of nodes in the simulation
      * @param enabled_state_prefixes Vector of state component prefixes to enable for writing
-     * @param enable_deformation Writing deformation data to the NetCDF file?
+     *                              (default: all state components i.e. {"x", "u", "v", "a", "f"})
+     * @param enable_deformation Writing deformation data to the NetCDF file? (default: false)
      * @param buffer_size Number of timesteps to accumulate before auto-flush (0 = no buffering)
      */
     NodeStateWriter(
         const std::string& file_path, bool create, size_t num_nodes,
         const std::vector<std::string>& enabled_state_prefixes = {"x", "u", "v", "a", "f"},
-        bool enable_deformation = true, size_t buffer_size = kDefaultBufferSize
+        bool enable_deformation = false, size_t buffer_size = kDefaultBufferSize
     );
 
     /// @brief Destructor to flush any remaining buffered data
@@ -133,7 +134,7 @@ private:
     /**
      * @brief Gets the index of a state component by its prefix
      * @param prefix The string prefix ("x", "u", "v", "a", or "f")
-     * @return The index corresponding to the prefix [0-4]
+     * @return The index corresponding to the prefix [0, 1, 2, 3, 4]
      */
     size_t GetComponentIndex(const std::string& prefix) const;
 

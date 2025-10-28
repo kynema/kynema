@@ -30,13 +30,13 @@ NodeStateWriter::NodeStateWriter(
 
     // Define variables for each state component
     for (const auto& prefix : enabled_state_prefixes_) {
-        const bool has_w = (prefix == "x" || prefix == "u");
+        const bool has_w = (prefix == "x" || prefix == "u");  // position and displacement have w
         this->DefineStateVariables(prefix, dimensions, has_w);
     }
 
     // Define variables for deformation
     if (enable_deformation_) {
-        this->DefineStateVariables("deformation", dimensions, /*has_w=*/true);  // x,y,z
+        this->DefineStateVariables("deformation", dimensions, /*has_w=*/false);  // x,y,z
     }
 
     //-----------------------------------
@@ -80,7 +80,7 @@ NodeStateWriter::NodeStateWriter(
 }
 
 NodeStateWriter::~NodeStateWriter() {
-    // flush all remaining buffered data
+    // flush all remaining buffered data before destructing the object
     if (this->buffer_size_ > 0U) {
         this->FlushAllBuffers();
     }

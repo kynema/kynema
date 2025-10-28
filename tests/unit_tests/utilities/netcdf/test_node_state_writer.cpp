@@ -100,10 +100,8 @@ TEST_F(NodeStateWriterTest, DefaultConstructorBehavior) {
         EXPECT_GE(file.GetVariableId("v_x"), 0);
         EXPECT_GE(file.GetVariableId("a_x"), 0);
         EXPECT_GE(file.GetVariableId("f_x"), 0);
-
-        // Deformation should be present by default
-        EXPECT_GE(file.GetVariableId("deformation_x"), 0);
     });
+    EXPECT_THROW((void)file.GetVariableId("deformation_x"), std::runtime_error);
 }
 
 TEST_F(NodeStateWriterTest, ConstructorWith2StatePrefixes) {
@@ -442,7 +440,7 @@ TEST_F(NodeStateWriterTest, DestructorFlushesRemainingData_State) {
         ASSERT_NO_THROW(writer.WriteStateDataAtTimestep(0, "x", x0, y0, z0, i0, j0, k0, w0));
         ASSERT_NO_THROW(writer.WriteStateDataAtTimestep(1, "x", x1, y1, z1, i1, j1, k1, w1));
 
-        // Flush has not been triggered yet, so there should be no data in file
+        // Flush has not been triggered yet -> there should be no data in file
         EXPECT_EQ(writer.GetFile().GetDimensionLength("time"), 0U);
     }
 
@@ -484,7 +482,7 @@ TEST_F(NodeStateWriterTest, DestructorFlushesRemainingData_State) {
     EXPECT_EQ(read, (std::vector<double>{2., 2., 2.}));
 }
 
-TEST_F(NodeStateWriterTest, SelectiveStateWritingPerformance) {
+TEST_F(NodeStateWriterTest, StateWritingPerformance_SelectiveVsAllStates) {
     using clock = std::chrono::steady_clock;
     using ms = std::chrono::milliseconds;
 
@@ -572,14 +570,14 @@ TEST_F(NodeStateWriterTest, SelectiveStateWritingPerformance) {
               << (static_cast<double>(all_states_time) / static_cast<double>(position_only_time))
               << "x\n";
 
-    // Position-only should be significantly faster
+    // We can expect the position-only mode to be significantly faster
     // EXPECT_LT(position_only_time, all_states_time);
 
     std::filesystem::remove(all_states_file);
     std::filesystem::remove(position_only_file);
 }
 
-TEST_F(NodeStateWriterTest, BufferedChunkingPerformance) {
+TEST_F(NodeStateWriterTest, StateWritingPerformance_BufferedVsUnbuffered) {
     using clock = std::chrono::steady_clock;
     using ms = std::chrono::milliseconds;
 
@@ -650,7 +648,7 @@ TEST_F(NodeStateWriterTest, BufferedChunkingPerformance) {
               << " speedup    : " << std::fixed << std::setprecision(2)
               << static_cast<double>(unbuffered_time) / static_cast<double>(buffered_time) << "x\n";
 
-    // buffered should be faster
+    // We can expect buffered writing to be faster
     // EXPECT_LT(buffered_time, unbuffered_time);
 
     std::filesystem::remove(unbuffered_file);
