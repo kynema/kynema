@@ -318,39 +318,40 @@ TEST(TurbineInterfaceTest, MockAW) {
     // Build Aerodynamics
     //--------------------------------------------------------------------------
 
-    auto& aero_builder =
-        builder.Aerodynamics().EnableAero().SetNumberOfAirfoils(1UL).SetAirfoilToBladeMap(
-            std::array{0UL, 0UL, 0UL}
-        );
+    auto& aero_builder = builder.Aerodynamics()
+                             .EnableAero()
+                             .SetNumberOfAirfoils(1UL)
+                             .SetAirfoilToBladeMap(std::array{0UL, 0UL, 0UL});
 
-    {
-        const auto& airfoil_io = wio["airfoils"];
-        auto aero_sections = std::vector<interfaces::components::AerodynamicSection>{};
-        auto id = 0UL;
-        for (const auto& af : airfoil_io) {
-            const auto s = af["spanwise_position"].as<double>();
-            const auto chord = af["chord"].as<double>();
-            const auto twist = af["twist"].as<double>() * std::numbers::pi / 180.;
-            const auto section_offset_x = af["section_offset_x"].as<double>();
-            const auto section_offset_y = af["section_offset_y"].as<double>();
-            const auto aerodynamic_center = af["aerodynamic_center"].as<double>();
-            auto aoa = af["polars"][0]["re_sets"][0]["cl"]["grid"].as<std::vector<double>>();
-            std::ranges::transform(aoa, std::begin(aoa), [](auto degrees) {
-                return degrees * std::numbers::pi / 180.;
-            });
-            const auto cl = af["polars"][0]["re_sets"][0]["cl"]["values"].as<std::vector<double>>();
-            const auto cd = af["polars"][0]["re_sets"][0]["cd"]["values"].as<std::vector<double>>();
-            const auto cm = af["polars"][0]["re_sets"][0]["cm"]["values"].as<std::vector<double>>();
-
-            aero_sections.emplace_back(
-                id, s, chord, section_offset_x, section_offset_y, aerodynamic_center, twist, aoa, cl,
-                cd, cm
-            );
-            ++id;
-        }
-
-        aero_builder.SetAirfoilSections(0UL, aero_sections);
+    const auto& airfoil_io = wio["airfoils"];
+    auto aero_sections =
+        std::vector<kynema::interfaces::components::AerodynamicSection>{};
+    auto id = 0UL;
+    for (const auto& af : airfoil_io) {
+        const auto s = af["spanwise_position"].as<double>();
+        const auto chord = af["chord"].as<double>();
+        const auto twist = af["twist"].as<double>() * std::numbers::pi / 180.;
+        const auto section_offset_x = af["section_offset_x"].as<double>();
+        const auto section_offset_y = af["section_offset_y"].as<double>();
+        const auto aerodynamic_center = af["aerodynamic_center"].as<double>();
+        auto aoa = af["polars"][0]["re_sets"][0]["cl"]["grid"]
+                       .as<std::vector<double>>();
+        std::ranges::transform(aoa, std::begin(aoa), [](auto degrees) {
+            return degrees * std::numbers::pi / 180.;
+        });
+        const auto cl = af["polars"][0]["re_sets"][0]["cl"]["values"]
+                            .as<std::vector<double>>();
+        const auto cd = af["polars"][0]["re_sets"][0]["cd"]["values"]
+                            .as<std::vector<double>>();
+        const auto cm = af["polars"][0]["re_sets"][0]["cm"]["values"]
+                            .as<std::vector<double>>();
+        aero_sections.emplace_back(
+            id, s, chord, section_offset_x, section_offset_y,
+            aerodynamic_center, twist, aoa, cl, cd, cm);
+        ++id;
     }
+
+    aero_builder.SetAirfoilSections(0UL, aero_sections);
 
     //--------------------------------------------------------------------------
     // Interface
