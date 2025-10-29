@@ -69,6 +69,12 @@ public:
      */
     void WriteValueAtTimestep(size_t timestep, const std::string& name, double value);
 
+    /// @brief Manually close the underlying NetCDF files
+    void Close();
+
+    /// @brief Manually (re)open the underlying NetCDF files
+    void Open();
+
 private:
     std::unique_ptr<util::NodeStateWriter> output_writer_;  ///< Output writer
     size_t num_nodes_;  ///< Number of nodes to be written in the output file

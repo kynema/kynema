@@ -26,12 +26,6 @@ public:
      */
     explicit NetCdfFile(const std::string& file_path, bool create = true);
 
-    /// Explicitly prevent copying and moving (since we don't want copies made of the output file)
-    NetCdfFile(const NetCdfFile&) = delete;
-    NetCdfFile& operator=(const NetCdfFile&) = delete;
-    NetCdfFile(NetCdfFile&&) = delete;
-    NetCdfFile& operator=(NetCdfFile&&) = delete;
-
     /**
      * @brief Destructor to close the NetCDF file
      *
@@ -39,6 +33,29 @@ public:
      * It closes the NetCDF file with the given (valid) ID.
      */
     ~NetCdfFile();
+
+    /// Explicitly prevent copying and moving -- rule of 5
+    NetCdfFile(const NetCdfFile&) = delete;
+    NetCdfFile& operator=(const NetCdfFile&) = delete;
+    NetCdfFile(NetCdfFile&&) = delete;
+    NetCdfFile& operator=(NetCdfFile&&) = delete;
+
+    /// @brief Synchronizes (flushes) the NetCDF file to disk
+    void Sync() const;
+
+    /**
+     * @brief Manually flushes and closes the NetCDF file
+     *
+     * @note If the file is already closed, no action is taken
+     */
+    void Close();
+
+    /**
+     * @brief Manually (re)opens the NetCDF file in write mode
+     *
+     * @note If the file is already open, no action is taken
+     */
+    void Open();
 
     //--------------------------------------------------------------------------
     // Setter/Write methods
@@ -124,9 +141,6 @@ public:
         const std::string& name, std::span<const size_t> start, std::span<const size_t> count,
         std::span<const std::string> data
     ) const;
-
-    /// @brief Synchronizes (flushes) the NetCDF file to disk
-    void Sync() const;
 
     /**
      * @brief Configures chunking for a NetCDF variable to optimize I/O and compression performance
@@ -246,6 +260,7 @@ public:
 
 private:
     int netcdf_id_{-1};
+    std::string file_path_;
 };
 
 }  // namespace kynema::util

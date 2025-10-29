@@ -17,7 +17,7 @@ inline void check_netCDF_error(int status, const std::string& message = "") {
 
 namespace kynema::util {
 
-NetCdfFile::NetCdfFile(const std::string& file_path, bool create) {
+NetCdfFile::NetCdfFile(const std::string& file_path, bool create) : file_path_(file_path) {
     if (create) {
         check_netCDF_error(
             nc_create(file_path.c_str(), NC_CLOBBER | NC_NETCDF4, &netcdf_id_),
@@ -32,12 +32,28 @@ NetCdfFile::NetCdfFile(const std::string& file_path, bool create) {
 }
 
 NetCdfFile::~NetCdfFile() {
-    // close only if NetCDF file ID is valid
+    this->Close();
+}
+
+void NetCdfFile::Sync() const {
+    check_netCDF_error(nc_sync(netcdf_id_), "Failed to sync NetCDF file");
+}
+
+void NetCdfFile::Close() {
     if (netcdf_id_ != -1) {
+        this->Sync();  // flush buffers before closing
         nc_close(netcdf_id_);
-        // set file ID to invalid upon closing
-        netcdf_id_ = -1;
+        netcdf_id_ = -1;  // set file ID to invalid upon closing
     }
+}
+
+void NetCdfFile::Open() {
+    if (netcdf_id_ != -1) {
+        return;  // already open
+    }
+    check_netCDF_error(
+        nc_open(file_path_.c_str(), NC_WRITE, &netcdf_id_), "Failed to reopen NetCDF file"
+    );
 }
 
 int NetCdfFile::AddDimension(const std::string& name, size_t length) const {
@@ -218,10 +234,6 @@ void NetCdfFile::WriteVariableAt(
         ),
         "Failed to write string variable " + name
     );
-}
-
-void NetCdfFile::Sync() const {
-    check_netCDF_error(nc_sync(netcdf_id_), "Failed to sync NetCDF file");
 }
 
 void NetCdfFile::SetChunking(const std::string& var_name, std::span<const size_t> chunk_sizes)

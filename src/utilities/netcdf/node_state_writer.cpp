@@ -185,6 +185,18 @@ size_t NodeStateWriter::GetNumNodes() const {
     return num_nodes_;
 }
 
+void NodeStateWriter::Close() {
+    // flush all remaining buffered data before closing the file
+    if (this->buffer_size_ > 0U) {
+        this->FlushAllBuffers();
+    }
+    this->file_.Close();
+}
+
+void NodeStateWriter::Open() {
+    this->file_.Open();
+}
+
 void NodeStateWriter::DefineStateVariables(
     const std::string& prefix, const std::vector<int>& dimensions, bool has_w
 ) {

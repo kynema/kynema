@@ -4,4 +4,5 @@ add_subdirectory(components)
 target_sources(
     kynema_unit_tests
     PRIVATE
+    test_outputs.cpp
 )

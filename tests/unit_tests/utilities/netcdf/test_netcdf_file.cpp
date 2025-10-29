@@ -442,4 +442,65 @@ TEST_F(NetCdfFileTest, SetChunking_2D) {
     EXPECT_EQ(chunk_sizes[1], expected_chunk[1]);  // chunk size for the nodes dimension is 8
 }
 
+TEST_F(NetCdfFileTest, CloseIsSafeToCallMultipleTimes) {
+    util::NetCdfFile file(test_file);
+    EXPECT_NE(file.GetNetCDFId(), -1);
+
+    // Calling Close should set the file ID to invalid
+    EXPECT_NO_THROW(file.Close());
+    EXPECT_EQ(file.GetNetCDFId(), -1);
+
+    // Calling Close again should not throw and should not change the file ID
+    EXPECT_NO_THROW(file.Close());
+    EXPECT_EQ(file.GetNetCDFId(), -1);
+}
+
+TEST_F(NetCdfFileTest, OpenIsSafeToCallMultipleTimes) {
+    // Open the file
+    util::NetCdfFile file(test_file);
+    EXPECT_NE(file.GetNetCDFId(), -1);
+
+    // Calling Open should not throw and should not change the file ID
+    EXPECT_NO_THROW(file.Open());
+    EXPECT_NE(file.GetNetCDFId(), -1);
+
+    // Still able to define a dimension/variable
+    const int dim_id = file.AddDimension("time", 2);
+    const int var_id = file.AddVariable<double>("v", std::array{dim_id});
+    EXPECT_GE(var_id, 0);
+}
+
+TEST_F(NetCdfFileTest, OpenAfterCloseAllowsFurtherWritesAndFlushes) {
+    util::NetCdfFile file(test_file);
+
+    const int time_dim = file.AddDimension("time", 5);
+    const int var_id = file.AddVariable<double>("position", std::array{time_dim});
+    EXPECT_GE(var_id, 0);
+
+    // Write the first 2 values
+    const std::vector<double> write_data_0 = {1.1, 2.2};
+    const std::vector<size_t> start_0 = {0};
+    const std::vector<size_t> count_0 = {2};
+    EXPECT_NO_THROW(file.WriteVariableAt("position", start_0, count_0, write_data_0));
+
+    // Close -> should flush
+    EXPECT_NO_THROW(file.Close());
+    EXPECT_EQ(file.GetNetCDFId(), -1);
+    EXPECT_TRUE(std::filesystem::exists(test_file));
+
+    // Reopen and write remaining three values
+    EXPECT_NO_THROW(file.Open());
+    EXPECT_NE(file.GetNetCDFId(), -1);
+    const std::vector<double> write_data_2 = {3.3, 4.4, 5.5};
+    const std::vector<size_t> start_2 = {2};
+    const std::vector<size_t> count_2 = {3};
+    EXPECT_NO_THROW(file.WriteVariableAt("position", start_2, count_2, write_data_2));
+
+    // Verify entire data by opening a read-write handle to existing file
+    const util::NetCdfFile reader(test_file, false);
+    std::vector<double> read_data(5);
+    EXPECT_NO_THROW(reader.ReadVariable("position", read_data.data()));
+    EXPECT_EQ(read_data, (std::vector<double>{1.1, 2.2, 3.3, 4.4, 5.5}));
+}
+
 }  // namespace kynema::tests

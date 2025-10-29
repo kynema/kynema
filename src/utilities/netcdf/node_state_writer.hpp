@@ -30,8 +30,8 @@ namespace kynema::util {
  */
 class NodeStateWriter {
 public:
-    /// Default buffer size (number of timesteps to accumulate before auto-flush)
-    static constexpr size_t kDefaultBufferSize{10};
+    /// Default buffer size (number of timesteps to accumulate before auto-flush, 0 = no buffering)
+    static constexpr size_t kDefaultBufferSize{0};
 
     /**
      * @brief Constructor to create a NodeStateWriter object
@@ -98,6 +98,12 @@ public:
 
     /// @brief Get the number of nodes with state data in output file
     [[nodiscard]] size_t GetNumNodes() const;
+
+    /// @brief Manually flush and close the underlying NetCDF file
+    void Close();
+
+    /// @brief Manually (re)open the underlying NetCDF file
+    void Open();
 
 private:
     NetCdfFile file_;                                  //< NetCDF file object for writing output data

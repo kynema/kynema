@@ -137,4 +137,22 @@ void Outputs::WriteValueAtTimestep(size_t timestep, const std::string& name, dou
     }
 }
 
+void Outputs::Close() {
+    if (this->output_writer_) {
+        this->output_writer_->Close();
+    }
+    if (this->time_series_writer_) {
+        this->time_series_writer_->Close();
+    }
+}
+
+void Outputs::Open() {
+    if (this->output_writer_) {
+        this->output_writer_->Open();
+    }
+    if (this->time_series_writer_) {
+        this->time_series_writer_->Open();
+    }
+}
+
 }  // namespace kynema::interfaces
