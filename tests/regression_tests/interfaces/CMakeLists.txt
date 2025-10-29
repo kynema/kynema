@@ -6,6 +6,7 @@ target_sources(
     test_cfd_interface.cpp
     test_turbine_interface.cpp
     test_turbine_controller_interface.cpp
+    test_mock_aw_coupling.cpp
 )
 
 add_subdirectory(blade)
