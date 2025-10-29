@@ -375,7 +375,7 @@ TEST(TurbineInterfaceTest, MockAW) {
 
         // Set inflow velocity at aero
         for (uint nb = 0; nb < interface.Aerodynamics().bodies.size(); ++nb) {
-            for (uint ns = 0; ns < interface.Aerodynamics().bodies[ns].v_inflow.size(); ++ns) {
+            for (uint ns = 0; ns < interface.Aerodynamics().bodies[nb].v_inflow.size(); ++ns) {
                 for (uint dir = 0; dir < 3U; ++dir) {
                     interface.Aerodynamics()
                         .bodies[nb]
