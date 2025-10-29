@@ -43,7 +43,7 @@ TEST(StaticVerificationTest, IsotropicBeamRollup) {
         .SetAbsoluteErrorTolerance(1e-11)
         .SetRelativeErrorTolerance(1e-9);
     if (write_output) {
-        builder.Solution().SetOutputFile("StaticVerificationTest.IsotropicBeamRollup");
+        builder.Outputs().SetOutputFilePath("StaticVerificationTest.IsotropicBeamRollup");
     }
 
     //----------------------------------

@@ -2,7 +2,6 @@
 
 #include <array>
 #include <string>
-#include <vector>
 
 #include "step/step_parameters.hpp"
 
@@ -32,18 +31,6 @@ struct SolutionInput {
 
     /// @brief Relative error tolerance
     double relative_error_tolerance{1e-3};
-
-    /// @brief Output file path for NetCDF results (empty = no outputs will be written)
-    std::string output_file_path;
-
-    /// @brief Vector of state component prefixes to enable for writing
-    std::vector<std::string> output_state_prefixes{"x", "u", "v", "a", "f"};
-
-    /// @brief Whether to write deformation data to the NetCDF file
-    bool enable_deformation{false};
-
-    /// @brief Number of timesteps to buffer before auto-flush
-    size_t buffer_size{0};
 
     /// @brief  Construct step parameters from inputs
     /// @return Step parameters struct

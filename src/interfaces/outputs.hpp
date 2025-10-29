@@ -33,8 +33,7 @@ public:
      * @param enabled_state_prefixes which state component prefixes to enable for writing
      *        (default: all states i.e. {"x", "u", "v", "a", "f"})
      * @param enable_deformation whether to write deformation data (default: false)
-     * @param buffer_size number of timesteps to buffer before auto-flush (default: 10, 0 = no
-     *                    buffering)
+     * @param buffer_size number of timesteps to buffer before auto-flush (default: 0 = no buffering)
      */
     Outputs(
         const std::string& output_file, size_t num_nodes, const std::string& time_series_file = "",

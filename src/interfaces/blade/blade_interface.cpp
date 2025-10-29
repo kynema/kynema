@@ -9,7 +9,8 @@
 namespace kynema::interfaces {
 
 BladeInterface::BladeInterface(
-    const components::SolutionInput& solution_input, const components::BeamInput& blade_input
+    const components::SolutionInput& solution_input, const components::BeamInput& blade_input,
+    const components::OutputsConfig& outputs_config
 )
     : model(Model(solution_input.gravity)),
       blade(blade_input, model),
@@ -30,22 +31,22 @@ BladeInterface::BladeInterface(
     // Update the blade motion from state
     this->blade.GetMotion(this->host_state);
 
-    // Initialize NetCDF writer and write mesh connectivity if output path is specified
-    if (!solution_input.output_file_path.empty()) {
+    // Initialize NetCDF writer and write mesh connectivity if output is enabled
+    if (outputs_config.Enabled()) {
         // Create output directory if it doesn't exist
-        std::filesystem::create_directories(solution_input.output_file_path);
+        std::filesystem::create_directories(outputs_config.output_file_path);
 
         // Write mesh connectivity to YAML file
         model.ExportMeshConnectivityToYAML(
-            solution_input.output_file_path + "/mesh_connectivity.yaml"
+            outputs_config.output_file_path + "/mesh_connectivity.yaml"
         );
 
         // Initialize outputs
         this->outputs = std::make_unique<Outputs>(
-            solution_input.output_file_path + "/blade_interface.nc", blade.nodes.size(),
-            solution_input.output_file_path + "/blade_time_series.nc",
-            solution_input.output_state_prefixes, solution_input.enable_deformation,
-            solution_input.buffer_size
+            outputs_config.output_file_path + "/blade_interface.nc", blade.nodes.size(),
+            outputs_config.output_file_path + "/blade_time_series.nc",
+            outputs_config.output_state_prefixes, outputs_config.enable_deformation,
+            outputs_config.buffer_size
         );
     }
 }

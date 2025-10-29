@@ -30,7 +30,7 @@ TEST(BladeInterfaceTest, BladeWindIO) {
         .SetRelativeErrorTolerance(1e-4);
 
     if (write_output) {
-        builder.Solution().SetOutputFile("BladeInterfaceTest.BladeWindIO");
+        builder.Outputs().SetOutputFilePath("BladeInterfaceTest.BladeWindIO");
     }
 
     // Set blade parameters
@@ -146,7 +146,7 @@ TEST(BladeInterfaceTest, RotatingBeam) {
         .SetRelativeErrorTolerance(1e-4);
 
     if (write_output) {
-        builder.Solution().SetOutputFile("BladeInterfaceTest.RotatingBeam");
+        builder.Outputs().SetOutputFilePath("BladeInterfaceTest.RotatingBeam");
     }
 
     // Node locations (GLL quadrature)

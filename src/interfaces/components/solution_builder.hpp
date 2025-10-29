@@ -77,38 +77,6 @@ struct SolutionBuilder {
     SolutionBuilder& SetDampingFactor(double rho_inf);
 
     /**
-     * @brief Sets the output file name where output will be written each time step
-     *
-     * @details If this is left unset, no IO will be automatically performed
-     *
-     * @param output_file_path The name of the output file
-     * @return A reference to this solution builder object to allow chaining
-     */
-    SolutionBuilder& SetOutputFile(const std::string& output_file_path);
-
-    /**
-     * @brief Sets the output state prefixes to be written to the output file
-     *
-     * @param prefixes Vector of variable name prefixes
-     * @return A reference to this solution builder object to allow chaining
-     */
-    SolutionBuilder& SetOutputStatePrefixes(const std::vector<std::string>& prefixes) {
-        input.output_state_prefixes = prefixes;
-        return *this;
-    }
-
-    /**
-     * @brief Sets the number of output timesteps to buffer before flushing to disk
-     *
-     * @param buffer_size Number of timesteps to buffer
-     * @return A reference to this solution builder object to allow chaining
-     */
-    SolutionBuilder& SetOutputBufferSize(std::size_t buffer_size) {
-        input.buffer_size = buffer_size;
-        return *this;
-    }
-
-    /**
      * @brief Creates a SolutionInput object based on the previously set parameters
      *
      * @return The completed SolutionInput object

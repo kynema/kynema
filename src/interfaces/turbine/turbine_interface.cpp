@@ -15,7 +15,8 @@ namespace kynema::interfaces {
 TurbineInterface::TurbineInterface(
     const components::SolutionInput& solution_input, const components::TurbineInput& turbine_input,
     const components::AerodynamicsInput& aerodynamics_input,
-    const components::ControllerInput& controller_input
+    const components::ControllerInput& controller_input,
+    const components::OutputsConfig& outputs_config
 )
     : model(Model(solution_input.gravity)),
       turbine(turbine_input, model),
@@ -72,22 +73,22 @@ TurbineInterface::TurbineInterface(
     // Update the turbine node motion based on the host state
     this->turbine.GetMotion(this->host_state);
 
-    // Initialize NetCDF writer and write mesh connectivity if output path is specified
-    if (!solution_input.output_file_path.empty()) {
+    // Initialize NetCDF writer and write mesh connectivity if output is enabled
+    if (outputs_config.Enabled()) {
         // Create output directory if it doesn't exist
-        std::filesystem::create_directories(solution_input.output_file_path);
+        std::filesystem::create_directories(outputs_config.output_file_path);
 
         // Write mesh connectivity to YAML file
         model.ExportMeshConnectivityToYAML(
-            solution_input.output_file_path + "/mesh_connectivity.yaml"
+            outputs_config.output_file_path + "/mesh_connectivity.yaml"
         );
 
         // Initialize outputs with both node state and time-series files
         this->outputs = std::make_unique<Outputs>(
-            solution_input.output_file_path + "/turbine_interface.nc", this->state.num_system_nodes,
-            solution_input.output_file_path + "/turbine_time_series.nc",
-            solution_input.output_state_prefixes, solution_input.enable_deformation,
-            solution_input.buffer_size
+            outputs_config.output_file_path + "/turbine_interface.nc", this->state.num_system_nodes,
+            outputs_config.output_file_path + "/turbine_time_series.nc",
+            outputs_config.output_state_prefixes, outputs_config.enable_deformation,
+            outputs_config.buffer_size
         );
 
         // Write initial state
