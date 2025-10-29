@@ -44,10 +44,10 @@ public:
     );
 
     /// @brief Get the NetCDF file object
-    [[nodiscard]] const NetCDFFile& GetFile() const;
+    [[nodiscard]] const NetCdfFile& GetFile() const;
 
 private:
-    NetCDFFile file_;
+    NetCdfFile file_;
     int time_dim_;
 };
 

@@ -445,7 +445,7 @@ TEST_F(NodeStateWriterTest, DestructorFlushesRemainingData_State) {
     }
 
     // Verify that the data has been written to the file in the correct order
-    const util::NetCDFFile file(test_file, false);
+    const util::NetCdfFile file(test_file, false);
     std::vector<double> read(num_nodes);
     const std::vector<size_t> start0 = {0, 0};
     const std::vector<size_t> start1 = {1, 0};

@@ -50,7 +50,7 @@ TEST(CFDInterfaceTest, PrecessionTest) {
 
     if (write_output) {
         // Read and verify data from NetCDF file
-        const util::NetCDFFile file("CFDInterfaceTest.PrecessionTest/cfd_interface.nc", false);
+        const util::NetCdfFile file("CFDInterfaceTest.PrecessionTest/cfd_interface.nc", false);
         std::vector<double> displacements(1);
 
         // Check displacement at step 500, platform node

@@ -90,7 +90,7 @@ TEST(NetCDFOutputsWriterTest, SpringMassSystemOutputs) {
     EXPECT_TRUE(std::filesystem::exists(output_file));
 
     // Verify netcdf output data
-    const util::NetCDFFile file(output_file, false);
+    const util::NetCdfFile file(output_file, false);
     std::vector<double> x_displacements(2);
 
     // Check displacement at T/2

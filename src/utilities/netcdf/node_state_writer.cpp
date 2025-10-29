@@ -177,7 +177,7 @@ void NodeStateWriter::WriteDeformationDataAtTimestep(
     }
 }
 
-const NetCDFFile& NodeStateWriter::GetFile() const {
+const NetCdfFile& NodeStateWriter::GetFile() const {
     return file_;
 }
 

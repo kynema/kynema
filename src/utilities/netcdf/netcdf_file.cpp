@@ -17,7 +17,7 @@ inline void check_netCDF_error(int status, const std::string& message = "") {
 
 namespace kynema::util {
 
-NetCDFFile::NetCDFFile(const std::string& file_path, bool create) {
+NetCdfFile::NetCdfFile(const std::string& file_path, bool create) {
     if (create) {
         check_netCDF_error(
             nc_create(file_path.c_str(), NC_CLOBBER | NC_NETCDF4, &netcdf_id_),
@@ -31,7 +31,7 @@ NetCDFFile::NetCDFFile(const std::string& file_path, bool create) {
     );
 }
 
-NetCDFFile::~NetCDFFile() {
+NetCdfFile::~NetCdfFile() {
     // close only if NetCDF file ID is valid
     if (netcdf_id_ != -1) {
         nc_close(netcdf_id_);
@@ -40,7 +40,7 @@ NetCDFFile::~NetCDFFile() {
     }
 }
 
-int NetCDFFile::AddDimension(const std::string& name, size_t length) const {
+int NetCdfFile::AddDimension(const std::string& name, size_t length) const {
     int dim_id{-1};
     check_netCDF_error(
         nc_def_dim(netcdf_id_, name.c_str(), length, &dim_id), "Failed to create dimension " + name
@@ -49,7 +49,7 @@ int NetCDFFile::AddDimension(const std::string& name, size_t length) const {
 }
 
 template <>
-int NetCDFFile::AddVariable<float>(const std::string& name, std::span<const int> dim_ids) const {
+int NetCdfFile::AddVariable<float>(const std::string& name, std::span<const int> dim_ids) const {
     int var_id{-1};
     check_netCDF_error(
         nc_def_var(
@@ -62,7 +62,7 @@ int NetCDFFile::AddVariable<float>(const std::string& name, std::span<const int>
 }
 
 template <>
-int NetCDFFile::AddVariable<double>(const std::string& name, std::span<const int> dim_ids) const {
+int NetCdfFile::AddVariable<double>(const std::string& name, std::span<const int> dim_ids) const {
     int var_id{-1};
     check_netCDF_error(
         nc_def_var(
@@ -75,7 +75,7 @@ int NetCDFFile::AddVariable<double>(const std::string& name, std::span<const int
 }
 
 template <>
-int NetCDFFile::AddVariable<int>(const std::string& name, std::span<const int> dim_ids) const {
+int NetCdfFile::AddVariable<int>(const std::string& name, std::span<const int> dim_ids) const {
     int var_id{-1};
     check_netCDF_error(
         nc_def_var(
@@ -88,7 +88,7 @@ int NetCDFFile::AddVariable<int>(const std::string& name, std::span<const int> d
 }
 
 template <>
-int NetCDFFile::AddVariable<std::string>(const std::string& name, std::span<const int> dim_ids)
+int NetCdfFile::AddVariable<std::string>(const std::string& name, std::span<const int> dim_ids)
     const {
     int var_id{-1};
     check_netCDF_error(
@@ -101,7 +101,7 @@ int NetCDFFile::AddVariable<std::string>(const std::string& name, std::span<cons
     return var_id;
 }
 
-void NetCDFFile::AddAttribute(const std::string& var_name, const std::string& attr_name, float value)
+void NetCdfFile::AddAttribute(const std::string& var_name, const std::string& attr_name, float value)
     const {
     check_netCDF_error(
         nc_put_att(
@@ -111,7 +111,7 @@ void NetCDFFile::AddAttribute(const std::string& var_name, const std::string& at
     );
 }
 
-void NetCDFFile::AddAttribute(
+void NetCdfFile::AddAttribute(
     const std::string& var_name, const std::string& attr_name, double value
 ) const {
     check_netCDF_error(
@@ -122,7 +122,7 @@ void NetCDFFile::AddAttribute(
     );
 }
 
-void NetCDFFile::AddAttribute(const std::string& var_name, const std::string& attr_name, int value)
+void NetCdfFile::AddAttribute(const std::string& var_name, const std::string& attr_name, int value)
     const {
     check_netCDF_error(
         nc_put_att(netcdf_id_, this->GetVariableId(var_name), attr_name.c_str(), NC_INT, 1, &value),
@@ -130,7 +130,7 @@ void NetCDFFile::AddAttribute(const std::string& var_name, const std::string& at
     );
 }
 
-void NetCDFFile::AddAttribute(
+void NetCdfFile::AddAttribute(
     const std::string& var_name, const std::string& attr_name, const std::string& value
 ) const {
     check_netCDF_error(
@@ -142,28 +142,28 @@ void NetCDFFile::AddAttribute(
     );
 }
 
-void NetCDFFile::WriteVariable(const std::string& name, std::span<const float> data) const {
+void NetCdfFile::WriteVariable(const std::string& name, std::span<const float> data) const {
     check_netCDF_error(
         nc_put_var(netcdf_id_, this->GetVariableId(name), data.data()),
         "Failed to write variable " + name
     );
 }
 
-void NetCDFFile::WriteVariable(const std::string& name, std::span<const double> data) const {
+void NetCdfFile::WriteVariable(const std::string& name, std::span<const double> data) const {
     check_netCDF_error(
         nc_put_var(netcdf_id_, this->GetVariableId(name), data.data()),
         "Failed to write variable " + name
     );
 }
 
-void NetCDFFile::WriteVariable(const std::string& name, std::span<const int> data) const {
+void NetCdfFile::WriteVariable(const std::string& name, std::span<const int> data) const {
     check_netCDF_error(
         nc_put_var(netcdf_id_, this->GetVariableId(name), data.data()),
         "Failed to write variable " + name
     );
 }
 
-void NetCDFFile::WriteVariable(const std::string& name, std::span<const std::string> data) const {
+void NetCdfFile::WriteVariable(const std::string& name, std::span<const std::string> data) const {
     auto c_strs = std::vector<const char*>(data.size());
     std::ranges::transform(data, std::begin(c_strs), [](const std::string& str) {
         return str.c_str();
@@ -174,7 +174,7 @@ void NetCDFFile::WriteVariable(const std::string& name, std::span<const std::str
     );
 }
 
-void NetCDFFile::WriteVariableAt(
+void NetCdfFile::WriteVariableAt(
     const std::string& name, std::span<const size_t> start, std::span<const size_t> count,
     std::span<const float> data
 ) const {
@@ -184,7 +184,7 @@ void NetCDFFile::WriteVariableAt(
     );
 }
 
-void NetCDFFile::WriteVariableAt(
+void NetCdfFile::WriteVariableAt(
     const std::string& name, std::span<const size_t> start, std::span<const size_t> count,
     std::span<const double> data
 ) const {
@@ -194,7 +194,7 @@ void NetCDFFile::WriteVariableAt(
     );
 }
 
-void NetCDFFile::WriteVariableAt(
+void NetCdfFile::WriteVariableAt(
     const std::string& name, std::span<const size_t> start, std::span<const size_t> count,
     std::span<const int> data
 ) const {
@@ -204,7 +204,7 @@ void NetCDFFile::WriteVariableAt(
     );
 }
 
-void NetCDFFile::WriteVariableAt(
+void NetCdfFile::WriteVariableAt(
     const std::string& name, std::span<const size_t> start, std::span<const size_t> count,
     std::span<const std::string> data
 ) const {
@@ -220,11 +220,11 @@ void NetCDFFile::WriteVariableAt(
     );
 }
 
-void NetCDFFile::Sync() const {
+void NetCdfFile::Sync() const {
     check_netCDF_error(nc_sync(netcdf_id_), "Failed to sync NetCDF file");
 }
 
-void NetCDFFile::SetChunking(const std::string& var_name, std::span<const size_t> chunk_sizes)
+void NetCdfFile::SetChunking(const std::string& var_name, std::span<const size_t> chunk_sizes)
     const {
     const int var_id = GetVariableId(var_name);
     check_netCDF_error(
@@ -233,11 +233,11 @@ void NetCDFFile::SetChunking(const std::string& var_name, std::span<const size_t
     );
 }
 
-int NetCDFFile::GetNetCDFId() const {
+int NetCdfFile::GetNetCDFId() const {
     return netcdf_id_;
 }
 
-int NetCDFFile::GetDimensionId(const std::string& name) const {
+int NetCdfFile::GetDimensionId(const std::string& name) const {
     int dim_id{-1};
     check_netCDF_error(
         nc_inq_dimid(netcdf_id_, name.c_str(), &dim_id), "Failed to get dimension ID for " + name
@@ -245,7 +245,7 @@ int NetCDFFile::GetDimensionId(const std::string& name) const {
     return dim_id;
 }
 
-int NetCDFFile::GetVariableId(const std::string& name) const {
+int NetCdfFile::GetVariableId(const std::string& name) const {
     int var_id{-1};
     check_netCDF_error(
         nc_inq_varid(netcdf_id_, name.c_str(), &var_id), "Failed to get variable ID for " + name
@@ -253,7 +253,7 @@ int NetCDFFile::GetVariableId(const std::string& name) const {
     return var_id;
 }
 
-size_t NetCDFFile::GetNumberOfDimensions(const std::string& var_name) const {
+size_t NetCdfFile::GetNumberOfDimensions(const std::string& var_name) const {
     const int var_id = GetVariableId(var_name);
     int num_dims{0};
     check_netCDF_error(
@@ -263,17 +263,17 @@ size_t NetCDFFile::GetNumberOfDimensions(const std::string& var_name) const {
     return static_cast<size_t>(num_dims);
 }
 
-size_t NetCDFFile::GetDimensionLength(int dim_id) const {
+size_t NetCdfFile::GetDimensionLength(int dim_id) const {
     size_t length{0};
     check_netCDF_error(nc_inq_dimlen(netcdf_id_, dim_id, &length), "Failed to get dimension length");
     return length;
 }
 
-size_t NetCDFFile::GetDimensionLength(const std::string& name) const {
+size_t NetCdfFile::GetDimensionLength(const std::string& name) const {
     return GetDimensionLength(GetDimensionId(name));
 }
 
-std::vector<size_t> NetCDFFile::GetShape(const std::string& var_name) const {
+std::vector<size_t> NetCdfFile::GetShape(const std::string& var_name) const {
     const int var_id = GetVariableId(var_name);
     const size_t num_dims = GetNumberOfDimensions(var_name);
 
@@ -290,28 +290,28 @@ std::vector<size_t> NetCDFFile::GetShape(const std::string& var_name) const {
     return shape;
 }
 
-void NetCDFFile::ReadVariable(const std::string& name, float* data) const {
+void NetCdfFile::ReadVariable(const std::string& name, float* data) const {
     check_netCDF_error(
         nc_get_var_float(netcdf_id_, this->GetVariableId(name), data),
         "Failed to read float variable " + name
     );
 }
 
-void NetCDFFile::ReadVariable(const std::string& name, double* data) const {
+void NetCdfFile::ReadVariable(const std::string& name, double* data) const {
     check_netCDF_error(
         nc_get_var_double(netcdf_id_, this->GetVariableId(name), data),
         "Failed to read double variable " + name
     );
 }
 
-void NetCDFFile::ReadVariable(const std::string& name, int* data) const {
+void NetCdfFile::ReadVariable(const std::string& name, int* data) const {
     check_netCDF_error(
         nc_get_var_int(netcdf_id_, this->GetVariableId(name), data),
         "Failed to read int variable " + name
     );
 }
 
-void NetCDFFile::ReadVariableAt(
+void NetCdfFile::ReadVariableAt(
     const std::string& name, std::span<const size_t> start, std::span<const size_t> count,
     float* data
 ) const {
@@ -321,7 +321,7 @@ void NetCDFFile::ReadVariableAt(
     );
 }
 
-void NetCDFFile::ReadVariableAt(
+void NetCdfFile::ReadVariableAt(
     const std::string& name, std::span<const size_t> start, std::span<const size_t> count,
     double* data
 ) const {
@@ -331,7 +331,7 @@ void NetCDFFile::ReadVariableAt(
     );
 }
 
-void NetCDFFile::ReadVariableAt(
+void NetCdfFile::ReadVariableAt(
     const std::string& name, std::span<const size_t> start, std::span<const size_t> count, int* data
 ) const {
     check_netCDF_error(
@@ -340,7 +340,7 @@ void NetCDFFile::ReadVariableAt(
     );
 }
 
-void NetCDFFile::ReadVariableWithStride(
+void NetCdfFile::ReadVariableWithStride(
     const std::string& name, std::span<const size_t> start, std::span<const size_t> count,
     std::span<const ptrdiff_t> stride, float* data
 ) const {
@@ -352,7 +352,7 @@ void NetCDFFile::ReadVariableWithStride(
     );
 }
 
-void NetCDFFile::ReadVariableWithStride(
+void NetCdfFile::ReadVariableWithStride(
     const std::string& name, std::span<const size_t> start, std::span<const size_t> count,
     std::span<const ptrdiff_t> stride, double* data
 ) const {
@@ -364,7 +364,7 @@ void NetCDFFile::ReadVariableWithStride(
     );
 }
 
-void NetCDFFile::ReadVariableWithStride(
+void NetCdfFile::ReadVariableWithStride(
     const std::string& name, std::span<const size_t> start, std::span<const size_t> count,
     std::span<const ptrdiff_t> stride, int* data
 ) const {

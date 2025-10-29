@@ -94,13 +94,13 @@ public:
     );
 
     /// @brief Get the NetCDF file object
-    [[nodiscard]] const NetCDFFile& GetFile() const;
+    [[nodiscard]] const NetCdfFile& GetFile() const;
 
     /// @brief Get the number of nodes with state data in output file
     [[nodiscard]] size_t GetNumNodes() const;
 
 private:
-    NetCDFFile file_;                                  //< NetCDF file object for writing output data
+    NetCdfFile file_;                                  //< NetCDF file object for writing output data
     size_t num_nodes_;                                 //< number of nodes in the simulation
     std::vector<std::string> enabled_state_prefixes_;  //< prefixes for the state components to write
     bool enable_deformation_;                          //< write deformation data?

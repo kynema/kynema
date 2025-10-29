@@ -15,22 +15,22 @@ namespace kynema::util {
  * writing, and reading NetCDF files. It is primarily used to write Kynema output data
  * to a NetCDF file.
  */
-class NetCDFFile {
+class NetCdfFile {
 public:
     /**
-     * @brief Constructor to create a NetCDFFile object
+     * @brief Constructor to create a NetCdfFile object
      *
      * This is a wrapper around the NetCDF library's "nc_create" function.
      * It creates a new NetCDF file if the create flag is true. Otherwise,
      * it opens an existing NetCDF file.
      */
-    explicit NetCDFFile(const std::string& file_path, bool create = true);
+    explicit NetCdfFile(const std::string& file_path, bool create = true);
 
     /// Explicitly prevent copying and moving (since we don't want copies made of the output file)
-    NetCDFFile(const NetCDFFile&) = delete;
-    NetCDFFile& operator=(const NetCDFFile&) = delete;
-    NetCDFFile(NetCDFFile&&) = delete;
-    NetCDFFile& operator=(NetCDFFile&&) = delete;
+    NetCdfFile(const NetCdfFile&) = delete;
+    NetCdfFile& operator=(const NetCdfFile&) = delete;
+    NetCdfFile(NetCdfFile&&) = delete;
+    NetCdfFile& operator=(NetCdfFile&&) = delete;
 
     /**
      * @brief Destructor to close the NetCDF file
@@ -38,7 +38,7 @@ public:
      * This function is a wrapper around the NetCDF library's "nc_close" function.
      * It closes the NetCDF file with the given (valid) ID.
      */
-    ~NetCDFFile();
+    ~NetCdfFile();
 
     //--------------------------------------------------------------------------
     // Setter/Write methods
