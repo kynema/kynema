@@ -22,7 +22,7 @@ TEST(TurbineInterfaceTest, MockAW) {
     const auto n_steps{100U};
 
     constexpr auto fluid_density{1.225};
-    constexpr auto rotor_speed{0.};
+    constexpr auto rotor_speed_init{0.};
     constexpr auto v_inflow = std::array{6., 0., 0.};
 
     // Create interface builder
@@ -71,7 +71,7 @@ TEST(TurbineInterfaceTest, MockAW) {
         .SetTowerTopToRotorApex(
             wio_drivetrain["outer_shape"]["distance_tt_hub"].as<double>())
         .SetGearBoxRatio(wio_drivetrain["gearbox"]["gear_ratio"].as<double>())
-        .SetRotorSpeed(rotor_speed);
+        .SetRotorSpeed(rotor_speed_init);
 
     //--------------------------------------------------------------------------
     // Build Blades
@@ -96,8 +96,7 @@ TEST(TurbineInterfaceTest, MockAW) {
         for (auto i : std::views::iota(0U, axis_grid.size())) {
             blade_builder.AddRefAxisPoint(
                 axis_grid[i], {x_values[i], y_values[i], z_values[i]},
-                interfaces::components::ReferenceAxisOrientation::Z
-            );
+                kynema::interfaces::components::ReferenceAxisOrientation::Z);
         }
 
         // Add reference axis twist
@@ -176,8 +175,7 @@ TEST(TurbineInterfaceTest, MockAW) {
                     {k15, k25, k35, k45, k55, k56},
                     {k16, k26, k36, k46, k56, k66},
                 }},
-                interfaces::components::ReferenceAxisOrientation::Z
-            );
+                kynema::interfaces::components::ReferenceAxisOrientation::Z);
         }
     }
 
