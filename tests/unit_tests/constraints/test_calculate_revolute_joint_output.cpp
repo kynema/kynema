@@ -1,5 +1,6 @@
 #include <array>
 #include <cstddef>
+#include <ranges>
 #include <string>
 
 #include <Kokkos_Core.hpp>

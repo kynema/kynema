@@ -37,70 +37,72 @@ TEST(BeamComponentTest, InitialBeamHasCorrectRotation) {
     const auto& beam_node_ids = model.GetBeamElement(0).node_ids;
 
     const auto& root_node = model.GetNode(beam_node_ids[0]);
-    const auto root_rotation_quaternion =
-        std::array{root_node.x0[3], root_node.x0[4], root_node.x0[5], root_node.x0[6]};
+    const auto root_rotation_quaternion = Eigen::Quaternion<double>(
+        root_node.x0[3], root_node.x0[4], root_node.x0[5], root_node.x0[6]
+    );
 
-    const auto root_rotation_matrix = math::QuaternionToRotationMatrix(root_rotation_quaternion);
+    const auto root_rotation_matrix = root_rotation_quaternion.toRotationMatrix();
 
     EXPECT_NEAR(root_node.x0[0], 0., 1.e-16);
     EXPECT_NEAR(root_node.x0[1], 0., 1.e-16);
     EXPECT_NEAR(root_node.x0[2], 0., 1.e-16);
 
-    EXPECT_NEAR(root_rotation_matrix[0][0], 1., 1.e-16);
-    EXPECT_NEAR(root_rotation_matrix[0][1], 0., 1.e-16);
-    EXPECT_NEAR(root_rotation_matrix[0][2], 0., 1.e-16);
+    EXPECT_NEAR(root_rotation_matrix(0, 0), 1., 1.e-16);
+    EXPECT_NEAR(root_rotation_matrix(0, 1), 0., 1.e-16);
+    EXPECT_NEAR(root_rotation_matrix(0, 2), 0., 1.e-16);
 
-    EXPECT_NEAR(root_rotation_matrix[1][0], 0., 1.e-16);
-    EXPECT_NEAR(root_rotation_matrix[1][1], 1., 1.e-16);
-    EXPECT_NEAR(root_rotation_matrix[1][2], 0., 1.e-16);
+    EXPECT_NEAR(root_rotation_matrix(1, 0), 0., 1.e-16);
+    EXPECT_NEAR(root_rotation_matrix(1, 1), 1., 1.e-16);
+    EXPECT_NEAR(root_rotation_matrix(1, 2), 0., 1.e-16);
 
-    EXPECT_NEAR(root_rotation_matrix[2][0], 0., 1.e-16);
-    EXPECT_NEAR(root_rotation_matrix[2][1], 0., 1.e-16);
-    EXPECT_NEAR(root_rotation_matrix[2][2], 1., 1.e-16);
+    EXPECT_NEAR(root_rotation_matrix(2, 0), 0., 1.e-16);
+    EXPECT_NEAR(root_rotation_matrix(2, 1), 0., 1.e-16);
+    EXPECT_NEAR(root_rotation_matrix(2, 2), 1., 1.e-16);
 
     const auto& middle_node = model.GetNode(beam_node_ids[1]);
-    const auto middle_rotation_quaternion =
-        std::array{middle_node.x0[3], middle_node.x0[4], middle_node.x0[5], middle_node.x0[6]};
+    const auto middle_rotation_quaternion = Eigen::Quaternion<double>(
+        middle_node.x0[3], middle_node.x0[4], middle_node.x0[5], middle_node.x0[6]
+    );
 
-    const auto middle_rotation_matrix = math::QuaternionToRotationMatrix(middle_rotation_quaternion);
+    const auto middle_rotation_matrix = middle_rotation_quaternion.toRotationMatrix();
 
     EXPECT_NEAR(middle_node.x0[0], .5, 1.e-16);
     EXPECT_NEAR(middle_node.x0[1], 0., 1.e-16);
     EXPECT_NEAR(middle_node.x0[2], 0., 1.e-16);
 
-    EXPECT_NEAR(middle_rotation_matrix[0][0], 1., 1.e-16);
-    EXPECT_NEAR(middle_rotation_matrix[0][1], 0., 1.e-16);
-    EXPECT_NEAR(middle_rotation_matrix[0][2], 0., 1.e-16);
+    EXPECT_NEAR(middle_rotation_matrix(0, 0), 1., 1.e-16);
+    EXPECT_NEAR(middle_rotation_matrix(0, 1), 0., 1.e-16);
+    EXPECT_NEAR(middle_rotation_matrix(0, 2), 0., 1.e-16);
 
-    EXPECT_NEAR(middle_rotation_matrix[1][0], 0., 1.e-16);
-    EXPECT_NEAR(middle_rotation_matrix[1][1], 1., 1.e-16);
-    EXPECT_NEAR(middle_rotation_matrix[1][2], 0., 1.e-16);
+    EXPECT_NEAR(middle_rotation_matrix(1, 0), 0., 1.e-16);
+    EXPECT_NEAR(middle_rotation_matrix(1, 1), 1., 1.e-16);
+    EXPECT_NEAR(middle_rotation_matrix(1, 2), 0., 1.e-16);
 
-    EXPECT_NEAR(middle_rotation_matrix[2][0], 0., 1.e-16);
-    EXPECT_NEAR(middle_rotation_matrix[2][1], 0., 1.e-16);
-    EXPECT_NEAR(middle_rotation_matrix[2][2], 1., 1.e-16);
+    EXPECT_NEAR(middle_rotation_matrix(2, 0), 0., 1.e-16);
+    EXPECT_NEAR(middle_rotation_matrix(2, 1), 0., 1.e-16);
+    EXPECT_NEAR(middle_rotation_matrix(2, 2), 1., 1.e-16);
 
     const auto& end_node = model.GetNode(beam_node_ids[2]);
     const auto end_rotation_quaternion =
-        std::array{end_node.x0[3], end_node.x0[4], end_node.x0[5], end_node.x0[6]};
+        Eigen::Quaternion<double>(end_node.x0[3], end_node.x0[4], end_node.x0[5], end_node.x0[6]);
 
-    const auto end_rotation_matrix = math::QuaternionToRotationMatrix(end_rotation_quaternion);
+    const auto end_rotation_matrix = end_rotation_quaternion.toRotationMatrix();
 
     EXPECT_NEAR(end_node.x0[0], 1., 1.e-16);
     EXPECT_NEAR(end_node.x0[1], 0., 1.e-16);
     EXPECT_NEAR(end_node.x0[2], 0., 1.e-16);
 
-    EXPECT_NEAR(end_rotation_matrix[0][0], 1., 1.e-16);
-    EXPECT_NEAR(end_rotation_matrix[0][1], 0., 1.e-16);
-    EXPECT_NEAR(end_rotation_matrix[0][2], 0., 1.e-16);
+    EXPECT_NEAR(end_rotation_matrix(0, 0), 1., 1.e-16);
+    EXPECT_NEAR(end_rotation_matrix(0, 1), 0., 1.e-16);
+    EXPECT_NEAR(end_rotation_matrix(0, 2), 0., 1.e-16);
 
-    EXPECT_NEAR(end_rotation_matrix[1][0], 0., 1.e-16);
-    EXPECT_NEAR(end_rotation_matrix[1][1], 1., 1.e-16);
-    EXPECT_NEAR(end_rotation_matrix[1][2], 0., 1.e-16);
+    EXPECT_NEAR(end_rotation_matrix(1, 0), 0., 1.e-16);
+    EXPECT_NEAR(end_rotation_matrix(1, 1), 1., 1.e-16);
+    EXPECT_NEAR(end_rotation_matrix(1, 2), 0., 1.e-16);
 
-    EXPECT_NEAR(end_rotation_matrix[2][0], 0., 1.e-16);
-    EXPECT_NEAR(end_rotation_matrix[2][1], 0., 1.e-16);
-    EXPECT_NEAR(end_rotation_matrix[2][2], 1., 1.e-16);
+    EXPECT_NEAR(end_rotation_matrix(2, 0), 0., 1.e-16);
+    EXPECT_NEAR(end_rotation_matrix(2, 1), 0., 1.e-16);
+    EXPECT_NEAR(end_rotation_matrix(2, 2), 1., 1.e-16);
 }
 
 TEST(BeamComponentTest, UnrotatedBeamHasIdentityRotationMatrix) {
@@ -129,22 +131,23 @@ TEST(BeamComponentTest, UnrotatedBeamHasIdentityRotationMatrix) {
     const auto& beam_node_ids = model.GetBeamElement(0).node_ids;
 
     const auto& root_node = model.GetNode(beam_node_ids[0]);
-    const auto root_rotation_quaternion =
-        std::array{root_node.x0[3], root_node.x0[4], root_node.x0[5], root_node.x0[6]};
+    const auto root_rotation_quaternion = Eigen::Quaternion<double>(
+        root_node.x0[3], root_node.x0[4], root_node.x0[5], root_node.x0[6]
+    );
 
-    const auto root_rotation_matrix = math::QuaternionToRotationMatrix(root_rotation_quaternion);
+    const auto root_rotation_matrix = root_rotation_quaternion.toRotationMatrix();
 
-    EXPECT_NEAR(root_rotation_matrix[0][0], 1., 1.e-16);
-    EXPECT_NEAR(root_rotation_matrix[0][1], 0., 1.e-16);
-    EXPECT_NEAR(root_rotation_matrix[0][2], 0., 1.e-16);
+    EXPECT_NEAR(root_rotation_matrix(0, 0), 1., 1.e-16);
+    EXPECT_NEAR(root_rotation_matrix(0, 1), 0., 1.e-16);
+    EXPECT_NEAR(root_rotation_matrix(0, 2), 0., 1.e-16);
 
-    EXPECT_NEAR(root_rotation_matrix[1][0], 0., 1.e-16);
-    EXPECT_NEAR(root_rotation_matrix[1][1], 1., 1.e-16);
-    EXPECT_NEAR(root_rotation_matrix[1][2], 0., 1.e-16);
+    EXPECT_NEAR(root_rotation_matrix(1, 0), 0., 1.e-16);
+    EXPECT_NEAR(root_rotation_matrix(1, 1), 1., 1.e-16);
+    EXPECT_NEAR(root_rotation_matrix(1, 2), 0., 1.e-16);
 
-    EXPECT_NEAR(root_rotation_matrix[2][0], 0., 1.e-16);
-    EXPECT_NEAR(root_rotation_matrix[2][1], 0., 1.e-16);
-    EXPECT_NEAR(root_rotation_matrix[2][2], 1., 1.e-16);
+    EXPECT_NEAR(root_rotation_matrix(2, 0), 0., 1.e-16);
+    EXPECT_NEAR(root_rotation_matrix(2, 1), 0., 1.e-16);
+    EXPECT_NEAR(root_rotation_matrix(2, 2), 1., 1.e-16);
 }
 
 TEST(BeamComponentTest, RotatedBeamAboutYAxisPointsAlongZAxis) {
@@ -177,70 +180,72 @@ TEST(BeamComponentTest, RotatedBeamAboutYAxisPointsAlongZAxis) {
     const auto& beam_node_ids = model.GetBeamElement(0).node_ids;
 
     const auto& root_node = model.GetNode(beam_node_ids[0]);
-    const auto root_rotation_quaternion =
-        std::array{root_node.x0[3], root_node.x0[4], root_node.x0[5], root_node.x0[6]};
+    const auto root_rotation_quaternion = Eigen::Quaternion<double>(
+        root_node.x0[3], root_node.x0[4], root_node.x0[5], root_node.x0[6]
+    );
 
-    const auto root_rotation_matrix = math::QuaternionToRotationMatrix(root_rotation_quaternion);
+    const auto root_rotation_matrix = root_rotation_quaternion.toRotationMatrix();
 
     EXPECT_NEAR(root_node.x0[0], 0., 1.e-15);
     EXPECT_NEAR(root_node.x0[1], 0., 1.e-15);
     EXPECT_NEAR(root_node.x0[2], 0., 1.e-15);
 
-    EXPECT_NEAR(root_rotation_matrix[0][0], 0., 1.e-15);
-    EXPECT_NEAR(root_rotation_matrix[0][1], 0., 1.e-15);
-    EXPECT_NEAR(root_rotation_matrix[0][2], 1., 1.e-15);
+    EXPECT_NEAR(root_rotation_matrix(0, 0), 0., 1.e-15);
+    EXPECT_NEAR(root_rotation_matrix(0, 1), 0., 1.e-15);
+    EXPECT_NEAR(root_rotation_matrix(0, 2), 1., 1.e-15);
 
-    EXPECT_NEAR(root_rotation_matrix[1][0], 0., 1.e-15);
-    EXPECT_NEAR(root_rotation_matrix[1][1], 1., 1.e-15);
-    EXPECT_NEAR(root_rotation_matrix[1][2], 0., 1.e-15);
+    EXPECT_NEAR(root_rotation_matrix(1, 0), 0., 1.e-15);
+    EXPECT_NEAR(root_rotation_matrix(1, 1), 1., 1.e-15);
+    EXPECT_NEAR(root_rotation_matrix(1, 2), 0., 1.e-15);
 
-    EXPECT_NEAR(root_rotation_matrix[2][0], -1., 1.e-15);
-    EXPECT_NEAR(root_rotation_matrix[2][1], 0., 1.e-15);
-    EXPECT_NEAR(root_rotation_matrix[2][2], 0., 1.e-15);
+    EXPECT_NEAR(root_rotation_matrix(2, 0), -1., 1.e-15);
+    EXPECT_NEAR(root_rotation_matrix(2, 1), 0., 1.e-15);
+    EXPECT_NEAR(root_rotation_matrix(2, 2), 0., 1.e-15);
 
     const auto& middle_node = model.GetNode(beam_node_ids[1]);
-    const auto middle_rotation_quaternion =
-        std::array{middle_node.x0[3], middle_node.x0[4], middle_node.x0[5], middle_node.x0[6]};
+    const auto middle_rotation_quaternion = Eigen::Quaternion<double>(
+        middle_node.x0[3], middle_node.x0[4], middle_node.x0[5], middle_node.x0[6]
+    );
 
-    const auto middle_rotation_matrix = math::QuaternionToRotationMatrix(middle_rotation_quaternion);
+    const auto middle_rotation_matrix = middle_rotation_quaternion.toRotationMatrix();
 
     EXPECT_NEAR(middle_node.x0[0], 0., 1.e-15);
     EXPECT_NEAR(middle_node.x0[1], 0., 1.e-15);
     EXPECT_NEAR(middle_node.x0[2], -.5, 1.e-15);
 
-    EXPECT_NEAR(middle_rotation_matrix[0][0], 0., 1.e-15);
-    EXPECT_NEAR(middle_rotation_matrix[0][1], 0., 1.e-15);
-    EXPECT_NEAR(middle_rotation_matrix[0][2], 1., 1.e-15);
+    EXPECT_NEAR(middle_rotation_matrix(0, 0), 0., 1.e-15);
+    EXPECT_NEAR(middle_rotation_matrix(0, 1), 0., 1.e-15);
+    EXPECT_NEAR(middle_rotation_matrix(0, 2), 1., 1.e-15);
 
-    EXPECT_NEAR(middle_rotation_matrix[1][0], 0., 1.e-15);
-    EXPECT_NEAR(middle_rotation_matrix[1][1], 1., 1.e-15);
-    EXPECT_NEAR(middle_rotation_matrix[1][2], 0., 1.e-15);
+    EXPECT_NEAR(middle_rotation_matrix(1, 0), 0., 1.e-15);
+    EXPECT_NEAR(middle_rotation_matrix(1, 1), 1., 1.e-15);
+    EXPECT_NEAR(middle_rotation_matrix(1, 2), 0., 1.e-15);
 
-    EXPECT_NEAR(middle_rotation_matrix[2][0], -1., 1.e-15);
-    EXPECT_NEAR(middle_rotation_matrix[2][1], 0., 1.e-15);
-    EXPECT_NEAR(middle_rotation_matrix[2][2], 0., 1.e-15);
+    EXPECT_NEAR(middle_rotation_matrix(2, 0), -1., 1.e-15);
+    EXPECT_NEAR(middle_rotation_matrix(2, 1), 0., 1.e-15);
+    EXPECT_NEAR(middle_rotation_matrix(2, 2), 0., 1.e-15);
 
     const auto& end_node = model.GetNode(beam_node_ids[2]);
     const auto end_rotation_quaternion =
-        std::array{end_node.x0[3], end_node.x0[4], end_node.x0[5], end_node.x0[6]};
+        Eigen::Quaternion<double>(end_node.x0[3], end_node.x0[4], end_node.x0[5], end_node.x0[6]);
 
-    const auto end_rotation_matrix = math::QuaternionToRotationMatrix(end_rotation_quaternion);
+    const auto end_rotation_matrix = end_rotation_quaternion.toRotationMatrix();
 
     EXPECT_NEAR(end_node.x0[0], 0., 1.e-15);
     EXPECT_NEAR(end_node.x0[1], 0., 1.e-15);
     EXPECT_NEAR(end_node.x0[2], -1., 1.e-15);
 
-    EXPECT_NEAR(end_rotation_matrix[0][0], 0., 1.e-15);
-    EXPECT_NEAR(end_rotation_matrix[0][1], 0., 1.e-15);
-    EXPECT_NEAR(end_rotation_matrix[0][2], 1., 1.e-15);
+    EXPECT_NEAR(end_rotation_matrix(0, 0), 0., 1.e-15);
+    EXPECT_NEAR(end_rotation_matrix(0, 1), 0., 1.e-15);
+    EXPECT_NEAR(end_rotation_matrix(0, 2), 1., 1.e-15);
 
-    EXPECT_NEAR(end_rotation_matrix[1][0], 0., 1.e-15);
-    EXPECT_NEAR(end_rotation_matrix[1][1], 1., 1.e-15);
-    EXPECT_NEAR(end_rotation_matrix[1][2], 0., 1.e-15);
+    EXPECT_NEAR(end_rotation_matrix(1, 0), 0., 1.e-15);
+    EXPECT_NEAR(end_rotation_matrix(1, 1), 1., 1.e-15);
+    EXPECT_NEAR(end_rotation_matrix(1, 2), 0., 1.e-15);
 
-    EXPECT_NEAR(end_rotation_matrix[2][0], -1., 1.e-15);
-    EXPECT_NEAR(end_rotation_matrix[2][1], 0., 1.e-15);
-    EXPECT_NEAR(end_rotation_matrix[2][2], 0., 1.e-15);
+    EXPECT_NEAR(end_rotation_matrix(2, 0), -1., 1.e-15);
+    EXPECT_NEAR(end_rotation_matrix(2, 1), 0., 1.e-15);
+    EXPECT_NEAR(end_rotation_matrix(2, 2), 0., 1.e-15);
 }
 
 TEST(BeamComponentTest, RotatedBeamAboutZAxisPointsAlongYAxis) {
@@ -273,70 +278,72 @@ TEST(BeamComponentTest, RotatedBeamAboutZAxisPointsAlongYAxis) {
     const auto& beam_node_ids = model.GetBeamElement(0).node_ids;
 
     const auto& root_node = model.GetNode(beam_node_ids[0]);
-    const auto root_rotation_quaternion =
-        std::array{root_node.x0[3], root_node.x0[4], root_node.x0[5], root_node.x0[6]};
+    const auto root_rotation_quaternion = Eigen::Quaternion<double>(
+        root_node.x0[3], root_node.x0[4], root_node.x0[5], root_node.x0[6]
+    );
 
-    const auto root_rotation_matrix = math::QuaternionToRotationMatrix(root_rotation_quaternion);
+    const auto root_rotation_matrix = root_rotation_quaternion.toRotationMatrix();
 
     EXPECT_NEAR(root_node.x0[0], 0., 1.e-15);
     EXPECT_NEAR(root_node.x0[1], 0., 1.e-15);
     EXPECT_NEAR(root_node.x0[2], 0., 1.e-15);
 
-    EXPECT_NEAR(root_rotation_matrix[0][0], 0., 1.e-15);
-    EXPECT_NEAR(root_rotation_matrix[0][1], -1., 1.e-15);
-    EXPECT_NEAR(root_rotation_matrix[0][2], 0., 1.e-15);
+    EXPECT_NEAR(root_rotation_matrix(0, 0), 0., 1.e-15);
+    EXPECT_NEAR(root_rotation_matrix(0, 1), -1., 1.e-15);
+    EXPECT_NEAR(root_rotation_matrix(0, 2), 0., 1.e-15);
 
-    EXPECT_NEAR(root_rotation_matrix[1][0], 1., 1.e-15);
-    EXPECT_NEAR(root_rotation_matrix[1][1], 0., 1.e-15);
-    EXPECT_NEAR(root_rotation_matrix[1][2], 0., 1.e-15);
+    EXPECT_NEAR(root_rotation_matrix(1, 0), 1., 1.e-15);
+    EXPECT_NEAR(root_rotation_matrix(1, 1), 0., 1.e-15);
+    EXPECT_NEAR(root_rotation_matrix(1, 2), 0., 1.e-15);
 
-    EXPECT_NEAR(root_rotation_matrix[2][0], 0., 1.e-15);
-    EXPECT_NEAR(root_rotation_matrix[2][1], 0., 1.e-15);
-    EXPECT_NEAR(root_rotation_matrix[2][2], 1., 1.e-15);
+    EXPECT_NEAR(root_rotation_matrix(2, 0), 0., 1.e-15);
+    EXPECT_NEAR(root_rotation_matrix(2, 1), 0., 1.e-15);
+    EXPECT_NEAR(root_rotation_matrix(2, 2), 1., 1.e-15);
 
     const auto& middle_node = model.GetNode(beam_node_ids[1]);
-    const auto middle_rotation_quaternion =
-        std::array{middle_node.x0[3], middle_node.x0[4], middle_node.x0[5], middle_node.x0[6]};
+    const auto middle_rotation_quaternion = Eigen::Quaternion<double>(
+        middle_node.x0[3], middle_node.x0[4], middle_node.x0[5], middle_node.x0[6]
+    );
 
-    const auto middle_rotation_matrix = math::QuaternionToRotationMatrix(middle_rotation_quaternion);
+    const auto middle_rotation_matrix = middle_rotation_quaternion.toRotationMatrix();
 
     EXPECT_NEAR(middle_node.x0[0], 0., 1.e-15);
     EXPECT_NEAR(middle_node.x0[1], .5, 1.e-15);
     EXPECT_NEAR(middle_node.x0[2], 0., 1.e-15);
 
-    EXPECT_NEAR(middle_rotation_matrix[0][0], 0., 1.e-15);
-    EXPECT_NEAR(middle_rotation_matrix[0][1], -1., 1.e-15);
-    EXPECT_NEAR(middle_rotation_matrix[0][2], 0., 1.e-15);
+    EXPECT_NEAR(middle_rotation_matrix(0, 0), 0., 1.e-15);
+    EXPECT_NEAR(middle_rotation_matrix(0, 1), -1., 1.e-15);
+    EXPECT_NEAR(middle_rotation_matrix(0, 2), 0., 1.e-15);
 
-    EXPECT_NEAR(middle_rotation_matrix[1][0], 1., 1.e-15);
-    EXPECT_NEAR(middle_rotation_matrix[1][1], 0., 1.e-15);
-    EXPECT_NEAR(middle_rotation_matrix[1][2], 0., 1.e-15);
+    EXPECT_NEAR(middle_rotation_matrix(1, 0), 1., 1.e-15);
+    EXPECT_NEAR(middle_rotation_matrix(1, 1), 0., 1.e-15);
+    EXPECT_NEAR(middle_rotation_matrix(1, 2), 0., 1.e-15);
 
-    EXPECT_NEAR(middle_rotation_matrix[2][0], 0., 1.e-15);
-    EXPECT_NEAR(middle_rotation_matrix[2][1], 0., 1.e-15);
-    EXPECT_NEAR(middle_rotation_matrix[2][2], 1., 1.e-15);
+    EXPECT_NEAR(middle_rotation_matrix(2, 0), 0., 1.e-15);
+    EXPECT_NEAR(middle_rotation_matrix(2, 1), 0., 1.e-15);
+    EXPECT_NEAR(middle_rotation_matrix(2, 2), 1., 1.e-15);
 
     const auto& end_node = model.GetNode(beam_node_ids[2]);
     const auto end_rotation_quaternion =
-        std::array{end_node.x0[3], end_node.x0[4], end_node.x0[5], end_node.x0[6]};
+        Eigen::Quaternion<double>(end_node.x0[3], end_node.x0[4], end_node.x0[5], end_node.x0[6]);
 
-    const auto end_rotation_matrix = math::QuaternionToRotationMatrix(end_rotation_quaternion);
+    const auto end_rotation_matrix = end_rotation_quaternion.toRotationMatrix();
 
     EXPECT_NEAR(end_node.x0[0], 0., 1.e-15);
     EXPECT_NEAR(end_node.x0[1], 1., 1.e-15);
     EXPECT_NEAR(end_node.x0[2], 0., 1.e-15);
 
-    EXPECT_NEAR(end_rotation_matrix[0][0], 0., 1.e-15);
-    EXPECT_NEAR(end_rotation_matrix[0][1], -1., 1.e-15);
-    EXPECT_NEAR(end_rotation_matrix[0][2], 0., 1.e-15);
+    EXPECT_NEAR(end_rotation_matrix(0, 0), 0., 1.e-15);
+    EXPECT_NEAR(end_rotation_matrix(0, 1), -1., 1.e-15);
+    EXPECT_NEAR(end_rotation_matrix(0, 2), 0., 1.e-15);
 
-    EXPECT_NEAR(end_rotation_matrix[1][0], 1., 1.e-15);
-    EXPECT_NEAR(end_rotation_matrix[1][1], 0., 1.e-15);
-    EXPECT_NEAR(end_rotation_matrix[1][2], 0., 1.e-15);
+    EXPECT_NEAR(end_rotation_matrix(1, 0), 1., 1.e-15);
+    EXPECT_NEAR(end_rotation_matrix(1, 1), 0., 1.e-15);
+    EXPECT_NEAR(end_rotation_matrix(1, 2), 0., 1.e-15);
 
-    EXPECT_NEAR(end_rotation_matrix[2][0], 0., 1.e-15);
-    EXPECT_NEAR(end_rotation_matrix[2][1], 0., 1.e-15);
-    EXPECT_NEAR(end_rotation_matrix[2][2], 1., 1.e-15);
+    EXPECT_NEAR(end_rotation_matrix(2, 0), 0., 1.e-15);
+    EXPECT_NEAR(end_rotation_matrix(2, 1), 0., 1.e-15);
+    EXPECT_NEAR(end_rotation_matrix(2, 2), 1., 1.e-15);
 }
 
 TEST(BeamComponentTest, RotatedBeamAboutXAxisStillPointsAlongXAxis) {
@@ -369,70 +376,72 @@ TEST(BeamComponentTest, RotatedBeamAboutXAxisStillPointsAlongXAxis) {
     const auto& beam_node_ids = model.GetBeamElement(0).node_ids;
 
     const auto& root_node = model.GetNode(beam_node_ids[0]);
-    const auto root_rotation_quaternion =
-        std::array{root_node.x0[3], root_node.x0[4], root_node.x0[5], root_node.x0[6]};
+    const auto root_rotation_quaternion = Eigen::Quaternion<double>(
+        root_node.x0[3], root_node.x0[4], root_node.x0[5], root_node.x0[6]
+    );
 
-    const auto root_rotation_matrix = math::QuaternionToRotationMatrix(root_rotation_quaternion);
+    const auto root_rotation_matrix = root_rotation_quaternion.toRotationMatrix();
 
     EXPECT_NEAR(root_node.x0[0], 0., 1.e-15);
     EXPECT_NEAR(root_node.x0[1], 0., 1.e-15);
     EXPECT_NEAR(root_node.x0[2], 0., 1.e-15);
 
-    EXPECT_NEAR(root_rotation_matrix[0][0], 1., 1.e-15);
-    EXPECT_NEAR(root_rotation_matrix[0][1], 0., 1.e-15);
-    EXPECT_NEAR(root_rotation_matrix[0][2], 0., 1.e-15);
+    EXPECT_NEAR(root_rotation_matrix(0, 0), 1., 1.e-15);
+    EXPECT_NEAR(root_rotation_matrix(0, 1), 0., 1.e-15);
+    EXPECT_NEAR(root_rotation_matrix(0, 2), 0., 1.e-15);
 
-    EXPECT_NEAR(root_rotation_matrix[1][0], 0., 1.e-15);
-    EXPECT_NEAR(root_rotation_matrix[1][1], 0., 1.e-15);
-    EXPECT_NEAR(root_rotation_matrix[1][2], -1., 1.e-15);
+    EXPECT_NEAR(root_rotation_matrix(1, 0), 0., 1.e-15);
+    EXPECT_NEAR(root_rotation_matrix(1, 1), 0., 1.e-15);
+    EXPECT_NEAR(root_rotation_matrix(1, 2), -1., 1.e-15);
 
-    EXPECT_NEAR(root_rotation_matrix[2][0], 0., 1.e-15);
-    EXPECT_NEAR(root_rotation_matrix[2][1], 1., 1.e-15);
-    EXPECT_NEAR(root_rotation_matrix[2][2], 0., 1.e-15);
+    EXPECT_NEAR(root_rotation_matrix(2, 0), 0., 1.e-15);
+    EXPECT_NEAR(root_rotation_matrix(2, 1), 1., 1.e-15);
+    EXPECT_NEAR(root_rotation_matrix(2, 2), 0., 1.e-15);
 
     const auto& middle_node = model.GetNode(beam_node_ids[1]);
-    const auto middle_rotation_quaternion =
-        std::array{middle_node.x0[3], middle_node.x0[4], middle_node.x0[5], middle_node.x0[6]};
+    const auto middle_rotation_quaternion = Eigen::Quaternion<double>(
+        middle_node.x0[3], middle_node.x0[4], middle_node.x0[5], middle_node.x0[6]
+    );
 
-    const auto middle_rotation_matrix = math::QuaternionToRotationMatrix(middle_rotation_quaternion);
+    const auto middle_rotation_matrix = middle_rotation_quaternion.toRotationMatrix();
 
     EXPECT_NEAR(middle_node.x0[0], .5, 1.e-15);
     EXPECT_NEAR(middle_node.x0[1], 0., 1.e-15);
     EXPECT_NEAR(middle_node.x0[2], 0., 1.e-15);
 
-    EXPECT_NEAR(middle_rotation_matrix[0][0], 1., 1.e-15);
-    EXPECT_NEAR(middle_rotation_matrix[0][1], 0., 1.e-15);
-    EXPECT_NEAR(middle_rotation_matrix[0][2], 0., 1.e-15);
+    EXPECT_NEAR(middle_rotation_matrix(0, 0), 1., 1.e-15);
+    EXPECT_NEAR(middle_rotation_matrix(0, 1), 0., 1.e-15);
+    EXPECT_NEAR(middle_rotation_matrix(0, 2), 0., 1.e-15);
 
-    EXPECT_NEAR(middle_rotation_matrix[1][0], 0., 1.e-15);
-    EXPECT_NEAR(middle_rotation_matrix[1][1], 0., 1.e-15);
-    EXPECT_NEAR(middle_rotation_matrix[1][2], -1., 1.e-15);
+    EXPECT_NEAR(middle_rotation_matrix(1, 0), 0., 1.e-15);
+    EXPECT_NEAR(middle_rotation_matrix(1, 1), 0., 1.e-15);
+    EXPECT_NEAR(middle_rotation_matrix(1, 2), -1., 1.e-15);
 
-    EXPECT_NEAR(middle_rotation_matrix[2][0], 0., 1.e-15);
-    EXPECT_NEAR(middle_rotation_matrix[2][1], 1., 1.e-15);
-    EXPECT_NEAR(middle_rotation_matrix[2][2], 0., 1.e-15);
+    EXPECT_NEAR(middle_rotation_matrix(2, 0), 0., 1.e-15);
+    EXPECT_NEAR(middle_rotation_matrix(2, 1), 1., 1.e-15);
+    EXPECT_NEAR(middle_rotation_matrix(2, 2), 0., 1.e-15);
 
     const auto& end_node = model.GetNode(beam_node_ids[2]);
     const auto end_rotation_quaternion =
-        std::array{end_node.x0[3], end_node.x0[4], end_node.x0[5], end_node.x0[6]};
+        Eigen::Quaternion<double>(end_node.x0[3], end_node.x0[4], end_node.x0[5], end_node.x0[6]);
 
-    const auto end_rotation_matrix = math::QuaternionToRotationMatrix(end_rotation_quaternion);
+    const auto end_rotation_matrix = end_rotation_quaternion.toRotationMatrix();
 
     EXPECT_NEAR(end_node.x0[0], 1., 1.e-15);
     EXPECT_NEAR(end_node.x0[1], 0., 1.e-15);
     EXPECT_NEAR(end_node.x0[2], 0., 1.e-15);
 
-    EXPECT_NEAR(end_rotation_matrix[0][0], 1., 1.e-15);
-    EXPECT_NEAR(end_rotation_matrix[0][1], 0., 1.e-15);
-    EXPECT_NEAR(end_rotation_matrix[0][2], 0., 1.e-15);
+    EXPECT_NEAR(end_rotation_matrix(0, 0), 1., 1.e-15);
+    EXPECT_NEAR(end_rotation_matrix(0, 1), 0., 1.e-15);
+    EXPECT_NEAR(end_rotation_matrix(0, 2), 0., 1.e-15);
 
-    EXPECT_NEAR(end_rotation_matrix[1][0], 0., 1.e-15);
-    EXPECT_NEAR(end_rotation_matrix[1][1], 0., 1.e-15);
-    EXPECT_NEAR(end_rotation_matrix[1][2], -1., 1.e-15);
+    EXPECT_NEAR(end_rotation_matrix(1, 0), 0., 1.e-15);
+    EXPECT_NEAR(end_rotation_matrix(1, 1), 0., 1.e-15);
+    EXPECT_NEAR(end_rotation_matrix(1, 2), -1., 1.e-15);
 
-    EXPECT_NEAR(end_rotation_matrix[2][0], 0., 1.e-15);
-    EXPECT_NEAR(end_rotation_matrix[2][1], 1., 1.e-15);
-    EXPECT_NEAR(end_rotation_matrix[2][2], 0., 1.e-15);
+    EXPECT_NEAR(end_rotation_matrix(2, 0), 0., 1.e-15);
+    EXPECT_NEAR(end_rotation_matrix(2, 1), 1., 1.e-15);
+    EXPECT_NEAR(end_rotation_matrix(2, 2), 0., 1.e-15);
 }
 
 TEST(BeamComponentTest, Quadrature_GLL_TwoSections_NoRefinement) {

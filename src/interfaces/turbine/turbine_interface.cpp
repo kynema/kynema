@@ -2,9 +2,9 @@
 
 #include <filesystem>
 #include <numbers>
+#include <string>
 
 #include "interfaces/components/solution_input.hpp"
-#include "math/quaternion_operations.hpp"
 #include "state/clone_state.hpp"
 #include "state/copy_state_data.hpp"
 #include "step/step.hpp"
@@ -188,6 +188,7 @@ void TurbineInterface::WriteTimeSeriesData() const {
         return;
     }
 
+    using namespace std::string_literals;
     constexpr auto rpm_to_radps{0.104719755};            // RPM to rad/s
     constexpr auto deg_to_rad{std::numbers::pi / 180.};  // Degrees to radians
 
@@ -271,11 +272,12 @@ void TurbineInterface::WriteTimeSeriesData() const {
 
     // Rotor thrust
     {
+        const auto position = this->turbine.azimuth_node.position;
         const auto q_global_local =
-            math::QuaternionInverse(std::span{this->turbine.azimuth_node.position}.subspan<3, 4>());
-        const auto shaft_forces = math::RotateVectorByQuaternion(
-            q_global_local, std::span{this->turbine.shaft_base_to_azimuth.loads}.subspan<0, 3>()
-        );
+            Eigen::Quaternion<double>(position[3], position[4], position[5], position[6]).inverse();
+        const auto shaft_loads =
+            Eigen::Matrix<double, 3, 1>(this->turbine.shaft_base_to_azimuth.loads.data());
+        const auto shaft_forces = q_global_local._transformVector(shaft_loads);
         this->outputs->WriteValueAtTimestep(
             this->state.time_step, "RotThrust (kN)", shaft_forces[0] / 1000.
         );
@@ -284,76 +286,78 @@ void TurbineInterface::WriteTimeSeriesData() const {
     // Blade based data
     for (auto i : std::views::iota(0U, this->turbine.blades.size())) {
         // Get rotation from global to blade local coordinates
-        const auto q_global_to_local = math::QuaternionCompose(
-            math::RotationVectorToQuaternion({0., -90. * deg_to_rad, 0.}),
-            math::QuaternionInverse(
-                std::span{this->turbine.blades[i].nodes[0].position}.subspan<3, 4>()
-            )
+        const auto position = this->turbine.blades[i].nodes[0].position;
+        const auto rotation = Eigen::Quaternion<double>(
+            Eigen::AngleAxis<double>(-90. * deg_to_rad, Eigen::Matrix<double, 3, 1>::Unit(1))
         );
+        const auto orientation =
+            Eigen::Quaternion<double>(position[3], position[4], position[5], position[6]).inverse();
+        const auto q_global_to_local = rotation * orientation;
 
         // Blade root forces in blade coordinates
-        const auto blade_root_forces = math::RotateVectorByQuaternion(
-            q_global_to_local, std::span{this->turbine.blade_pitch[i].loads}.subspan<0, 3>()
+        const auto blade_root_forces = q_global_to_local._transformVector(
+            Eigen::Matrix<double, 3, 1>(this->turbine.blade_pitch[i].loads.data())
         );
 
         // Blade root forces angles
+        const auto blade_number = std::to_string(i + 1);
         this->outputs->WriteValueAtTimestep(
-            this->state.time_step, std::format("B{}RootFxr (N)", i + 1), blade_root_forces[0]
+            this->state.time_step, "B"s + blade_number + "RootFxr (N)"s, blade_root_forces[0]
         );
         this->outputs->WriteValueAtTimestep(
-            this->state.time_step, std::format("B{}RootFyr (N)", i + 1), blade_root_forces[1]
+            this->state.time_step, "B"s + blade_number + "RootFyr (N)"s, blade_root_forces[1]
         );
         this->outputs->WriteValueAtTimestep(
-            this->state.time_step, std::format("B{}RootFzr (N)", i + 1), blade_root_forces[2]
+            this->state.time_step, "B"s + blade_number + "RootFzr (N)"s, blade_root_forces[2]
         );
 
         // Blade root moments in blade coordinates
-        const auto blade_root_moments = math::RotateVectorByQuaternion(
-            q_global_to_local, std::span{this->turbine.blade_pitch[i].loads}.subspan<3, 3>()
+        const auto blade_root_moments = q_global_to_local._transformVector(
+            Eigen::Matrix<double, 3, 1>(&this->turbine.blade_pitch[i].loads[3])
         );
 
         // Blade root moments angles
         this->outputs->WriteValueAtTimestep(
-            this->state.time_step, std::format("B{}RootMxr (N-m)", i + 1), blade_root_moments[0]
+            this->state.time_step, "B"s + blade_number + "RootMxr (N-m)"s, blade_root_moments[0]
         );
         this->outputs->WriteValueAtTimestep(
-            this->state.time_step, std::format("B{}RootMyr (N-m)", i + 1), blade_root_moments[1]
+            this->state.time_step, "B"s + blade_number + "RootMyr (N-m)"s, blade_root_moments[1]
         );
         this->outputs->WriteValueAtTimestep(
-            this->state.time_step, std::format("B{}RootMzr (N-m)", i + 1), blade_root_moments[2]
+            this->state.time_step, "B"s + blade_number + "RootMzr (N-m)"s, blade_root_moments[2]
         );
 
         // Blade pitch angles
         this->outputs->WriteValueAtTimestep(
-            this->state.time_step, std::format("BldPitch{} (deg)", i + 1),
+            this->state.time_step, "BldPitch"s + blade_number + " (deg)"s,
             this->turbine.blade_pitch_control[i] * 180. / std::numbers::pi
         );
 
         // Blade tip translational velocity in inertial frame
         this->outputs->WriteValueAtTimestep(
-            this->state.time_step, std::format("B{}TipTVXg (m_s)", i + 1),
+            this->state.time_step, "B"s + blade_number + "TipTVXg (m_s)",
             this->turbine.blades[i].nodes.back().velocity[0]
         );
         this->outputs->WriteValueAtTimestep(
-            this->state.time_step, std::format("B{}TipTVYg (m_s)", i + 1),
+            this->state.time_step, "B"s + blade_number + "TipTVYg (m_s)",
             this->turbine.blades[i].nodes.back().velocity[1]
         );
         this->outputs->WriteValueAtTimestep(
-            this->state.time_step, std::format("B{}TipTVZg (m_s)", i + 1),
+            this->state.time_step, "B"s + blade_number + "TipTVZg (m_s)",
             this->turbine.blades[i].nodes.back().velocity[2]
         );
 
         // Blade tip rotational velocity in inertial frame
         this->outputs->WriteValueAtTimestep(
-            this->state.time_step, std::format("B{}TipRVXg (deg_s)", i + 1),
+            this->state.time_step, "B"s + blade_number + "TipRVXg (deg_s)",
             this->turbine.blades[i].nodes.back().velocity[3] / deg_to_rad
         );
         this->outputs->WriteValueAtTimestep(
-            this->state.time_step, std::format("B{}TipRVYg (deg_s)", i + 1),
+            this->state.time_step, "B"s + blade_number + "TipRVYg (deg_s)",
             this->turbine.blades[i].nodes.back().velocity[4] / deg_to_rad
         );
         this->outputs->WriteValueAtTimestep(
-            this->state.time_step, std::format("B{}TipRVZg (deg_s)", i + 1),
+            this->state.time_step, "B"s + blade_number + "TipRVZg (deg_s)",
             this->turbine.blades[i].nodes.back().velocity[5] / deg_to_rad
         );
     }
@@ -387,12 +391,18 @@ void TurbineInterface::WriteTimeSeriesData() const {
             const auto& body = this->aerodynamics->bodies[i];
             for (auto j : std::views::iota(0U, body.loads.size())) {
                 // Construct the node label
-                const std::string node_num = std::to_string(j + 1);
-                const std::string node_label = std::string("AB") + std::to_string(i + 1) + "N" +
-                                               std::string(3 - node_num.size(), '0') + node_num;
+                const auto blade_number = std::to_string(i + 1);
+                const auto node_number = std::to_string(j + 1);
+                const auto extra_zeros = std::string(3 - node_number.size(), '0');
+                auto node_label = "AB"s;
+                node_label += blade_number;
+                node_label += "N"s;
+                node_label += extra_zeros;
+                node_label += node_number;
 
                 this->outputs->WriteValueAtTimestep(
-                    this->state.time_step, node_label + "Vrel (m_s)", math::Norm(body.v_rel[j])
+                    this->state.time_step, node_label + "Vrel (m_s)",
+                    Eigen::Matrix<double, 3, 1>(body.v_rel[j].data()).norm()
                 );
                 this->outputs->WriteValueAtTimestep(
                     this->state.time_step, node_label + "Alpha (deg)", body.alpha[j] / deg_to_rad
@@ -534,12 +544,13 @@ void TurbineInterface::ApplyController(double t) {
     for (auto i : std::views::iota(0U, this->turbine.blades.size())) {
         // Get rotation from global to blade root coordinates
         // Apex node orientation is the same as blade root node without pitch angle
+        const auto position = this->turbine.apex_nodes[i].position;
         const auto q_global_to_local =
-            math::QuaternionInverse(std::span{this->turbine.apex_nodes[i].position}.subspan<3, 4>());
+            Eigen::Quaternion<double>(position[3], position[4], position[5], position[6]).inverse();
 
         // Rotate blade root moments into blade root coordinates
-        const auto blade_root_moments = math::RotateVectorByQuaternion(
-            q_global_to_local, std::span{this->turbine.blade_pitch[i].loads}.subspan<3, 3>()
+        const auto blade_root_moments = q_global_to_local._transformVector(
+            Eigen::Matrix<double, 3, 1>(&this->turbine.blade_pitch[i].loads[3])
         );
 
         // Set out-of-plane root bending moment for each blade (y-axis in blade coords)

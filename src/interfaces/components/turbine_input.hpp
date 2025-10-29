@@ -3,7 +3,7 @@
 #include <array>
 #include <vector>
 
-#include "interfaces/components/beam_input.hpp"
+#include "beam_input.hpp"
 
 namespace kynema::interfaces::components {
 

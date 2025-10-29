@@ -172,7 +172,7 @@ TEST(LeastSquaresFitTest, FitsParametricCurve) {
     const auto dphi_g = math::ComputeShapeFunctionDerivatives(mapped_locations, gll_pts);
 
     // Step 3: Perform least squares fitting
-    const auto X = math::PerformLeastSquaresFitting(p, phi_g, input_points);
+    const auto X = math::PerformLeastSquaresFitting(phi_g, input_points);
 
     // Expected coefficients from Mathematica (rounded to 3 decimal places)
     const std::vector<std::array<double, 3>> expected_coefficients = {

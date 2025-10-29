@@ -230,7 +230,9 @@ TEST(Milestone, IEA15RotorAeroController) {
     // Blade nodes and elements
     //--------------------------------------------------------------------------
 
-    auto base_rot = math::RotationVectorToQuaternion({0., -std::numbers::pi / 2., 0.});
+    const auto base_rot = Eigen::Quaternion<double>(
+        Eigen::AngleAxis<double>(-std::numbers::pi / 2., Eigen::Matrix<double, 3, 1>::Unit(1))
+    );
 
     // Number of nodes and quadrature points in each blade
     constexpr auto n_blade_nodes = node_xi.size();
@@ -246,51 +248,51 @@ TEST(Milestone, IEA15RotorAeroController) {
     std::vector<size_t> beam_elem_ids;
     std::vector<std::vector<size_t>> beam_elem_node_ids;
     constexpr double d_theta = 2. * std::numbers::pi / static_cast<double>(n_blades);
-    std::vector<std::array<double, 4>> q_roots;
+    std::vector<Eigen::Quaternion<double>> q_roots;
     q_roots.reserve(n_blades);
     for (auto i : std::views::iota(0U, n_blades)) {
-        q_roots.emplace_back(math::RotationVectorToQuaternion(
-            {d_theta * static_cast<double>(i) + azimuth_init, 0., 0.}
-        ));
+        const auto angle = d_theta * static_cast<double>(i) + azimuth_init;
+        q_roots.emplace_back(Eigen::AngleAxis<double>(angle, Eigen::Matrix<double, 3, 1>::Unit(0)));
     }
 
-    constexpr auto omega = std::array{
+    const auto omega = Eigen::Matrix<double, 3, 1>(
         rotor_speed_init * shaft_axis[0], rotor_speed_init * shaft_axis[1],
         rotor_speed_init * shaft_axis[2]
-    };
+    );
     std::vector<Node> tip_node_ids;
     std::ranges::transform(
         std::views::iota(0U, n_blades), std::back_inserter(beam_elem_ids),
         [&](const size_t i) {
             // Define root rotation about x-axis
-            const auto q_root = math::QuaternionCompose(q_roots[i], base_rot);
+            const auto q_root = q_roots[i] * base_rot;
 
             // Declare vector of beam nodes
             std::vector<size_t> beam_node_ids;
 
             // Loop through nodes in blade
             for (auto j : std::views::iota(0U, n_blade_nodes)) {
+                const auto node_coord = Eigen::Matrix<double, 3, 1>(
+                    node_coords[j][0] + hub_radius, node_coords[j][1], node_coords[j][2]
+                );
+                const auto node_quat = Eigen::Quaternion<double>(
+                    node_coords[j][3], node_coords[j][4], node_coords[j][5], node_coords[j][6]
+                );
+
                 // Calculate node position and orientation for this blade
-                const auto rot = math::QuaternionCompose(
-                    q_root,
-                    {node_coords[j][3], node_coords[j][4], node_coords[j][5], node_coords[j][6]}
-                );
-                auto pos = math::RotateVectorByQuaternion(
-                    q_root,
-                    std::array{node_coords[j][0] + hub_radius, node_coords[j][1], node_coords[j][2]}
-                );
-                const auto v = math::CrossProduct(omega, pos);
+                const auto rot = q_root * node_quat;
+                const auto pos = q_root._transformVector(node_coord);
+                const auto v = omega.cross(pos);
 
                 // Add hub overhang and hub height to position after calculating node velocity
-                pos[0] += hub_overhang;
-                pos[2] += hub_height;
-
                 // Create beam node
                 beam_node_ids.emplace_back(
                     model.AddNode()
                         .SetElemLocation(node_loc[j])
-                        .SetPosition(pos[0], pos[1], pos[2], rot[0], rot[1], rot[2], rot[3])
-                        .SetVelocity(v[0], v[1], v[2], omega[0], omega[1], omega[2])
+                        .SetPosition(
+                            pos(0) + hub_overhang, pos(1), pos(2) + hub_height, rot.w(), rot.x(),
+                            rot.y(), rot.z()
+                        )
+                        .SetVelocity(v(0), v(1), v(2), omega(0), omega(1), omega(2))
                         .Build()
                 );
             }
@@ -309,25 +311,24 @@ TEST(Milestone, IEA15RotorAeroController) {
     // Blade root nodes
     std::vector<size_t> root_node_ids;
     for (auto i : std::views::iota(0U, n_blades)) {
-        const auto q_root = math::QuaternionCompose(q_roots[i], base_rot);
+        const auto q_root = q_roots[i] * base_rot;
+        const auto node_coord = Eigen::Matrix<double, 3, 1>(
+            node_coords[0][0] + hub_radius, node_coords[0][1], node_coords[0][2]
+        );
 
         // Calculate node position and orientation for this blade
-        auto pos = math::RotateVectorByQuaternion(
-            q_root, std::array{node_coords[0][0] + hub_radius, node_coords[0][1], node_coords[0][2]}
-        );
-        const auto v = math::CrossProduct(omega, pos);
+        const auto pos = q_root._transformVector(node_coord);
+        const auto v = omega.cross(pos);
 
         // Add hub overhang and hub height to position after calculating node velocity
-        pos[0] += hub_overhang;
-        pos[2] += hub_height;
-
         // If first node, add root node which doesn't include blade twist
-        root_node_ids.emplace_back(
-            model.AddNode()
-                .SetPosition(pos[0], pos[1], pos[2], q_root[0], q_root[1], q_root[2], q_root[3])
-                .SetVelocity(v[0], v[1], v[2], omega[0], omega[1], omega[2])
-                .Build()
-        );
+        root_node_ids.emplace_back(model.AddNode()
+                                       .SetPosition(
+                                           pos(0) + hub_overhang, pos(1), pos(2) + hub_height,
+                                           q_root.w(), q_root.x(), q_root.y(), q_root.z()
+                                       )
+                                       .SetVelocity(v(0), v(1), v(2), omega(0), omega(1), omega(2))
+                                       .Build());
     }
 
     //--------------------------------------------------------------------------
@@ -339,12 +340,12 @@ TEST(Milestone, IEA15RotorAeroController) {
 
     auto azimuth_node_id = model.AddNode()
                                .SetPosition(0., 0., hub_height, 1., 0., 0., 0.)
-                               .SetVelocity(0., 0., 0., omega[0], omega[1], omega[2])
+                               .SetVelocity(0., 0., 0., omega(0), omega(1), omega(2))
                                .Build();
 
     auto hub_node_id = model.AddNode()
                            .SetPosition(hub_overhang, 0., hub_height, 1., 0., 0., 0.)
-                           .SetVelocity(0., 0., 0., omega[0], omega[1], omega[2])
+                           .SetVelocity(0., 0., 0., omega(0), omega(1), omega(2))
                            .Build();
     //--------------------------------------------------------------------------
     // Constraints
@@ -356,11 +357,11 @@ TEST(Milestone, IEA15RotorAeroController) {
     // Add revolute joint between shaft base and azimuth node, rotation about shaft axis,
     // connect torque to generator torque command
     auto azimuth_constraint_id = model.AddRevoluteJointConstraint(
-        {shaft_base_node_id, azimuth_node_id}, shaft_axis, &torque_actual
+        std::array{shaft_base_node_id, azimuth_node_id}, shaft_axis, &torque_actual
     );
 
     // Add rigid constraint between azimuth node and hub
-    model.AddRigidJointConstraint({azimuth_node_id, hub_node_id});
+    model.AddRigidJointConstraint(std::array{azimuth_node_id, hub_node_id});
 
     // Add rotation control constraints between hub and blade root nodes
     for (auto i : std::views::iota(0U, n_blades)) {
@@ -372,11 +373,13 @@ TEST(Milestone, IEA15RotorAeroController) {
         };
 
         // Add rotation control constraint between hub and root node
-        model.AddRotationControl({hub_node_id, root_node_ids[i]}, pitch_axis, &pitch_actual);
+        model.AddRotationControl(
+            std::array{hub_node_id, root_node_ids[i]}, pitch_axis, &pitch_actual
+        );
 
         // Add rigid constraint between root node and first blade node
         model.AddRigidJointConstraint(
-            {root_node_ids[i], model.GetBeamElement(beam_elem_ids[i]).node_ids[0]}
+            std::array{root_node_ids[i], model.GetBeamElement(beam_elem_ids[i]).node_ids[0]}
         );
     }
 

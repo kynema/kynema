@@ -1,5 +1,8 @@
 #pragma once
 
+#include <array>
+#include <vector>
+
 #include "beam_builder.hpp"
 #include "turbine_input.hpp"
 

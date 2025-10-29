@@ -39,7 +39,7 @@ inline void SetUpSolverAndAssemble() {
     // Gravity vector
     model.SetGravity(0., 0., 0.);
 
-    const auto x0_root = std::array{2., 0., 0.};
+    const auto x0_root = Eigen::Matrix<double, 3, 1>(2., 0., 0.);
 
     // Node locations (GLL quadrature)
     constexpr auto node_s = std::array{
@@ -92,12 +92,13 @@ inline void SetUpSolverAndAssemble() {
     auto [state, elements, constraints] = model.CreateSystem();
     auto solver = CreateSolver<>(state, elements, constraints);
 
-    const auto u_rot = math::RotationVectorToQuaternion({0., 0., omega * step_size});
-    const auto x_root = math::RotateVectorByQuaternion(u_rot, x0_root);
-    const auto u_trans =
-        std::array{x_root[0] - x0_root[0], x_root[1] - x0_root[1], x_root[2] - x0_root[2]};
+    const auto u_rot = Eigen::Quaternion<double>(
+        Eigen::AngleAxis(omega * step_size, Eigen::Matrix<double, 3, 1>::Unit(2))
+    );
+    const auto x_root = u_rot._transformVector(x0_root);
+    const auto u_trans = x_root - x0_root;
     const auto displacement =
-        std::array{u_trans[0], u_trans[1], u_trans[2], u_rot[0], u_rot[1], u_rot[2], u_rot[3]};
+        std::array{u_trans(0), u_trans(1), u_trans(2), u_rot.w(), u_rot.x(), u_rot.y(), u_rot.z()};
     constraints.UpdateDisplacement(0, displacement);
 
     // Predict the next state for the solver
@@ -277,10 +278,10 @@ inline void SetupAndTakeNoSteps() {
     // Calculate displacement, velocity, acceleration assuming a
     // 0.1 rad/s angular velocity around the z axis
     constexpr auto omega = 0.1;
-    const auto x0_root = std::array{2., 0., 0.};
+    const auto x0_root = Eigen::Matrix<double, 3, 1>(2., 0., 0.);
     std::vector<size_t> beam_node_ids;
     std::ranges::transform(node_s, std::back_inserter(beam_node_ids), [&](auto s) {
-        const auto x = 10 * s + x0_root[0];
+        const auto x = 10 * s + x0_root(0);
         return model.AddNode()
             .SetElemLocation(s)
             .SetPosition(x, 0., 0., 1., 0., 0., 0.)
@@ -320,12 +321,13 @@ inline void SetupAndTakeNoSteps() {
     auto [state, elements, constraints] = model.CreateSystem();
     auto solver = CreateSolver<>(state, elements, constraints);
 
-    auto u_rot = math::RotationVectorToQuaternion({0., 0., omega * step_size});
-    auto x_root = math::RotateVectorByQuaternion(u_rot, x0_root);
-    auto u_trans =
-        std::array{x_root[0] - x0_root[0], x_root[1] - x0_root[1], x_root[2] - x0_root[2]};
+    const auto u_rot = Eigen::Quaternion<double>(
+        Eigen::AngleAxis<double>(omega * step_size, Eigen::Matrix<double, 3, 1>::Unit(2))
+    );
+    const auto x_root = u_rot._transformVector(x0_root);
+    const auto u_trans = x_root - x0_root;
     auto displacement =
-        std::array{u_trans[0], u_trans[1], u_trans[2], u_rot[0], u_rot[1], u_rot[2], u_rot[3]};
+        std::array{u_trans(0), u_trans(1), u_trans(2), u_rot.w(), u_rot.x(), u_rot.y(), u_rot.z()};
     constraints.UpdateDisplacement(0, displacement);
 
     Step(parameters, solver, elements, state, constraints);
@@ -516,8 +518,10 @@ inline auto SetupAndTakeTwoSteps() {
     auto [state, elements, constraints] = model.CreateSystem();
     auto solver = CreateSolver<>(state, elements, constraints);
 
-    auto q = math::RotationVectorToQuaternion({0., 0., omega * step_size});
-    auto displacement = std::array{0., 0., 0., q[0], q[1], q[2], q[3]};
+    const auto q = Eigen::Quaternion<double>(
+        Eigen::AngleAxis<double>(omega * step_size, Eigen::Matrix<double, 3, 1>::Unit(2))
+    );
+    auto displacement = std::array{0., 0., 0., q.w(), q.x(), q.y(), q.z()};
     constraints.UpdateDisplacement(0, displacement);
 
     Step(parameters, solver, elements, state, constraints);

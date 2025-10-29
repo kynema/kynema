@@ -5,7 +5,7 @@ function(kynema_setup_dependencies)
   find_package(KokkosKernels REQUIRED)
   find_package(yaml-cpp REQUIRED)
   find_package(NetCDF REQUIRED)
-  find_package(LAPACK REQUIRED)
+  find_package(Eigen3 REQUIRED)
 
   #--------------------------------------------------------------------------
   # Optional packages
