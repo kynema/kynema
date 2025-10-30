@@ -14,8 +14,11 @@ namespace kynema::tests {
 using kynema::interfaces::Outputs;
 
 TEST(OutputsTest, ConstructWithAndWithoutTimeSeriesFile) {
-    const std::string node_state_file = "node_states_outputs.nc";
-    const std::string time_series_file = "time_series_outputs.nc";
+    const ::testing::TestInfo* const test_info =
+        ::testing::UnitTest::GetInstance()->current_test_info();
+    const std::string test_name = std::string(test_info->test_case_name()) + "_" + test_info->name();
+    const std::string node_state_file = "node_states_outputs_" + test_name + ".nc";
+    const std::string time_series_file = "time_series_outputs_" + test_name + ".nc";
     std::filesystem::remove(node_state_file);
     std::filesystem::remove(time_series_file);
 
@@ -42,8 +45,11 @@ TEST(OutputsTest, ConstructWithAndWithoutTimeSeriesFile) {
 }
 
 TEST(OutputsTest, WriteTimeSeriesAndReopen) {
-    const std::string node_state_file = "node_states_outputs.nc";
-    const std::string time_series_file = "time_series_outputs.nc";
+    const ::testing::TestInfo* const test_info =
+        ::testing::UnitTest::GetInstance()->current_test_info();
+    const std::string test_name = std::string(test_info->test_case_name()) + "_" + test_info->name();
+    const std::string node_state_file = "node_states_outputs_" + test_name + ".nc";
+    const std::string time_series_file = "time_series_outputs_" + test_name + ".nc";
     std::filesystem::remove(node_state_file);
     std::filesystem::remove(time_series_file);
 
