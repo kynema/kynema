@@ -17,9 +17,6 @@ struct OutputsConfig {
     /// @brief Vector of state component prefixes to enable for writing
     std::vector<std::string> output_state_prefixes{"x", "u", "v", "a", "f"};
 
-    /// @brief Whether to write deformation data to the NetCDF file
-    bool enable_deformation{false};
-
     /// @brief Number of timesteps to buffer before auto-flush
     size_t buffer_size{util::NodeStateWriter::kDefaultBufferSize};
 

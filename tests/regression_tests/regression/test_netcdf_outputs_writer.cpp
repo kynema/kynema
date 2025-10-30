@@ -59,7 +59,6 @@ TEST(NetCDFOutputsWriterTest, SpringMassSystemOutputs) {
         true,   // create new file
         2,      // 2 nodes
         {"u"},  // write only displacements
-        false,  // do not write deformation
         0       // no buffering
     );
 

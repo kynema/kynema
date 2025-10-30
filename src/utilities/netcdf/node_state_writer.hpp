@@ -19,7 +19,6 @@ namespace kynema::util {
  *   - Velocity (x, y, z, i, j, k)
  *   - Acceleration (x, y, z, i, j, k)
  *   - Force (x, y, z, i, j, k)
- *   - Deformation (x, y, z)
  *
  * @note Each item is stored as a separate variable in the NetCDF file, organized by
  * timestep and node index. The file structure uses an unlimited time dimension to allow
@@ -41,13 +40,12 @@ public:
      * @param num_nodes Number of nodes in the simulation
      * @param enabled_state_prefixes Vector of state component prefixes to enable for writing
      *                              (default: all state components i.e. {"x", "u", "v", "a", "f"})
-     * @param enable_deformation Writing deformation data to the NetCDF file? (default: false)
      * @param buffer_size Number of timesteps to accumulate before auto-flush (0 = no buffering)
      */
     NodeStateWriter(
         const std::string& file_path, bool create, size_t num_nodes,
         const std::vector<std::string>& enabled_state_prefixes = {"x", "u", "v", "a", "f"},
-        bool enable_deformation = false, size_t buffer_size = kDefaultBufferSize
+        size_t buffer_size = kDefaultBufferSize
     );
 
     /// @brief Destructor to flush any remaining buffered data
@@ -80,19 +78,6 @@ public:
         const std::vector<double>& w = std::vector<double>()
     );
 
-    /**
-     * @brief Write deformation data for all nodes at a timestep
-     *
-     * @param timestep Current timestep index
-     * @param x Data for x component of deformation
-     * @param y Data for y component of deformation
-     * @param z Data for z component of deformation
-     */
-    void WriteDeformationDataAtTimestep(
-        size_t timestep, const std::vector<double>& x, const std::vector<double>& y,
-        const std::vector<double>& z
-    );
-
     /// @brief Get the NetCDF file object
     [[nodiscard]] const NetCdfFile& GetFile() const;
 
@@ -109,7 +94,6 @@ private:
     NetCdfFile file_;                                  //< NetCDF file object for writing output data
     size_t num_nodes_;                                 //< number of nodes in the simulation
     std::vector<std::string> enabled_state_prefixes_;  //< prefixes for the state components to write
-    bool enable_deformation_;                          //< write deformation data?
     size_t buffer_size_;  //< number of timesteps to accumulate before auto-flush
 
     /**
@@ -134,15 +118,8 @@ private:
         std::vector<double> x, y, z, i, j, k, w;  //< data for the component
     };
 
-    /// Structure to hold one timestep's worth of deformation data
-    struct DeformationTimestepData {
-        size_t timestep;
-        std::vector<double> x, y, z;  //< data for the deformation
-    };
-
     std::vector<StateTimestepData>
         state_buffers_[5];  //< buffer for each state component type  -- x, u, v, a, f
-    std::vector<DeformationTimestepData> deformation_buffer_;  //< buffer for deformation data
 
     /**
      * @brief Gets the index of a state component by its prefix
@@ -156,11 +133,6 @@ private:
      * @param component_index Index of the component (0=x, 1=u, 2=v, 3=a, 4=f)
      */
     void FlushStateBuffer(size_t component_index);
-
-    /**
-     * @brief Flushes buffered deformation data to disk
-     */
-    void FlushDeformationBuffer();
 
     /**
      * @brief Flushes all buffered data and syncs the file

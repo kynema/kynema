@@ -22,8 +22,7 @@ TEST(OutputsTest, ConstructWithAndWithoutTimeSeriesFile) {
     // With time series
     {
         Outputs outputs(
-            node_state_file, /*num_nodes=*/1, time_series_file, {"u"}, /*enable_deformation=*/false,
-            /*buffer_size=*/0
+            node_state_file, /*num_nodes=*/1, time_series_file, {"u"}, /*buffer_size=*/0
         );
         ASSERT_NE(outputs.GetOutputWriter(), nullptr);
         ASSERT_NE(outputs.GetTimeSeriesWriter(), nullptr);
@@ -31,7 +30,9 @@ TEST(OutputsTest, ConstructWithAndWithoutTimeSeriesFile) {
 
     // Without time series
     {
-        Outputs outputs(node_state_file, /*num_nodes=*/1, /*time_series_file=*/"", {"u"}, false, 0);
+        Outputs outputs(
+            node_state_file, /*num_nodes=*/1, /*time_series_file=*/"", {"u"}, /*buffer_size=*/0
+        );
         ASSERT_NE(outputs.GetOutputWriter(), nullptr);
         ASSERT_EQ(outputs.GetTimeSeriesWriter(), nullptr);
     }
@@ -48,7 +49,7 @@ TEST(OutputsTest, WriteTimeSeriesAndReopen) {
 
     Outputs outputs(
         node_state_file, /*num_nodes=*/1, time_series_file, /*enabled_state_prefixes=*/{"u"},
-        /*enable_deformation=*/false, 0
+        /*buffer_size=*/0
     );
 
     // Write values at two timesteps, close/reopen in between

@@ -8,11 +8,10 @@ namespace kynema::interfaces {
 
 Outputs::Outputs(
     const std::string& output_file, size_t num_nodes, const std::string& time_series_file,
-    const std::vector<std::string>& enabled_state_prefixes, bool enable_deformation,
-    size_t buffer_size
+    const std::vector<std::string>& enabled_state_prefixes, size_t buffer_size
 )
     : output_writer_(std::make_unique<util::NodeStateWriter>(
-          output_file, true, num_nodes, enabled_state_prefixes, enable_deformation, buffer_size
+          output_file, true, num_nodes, enabled_state_prefixes, buffer_size
       )),
       num_nodes_(num_nodes),
       time_series_writer_(

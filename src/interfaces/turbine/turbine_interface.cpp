@@ -87,8 +87,7 @@ TurbineInterface::TurbineInterface(
         this->outputs = std::make_unique<Outputs>(
             outputs_config.output_file_path + "/turbine_interface.nc", this->state.num_system_nodes,
             outputs_config.output_file_path + "/turbine_time_series.nc",
-            outputs_config.output_state_prefixes, outputs_config.enable_deformation,
-            outputs_config.buffer_size
+            outputs_config.output_state_prefixes, outputs_config.buffer_size
         );
 
         // Write initial state

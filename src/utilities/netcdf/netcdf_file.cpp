@@ -41,7 +41,7 @@ void NetCdfFile::Sync() const {
 
 void NetCdfFile::Close() {
     if (netcdf_id_ != -1) {
-        this->Sync();  // flush buffers before closing
+        nc_sync(netcdf_id_);  // flush buffers before closing
         nc_close(netcdf_id_);
         netcdf_id_ = -1;  // set file ID to invalid upon closing
     }

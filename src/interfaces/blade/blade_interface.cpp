@@ -45,8 +45,7 @@ BladeInterface::BladeInterface(
         this->outputs = std::make_unique<Outputs>(
             outputs_config.output_file_path + "/blade_interface.nc", blade.nodes.size(),
             outputs_config.output_file_path + "/blade_time_series.nc",
-            outputs_config.output_state_prefixes, outputs_config.enable_deformation,
-            outputs_config.buffer_size
+            outputs_config.output_state_prefixes, outputs_config.buffer_size
         );
     }
 }
