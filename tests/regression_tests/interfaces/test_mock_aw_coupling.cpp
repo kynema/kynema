@@ -17,12 +17,12 @@ TEST(TurbineInterfaceTest, MockAW) {
     const auto time_step{0.005};      // Time step for the simulation
     const auto n_blades{3U};         // Number of blades in turbine
     const auto n_blade_nodes{11};    // Number of nodes per blade
-    const auto n_tower_nodes{12};    // Number of nodes in tower
+    const auto n_tower_nodes{11};    // Number of nodes in tower
     const auto write_output{true};  // Write output file
-    const auto n_steps{100U};
+    const auto n_steps{3000U};
 
     constexpr auto fluid_density{1.225};
-    constexpr auto rotor_speed_init{0.};
+    constexpr auto rotor_speed_init{5. * std::numbers::pi / 30.};
     constexpr auto v_inflow = std::array{6., 0., 0.};
 
     // Create interface builder
