@@ -32,9 +32,6 @@ struct SolutionInput {
     /// @brief Relative error tolerance
     double relative_error_tolerance{1e-3};
 
-    /// @brief Output file path for NetCDF results (empty = no outputs will be written)
-    std::string output_file_path;
-
     /// @brief  Construct step parameters from inputs
     /// @return Step parameters struct
     [[nodiscard]] StepParameters Parameters() const {

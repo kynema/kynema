@@ -21,7 +21,7 @@ TEST(BladeInterfaceTest, StaticCurledBeam_GlQuadrature) {
         .SetRelativeErrorTolerance(1e-3);
 
     if (write_output) {
-        builder.Solution().SetOutputFile("BladeInterfaceTest.StaticCurledBeam_GL");
+        builder.Outputs().SetOutputFilePath("BladeInterfaceTest.StaticCurledBeam_GL");
     }
 
     // Node locations
@@ -133,7 +133,7 @@ TEST(BladeInterfaceTest, StaticCurledBeam_GlQuadrature_ThreeSections) {
         .SetRelativeErrorTolerance(1e-3);
 
     if (write_output) {
-        builder.Solution().SetOutputFile("BladeInterfaceTest.StaticCurledBeam_GLL");
+        builder.Outputs().SetOutputFilePath("BladeInterfaceTest.StaticCurledBeam_GLL");
     }
 
     // Node locations
@@ -245,7 +245,7 @@ TEST(BladeInterfaceTest, StaticCurledBeam_GlQuadrature_WholeBeam) {
         .SetRelativeErrorTolerance(1e-3);
 
     if (write_output) {
-        builder.Solution().SetOutputFile("BladeInterfaceTest.StaticCurledBeam_GL");
+        builder.Outputs().SetOutputFilePath("BladeInterfaceTest.StaticCurledBeam_GL");
     }
 
     // Node locations
@@ -358,7 +358,7 @@ TEST(BladeInterfaceTest, StaticCurledBeam_GlQuadrature_ThreeSections_WholeBeam) 
         .SetRelativeErrorTolerance(1e-3);
 
     if (write_output) {
-        builder.Solution().SetOutputFile("BladeInterfaceTest.StaticCurledBeam_GL");
+        builder.Outputs().SetOutputFilePath("BladeInterfaceTest.StaticCurledBeam_GL");
     }
 
     // Node locations

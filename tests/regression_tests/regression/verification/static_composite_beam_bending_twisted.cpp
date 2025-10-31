@@ -53,7 +53,8 @@ TEST(StaticVerificationTest, CompositeBeamBending_TwistedBeam) {
         .SetRelativeErrorTolerance(1e-9);   // Relative tolerance
 
     if (write_output) {
-        builder.Solution().SetOutputFile("StaticVerificationTest.CompositeBeamBending_TwistedBeam");
+        builder.Outputs().SetOutputFilePath("StaticVerificationTest.CompositeBeamBending_TwistedBeam"
+        );
     }
 
     //----------------------------------
