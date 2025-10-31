@@ -49,11 +49,6 @@ SolutionBuilder& SolutionBuilder::SetDampingFactor(double rho_inf) {
     return *this;
 }
 
-SolutionBuilder& SolutionBuilder::SetOutputFile(const std::string& output_file_path) {
-    input.output_file_path = output_file_path;
-    return *this;
-}
-
 const SolutionInput& SolutionBuilder::Input() const {
     return this->input;
 }

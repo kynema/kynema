@@ -40,8 +40,10 @@ int main() {
             .SetGravity({0., 0., -9.81})
             .SetMaximumNonlinearIterations(6)
             .SetAbsoluteErrorTolerance(1e-6)
-            .SetRelativeErrorTolerance(1e-4)
-            .SetOutputFile("TurbineInterfaceTest.IEA15");
+            .SetRelativeErrorTolerance(1e-4);
+
+        // Set output file path
+        builder.Outputs().SetOutputFilePath("TurbineInterfaceTest.IEA15");
 
         // Read WindIO yaml file
         // System parameters will usually be provided in the form of a .yaml file.  Here,

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "interfaces/components/beam_builder.hpp"
+#include "interfaces/components/outputs_builder.hpp"
 #include "interfaces/components/solution_builder.hpp"
 
 namespace kynema::interfaces {
@@ -35,6 +36,13 @@ public:
     [[nodiscard]] components::BeamBuilder& Blade();
 
     /**
+     * @brief Returns the owned OutputsBuilder for use in defining the outputs configuration
+     *
+     * @return A reference to the OutputsBuilder object
+     */
+    [[nodiscard]] components::OutputsBuilder& Outputs();
+
+    /**
      * @brief Builds the BladeInterface by composing the Blade and Solution components
      * @return A BladeInterface object
      */
@@ -43,6 +51,7 @@ public:
 private:
     components::SolutionBuilder solution_builder;  ///< Builder for the Solution component
     components::BeamBuilder beam_builder;          ///< Builder for the Blade component
+    components::OutputsBuilder outputs_builder;    ///< Builder for the Outputs component
 };
 
 }  // namespace kynema::interfaces

@@ -46,7 +46,8 @@ TEST(StaticVerificationTest, CompositeBeamBending_CurvedBeam) {
         .SetRelativeErrorTolerance(1e-9);   // relative tolerance
 
     if (write_output) {
-        builder.Solution().SetOutputFile("StaticVerificationTest.CompositeBeamBending_CurvedBeam");
+        builder.Outputs().SetOutputFilePath("StaticVerificationTest.CompositeBeamBending_CurvedBeam"
+        );
     }
 
     //----------------------------------

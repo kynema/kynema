@@ -157,6 +157,22 @@ struct InterfaceBuilder {
     InterfaceBuilder& SetOutputFile(const std::string& path);
 
     /**
+     * @brief Sets the output state prefixes to be written to the output file
+     *
+     * @param prefixes Vector of variable name prefixes
+     * @return A reference to this InterfaceBuilder object to allow chaining
+     */
+    InterfaceBuilder& SetOutputStatePrefixes(const std::vector<std::string>& prefixes);
+
+    /**
+     * @brief Sets the number of output timesteps to buffer before flushing to disk
+     *
+     * @param buffer_size Number of timesteps to buffer
+     * @return A reference to this InterfaceBuilder object to allow chaining
+     */
+    InterfaceBuilder& SetOutputBufferSize(std::size_t buffer_size);
+
+    /**
      * @brief Builds the Interface based on current settings
      *
      * @return The constructed Interface

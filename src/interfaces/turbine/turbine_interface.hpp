@@ -3,6 +3,7 @@
 #include "interfaces/components/aerodynamics.hpp"
 #include "interfaces/components/aerodynamics_input.hpp"
 #include "interfaces/components/controller_input.hpp"
+#include "interfaces/components/outputs_config.hpp"
 #include "interfaces/components/turbine.hpp"
 #include "interfaces/host_constraints.hpp"
 #include "interfaces/host_state.hpp"
@@ -14,6 +15,7 @@
 namespace kynema::interfaces::components {
 struct SolutionInput;
 struct TurbineInput;
+struct OutputsConfig;
 }  // namespace kynema::interfaces::components
 
 namespace kynema::interfaces {
@@ -35,12 +37,14 @@ public:
      * @param turbine_input Configuration parameters for the turbine geometry
      * @param aerodynamics_input Configuration parameters for the aerodynamic loads
      * @param controller_input Configuration parameters for the controller
+     * @param outputs_config Configuration parameters for the outputs
      */
     explicit TurbineInterface(
         const components::SolutionInput& solution_input,
         const components::TurbineInput& turbine_input,
         const components::AerodynamicsInput& aerodynamics_input = {},
-        const components::ControllerInput& controller_input = {}
+        const components::ControllerInput& controller_input = {},
+        const components::OutputsConfig& outputs_config = {}
     );
 
     /// @brief Returns a reference to the turbine model

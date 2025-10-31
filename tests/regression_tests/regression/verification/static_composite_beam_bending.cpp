@@ -48,7 +48,7 @@ TEST(StaticVerificationTest, CompositeBeamBending) {
         .SetRelativeErrorTolerance(1e-9);
 
     if (write_output) {
-        builder.Solution().SetOutputFile("StaticVerificationTest.CompositeBeamBending");
+        builder.Outputs().SetOutputFilePath("StaticVerificationTest.CompositeBeamBending");
     }
 
     //----------------------------------

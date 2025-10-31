@@ -77,16 +77,6 @@ struct SolutionBuilder {
     SolutionBuilder& SetDampingFactor(double rho_inf);
 
     /**
-     * @brief Sets the output file name where output will be written each time step
-     *
-     * @details If this is left unset, no IO will be automatically performed
-     *
-     * @param output_file_path The name of the output file
-     * @return A reference to this solution builder object to allow chaining
-     */
-    SolutionBuilder& SetOutputFile(const std::string& output_file_path);
-
-    /**
      * @brief Creates a SolutionInput object based on the previously set parameters
      *
      * @return The completed SolutionInput object

@@ -1,4 +1,6 @@
-target_sources(kynema_library PRIVATE)
+target_sources(kynema_library PRIVATE
+    least_squares_fit.cpp
+)
 
 install(FILES
         interpolation.hpp

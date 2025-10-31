@@ -21,7 +21,7 @@ TEST(BladeInterfaceTest, StaticCurledBeam_TrapezoidalQuadrature) {
         .SetRelativeErrorTolerance(1e-3);
 
     if (write_output) {
-        builder.Solution().SetOutputFile("BladeInterfaceTest.StaticCurledBeam_Trap");
+        builder.Outputs().SetOutputFilePath("BladeInterfaceTest.StaticCurledBeam_Trap");
     }
 
     // Node locations

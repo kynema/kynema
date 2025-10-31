@@ -36,7 +36,7 @@ TEST(TurbineInterfaceTest, IEA15_Structure) {
         .SetRelativeErrorTolerance(1e-5);
 
     if (write_output) {
-        builder.Solution().SetOutputFile("TurbineInterfaceTest.IEA15");
+        builder.Outputs().SetOutputFilePath("TurbineInterfaceTest.IEA15");
     }
 
     // Read WindIO yaml file
@@ -290,8 +290,8 @@ TEST(TurbineInterfaceTest, IEA15_Structure) {
         {{{hub_mass, 0., 0., 0., 0., 0.},
           {0., hub_mass, 0., 0., 0., 0.},
           {0., 0., hub_mass, 0., 0., 0.},
-          {0., 0., 0., hub_inertia[0] + (generator_inertia[0] * gearbox_ratio), hub_inertia[3],
-           hub_inertia[4]},
+          {0., 0., 0., hub_inertia[0] + (generator_inertia[0] * gearbox_ratio * gearbox_ratio),
+           hub_inertia[3], hub_inertia[4]},
           {0., 0., 0., hub_inertia[3], hub_inertia[1], hub_inertia[5]},
           {0., 0., 0., hub_inertia[4], hub_inertia[5], hub_inertia[2]}}}
     );
