@@ -168,7 +168,9 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="classkynema_1_1util_1_1NodeStateWriter-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">kynema::util::NodeStateWriter Class Reference</div></div>
 </div><!--header-->
@@ -181,21 +183,41 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:af61f2ae6c0aec8bc6dbacd63fd09e8bc" id="r_af61f2ae6c0aec8bc6dbacd63fd09e8bc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1NodeStateWriter.html#af61f2ae6c0aec8bc6dbacd63fd09e8bc">NodeStateWriter</a> (const std::string &amp;file_path, bool create, size_t num_nodes)</td></tr>
-<tr class="memdesc:af61f2ae6c0aec8bc6dbacd63fd09e8bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor to create a <a class="el" href="classkynema_1_1util_1_1NodeStateWriter.html" title="Class for writing Kynema nodal state data to NetCDF-based output files.">NodeStateWriter</a> object.  <br /></td></tr>
-<tr class="separator:af61f2ae6c0aec8bc6dbacd63fd09e8bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5d008a2328f69dcdcc8ea6994880775b" id="r_a5d008a2328f69dcdcc8ea6994880775b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1NodeStateWriter.html#a5d008a2328f69dcdcc8ea6994880775b">WriteStateDataAtTimestep</a> (size_t timestep, const std::string &amp;component_prefix, const std::vector&lt; double &gt; &amp;x, const std::vector&lt; double &gt; &amp;y, const std::vector&lt; double &gt; &amp;z, const std::vector&lt; double &gt; &amp;i, const std::vector&lt; double &gt; &amp;j, const std::vector&lt; double &gt; &amp;k, const std::vector&lt; double &gt; &amp;w=std::vector&lt; double &gt;()) const</td></tr>
-<tr class="memdesc:a5d008a2328f69dcdcc8ea6994880775b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes state data for a specific timestep.  <br /></td></tr>
-<tr class="separator:a5d008a2328f69dcdcc8ea6994880775b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad5b9c6d04278f888a49849770de320ea" id="r_ad5b9c6d04278f888a49849770de320ea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1NodeStateWriter.html#ad5b9c6d04278f888a49849770de320ea">WriteDeformationDataAtTimestep</a> (size_t timestep, const std::vector&lt; double &gt; &amp;x, const std::vector&lt; double &gt; &amp;y, const std::vector&lt; double &gt; &amp;z) const</td></tr>
-<tr class="memdesc:ad5b9c6d04278f888a49849770de320ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write deformation data for all nodes at a timestep.  <br /></td></tr>
-<tr class="separator:ad5b9c6d04278f888a49849770de320ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae8a9dd6b73b5d3e74e44b7d3c6dac164" id="r_ae8a9dd6b73b5d3e74e44b7d3c6dac164"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classkynema_1_1util_1_1NetCDFFile.html">NetCDFFile</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1NodeStateWriter.html#ae8a9dd6b73b5d3e74e44b7d3c6dac164">GetFile</a> () const</td></tr>
-<tr class="memdesc:ae8a9dd6b73b5d3e74e44b7d3c6dac164"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the NetCDF file object.  <br /></td></tr>
-<tr class="separator:ae8a9dd6b73b5d3e74e44b7d3c6dac164"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94243a75d012cf29bb0c91e8ed043d5e" id="r_a94243a75d012cf29bb0c91e8ed043d5e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1NodeStateWriter.html#a94243a75d012cf29bb0c91e8ed043d5e">NodeStateWriter</a> (const std::string &amp;file_path, bool create, size_t num_nodes, const std::vector&lt; std::string &gt; &amp;enabled_state_prefixes={&quot;x&quot;, &quot;u&quot;, &quot;v&quot;, &quot;a&quot;, &quot;f&quot;}, size_t buffer_size=<a class="el" href="classkynema_1_1util_1_1NodeStateWriter.html#a34284233b5253e3dbea7e03c09ffe009">kDefaultBufferSize</a>)</td></tr>
+<tr class="memdesc:a94243a75d012cf29bb0c91e8ed043d5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor to create a <a class="el" href="classkynema_1_1util_1_1NodeStateWriter.html" title="Class for writing Kynema nodal state data to NetCDF-based output files.">NodeStateWriter</a> object.  <br /></td></tr>
+<tr class="separator:a94243a75d012cf29bb0c91e8ed043d5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4dead80eedc71ba7e6ca55594f9940c4" id="r_a4dead80eedc71ba7e6ca55594f9940c4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1NodeStateWriter.html#a4dead80eedc71ba7e6ca55594f9940c4">~NodeStateWriter</a> ()</td></tr>
+<tr class="memdesc:a4dead80eedc71ba7e6ca55594f9940c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor to flush any remaining buffered data.  <br /></td></tr>
+<tr class="separator:a4dead80eedc71ba7e6ca55594f9940c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89f279e705ebaf9b882df3001031851f" id="r_a89f279e705ebaf9b882df3001031851f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1NodeStateWriter.html#a89f279e705ebaf9b882df3001031851f">NodeStateWriter</a> (const <a class="el" href="classkynema_1_1util_1_1NodeStateWriter.html">NodeStateWriter</a> &amp;)=delete</td></tr>
+<tr class="separator:a89f279e705ebaf9b882df3001031851f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2aea0dcb0ba996fd80d5aa466e8e62a6" id="r_a2aea0dcb0ba996fd80d5aa466e8e62a6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema_1_1util_1_1NodeStateWriter.html">NodeStateWriter</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1NodeStateWriter.html#a2aea0dcb0ba996fd80d5aa466e8e62a6">operator=</a> (const <a class="el" href="classkynema_1_1util_1_1NodeStateWriter.html">NodeStateWriter</a> &amp;)=delete</td></tr>
+<tr class="separator:a2aea0dcb0ba996fd80d5aa466e8e62a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e8cc8d7e63e32a638ea51e6a77134d0" id="r_a0e8cc8d7e63e32a638ea51e6a77134d0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1NodeStateWriter.html#a0e8cc8d7e63e32a638ea51e6a77134d0">NodeStateWriter</a> (<a class="el" href="classkynema_1_1util_1_1NodeStateWriter.html">NodeStateWriter</a> &amp;&amp;)=delete</td></tr>
+<tr class="separator:a0e8cc8d7e63e32a638ea51e6a77134d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b12af75a3543331b2fce05950bdd9ad" id="r_a2b12af75a3543331b2fce05950bdd9ad"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema_1_1util_1_1NodeStateWriter.html">NodeStateWriter</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1NodeStateWriter.html#a2b12af75a3543331b2fce05950bdd9ad">operator=</a> (<a class="el" href="classkynema_1_1util_1_1NodeStateWriter.html">NodeStateWriter</a> &amp;&amp;)=delete</td></tr>
+<tr class="separator:a2b12af75a3543331b2fce05950bdd9ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79b7da3fddd7fb12435df0ca8f2d05ad" id="r_a79b7da3fddd7fb12435df0ca8f2d05ad"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1NodeStateWriter.html#a79b7da3fddd7fb12435df0ca8f2d05ad">WriteStateDataAtTimestep</a> (size_t timestep, const std::string &amp;component_prefix, const std::vector&lt; double &gt; &amp;x, const std::vector&lt; double &gt; &amp;y, const std::vector&lt; double &gt; &amp;z, const std::vector&lt; double &gt; &amp;i, const std::vector&lt; double &gt; &amp;j, const std::vector&lt; double &gt; &amp;k, const std::vector&lt; double &gt; &amp;w=std::vector&lt; double &gt;())</td></tr>
+<tr class="memdesc:a79b7da3fddd7fb12435df0ca8f2d05ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes state data for a specific timestep.  <br /></td></tr>
+<tr class="separator:a79b7da3fddd7fb12435df0ca8f2d05ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad741eb06b80cbc2f9c3cb4e4993f0356" id="r_ad741eb06b80cbc2f9c3cb4e4993f0356"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classkynema_1_1util_1_1NetCdfFile.html">NetCdfFile</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1NodeStateWriter.html#ad741eb06b80cbc2f9c3cb4e4993f0356">GetFile</a> () const</td></tr>
+<tr class="memdesc:ad741eb06b80cbc2f9c3cb4e4993f0356"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the NetCDF file object.  <br /></td></tr>
+<tr class="separator:ad741eb06b80cbc2f9c3cb4e4993f0356"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2be74536a08c7e3fdfecfd64f0fa7faa" id="r_a2be74536a08c7e3fdfecfd64f0fa7faa"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1NodeStateWriter.html#a2be74536a08c7e3fdfecfd64f0fa7faa">GetNumNodes</a> () const</td></tr>
 <tr class="memdesc:a2be74536a08c7e3fdfecfd64f0fa7faa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the number of nodes with state data in output file.  <br /></td></tr>
 <tr class="separator:a2be74536a08c7e3fdfecfd64f0fa7faa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4d8c6272c815f1b8258f99a5f97e7c9" id="r_ad4d8c6272c815f1b8258f99a5f97e7c9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1NodeStateWriter.html#ad4d8c6272c815f1b8258f99a5f97e7c9">Close</a> ()</td></tr>
+<tr class="memdesc:ad4d8c6272c815f1b8258f99a5f97e7c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Manually flush and close the underlying NetCDF file.  <br /></td></tr>
+<tr class="separator:ad4d8c6272c815f1b8258f99a5f97e7c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab99aaa0103f569ae2df29799f1bc2d7f" id="r_ab99aaa0103f569ae2df29799f1bc2d7f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1NodeStateWriter.html#ab99aaa0103f569ae2df29799f1bc2d7f">Open</a> ()</td></tr>
+<tr class="memdesc:ab99aaa0103f569ae2df29799f1bc2d7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Manually (re)open the underlying NetCDF file.  <br /></td></tr>
+<tr class="separator:ab99aaa0103f569ae2df29799f1bc2d7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:a34284233b5253e3dbea7e03c09ffe009" id="r_a34284233b5253e3dbea7e03c09ffe009"><td class="memItemLeft" align="right" valign="top">static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1NodeStateWriter.html#a34284233b5253e3dbea7e03c09ffe009">kDefaultBufferSize</a> {0}</td></tr>
+<tr class="memdesc:a34284233b5253e3dbea7e03c09ffe009"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default buffer size (number of timesteps to accumulate before auto-flush, 0 = no buffering)  <br /></td></tr>
+<tr class="separator:a34284233b5253e3dbea7e03c09ffe009"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class for writing Kynema nodal state data to NetCDF-based output files. </p>
@@ -205,12 +227,13 @@ Public Member Functions</h2></td></tr>
 <li>Velocity (x, y, z, i, j, k)</li>
 <li>Acceleration (x, y, z, i, j, k)</li>
 <li>Force (x, y, z, i, j, k)</li>
-<li>Deformation (x, y, z)</li>
 </ul>
-<p>Each item is stored as a separate variable in the NetCDF file, organized by timestep and node index. The file structure uses an unlimited time dimension to allow for continuous writing of timesteps during simulation. </p>
+<dl class="section note"><dt>Note</dt><dd>Each item is stored as a separate variable in the NetCDF file, organized by timestep and node index. The file structure uses an unlimited time dimension to allow for continuous writing of timesteps during simulation.</dd>
+<dd>
+The class includes buffering to improve write performance by batching multiple timesteps together before writing to disk. </dd></dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="af61f2ae6c0aec8bc6dbacd63fd09e8bc" name="af61f2ae6c0aec8bc6dbacd63fd09e8bc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af61f2ae6c0aec8bc6dbacd63fd09e8bc">&#9670;&#160;</a></span>NodeStateWriter()</h2>
+<a id="a94243a75d012cf29bb0c91e8ed043d5e" name="a94243a75d012cf29bb0c91e8ed043d5e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94243a75d012cf29bb0c91e8ed043d5e">&#9670;&#160;</a></span>NodeStateWriter() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -231,7 +254,19 @@ Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>num_nodes</em>&#160;</td>
+          <td class="paramname"><em>num_nodes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>enabled_state_prefixes</em> = <code>{&quot;x&quot;,&#160;&quot;u&quot;,&#160;&quot;v&quot;,&#160;&quot;a&quot;,&#160;&quot;f&quot;}</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>buffer_size</em> = <code><a class="el" href="classkynema_1_1util_1_1NodeStateWriter.html#a34284233b5253e3dbea7e03c09ffe009">kDefaultBufferSize</a></code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -247,21 +282,113 @@ Public Member Functions</h2></td></tr>
     <tr><td class="paramname">file_path</td><td>Path to the output NetCDF file </td></tr>
     <tr><td class="paramname">create</td><td>Whether to create a new file or open an existing one </td></tr>
     <tr><td class="paramname">num_nodes</td><td>Number of nodes in the simulation </td></tr>
+    <tr><td class="paramname">enabled_state_prefixes</td><td>Vector of state component prefixes to enable for writing (default: all state components i.e. {"x", "u", "v", "a", "f"}) </td></tr>
+    <tr><td class="paramname">buffer_size</td><td>Number of timesteps to accumulate before auto-flush (0 = no buffering) </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a id="ae8a9dd6b73b5d3e74e44b7d3c6dac164" name="ae8a9dd6b73b5d3e74e44b7d3c6dac164"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae8a9dd6b73b5d3e74e44b7d3c6dac164">&#9670;&#160;</a></span>GetFile()</h2>
+<a id="a4dead80eedc71ba7e6ca55594f9940c4" name="a4dead80eedc71ba7e6ca55594f9940c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4dead80eedc71ba7e6ca55594f9940c4">&#9670;&#160;</a></span>~NodeStateWriter()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="classkynema_1_1util_1_1NetCDFFile.html">NetCDFFile</a> &amp; kynema::util::NodeStateWriter::GetFile </td>
+          <td class="memname">kynema::util::NodeStateWriter::~NodeStateWriter </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Destructor to flush any remaining buffered data. </p>
+
+</div>
+</div>
+<a id="a89f279e705ebaf9b882df3001031851f" name="a89f279e705ebaf9b882df3001031851f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a89f279e705ebaf9b882df3001031851f">&#9670;&#160;</a></span>NodeStateWriter() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">kynema::util::NodeStateWriter::NodeStateWriter </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classkynema_1_1util_1_1NodeStateWriter.html">NodeStateWriter</a> &amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0e8cc8d7e63e32a638ea51e6a77134d0" name="a0e8cc8d7e63e32a638ea51e6a77134d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e8cc8d7e63e32a638ea51e6a77134d0">&#9670;&#160;</a></span>NodeStateWriter() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">kynema::util::NodeStateWriter::NodeStateWriter </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classkynema_1_1util_1_1NodeStateWriter.html">NodeStateWriter</a> &amp;&amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="ad4d8c6272c815f1b8258f99a5f97e7c9" name="ad4d8c6272c815f1b8258f99a5f97e7c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4d8c6272c815f1b8258f99a5f97e7c9">&#9670;&#160;</a></span>Close()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema::util::NodeStateWriter::Close </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Manually flush and close the underlying NetCDF file. </p>
+
+</div>
+</div>
+<a id="ad741eb06b80cbc2f9c3cb4e4993f0356" name="ad741eb06b80cbc2f9c3cb4e4993f0356"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad741eb06b80cbc2f9c3cb4e4993f0356">&#9670;&#160;</a></span>GetFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classkynema_1_1util_1_1NetCdfFile.html">NetCdfFile</a> &amp; kynema::util::NodeStateWriter::GetFile </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -292,59 +419,79 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ad5b9c6d04278f888a49849770de320ea" name="ad5b9c6d04278f888a49849770de320ea"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad5b9c6d04278f888a49849770de320ea">&#9670;&#160;</a></span>WriteDeformationDataAtTimestep()</h2>
+<a id="ab99aaa0103f569ae2df29799f1bc2d7f" name="ab99aaa0103f569ae2df29799f1bc2d7f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab99aaa0103f569ae2df29799f1bc2d7f">&#9670;&#160;</a></span>Open()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void kynema::util::NodeStateWriter::WriteDeformationDataAtTimestep </td>
+          <td class="memname">void kynema::util::NodeStateWriter::Open </td>
           <td>(</td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>timestep</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
-          <td class="paramtype">const std::vector&lt; double &gt; &amp;&#160;</td>
-          <td class="paramname"><em>x</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const std::vector&lt; double &gt; &amp;&#160;</td>
-          <td class="paramname"><em>y</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const std::vector&lt; double &gt; &amp;&#160;</td>
-          <td class="paramname"><em>z</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Write deformation data for all nodes at a timestep. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">timestep</td><td>Current timestep index </td></tr>
-    <tr><td class="paramname">x</td><td>Data for x component of deformation </td></tr>
-    <tr><td class="paramname">y</td><td>Data for y component of deformation </td></tr>
-    <tr><td class="paramname">z</td><td>Data for z component of deformation </td></tr>
-  </table>
-  </dd>
-</dl>
+<p>Manually (re)open the underlying NetCDF file. </p>
 
 </div>
 </div>
-<a id="a5d008a2328f69dcdcc8ea6994880775b" name="a5d008a2328f69dcdcc8ea6994880775b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5d008a2328f69dcdcc8ea6994880775b">&#9670;&#160;</a></span>WriteStateDataAtTimestep()</h2>
+<a id="a2aea0dcb0ba996fd80d5aa466e8e62a6" name="a2aea0dcb0ba996fd80d5aa466e8e62a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2aea0dcb0ba996fd80d5aa466e8e62a6">&#9670;&#160;</a></span>operator=() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classkynema_1_1util_1_1NodeStateWriter.html">NodeStateWriter</a> &amp; kynema::util::NodeStateWriter::operator= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classkynema_1_1util_1_1NodeStateWriter.html">NodeStateWriter</a> &amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2b12af75a3543331b2fce05950bdd9ad" name="a2b12af75a3543331b2fce05950bdd9ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b12af75a3543331b2fce05950bdd9ad">&#9670;&#160;</a></span>operator=() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classkynema_1_1util_1_1NodeStateWriter.html">NodeStateWriter</a> &amp; kynema::util::NodeStateWriter::operator= </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classkynema_1_1util_1_1NodeStateWriter.html">NodeStateWriter</a> &amp;&amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a79b7da3fddd7fb12435df0ca8f2d05ad" name="a79b7da3fddd7fb12435df0ca8f2d05ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a79b7da3fddd7fb12435df0ca8f2d05ad">&#9670;&#160;</a></span>WriteStateDataAtTimestep()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -406,7 +553,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td> const</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -426,6 +573,31 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a34284233b5253e3dbea7e03c09ffe009" name="a34284233b5253e3dbea7e03c09ffe009"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34284233b5253e3dbea7e03c09ffe009">&#9670;&#160;</a></span>kDefaultBufferSize</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr size_t kynema::util::NodeStateWriter::kDefaultBufferSize {0}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Default buffer size (number of timesteps to accumulate before auto-flush, 0 = no buffering) </p>
 
 </div>
 </div>

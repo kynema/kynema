@@ -187,9 +187,9 @@ Public Types</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a18cd54383dfdd66007d1d7d0cb1407a1" id="r_a18cd54383dfdd66007d1d7d0cb1407a1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1TurbineInterface.html#a18cd54383dfdd66007d1d7d0cb1407a1">TurbineInterface</a> (const <a class="el" href="structkynema_1_1interfaces_1_1components_1_1SolutionInput.html">components::SolutionInput</a> &amp;solution_input, const <a class="el" href="structkynema_1_1interfaces_1_1components_1_1TurbineInput.html">components::TurbineInput</a> &amp;turbine_input, const <a class="el" href="classkynema_1_1interfaces_1_1components_1_1AerodynamicsInput.html">components::AerodynamicsInput</a> &amp;aerodynamics_input={}, const <a class="el" href="structkynema_1_1interfaces_1_1components_1_1ControllerInput.html">components::ControllerInput</a> &amp;controller_input={})</td></tr>
-<tr class="memdesc:a18cd54383dfdd66007d1d7d0cb1407a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="classkynema_1_1interfaces_1_1TurbineInterface.html" title="Interface for blade simulation that manages state, solver, and components.">TurbineInterface</a> from solution and blade inputs.  <br /></td></tr>
-<tr class="separator:a18cd54383dfdd66007d1d7d0cb1407a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afcdd14383771dd2b717ea71a05741fdf" id="r_afcdd14383771dd2b717ea71a05741fdf"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1TurbineInterface.html#afcdd14383771dd2b717ea71a05741fdf">TurbineInterface</a> (const <a class="el" href="structkynema_1_1interfaces_1_1components_1_1SolutionInput.html">components::SolutionInput</a> &amp;solution_input, const <a class="el" href="structkynema_1_1interfaces_1_1components_1_1TurbineInput.html">components::TurbineInput</a> &amp;turbine_input, const <a class="el" href="classkynema_1_1interfaces_1_1components_1_1AerodynamicsInput.html">components::AerodynamicsInput</a> &amp;aerodynamics_input={}, const <a class="el" href="structkynema_1_1interfaces_1_1components_1_1ControllerInput.html">components::ControllerInput</a> &amp;controller_input={}, const <a class="el" href="structkynema_1_1interfaces_1_1components_1_1OutputsConfig.html">components::OutputsConfig</a> &amp;outputs_config={})</td></tr>
+<tr class="memdesc:afcdd14383771dd2b717ea71a05741fdf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="classkynema_1_1interfaces_1_1TurbineInterface.html" title="Interface for blade simulation that manages state, solver, and components.">TurbineInterface</a> from solution and blade inputs.  <br /></td></tr>
+<tr class="separator:afcdd14383771dd2b717ea71a05741fdf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aad16bc5146ea5649e6fb23cb5f097591" id="r_aad16bc5146ea5649e6fb23cb5f097591"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1Turbine.html">components::Turbine</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1TurbineInterface.html#aad16bc5146ea5649e6fb23cb5f097591">Turbine</a> ()</td></tr>
 <tr class="memdesc:aad16bc5146ea5649e6fb23cb5f097591"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a reference to the turbine model.  <br /></td></tr>
 <tr class="separator:aad16bc5146ea5649e6fb23cb5f097591"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -245,8 +245,8 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a18cd54383dfdd66007d1d7d0cb1407a1" name="a18cd54383dfdd66007d1d7d0cb1407a1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a18cd54383dfdd66007d1d7d0cb1407a1">&#9670;&#160;</a></span>TurbineInterface()</h2>
+<a id="afcdd14383771dd2b717ea71a05741fdf" name="afcdd14383771dd2b717ea71a05741fdf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afcdd14383771dd2b717ea71a05741fdf">&#9670;&#160;</a></span>TurbineInterface()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -276,7 +276,13 @@ Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const <a class="el" href="structkynema_1_1interfaces_1_1components_1_1ControllerInput.html">components::ControllerInput</a> &amp;&#160;</td>
-          <td class="paramname"><em>controller_input</em> = <code>{}</code>&#160;</td>
+          <td class="paramname"><em>controller_input</em> = <code>{}</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structkynema_1_1interfaces_1_1components_1_1OutputsConfig.html">components::OutputsConfig</a> &amp;&#160;</td>
+          <td class="paramname"><em>outputs_config</em> = <code>{}</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -298,6 +304,7 @@ Public Member Functions</h2></td></tr>
     <tr><td class="paramname">turbine_input</td><td>Configuration parameters for the turbine geometry </td></tr>
     <tr><td class="paramname">aerodynamics_input</td><td>Configuration parameters for the aerodynamic loads </td></tr>
     <tr><td class="paramname">controller_input</td><td>Configuration parameters for the controller </td></tr>
+    <tr><td class="paramname">outputs_config</td><td>Configuration parameters for the outputs </td></tr>
   </table>
   </dd>
 </dl>

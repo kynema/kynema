@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['netcdffile_0',['NetCDFFile',['../classkynema_1_1util_1_1NetCDFFile.html',1,'kynema::util']]],
+  ['netcdffile_0',['NetCdfFile',['../classkynema_1_1util_1_1NetCdfFile.html',1,'kynema::util']]],
   ['node_1',['Node',['../structkynema_1_1Node.html',1,'kynema']]],
   ['nodebuilder_2',['NodeBuilder',['../classkynema_1_1NodeBuilder.html',1,'kynema']]],
   ['nodedata_3',['nodedata',['../structkynema_1_1interfaces_1_1cfd_1_1NodeData.html',1,'kynema::interfaces::cfd::NodeData'],['../structkynema_1_1interfaces_1_1NodeData.html',1,'kynema::interfaces::NodeData']]],

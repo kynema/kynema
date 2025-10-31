@@ -1,0 +1,14 @@
+.. meta::33f261d59311940c7d93c9c7971b4a0571e5ea11a2c881dd7cf8819fef34da4e01311e1e2b1f056e26b7596960702817031b1cecf417284b74bf0e1453aa7f6f
+
+:orphan:
+
+.. title:: Kynema API: kynema::util::NetCdfFile Class Reference
+
+NetCdfFile Class Reference
+==========================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: classkynema_1_1util_1_1NetCdfFile.html

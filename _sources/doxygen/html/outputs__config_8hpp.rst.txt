@@ -1,0 +1,14 @@
+.. meta::b15b462e9a5eed5545719c8d5a90fcba467627cf16c4680586dac1802c273c90b90603e929ebdf201c317c0d0ae1cc7d407926381bc2b240161327e99f241d65
+
+:orphan:
+
+.. title:: Kynema API: /home/runner/work/kynema/kynema/kynema/src/interfaces/components/outputs_config.hpp File Reference
+
+/home/runner/work/kynema/kynema/kynema/src/interfaces/components/outputs\_config.hpp File Reference
+===================================================================================================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: outputs__config_8hpp.html

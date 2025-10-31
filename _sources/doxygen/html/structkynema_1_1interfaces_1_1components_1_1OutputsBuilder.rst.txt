@@ -1,0 +1,14 @@
+.. meta::900e249e51259e014ec071db926a9399dac71b73c85e3bd1a8c32e8f6a82416d46fcb46dbc7032da28b9fcb796b23f560d090bcbc105ad2a192d339025b71e40
+
+:orphan:
+
+.. title:: Kynema API: kynema::interfaces::components::OutputsBuilder Struct Reference
+
+OutputsBuilder Struct Reference
+===============================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: structkynema_1_1interfaces_1_1components_1_1OutputsBuilder.html

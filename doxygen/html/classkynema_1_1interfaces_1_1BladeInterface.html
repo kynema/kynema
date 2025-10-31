@@ -187,9 +187,9 @@ Public Types</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a7d80d75286c64c70ed114617a57797b2" id="r_a7d80d75286c64c70ed114617a57797b2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1BladeInterface.html#a7d80d75286c64c70ed114617a57797b2">BladeInterface</a> (const <a class="el" href="structkynema_1_1interfaces_1_1components_1_1SolutionInput.html">components::SolutionInput</a> &amp;solution_input, const <a class="el" href="structkynema_1_1interfaces_1_1components_1_1BeamInput.html">components::BeamInput</a> &amp;blade_input)</td></tr>
-<tr class="memdesc:a7d80d75286c64c70ed114617a57797b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="classkynema_1_1interfaces_1_1BladeInterface.html" title="Interface for blade simulation that manages state, solver, and components.">BladeInterface</a> from solution and blade inputs.  <br /></td></tr>
-<tr class="separator:a7d80d75286c64c70ed114617a57797b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d197354c6767b321deee80180cc6fc0" id="r_a0d197354c6767b321deee80180cc6fc0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1BladeInterface.html#a0d197354c6767b321deee80180cc6fc0">BladeInterface</a> (const <a class="el" href="structkynema_1_1interfaces_1_1components_1_1SolutionInput.html">components::SolutionInput</a> &amp;solution_input, const <a class="el" href="structkynema_1_1interfaces_1_1components_1_1BeamInput.html">components::BeamInput</a> &amp;blade_input, const <a class="el" href="structkynema_1_1interfaces_1_1components_1_1OutputsConfig.html">components::OutputsConfig</a> &amp;outputs_config)</td></tr>
+<tr class="memdesc:a0d197354c6767b321deee80180cc6fc0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="classkynema_1_1interfaces_1_1BladeInterface.html" title="Interface for blade simulation that manages state, solver, and components.">BladeInterface</a> from solution and blade inputs.  <br /></td></tr>
+<tr class="separator:a0d197354c6767b321deee80180cc6fc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a86be2da1e5562e5dc51d1956538b4673" id="r_a86be2da1e5562e5dc51d1956538b4673"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1Beam.html">components::Beam</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1BladeInterface.html#a86be2da1e5562e5dc51d1956538b4673">Blade</a> ()</td></tr>
 <tr class="memdesc:a86be2da1e5562e5dc51d1956538b4673"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a reference to the blade model.  <br /></td></tr>
 <tr class="separator:a86be2da1e5562e5dc51d1956538b4673"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -225,8 +225,8 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a7d80d75286c64c70ed114617a57797b2" name="a7d80d75286c64c70ed114617a57797b2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7d80d75286c64c70ed114617a57797b2">&#9670;&#160;</a></span>BladeInterface()</h2>
+<a id="a0d197354c6767b321deee80180cc6fc0" name="a0d197354c6767b321deee80180cc6fc0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d197354c6767b321deee80180cc6fc0">&#9670;&#160;</a></span>BladeInterface()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -244,7 +244,13 @@ Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const <a class="el" href="structkynema_1_1interfaces_1_1components_1_1BeamInput.html">components::BeamInput</a> &amp;&#160;</td>
-          <td class="paramname"><em>blade_input</em>&#160;</td>
+          <td class="paramname"><em>blade_input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structkynema_1_1interfaces_1_1components_1_1OutputsConfig.html">components::OutputsConfig</a> &amp;&#160;</td>
+          <td class="paramname"><em>outputs_config</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -264,6 +270,7 @@ Public Member Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">solution_input</td><td>Configuration parameters for solver and solution </td></tr>
     <tr><td class="paramname">blade_input</td><td>Configuration parameters for blade geometry </td></tr>
+    <tr><td class="paramname">outputs_config</td><td>Configuration parameters for the outputs </td></tr>
   </table>
   </dd>
 </dl>

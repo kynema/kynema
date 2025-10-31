@@ -190,9 +190,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ae4846993f8f81129bd8ab79e215366dd" id="r_ae4846993f8f81129bd8ab79e215366dd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1TimeSeriesWriter.html#ae4846993f8f81129bd8ab79e215366dd">WriteValueAtTimestep</a> (const std::string &amp;variable_name, size_t timestep, const double &amp;value)</td></tr>
 <tr class="memdesc:ae4846993f8f81129bd8ab79e215366dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes a single value for a time-series variable at a specific timestep.  <br /></td></tr>
 <tr class="separator:ae4846993f8f81129bd8ab79e215366dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8c6c7b716504410e0e9a8730f8e172a0" id="r_a8c6c7b716504410e0e9a8730f8e172a0"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classkynema_1_1util_1_1NetCDFFile.html">NetCDFFile</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1TimeSeriesWriter.html#a8c6c7b716504410e0e9a8730f8e172a0">GetFile</a> () const</td></tr>
-<tr class="memdesc:a8c6c7b716504410e0e9a8730f8e172a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the NetCDF file object.  <br /></td></tr>
-<tr class="separator:a8c6c7b716504410e0e9a8730f8e172a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74b047f7273e5ca79e9347ce2f2d6832" id="r_a74b047f7273e5ca79e9347ce2f2d6832"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classkynema_1_1util_1_1NetCdfFile.html">NetCdfFile</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1TimeSeriesWriter.html#a74b047f7273e5ca79e9347ce2f2d6832">GetFile</a> () const</td></tr>
+<tr class="memdesc:a74b047f7273e5ca79e9347ce2f2d6832"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the NetCDF file object.  <br /></td></tr>
+<tr class="separator:a74b047f7273e5ca79e9347ce2f2d6832"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d75789d235e55a44257b0afc0862535" id="r_a0d75789d235e55a44257b0afc0862535"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1TimeSeriesWriter.html#a0d75789d235e55a44257b0afc0862535">Close</a> ()</td></tr>
+<tr class="memdesc:a0d75789d235e55a44257b0afc0862535"><td class="mdescLeft">&#160;</td><td class="mdescRight">Manually close the underlying NetCDF file.  <br /></td></tr>
+<tr class="separator:a0d75789d235e55a44257b0afc0862535"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7fb368b9ecd75469f00e05582fac33de" id="r_a7fb368b9ecd75469f00e05582fac33de"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1TimeSeriesWriter.html#a7fb368b9ecd75469f00e05582fac33de">Open</a> ()</td></tr>
+<tr class="memdesc:a7fb368b9ecd75469f00e05582fac33de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Manually (re)open the underlying NetCDF file.  <br /></td></tr>
+<tr class="separator:a7fb368b9ecd75469f00e05582fac33de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class for writing time-series data to NetCDF file. </p>
@@ -243,14 +249,41 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a8c6c7b716504410e0e9a8730f8e172a0" name="a8c6c7b716504410e0e9a8730f8e172a0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8c6c7b716504410e0e9a8730f8e172a0">&#9670;&#160;</a></span>GetFile()</h2>
+<a id="a0d75789d235e55a44257b0afc0862535" name="a0d75789d235e55a44257b0afc0862535"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d75789d235e55a44257b0afc0862535">&#9670;&#160;</a></span>Close()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema::util::TimeSeriesWriter::Close </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Manually close the underlying NetCDF file. </p>
+
+</div>
+</div>
+<a id="a74b047f7273e5ca79e9347ce2f2d6832" name="a74b047f7273e5ca79e9347ce2f2d6832"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74b047f7273e5ca79e9347ce2f2d6832">&#9670;&#160;</a></span>GetFile()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="classkynema_1_1util_1_1NetCDFFile.html">NetCDFFile</a> &amp; kynema::util::TimeSeriesWriter::GetFile </td>
+          <td class="memname">const <a class="el" href="classkynema_1_1util_1_1NetCdfFile.html">NetCdfFile</a> &amp; kynema::util::TimeSeriesWriter::GetFile </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -259,6 +292,33 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Get the NetCDF file object. </p>
+
+</div>
+</div>
+<a id="a7fb368b9ecd75469f00e05582fac33de" name="a7fb368b9ecd75469f00e05582fac33de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7fb368b9ecd75469f00e05582fac33de">&#9670;&#160;</a></span>Open()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema::util::TimeSeriesWriter::Open </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Manually (re)open the underlying NetCDF file. </p>
 
 </div>
 </div>

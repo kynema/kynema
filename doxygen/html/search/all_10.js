@@ -1,7 +1,7 @@
 var searchData=
 [
   ['packinternalstatetofile_0',['PackInternalStateToFile',['../namespacekynema_1_1util.html#a00d935d3f7d8b11072a580249c373502',1,'kynema::util']]],
-  ['parameters_1',['parameters',['../structkynema_1_1interfaces_1_1components_1_1SolutionInput.html#ad27b7c65016c474f8970cc69e248e3a6',1,'kynema::interfaces::components::SolutionInput::Parameters()'],['../classkynema_1_1interfaces_1_1cfd_1_1Interface.html#ac45bf2d9d2914d3af8c2dda0d9c3595d',1,'kynema::interfaces::cfd::Interface::parameters']]],
+  ['parameters_1',['parameters',['../classkynema_1_1interfaces_1_1cfd_1_1Interface.html#ac45bf2d9d2914d3af8c2dda0d9c3595d',1,'kynema::interfaces::cfd::Interface::parameters'],['../structkynema_1_1interfaces_1_1components_1_1SolutionInput.html#ad27b7c65016c474f8970cc69e248e3a6',1,'kynema::interfaces::components::SolutionInput::Parameters()']]],
   ['path_2',['path',['../classwindio_1_1Schema.html#a1583d4418da3ccccbcd8d15379e3a5fd',1,'windio.Schema.path'],['../classwindio_1_1Field.html#aeec042a40c37ba82c69f39672c1b96c7',1,'windio.Field.path']]],
   ['performleastsquaresfitting_3',['PerformLeastSquaresFitting',['../namespacekynema_1_1math.html#a61be35286083ec1cb31e827143dc5438',1,'kynema::math']]],
   ['pitch_5factuator_5ftype_5freq_4',['pitch_actuator_type_req',['../structkynema_1_1util_1_1ControllerIO.html#a43b5609c176c8cd2036e7cdac79b4e90',1,'kynema::util::ControllerIO']]],

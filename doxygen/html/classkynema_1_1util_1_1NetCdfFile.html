@@ -1,0 +1,1748 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kynema API: kynema::util::NetCdfFile Class Reference &mdash; Kynema 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Kynema
+              <img src="../../_static/oturb_logo_v2.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/user.html">User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../theory/index.html">Theory Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/index.html">Developer Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/index.html">Benchmark Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../acknowledgement.html">Acknowledgements</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Kynema</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Kynema API: kynema::util::NetCdfFile Class Reference</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/doxygen/html/classkynema_1_1util_1_1NetCdfFile.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="netcdffile-class-reference">
+<h1>NetCdfFile Class Reference<a class="headerlink" href="#netcdffile-class-reference" title="Permalink to this heading"></a></h1>
+<div class="doxygen-content docutils container">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Kynema API: kynema::util::NetCdfFile Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Kynema API
+   </div>
+   <div id="projectbrief">A flexible multibody structural dynamics code for wind turbines</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacekynema.html">kynema</a></li><li class="navelem"><a class="el" href="namespacekynema_1_1util.html">util</a></li><li class="navelem"><a class="el" href="classkynema_1_1util_1_1NetCdfFile.html">NetCdfFile</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="classkynema_1_1util_1_1NetCdfFile-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">kynema::util::NetCdfFile Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="netcdf__file_8hpp_source.html">netcdf_file.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a91b987d5917ddf5ddc7d1bacefbff3d0" id="r_a91b987d5917ddf5ddc7d1bacefbff3d0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1NetCdfFile.html#a91b987d5917ddf5ddc7d1bacefbff3d0">NetCdfFile</a> (const std::string &amp;file_path, bool create=true)</td></tr>
+<tr class="memdesc:a91b987d5917ddf5ddc7d1bacefbff3d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor to create a <a class="el" href="classkynema_1_1util_1_1NetCdfFile.html">NetCdfFile</a> object.  <br /></td></tr>
+<tr class="separator:a91b987d5917ddf5ddc7d1bacefbff3d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9057f7f4e54200f1c0d29d6bc2a05a2" id="r_ad9057f7f4e54200f1c0d29d6bc2a05a2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1NetCdfFile.html#ad9057f7f4e54200f1c0d29d6bc2a05a2">~NetCdfFile</a> ()</td></tr>
+<tr class="memdesc:ad9057f7f4e54200f1c0d29d6bc2a05a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor to close the NetCDF file.  <br /></td></tr>
+<tr class="separator:ad9057f7f4e54200f1c0d29d6bc2a05a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe856446c56d3c8c527f7a107d7f1886" id="r_afe856446c56d3c8c527f7a107d7f1886"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1NetCdfFile.html#afe856446c56d3c8c527f7a107d7f1886">NetCdfFile</a> (const <a class="el" href="classkynema_1_1util_1_1NetCdfFile.html">NetCdfFile</a> &amp;)=delete</td></tr>
+<tr class="memdesc:afe856446c56d3c8c527f7a107d7f1886"><td class="mdescLeft">&#160;</td><td class="mdescRight">Explicitly prevent copying and moving &ndash; rule of 5.  <br /></td></tr>
+<tr class="separator:afe856446c56d3c8c527f7a107d7f1886"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25ad38d50b2701d843d2696a09529777" id="r_a25ad38d50b2701d843d2696a09529777"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema_1_1util_1_1NetCdfFile.html">NetCdfFile</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1NetCdfFile.html#a25ad38d50b2701d843d2696a09529777">operator=</a> (const <a class="el" href="classkynema_1_1util_1_1NetCdfFile.html">NetCdfFile</a> &amp;)=delete</td></tr>
+<tr class="separator:a25ad38d50b2701d843d2696a09529777"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0767cf50bcdbc31c5bb03f598278a65f" id="r_a0767cf50bcdbc31c5bb03f598278a65f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1NetCdfFile.html#a0767cf50bcdbc31c5bb03f598278a65f">NetCdfFile</a> (<a class="el" href="classkynema_1_1util_1_1NetCdfFile.html">NetCdfFile</a> &amp;&amp;)=delete</td></tr>
+<tr class="separator:a0767cf50bcdbc31c5bb03f598278a65f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17b36fd999812e5b0c4a6d0213ad3aeb" id="r_a17b36fd999812e5b0c4a6d0213ad3aeb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema_1_1util_1_1NetCdfFile.html">NetCdfFile</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1NetCdfFile.html#a17b36fd999812e5b0c4a6d0213ad3aeb">operator=</a> (<a class="el" href="classkynema_1_1util_1_1NetCdfFile.html">NetCdfFile</a> &amp;&amp;)=delete</td></tr>
+<tr class="separator:a17b36fd999812e5b0c4a6d0213ad3aeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af83366ce78b90574264a112f1fb0287e" id="r_af83366ce78b90574264a112f1fb0287e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1NetCdfFile.html#af83366ce78b90574264a112f1fb0287e">Sync</a> () const</td></tr>
+<tr class="memdesc:af83366ce78b90574264a112f1fb0287e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Synchronizes (flushes) the NetCDF file to disk.  <br /></td></tr>
+<tr class="separator:af83366ce78b90574264a112f1fb0287e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a05e85df227bd0a931b63cb2bfc8f7a" id="r_a0a05e85df227bd0a931b63cb2bfc8f7a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1NetCdfFile.html#a0a05e85df227bd0a931b63cb2bfc8f7a">Close</a> ()</td></tr>
+<tr class="memdesc:a0a05e85df227bd0a931b63cb2bfc8f7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Manually flushes and closes the NetCDF file.  <br /></td></tr>
+<tr class="separator:a0a05e85df227bd0a931b63cb2bfc8f7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a520b1c83f6ed948fd665406e3de8fd85" id="r_a520b1c83f6ed948fd665406e3de8fd85"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1NetCdfFile.html#a520b1c83f6ed948fd665406e3de8fd85">Open</a> ()</td></tr>
+<tr class="memdesc:a520b1c83f6ed948fd665406e3de8fd85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Manually (re)opens the NetCDF file in write mode.  <br /></td></tr>
+<tr class="separator:a520b1c83f6ed948fd665406e3de8fd85"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4721fc3f552682b7869c1b8a141774ce" id="r_a4721fc3f552682b7869c1b8a141774ce"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1NetCdfFile.html#a4721fc3f552682b7869c1b8a141774ce">AddDimension</a> (const std::string &amp;name, size_t length) const</td></tr>
+<tr class="memdesc:a4721fc3f552682b7869c1b8a141774ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a dimension to the NetCDF file.  <br /></td></tr>
+<tr class="separator:a4721fc3f552682b7869c1b8a141774ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1bbe6543a0eaca9d5b56a9644ae8b398" id="r_a1bbe6543a0eaca9d5b56a9644ae8b398"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a1bbe6543a0eaca9d5b56a9644ae8b398"><td class="memTemplItemLeft" align="right" valign="top">int&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1NetCdfFile.html#a1bbe6543a0eaca9d5b56a9644ae8b398">AddVariable</a> (const std::string &amp;name, std::span&lt; const int &gt; dim_ids) const</td></tr>
+<tr class="memdesc:a1bbe6543a0eaca9d5b56a9644ae8b398"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a variable to the NetCDF file.  <br /></td></tr>
+<tr class="separator:a1bbe6543a0eaca9d5b56a9644ae8b398"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1dd1bcff210f1ae34e7b2f2df886dd6" id="r_ae1dd1bcff210f1ae34e7b2f2df886dd6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1NetCdfFile.html#ae1dd1bcff210f1ae34e7b2f2df886dd6">AddAttribute</a> (const std::string &amp;var_name, const std::string &amp;attr_name, float value) const</td></tr>
+<tr class="memdesc:ae1dd1bcff210f1ae34e7b2f2df886dd6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds an attribute to a variable in the NetCDF file.  <br /></td></tr>
+<tr class="separator:ae1dd1bcff210f1ae34e7b2f2df886dd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ff5c91daee1d4a8ee96711e290068dc" id="r_a7ff5c91daee1d4a8ee96711e290068dc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1NetCdfFile.html#a7ff5c91daee1d4a8ee96711e290068dc">AddAttribute</a> (const std::string &amp;var_name, const std::string &amp;attr_name, double value) const</td></tr>
+<tr class="separator:a7ff5c91daee1d4a8ee96711e290068dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4d266d54d68fb9c1a0074ddc5a6514b" id="r_ab4d266d54d68fb9c1a0074ddc5a6514b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1NetCdfFile.html#ab4d266d54d68fb9c1a0074ddc5a6514b">AddAttribute</a> (const std::string &amp;var_name, const std::string &amp;attr_name, int value) const</td></tr>
+<tr class="separator:ab4d266d54d68fb9c1a0074ddc5a6514b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95a4b01676d14357cea7ba4a05900541" id="r_a95a4b01676d14357cea7ba4a05900541"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1NetCdfFile.html#a95a4b01676d14357cea7ba4a05900541">AddAttribute</a> (const std::string &amp;var_name, const std::string &amp;attr_name, const std::string &amp;value) const</td></tr>
+<tr class="separator:a95a4b01676d14357cea7ba4a05900541"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc061dc1970a9307d74b47e8bc033aca" id="r_abc061dc1970a9307d74b47e8bc033aca"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1NetCdfFile.html#abc061dc1970a9307d74b47e8bc033aca">WriteVariable</a> (const std::string &amp;name, std::span&lt; const float &gt; data) const</td></tr>
+<tr class="memdesc:abc061dc1970a9307d74b47e8bc033aca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes data to a variable in the NetCDF file.  <br /></td></tr>
+<tr class="separator:abc061dc1970a9307d74b47e8bc033aca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54086aec6440207cf517f34dfc9b9b29" id="r_a54086aec6440207cf517f34dfc9b9b29"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1NetCdfFile.html#a54086aec6440207cf517f34dfc9b9b29">WriteVariable</a> (const std::string &amp;name, std::span&lt; const double &gt; data) const</td></tr>
+<tr class="separator:a54086aec6440207cf517f34dfc9b9b29"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9d912d2c69c84082eb658f10b9233c3" id="r_af9d912d2c69c84082eb658f10b9233c3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1NetCdfFile.html#af9d912d2c69c84082eb658f10b9233c3">WriteVariable</a> (const std::string &amp;name, std::span&lt; const int &gt; data) const</td></tr>
+<tr class="separator:af9d912d2c69c84082eb658f10b9233c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f55870c92efe4e04653e8b035a6e173" id="r_a6f55870c92efe4e04653e8b035a6e173"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1NetCdfFile.html#a6f55870c92efe4e04653e8b035a6e173">WriteVariable</a> (const std::string &amp;name, std::span&lt; const std::string &gt; data) const</td></tr>
+<tr class="separator:a6f55870c92efe4e04653e8b035a6e173"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afcb90e69ce58d68df0cb927d6cb0d72f" id="r_afcb90e69ce58d68df0cb927d6cb0d72f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1NetCdfFile.html#afcb90e69ce58d68df0cb927d6cb0d72f">WriteVariableAt</a> (const std::string &amp;name, std::span&lt; const size_t &gt; start, std::span&lt; const size_t &gt; count, std::span&lt; const float &gt; data) const</td></tr>
+<tr class="memdesc:afcb90e69ce58d68df0cb927d6cb0d72f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes data to a variable at specific indices in the NetCDF file.  <br /></td></tr>
+<tr class="separator:afcb90e69ce58d68df0cb927d6cb0d72f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad70fe7bd1b320eeacfeb6325f22b6d5b" id="r_ad70fe7bd1b320eeacfeb6325f22b6d5b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1NetCdfFile.html#ad70fe7bd1b320eeacfeb6325f22b6d5b">WriteVariableAt</a> (const std::string &amp;name, std::span&lt; const size_t &gt; start, std::span&lt; const size_t &gt; count, std::span&lt; const double &gt; data) const</td></tr>
+<tr class="separator:ad70fe7bd1b320eeacfeb6325f22b6d5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a174fe32438df2fe20ef4f6c960aa87" id="r_a3a174fe32438df2fe20ef4f6c960aa87"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1NetCdfFile.html#a3a174fe32438df2fe20ef4f6c960aa87">WriteVariableAt</a> (const std::string &amp;name, std::span&lt; const size_t &gt; start, std::span&lt; const size_t &gt; count, std::span&lt; const int &gt; data) const</td></tr>
+<tr class="separator:a3a174fe32438df2fe20ef4f6c960aa87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6842572e11ffdf443369d2a4fea1238" id="r_ae6842572e11ffdf443369d2a4fea1238"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1NetCdfFile.html#ae6842572e11ffdf443369d2a4fea1238">WriteVariableAt</a> (const std::string &amp;name, std::span&lt; const size_t &gt; start, std::span&lt; const size_t &gt; count, std::span&lt; const std::string &gt; data) const</td></tr>
+<tr class="separator:ae6842572e11ffdf443369d2a4fea1238"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c0f4e179065d1e59f5d08590d162308" id="r_a7c0f4e179065d1e59f5d08590d162308"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1NetCdfFile.html#a7c0f4e179065d1e59f5d08590d162308">SetChunking</a> (const std::string &amp;var_name, std::span&lt; const size_t &gt; chunk_sizes) const</td></tr>
+<tr class="memdesc:a7c0f4e179065d1e59f5d08590d162308"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configures chunking for a NetCDF variable to optimize I/O and compression performance.  <br /></td></tr>
+<tr class="separator:a7c0f4e179065d1e59f5d08590d162308"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af77f26156a2b43e6c0280bb2608499bb" id="r_af77f26156a2b43e6c0280bb2608499bb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1NetCdfFile.html#af77f26156a2b43e6c0280bb2608499bb">GetNetCDFId</a> () const</td></tr>
+<tr class="memdesc:af77f26156a2b43e6c0280bb2608499bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the NetCDF file ID.  <br /></td></tr>
+<tr class="separator:af77f26156a2b43e6c0280bb2608499bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac935bb487b766d696a766bbdd5bc65e2" id="r_ac935bb487b766d696a766bbdd5bc65e2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1NetCdfFile.html#ac935bb487b766d696a766bbdd5bc65e2">GetDimensionId</a> (const std::string &amp;name) const</td></tr>
+<tr class="memdesc:ac935bb487b766d696a766bbdd5bc65e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the dimension ID for a given dimension name.  <br /></td></tr>
+<tr class="separator:ac935bb487b766d696a766bbdd5bc65e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3bf305fc9c9e0802843c2e0c4e93030a" id="r_a3bf305fc9c9e0802843c2e0c4e93030a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1NetCdfFile.html#a3bf305fc9c9e0802843c2e0c4e93030a">GetVariableId</a> (const std::string &amp;name) const</td></tr>
+<tr class="memdesc:a3bf305fc9c9e0802843c2e0c4e93030a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the variable ID for a given variable name.  <br /></td></tr>
+<tr class="separator:a3bf305fc9c9e0802843c2e0c4e93030a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8bf99dc2493632ffbc45a8ab780ded5" id="r_aa8bf99dc2493632ffbc45a8ab780ded5"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1NetCdfFile.html#aa8bf99dc2493632ffbc45a8ab780ded5">GetNumberOfDimensions</a> (const std::string &amp;var_name) const</td></tr>
+<tr class="memdesc:aa8bf99dc2493632ffbc45a8ab780ded5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the number of dimensions of a variable in the NetCDF file.  <br /></td></tr>
+<tr class="separator:aa8bf99dc2493632ffbc45a8ab780ded5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76c1b881e4dfe44ea2add21b0b47e238" id="r_a76c1b881e4dfe44ea2add21b0b47e238"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1NetCdfFile.html#a76c1b881e4dfe44ea2add21b0b47e238">GetDimensionLength</a> (int dim_id) const</td></tr>
+<tr class="memdesc:a76c1b881e4dfe44ea2add21b0b47e238"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the length of a dimension in the NetCDF file.  <br /></td></tr>
+<tr class="separator:a76c1b881e4dfe44ea2add21b0b47e238"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0569f0f03530677f2f7535c0553de3f4" id="r_a0569f0f03530677f2f7535c0553de3f4"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1NetCdfFile.html#a0569f0f03530677f2f7535c0553de3f4">GetDimensionLength</a> (const std::string &amp;name) const</td></tr>
+<tr class="memdesc:a0569f0f03530677f2f7535c0553de3f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the length of a dimension in the NetCDF file based on name.  <br /></td></tr>
+<tr class="separator:a0569f0f03530677f2f7535c0553de3f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42bd6de4e5b4b6a2288aa29e83abfbc6" id="r_a42bd6de4e5b4b6a2288aa29e83abfbc6"><td class="memItemLeft" align="right" valign="top">std::vector&lt; size_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1NetCdfFile.html#a42bd6de4e5b4b6a2288aa29e83abfbc6">GetShape</a> (const std::string &amp;var_name) const</td></tr>
+<tr class="memdesc:a42bd6de4e5b4b6a2288aa29e83abfbc6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the shape (dimension lengths) of a variable in the NetCDF file.  <br /></td></tr>
+<tr class="separator:a42bd6de4e5b4b6a2288aa29e83abfbc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaaad96c7a144381412dc73409b3ab776" id="r_aaaad96c7a144381412dc73409b3ab776"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1NetCdfFile.html#aaaad96c7a144381412dc73409b3ab776">ReadVariable</a> (const std::string &amp;name, float *data) const</td></tr>
+<tr class="memdesc:aaaad96c7a144381412dc73409b3ab776"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads data from a variable in the NetCDF file.  <br /></td></tr>
+<tr class="separator:aaaad96c7a144381412dc73409b3ab776"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6990e26e70640629816ddcf914e543c" id="r_ac6990e26e70640629816ddcf914e543c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1NetCdfFile.html#ac6990e26e70640629816ddcf914e543c">ReadVariable</a> (const std::string &amp;name, double *data) const</td></tr>
+<tr class="separator:ac6990e26e70640629816ddcf914e543c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae99e254de2ea5dbd156f88ee6f9b4e70" id="r_ae99e254de2ea5dbd156f88ee6f9b4e70"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1NetCdfFile.html#ae99e254de2ea5dbd156f88ee6f9b4e70">ReadVariable</a> (const std::string &amp;name, int *data) const</td></tr>
+<tr class="separator:ae99e254de2ea5dbd156f88ee6f9b4e70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e741f17edd065116349ba3a95ba517d" id="r_a2e741f17edd065116349ba3a95ba517d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1NetCdfFile.html#a2e741f17edd065116349ba3a95ba517d">ReadVariableAt</a> (const std::string &amp;name, std::span&lt; const size_t &gt; start, std::span&lt; const size_t &gt; count, float *data) const</td></tr>
+<tr class="memdesc:a2e741f17edd065116349ba3a95ba517d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads data from a variable at specific indices in the NetCDF file.  <br /></td></tr>
+<tr class="separator:a2e741f17edd065116349ba3a95ba517d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac499801ee0d79c2e9a5a7307bdd5c100" id="r_ac499801ee0d79c2e9a5a7307bdd5c100"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1NetCdfFile.html#ac499801ee0d79c2e9a5a7307bdd5c100">ReadVariableAt</a> (const std::string &amp;name, std::span&lt; const size_t &gt; start, std::span&lt; const size_t &gt; count, double *data) const</td></tr>
+<tr class="separator:ac499801ee0d79c2e9a5a7307bdd5c100"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6512f1d7eeb157b5dc7bd9d4ca792d42" id="r_a6512f1d7eeb157b5dc7bd9d4ca792d42"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1NetCdfFile.html#a6512f1d7eeb157b5dc7bd9d4ca792d42">ReadVariableAt</a> (const std::string &amp;name, std::span&lt; const size_t &gt; start, std::span&lt; const size_t &gt; count, int *data) const</td></tr>
+<tr class="separator:a6512f1d7eeb157b5dc7bd9d4ca792d42"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a731c119072f05e013dfd1023bf5fedcd" id="r_a731c119072f05e013dfd1023bf5fedcd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1NetCdfFile.html#a731c119072f05e013dfd1023bf5fedcd">ReadVariableWithStride</a> (const std::string &amp;name, std::span&lt; const size_t &gt; start, std::span&lt; const size_t &gt; count, std::span&lt; const ptrdiff_t &gt; stride, float *data) const</td></tr>
+<tr class="memdesc:a731c119072f05e013dfd1023bf5fedcd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads data from a variable with specified stride in the NetCDF file.  <br /></td></tr>
+<tr class="separator:a731c119072f05e013dfd1023bf5fedcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0281e4f55fdab58d998c99b5fd3ecdc6" id="r_a0281e4f55fdab58d998c99b5fd3ecdc6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1NetCdfFile.html#a0281e4f55fdab58d998c99b5fd3ecdc6">ReadVariableWithStride</a> (const std::string &amp;name, std::span&lt; const size_t &gt; start, std::span&lt; const size_t &gt; count, std::span&lt; const ptrdiff_t &gt; stride, double *data) const</td></tr>
+<tr class="separator:a0281e4f55fdab58d998c99b5fd3ecdc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf472ba77af610108b374519197359de" id="r_aaf472ba77af610108b374519197359de"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1NetCdfFile.html#aaf472ba77af610108b374519197359de">ReadVariableWithStride</a> (const std::string &amp;name, std::span&lt; const size_t &gt; start, std::span&lt; const size_t &gt; count, std::span&lt; const ptrdiff_t &gt; stride, int *data) const</td></tr>
+<tr class="separator:aaf472ba77af610108b374519197359de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13f2b079e17cb51439c1e752bdc04706" id="r_a13f2b079e17cb51439c1e752bdc04706"><td class="memItemLeft" align="right" valign="top">template&lt;&gt; </td></tr>
+<tr class="memitem:a13f2b079e17cb51439c1e752bdc04706"><td class="memTemplItemLeft" align="right" valign="top">int&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1NetCdfFile.html#a13f2b079e17cb51439c1e752bdc04706">AddVariable</a> (const std::string &amp;name, std::span&lt; const int &gt; dim_ids) const</td></tr>
+<tr class="separator:a13f2b079e17cb51439c1e752bdc04706"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13f2b079e17cb51439c1e752bdc04706" id="r_a13f2b079e17cb51439c1e752bdc04706"><td class="memItemLeft" align="right" valign="top">template&lt;&gt; </td></tr>
+<tr class="memitem:a13f2b079e17cb51439c1e752bdc04706"><td class="memTemplItemLeft" align="right" valign="top">int&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1NetCdfFile.html#a13f2b079e17cb51439c1e752bdc04706">AddVariable</a> (const std::string &amp;name, std::span&lt; const int &gt; dim_ids) const</td></tr>
+<tr class="separator:a13f2b079e17cb51439c1e752bdc04706"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13f2b079e17cb51439c1e752bdc04706" id="r_a13f2b079e17cb51439c1e752bdc04706"><td class="memItemLeft" align="right" valign="top">template&lt;&gt; </td></tr>
+<tr class="memitem:a13f2b079e17cb51439c1e752bdc04706"><td class="memTemplItemLeft" align="right" valign="top">int&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1NetCdfFile.html#a13f2b079e17cb51439c1e752bdc04706">AddVariable</a> (const std::string &amp;name, std::span&lt; const int &gt; dim_ids) const</td></tr>
+<tr class="separator:a13f2b079e17cb51439c1e752bdc04706"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a91b987d5917ddf5ddc7d1bacefbff3d0" name="a91b987d5917ddf5ddc7d1bacefbff3d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91b987d5917ddf5ddc7d1bacefbff3d0">&#9670;&#160;</a></span>NetCdfFile() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">kynema::util::NetCdfFile::NetCdfFile </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>file_path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>create</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructor to create a <a class="el" href="classkynema_1_1util_1_1NetCdfFile.html">NetCdfFile</a> object. </p>
+<p>This is a wrapper around the NetCDF library's "nc_create" function. It creates a new NetCDF file if the create flag is true. Otherwise, it opens an existing NetCDF file. </p>
+
+</div>
+</div>
+<a id="ad9057f7f4e54200f1c0d29d6bc2a05a2" name="ad9057f7f4e54200f1c0d29d6bc2a05a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9057f7f4e54200f1c0d29d6bc2a05a2">&#9670;&#160;</a></span>~NetCdfFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">kynema::util::NetCdfFile::~NetCdfFile </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Destructor to close the NetCDF file. </p>
+<p>This function is a wrapper around the NetCDF library's "nc_close" function. It closes the NetCDF file with the given (valid) ID. </p>
+
+</div>
+</div>
+<a id="afe856446c56d3c8c527f7a107d7f1886" name="afe856446c56d3c8c527f7a107d7f1886"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe856446c56d3c8c527f7a107d7f1886">&#9670;&#160;</a></span>NetCdfFile() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">kynema::util::NetCdfFile::NetCdfFile </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classkynema_1_1util_1_1NetCdfFile.html">NetCdfFile</a> &amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Explicitly prevent copying and moving &ndash; rule of 5. </p>
+
+</div>
+</div>
+<a id="a0767cf50bcdbc31c5bb03f598278a65f" name="a0767cf50bcdbc31c5bb03f598278a65f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0767cf50bcdbc31c5bb03f598278a65f">&#9670;&#160;</a></span>NetCdfFile() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">kynema::util::NetCdfFile::NetCdfFile </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classkynema_1_1util_1_1NetCdfFile.html">NetCdfFile</a> &amp;&amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a95a4b01676d14357cea7ba4a05900541" name="a95a4b01676d14357cea7ba4a05900541"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a95a4b01676d14357cea7ba4a05900541">&#9670;&#160;</a></span>AddAttribute() <span class="overload">[1/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema::util::NetCdfFile::AddAttribute </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>var_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>attr_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7ff5c91daee1d4a8ee96711e290068dc" name="a7ff5c91daee1d4a8ee96711e290068dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ff5c91daee1d4a8ee96711e290068dc">&#9670;&#160;</a></span>AddAttribute() <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema::util::NetCdfFile::AddAttribute </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>var_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>attr_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae1dd1bcff210f1ae34e7b2f2df886dd6" name="ae1dd1bcff210f1ae34e7b2f2df886dd6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1dd1bcff210f1ae34e7b2f2df886dd6">&#9670;&#160;</a></span>AddAttribute() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema::util::NetCdfFile::AddAttribute </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>var_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>attr_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Adds an attribute to a variable in the NetCDF file. </p>
+<p>This function is a wrapper around the NetCDF library's "nc_put_att_text" and "nc_put_att" functions. It adds an attribute (e.g. metadata) to a variable in the NetCDF file. </p>
+
+</div>
+</div>
+<a id="ab4d266d54d68fb9c1a0074ddc5a6514b" name="ab4d266d54d68fb9c1a0074ddc5a6514b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab4d266d54d68fb9c1a0074ddc5a6514b">&#9670;&#160;</a></span>AddAttribute() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema::util::NetCdfFile::AddAttribute </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>var_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>attr_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4721fc3f552682b7869c1b8a141774ce" name="a4721fc3f552682b7869c1b8a141774ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4721fc3f552682b7869c1b8a141774ce">&#9670;&#160;</a></span>AddDimension()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int kynema::util::NetCdfFile::AddDimension </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>length</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Adds a dimension to the NetCDF file. </p>
+<p>This function is a wrapper around the NetCDF library's "nc_def_dim" function. It creates a new dimension with the given name and length in the NetCDF file. </p>
+
+</div>
+</div>
+<a id="a13f2b079e17cb51439c1e752bdc04706" name="a13f2b079e17cb51439c1e752bdc04706"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13f2b079e17cb51439c1e752bdc04706">&#9670;&#160;</a></span>AddVariable() <span class="overload">[1/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">int kynema::util::NetCdfFile::AddVariable </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::span&lt; const int &gt;&#160;</td>
+          <td class="paramname"><em>dim_ids</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a13f2b079e17cb51439c1e752bdc04706" name="a13f2b079e17cb51439c1e752bdc04706"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13f2b079e17cb51439c1e752bdc04706">&#9670;&#160;</a></span>AddVariable() <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">int kynema::util::NetCdfFile::AddVariable </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::span&lt; const int &gt;&#160;</td>
+          <td class="paramname"><em>dim_ids</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a13f2b079e17cb51439c1e752bdc04706" name="a13f2b079e17cb51439c1e752bdc04706"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13f2b079e17cb51439c1e752bdc04706">&#9670;&#160;</a></span>AddVariable() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">int kynema::util::NetCdfFile::AddVariable </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::span&lt; const int &gt;&#160;</td>
+          <td class="paramname"><em>dim_ids</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1bbe6543a0eaca9d5b56a9644ae8b398" name="a1bbe6543a0eaca9d5b56a9644ae8b398"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1bbe6543a0eaca9d5b56a9644ae8b398">&#9670;&#160;</a></span>AddVariable() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">int kynema::util::NetCdfFile::AddVariable </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::span&lt; const int &gt;&#160;</td>
+          <td class="paramname"><em>dim_ids</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Adds a variable to the NetCDF file. </p>
+<p>This function is a wrapper around the NetCDF library's "nc_def_var" function. It creates a new variable with the given name and dimension IDs in the NetCDF file. The NetCDF type is automatically determined from the template parameter. </p>
+
+</div>
+</div>
+<a id="a0a05e85df227bd0a931b63cb2bfc8f7a" name="a0a05e85df227bd0a931b63cb2bfc8f7a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a05e85df227bd0a931b63cb2bfc8f7a">&#9670;&#160;</a></span>Close()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema::util::NetCdfFile::Close </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Manually flushes and closes the NetCDF file. </p>
+<dl class="section note"><dt>Note</dt><dd>If the file is already closed, no action is taken </dd></dl>
+
+</div>
+</div>
+<a id="ac935bb487b766d696a766bbdd5bc65e2" name="ac935bb487b766d696a766bbdd5bc65e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac935bb487b766d696a766bbdd5bc65e2">&#9670;&#160;</a></span>GetDimensionId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int kynema::util::NetCdfFile::GetDimensionId </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the dimension ID for a given dimension name. </p>
+
+</div>
+</div>
+<a id="a0569f0f03530677f2f7535c0553de3f4" name="a0569f0f03530677f2f7535c0553de3f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0569f0f03530677f2f7535c0553de3f4">&#9670;&#160;</a></span>GetDimensionLength() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t kynema::util::NetCdfFile::GetDimensionLength </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the length of a dimension in the NetCDF file based on name. </p>
+
+</div>
+</div>
+<a id="a76c1b881e4dfe44ea2add21b0b47e238" name="a76c1b881e4dfe44ea2add21b0b47e238"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76c1b881e4dfe44ea2add21b0b47e238">&#9670;&#160;</a></span>GetDimensionLength() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t kynema::util::NetCdfFile::GetDimensionLength </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>dim_id</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the length of a dimension in the NetCDF file. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dim_id</td><td>The ID of the dimension </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The length of the dimension </dd></dl>
+
+</div>
+</div>
+<a id="af77f26156a2b43e6c0280bb2608499bb" name="af77f26156a2b43e6c0280bb2608499bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af77f26156a2b43e6c0280bb2608499bb">&#9670;&#160;</a></span>GetNetCDFId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int kynema::util::NetCdfFile::GetNetCDFId </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the NetCDF file ID. </p>
+
+</div>
+</div>
+<a id="aa8bf99dc2493632ffbc45a8ab780ded5" name="aa8bf99dc2493632ffbc45a8ab780ded5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8bf99dc2493632ffbc45a8ab780ded5">&#9670;&#160;</a></span>GetNumberOfDimensions()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t kynema::util::NetCdfFile::GetNumberOfDimensions </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>var_name</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the number of dimensions of a variable in the NetCDF file. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">var_name</td><td>The name of the variable </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The number of dimensions </dd></dl>
+
+</div>
+</div>
+<a id="a42bd6de4e5b4b6a2288aa29e83abfbc6" name="a42bd6de4e5b4b6a2288aa29e83abfbc6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42bd6de4e5b4b6a2288aa29e83abfbc6">&#9670;&#160;</a></span>GetShape()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; size_t &gt; kynema::util::NetCdfFile::GetShape </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>var_name</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the shape (dimension lengths) of a variable in the NetCDF file. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">var_name</td><td>The name of the variable </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Vector containing the length of each dimension of the variable </dd></dl>
+
+</div>
+</div>
+<a id="a3bf305fc9c9e0802843c2e0c4e93030a" name="a3bf305fc9c9e0802843c2e0c4e93030a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3bf305fc9c9e0802843c2e0c4e93030a">&#9670;&#160;</a></span>GetVariableId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int kynema::util::NetCdfFile::GetVariableId </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the variable ID for a given variable name. </p>
+
+</div>
+</div>
+<a id="a520b1c83f6ed948fd665406e3de8fd85" name="a520b1c83f6ed948fd665406e3de8fd85"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a520b1c83f6ed948fd665406e3de8fd85">&#9670;&#160;</a></span>Open()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema::util::NetCdfFile::Open </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Manually (re)opens the NetCDF file in write mode. </p>
+<dl class="section note"><dt>Note</dt><dd>If the file is already open, no action is taken </dd></dl>
+
+</div>
+</div>
+<a id="a25ad38d50b2701d843d2696a09529777" name="a25ad38d50b2701d843d2696a09529777"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25ad38d50b2701d843d2696a09529777">&#9670;&#160;</a></span>operator=() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classkynema_1_1util_1_1NetCdfFile.html">NetCdfFile</a> &amp; kynema::util::NetCdfFile::operator= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classkynema_1_1util_1_1NetCdfFile.html">NetCdfFile</a> &amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a17b36fd999812e5b0c4a6d0213ad3aeb" name="a17b36fd999812e5b0c4a6d0213ad3aeb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a17b36fd999812e5b0c4a6d0213ad3aeb">&#9670;&#160;</a></span>operator=() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classkynema_1_1util_1_1NetCdfFile.html">NetCdfFile</a> &amp; kynema::util::NetCdfFile::operator= </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classkynema_1_1util_1_1NetCdfFile.html">NetCdfFile</a> &amp;&amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac6990e26e70640629816ddcf914e543c" name="ac6990e26e70640629816ddcf914e543c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6990e26e70640629816ddcf914e543c">&#9670;&#160;</a></span>ReadVariable() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema::util::NetCdfFile::ReadVariable </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aaaad96c7a144381412dc73409b3ab776" name="aaaad96c7a144381412dc73409b3ab776"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaaad96c7a144381412dc73409b3ab776">&#9670;&#160;</a></span>ReadVariable() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema::util::NetCdfFile::ReadVariable </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reads data from a variable in the NetCDF file. </p>
+<p>This function is a wrapper around the NetCDF library's type-specific get functions. Supports the following types:</p><ul>
+<li>float (NC_FLOAT)</li>
+<li>double (NC_DOUBLE)</li>
+<li>int (NC_INT)</li>
+</ul>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>The name of the variable to read from </td></tr>
+    <tr><td class="paramname">data</td><td>Pointer to the buffer where data will be stored </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae99e254de2ea5dbd156f88ee6f9b4e70" name="ae99e254de2ea5dbd156f88ee6f9b4e70"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae99e254de2ea5dbd156f88ee6f9b4e70">&#9670;&#160;</a></span>ReadVariable() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema::util::NetCdfFile::ReadVariable </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac499801ee0d79c2e9a5a7307bdd5c100" name="ac499801ee0d79c2e9a5a7307bdd5c100"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac499801ee0d79c2e9a5a7307bdd5c100">&#9670;&#160;</a></span>ReadVariableAt() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema::util::NetCdfFile::ReadVariableAt </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::span&lt; const size_t &gt;&#160;</td>
+          <td class="paramname"><em>start</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::span&lt; const size_t &gt;&#160;</td>
+          <td class="paramname"><em>count</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2e741f17edd065116349ba3a95ba517d" name="a2e741f17edd065116349ba3a95ba517d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e741f17edd065116349ba3a95ba517d">&#9670;&#160;</a></span>ReadVariableAt() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema::util::NetCdfFile::ReadVariableAt </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::span&lt; const size_t &gt;&#160;</td>
+          <td class="paramname"><em>start</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::span&lt; const size_t &gt;&#160;</td>
+          <td class="paramname"><em>count</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reads data from a variable at specific indices in the NetCDF file. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>The data type to read (float, double, or int) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>The name of the variable to read from </td></tr>
+    <tr><td class="paramname">start</td><td>Array specifying the starting index in each dimension </td></tr>
+    <tr><td class="paramname">count</td><td>Array specifying the number of values to read in each dimension </td></tr>
+    <tr><td class="paramname">data</td><td>Pointer to the buffer where data will be stored </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a6512f1d7eeb157b5dc7bd9d4ca792d42" name="a6512f1d7eeb157b5dc7bd9d4ca792d42"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6512f1d7eeb157b5dc7bd9d4ca792d42">&#9670;&#160;</a></span>ReadVariableAt() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema::util::NetCdfFile::ReadVariableAt </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::span&lt; const size_t &gt;&#160;</td>
+          <td class="paramname"><em>start</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::span&lt; const size_t &gt;&#160;</td>
+          <td class="paramname"><em>count</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0281e4f55fdab58d998c99b5fd3ecdc6" name="a0281e4f55fdab58d998c99b5fd3ecdc6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0281e4f55fdab58d998c99b5fd3ecdc6">&#9670;&#160;</a></span>ReadVariableWithStride() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema::util::NetCdfFile::ReadVariableWithStride </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::span&lt; const size_t &gt;&#160;</td>
+          <td class="paramname"><em>start</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::span&lt; const size_t &gt;&#160;</td>
+          <td class="paramname"><em>count</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::span&lt; const ptrdiff_t &gt;&#160;</td>
+          <td class="paramname"><em>stride</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a731c119072f05e013dfd1023bf5fedcd" name="a731c119072f05e013dfd1023bf5fedcd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a731c119072f05e013dfd1023bf5fedcd">&#9670;&#160;</a></span>ReadVariableWithStride() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema::util::NetCdfFile::ReadVariableWithStride </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::span&lt; const size_t &gt;&#160;</td>
+          <td class="paramname"><em>start</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::span&lt; const size_t &gt;&#160;</td>
+          <td class="paramname"><em>count</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::span&lt; const ptrdiff_t &gt;&#160;</td>
+          <td class="paramname"><em>stride</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reads data from a variable with specified stride in the NetCDF file. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>The data type to read (float, double, or int) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>The name of the variable to read from </td></tr>
+    <tr><td class="paramname">start</td><td>Array specifying the starting index in each dimension </td></tr>
+    <tr><td class="paramname">count</td><td>Array specifying the number of values to read in each dimension </td></tr>
+    <tr><td class="paramname">stride</td><td>Array specifying the stride in each dimension </td></tr>
+    <tr><td class="paramname">data</td><td>Pointer to the buffer where data will be stored </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aaf472ba77af610108b374519197359de" name="aaf472ba77af610108b374519197359de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf472ba77af610108b374519197359de">&#9670;&#160;</a></span>ReadVariableWithStride() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema::util::NetCdfFile::ReadVariableWithStride </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::span&lt; const size_t &gt;&#160;</td>
+          <td class="paramname"><em>start</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::span&lt; const size_t &gt;&#160;</td>
+          <td class="paramname"><em>count</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::span&lt; const ptrdiff_t &gt;&#160;</td>
+          <td class="paramname"><em>stride</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7c0f4e179065d1e59f5d08590d162308" name="a7c0f4e179065d1e59f5d08590d162308"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c0f4e179065d1e59f5d08590d162308">&#9670;&#160;</a></span>SetChunking()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema::util::NetCdfFile::SetChunking </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>var_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::span&lt; const size_t &gt;&#160;</td>
+          <td class="paramname"><em>chunk_sizes</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Configures chunking for a NetCDF variable to optimize I/O and compression performance. </p>
+<p>Chunking divides a variable's data into fixed-size multidimensional blocks, improving efficiency for partial reads and writes. For time-series variables, it is typically best to chunk along the time dimension.</p>
+<p>This function must be called while the file is in define mode.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">var_name</td><td>Name of the variable to configure. </td></tr>
+    <tr><td class="paramname">chunk_sizes</td><td>Chunk sizes for each dimension, in the same order as the variable’s dimensions. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af83366ce78b90574264a112f1fb0287e" name="af83366ce78b90574264a112f1fb0287e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af83366ce78b90574264a112f1fb0287e">&#9670;&#160;</a></span>Sync()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema::util::NetCdfFile::Sync </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Synchronizes (flushes) the NetCDF file to disk. </p>
+
+</div>
+</div>
+<a id="a54086aec6440207cf517f34dfc9b9b29" name="a54086aec6440207cf517f34dfc9b9b29"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a54086aec6440207cf517f34dfc9b9b29">&#9670;&#160;</a></span>WriteVariable() <span class="overload">[1/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema::util::NetCdfFile::WriteVariable </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::span&lt; const double &gt;&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abc061dc1970a9307d74b47e8bc033aca" name="abc061dc1970a9307d74b47e8bc033aca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc061dc1970a9307d74b47e8bc033aca">&#9670;&#160;</a></span>WriteVariable() <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema::util::NetCdfFile::WriteVariable </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::span&lt; const float &gt;&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Writes data to a variable in the NetCDF file. </p>
+<p>This function is a wrapper around the NetCDF library's "nc_put_var" and "nc_put_var_string" functions. It writes the provided data to the variable with the given name. Supports the following types:</p><ul>
+<li>float (NC_FLOAT)</li>
+<li>double (NC_DOUBLE)</li>
+<li>int (NC_INT)</li>
+<li>std::string (NC_STRING) </li>
+</ul>
+
+</div>
+</div>
+<a id="af9d912d2c69c84082eb658f10b9233c3" name="af9d912d2c69c84082eb658f10b9233c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9d912d2c69c84082eb658f10b9233c3">&#9670;&#160;</a></span>WriteVariable() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema::util::NetCdfFile::WriteVariable </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::span&lt; const int &gt;&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6f55870c92efe4e04653e8b035a6e173" name="a6f55870c92efe4e04653e8b035a6e173"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f55870c92efe4e04653e8b035a6e173">&#9670;&#160;</a></span>WriteVariable() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema::util::NetCdfFile::WriteVariable </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::span&lt; const std::string &gt;&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad70fe7bd1b320eeacfeb6325f22b6d5b" name="ad70fe7bd1b320eeacfeb6325f22b6d5b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad70fe7bd1b320eeacfeb6325f22b6d5b">&#9670;&#160;</a></span>WriteVariableAt() <span class="overload">[1/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema::util::NetCdfFile::WriteVariableAt </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::span&lt; const size_t &gt;&#160;</td>
+          <td class="paramname"><em>start</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::span&lt; const size_t &gt;&#160;</td>
+          <td class="paramname"><em>count</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::span&lt; const double &gt;&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afcb90e69ce58d68df0cb927d6cb0d72f" name="afcb90e69ce58d68df0cb927d6cb0d72f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afcb90e69ce58d68df0cb927d6cb0d72f">&#9670;&#160;</a></span>WriteVariableAt() <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema::util::NetCdfFile::WriteVariableAt </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::span&lt; const size_t &gt;&#160;</td>
+          <td class="paramname"><em>start</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::span&lt; const size_t &gt;&#160;</td>
+          <td class="paramname"><em>count</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::span&lt; const float &gt;&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Writes data to a variable at specific indices in the NetCDF file. </p>
+<p>This function is a wrapper around the NetCDF library's "nc_put_vara" and "nc_put_vara_string" functions. It writes the provided data to the variable with the given name at the specified indices. Supports the following types:</p><ul>
+<li>float (NC_FLOAT)</li>
+<li>double (NC_DOUBLE)</li>
+<li>int (NC_INT)</li>
+<li>std::string (NC_STRING)</li>
+</ul>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>The data type of the variable </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>The name of the variable to write to </td></tr>
+    <tr><td class="paramname">start</td><td>Array specifying the starting index in each dimension </td></tr>
+    <tr><td class="paramname">count</td><td>Array specifying the number of values to write in each dimension </td></tr>
+    <tr><td class="paramname">data</td><td>The vector containing the data to write </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a3a174fe32438df2fe20ef4f6c960aa87" name="a3a174fe32438df2fe20ef4f6c960aa87"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a174fe32438df2fe20ef4f6c960aa87">&#9670;&#160;</a></span>WriteVariableAt() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema::util::NetCdfFile::WriteVariableAt </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::span&lt; const size_t &gt;&#160;</td>
+          <td class="paramname"><em>start</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::span&lt; const size_t &gt;&#160;</td>
+          <td class="paramname"><em>count</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::span&lt; const int &gt;&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae6842572e11ffdf443369d2a4fea1238" name="ae6842572e11ffdf443369d2a4fea1238"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6842572e11ffdf443369d2a4fea1238">&#9670;&#160;</a></span>WriteVariableAt() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema::util::NetCdfFile::WriteVariableAt </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::span&lt; const size_t &gt;&#160;</td>
+          <td class="paramname"><em>start</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::span&lt; const size_t &gt;&#160;</td>
+          <td class="paramname"><em>count</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::span&lt; const std::string &gt;&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
+<li>/home/runner/work/kynema/kynema/kynema/src/utilities/netcdf/<a class="el" href="netcdf__file_8hpp_source.html">netcdf_file.hpp</a></li>
+<li>/home/runner/work/kynema/kynema/kynema/src/utilities/netcdf/<a class="el" href="netcdf__file_8cpp.html">netcdf_file.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023 - Present, MIT License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

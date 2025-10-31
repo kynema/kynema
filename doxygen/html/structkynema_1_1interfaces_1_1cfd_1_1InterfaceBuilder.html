@@ -232,6 +232,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a38987fa0178827e3994aa24aaa0b4976" id="r_a38987fa0178827e3994aa24aaa0b4976"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema_1_1interfaces_1_1cfd_1_1InterfaceBuilder.html">InterfaceBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema_1_1interfaces_1_1cfd_1_1InterfaceBuilder.html#a38987fa0178827e3994aa24aaa0b4976">SetOutputFile</a> (const std::string &amp;path)</td></tr>
 <tr class="memdesc:a38987fa0178827e3994aa24aaa0b4976"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the output file name.  <br /></td></tr>
 <tr class="separator:a38987fa0178827e3994aa24aaa0b4976"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adbc8e34a1535641a03b1b1259c139f00" id="r_adbc8e34a1535641a03b1b1259c139f00"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema_1_1interfaces_1_1cfd_1_1InterfaceBuilder.html">InterfaceBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema_1_1interfaces_1_1cfd_1_1InterfaceBuilder.html#adbc8e34a1535641a03b1b1259c139f00">SetOutputStatePrefixes</a> (const std::vector&lt; std::string &gt; &amp;prefixes)</td></tr>
+<tr class="memdesc:adbc8e34a1535641a03b1b1259c139f00"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the output state prefixes to be written to the output file.  <br /></td></tr>
+<tr class="separator:adbc8e34a1535641a03b1b1259c139f00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54d84f0712f4c77b334015ce59b7183c" id="r_a54d84f0712f4c77b334015ce59b7183c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema_1_1interfaces_1_1cfd_1_1InterfaceBuilder.html">InterfaceBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema_1_1interfaces_1_1cfd_1_1InterfaceBuilder.html#a54d84f0712f4c77b334015ce59b7183c">SetOutputBufferSize</a> (std::size_t buffer_size)</td></tr>
+<tr class="memdesc:a54d84f0712f4c77b334015ce59b7183c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the number of output timesteps to buffer before flushing to disk.  <br /></td></tr>
+<tr class="separator:a54d84f0712f4c77b334015ce59b7183c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a275da3f9165898555954587c7ee94fbb" id="r_a275da3f9165898555954587c7ee94fbb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema_1_1interfaces_1_1cfd_1_1Interface.html">Interface</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema_1_1interfaces_1_1cfd_1_1InterfaceBuilder.html#a275da3f9165898555954587c7ee94fbb">Build</a> () const</td></tr>
 <tr class="memdesc:a275da3f9165898555954587c7ee94fbb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Builds the <a class="el" href="classkynema_1_1interfaces_1_1cfd_1_1Interface.html" title="The main interface for controlling the CFD problem.">Interface</a> based on current settings.  <br /></td></tr>
 <tr class="separator:a275da3f9165898555954587c7ee94fbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -731,6 +737,33 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a54d84f0712f4c77b334015ce59b7183c" name="a54d84f0712f4c77b334015ce59b7183c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a54d84f0712f4c77b334015ce59b7183c">&#9670;&#160;</a></span>SetOutputBufferSize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema_1_1interfaces_1_1cfd_1_1InterfaceBuilder.html">InterfaceBuilder</a> &amp; kynema::interfaces::cfd::InterfaceBuilder::SetOutputBufferSize </td>
+          <td>(</td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>buffer_size</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the number of output timesteps to buffer before flushing to disk. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buffer_size</td><td>Number of timesteps to buffer </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A reference to this <a class="el" href="structkynema_1_1interfaces_1_1cfd_1_1InterfaceBuilder.html" title="A factory for configuring and building a CFD interface object.">InterfaceBuilder</a> object to allow chaining </dd></dl>
+
+</div>
+</div>
 <a id="a38987fa0178827e3994aa24aaa0b4976" name="a38987fa0178827e3994aa24aaa0b4976"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a38987fa0178827e3994aa24aaa0b4976">&#9670;&#160;</a></span>SetOutputFile()</h2>
 
@@ -755,6 +788,33 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A reference to this <a class="el" href="structkynema_1_1interfaces_1_1cfd_1_1InterfaceBuilder.html" title="A factory for configuring and building a CFD interface object.">InterfaceBuilder</a> </dd></dl>
+
+</div>
+</div>
+<a id="adbc8e34a1535641a03b1b1259c139f00" name="adbc8e34a1535641a03b1b1259c139f00"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adbc8e34a1535641a03b1b1259c139f00">&#9670;&#160;</a></span>SetOutputStatePrefixes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema_1_1interfaces_1_1cfd_1_1InterfaceBuilder.html">InterfaceBuilder</a> &amp; kynema::interfaces::cfd::InterfaceBuilder::SetOutputStatePrefixes </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>prefixes</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the output state prefixes to be written to the output file. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">prefixes</td><td>Vector of variable name prefixes </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A reference to this <a class="el" href="structkynema_1_1interfaces_1_1cfd_1_1InterfaceBuilder.html" title="A factory for configuring and building a CFD interface object.">InterfaceBuilder</a> object to allow chaining </dd></dl>
 
 </div>
 </div>

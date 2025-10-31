@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kynema API: /home/runner/work/kynema/kynema/kynema/src/interfaces/components/outputs_builder.hpp Source File &mdash; Kynema 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Kynema
+              <img src="../../_static/oturb_logo_v2.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/user.html">User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../theory/index.html">Theory Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/index.html">Developer Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/index.html">Benchmark Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../acknowledgement.html">Acknowledgements</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Kynema</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Kynema API: /home/runner/work/kynema/kynema/kynema/src/interfaces/components/outputs_builder.hpp Source File</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/doxygen/html/outputs__builder_8hpp_source.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="home-runner-work-kynema-kynema-kynema-src-interfaces-components-outputs-builder-hpp-source-file">
+<h1>/home/runner/work/kynema/kynema/kynema/src/interfaces/components/outputs_builder.hpp Source File<a class="headerlink" href="#home-runner-work-kynema-kynema-kynema-src-interfaces-components-outputs-builder-hpp-source-file" title="Permalink to this heading"></a></h1>
+<div class="doxygen-content docutils container">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Kynema API: /home/runner/work/kynema/kynema/kynema/src/interfaces/components/outputs_builder.hpp Source File</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Kynema API
+   </div>
+   <div id="projectbrief">A flexible multibody structural dynamics code for wind turbines</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_ee3f1a7951c308657a65f8199076c1d6.html">interfaces</a></li><li class="navelem"><a class="el" href="dir_ec19d290f88d8e9c8cebb340555e4418.html">components</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">outputs_builder.hpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="outputs__builder_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="outputs__config_8hpp.html">outputs_config.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacekynema_1_1interfaces_1_1components.html">kynema::interfaces::components</a> {</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="foldopen" id="foldopen00010" data-start="{" data-end="};">
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="structkynema_1_1interfaces_1_1components_1_1OutputsBuilder.html">   10</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structkynema_1_1interfaces_1_1components_1_1OutputsBuilder.html">OutputsBuilder</a> {</div>
+<div class="foldopen" id="foldopen00020" data-start="{" data-end="}">
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="structkynema_1_1interfaces_1_1components_1_1OutputsBuilder.html#acd38f15ab6f8885f9cc6e984e635b0e0">   20</a></span>    <a class="code hl_struct" href="structkynema_1_1interfaces_1_1components_1_1OutputsBuilder.html">OutputsBuilder</a>&amp; <a class="code hl_function" href="structkynema_1_1interfaces_1_1components_1_1OutputsBuilder.html#acd38f15ab6f8885f9cc6e984e635b0e0">SetOutputFilePath</a>(<span class="keyword">const</span> std::string&amp; output_file_path) {</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        config.<a class="code hl_variable" href="structkynema_1_1interfaces_1_1components_1_1OutputsConfig.html#a9ac51417802fe4e8ff99f506f0b5a7c8">output_file_path</a> = output_file_path;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    }</div>
+</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="foldopen" id="foldopen00031" data-start="{" data-end="}">
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="structkynema_1_1interfaces_1_1components_1_1OutputsBuilder.html#a01656ada3f7bfdc90efe5cc5360e3da3">   31</a></span>    <a class="code hl_struct" href="structkynema_1_1interfaces_1_1components_1_1OutputsBuilder.html">OutputsBuilder</a>&amp; <a class="code hl_function" href="structkynema_1_1interfaces_1_1components_1_1OutputsBuilder.html#a01656ada3f7bfdc90efe5cc5360e3da3">SetOutputStatePrefixes</a>(<span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; prefixes) {</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        config.<a class="code hl_variable" href="structkynema_1_1interfaces_1_1components_1_1OutputsConfig.html#a081874a91b7729957f48bfb122036e86">output_state_prefixes</a> = prefixes;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    }</div>
+</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="foldopen" id="foldopen00042" data-start="{" data-end="}">
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="structkynema_1_1interfaces_1_1components_1_1OutputsBuilder.html#aea1d8f898ae06b5f3ae454d0d06c8acf">   42</a></span>    <a class="code hl_struct" href="structkynema_1_1interfaces_1_1components_1_1OutputsBuilder.html">OutputsBuilder</a>&amp; <a class="code hl_function" href="structkynema_1_1interfaces_1_1components_1_1OutputsBuilder.html#aea1d8f898ae06b5f3ae454d0d06c8acf">SetOutputBufferSize</a>(std::size_t buffer_size) {</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        config.<a class="code hl_variable" href="structkynema_1_1interfaces_1_1components_1_1OutputsConfig.html#a04200ebd78c1b5c5bd151d6519315aad">buffer_size</a> = buffer_size;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    }</div>
+</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="structkynema_1_1interfaces_1_1components_1_1OutputsBuilder.html#aa2a5c9d322c7339c16dc99ef94023f20">   52</a></span>    [[nodiscard]] <a class="code hl_struct" href="structkynema_1_1interfaces_1_1components_1_1OutputsConfig.html">OutputsConfig</a> <a class="code hl_function" href="structkynema_1_1interfaces_1_1components_1_1OutputsBuilder.html#aa2a5c9d322c7339c16dc99ef94023f20">Config</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> this-&gt;config; }</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <a class="code hl_struct" href="structkynema_1_1interfaces_1_1components_1_1OutputsConfig.html">OutputsConfig</a> config;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>};</div>
+</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>}  <span class="comment">// namespace kynema::interfaces::components</span></div>
+<div class="ttc" id="anamespacekynema_1_1interfaces_1_1components_html"><div class="ttname"><a href="namespacekynema_1_1interfaces_1_1components.html">kynema::interfaces::components</a></div><div class="ttdef"><b>Definition</b> aerodynamics.cpp:5</div></div>
+<div class="ttc" id="aoutputs__config_8hpp_html"><div class="ttname"><a href="outputs__config_8hpp.html">outputs_config.hpp</a></div></div>
+<div class="ttc" id="astructkynema_1_1interfaces_1_1components_1_1OutputsBuilder_html"><div class="ttname"><a href="structkynema_1_1interfaces_1_1components_1_1OutputsBuilder.html">kynema::interfaces::components::OutputsBuilder</a></div><div class="ttdoc">A builder class for building a outputs configuration.</div><div class="ttdef"><b>Definition</b> outputs_builder.hpp:10</div></div>
+<div class="ttc" id="astructkynema_1_1interfaces_1_1components_1_1OutputsBuilder_html_a01656ada3f7bfdc90efe5cc5360e3da3"><div class="ttname"><a href="structkynema_1_1interfaces_1_1components_1_1OutputsBuilder.html#a01656ada3f7bfdc90efe5cc5360e3da3">kynema::interfaces::components::OutputsBuilder::SetOutputStatePrefixes</a></div><div class="ttdeci">OutputsBuilder &amp; SetOutputStatePrefixes(const std::vector&lt; std::string &gt; &amp;prefixes)</div><div class="ttdoc">Sets the output state prefixes to be written to the output file.</div><div class="ttdef"><b>Definition</b> outputs_builder.hpp:31</div></div>
+<div class="ttc" id="astructkynema_1_1interfaces_1_1components_1_1OutputsBuilder_html_aa2a5c9d322c7339c16dc99ef94023f20"><div class="ttname"><a href="structkynema_1_1interfaces_1_1components_1_1OutputsBuilder.html#aa2a5c9d322c7339c16dc99ef94023f20">kynema::interfaces::components::OutputsBuilder::Config</a></div><div class="ttdeci">OutputsConfig Config() const</div><div class="ttdoc">Creates an OutputsConfig object based on the previously set parameters.</div><div class="ttdef"><b>Definition</b> outputs_builder.hpp:52</div></div>
+<div class="ttc" id="astructkynema_1_1interfaces_1_1components_1_1OutputsBuilder_html_acd38f15ab6f8885f9cc6e984e635b0e0"><div class="ttname"><a href="structkynema_1_1interfaces_1_1components_1_1OutputsBuilder.html#acd38f15ab6f8885f9cc6e984e635b0e0">kynema::interfaces::components::OutputsBuilder::SetOutputFilePath</a></div><div class="ttdeci">OutputsBuilder &amp; SetOutputFilePath(const std::string &amp;output_file_path)</div><div class="ttdoc">Sets the output file path for NetCDF results.</div><div class="ttdef"><b>Definition</b> outputs_builder.hpp:20</div></div>
+<div class="ttc" id="astructkynema_1_1interfaces_1_1components_1_1OutputsBuilder_html_aea1d8f898ae06b5f3ae454d0d06c8acf"><div class="ttname"><a href="structkynema_1_1interfaces_1_1components_1_1OutputsBuilder.html#aea1d8f898ae06b5f3ae454d0d06c8acf">kynema::interfaces::components::OutputsBuilder::SetOutputBufferSize</a></div><div class="ttdeci">OutputsBuilder &amp; SetOutputBufferSize(std::size_t buffer_size)</div><div class="ttdoc">Sets the number of output timesteps to buffer before flushing to disk.</div><div class="ttdef"><b>Definition</b> outputs_builder.hpp:42</div></div>
+<div class="ttc" id="astructkynema_1_1interfaces_1_1components_1_1OutputsConfig_html"><div class="ttname"><a href="structkynema_1_1interfaces_1_1components_1_1OutputsConfig.html">kynema::interfaces::components::OutputsConfig</a></div><div class="ttdoc">A configuration object used to create the Outputs object.</div><div class="ttdef"><b>Definition</b> outputs_config.hpp:13</div></div>
+<div class="ttc" id="astructkynema_1_1interfaces_1_1components_1_1OutputsConfig_html_a04200ebd78c1b5c5bd151d6519315aad"><div class="ttname"><a href="structkynema_1_1interfaces_1_1components_1_1OutputsConfig.html#a04200ebd78c1b5c5bd151d6519315aad">kynema::interfaces::components::OutputsConfig::buffer_size</a></div><div class="ttdeci">size_t buffer_size</div><div class="ttdoc">Number of timesteps to buffer before auto-flush.</div><div class="ttdef"><b>Definition</b> outputs_config.hpp:21</div></div>
+<div class="ttc" id="astructkynema_1_1interfaces_1_1components_1_1OutputsConfig_html_a081874a91b7729957f48bfb122036e86"><div class="ttname"><a href="structkynema_1_1interfaces_1_1components_1_1OutputsConfig.html#a081874a91b7729957f48bfb122036e86">kynema::interfaces::components::OutputsConfig::output_state_prefixes</a></div><div class="ttdeci">std::vector&lt; std::string &gt; output_state_prefixes</div><div class="ttdoc">Vector of state component prefixes to enable for writing.</div><div class="ttdef"><b>Definition</b> outputs_config.hpp:18</div></div>
+<div class="ttc" id="astructkynema_1_1interfaces_1_1components_1_1OutputsConfig_html_a9ac51417802fe4e8ff99f506f0b5a7c8"><div class="ttname"><a href="structkynema_1_1interfaces_1_1components_1_1OutputsConfig.html#a9ac51417802fe4e8ff99f506f0b5a7c8">kynema::interfaces::components::OutputsConfig::output_file_path</a></div><div class="ttdeci">std::string output_file_path</div><div class="ttdoc">Output file path for NetCDF results (empty = no outputs will be written)</div><div class="ttdef"><b>Definition</b> outputs_config.hpp:15</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023 - Present, MIT License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

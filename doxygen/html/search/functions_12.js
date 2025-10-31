@@ -12,5 +12,5 @@ var searchData=
   ['turbineconfig_9',['TurbineConfig',['../structkynema_1_1util_1_1TurbineConfig.html#a045ab2ecfd882bb86d6181862b13ab94',1,'kynema::util::TurbineConfig']]],
   ['turbinecontroller_10',['TurbineController',['../classkynema_1_1util_1_1TurbineController.html#a9b2455c45ebd604d4b55f7d8471511a2',1,'kynema::util::TurbineController']]],
   ['turbinedata_11',['TurbineData',['../structkynema_1_1util_1_1TurbineData.html#abcce0ad9ac8fb311bf55c1cc1910f468',1,'kynema::util::TurbineData']]],
-  ['turbineinterface_12',['TurbineInterface',['../classkynema_1_1interfaces_1_1TurbineInterface.html#a18cd54383dfdd66007d1d7d0cb1407a1',1,'kynema::interfaces::TurbineInterface']]]
+  ['turbineinterface_12',['TurbineInterface',['../classkynema_1_1interfaces_1_1TurbineInterface.html#afcdd14383771dd2b717ea71a05741fdf',1,'kynema::interfaces::TurbineInterface']]]
 ];

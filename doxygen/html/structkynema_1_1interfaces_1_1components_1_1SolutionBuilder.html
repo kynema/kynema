@@ -205,9 +205,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a19119842da089c3c548ad92ddaa50997" id="r_a19119842da089c3c548ad92ddaa50997"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema_1_1interfaces_1_1components_1_1SolutionBuilder.html">SolutionBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema_1_1interfaces_1_1components_1_1SolutionBuilder.html#a19119842da089c3c548ad92ddaa50997">SetDampingFactor</a> (double rho_inf)</td></tr>
 <tr class="memdesc:a19119842da089c3c548ad92ddaa50997"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the numerical damping factor for the generalized alpha solver.  <br /></td></tr>
 <tr class="separator:a19119842da089c3c548ad92ddaa50997"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a65b430f7adc57a6691696f88a57afc69" id="r_a65b430f7adc57a6691696f88a57afc69"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema_1_1interfaces_1_1components_1_1SolutionBuilder.html">SolutionBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema_1_1interfaces_1_1components_1_1SolutionBuilder.html#a65b430f7adc57a6691696f88a57afc69">SetOutputFile</a> (const std::string &amp;output_file_path)</td></tr>
-<tr class="memdesc:a65b430f7adc57a6691696f88a57afc69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the output file name where output will be written each time step.  <br /></td></tr>
-<tr class="separator:a65b430f7adc57a6691696f88a57afc69"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a67e0f1826cbcf96236e9fa86584e6172" id="r_a67e0f1826cbcf96236e9fa86584e6172"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structkynema_1_1interfaces_1_1components_1_1SolutionInput.html">SolutionInput</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema_1_1interfaces_1_1components_1_1SolutionBuilder.html#a67e0f1826cbcf96236e9fa86584e6172">Input</a> () const</td></tr>
 <tr class="memdesc:a67e0f1826cbcf96236e9fa86584e6172"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a <a class="el" href="structkynema_1_1interfaces_1_1components_1_1SolutionInput.html" title="A configuration object used to create the low level StepParameters object.">SolutionInput</a> object based on the previously set parameters.  <br /></td></tr>
 <tr class="separator:a67e0f1826cbcf96236e9fa86584e6172"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -378,34 +375,6 @@ Public Member Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">max_iter</td><td>The maximum number of nonlinear iterations </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A reference to this solution builder object to allow chaining </dd></dl>
-
-</div>
-</div>
-<a id="a65b430f7adc57a6691696f88a57afc69" name="a65b430f7adc57a6691696f88a57afc69"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a65b430f7adc57a6691696f88a57afc69">&#9670;&#160;</a></span>SetOutputFile()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structkynema_1_1interfaces_1_1components_1_1SolutionBuilder.html">SolutionBuilder</a> &amp; kynema::interfaces::components::SolutionBuilder::SetOutputFile </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>output_file_path</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Sets the output file name where output will be written each time step. </p>
-<p>If this is left unset, no IO will be automatically performed</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">output_file_path</td><td>The name of the output file </td></tr>
   </table>
   </dd>
 </dl>

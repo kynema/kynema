@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kynema API: kynema::interfaces::components::OutputsBuilder Struct Reference &mdash; Kynema 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Kynema
+              <img src="../../_static/oturb_logo_v2.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/user.html">User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../theory/index.html">Theory Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/index.html">Developer Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/index.html">Benchmark Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../acknowledgement.html">Acknowledgements</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Kynema</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Kynema API: kynema::interfaces::components::OutputsBuilder Struct Reference</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/doxygen/html/structkynema_1_1interfaces_1_1components_1_1OutputsBuilder.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="outputsbuilder-struct-reference">
+<h1>OutputsBuilder Struct Reference<a class="headerlink" href="#outputsbuilder-struct-reference" title="Permalink to this heading"></a></h1>
+<div class="doxygen-content docutils container">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Kynema API: kynema::interfaces::components::OutputsBuilder Struct Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Kynema API
+   </div>
+   <div id="projectbrief">A flexible multibody structural dynamics code for wind turbines</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacekynema.html">kynema</a></li><li class="navelem"><a class="el" href="namespacekynema_1_1interfaces.html">interfaces</a></li><li class="navelem"><a class="el" href="namespacekynema_1_1interfaces_1_1components.html">components</a></li><li class="navelem"><a class="el" href="structkynema_1_1interfaces_1_1components_1_1OutputsBuilder.html">OutputsBuilder</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="structkynema_1_1interfaces_1_1components_1_1OutputsBuilder-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">kynema::interfaces::components::OutputsBuilder Struct Reference</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>A builder class for building a outputs configuration.  
+ <a href="structkynema_1_1interfaces_1_1components_1_1OutputsBuilder.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="outputs__builder_8hpp_source.html">outputs_builder.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:acd38f15ab6f8885f9cc6e984e635b0e0" id="r_acd38f15ab6f8885f9cc6e984e635b0e0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema_1_1interfaces_1_1components_1_1OutputsBuilder.html">OutputsBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema_1_1interfaces_1_1components_1_1OutputsBuilder.html#acd38f15ab6f8885f9cc6e984e635b0e0">SetOutputFilePath</a> (const std::string &amp;output_file_path)</td></tr>
+<tr class="memdesc:acd38f15ab6f8885f9cc6e984e635b0e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the output file path for NetCDF results.  <br /></td></tr>
+<tr class="separator:acd38f15ab6f8885f9cc6e984e635b0e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01656ada3f7bfdc90efe5cc5360e3da3" id="r_a01656ada3f7bfdc90efe5cc5360e3da3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema_1_1interfaces_1_1components_1_1OutputsBuilder.html">OutputsBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema_1_1interfaces_1_1components_1_1OutputsBuilder.html#a01656ada3f7bfdc90efe5cc5360e3da3">SetOutputStatePrefixes</a> (const std::vector&lt; std::string &gt; &amp;prefixes)</td></tr>
+<tr class="memdesc:a01656ada3f7bfdc90efe5cc5360e3da3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the output state prefixes to be written to the output file.  <br /></td></tr>
+<tr class="separator:a01656ada3f7bfdc90efe5cc5360e3da3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea1d8f898ae06b5f3ae454d0d06c8acf" id="r_aea1d8f898ae06b5f3ae454d0d06c8acf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema_1_1interfaces_1_1components_1_1OutputsBuilder.html">OutputsBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema_1_1interfaces_1_1components_1_1OutputsBuilder.html#aea1d8f898ae06b5f3ae454d0d06c8acf">SetOutputBufferSize</a> (std::size_t buffer_size)</td></tr>
+<tr class="memdesc:aea1d8f898ae06b5f3ae454d0d06c8acf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the number of output timesteps to buffer before flushing to disk.  <br /></td></tr>
+<tr class="separator:aea1d8f898ae06b5f3ae454d0d06c8acf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2a5c9d322c7339c16dc99ef94023f20" id="r_aa2a5c9d322c7339c16dc99ef94023f20"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema_1_1interfaces_1_1components_1_1OutputsConfig.html">OutputsConfig</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema_1_1interfaces_1_1components_1_1OutputsBuilder.html#aa2a5c9d322c7339c16dc99ef94023f20">Config</a> () const</td></tr>
+<tr class="memdesc:aa2a5c9d322c7339c16dc99ef94023f20"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an <a class="el" href="structkynema_1_1interfaces_1_1components_1_1OutputsConfig.html" title="A configuration object used to create the Outputs object.">OutputsConfig</a> object based on the previously set parameters.  <br /></td></tr>
+<tr class="separator:aa2a5c9d322c7339c16dc99ef94023f20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>A builder class for building a outputs configuration. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="aa2a5c9d322c7339c16dc99ef94023f20" name="aa2a5c9d322c7339c16dc99ef94023f20"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2a5c9d322c7339c16dc99ef94023f20">&#9670;&#160;</a></span>Config()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema_1_1interfaces_1_1components_1_1OutputsConfig.html">OutputsConfig</a> kynema::interfaces::components::OutputsBuilder::Config </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Creates an <a class="el" href="structkynema_1_1interfaces_1_1components_1_1OutputsConfig.html" title="A configuration object used to create the Outputs object.">OutputsConfig</a> object based on the previously set parameters. </p>
+<dl class="section return"><dt>Returns</dt><dd>The completed <a class="el" href="structkynema_1_1interfaces_1_1components_1_1OutputsConfig.html" title="A configuration object used to create the Outputs object.">OutputsConfig</a> object </dd></dl>
+
+</div>
+</div>
+<a id="aea1d8f898ae06b5f3ae454d0d06c8acf" name="aea1d8f898ae06b5f3ae454d0d06c8acf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea1d8f898ae06b5f3ae454d0d06c8acf">&#9670;&#160;</a></span>SetOutputBufferSize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema_1_1interfaces_1_1components_1_1OutputsBuilder.html">OutputsBuilder</a> &amp; kynema::interfaces::components::OutputsBuilder::SetOutputBufferSize </td>
+          <td>(</td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>buffer_size</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets the number of output timesteps to buffer before flushing to disk. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buffer_size</td><td>Number of timesteps to buffer </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A reference to this outputs builder object to allow chaining </dd></dl>
+
+</div>
+</div>
+<a id="acd38f15ab6f8885f9cc6e984e635b0e0" name="acd38f15ab6f8885f9cc6e984e635b0e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd38f15ab6f8885f9cc6e984e635b0e0">&#9670;&#160;</a></span>SetOutputFilePath()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema_1_1interfaces_1_1components_1_1OutputsBuilder.html">OutputsBuilder</a> &amp; kynema::interfaces::components::OutputsBuilder::SetOutputFilePath </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>output_file_path</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets the output file path for NetCDF results. </p>
+<p>If the file path is empty, no output will be written to disk. This must be set to enable automatic output operations at each timestep.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">output_file_path</td><td>Path where the output NetCDF file will be written </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Reference to this <a class="el" href="structkynema_1_1interfaces_1_1components_1_1OutputsBuilder.html" title="A builder class for building a outputs configuration.">OutputsBuilder</a> object, enabling method chaining </dd></dl>
+
+</div>
+</div>
+<a id="a01656ada3f7bfdc90efe5cc5360e3da3" name="a01656ada3f7bfdc90efe5cc5360e3da3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01656ada3f7bfdc90efe5cc5360e3da3">&#9670;&#160;</a></span>SetOutputStatePrefixes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema_1_1interfaces_1_1components_1_1OutputsBuilder.html">OutputsBuilder</a> &amp; kynema::interfaces::components::OutputsBuilder::SetOutputStatePrefixes </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>prefixes</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets the output state prefixes to be written to the output file. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">prefixes</td><td>Vector of variable name prefixes </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A reference to this outputs builder object to allow chaining </dd></dl>
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
+<li>/home/runner/work/kynema/kynema/kynema/src/interfaces/components/<a class="el" href="outputs__builder_8hpp_source.html">outputs_builder.hpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023 - Present, MIT License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
