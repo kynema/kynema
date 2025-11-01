@@ -36,7 +36,10 @@ TEST(CalculateGravityForceTestsMasses, OneNode) {
     const auto FG = Kokkos::View<double[6]>("FG");
 
     Kokkos::parallel_for(
-        "CalculateGravityForce", 1, ExecuteCalculateGravityForce{mass, gravity, eta_tilde, FG}
+        "CalculateGravityForce", 1,
+        ExecuteCalculateGravityForce{
+            .mass = mass, .gravity = gravity, .eta_tilde = eta_tilde, .FG = FG
+        }
     );
 
     constexpr auto FG_exact_data = std::array{46., 47., 48., 5360., 5783., 6206.};

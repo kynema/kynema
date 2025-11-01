@@ -7,10 +7,9 @@
 #include "model/model.hpp"
 #include "test_utilities.hpp"
 
-namespace kynema::tests {
-
+namespace {
 inline auto SetUpBeams() {
-    auto model = Model();
+    auto model = kynema::Model();
 
     model.SetGravity(0., 0., 9.81);
 
@@ -108,8 +107,8 @@ inline auto SetUpBeams() {
     model.AddBeamElement(
         beam_node_ids,
         std::array{
-            BeamSection(0., mass_matrix, stiffness_matrix),
-            BeamSection(1., mass_matrix, stiffness_matrix),
+            kynema::BeamSection(0., mass_matrix, stiffness_matrix),
+            kynema::BeamSection(1., mass_matrix, stiffness_matrix),
         },
         std::array{
             std::array{-0.9491079123427585, 0.1294849661688697},
@@ -128,6 +127,9 @@ inline auto SetUpBeams() {
 
     return beams;
 }
+
+}  // namespace
+namespace kynema::tests {
 
 TEST(BeamsTest, NodeInitialPositionX0) {
     const auto beams = SetUpBeams();

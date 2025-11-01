@@ -1,6 +1,5 @@
 #include <array>
 #include <ranges>
-#include <stdexcept>
 #include <string>
 
 #include <Kokkos_Core.hpp>
@@ -9,7 +8,7 @@
 
 #include "math/vector_operations.hpp"
 
-namespace kynema::tests {
+namespace {
 
 template <unsigned size>
 Kokkos::View<double[size]> Create1DView(const std::array<double, size>& input) {
@@ -22,9 +21,24 @@ Kokkos::View<double[size]> Create1DView(const std::array<double, size>& input) {
 
 Kokkos::View<double[3][3]> TestVecTilde(const Kokkos::View<double[3]>& v) {
     auto m = Kokkos::View<double[3][3]>("m");
-    Kokkos::parallel_for("VecTilde", 1, KOKKOS_LAMBDA(int) { math::VecTilde(v, m); });
+    Kokkos::parallel_for("VecTilde", 1, KOKKOS_LAMBDA(int) { kynema::math::VecTilde(v, m); });
     return m;
 }
+
+void test_DotProduct_View() {
+    auto a = Create1DView<3>({1., 2., 3.});
+    auto b = Create1DView<3>({4., 5., 6.});
+    auto c = 0.;
+    Kokkos::parallel_reduce(
+        "DotProduct_View", 1,
+        KOKKOS_LAMBDA(int, double& result) { result = kynema::math::DotProduct(a, b); }, c
+    );
+    ASSERT_EQ(c, 32.);
+}
+
+}  // namespace
+
+namespace kynema::tests {
 
 TEST(VectorTest, VecTilde) {
     auto v = Create1DView<3>({1., 2., 3.});
@@ -41,17 +55,6 @@ TEST(VectorTest, VecTilde) {
             EXPECT_NEAR(m_mirror(i, j), expected(i, j), 1.e-15);
         }
     }
-}
-
-void test_DotProduct_View() {
-    auto a = Create1DView<3>({1., 2., 3.});
-    auto b = Create1DView<3>({4., 5., 6.});
-    auto c = 0.;
-    Kokkos::parallel_reduce(
-        "DotProduct_View", 1,
-        KOKKOS_LAMBDA(int, double& result) { result = math::DotProduct(a, b); }, c
-    );
-    ASSERT_EQ(c, 32.);
 }
 
 TEST(VectorTest, DotProduct_View) {

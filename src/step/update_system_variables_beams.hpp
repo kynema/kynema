@@ -32,9 +32,9 @@ inline void UpdateSystemVariablesBeams(
     const auto qp_matrix_size = Kokkos::View<double* [6][6]>::shmem_size(num_qps);
     const auto system_matrix_size = Kokkos::View<double** [6][6]>::shmem_size(num_nodes, num_nodes);
 
-    const auto hbmem =
-        4 * node_variable_size + 5 * qp_variable_size + 7 * qp_matrix_size + 2 * system_matrix_size;
-    const auto smem = 2 * shape_size + 2 * weight_size;
+    const auto hbmem = (4 * node_variable_size) + (5 * qp_variable_size) + (7 * qp_matrix_size) +
+                       (2 * system_matrix_size);
+    const auto smem = (2 * shape_size) + (2 * weight_size);
     range_policy.set_scratch_size(1, Kokkos::PerTeam(hbmem))
         .set_scratch_size(0, Kokkos::PerTeam(smem));
 

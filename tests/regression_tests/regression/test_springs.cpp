@@ -3,10 +3,9 @@
 #include "model/model.hpp"
 #include "test_utilities.hpp"
 
-namespace kynema::tests {
-
+namespace {
 inline auto SetUpSprings() {
-    auto model = Model();
+    auto model = kynema::Model();
 
     // Add two nodes for the spring element
     auto node1_id =
@@ -26,6 +25,10 @@ inline auto SetUpSprings() {
 
     return std::make_tuple(springs, state);
 }
+
+}  // namespace
+
+namespace kynema::tests {
 
 TEST(SpringsTest, NodeStateIndices) {
     auto [springs, _] = SetUpSprings();

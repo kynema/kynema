@@ -42,8 +42,13 @@ TEST(CalculateRevoluteJointConstraintTests, OneConstraint) {
     Kokkos::parallel_for(
         "CalculateRevoluteJointConstraint", 1,
         ExecuteCalculateRevoluteJointConstraint{
-            X0, axes, base_node_u, target_node_u, residual_terms, base_gradient_terms,
-            target_gradient_terms
+            .X0 = X0,
+            .axes = axes,
+            .base_node_u = base_node_u,
+            .target_node_u = target_node_u,
+            .residual_terms = residual_terms,
+            .base_gradient_terms = base_gradient_terms,
+            .target_gradient_terms = target_gradient_terms
         }
     );
 

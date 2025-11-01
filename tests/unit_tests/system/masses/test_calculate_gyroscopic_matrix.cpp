@@ -42,7 +42,14 @@ TEST(CalculateGyroscopicMatrixMassesTests, OneNode) {
 
     Kokkos::parallel_for(
         "CalculateGyroscopicMatrix", 1,
-        ExecuteCalculateGyroscopicMatrix{mass, omega, omega_tilde, rho, eta, Guu}
+        ExecuteCalculateGyroscopicMatrix{
+            .mass = mass,
+            .omega = omega,
+            .omega_tilde = omega_tilde,
+            .rho = rho,
+            .eta = eta,
+            .Guu = Guu
+        }
     );
 
     constexpr auto Guu_exact_data =

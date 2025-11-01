@@ -36,7 +36,7 @@ std::array<double, 3> UniformFlow::Velocity(
         return data.back().Velocity(position);
     }
 
-    const auto time_iterator = std::find_if(std::cbegin(data), std::cend(data), [t](auto d) {
+    const auto time_iterator = std::ranges::find_if(data, [t](auto d) {
         return d.time > t;
     });
 
@@ -47,13 +47,15 @@ std::array<double, 3> UniformFlow::Velocity(
 
     // Create interpolated UniformFlowParameters at given time
     const auto t_data = UniformFlowParameters{
-        t,
-        data[t_index - 1].velocity_horizontal * (1 - alpha) +
-            data[t_index].velocity_horizontal * alpha,
-        data[t_index - 1].height_reference * (1 - alpha) + data[t_index].height_reference * alpha,
-        data[t_index - 1].shear_vertical * (1 - alpha) + data[t_index].shear_vertical * alpha,
-        data[t_index - 1].flow_angle_horizontal * (1 - alpha) +
-            data[t_index].flow_angle_horizontal * alpha
+        .time = t,
+        .velocity_horizontal = (data[t_index - 1].velocity_horizontal * (1 - alpha)) +
+                               (data[t_index].velocity_horizontal * alpha),
+        .height_reference = (data[t_index - 1].height_reference * (1 - alpha)) +
+                            (data[t_index].height_reference * alpha),
+        .shear_vertical = (data[t_index - 1].shear_vertical * (1 - alpha)) +
+                          (data[t_index].shear_vertical * alpha),
+        .flow_angle_horizontal = (data[t_index - 1].flow_angle_horizontal * (1 - alpha)) +
+                                 (data[t_index].flow_angle_horizontal * alpha)
     };
 
     return t_data.Velocity(position);
@@ -62,7 +64,11 @@ std::array<double, 3> UniformFlow::Velocity(
 Inflow Inflow::SteadyWind(double vh, double z_ref, double alpha, double angle_h) {
     return Inflow(
         InflowType::Uniform, UniformFlow{std::vector<UniformFlowParameters>{
-                                 {0., vh, z_ref, alpha, angle_h}  // Use aggregate initialization
+                                 {.time = 0.,
+                                  .velocity_horizontal = vh,
+                                  .height_reference = z_ref,
+                                  .shear_vertical = alpha,
+                                  .flow_angle_horizontal = angle_h}  // Use aggregate initialization
                              }}
     );
 }

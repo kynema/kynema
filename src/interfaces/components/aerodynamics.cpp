@@ -49,14 +49,14 @@ std::array<double, 6> CalculateAerodynamicLoad(
                                 : (aoa - aoa_polar[polar_index]) /
                                       (aoa_polar[polar_index + 1] - aoa_polar[polar_index]);
 
-    const auto cl = (is_end)
-                        ? cl_polar.back()
-                        : (1. - alpha) * cl_polar[polar_index] + alpha * cl_polar[polar_index + 1];
-    const auto cd = (is_end)
-                        ? cd_polar.back()
-                        : (1. - alpha) * cd_polar[polar_index] + alpha * cd_polar[polar_index + 1];
+    const auto cl =
+        (is_end) ? cl_polar.back()
+                 : ((1. - alpha) * cl_polar[polar_index]) + (alpha * cl_polar[polar_index + 1]);
+    const auto cd =
+        (is_end) ? cd_polar.back()
+                 : ((1. - alpha) * cd_polar[polar_index]) + (alpha * cd_polar[polar_index + 1]);
     cm = (is_end) ? cm_polar.back()
-                  : (1. - alpha) * cm_polar[polar_index] + alpha * cm_polar[polar_index + 1];
+                  : ((1. - alpha) * cm_polar[polar_index]) + (alpha * cm_polar[polar_index + 1]);
 
     const auto dynamic_pressure = .5 * fluid_density * velocity_magnitude * velocity_magnitude;
 
@@ -88,7 +88,7 @@ std::array<double, 3> CalculateConMotionVector(
 
 std::vector<double> CalculateJacobianXi(std::span<const double> aero_node_xi) {
     const auto num_aero_nodes = aero_node_xi.size();
-    const auto num_jacobian_nodes = 2 * num_aero_nodes + 1;
+    const auto num_jacobian_nodes = (2 * num_aero_nodes) + 1;
 
     auto jacobian_xi = std::vector<double>(num_jacobian_nodes);
 
@@ -96,8 +96,8 @@ std::vector<double> CalculateJacobianXi(std::span<const double> aero_node_xi) {
     jacobian_xi[1] = (3. * aero_node_xi[0] + aero_node_xi[1]) / 4.;
 
     for (auto i = 0U; i < num_aero_nodes - 1U; ++i) {
-        jacobian_xi[2 * i + 2] = .5 * (aero_node_xi[i] + aero_node_xi[i + 1]);
-        jacobian_xi[2 * i + 3] = aero_node_xi[i + 1];
+        jacobian_xi[(2 * i) + 2] = .5 * (aero_node_xi[i] + aero_node_xi[i + 1]);
+        jacobian_xi[(2 * i) + 3] = aero_node_xi[i + 1];
     }
 
     jacobian_xi[num_jacobian_nodes - 2] =
@@ -120,10 +120,10 @@ std::vector<double> CalculateAeroNodeWidths(
         for (auto i = 0U; i < num_jacobian_nodes; ++i) {
             auto total = 0.;
             for (auto j = 0U; j < num_nodes; ++j) {
-                total += jacobian_integration_matrix[i * num_nodes + j] *
-                         node_x[direction * num_nodes + j];
+                total += jacobian_integration_matrix[(i * num_nodes) + j] *
+                         node_x[(direction * num_nodes) + j];
             }
-            tan[direction * num_jacobian_nodes + i] = total;
+            tan[(direction * num_jacobian_nodes) + i] = total;
         }
     }
 
@@ -131,8 +131,8 @@ std::vector<double> CalculateAeroNodeWidths(
     for (auto i = 0U; i < num_jacobian_nodes; ++i) {
         auto total = 0.;
         for (auto direction = 0U; direction < 3U; ++direction) {
-            total +=
-                tan[direction * num_jacobian_nodes + i] * tan[direction * num_jacobian_nodes + i];
+            total += tan[(direction * num_jacobian_nodes) + i] *
+                     tan[(direction * num_jacobian_nodes) + i];
         }
         j[i] = std::sqrt(total);
     }
@@ -181,7 +181,7 @@ std::vector<double> AerodynamicBody::ComputeMotionInterp(
     for (auto i = 0U; i < n_sections; ++i) {
         math::LagrangePolynomialInterpWeights(section_xi[i], beam_node_xi, weights);
         for (auto j = 0U; j < n_nodes; ++j) {
-            interp[i * n_nodes + j] = weights[j];
+            interp[(i * n_nodes) + j] = weights[j];
         }
     }
     return interp;
@@ -215,7 +215,7 @@ void AerodynamicBody::InterpolateQuaternionFromNodesToSections(
     // Interpolate node values to sections
     for (auto i = 0U; i < n_sections; ++i) {
         for (auto j = 0U; j < n_nodes; ++j) {
-            const auto coeff = interp[i * n_nodes + j];
+            const auto coeff = interp[(i * n_nodes) + j];
             for (auto component = 0U; component < 7U; ++component) {
                 xr[i][component] += coeff * node_x[j][component];
             }
@@ -263,7 +263,7 @@ std::vector<double> AerodynamicBody::ComputeShapeDerivNode(
     for (auto i = 0U; i < n_sections; ++i) {
         math::LagrangePolynomialDerivWeights(section_xi[i], beam_node_xi, weights);
         for (auto j = 0U; j < n_nodes; ++j) {
-            shape_deriv_node[i * n_nodes + j] = weights[j];
+            shape_deriv_node[(i * n_nodes) + j] = weights[j];
         }
     }
     return shape_deriv_node;
@@ -282,7 +282,7 @@ void AerodynamicBody::AddTwistToReferenceLocation(
             x_tan[i][component] = 0.;
         }
         for (auto j = 0U; j < n_nodes; ++j) {
-            auto coeff = shape_deriv_node[i * n_nodes + j];
+            auto coeff = shape_deriv_node[(i * n_nodes) + j];
             for (auto component = 0U; component < 3U; ++component) {
                 x_tan[i][component] += coeff * node_x[j][component];
             }
@@ -318,7 +318,7 @@ std::vector<std::array<double, 3>> AerodynamicBody::ComputeConMotion(
     for (auto section = 0U; section < n_sections; ++section) {
         const auto& node = input.aero_sections[section];
         const auto vec = CalculateConMotionVector(
-            node.section_offset_y - node.aerodynamic_center * node.chord, node.section_offset_x
+            node.section_offset_y - (node.aerodynamic_center * node.chord), node.section_offset_x
         );
         for (auto component = 0U; component < 3U; ++component) {
             con_motion[section][component] = vec[component];
@@ -337,7 +337,7 @@ std::vector<double> AerodynamicBody::ComputeShapeDerivJacobian(
     for (auto i = 0U; i < n_sections; ++i) {
         math::LagrangePolynomialDerivWeights(jacobian_xi[i], beam_node_xi, weights);
         for (auto j = 0U; j < n_nodes; ++j) {
-            shape_deriv_jac[i * n_nodes + j] = weights[j];
+            shape_deriv_jac[(i * n_nodes) + j] = weights[j];
         }
     }
     return shape_deriv_jac;
@@ -351,7 +351,7 @@ std::vector<double> AerodynamicBody::ComputeDeltaS(
     auto node_x_flat = std::vector<double>(3U * n_sections);
     for (auto direction = 0U; direction < 3U; ++direction) {
         for (auto section = 0U; section < n_sections; ++section) {
-            node_x_flat[direction * n_sections + section] = node_x[section][direction];
+            node_x_flat[(direction * n_sections) + section] = node_x[section][direction];
         }
     }
     return CalculateAeroNodeWidths(jacobian_xi, shape_deriv_jac, node_x_flat);
@@ -491,7 +491,7 @@ void AerodynamicBody::CalculateNodalLoads() {
 
     for (auto node = 0U; node < node_f.size(); ++node) {
         for (auto section = 0U; section < loads.size(); ++section) {
-            auto coeff = motion_interp[section * node_f.size() + node];
+            auto coeff = motion_interp[(section * node_f.size()) + node];
             for (auto component = 0U; component < 3U; ++component) {
                 node_f[node][component] += coeff * loads[section][component];
             }
@@ -500,7 +500,7 @@ void AerodynamicBody::CalculateNodalLoads() {
 
     for (auto node = 0U; node < node_f.size(); ++node) {
         for (auto section = 0U; section < ref_axis_moments.size(); ++section) {
-            auto coeff = motion_interp[section * node_f.size() + node];
+            auto coeff = motion_interp[(section * node_f.size()) + node];
             for (auto component = 0U; component < 3U; ++component) {
                 node_f[node][component + 3U] += coeff * ref_axis_moments[section][component];
             }

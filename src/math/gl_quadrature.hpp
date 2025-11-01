@@ -17,17 +17,17 @@ inline std::vector<double> GetGlLocations(size_t order) {
             return std::vector{-std::sqrt(3. / 5.), 0., std::sqrt(3. / 5.)};
         case 4UL:
             return std::vector{
-                -std::sqrt((3. / 7.) + (2. / 7.) * std::sqrt(6. / 5.)),
-                -std::sqrt((3. / 7.) - (2. / 7.) * std::sqrt(6. / 5.)),
-                std::sqrt((3. / 7.) - (2. / 7.) * std::sqrt(6. / 5.)),
-                std::sqrt((3. / 7.) + (2. / 7.) * std::sqrt(6. / 5.))
+                -std::sqrt((3. / 7.) + ((2. / 7.) * std::sqrt(6. / 5.))),
+                -std::sqrt((3. / 7.) - ((2. / 7.) * std::sqrt(6. / 5.))),
+                std::sqrt((3. / 7.) - ((2. / 7.) * std::sqrt(6. / 5.))),
+                std::sqrt((3. / 7.) + ((2. / 7.) * std::sqrt(6. / 5.)))
             };
         case 5UL:
             return std::vector{
-                -(1. / 3.) * std::sqrt(5. + 2. * std::sqrt(10. / 7.)),
-                -(1. / 3.) * std::sqrt(5. - 2. * std::sqrt(10. / 7.)), 0.,
-                (1. / 3.) * std::sqrt(5. - 2. * std::sqrt(10. / 7.)),
-                (1. / 3.) * std::sqrt(5. + 2. * std::sqrt(10. / 7.))
+                -(1. / 3.) * std::sqrt(5. + (2. * std::sqrt(10. / 7.))),
+                -(1. / 3.) * std::sqrt(5. - (2. * std::sqrt(10. / 7.))), 0.,
+                (1. / 3.) * std::sqrt(5. - (2. * std::sqrt(10. / 7.))),
+                (1. / 3.) * std::sqrt(5. + (2. * std::sqrt(10. / 7.)))
             };
         case 6UL:
             return std::vector{-0.9324695142031520501, -0.6612093864662644815,

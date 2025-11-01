@@ -45,8 +45,14 @@ TEST(CalculateRotationControlConstraintTests, OneConstraint) {
     Kokkos::parallel_for(
         "CalculateRotationControlConstraint", 1,
         ExecuteCalculateRotationControlConstraint{
-            X0, axes, constraint_inputs, base_node_u, target_node_u, residual_terms,
-            base_gradient_terms, target_gradient_terms
+            .X0 = X0,
+            .axes = axes,
+            .constraint_inputs = constraint_inputs,
+            .base_node_u = base_node_u,
+            .target_node_u = target_node_u,
+            .residual_terms = residual_terms,
+            .base_gradient_terms = base_gradient_terms,
+            .target_gradient_terms = target_gradient_terms
         }
     );
 

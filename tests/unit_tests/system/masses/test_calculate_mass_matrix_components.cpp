@@ -34,7 +34,8 @@ TEST(CalculateMassMatrixComponentsMassesTests, OneQuadPoint) {
     const auto rho = Kokkos::View<double[3][3]>("rho");
 
     Kokkos::parallel_for(
-        "CalculateMassMatrixComponents", 1, ExecuteCalculateMassMatrixComponents{Muu, eta, rho}
+        "CalculateMassMatrixComponents", 1,
+        ExecuteCalculateMassMatrixComponents{.Muu = Muu, .eta = eta, .rho = rho}
     );
 
     constexpr auto eta_exact_data = std::array{32., -31., 25.};

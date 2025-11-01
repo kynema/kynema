@@ -5,11 +5,10 @@
 #include "step/step.hpp"
 #include "test_utilities.hpp"
 
-namespace kynema::tests {
-
+namespace {
 inline auto SetUpMasses() {
     // Create model object
-    auto model = Model();
+    auto model = kynema::Model();
 
     // Set gravity
     model.SetGravity(0., 0., 9.81);
@@ -37,11 +36,15 @@ inline auto SetUpMasses() {
     // Create state
     auto state = model.CreateState<DeviceType>();
 
-    auto parameters = StepParameters(false, 0, 0., 0.);
-    step::UpdateSystemVariablesMasses(parameters, masses, state);
+    auto parameters = kynema::StepParameters(false, 0, 0., 0.);
+    kynema::step::UpdateSystemVariablesMasses(parameters, masses, state);
 
     return masses;
 }
+
+}  // namespace
+
+namespace kynema::tests {
 
 TEST(MassesTest, NodeInitialPosition) {
     const auto masses = SetUpMasses();

@@ -1113,16 +1113,16 @@ TEST(BeamComponentTest, Quadrature_GL_ThreeSections_OneRefinement) {
     const auto beam_elements = model.GetBeamElements();
     const auto quadrature = beam_elements.front().quadrature;
 
-    EXPECT_NEAR(quadrature[0][0], -.5 - 1. / std::sqrt(3.) / 2., 1.e-15);
+    EXPECT_NEAR(quadrature[0][0], -.5 - (1. / std::sqrt(3.) / 2.), 1.e-15);
     EXPECT_NEAR(quadrature[0][1], .5, 1.e-15);
 
-    EXPECT_NEAR(quadrature[1][0], -.5 + 1. / std::sqrt(3.) / 2., 1.e-15);
+    EXPECT_NEAR(quadrature[1][0], -.5 + (1. / std::sqrt(3.) / 2.), 1.e-15);
     EXPECT_NEAR(quadrature[1][1], .5, 1.e-15);
 
-    EXPECT_NEAR(quadrature[2][0], .5 - 1. / std::sqrt(3.) / 2., 1.e-15);
+    EXPECT_NEAR(quadrature[2][0], .5 - (1. / std::sqrt(3.) / 2.), 1.e-15);
     EXPECT_NEAR(quadrature[2][1], .5, 1.e-15);
 
-    EXPECT_NEAR(quadrature[3][0], .5 + 1. / std::sqrt(3.) / 2., 1.e-15);
+    EXPECT_NEAR(quadrature[3][0], .5 + (1. / std::sqrt(3.) / 2.), 1.e-15);
     EXPECT_NEAR(quadrature[3][1], .5, 1.e-15);
 }
 
@@ -1163,64 +1163,64 @@ TEST(BeamComponentTest, Quadrature_GL_ElevenSections_OneRefinement) {
     const auto beam_elements = model.GetBeamElements();
     const auto quadrature = beam_elements.front().quadrature;
 
-    EXPECT_NEAR(quadrature[0][0], -.9 - 1. / std::sqrt(3.) / 10., 1.e-15);
+    EXPECT_NEAR(quadrature[0][0], -.9 - (1. / std::sqrt(3.) / 10.), 1.e-15);
     EXPECT_NEAR(quadrature[0][1], .1, 1.e-15);
 
-    EXPECT_NEAR(quadrature[1][0], -.9 + 1. / std::sqrt(3.) / 10., 1.e-15);
+    EXPECT_NEAR(quadrature[1][0], -.9 + (1. / std::sqrt(3.) / 10.), 1.e-15);
     EXPECT_NEAR(quadrature[1][1], .1, 1.e-15);
 
-    EXPECT_NEAR(quadrature[2][0], -.7 - 1. / std::sqrt(3.) / 10., 1.e-15);
+    EXPECT_NEAR(quadrature[2][0], -.7 - (1. / std::sqrt(3.) / 10.), 1.e-15);
     EXPECT_NEAR(quadrature[2][1], .1, 1.e-15);
 
-    EXPECT_NEAR(quadrature[3][0], -.7 + 1. / std::sqrt(3.) / 10., 1.e-15);
+    EXPECT_NEAR(quadrature[3][0], -.7 + (1. / std::sqrt(3.) / 10.), 1.e-15);
     EXPECT_NEAR(quadrature[3][1], .1, 1.e-15);
 
-    EXPECT_NEAR(quadrature[4][0], -.5 - 1. / std::sqrt(3.) / 10., 1.e-15);
+    EXPECT_NEAR(quadrature[4][0], -.5 - (1. / std::sqrt(3.) / 10.), 1.e-15);
     EXPECT_NEAR(quadrature[4][1], .1, 1.e-15);
 
-    EXPECT_NEAR(quadrature[5][0], -.5 + 1. / std::sqrt(3.) / 10., 1.e-15);
+    EXPECT_NEAR(quadrature[5][0], -.5 + (1. / std::sqrt(3.) / 10.), 1.e-15);
     EXPECT_NEAR(quadrature[5][1], .1, 1.e-15);
 
-    EXPECT_NEAR(quadrature[6][0], -.3 - 1. / std::sqrt(3.) / 10., 1.e-15);
+    EXPECT_NEAR(quadrature[6][0], -.3 - (1. / std::sqrt(3.) / 10.), 1.e-15);
     EXPECT_NEAR(quadrature[6][1], .1, 1.e-15);
 
-    EXPECT_NEAR(quadrature[7][0], -.3 + 1. / std::sqrt(3.) / 10., 1.e-15);
+    EXPECT_NEAR(quadrature[7][0], -.3 + (1. / std::sqrt(3.) / 10.), 1.e-15);
     EXPECT_NEAR(quadrature[7][1], .1, 1.e-15);
 
-    EXPECT_NEAR(quadrature[8][0], -.1 - 1. / std::sqrt(3.) / 10., 1.e-15);
+    EXPECT_NEAR(quadrature[8][0], -.1 - (1. / std::sqrt(3.) / 10.), 1.e-15);
     EXPECT_NEAR(quadrature[8][1], .1, 1.e-15);
 
-    EXPECT_NEAR(quadrature[9][0], -.1 + 1. / std::sqrt(3.) / 10., 1.e-15);
+    EXPECT_NEAR(quadrature[9][0], -.1 + (1. / std::sqrt(3.) / 10.), 1.e-15);
     EXPECT_NEAR(quadrature[9][1], .1, 1.e-15);
 
-    EXPECT_NEAR(quadrature[10][0], .1 - 1. / std::sqrt(3.) / 10., 1.e-15);
+    EXPECT_NEAR(quadrature[10][0], .1 - (1. / std::sqrt(3.) / 10.), 1.e-15);
     EXPECT_NEAR(quadrature[10][1], .1, 1.e-15);
 
-    EXPECT_NEAR(quadrature[11][0], .1 + 1. / std::sqrt(3.) / 10., 1.e-15);
+    EXPECT_NEAR(quadrature[11][0], .1 + (1. / std::sqrt(3.) / 10.), 1.e-15);
     EXPECT_NEAR(quadrature[11][1], .1, 1.e-15);
 
-    EXPECT_NEAR(quadrature[12][0], .3 - 1. / std::sqrt(3.) / 10., 1.e-15);
+    EXPECT_NEAR(quadrature[12][0], .3 - (1. / std::sqrt(3.) / 10.), 1.e-15);
     EXPECT_NEAR(quadrature[12][1], .1, 1.e-15);
 
-    EXPECT_NEAR(quadrature[13][0], .3 + 1. / std::sqrt(3.) / 10., 1.e-15);
+    EXPECT_NEAR(quadrature[13][0], .3 + (1. / std::sqrt(3.) / 10.), 1.e-15);
     EXPECT_NEAR(quadrature[13][1], .1, 1.e-15);
 
-    EXPECT_NEAR(quadrature[14][0], .5 - 1. / std::sqrt(3.) / 10., 1.e-15);
+    EXPECT_NEAR(quadrature[14][0], .5 - (1. / std::sqrt(3.) / 10.), 1.e-15);
     EXPECT_NEAR(quadrature[14][1], .1, 1.e-15);
 
-    EXPECT_NEAR(quadrature[15][0], .5 + 1. / std::sqrt(3.) / 10., 1.e-15);
+    EXPECT_NEAR(quadrature[15][0], .5 + (1. / std::sqrt(3.) / 10.), 1.e-15);
     EXPECT_NEAR(quadrature[15][1], .1, 1.e-15);
 
-    EXPECT_NEAR(quadrature[16][0], .7 - 1. / std::sqrt(3.) / 10., 1.e-15);
+    EXPECT_NEAR(quadrature[16][0], .7 - (1. / std::sqrt(3.) / 10.), 1.e-15);
     EXPECT_NEAR(quadrature[16][1], .1, 1.e-15);
 
-    EXPECT_NEAR(quadrature[17][0], .7 + 1. / std::sqrt(3.) / 10., 1.e-15);
+    EXPECT_NEAR(quadrature[17][0], .7 + (1. / std::sqrt(3.) / 10.), 1.e-15);
     EXPECT_NEAR(quadrature[17][1], .1, 1.e-15);
 
-    EXPECT_NEAR(quadrature[18][0], .9 - 1. / std::sqrt(3.) / 10., 1.e-15);
+    EXPECT_NEAR(quadrature[18][0], .9 - (1. / std::sqrt(3.) / 10.), 1.e-15);
     EXPECT_NEAR(quadrature[18][1], .1, 1.e-15);
 
-    EXPECT_NEAR(quadrature[19][0], .9 + 1. / std::sqrt(3.) / 10., 1.e-15);
+    EXPECT_NEAR(quadrature[19][0], .9 + (1. / std::sqrt(3.) / 10.), 1.e-15);
     EXPECT_NEAR(quadrature[19][1], .1, 1.e-15);
 }
 

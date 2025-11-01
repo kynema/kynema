@@ -307,7 +307,7 @@ TEST(TurbineInterfaceTest, IEA15_ROSCOControllerWithAero) {
         {{{hub_mass, 0., 0., 0., 0., 0.},
           {0., hub_mass, 0., 0., 0., 0.},
           {0., 0., hub_mass, 0., 0., 0.},
-          {0., 0., 0., hub_inertia[0] + generator_inertia[0] * gearbox_ratio * gearbox_ratio,
+          {0., 0., 0., hub_inertia[0] + (generator_inertia[0] * gearbox_ratio * gearbox_ratio),
            hub_inertia[3], hub_inertia[4]},
           {0., 0., 0., hub_inertia[3], hub_inertia[1], hub_inertia[5]},
           {0., 0., 0., hub_inertia[4], hub_inertia[5], hub_inertia[2]}}}
@@ -374,9 +374,21 @@ TEST(TurbineInterfaceTest, IEA15_ROSCOControllerWithAero) {
         interfaces::components::InflowType::Uniform,
         interfaces::components::UniformFlow{
             std::vector<interfaces::components::UniformFlowParameters>{
-                {0., hub_wind_speed_init, h_ref, pl_exp, flow_angle_init},
-                {5.0, hub_wind_speed_init, h_ref, pl_exp, flow_angle_init},
-                {30.0, hub_wind_speed_final, h_ref, pl_exp, flow_angle_final}
+                {.time = 0.,
+                 .velocity_horizontal = hub_wind_speed_init,
+                 .height_reference = h_ref,
+                 .shear_vertical = pl_exp,
+                 .flow_angle_horizontal = flow_angle_init},
+                {.time = 5.0,
+                 .velocity_horizontal = hub_wind_speed_init,
+                 .height_reference = h_ref,
+                 .shear_vertical = pl_exp,
+                 .flow_angle_horizontal = flow_angle_init},
+                {.time = 30.0,
+                 .velocity_horizontal = hub_wind_speed_final,
+                 .height_reference = h_ref,
+                 .shear_vertical = pl_exp,
+                 .flow_angle_horizontal = flow_angle_final}
             }
         }
     };

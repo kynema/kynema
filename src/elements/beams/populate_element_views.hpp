@@ -36,7 +36,7 @@ inline void PopulateQPWeight(
 inline std::vector<double> MapNodePositions(const BeamElement& elem, std::span<const Node> nodes) {
     std::vector<double> node_xi(elem.node_ids.size());
     std::ranges::transform(elem.node_ids, std::begin(node_xi), [&](auto node_id) {
-        return 2. * nodes[node_id].s - 1.;
+        return (2. * nodes[node_id].s) - 1.;
     });
     return node_xi;
 }
@@ -81,7 +81,7 @@ inline void PopulateShapeFunctionDerivatives(
 inline std::vector<double> MapSectionPositions(const BeamElement& elem) {
     std::vector<double> section_xi(elem.sections.size());
     std::ranges::transform(elem.sections, std::begin(section_xi), [](const auto& section) {
-        return 2. * section.position - 1.;
+        return (2. * section.position) - 1.;
     });
     return section_xi;
 }

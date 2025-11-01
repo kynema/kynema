@@ -17,7 +17,7 @@ TEST(UpdateGlobalPosition, OneNode) {
 
     Kokkos::parallel_for(
         "UpdateGlobalPosition", 1,
-        state::UpdateGlobalPosition<Kokkos::DefaultExecutionSpace>{q, x0, x}
+        state::UpdateGlobalPosition<Kokkos::DefaultExecutionSpace>{.q = q, .x0 = x0, .x = x}
     );
 
     constexpr auto x_exact_data = std::array{9., 11., 13., -192., 96., 132., 126.};

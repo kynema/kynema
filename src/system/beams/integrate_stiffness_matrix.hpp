@@ -42,7 +42,7 @@ struct IntegrateStiffnessMatrixElement {
 
         constexpr auto width = simd_type::size();
         const auto extra_component = num_nodes % width == 0U ? 0U : 1U;
-        const auto simd_nodes = num_nodes / width + extra_component;
+        const auto simd_nodes = (num_nodes / width) + extra_component;
         const auto node = node_simd_node / simd_nodes;
         const auto simd_node = (node_simd_node % simd_nodes) * width;
 

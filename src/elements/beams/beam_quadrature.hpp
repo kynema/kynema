@@ -34,7 +34,7 @@ inline std::vector<std::array<double, 2>> CreateTrapezoidalQuadrature(std::span<
         std::views::iota(1U, n - 1), std::back_inserter(quadrature),
         [grid, gm = grid_min, grid_range](auto i) {
             return std::array{
-                2. * (grid[i] - gm) / grid_range - 1., (grid[i + 1] - grid[i - 1]) / grid_range
+                (2. * (grid[i] - gm) / grid_range) - 1., (grid[i + 1] - grid[i - 1]) / grid_range
             };
         }
     );
@@ -56,7 +56,7 @@ inline std::vector<std::array<double, 2>> CreateGaussLegendreLobattoQuadrature(
     std::ranges::transform(
         grid, std::back_inserter(quadrature),
         [gm = grid_min, grid_range](auto grid_location) {
-            return std::array{2. * (grid_location - gm) / grid_range - 1., 0.};
+            return std::array{(2. * (grid_location - gm) / grid_range) - 1., 0.};
         }
     );
 
@@ -98,7 +98,7 @@ inline std::vector<std::array<double, 2>> CreateGaussLegendreQuadrature(
     std::ranges::transform(
         grid, std::back_inserter(quadrature),
         [gm = grid_min, grid_range](auto grid_location) {
-            return std::array{2. * (grid_location - gm) / grid_range - 1., 0.};
+            return std::array{(2. * (grid_location - gm) / grid_range) - 1., 0.};
         }
     );
 

@@ -6,6 +6,7 @@
 #include <span>
 #include <stdexcept>
 #include <string>
+#include <utility>
 #include <vector>
 
 #include "vendor/dylib/dylib.hpp"
@@ -140,12 +141,10 @@ struct TurbineConfig {
         }
 
         // Check if there are any nodes defined for each blade
-        for (const auto& blade : blade_initial_states) {
-            if (blade.node_initial_positions.empty()) {
-                throw std::runtime_error(
-                    "No nodes defined for a blade. At least one node is required."
-                );
-            }
+        if (std::ranges::any_of(blade_initial_states, [](auto& blade) {
+                return blade.node_initial_positions.empty();
+            })) {
+            throw std::runtime_error("No nodes defined for a blade. At least one node is required.");
         }
     }
 
@@ -196,7 +195,7 @@ struct MeshData {
     std::vector<std::array<float, 6>> load;  //< N x 6 array [Fx, Fy, Fz, Mx, My, Mz]
 
     /// Constructor to initialize all mesh data to zero based on provided number of nodes
-    MeshData(size_t n_nodes)
+    explicit MeshData(size_t n_nodes)
         : n_points(static_cast<int32_t>(n_nodes)),
           position(n_nodes, std::array{0.F, 0.F, 0.F}),
           orientation(
@@ -260,7 +259,7 @@ struct MeshData {
         size_t point_number, std::span<const double, 7> pos, std::span<const double, 6> vel,
         std::span<const double, 6> acc
     ) {
-        if (point_number >= static_cast<size_t>(n_points)) {
+        if (std::cmp_greater_equal(point_number, n_points)) {
             throw std::out_of_range("point number out of range.");
         }
         SetPositionAndOrientation(
@@ -313,7 +312,7 @@ struct TurbineData {
      *
      * @param tc The TurbineConfig object containing the initial state of the turbine
      */
-    TurbineData(const TurbineConfig& tc)
+    explicit TurbineData(const TurbineConfig& tc)
         : n_blades(static_cast<int32_t>(tc.NumberOfBlades())),
           hub(1),
           nacelle(1),
@@ -359,10 +358,12 @@ struct TurbineData {
 
         // Check if the total number of blade nodes is valid - should be the same as the number of
         // aggregrated blade nodes
-        size_t total_nodes = 0;
-        for (const auto& bl : node_indices_by_blade) {
-            total_nodes += bl.size();
-        }
+        const auto total_nodes = std::transform_reduce(
+            std::cbegin(node_indices_by_blade), std::cend(node_indices_by_blade), 0UL, std::plus{},
+            [](const auto& blade) {
+                return blade.size();
+            }
+        );
         if (total_nodes != blade_nodes.NumberOfMeshPoints()) {
             throw std::runtime_error("Total number of blade nodes mismatch.");
         }
@@ -430,7 +431,7 @@ struct TurbineData {
         size_t blade_number, const std::array<double, 7>& position,
         const std::array<double, 6>& velocity, const std::array<double, 6>& acceleration
     ) {
-        if (blade_number >= static_cast<size_t>(n_blades)) {
+        if (std::cmp_greater_equal(blade_number, n_blades)) {
             throw std::out_of_range("Blade number out of range.");
         }
 
@@ -497,7 +498,7 @@ struct TurbineData {
      */
     [[nodiscard]] std::array<double, 6> GetBladeNodeLoad(size_t blade_number, size_t node_number)
         const {
-        if (blade_number >= static_cast<size_t>(n_blades) ||
+        if (std::cmp_greater_equal(blade_number, n_blades) ||
             node_number >= node_indices_by_blade[blade_number].size()) {
             throw std::out_of_range("Blade or node number out of range.");
         }
@@ -677,7 +678,7 @@ public:
      * @param sc Simulation control settings
      * @param vtk VTK output settings
      */
-    AeroDynInflowLibrary(
+    explicit AeroDynInflowLibrary(
         const std::string& shared_lib_path = "aerodyn_inflow_c_binding.dll",
         ErrorHandling eh = ErrorHandling{}, FluidProperties fp = FluidProperties{},
         EnvironmentalConditions ec = EnvironmentalConditions{},
@@ -821,8 +822,8 @@ public:
         auto inflowwind_input_length = static_cast<int32_t>(sim_controls_.inflowwind_input.size());
 
         // Channel name and channel unit string arrays
-        std::string channel_names_c(20 * 8000 + 1, ' ');  //< Output channel names
-        std::string channel_units_c(20 * 8000 + 1, ' ');  //< Output channel units
+        std::string channel_names_c((20 * 8000) + 1, ' ');  //< Output channel names
+        std::string channel_units_c((20 * 8000) + 1, ' ');  //< Output channel units
 
         // Number of output channels (set by ADI_C_Init)
         int32_t n_channels{0};

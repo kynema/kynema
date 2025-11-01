@@ -70,7 +70,7 @@ TEST(AerodynamicsComponentTest, CalculateAerodynamicLoad_Case1) {
     );
 
     constexpr auto expected_load = std::array{0., 45.9375, -91.875, -7.35, 0., 0.};
-    constexpr auto expected_ref_axis_moment = std::array{-7.35 - 91.875 / 2., 0., 0.};
+    constexpr auto expected_ref_axis_moment = std::array{-7.35 - (91.875 / 2.), 0., 0.};
 
     EXPECT_NEAR(load[0], expected_load[0], 1.e-10);
     EXPECT_NEAR(load[1], expected_load[1], 1.e-10);
@@ -112,7 +112,8 @@ TEST(AerodynamicsComponentTest, CalculateAerodynamicLoad_Case2) {
 
     constexpr auto expected_load =
         std::array{0., 31.04778878834331, -104.68509627290281, -7.7175, 0., 0.};
-    constexpr auto expected_ref_axis_moment = std::array{-7.7175 - 104.68509627290281 / 2., 0., 0.};
+    constexpr auto expected_ref_axis_moment =
+        std::array{-7.7175 - (104.68509627290281 / 2.), 0., 0.};
 
     EXPECT_NEAR(load[0], expected_load[0], 1.e-10);
     EXPECT_NEAR(load[1], expected_load[1], 1.e-10);
@@ -211,7 +212,7 @@ TEST(AerodynamicsComponentTest, CalculateAeroNodeWidths_Straight) {
     for (auto i = 0U; i < jacobian_xi.size(); ++i) {
         kynema::math::LagrangePolynomialDerivWeights(jacobian_xi[i], beam_node_xi, weights);
         for (auto j = 0U; j < beam_node_xi.size(); ++j) {
-            jacobian_integration_matrix[i * beam_node_xi.size() + j] = weights[j];
+            jacobian_integration_matrix[(i * beam_node_xi.size()) + j] = weights[j];
         }
     }
 
@@ -240,7 +241,7 @@ TEST(AerodynamicsComponentTest, CalculateAeroNodeWidths_Curved) {
     for (auto i = 0U; i < jacobian_xi.size(); ++i) {
         kynema::math::LagrangePolynomialDerivWeights(jacobian_xi[i], beam_node_xi, weights);
         for (auto j = 0U; j < beam_node_xi.size(); ++j) {
-            jacobian_integration_matrix[i * beam_node_xi.size() + j] = weights[j];
+            jacobian_integration_matrix[(i * beam_node_xi.size()) + j] = weights[j];
         }
     }
 

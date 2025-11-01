@@ -81,7 +81,7 @@ void NodeStateWriter::WriteStateDataAtTimestep(
     // "a" -> acceleration
     // "f" -> force
     static const std::array<std::string_view, 5> valid_prefixes = {"x", "u", "v", "a", "f"};
-    if (std::none_of(valid_prefixes.begin(), valid_prefixes.end(), [&](const auto& prefix) {
+    if (std::ranges::none_of(valid_prefixes, [&](const auto& prefix) {
             return prefix == component_prefix;
         })) {
         throw std::invalid_argument("Invalid component prefix: " + component_prefix);

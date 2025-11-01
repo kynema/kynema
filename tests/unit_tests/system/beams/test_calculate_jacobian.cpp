@@ -26,8 +26,12 @@ TEST(CalculateJacobian, LinearElement) {
     const auto qp_jacobian = Kokkos::View<double[1][1]>("qp_jacobian");
 
     const auto calculate_jacobian = CalculateJacobian<Kokkos::DefaultExecutionSpace>{
-        num_nodes_per_elem,     num_qps_per_elem,       shape_derivative,
-        node_position_rotation, qp_position_derivative, qp_jacobian
+        .num_nodes_per_element = num_nodes_per_elem,
+        .num_qps_per_element = num_qps_per_elem,
+        .shape_derivative = shape_derivative,
+        .node_position_rotation = node_position_rotation,
+        .qp_position_derivative = qp_position_derivative,
+        .qp_jacobian = qp_jacobian
     };
     Kokkos::parallel_for("calculate_jacobian", 1, calculate_jacobian);
 
@@ -117,8 +121,12 @@ TEST(CalculateJacobian, FourthOrderElement) {
     const auto qp_jacobian = Kokkos::View<double[num_elems][num_nodes]>("qp_jacobian");
 
     const auto calculate_jacobian = CalculateJacobian<Kokkos::DefaultExecutionSpace>{
-        num_nodes_per_elem,     num_qps_per_elem,       shape_derivative,
-        node_position_rotation, qp_position_derivative, qp_jacobian
+        .num_nodes_per_element = num_nodes_per_elem,
+        .num_qps_per_element = num_qps_per_elem,
+        .shape_derivative = shape_derivative,
+        .node_position_rotation = node_position_rotation,
+        .qp_position_derivative = qp_position_derivative,
+        .qp_jacobian = qp_jacobian
     };
     Kokkos::parallel_for("calculate_jacobian", 1, calculate_jacobian);
 
@@ -146,9 +154,9 @@ TEST(CalculateJacobian, FourthOrderElement) {
 
     for (auto qp : std::views::iota(0U, num_qps)) {
         const auto magnitude = std::sqrt(
-            host_qp_position_derivative(0, qp, 0) * host_qp_position_derivative(0, qp, 0) +
-            host_qp_position_derivative(0, qp, 1) * host_qp_position_derivative(0, qp, 1) +
-            host_qp_position_derivative(0, qp, 2) * host_qp_position_derivative(0, qp, 2)
+            (host_qp_position_derivative(0, qp, 0) * host_qp_position_derivative(0, qp, 0)) +
+            (host_qp_position_derivative(0, qp, 1) * host_qp_position_derivative(0, qp, 1)) +
+            (host_qp_position_derivative(0, qp, 2) * host_qp_position_derivative(0, qp, 2))
         );
         EXPECT_NEAR(magnitude, 1., 1e-12);  // unit vector
     }

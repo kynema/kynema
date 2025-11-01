@@ -39,8 +39,12 @@ TEST(CalculateRigidJointConstraintTests, OneConstraint) {
     Kokkos::parallel_for(
         "CalculatePrescribedBCConstraint", 1,
         ExecuteCalculateRigidJointConstraint{
-            X0, base_node_u, target_node_u, residual_terms, base_gradient_terms,
-            target_gradient_terms
+            .X0 = X0,
+            .base_node_u = base_node_u,
+            .target_node_u = target_node_u,
+            .residual_terms = residual_terms,
+            .base_gradient_terms = base_gradient_terms,
+            .target_gradient_terms = target_gradient_terms
         }
     );
 

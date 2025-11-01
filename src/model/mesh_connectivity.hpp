@@ -1,5 +1,6 @@
 #pragma once
 
+#include <algorithm>
 #include <fstream>
 #include <span>
 #include <unordered_map>
@@ -192,7 +193,7 @@ private:
         for (const auto& [id, _] : map) {
             keys.push_back(id);
         }
-        std::sort(keys.begin(), keys.end());
+        std::ranges::sort(keys);
 
         // Add each element in sorted order of id
         for (const auto& id : keys) {

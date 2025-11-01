@@ -25,7 +25,14 @@ struct ExecuteCalculateRevoluteJointOutput {
     KOKKOS_FUNCTION
     void operator()(int) const {
         constraints::CalculateRevoluteJointOutput<Kokkos::DefaultExecutionSpace>{
-            i_constraint, target_node_index, axes, node_x0, node_u, node_udot, node_uddot, outputs
+            .constraint = i_constraint,
+            .target_node_index = target_node_index,
+            .axes = axes,
+            .node_x0 = node_x0,
+            .node_u = node_u,
+            .node_udot = node_udot,
+            .node_uddot = node_uddot,
+            .outputs = outputs
         }();
     }
 };
@@ -53,7 +60,14 @@ TEST(CalculateRevoluteJointOutputTests, OneConstraint) {
     Kokkos::parallel_for(
         "CalculateRevoluteJointOutput", 1,
         ExecuteCalculateRevoluteJointOutput{
-            0, target_node_index, axes, node_x0, node_u, node_udot, node_uddot, outputs
+            .i_constraint = 0,
+            .target_node_index = target_node_index,
+            .axes = axes,
+            .node_x0 = node_x0,
+            .node_u = node_u,
+            .node_udot = node_udot,
+            .node_uddot = node_uddot,
+            .outputs = outputs
         }
     );
 

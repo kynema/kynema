@@ -19,7 +19,7 @@
 
 #include "Kynema_config.h"
 
-namespace kynema::tests {
+namespace {
 
 constexpr bool use_node_loads = true;
 
@@ -65,7 +65,7 @@ template <
     typename T1, typename T2, typename T3, typename T4, typename T5, typename T6, typename T7,
     typename T8>
 void SetRotorMotion(
-    util::TurbineData& turbine, const std::vector<std::vector<size_t>>& beam_elem_node_ids,
+    kynema::util::TurbineData& turbine, const std::vector<std::vector<size_t>>& beam_elem_node_ids,
     const std::vector<size_t>& root_node_ids, const size_t& hub_node_id, const size_t& n_qps,
     const T1& host_state_x, const T2& host_state_v, const T3& host_state_vd, const T4& host_qp_x,
     const T5& host_qp_u_dot, const T6& host_qp_omega, const T7& host_qp_u_ddot,
@@ -117,8 +117,9 @@ void SetRotorMotion(
 
 template <typename DeviceType, typename T1, typename T2>
 void SetAeroLoads(
-    Beams<DeviceType>& beams, const size_t n_blades, const size_t n_nodes, const size_t n_qps,
-    const util::TurbineData& turbine, const T1& host_node_FX, const T2& host_qp_Fe
+    kynema::Beams<DeviceType>& beams, const size_t n_blades, const size_t n_nodes,
+    const size_t n_qps, const kynema::util::TurbineData& turbine, const T1& host_node_FX,
+    const T2& host_qp_Fe
 ) {
     if (use_node_loads) {
         for (auto j : std::views::iota(0U, n_blades)) {
@@ -142,6 +143,10 @@ void SetAeroLoads(
         Kokkos::deep_copy(beams.qp_Fe, host_qp_Fe);
     }
 }
+
+}  // namespace
+
+namespace kynema::tests {
 
 TEST(Milestone, IEA15RotorAeroController) {
     // Conversions
@@ -178,7 +183,7 @@ TEST(Milestone, IEA15RotorAeroController) {
     constexpr double step_size{0.01};  // seconds
     constexpr double rho_inf{0.0};
     constexpr double t_end{1.0};  // seconds
-    constexpr auto num_steps{static_cast<size_t>(t_end / step_size + 1.)};
+    constexpr auto num_steps{static_cast<size_t>((t_end / step_size) + 1.)};
 
     // Create model for adding nodes and constraints
     auto model = Model();
@@ -251,7 +256,7 @@ TEST(Milestone, IEA15RotorAeroController) {
     std::vector<Eigen::Quaternion<double>> q_roots;
     q_roots.reserve(n_blades);
     for (auto i : std::views::iota(0U, n_blades)) {
-        const auto angle = d_theta * static_cast<double>(i) + azimuth_init;
+        const auto angle = (d_theta * static_cast<double>(i)) + azimuth_init;
         q_roots.emplace_back(Eigen::AngleAxis<double>(angle, Eigen::Matrix<double, 3, 1>::Unit(0)));
     }
 

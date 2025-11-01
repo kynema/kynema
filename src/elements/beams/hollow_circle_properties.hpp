@@ -57,7 +57,7 @@ static HollowCircleProperties CalculateHollowCircleProperties(
     const double kx = (6. * (1. + nu)) / (7. + 6. * nu);  // Timoshenko-Ehrenfest beam theory
     const double ky = kx;                                 // Circular symmetry
 
-    return HollowCircleProperties{area, Ixx, Iyy, J, kx, ky};
+    return HollowCircleProperties{.area = area, .Ixx = Ixx, .Iyy = Iyy, .J = J, .kx = kx, .ky = ky};
 }
 
 /**

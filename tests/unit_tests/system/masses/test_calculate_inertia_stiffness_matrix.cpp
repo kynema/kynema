@@ -54,7 +54,15 @@ TEST(CalculateInertiaStiffnessMatrixMassesTests, OneNode) {
     Kokkos::parallel_for(
         "CalculateInertiaStiffnessMatrix", 1,
         ExecuteCalculateInertiaStiffnessMatrix{
-            mass, u_ddot, omega, omega_dot, omega_tilde, omega_dot_tilde, rho, eta, Kuu
+            .mass = mass,
+            .u_ddot = u_ddot,
+            .omega = omega,
+            .omega_dot = omega_dot,
+            .omega_tilde = omega_tilde,
+            .omega_dot_tilde = omega_dot_tilde,
+            .rho = rho,
+            .eta = eta,
+            .Kuu = Kuu
         }
     );
 

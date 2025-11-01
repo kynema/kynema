@@ -8,11 +8,23 @@
 #include "elements/beams/interpolate_QP_vector.hpp"
 #include "test_interpolate_QP.hpp"
 
-namespace kynema::beams::tests {
+namespace {
 
 inline auto create_node_u_dot_OneNode() {
-    return CreateView<double[1][1][6]>("node_u_dot", std::array{1., 2., 3., 4., 5., 6.});
+    return kynema::beams::tests::CreateView<double[1][1][6]>(
+        "node_u_dot", std::array{1., 2., 3., 4., 5., 6.}
+    );
 }
+
+inline auto create_node_u_dot_TwoNode() {
+    return kynema::beams::tests::CreateView<double[1][2][6]>(
+        "node_u_dot", std::array{1., 2., 3., 4., 5., 6., 7., 8., 9., 10., 11., 12.}
+    );
+}
+
+}  // namespace
+
+namespace kynema::beams::tests {
 
 TEST(InterpolateQPVectorTests, OneNodeOneQP) {
     constexpr auto num_qp = size_t{1U};
@@ -23,8 +35,11 @@ TEST(InterpolateQPVectorTests, OneNodeOneQP) {
     Kokkos::parallel_for(
         num_qp,
         InterpolateQPVector<Kokkos::DefaultExecutionSpace>{
-            0U, num_nodes, shape_interp,
-            Kokkos::subview(node_u_dot, Kokkos::ALL, Kokkos::ALL, Kokkos::pair(0, 3)), qp_u_dot
+            .element = 0U,
+            .num_nodes = num_nodes,
+            .shape_interp = shape_interp,
+            .node_vector = Kokkos::subview(node_u_dot, Kokkos::ALL, Kokkos::ALL, Kokkos::pair(0, 3)),
+            .qp_vector = qp_u_dot
         }
     );
     auto qp_u_dot_mirror = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), qp_u_dot);
@@ -43,8 +58,11 @@ TEST(InterpolateQPVectorTests, OneNodeTwoQP) {
     Kokkos::parallel_for(
         num_qp,
         InterpolateQPVector<Kokkos::DefaultExecutionSpace>{
-            0, num_nodes, shape_interp,
-            Kokkos::subview(node_u_dot, Kokkos::ALL, Kokkos::ALL, Kokkos::pair(0, 3)), qp_u_dot
+            .element = 0,
+            .num_nodes = num_nodes,
+            .shape_interp = shape_interp,
+            .node_vector = Kokkos::subview(node_u_dot, Kokkos::ALL, Kokkos::ALL, Kokkos::pair(0, 3)),
+            .qp_vector = qp_u_dot
         }
     );
     auto qp_u_dot_mirror = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), qp_u_dot);
@@ -58,12 +76,6 @@ TEST(InterpolateQPVectorTests, OneNodeTwoQP) {
     EXPECT_NEAR(qp_u_dot_mirror(0, 1, 2), 12., tolerance);
 }
 
-inline auto create_node_u_dot_TwoNode() {
-    return CreateView<double[1][2][6]>(
-        "node_u_dot", std::array{1., 2., 3., 4., 5., 6., 7., 8., 9., 10., 11., 12.}
-    );
-}
-
 TEST(InterpolateQPVectorTests, TwoNodeTwoQP) {
     constexpr auto num_qp = size_t{2U};
     constexpr auto num_nodes = size_t{2U};
@@ -73,8 +85,11 @@ TEST(InterpolateQPVectorTests, TwoNodeTwoQP) {
     Kokkos::parallel_for(
         num_qp,
         InterpolateQPVector<Kokkos::DefaultExecutionSpace>{
-            0U, num_nodes, shape_interp,
-            Kokkos::subview(node_u_dot, Kokkos::ALL, Kokkos::ALL, Kokkos::pair(0, 3)), qp_u_dot
+            .element = 0U,
+            .num_nodes = num_nodes,
+            .shape_interp = shape_interp,
+            .node_vector = Kokkos::subview(node_u_dot, Kokkos::ALL, Kokkos::ALL, Kokkos::pair(0, 3)),
+            .qp_vector = qp_u_dot
         }
     );
     auto qp_u_dot_mirror = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), qp_u_dot);

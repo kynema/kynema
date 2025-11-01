@@ -251,7 +251,7 @@ public:
                 v_motion_map[i][component] = 0.;
             }
             for (auto j : std::views::iota(0U, node_v.size())) {
-                const auto coeff = motion_interp[i * node_v.size() + j];
+                const auto coeff = motion_interp[(i * node_v.size()) + j];
                 for (auto component : std::views::iota(0U, 6U)) {
                     v_motion_map[i][component] += coeff * node_v[j][component];
                 }
@@ -297,7 +297,7 @@ public:
         auto node_x = std::vector<double>(node_u.size() * 3U);
         for (auto node : std::views::iota(0U, node_f.size())) {
             for (auto component : std::views::iota(0U, 3U)) {
-                node_x[component * node_u.size() + node] = state.x(node_ids[node], component);
+                node_x[(component * node_u.size()) + node] = state.x(node_ids[node], component);
             }
         }
 
