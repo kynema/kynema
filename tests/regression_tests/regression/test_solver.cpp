@@ -13,8 +13,7 @@
 #include "step/update_constraint_variables.hpp"
 #include "test_utilities.hpp"
 
-namespace kynema::tests {
-
+namespace {
 inline void SetUpSolverAndAssemble() {
     // Mass matrix for uniform composite beam section
     constexpr auto mass_matrix = std::array{
@@ -34,12 +33,12 @@ inline void SetUpSolverAndAssemble() {
     };
 
     // Create model for adding nodes and constraints
-    auto model = Model();
+    auto model = kynema::Model();
 
     // Gravity vector
     model.SetGravity(0., 0., 0.);
 
-    const auto x0_root = std::array{2., 0., 0.};
+    const auto x0_root = Eigen::Matrix<double, 3, 1>(2., 0., 0.);
 
     // Node locations (GLL quadrature)
     constexpr auto node_s = std::array{
@@ -52,7 +51,7 @@ inline void SetUpSolverAndAssemble() {
     constexpr auto omega = 0.1;
     std::vector<size_t> beam_node_ids;
     std::ranges::transform(node_s, std::back_inserter(beam_node_ids), [&](auto s) {
-        const auto x = 10 * s + x0_root[0];
+        const auto x = (10 * s) + x0_root[0];
         return model.AddNode()
             .SetElemLocation(s)
             .SetPosition(x, 0., 0., 1., 0., 0., 0.)
@@ -64,8 +63,8 @@ inline void SetUpSolverAndAssemble() {
     model.AddBeamElement(
         beam_node_ids,
         std::array{
-            BeamSection(0., mass_matrix, stiffness_matrix),
-            BeamSection(1., mass_matrix, stiffness_matrix),
+            kynema::BeamSection(0., mass_matrix, stiffness_matrix),
+            kynema::BeamSection(1., mass_matrix, stiffness_matrix),
         },
         std::array{
             std::array{-0.9491079123427585, 0.1294849661688697},
@@ -86,36 +85,37 @@ inline void SetUpSolverAndAssemble() {
     constexpr auto is_dynamic_solve = true;
     constexpr auto step_size = 0.01;  // seconds
     constexpr auto rho_inf = 0.9;
-    auto parameters = StepParameters(is_dynamic_solve, max_iter, step_size, rho_inf);
+    auto parameters = kynema::StepParameters(is_dynamic_solve, max_iter, step_size, rho_inf);
 
     // Create solver, elements, constraints, and state
     auto [state, elements, constraints] = model.CreateSystem();
     auto solver = CreateSolver<>(state, elements, constraints);
 
-    const auto u_rot = math::RotationVectorToQuaternion({0., 0., omega * step_size});
-    const auto x_root = math::RotateVectorByQuaternion(u_rot, x0_root);
-    const auto u_trans =
-        std::array{x_root[0] - x0_root[0], x_root[1] - x0_root[1], x_root[2] - x0_root[2]};
+    const auto u_rot = Eigen::Quaternion<double>(
+        Eigen::AngleAxis(omega * step_size, Eigen::Matrix<double, 3, 1>::Unit(2))
+    );
+    const auto x_root = u_rot._transformVector(x0_root);
+    const auto u_trans = x_root - x0_root;
     const auto displacement =
-        std::array{u_trans[0], u_trans[1], u_trans[2], u_rot[0], u_rot[1], u_rot[2], u_rot[3]};
+        std::array{u_trans(0), u_trans(1), u_trans(2), u_rot.w(), u_rot.x(), u_rot.y(), u_rot.z()};
     constraints.UpdateDisplacement(0, displacement);
 
     // Predict the next state for the solver
-    step::PredictNextState(parameters, state);
-    step::ResetConstraints(constraints);
-    step::ResetSolver(solver);
+    kynema::step::PredictNextState(parameters, state);
+    kynema::step::ResetConstraints(constraints);
+    kynema::step::ResetSolver(solver);
 
     // Update beam elements state from solvers
-    step::UpdateSystemVariables(parameters, elements, state);
-    step::AssembleSystemMatrix(parameters, solver, elements);
-    step::AssembleSystemResidual(solver, elements, state);
+    kynema::step::UpdateSystemVariables(parameters, elements, state);
+    kynema::step::AssembleSystemMatrix(parameters, solver, elements);
+    kynema::step::AssembleSystemResidual(solver, elements, state);
 
-    step::UpdateConstraintVariables(state, constraints);
-    step::AssembleConstraintsMatrix(solver, constraints);
-    step::AssembleConstraintsResidual(solver, constraints);
+    kynema::step::UpdateConstraintVariables(state, constraints);
+    kynema::step::AssembleConstraintsMatrix(solver, constraints);
+    kynema::step::AssembleConstraintsResidual(solver, constraints);
 
-    expect_kokkos_view_2D_equal(constraints.lambda, {{0., 0., 0., 0., 0., 0.}});
-    expect_kokkos_view_2D_equal(
+    kynema::tests::expect_kokkos_view_2D_equal(constraints.lambda, {{0., 0., 0., 0., 0., 0.}});
+    kynema::tests::expect_kokkos_view_2D_equal(
         state.q_prev,
         {
             {0., 0., 0., 1., 0., 0., 0.},
@@ -126,7 +126,7 @@ inline void SetUpSolverAndAssemble() {
             {0., 0., 0., 1., 0., 0., 0.},
         }
     );
-    expect_kokkos_view_2D_equal(
+    kynema::tests::expect_kokkos_view_2D_equal(
         state.a,
         {
             {0., 0., 0., 0., 0., 0.},
@@ -137,7 +137,7 @@ inline void SetUpSolverAndAssemble() {
             {0., 0., 0., 0., 0., 0.},
         }
     );
-    expect_kokkos_view_2D_equal(
+    kynema::tests::expect_kokkos_view_2D_equal(
         state.v,
         {
             {0, 0.20000000000000000, 0, 0, 0, 0.1},
@@ -148,7 +148,7 @@ inline void SetUpSolverAndAssemble() {
             {0, 1.20000000000000000, 0, 0, 0, 0.1},
         }
     );
-    expect_kokkos_view_2D_equal(
+    kynema::tests::expect_kokkos_view_2D_equal(
         state.vd,
         {
             {0., 0., 0., 0., 0., 0.},
@@ -159,7 +159,7 @@ inline void SetUpSolverAndAssemble() {
             {0., 0., 0., 0., 0., 0.},
         }
     );
-    expect_kokkos_view_2D_equal(
+    kynema::tests::expect_kokkos_view_2D_equal(
         state.q_delta,
         {
             {0., 0.20000000000000001, 0., 0., 0., 0.10000000000000001},
@@ -170,7 +170,7 @@ inline void SetUpSolverAndAssemble() {
             {0., 1.20000000000000020, 0., 0., 0., 0.10000000000000001},
         }
     );
-    expect_kokkos_view_2D_equal(
+    kynema::tests::expect_kokkos_view_2D_equal(
         state.q,
         {
             {0, 0.0020000000000000, 0, 0.999999875, 0, 0, 0.0004999999},
@@ -181,7 +181,7 @@ inline void SetUpSolverAndAssemble() {
             {0, 0.0120000000000000, 0, 0.999999875, 0, 0, 0.0004999999},
         }
     );
-    expect_kokkos_view_2D_equal(
+    kynema::tests::expect_kokkos_view_2D_equal(
         constraints.residual_terms, {{
                                         9.9999991642896191E-7,
                                         3.3333331667800836E-10,
@@ -191,7 +191,7 @@ inline void SetUpSolverAndAssemble() {
                                         0.,
                                     }}
     );
-    expect_kokkos_view_1D_equal(
+    kynema::tests::expect_kokkos_view_1D_equal(
         Kokkos::subview(solver.b, Kokkos::ALL, 0),
         {
             -0.68408451644565105,
@@ -240,10 +240,6 @@ inline void SetUpSolverAndAssemble() {
     );
 }
 
-TEST(NewSolverTest, SolverPredictNextState) {
-    SetUpSolverAndAssemble();
-}
-
 inline void SetupAndTakeNoSteps() {
     // Mass matrix for uniform composite beam section
     constexpr auto mass_matrix = std::array{
@@ -263,7 +259,7 @@ inline void SetupAndTakeNoSteps() {
     };
 
     // Create model for adding nodes and constraints
-    auto model = Model();
+    auto model = kynema::Model();
 
     // Gravity vector
     model.SetGravity(0., 0., 0.);
@@ -277,10 +273,10 @@ inline void SetupAndTakeNoSteps() {
     // Calculate displacement, velocity, acceleration assuming a
     // 0.1 rad/s angular velocity around the z axis
     constexpr auto omega = 0.1;
-    const auto x0_root = std::array{2., 0., 0.};
+    const auto x0_root = Eigen::Matrix<double, 3, 1>(2., 0., 0.);
     std::vector<size_t> beam_node_ids;
     std::ranges::transform(node_s, std::back_inserter(beam_node_ids), [&](auto s) {
-        const auto x = 10 * s + x0_root[0];
+        const auto x = (10 * s) + x0_root(0);
         return model.AddNode()
             .SetElemLocation(s)
             .SetPosition(x, 0., 0., 1., 0., 0., 0.)
@@ -292,8 +288,8 @@ inline void SetupAndTakeNoSteps() {
     model.AddBeamElement(
         beam_node_ids,
         std::array{
-            BeamSection(0., mass_matrix, stiffness_matrix),
-            BeamSection(1., mass_matrix, stiffness_matrix),
+            kynema::BeamSection(0., mass_matrix, stiffness_matrix),
+            kynema::BeamSection(1., mass_matrix, stiffness_matrix),
         },
         std::array{
             std::array{-0.9491079123427585, 0.1294849661688697},
@@ -314,24 +310,25 @@ inline void SetupAndTakeNoSteps() {
     constexpr auto is_dynamic_solve = true;
     constexpr auto step_size = 0.01;  // seconds
     constexpr auto rho_inf = 0.9;
-    auto parameters = StepParameters(is_dynamic_solve, max_iter, step_size, rho_inf);
+    auto parameters = kynema::StepParameters(is_dynamic_solve, max_iter, step_size, rho_inf);
 
     // Create solver, elements, constraints, and state
     auto [state, elements, constraints] = model.CreateSystem();
     auto solver = CreateSolver<>(state, elements, constraints);
 
-    auto u_rot = math::RotationVectorToQuaternion({0., 0., omega * step_size});
-    auto x_root = math::RotateVectorByQuaternion(u_rot, x0_root);
-    auto u_trans =
-        std::array{x_root[0] - x0_root[0], x_root[1] - x0_root[1], x_root[2] - x0_root[2]};
+    const auto u_rot = Eigen::Quaternion<double>(
+        Eigen::AngleAxis<double>(omega * step_size, Eigen::Matrix<double, 3, 1>::Unit(2))
+    );
+    const auto x_root = u_rot._transformVector(x0_root);
+    const auto u_trans = x_root - x0_root;
     auto displacement =
-        std::array{u_trans[0], u_trans[1], u_trans[2], u_rot[0], u_rot[1], u_rot[2], u_rot[3]};
+        std::array{u_trans(0), u_trans(1), u_trans(2), u_rot.w(), u_rot.x(), u_rot.y(), u_rot.z()};
     constraints.UpdateDisplacement(0, displacement);
 
     Step(parameters, solver, elements, state, constraints);
 
     const auto x = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), solver.x);
-    expect_kokkos_view_1D_equal(
+    kynema::tests::expect_kokkos_view_1D_equal(
         Kokkos::subview(solver.x, Kokkos::ALL, 0),
         {
             -9.9999991642894645E-7,    -3.3333331667800779E-10, -2.7693137528041648E-28,
@@ -351,7 +348,7 @@ inline void SetupAndTakeNoSteps() {
         }
     );
     EXPECT_NEAR(solver.convergence_err[0], 1669.0477021697936, 1.e-6);
-    expect_kokkos_view_2D_equal(
+    kynema::tests::expect_kokkos_view_2D_equal(
         state.q_delta,
         {
             {-0.000099999991642894646, 0.19999996666666833, -2.7693137528041646E-26,
@@ -368,7 +365,7 @@ inline void SetupAndTakeNoSteps() {
              -2.6313864405287535E-10, -1.7915982090983507E-11, 0.099999958035748431},
         }
     );
-    expect_kokkos_view_2D_equal(
+    kynema::tests::expect_kokkos_view_2D_equal(
         state.v,
         {
             {-0.00019949998332757481, 0.19999993350000334, -5.5247809368443091E-26,
@@ -385,7 +382,7 @@ inline void SetupAndTakeNoSteps() {
              -5.2496159488548634E-10, -3.5742384271512094E-11, 0.099999916281318101},
         }
     );
-    expect_kokkos_view_2D_equal(
+    kynema::tests::expect_kokkos_view_2D_equal(
         state.vd,
         {
             {-0.039709996681393474, -0.000013236666005283692, -1.0996944912385341E-23,
@@ -402,7 +399,7 @@ inline void SetupAndTakeNoSteps() {
              -1.0449235555339682E-7, -7.1144364883295513E-9, -0.000016664004302439988},
         }
     );
-    expect_kokkos_view_2D_equal(
+    kynema::tests::expect_kokkos_view_2D_equal(
         state.q,
         {
             {-9.9999991642894645E-7, 0.0019999996666666834, -2.7693137528041648E-28,
@@ -425,7 +422,7 @@ inline void SetupAndTakeNoSteps() {
              0.00049999976934543534},
         }
     );
-    expect_kokkos_view_2D_equal(
+    kynema::tests::expect_kokkos_view_2D_equal(
         constraints.lambda, {{
                                 0.10816660597819647,
                                 0.000095455157310304377,
@@ -435,10 +432,6 @@ inline void SetupAndTakeNoSteps() {
                                 -0.000033726153743119725,
                             }}
     );
-}
-
-TEST(SolverStep1Test, SolutionVector) {
-    SetupAndTakeNoSteps();
 }
 
 inline auto SetupAndTakeTwoSteps() {
@@ -460,7 +453,7 @@ inline auto SetupAndTakeTwoSteps() {
     };
 
     // Create model for adding nodes and constraints
-    auto model = Model();
+    auto model = kynema::Model();
 
     // Gravity vector
     model.SetGravity(0., 0., 0.);
@@ -488,8 +481,8 @@ inline auto SetupAndTakeTwoSteps() {
     model.AddBeamElement(
         beam_node_ids,
         std::array{
-            BeamSection(0., mass_matrix, stiffness_matrix),
-            BeamSection(1., mass_matrix, stiffness_matrix),
+            kynema::BeamSection(0., mass_matrix, stiffness_matrix),
+            kynema::BeamSection(1., mass_matrix, stiffness_matrix),
         },
         std::array{
             std::array{-0.9491079123427585, 0.1294849661688697},
@@ -510,19 +503,21 @@ inline auto SetupAndTakeTwoSteps() {
     constexpr auto is_dynamic_solve = true;
     constexpr auto step_size = 0.01;  // seconds
     constexpr auto rho_inf = 0.9;
-    auto parameters = StepParameters(is_dynamic_solve, max_iter, step_size, rho_inf);
+    auto parameters = kynema::StepParameters(is_dynamic_solve, max_iter, step_size, rho_inf);
 
     // Create solver, elements, constraints, and state
     auto [state, elements, constraints] = model.CreateSystem();
     auto solver = CreateSolver<>(state, elements, constraints);
 
-    auto q = math::RotationVectorToQuaternion({0., 0., omega * step_size});
-    auto displacement = std::array{0., 0., 0., q[0], q[1], q[2], q[3]};
+    const auto q = Eigen::Quaternion<double>(
+        Eigen::AngleAxis<double>(omega * step_size, Eigen::Matrix<double, 3, 1>::Unit(2))
+    );
+    auto displacement = std::array{0., 0., 0., q.w(), q.x(), q.y(), q.z()};
     constraints.UpdateDisplacement(0, displacement);
 
     Step(parameters, solver, elements, state, constraints);
 
-    expect_kokkos_view_2D_equal(
+    kynema::tests::expect_kokkos_view_2D_equal(
         constraints.residual_terms, {{
                                         0.0,
                                         0.0,
@@ -532,7 +527,7 @@ inline auto SetupAndTakeTwoSteps() {
                                         0.0,
                                     }}
     );
-    expect_kokkos_view_1D_equal(
+    kynema::tests::expect_kokkos_view_1D_equal(
         Kokkos::subview(solver.b, Kokkos::ALL, 0),
         {
             -1.6976609407260757e-15,
@@ -581,7 +576,7 @@ inline auto SetupAndTakeTwoSteps() {
     );
     const auto x = Kokkos::create_mirror_view(solver.x);
     Kokkos::deep_copy(x, solver.x);
-    expect_kokkos_view_1D_equal(
+    kynema::tests::expect_kokkos_view_1D_equal(
         Kokkos::subview(solver.x, Kokkos::ALL, 0),
         {
             2.0701786547467534E-22,  -9.7804349489591981E-26, 2.7272832797488856E-28,
@@ -600,6 +595,18 @@ inline auto SetupAndTakeTwoSteps() {
             4.0632386057053241E-8,   4.3576751058673394E-8,   1.9904737297204642e-10,
         }
     );
+}
+
+}  // namespace
+
+namespace kynema::tests {
+
+TEST(NewSolverTest, SolverPredictNextState) {
+    SetUpSolverAndAssemble();
+}
+
+TEST(SolverStep1Test, SolutionVector) {
+    SetupAndTakeNoSteps();
 }
 
 TEST(SolverStep2Test, ConstraintResidualVector) {

@@ -10,8 +10,7 @@
 #include "system/beams/integrate_stiffness_matrix.hpp"
 #include "test_calculate.hpp"
 
-namespace kynema::beams::tests {
-
+namespace {
 void TestIntegrateStiffnessMatrix_1Element1Node1QP(
     const Kokkos::View<double[1][6][6]>::const_type& qp_Kuu,
     const Kokkos::View<double[1][6][6]>::const_type& qp_Puu,
@@ -25,41 +24,47 @@ void TestIntegrateStiffnessMatrix_1Element1Node1QP(
     constexpr auto number_of_qps = size_t{1U};
     constexpr auto max_simd_size = size_t{8U};
 
-    const auto qp_weights =
-        CreateView<double[number_of_qps]>("qp_weights", std::array<double, 1>{2.});
-    const auto qp_jacobian =
-        CreateView<double[number_of_qps]>("qp_jacobian", std::array<double, 1>{3.});
-    const auto shape_interp = CreateLeftView<double[max_simd_size][number_of_qps]>(
-        "shape_interp", std::array<double, max_simd_size>{4.}
+    const auto qp_weights = kynema::beams::tests::CreateView<double[number_of_qps]>(
+        "qp_weights", std::array<double, 1>{2.}
     );
-    const auto shape_interp_deriv = CreateLeftView<double[max_simd_size][number_of_qps]>(
-        "shape_interp_deriv", std::array<double, max_simd_size>{5.}
+    const auto qp_jacobian = kynema::beams::tests::CreateView<double[number_of_qps]>(
+        "qp_jacobian", std::array<double, 1>{3.}
     );
+    const auto shape_interp =
+        kynema::beams::tests::CreateLeftView<double[max_simd_size][number_of_qps]>(
+            "shape_interp", std::array<double, max_simd_size>{4.}
+        );
+    const auto shape_interp_deriv =
+        kynema::beams::tests::CreateLeftView<double[max_simd_size][number_of_qps]>(
+            "shape_interp_deriv", std::array<double, max_simd_size>{5.}
+        );
 
     auto gbl_M = Kokkos::View<double[1][1][6][6]>("global_M");
 
     const auto policy = Kokkos::RangePolicy(0, number_of_nodes * number_of_simd_nodes);
     const auto integrator =
-        beams::IntegrateStiffnessMatrixElement<Kokkos::DefaultExecutionSpace>{0U,
-                                                                              number_of_nodes,
-                                                                              number_of_qps,
-                                                                              qp_weights,
-                                                                              qp_jacobian,
-                                                                              shape_interp,
-                                                                              shape_interp_deriv,
-                                                                              qp_Kuu,
-                                                                              qp_Puu,
-                                                                              qp_Cuu,
-                                                                              qp_Ouu,
-                                                                              qp_Quu,
-                                                                              gbl_M};
+        kynema::beams::IntegrateStiffnessMatrixElement<Kokkos::DefaultExecutionSpace>{
+            .element = 0U,
+            .num_nodes = number_of_nodes,
+            .num_qps = number_of_qps,
+            .qp_weight_ = qp_weights,
+            .qp_jacobian_ = qp_jacobian,
+            .shape_interp_ = shape_interp,
+            .shape_deriv_ = shape_interp_deriv,
+            .qp_Kuu_ = qp_Kuu,
+            .qp_Puu_ = qp_Puu,
+            .qp_Cuu_ = qp_Cuu,
+            .qp_Ouu_ = qp_Ouu,
+            .qp_Quu_ = qp_Quu,
+            .gbl_M_ = gbl_M
+        };
     Kokkos::parallel_for(policy, integrator);
 
     const auto exact_M =
         Kokkos::View<double[1][1][6][6], Kokkos::HostSpace>::const_type(exact_M_data.data());
 
     auto gbl_M_mirror = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), gbl_M);
-    CompareWithExpected(gbl_M_mirror, exact_M, tolerance);
+    kynema::beams::tests::CompareWithExpected(gbl_M_mirror, exact_M, tolerance);
 }
 
 constexpr std::array<double, 36> OneElement1Node1QP_Data() {
@@ -71,7 +76,9 @@ constexpr std::array<double, 36> OneElement1Node1QP_Data() {
 void TestIntegrateStiffnessMatrix_1Element1Node1QP_Kuu() {
     constexpr auto number_of_qps = 1;
 
-    const auto qp_Kuu = CreateView<double[number_of_qps][6][6]>("qp_Kuu", OneElement1Node1QP_Data());
+    const auto qp_Kuu = kynema::beams::tests::CreateView<double[number_of_qps][6][6]>(
+        "qp_Kuu", OneElement1Node1QP_Data()
+    );
     const auto qp_Puu = Kokkos::View<double[number_of_qps][6][6]>("Puu");
     const auto qp_Quu = Kokkos::View<double[number_of_qps][6][6]>("Quu");
     const auto qp_Cuu = Kokkos::View<double[number_of_qps][6][6]>("Cuu");
@@ -88,15 +95,13 @@ void TestIntegrateStiffnessMatrix_1Element1Node1QP_Kuu() {
     );
 }
 
-TEST(IntegrateStiffnessMatrixTests, OneElementOneNodeOneQP_Kuu) {
-    TestIntegrateStiffnessMatrix_1Element1Node1QP_Kuu();
-}
-
 void TestIntegrateStiffnessMatrix_1Element1Node1QP_Puu() {
     constexpr auto number_of_qps = 1;
 
     const auto qp_Kuu = Kokkos::View<double[number_of_qps][6][6]>("Kuu");
-    const auto qp_Puu = CreateView<double[number_of_qps][6][6]>("qp_Puu", OneElement1Node1QP_Data());
+    const auto qp_Puu = kynema::beams::tests::CreateView<double[number_of_qps][6][6]>(
+        "qp_Puu", OneElement1Node1QP_Data()
+    );
     const auto qp_Cuu = Kokkos::View<double[number_of_qps][6][6]>("Cuu");
     const auto qp_Ouu = Kokkos::View<double[number_of_qps][6][6]>("Ouu");
     const auto qp_Quu = Kokkos::View<double[number_of_qps][6][6]>("Quu");
@@ -112,16 +117,14 @@ void TestIntegrateStiffnessMatrix_1Element1Node1QP_Puu() {
     );
 }
 
-TEST(IntegrateStiffnessMatrixTests, OneElementOneNodeOneQP_Puu) {
-    TestIntegrateStiffnessMatrix_1Element1Node1QP_Puu();
-}
-
 void TestIntegrateStiffnessMatrix_1Element1Node1QP_Quu() {
     constexpr auto number_of_qps = 1;
 
     const auto qp_Kuu = Kokkos::View<double[number_of_qps][6][6]>("Kuu");
     const auto qp_Puu = Kokkos::View<double[number_of_qps][6][6]>("Puu");
-    const auto qp_Quu = CreateView<double[number_of_qps][6][6]>("qp_Quu", OneElement1Node1QP_Data());
+    const auto qp_Quu = kynema::beams::tests::CreateView<double[number_of_qps][6][6]>(
+        "qp_Quu", OneElement1Node1QP_Data()
+    );
     const auto qp_Cuu = Kokkos::View<double[number_of_qps][6][6]>("Cuu");
     const auto qp_Ouu = Kokkos::View<double[number_of_qps][6][6]>("Ouu");
 
@@ -134,10 +137,6 @@ void TestIntegrateStiffnessMatrix_1Element1Node1QP_Quu() {
     TestIntegrateStiffnessMatrix_1Element1Node1QP(
         qp_Kuu, qp_Puu, qp_Cuu, qp_Ouu, qp_Quu, exact_M_data
     );
-}
-
-TEST(IntegrateStiffnessMatrixTests, OneElementOneNodeOneQP_Quu) {
-    TestIntegrateStiffnessMatrix_1Element1Node1QP_Quu();
 }
 
 constexpr std::array<double, 36> OneElement1Node1QP_Cuu_Data() {
@@ -153,8 +152,9 @@ void TestIntegrateStiffnessMatrix_1Element1Node1QP_Cuu() {
     const auto qp_Kuu = Kokkos::View<double[number_of_qps][6][6]>("Kuu");
     const auto qp_Puu = Kokkos::View<double[number_of_qps][6][6]>("Puu");
     const auto qp_Quu = Kokkos::View<double[number_of_qps][6][6]>("Quu");
-    const auto qp_Cuu =
-        CreateView<double[number_of_qps][6][6]>("qp_Cuu", OneElement1Node1QP_Cuu_Data());
+    const auto qp_Cuu = kynema::beams::tests::CreateView<double[number_of_qps][6][6]>(
+        "qp_Cuu", OneElement1Node1QP_Cuu_Data()
+    );
     const auto qp_Ouu = Kokkos::View<double[number_of_qps][6][6]>("Ouu");
 
     constexpr auto exact_M_data =
@@ -166,10 +166,6 @@ void TestIntegrateStiffnessMatrix_1Element1Node1QP_Cuu() {
     TestIntegrateStiffnessMatrix_1Element1Node1QP(
         qp_Kuu, qp_Puu, qp_Cuu, qp_Ouu, qp_Quu, exact_M_data, 1e-10
     );
-}
-
-TEST(IntegrateStiffnessMatrixTests, OneElementOneNodeOneQP_Cuu) {
-    TestIntegrateStiffnessMatrix_1Element1Node1QP_Cuu();
 }
 
 constexpr std::array<double, 36> OneElement1Node1QP_Ouu_Data() {
@@ -185,8 +181,9 @@ void TestIntegrateStiffnessMatrix_1Element1Node1QP_Ouu() {
     const auto qp_Puu = Kokkos::View<double[number_of_qps][6][6]>("Puu");
     const auto qp_Quu = Kokkos::View<double[number_of_qps][6][6]>("Quu");
     const auto qp_Cuu = Kokkos::View<double[number_of_qps][6][6]>("Cuu");
-    const auto qp_Ouu =
-        CreateView<double[number_of_qps][6][6]>("qp_Ouu", OneElement1Node1QP_Ouu_Data());
+    const auto qp_Ouu = kynema::beams::tests::CreateView<double[number_of_qps][6][6]>(
+        "qp_Ouu", OneElement1Node1QP_Ouu_Data()
+    );
 
     constexpr auto exact_M_data =
         std::array{040040., 040080., 040120., 040160., 040200., 040240., 080040., 080080., 080120.,
@@ -197,10 +194,6 @@ void TestIntegrateStiffnessMatrix_1Element1Node1QP_Ouu() {
     TestIntegrateStiffnessMatrix_1Element1Node1QP(
         qp_Kuu, qp_Puu, qp_Cuu, qp_Ouu, qp_Quu, exact_M_data
     );
-}
-
-TEST(IntegrateStiffnessMatrixTests, OneElementOneNodeOneQP_Ouu) {
-    TestIntegrateStiffnessMatrix_1Element1Node1QP_Ouu();
 }
 
 void TestIntegrateStiffnessMatrix_1Element2Nodes1QP(
@@ -217,39 +210,45 @@ void TestIntegrateStiffnessMatrix_1Element2Nodes1QP(
     constexpr auto number_of_qps = size_t{1U};
     constexpr auto max_simd_size = size_t{8U};
 
-    const auto qp_weights = CreateView<double[number_of_qps]>("qp_weights", std::array{1.});
-    const auto qp_jacobian = CreateView<double[number_of_qps]>("qp_jacobian", std::array{1.});
-    const auto shape_interp = CreateLeftView<double[max_simd_size][number_of_qps]>(
-        "shape_interp", std::vector<double>{1., 2., 0., 0., 0., 0., 0., 0.}
-    );
-    const auto shape_interp_deriv = CreateLeftView<double[max_simd_size][number_of_qps]>(
-        "shape_deriv", std::vector<double>{1., 4., 0., 0., 0., 0., 0., 0.}
-    );
+    const auto qp_weights =
+        kynema::beams::tests::CreateView<double[number_of_qps]>("qp_weights", std::array{1.});
+    const auto qp_jacobian =
+        kynema::beams::tests::CreateView<double[number_of_qps]>("qp_jacobian", std::array{1.});
+    const auto shape_interp =
+        kynema::beams::tests::CreateLeftView<double[max_simd_size][number_of_qps]>(
+            "shape_interp", std::vector<double>{1., 2., 0., 0., 0., 0., 0., 0.}
+        );
+    const auto shape_interp_deriv =
+        kynema::beams::tests::CreateLeftView<double[max_simd_size][number_of_qps]>(
+            "shape_deriv", std::vector<double>{1., 4., 0., 0., 0., 0., 0., 0.}
+        );
 
     auto gbl_M = Kokkos::View<double[2][2][6][6]>("global_M");
 
     const auto policy = Kokkos::RangePolicy(0, number_of_nodes * number_of_simd_nodes);
     const auto integrator =
-        beams::IntegrateStiffnessMatrixElement<Kokkos::DefaultExecutionSpace>{0U,
-                                                                              number_of_nodes,
-                                                                              number_of_qps,
-                                                                              qp_weights,
-                                                                              qp_jacobian,
-                                                                              shape_interp,
-                                                                              shape_interp_deriv,
-                                                                              qp_Kuu,
-                                                                              qp_Puu,
-                                                                              qp_Cuu,
-                                                                              qp_Ouu,
-                                                                              qp_Quu,
-                                                                              gbl_M};
+        kynema::beams::IntegrateStiffnessMatrixElement<Kokkos::DefaultExecutionSpace>{
+            .element = 0U,
+            .num_nodes = number_of_nodes,
+            .num_qps = number_of_qps,
+            .qp_weight_ = qp_weights,
+            .qp_jacobian_ = qp_jacobian,
+            .shape_interp_ = shape_interp,
+            .shape_deriv_ = shape_interp_deriv,
+            .qp_Kuu_ = qp_Kuu,
+            .qp_Puu_ = qp_Puu,
+            .qp_Cuu_ = qp_Cuu,
+            .qp_Ouu_ = qp_Ouu,
+            .qp_Quu_ = qp_Quu,
+            .gbl_M_ = gbl_M
+        };
     Kokkos::parallel_for(policy, integrator);
 
     const auto exact_M =
         Kokkos::View<double[2][2][6][6], Kokkos::HostSpace>::const_type(exact_M_data.data());
 
     auto gbl_M_mirror = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), gbl_M);
-    CompareWithExpected(gbl_M_mirror, exact_M);
+    kynema::beams::tests::CompareWithExpected(gbl_M_mirror, exact_M);
 }
 
 constexpr std::array<double, 36> OneElement2Nodes1QP_Data() {
@@ -261,8 +260,9 @@ constexpr std::array<double, 36> OneElement2Nodes1QP_Data() {
 void TestIntegrateStiffnessMatrix_1Element2Nodes1QP_Puu() {
     constexpr auto number_of_qps = 1;
 
-    const auto qp_Puu =
-        CreateView<double[number_of_qps][6][6]>("qp_Puu", OneElement2Nodes1QP_Data());
+    const auto qp_Puu = kynema::beams::tests::CreateView<double[number_of_qps][6][6]>(
+        "qp_Puu", OneElement2Nodes1QP_Data()
+    );
     const auto qp_Kuu = Kokkos::View<double[number_of_qps][6][6]>("Kuu");
     const auto qp_Quu = Kokkos::View<double[number_of_qps][6][6]>("Quu");
     const auto qp_Cuu = Kokkos::View<double[number_of_qps][6][6]>("Cuu");
@@ -288,17 +288,14 @@ void TestIntegrateStiffnessMatrix_1Element2Nodes1QP_Puu() {
     );
 }
 
-TEST(IntegrateStiffnessMatrixTests, OneElementTwoNodesOneQP_Puu) {
-    TestIntegrateStiffnessMatrix_1Element2Nodes1QP_Puu();
-}
-
 void TestIntegrateStiffnessMatrix_1Element2Nodes1QP_Quu() {
     constexpr auto number_of_qps = 1;
 
     const auto qp_Kuu = Kokkos::View<double[number_of_qps][6][6]>("Kuu");
     const auto qp_Puu = Kokkos::View<double[number_of_qps][6][6]>("Puu");
-    const auto qp_Quu =
-        CreateView<double[number_of_qps][6][6]>("qp_Quu", OneElement2Nodes1QP_Data());
+    const auto qp_Quu = kynema::beams::tests::CreateView<double[number_of_qps][6][6]>(
+        "qp_Quu", OneElement2Nodes1QP_Data()
+    );
     const auto qp_Cuu = Kokkos::View<double[number_of_qps][6][6]>("Cuu");
     const auto qp_Ouu = Kokkos::View<double[number_of_qps][6][6]>("Ouu");
 
@@ -322,18 +319,15 @@ void TestIntegrateStiffnessMatrix_1Element2Nodes1QP_Quu() {
     );
 }
 
-TEST(IntegrateStiffnessMatrixTests, OneElementTwoNodesOneQP_Quu) {
-    TestIntegrateStiffnessMatrix_1Element2Nodes1QP_Quu();
-}
-
 void TestIntegrateStiffnessMatrix_1Element2Nodes1QP_Cuu() {
     constexpr auto number_of_qps = 1;
 
     const auto qp_Kuu = Kokkos::View<double[number_of_qps][6][6]>("Kuu");
     const auto qp_Puu = Kokkos::View<double[number_of_qps][6][6]>("Puu");
     const auto qp_Quu = Kokkos::View<double[number_of_qps][6][6]>("Quu");
-    const auto qp_Cuu =
-        CreateView<double[number_of_qps][6][6]>("qp_Cuu", OneElement2Nodes1QP_Data());
+    const auto qp_Cuu = kynema::beams::tests::CreateView<double[number_of_qps][6][6]>(
+        "qp_Cuu", OneElement2Nodes1QP_Data()
+    );
     const auto qp_Ouu = Kokkos::View<double[number_of_qps][6][6]>("Ouu");
 
     constexpr auto exact_M_data = std::array<double, 144>{
@@ -356,10 +350,6 @@ void TestIntegrateStiffnessMatrix_1Element2Nodes1QP_Cuu() {
     );
 }
 
-TEST(IntegrateStiffnessMatrixTests, OneElementTwoNodesOneQP_Cuu) {
-    TestIntegrateStiffnessMatrix_1Element2Nodes1QP_Cuu();
-}
-
 void TestIntegrateStiffnessMatrix_1Element2Nodes1QP_Ouu() {
     constexpr auto number_of_qps = 1;
 
@@ -367,8 +357,9 @@ void TestIntegrateStiffnessMatrix_1Element2Nodes1QP_Ouu() {
     const auto qp_Puu = Kokkos::View<double[number_of_qps][6][6]>("Puu");
     const auto qp_Quu = Kokkos::View<double[number_of_qps][6][6]>("Quu");
     const auto qp_Cuu = Kokkos::View<double[number_of_qps][6][6]>("Cuu");
-    const auto qp_Ouu =
-        CreateView<double[number_of_qps][6][6]>("qp_Ouu", OneElement2Nodes1QP_Data());
+    const auto qp_Ouu = kynema::beams::tests::CreateView<double[number_of_qps][6][6]>(
+        "qp_Ouu", OneElement2Nodes1QP_Data()
+    );
 
     constexpr auto exact_M_data = std::array<double, 144>{
         1.,    2.,    3.,    4.,    5.,    6.,    101.,  102.,  103.,  104.,  105.,  106.,
@@ -390,10 +381,6 @@ void TestIntegrateStiffnessMatrix_1Element2Nodes1QP_Ouu() {
     );
 }
 
-TEST(IntegrateStiffnessMatrixTests, OneElementTwoNodesOneQP_Ouu) {
-    TestIntegrateStiffnessMatrix_1Element2Nodes1QP_Ouu();
-}
-
 void TestIntegrateStiffnessMatrix_1Element1Node2QPs(
     const Kokkos::View<double[2][6][6]>::const_type& qp_Kuu,
     const Kokkos::View<double[2][6][6]>::const_type& qp_Puu,
@@ -407,39 +394,45 @@ void TestIntegrateStiffnessMatrix_1Element1Node2QPs(
     constexpr auto number_of_qps = size_t{2U};
     constexpr auto max_simd_size = size_t{8U};
 
-    const auto qp_weights = CreateView<double[number_of_qps]>("qp_weights", std::array{1., 3.});
-    const auto qp_jacobian = CreateView<double[number_of_qps]>("qp_jacobian", std::array{2., 4.});
-    const auto shape_interp = CreateLeftView<double[max_simd_size][number_of_qps]>(
-        "shape_interp", std::array<double, max_simd_size * number_of_qps>{1., 1.}
-    );
-    const auto shape_interp_deriv = CreateLeftView<double[max_simd_size][number_of_qps]>(
-        "shape_interp_deriv", std::array<double, max_simd_size * number_of_qps>{1., 1.}
-    );
+    const auto qp_weights =
+        kynema::beams::tests::CreateView<double[number_of_qps]>("qp_weights", std::array{1., 3.});
+    const auto qp_jacobian =
+        kynema::beams::tests::CreateView<double[number_of_qps]>("qp_jacobian", std::array{2., 4.});
+    const auto shape_interp =
+        kynema::beams::tests::CreateLeftView<double[max_simd_size][number_of_qps]>(
+            "shape_interp", std::array<double, max_simd_size * number_of_qps>{1., 1.}
+        );
+    const auto shape_interp_deriv =
+        kynema::beams::tests::CreateLeftView<double[max_simd_size][number_of_qps]>(
+            "shape_interp_deriv", std::array<double, max_simd_size * number_of_qps>{1., 1.}
+        );
 
     auto gbl_M = Kokkos::View<double[1][1][6][6]>("global_M");
 
     const auto policy = Kokkos::RangePolicy(0, number_of_nodes * number_of_simd_nodes);
     const auto integrator =
-        beams::IntegrateStiffnessMatrixElement<Kokkos::DefaultExecutionSpace>{0U,
-                                                                              number_of_nodes,
-                                                                              number_of_qps,
-                                                                              qp_weights,
-                                                                              qp_jacobian,
-                                                                              shape_interp,
-                                                                              shape_interp_deriv,
-                                                                              qp_Kuu,
-                                                                              qp_Puu,
-                                                                              qp_Cuu,
-                                                                              qp_Ouu,
-                                                                              qp_Quu,
-                                                                              gbl_M};
+        kynema::beams::IntegrateStiffnessMatrixElement<Kokkos::DefaultExecutionSpace>{
+            .element = 0U,
+            .num_nodes = number_of_nodes,
+            .num_qps = number_of_qps,
+            .qp_weight_ = qp_weights,
+            .qp_jacobian_ = qp_jacobian,
+            .shape_interp_ = shape_interp,
+            .shape_deriv_ = shape_interp_deriv,
+            .qp_Kuu_ = qp_Kuu,
+            .qp_Puu_ = qp_Puu,
+            .qp_Cuu_ = qp_Cuu,
+            .qp_Ouu_ = qp_Ouu,
+            .qp_Quu_ = qp_Quu,
+            .gbl_M_ = gbl_M
+        };
     Kokkos::parallel_for(policy, integrator);
 
     const auto exact_M =
         Kokkos::View<double[1][1][6][6], Kokkos::HostSpace>::const_type(exact_M_data.data());
 
     auto gbl_M_mirror = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), gbl_M);
-    CompareWithExpected(gbl_M_mirror, exact_M);
+    kynema::beams::tests::CompareWithExpected(gbl_M_mirror, exact_M);
 }
 
 constexpr std::array<double, 72> OneElement1Node2QPs_Data() {
@@ -455,8 +448,9 @@ constexpr std::array<double, 72> OneElement1Node2QPs_Data() {
 void TestIntegrateStiffnessMatrix_1Element1Node2QPs_Puu() {
     constexpr auto number_of_qps = 2;
 
-    const auto qp_Puu =
-        CreateView<double[number_of_qps][6][6]>("qp_Puu", OneElement1Node2QPs_Data());
+    const auto qp_Puu = kynema::beams::tests::CreateView<double[number_of_qps][6][6]>(
+        "qp_Puu", OneElement1Node2QPs_Data()
+    );
     const auto qp_Kuu = Kokkos::View<double[number_of_qps][6][6]>("Kuu");
     const auto qp_Quu = Kokkos::View<double[number_of_qps][6][6]>("Quu");
     const auto qp_Cuu = Kokkos::View<double[number_of_qps][6][6]>("Cuu");
@@ -473,17 +467,14 @@ void TestIntegrateStiffnessMatrix_1Element1Node2QPs_Puu() {
     );
 }
 
-TEST(IntegrateStiffnessMatrixTests, OneElementOneNodeTwoQPs_Puu) {
-    TestIntegrateStiffnessMatrix_1Element1Node2QPs_Puu();
-}
-
 void TestIntegrateStiffnessMatrix_1Element1Node2QPs_Quu() {
     constexpr auto number_of_qps = 2;
 
     const auto qp_Kuu = Kokkos::View<double[number_of_qps][6][6]>("Kuu");
     const auto qp_Puu = Kokkos::View<double[number_of_qps][6][6]>("Cuu");
-    const auto qp_Quu =
-        CreateView<double[number_of_qps][6][6]>("qp_Quu", OneElement1Node2QPs_Data());
+    const auto qp_Quu = kynema::beams::tests::CreateView<double[number_of_qps][6][6]>(
+        "qp_Quu", OneElement1Node2QPs_Data()
+    );
     const auto qp_Cuu = Kokkos::View<double[number_of_qps][6][6]>("Cuu");
     const auto qp_Ouu = Kokkos::View<double[number_of_qps][6][6]>("Ouu");
 
@@ -496,6 +487,50 @@ void TestIntegrateStiffnessMatrix_1Element1Node2QPs_Quu() {
     TestIntegrateStiffnessMatrix_1Element1Node2QPs(
         qp_Kuu, qp_Puu, qp_Cuu, qp_Ouu, qp_Quu, exact_M_data
     );
+}
+
+}  // namespace
+
+namespace kynema::beams::tests {
+
+TEST(IntegrateStiffnessMatrixTests, OneElementOneNodeOneQP_Kuu) {
+    TestIntegrateStiffnessMatrix_1Element1Node1QP_Kuu();
+}
+
+TEST(IntegrateStiffnessMatrixTests, OneElementOneNodeOneQP_Puu) {
+    TestIntegrateStiffnessMatrix_1Element1Node1QP_Puu();
+}
+
+TEST(IntegrateStiffnessMatrixTests, OneElementOneNodeOneQP_Quu) {
+    TestIntegrateStiffnessMatrix_1Element1Node1QP_Quu();
+}
+
+TEST(IntegrateStiffnessMatrixTests, OneElementOneNodeOneQP_Cuu) {
+    TestIntegrateStiffnessMatrix_1Element1Node1QP_Cuu();
+}
+
+TEST(IntegrateStiffnessMatrixTests, OneElementOneNodeOneQP_Ouu) {
+    TestIntegrateStiffnessMatrix_1Element1Node1QP_Ouu();
+}
+
+TEST(IntegrateStiffnessMatrixTests, OneElementTwoNodesOneQP_Puu) {
+    TestIntegrateStiffnessMatrix_1Element2Nodes1QP_Puu();
+}
+
+TEST(IntegrateStiffnessMatrixTests, OneElementTwoNodesOneQP_Quu) {
+    TestIntegrateStiffnessMatrix_1Element2Nodes1QP_Quu();
+}
+
+TEST(IntegrateStiffnessMatrixTests, OneElementTwoNodesOneQP_Cuu) {
+    TestIntegrateStiffnessMatrix_1Element2Nodes1QP_Cuu();
+}
+
+TEST(IntegrateStiffnessMatrixTests, OneElementTwoNodesOneQP_Ouu) {
+    TestIntegrateStiffnessMatrix_1Element2Nodes1QP_Ouu();
+}
+
+TEST(IntegrateStiffnessMatrixTests, OneElementOneNodeTwoQPs_Puu) {
+    TestIntegrateStiffnessMatrix_1Element1Node2QPs_Puu();
 }
 
 TEST(IntegrateStiffnessMatrixTests, OneElementOneNodeTwoQPs_Quu) {

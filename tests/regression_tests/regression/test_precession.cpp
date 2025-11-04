@@ -3,10 +3,9 @@
 #include "model/model.hpp"
 #include "step/step.hpp"
 
-namespace kynema::tests {
-
+namespace {
 inline auto SetUpPrecessionTest() {
-    auto model = Model();
+    auto model = kynema::Model();
 
     // Add node with initial position and velocity
     auto node_id = model.AddNode().SetVelocity(0., 0., 0., 0.5, 0.5, 1.0).Build();
@@ -29,7 +28,7 @@ inline auto SetUpPrecessionTest() {
     constexpr size_t max_iter(6);
     constexpr double step_size(0.01);
     constexpr double rho_inf(1.0);
-    auto parameters = StepParameters(is_dynamic_solve, max_iter, step_size, rho_inf);
+    auto parameters = kynema::StepParameters(is_dynamic_solve, max_iter, step_size, rho_inf);
 
     // Create solver, elements, constraints, and state
     auto [state, elements, constraints, solver] = model.CreateSystemWithSolver<>();
@@ -49,6 +48,10 @@ inline auto SetUpPrecessionTest() {
     EXPECT_NEAR(q_host(0, 5), -0.30157681970585326, 1.e-12);
     EXPECT_NEAR(q_host(0, 6), -0.38049886257377241, 1.e-12);
 }
+
+}  // namespace
+
+namespace kynema::tests {
 
 TEST(PrecessionTest, FinalRotation) {
     SetUpPrecessionTest();

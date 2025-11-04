@@ -10,8 +10,7 @@
 #include "dof_management/freedom_signature.hpp"
 #include "state/update_dynamic_prediction.hpp"
 
-namespace kynema::tests {
-
+namespace {
 inline void CompareWithExpected(
     const Kokkos::View<const double**>::host_mirror_type& result,
     const Kokkos::View<const double**, Kokkos::HostSpace>& expected
@@ -22,6 +21,10 @@ inline void CompareWithExpected(
         }
     }
 }
+
+}  // namespace
+
+namespace kynema::tests {
 
 TEST(UpdateDynamicPrediction, OneNode) {
     constexpr auto h = .5;
@@ -41,8 +44,15 @@ TEST(UpdateDynamicPrediction, OneNode) {
     Kokkos::parallel_for(
         "UpdateDynamicPrediction", 1,
         state::UpdateDynamicPrediction<Kokkos::DefaultExecutionSpace>{
-            h, beta_prime, gamma_prime, node_freedom_allocation_table, node_freedom_map_table,
-            x_delta, q_delta, v, vd
+            .h = h,
+            .beta_prime = beta_prime,
+            .gamma_prime = gamma_prime,
+            .node_freedom_allocation_table = node_freedom_allocation_table,
+            .node_freedom_map_table = node_freedom_map_table,
+            .x_delta = x_delta,
+            .q_delta = q_delta,
+            .v = v,
+            .vd = vd
         }
     );
 

@@ -12,8 +12,14 @@ components::BeamBuilder& BladeInterfaceBuilder::Blade() {
     return this->beam_builder;
 }
 
+components::OutputsBuilder& BladeInterfaceBuilder::Outputs() {
+    return this->outputs_builder;
+}
+
 BladeInterface BladeInterfaceBuilder::Build() const {
-    return BladeInterface(this->solution_builder.Input(), this->beam_builder.Input());
+    return BladeInterface(
+        this->solution_builder.Input(), this->beam_builder.Input(), this->outputs_builder.Config()
+    );
 }
 
 }  // namespace kynema::interfaces

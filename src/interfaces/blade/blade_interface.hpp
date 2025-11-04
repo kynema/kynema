@@ -2,6 +2,7 @@
 
 #include "interfaces/components/beam.hpp"
 #include "interfaces/components/beam_input.hpp"
+#include "interfaces/components/outputs_config.hpp"
 #include "interfaces/components/solution_input.hpp"
 #include "interfaces/host_state.hpp"
 #include "interfaces/outputs.hpp"
@@ -24,9 +25,11 @@ public:
      * @brief Constructs a BladeInterface from solution and blade inputs
      * @param solution_input Configuration parameters for solver and solution
      * @param blade_input Configuration parameters for blade geometry
+     * @param outputs_config Configuration parameters for the outputs
      */
     explicit BladeInterface(
-        const components::SolutionInput& solution_input, const components::BeamInput& blade_input
+        const components::SolutionInput& solution_input, const components::BeamInput& blade_input,
+        const components::OutputsConfig& outputs_config
     );
 
     /// @brief Returns a reference to the blade model

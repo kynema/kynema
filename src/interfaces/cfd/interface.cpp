@@ -15,7 +15,7 @@
 #include "turbine.hpp"
 #include "turbine_input.hpp"
 
-namespace kynema::interfaces::cfd {
+namespace {
 
 /**
  * @brief Populates the provided NodeData object with state information
@@ -27,7 +27,8 @@ namespace kynema::interfaces::cfd {
  * @param host_state_vd
  */
 void GetNodeMotion(
-    NodeData& node, const Kokkos::View<double* [7]>::HostMirror::const_type& host_state_x,
+    kynema::interfaces::cfd::NodeData& node,
+    const Kokkos::View<double* [7]>::HostMirror::const_type& host_state_x,
     const Kokkos::View<double* [7]>::HostMirror::const_type& host_state_q,
     const Kokkos::View<double* [6]>::HostMirror::const_type& host_state_v,
     const Kokkos::View<double* [6]>::HostMirror::const_type& host_state_vd
@@ -49,14 +50,16 @@ void GetNodeMotion(
  * @param model The Kynema Model to be populated with mass and spring element information
  * @return A FlatingPlatform object based on the provided configuration
  */
-FloatingPlatform CreateFloatingPlatform(const FloatingPlatformInput& input, Model& model) {
+kynema::interfaces::cfd::FloatingPlatform CreateFloatingPlatform(
+    const kynema::interfaces::cfd::FloatingPlatformInput& input, kynema::Model& model
+) {
     // If floating platform is not enabled, return
     if (!input.enable) {
         return {
-            false,         // active
-            NodeData(0U),  // platform node
-            0U,            // mass element ID
-            {},
+            .active = false,                                // active
+            .node = kynema::interfaces::cfd::NodeData(0U),  // platform node
+            .mass_element_id = 0U,                          // mass element ID
+            .mooring_lines = {},
         };
     }
 
@@ -71,29 +74,77 @@ FloatingPlatform CreateFloatingPlatform(const FloatingPlatformInput& input, Mode
     const auto mass_element_id = model.AddMassElement(platform_node_id, input.mass_matrix);
 
     // Instantiate platform
-    FloatingPlatform platform{
-        true,  // enable platform
-        NodeData(platform_node_id),
-        mass_element_id,
-        {},
+    kynema::interfaces::cfd::FloatingPlatform platform{
+        .active = true,  // enable platform
+        .node = kynema::interfaces::cfd::NodeData(platform_node_id),
+        .mass_element_id = mass_element_id,
+        .mooring_lines = {},
     };
 
     // Construct mooring lines
     std::ranges::transform(
         input.mooring_lines, std::back_inserter(platform.mooring_lines),
-        [&](const MooringLineInput& ml_input) {
+        [&](const kynema::interfaces::cfd::MooringLineInput& ml_input) {
             // Add fairlead node
+            const auto fairlead_position = std::array{
+                ml_input.fairlead_position[0],
+                ml_input.fairlead_position[1],
+                ml_input.fairlead_position[2],
+                1.,
+                0.,
+                0.,
+                0.
+            };
+            const auto fairlead_velocity = std::array{
+                ml_input.fairlead_velocity[0],
+                ml_input.fairlead_velocity[1],
+                ml_input.fairlead_velocity[2],
+                0.,
+                0.,
+                0.
+            };
+            const auto fairlead_acceleration = std::array{
+                ml_input.fairlead_acceleration[0],
+                ml_input.fairlead_acceleration[1],
+                ml_input.fairlead_acceleration[2],
+                0.,
+                0.,
+                0.
+            };
             auto fairlead_node_id = model.AddNode()
-                                        .SetPosition(ml_input.fairlead_position)
-                                        .SetVelocity(ml_input.fairlead_velocity)
-                                        .SetAcceleration(ml_input.fairlead_acceleration)
+                                        .SetPosition(fairlead_position)
+                                        .SetVelocity(fairlead_velocity)
+                                        .SetAcceleration(fairlead_acceleration)
                                         .Build();
 
             // Add anchor node
+            const auto anchor_position = std::array{
+                ml_input.anchor_position[0],
+                ml_input.anchor_position[1],
+                ml_input.anchor_position[2],
+                1.,
+                0.,
+                0.,
+                0.
+            };
+            const auto anchor_velocity = std::array{ml_input.anchor_velocity[0],
+                                                    ml_input.anchor_velocity[1],
+                                                    ml_input.anchor_velocity[2],
+                                                    0.,
+                                                    0.,
+                                                    0.};
+            const auto anchor_acceleration = std::array{
+                ml_input.anchor_acceleration[0],
+                ml_input.anchor_acceleration[1],
+                ml_input.anchor_acceleration[2],
+                0.,
+                0.,
+                0.
+            };
             auto anchor_node_id = model.AddNode()
-                                      .SetPosition(ml_input.anchor_position)
-                                      .SetVelocity(ml_input.anchor_velocity)
-                                      .SetAcceleration(ml_input.anchor_acceleration)
+                                      .SetPosition(anchor_position)
+                                      .SetVelocity(anchor_velocity)
+                                      .SetAcceleration(anchor_acceleration)
                                       .Build();
 
             // Add fixed constraint to anchor node
@@ -101,7 +152,7 @@ FloatingPlatform CreateFloatingPlatform(const FloatingPlatformInput& input, Mode
 
             // Add rigid constraint from fairlead node to platform node
             auto rigid_constraint_id =
-                model.AddRigidJoint6DOFsTo3DOFs({platform.node.id, fairlead_node_id});
+                model.AddRigidJoint6DOFsTo3DOFs(std::array{platform.node.id, fairlead_node_id});
 
             // Add spring from fairlead to anchor
             auto spring_element_id = model.AddSpringElement(
@@ -109,9 +160,12 @@ FloatingPlatform CreateFloatingPlatform(const FloatingPlatformInput& input, Mode
             );
 
             // Add mooring line data to platform
-            return MooringLine{
-                NodeData(fairlead_node_id), NodeData(anchor_node_id), fixed_constraint_id,
-                rigid_constraint_id,        spring_element_id,
+            return kynema::interfaces::cfd::MooringLine{
+                .fairlead_node = kynema::interfaces::cfd::NodeData(fairlead_node_id),
+                .anchor_node = kynema::interfaces::cfd::NodeData(anchor_node_id),
+                .fixed_constraint_id = fixed_constraint_id,
+                .rigid_constraint_id = rigid_constraint_id,
+                .spring_element_id = spring_element_id,
             };
         }
     );
@@ -128,7 +182,8 @@ FloatingPlatform CreateFloatingPlatform(const FloatingPlatformInput& input, Mode
  */
 template <typename DeviceType>
 void SetPlatformLoads(
-    const FloatingPlatform& platform, kynema::interfaces::HostState<DeviceType>& host_state
+    const kynema::interfaces::cfd::FloatingPlatform& platform,
+    kynema::interfaces::HostState<DeviceType>& host_state
 ) {
     // Return if platform is not active
     if (!platform.active) {
@@ -151,7 +206,7 @@ void SetPlatformLoads(
  * @param host_state_vd Acceleration Data
  */
 void GetFloatingPlatformMotion(
-    FloatingPlatform& platform,
+    kynema::interfaces::cfd::FloatingPlatform& platform,
     const Kokkos::View<double* [7]>::HostMirror::const_type& host_state_x,
     const Kokkos::View<double* [7]>::HostMirror::const_type& host_state_q,
     const Kokkos::View<double* [6]>::HostMirror::const_type& host_state_v,
@@ -183,7 +238,9 @@ void GetFloatingPlatformMotion(
  * @param model The Model to be populated with element information based on the input
  * @return The full turbine object configured based on input
  */
-Turbine CreateTurbine(const TurbineInput& input, Model& model) {
+kynema::interfaces::cfd::Turbine CreateTurbine(
+    const kynema::interfaces::cfd::TurbineInput& input, kynema::Model& model
+) {
     return {
         CreateFloatingPlatform(input.floating_platform, model),
     };
@@ -200,8 +257,8 @@ Turbine CreateTurbine(const TurbineInput& input, Model& model) {
  */
 template <typename DeviceType>
 void SetTurbineLoads(
-    const Turbine& turbine, kynema::interfaces::HostState<DeviceType>& host_state,
-    State<DeviceType>& state
+    const kynema::interfaces::cfd::Turbine& turbine,
+    kynema::interfaces::HostState<DeviceType>& host_state, kynema::State<DeviceType>& state
 ) {
     SetPlatformLoads(turbine.floating_platform, host_state);
     Kokkos::deep_copy(state.f, host_state.f);
@@ -217,7 +274,8 @@ void SetTurbineLoads(
  * @param host_state_vd Acceleration Data
  */
 void GetTurbineMotion(
-    Turbine& turbine, const Kokkos::View<double* [7]>::HostMirror::const_type& host_state_x,
+    kynema::interfaces::cfd::Turbine& turbine,
+    const Kokkos::View<double* [7]>::HostMirror::const_type& host_state_x,
     const Kokkos::View<double* [7]>::HostMirror::const_type& host_state_q,
     const Kokkos::View<double* [6]>::HostMirror::const_type& host_state_v,
     const Kokkos::View<double* [6]>::HostMirror::const_type& host_state_vd
@@ -226,6 +284,9 @@ void GetTurbineMotion(
         turbine.floating_platform, host_state_x, host_state_q, host_state_v, host_state_vd
     );
 }
+
+}  // namespace
+namespace kynema::interfaces::cfd {
 
 Interface::Interface(const InterfaceInput& input)
     : model(input.gravity),

@@ -55,7 +55,16 @@ TEST(CalculateInertialForcesTestsMasses, OneNode) {
     Kokkos::parallel_for(
         "CalculateInertialForces", 1,
         ExecuteCalculateInertialForces{
-            mass, u_ddot, omega, omega_dot, eta_tilde, omega_tilde, omega_dot_tilde, rho, eta, FI
+            .mass = mass,
+            .u_ddot = u_ddot,
+            .omega = omega,
+            .omega_dot = omega_dot,
+            .eta_tilde = eta_tilde,
+            .omega_tilde = omega_tilde,
+            .omega_dot_tilde = omega_dot_tilde,
+            .rho = rho,
+            .eta = eta,
+            .FI = FI
         }
     );
 

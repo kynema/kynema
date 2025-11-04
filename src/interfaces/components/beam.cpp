@@ -1,6 +1,5 @@
 #include "beam.hpp"
 
-#include <numbers>
 #include <stdexcept>
 
 #include "elements/beams/beam_quadrature.hpp"
@@ -26,7 +25,7 @@ Beam::Beam(const BeamInput& input, Model& model) {
 
 std::vector<double> Beam::GetNodeWeights(double s) const {
     std::vector<double> weights(this->node_xi.size());
-    auto xi = 2. * s - 1.;
+    auto xi = (2. * s) - 1.;
     math::LagrangePolynomialDerivWeights(xi, this->node_xi, weights);
     return weights;
 }
@@ -94,9 +93,8 @@ void Beam::CreateNodeGeometry(const BeamInput& input) {
         const auto kp_xi = math::MapGeometricLocations(input.ref_axis.coordinate_grid);
         const auto gll_points = math::GenerateGLLPoints(n_geometry_pts - 1);
         const auto phi_kn_geometry = math::ComputeShapeFunctionValues(kp_xi, gll_points);
-        const auto geometry_points = math::PerformLeastSquaresFitting(
-            n_geometry_pts, phi_kn_geometry, input.ref_axis.coordinates
-        );
+        const auto geometry_points =
+            math::PerformLeastSquaresFitting(phi_kn_geometry, input.ref_axis.coordinates);
         this->node_coordinates =
             math::ProjectPointsToTargetPolynomial(n_geometry_pts, n_nodes, geometry_points);
 
@@ -105,7 +103,7 @@ void Beam::CreateNodeGeometry(const BeamInput& input) {
         const auto kp_xi = math::MapGeometricLocations(input.ref_axis.coordinate_grid);
         const auto phi_kn = math::ComputeShapeFunctionValues(kp_xi, this->node_xi);
         this->node_coordinates =
-            math::PerformLeastSquaresFitting(n_nodes, phi_kn, input.ref_axis.coordinates);
+            math::PerformLeastSquaresFitting(phi_kn, input.ref_axis.coordinates);
     }
 
     // Calculate tangent vectors at each node
@@ -130,6 +128,18 @@ void Beam::CreateBeamElement(const BeamInput& input, Model& model) {
         return NodeData(node_id);
     });
 
+    auto original_section_grid =
+        std::vector<double>{input.sections.front().location, input.sections.back().location};
+    if (input.quadrature_style == BeamInput::QuadratureStyle::Segmented) {
+        original_section_grid.resize(input.sections.size());
+        std::ranges::transform(
+            input.sections, std::begin(original_section_grid),
+            [](const auto& section) {
+                return section.location;
+            }
+        );
+    }
+
     // Build beam sections
     const auto sections = BuildBeamSections(input);
     auto section_grid = std::vector<double>(sections.size());
@@ -138,11 +148,17 @@ void Beam::CreateBeamElement(const BeamInput& input, Model& model) {
     });
 
     // Calculate trapezoidal quadrature based on section locations
-    const auto gll_quadrature =
-        beams::CreateGaussLegendreLobattoQuadrature(section_grid, input.section_refinement + 1U);
+    const auto quadrature =
+        (input.quadrature_rule == BeamInput::QuadratureRule::GaussLobatto)
+            ? beams::CreateGaussLegendreLobattoQuadrature(
+                  section_grid, original_section_grid, input.section_refinement + 1U
+              )
+            : beams::CreateGaussLegendreQuadrature(
+                  section_grid, original_section_grid, input.section_refinement + 1U
+              );
 
     // Add beam element and get ID
-    this->beam_element_id = model.AddBeamElement(node_ids, sections, gll_quadrature);
+    this->beam_element_id = model.AddBeamElement(node_ids, sections, quadrature);
 }
 
 void Beam::PositionBladeInSpace(const BeamInput& input, Model& model) const {
@@ -200,48 +216,69 @@ void Beam::CalcNodeTangents() {
     // Normalize tangent vectors
     std::ranges::transform(
         this->node_tangents, this->node_tangents.begin(),
-        [](std::array<double, 3>& tangent) {
-            const auto norm = math::Norm(tangent);
-            std::ranges::transform(tangent, tangent.begin(), [norm](double v) {
-                return v / norm;
-            });
-            return tangent;
+        [](const std::array<double, 3>& tangent) {
+            const auto normalized = Eigen::Matrix<double, 3, 1>(tangent.data()).normalized();
+            return std::array{normalized(0), normalized(1), normalized(2)};
         }
     );
 }
 
 std::vector<BeamSection> Beam::BuildBeamSections(const BeamInput& input) {
+    if (input.quadrature_style == BeamInput::QuadratureStyle::Segmented) {
+        if (input.quadrature_rule == BeamInput::QuadratureRule::GaussLobatto) {
+            return BuildBeamSections_SegmentedGLL(input);
+        } else {
+            return BuildBeamSections_SegmentedGL(input);
+        }
+    } else {
+        if (input.quadrature_rule == BeamInput::QuadratureRule::GaussLobatto) {
+            return BuildBeamSections_WholeBeamGLL(input);
+        } else {
+            return BuildBeamSections_WholeBeamGL(input);
+        }
+    }
+}
+
+std::vector<BeamSection> Beam::BuildBeamSections_SegmentedGLL(const BeamInput& input) {
     // Extraction section stiffness and mass matrices from blade definition
     std::vector<BeamSection> sections;
 
     // Add first section after rotating matrices to account for twist
-    auto twist = math::LinearInterp(
-        input.sections[0].location, input.ref_axis.twist_grid, input.ref_axis.twist
-    );
-    auto q_twist = math::RotationVectorToQuaternion({twist * std::numbers::pi / 180., 0., 0.});
-    sections.emplace_back(
-        input.sections[0].location, math::RotateMatrix6(input.sections[0].mass_matrix, q_twist),
-        math::RotateMatrix6(input.sections[0].stiffness_matrix, q_twist)
-    );
+    {
+        const auto twist = math::LinearInterp(
+            input.sections[0].location, input.ref_axis.twist_grid, input.ref_axis.twist
+        );
+        const auto q_twist = Eigen::Quaternion<double>(
+            Eigen::AngleAxis<double>(twist, Eigen::Matrix<double, 3, 1>::Unit(0))
+        );
+        const auto q_twist_array = std::array{q_twist.w(), q_twist.x(), q_twist.y(), q_twist.z()};
+        sections.emplace_back(
+            input.sections[0].location,
+            math::RotateMatrix6(input.sections[0].mass_matrix, q_twist_array),
+            math::RotateMatrix6(input.sections[0].stiffness_matrix, q_twist_array)
+        );
+    }
 
     // Loop through remaining section locations
-    const auto gll_locations = math::GetGllLocations(input.section_refinement + 1U);
+    const auto quad_locations = math::GetGllLocations(input.section_refinement + 1U);
+    const auto interior_nodes = input.section_refinement;
     for (auto section : std::views::iota(1U, input.sections.size())) {
         const auto section_location = input.sections[section].location;
         const auto section_mass_matrix = input.sections[section].mass_matrix;
         const auto section_stiffness_matrix = input.sections[section].stiffness_matrix;
 
         // Add refinement sections if requested
-        for (auto refinement : std::views::iota(0U, input.section_refinement)) {
+
+        for (auto refinement : std::views::iota(0U, interior_nodes)) {
             const auto left_location = input.sections[section - 1].location;
             const auto left_mass_matrix = input.sections[section - 1].mass_matrix;
             const auto left_stiffness_matrix = input.sections[section - 1].stiffness_matrix;
 
             // Calculate interpolation ratio between bounding sections
-            const auto alpha = (gll_locations[refinement + 1] + 1.) / 2.;
+            const auto alpha = (quad_locations[refinement + 1] + 1.) / 2.;
 
             // Interpolate grid location
-            const auto grid_value = (1. - alpha) * left_location + alpha * section_location;
+            const auto grid_value = ((1. - alpha) * left_location) + (alpha * section_location);
 
             // Interpolate mass and stiffness matrices from bounding sections
             auto mass_matrix = std::array<std::array<double, 6>, 6>{};
@@ -258,28 +295,168 @@ std::vector<BeamSection> Beam::BuildBeamSections(const BeamInput& input) {
             }
 
             // Calculate twist at current section location via linear interpolation
-            twist = math::LinearInterp(
-                section_location, input.ref_axis.twist_grid, input.ref_axis.twist
-            );
+            const auto twist =
+                math::LinearInterp(grid_value, input.ref_axis.twist_grid, input.ref_axis.twist);
 
             // Add refinement section
-            q_twist = math::RotationVectorToQuaternion({twist * std::numbers::pi / 180., 0., 0.});
+            const auto q_twist = Eigen::Quaternion<double>(
+                Eigen::AngleAxis<double>(twist, Eigen::Matrix<double, 3, 1>::Unit(0))
+            );
+            const auto q_twist_array =
+                std::array{q_twist.w(), q_twist.x(), q_twist.y(), q_twist.z()};
             sections.emplace_back(
-                grid_value, math::RotateMatrix6(mass_matrix, q_twist),
-                math::RotateMatrix6(stiffness_matrix, q_twist)
+                grid_value, math::RotateMatrix6(mass_matrix, q_twist_array),
+                math::RotateMatrix6(stiffness_matrix, q_twist_array)
             );
         }
 
         // Add ending section
-        twist =
-            math::LinearInterp(section_location, input.ref_axis.twist_grid, input.ref_axis.twist);
-        q_twist = math::RotationVectorToQuaternion({twist * std::numbers::pi / 180., 0., 0.});
-        sections.emplace_back(
-            section_location, math::RotateMatrix6(section_mass_matrix, q_twist),
-            math::RotateMatrix6(section_stiffness_matrix, q_twist)
-        );
+        {
+            const auto twist = math::LinearInterp(
+                section_location, input.ref_axis.twist_grid, input.ref_axis.twist
+            );
+            const auto q_twist = Eigen::Quaternion<double>(
+                Eigen::AngleAxis<double>(twist, Eigen::Matrix<double, 3, 1>::Unit(0))
+            );
+            const auto q_twist_array =
+                std::array{q_twist.w(), q_twist.x(), q_twist.y(), q_twist.z()};
+            sections.emplace_back(
+                section_location, math::RotateMatrix6(section_mass_matrix, q_twist_array),
+                math::RotateMatrix6(section_stiffness_matrix, q_twist_array)
+            );
+        }
     }
 
     return sections;
 }
+
+std::vector<BeamSection> Beam::BuildBeamSections_SegmentedGL(const BeamInput& input) {
+    // Extraction section stiffness and mass matrices from blade definition
+    std::vector<BeamSection> sections;
+
+    // Loop through remaining section locations
+    const auto quad_locations = math::GetGlLocations(input.section_refinement + 1U);
+    const auto interior_nodes = input.section_refinement + 1U;
+    for (auto section : std::views::iota(1U, input.sections.size())) {
+        const auto section_location = input.sections[section].location;
+        const auto section_mass_matrix = input.sections[section].mass_matrix;
+        const auto section_stiffness_matrix = input.sections[section].stiffness_matrix;
+
+        // Add refinement sections
+        for (auto refinement : std::views::iota(0U, interior_nodes)) {
+            const auto left_location = input.sections[section - 1].location;
+            const auto left_mass_matrix = input.sections[section - 1].mass_matrix;
+            const auto left_stiffness_matrix = input.sections[section - 1].stiffness_matrix;
+
+            // Calculate interpolation ratio between bounding sections
+            const auto alpha = (quad_locations[refinement] + 1.) / 2.;
+
+            // Interpolate grid location
+            const auto grid_value = ((1. - alpha) * left_location) + (alpha * section_location);
+
+            // Interpolate mass and stiffness matrices from bounding sections
+            auto mass_matrix = std::array<std::array<double, 6>, 6>{};
+            auto stiffness_matrix = std::array<std::array<double, 6>, 6>{};
+            for (auto component_1 : std::views::iota(0U, 6U)) {
+                for (auto component_2 : std::views::iota(0U, 6U)) {
+                    mass_matrix[component_1][component_2] =
+                        (1. - alpha) * left_mass_matrix[component_1][component_2] +
+                        alpha * section_mass_matrix[component_1][component_2];
+                    stiffness_matrix[component_1][component_2] =
+                        (1. - alpha) * left_stiffness_matrix[component_1][component_2] +
+                        alpha * section_stiffness_matrix[component_1][component_2];
+                }
+            }
+
+            // Calculate twist at current section location via linear interpolation
+            const auto twist =
+                math::LinearInterp(grid_value, input.ref_axis.twist_grid, input.ref_axis.twist);
+
+            // Add refinement section
+            const auto q_twist = Eigen::Quaternion<double>(
+                Eigen::AngleAxis<double>(twist, Eigen::Matrix<double, 3, 1>::Unit(0))
+            );
+            const auto q_twist_array =
+                std::array{q_twist.w(), q_twist.x(), q_twist.y(), q_twist.z()};
+            sections.emplace_back(
+                grid_value, math::RotateMatrix6(mass_matrix, q_twist_array),
+                math::RotateMatrix6(stiffness_matrix, q_twist_array)
+            );
+        }
+    }
+    return sections;
+}
+
+std::vector<BeamSection> Beam::BuildBeamSections_WholeBeam(
+    const BeamInput& input, std::span<const double> quad_locations
+) {
+    auto sections = std::vector<BeamSection>{};
+    const auto min_location = input.sections.front().location;
+    const auto max_location = input.sections.back().location;
+
+    auto grid_locations = std::vector<double>(quad_locations.size());
+    std::ranges::transform(
+        quad_locations, std::begin(grid_locations),
+        [min_location, max_location](auto x) {
+            const auto alpha = (x + 1.) / 2.;
+            return ((1. - alpha) * min_location) + (alpha * max_location);
+        }
+    );
+
+    for (auto grid_value : grid_locations) {
+        const auto twist =
+            math::LinearInterp(grid_value, input.ref_axis.twist_grid, input.ref_axis.twist);
+        const auto q_twist = Eigen::Quaternion<double>(
+            Eigen::AngleAxis<double>(twist, Eigen::Matrix<double, 3, 1>::Unit(0))
+        );
+        const auto q_twist_array = std::array{q_twist.w(), q_twist.x(), q_twist.y(), q_twist.z()};
+
+        const auto left_bound = std::ranges::find_if(input.sections, [grid_value](const auto& s) {
+            return s.location <= grid_value;
+        });
+        if (left_bound->location == grid_value) {
+            sections.emplace_back(
+                grid_value, math::RotateMatrix6(left_bound->mass_matrix, q_twist_array),
+                math::RotateMatrix6(left_bound->stiffness_matrix, q_twist_array)
+            );
+        } else {
+            const auto right_bound = std::next(left_bound);
+            const auto left_location = left_bound->location;
+            const auto right_location = right_bound->location;
+            const auto& left_mass_matrix = left_bound->mass_matrix;
+            const auto& right_mass_matrix = right_bound->mass_matrix;
+            const auto& left_stiffness_matrix = left_bound->stiffness_matrix;
+            const auto& right_stiffness_matrix = right_bound->stiffness_matrix;
+
+            const auto alpha = (grid_value - left_location) / (right_location - left_location);
+            auto mass_matrix = std::array<std::array<double, 6>, 6>{};
+            auto stiffness_matrix = std::array<std::array<double, 6>, 6>{};
+            for (auto component_1 : std::views::iota(0U, 6U)) {
+                for (auto component_2 : std::views::iota(0U, 6U)) {
+                    mass_matrix[component_1][component_2] =
+                        (1. - alpha) * left_mass_matrix[component_1][component_2] +
+                        alpha * right_mass_matrix[component_1][component_2];
+                    stiffness_matrix[component_1][component_2] =
+                        (1. - alpha) * left_stiffness_matrix[component_1][component_2] +
+                        alpha * right_stiffness_matrix[component_1][component_2];
+                }
+            }
+
+            sections.emplace_back(
+                grid_value, math::RotateMatrix6(mass_matrix, q_twist_array),
+                math::RotateMatrix6(stiffness_matrix, q_twist_array)
+            );
+        }
+    }
+
+    return sections;
+}
+std::vector<BeamSection> Beam::BuildBeamSections_WholeBeamGLL(const BeamInput& input) {
+    return BuildBeamSections_WholeBeam(input, math::GetGllLocations(input.section_refinement + 1U));
+}
+
+std::vector<BeamSection> Beam::BuildBeamSections_WholeBeamGL(const BeamInput& input) {
+    return BuildBeamSections_WholeBeam(input, math::GetGlLocations(input.section_refinement + 1U));
+}
+
 }  // namespace kynema::interfaces::components

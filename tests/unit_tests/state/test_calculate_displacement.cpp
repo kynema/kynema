@@ -19,7 +19,9 @@ TEST(CalculateDisplacement, OneNode) {
 
     Kokkos::parallel_for(
         "CalculateDisplacement", 1,
-        state::CalculateDisplacement<Kokkos::DefaultExecutionSpace>{h, q_delta, q_prev, q}
+        state::CalculateDisplacement<Kokkos::DefaultExecutionSpace>{
+            .h = h, .q_delta = q_delta, .q_prev = q_prev, .q = q
+        }
     );
 
     constexpr auto q_exact_data = std::array{9.,

@@ -1,6 +1,5 @@
 #pragma once
 
-#include <algorithm>
 #include <array>
 #include <cassert>
 #include <cmath>
@@ -10,9 +9,6 @@
 
 #include "aerodynamics_input.hpp"
 #include "interfaces/host_state.hpp"
-#include "math/interpolation.hpp"
-#include "math/quaternion_operations.hpp"
-#include "math/vector_operations.hpp"
 #include "model/node.hpp"
 
 namespace kynema::interfaces::components {
@@ -24,7 +20,8 @@ std::array<double, 6> CalculateAerodynamicLoad(
     std::span<const double, 3> v_motion, std::span<const double> aoa_polar,
     std::span<const double> cl_polar, std::span<const double> cd_polar,
     std::span<const double> cm_polar, double chord, double delta_s, double fluid_density,
-    std::span<const double, 3> con_force, std::span<const double, 4> qqr
+    std::span<const double, 3> con_force, std::span<const double, 4> qqr,
+    std::array<double, 3>& v_rel, double& aoa, double& cn, double& ct, double& cm
 );
 
 std::array<double, 3> CalculateConMotionVector(
@@ -42,36 +39,125 @@ class AerodynamicBody {
 public:
     size_t id;
 
+    //--------------------------------------------------------------------------
+    // Node data
+    //--------------------------------------------------------------------------
+
+    /// @brief IDs of the beam nodes in this aerodynamic body
     std::vector<size_t> node_ids;
+
+    /// @brief Displacements of the beam nodes (copied from state based on node_ids)
     std::vector<std::array<double, 7>> node_u;
+
+    /// @brief Velocities of the beam nodes (copied from state based on node_ids)
     std::vector<std::array<double, 6>> node_v;
+
+    /// @brief Aerodynamic forces at the beam nodes with moment arm applied from aerodynamic center
+    /// to reference axis (output)
     std::vector<std::array<double, 6>> node_f;
 
+    //--------------------------------------------------------------------------
+    // Aerodynamic section data
+    //--------------------------------------------------------------------------
+
+    /// @brief Initial position and orientation of beam reference axis at aerodynamic sections
     std::vector<std::array<double, 7>> xr_motion_map;
+
+    /// @brief Displacements of beam reference axis at aerodynamic sections
     std::vector<std::array<double, 7>> u_motion_map;
+
+    /// @brief Velocities of beam reference axis at aerodynamic sections
     std::vector<std::array<double, 6>> v_motion_map;
+
+    /// @brief Total rotation quaternion of beam reference axis at aerodynamic sections (reference +
+    /// displacement)
     std::vector<std::array<double, 4>> qqr_motion_map;
+
+    /// @brief Vectors from reference axis to aerodynamic center at aerodynamic sections in reference
+    /// configuration (includes twist)
     std::vector<std::array<double, 3>> con_motion;
+
+    /// @brief Positions of aerodynamic centers at aerodynamic sections in global coordinates
     std::vector<std::array<double, 3>> x_motion;
+
+    /// @brief Velocities of aerodynamic centers at aerodynamic sections in global coordinates
     std::vector<std::array<double, 3>> v_motion;
 
+    /// @brief Vectors from aerodynamic center to reference axis at aerodynamic sections in reference
+    /// configuration (negative of con_motion)
     std::vector<std::array<double, 3>> con_force;
+
+    /// @brief Inflow velocity at aerodynamic sections
+    std::vector<std::array<double, 3>> v_inflow;
+
+    /// @brief Relative velocity at aerodynamic sections (v_inflow - v_motion) (output)
+    std::vector<std::array<double, 3>> v_rel;
+
+    //--------------------------------------------------------------------------
+    // Aerodynamic section output
+    //--------------------------------------------------------------------------
+
+    /// @brief Angle of attack at aerodynamic sections (output)
+    std::vector<double> alpha;
+
+    /// @brief Normal force coefficient at aerodynamic sections (perpendicular to airfoil chord)
+    /// (output)
+    std::vector<double> cn;
+
+    /// @brief Tangent force coefficient at aerodynamic sections (parallel to airfoil chord) (output)
+    std::vector<double> ct;
+
+    /// @brief Moment coefficient at aerodynamic sections (output)
+    std::vector<double> cm;
+
+    /// @brief Aerodynamic loads (forces and moments) at aerodynamic centers (output)
     std::vector<std::array<double, 6>> loads;
+
+    /// @brief Total moment about beam reference axis at aerodynamic sections (accounting for AC
+    /// moment arm and aerodynamic moment) (output)
     std::vector<std::array<double, 3>> ref_axis_moments;
 
-    std::vector<double> jacobian_xi;
-    std::vector<std::array<double, 3>> v_inflow;
-    std::vector<std::array<double, 3>> v_rel;
-    std::vector<double> twist;
-    std::vector<double> chord;
-    std::vector<double> delta_s;
-    std::vector<size_t> polar_size;
-    std::vector<std::vector<double>> aoa;
-    std::vector<std::vector<double>> cl;
-    std::vector<std::vector<double>> cd;
-    std::vector<std::vector<double>> cm;
+    //--------------------------------------------------------------------------
+    // Aerodynamic section properties
+    //--------------------------------------------------------------------------
 
+    /// @brief Aerodynamic section twist
+    std::vector<double> twist;
+
+    /// @brief Aerodynamic section chord length
+    std::vector<double> chord;
+
+    /// @brief Aerodynamic section width for force/moment calculation
+    std::vector<double> delta_s;
+
+    /// @brief Number of points in each aerodynamic polar
+    std::vector<size_t> polar_size;
+
+    /// @brief Angle of attack polar at each aerodynamic section
+    std::vector<std::vector<double>> aoa;
+
+    /// @brief Lift coefficient polar at each aerodynamic section
+    std::vector<std::vector<double>> cl_polar;
+
+    /// @brief Drag coefficient polar at each aerodynamic section
+    std::vector<std::vector<double>> cd_polar;
+
+    /// @brief Moment coefficient polar at each aerodynamic section
+    std::vector<std::vector<double>> cm_polar;
+
+    //--------------------------------------------------------------------------
+    // Interpolation data
+    //--------------------------------------------------------------------------
+
+    /// @brief Locations of aerodynamic section width boundaries along the beam (used for section
+    /// width calculation)
+    std::vector<double> jacobian_xi;
+
+    /// @brief Flattened matrix to interpolate motion from beam nodes to aerodynamic sections
     std::vector<double> motion_interp;
+
+    /// @brief Flattened matrix to interpolate motion derivatives from beam nodes to aerodynamic
+    /// sections (used for section width calculation)
     std::vector<double> shape_deriv_jac;
 
 private:
@@ -123,11 +209,11 @@ private:
     template <typename T>
     static std::vector<std::vector<double>> ExtractPolar(size_t n_sections, T polar_extractor) {
         auto output = std::vector<std::vector<double>>(n_sections);
-        for (auto section = 0U; section < n_sections; ++section) {
+        for (auto section : std::views::iota(0U, n_sections)) {
             const auto& polar_data = polar_extractor(section);
             const auto n_polar_points = polar_data.size();
             output[section].resize(n_polar_points);
-            for (auto polar = 0U; polar < n_polar_points; ++polar) {
+            for (auto polar : std::views::iota(0U, n_polar_points)) {
                 output[section][polar] = polar_data[polar];
             }
         }
@@ -144,15 +230,15 @@ public:
     template <typename DeviceType>
     void CalculateMotion(const HostState<DeviceType>& state) {
         // Copy beam node displacements from state
-        for (auto node = 0U; node < node_u.size(); ++node) {
-            for (auto component = 0U; component < 7U; ++component) {
+        for (auto node : std::views::iota(0U, node_u.size())) {
+            for (auto component : std::views::iota(0U, 7U)) {
                 node_u[node][component] = state.q(node_ids[node], component);
             }
         }
 
         // Copy beam node velocities from state
-        for (auto node = 0U; node < node_v.size(); ++node) {
-            for (auto component = 0U; component < 6U; ++component) {
+        for (auto node : std::views::iota(0U, node_v.size())) {
+            for (auto component : std::views::iota(0U, 6U)) {
                 node_v[node][component] = state.v(node_ids[node], component);
             }
         }
@@ -160,53 +246,58 @@ public:
         InterpolateQuaternionFromNodesToSections(u_motion_map, node_u, motion_interp);
 
         // Interpolate beam node velocities to aerodynamic sections on the reference axis
-        for (auto i = 0U; i < v_motion_map.size(); ++i) {
-            for (auto component = 0U; component < 6U; ++component) {
+        for (auto i : std::views::iota(0U, v_motion_map.size())) {
+            for (auto component : std::views::iota(0U, 6U)) {
                 v_motion_map[i][component] = 0.;
             }
-            for (auto j = 0U; j < node_v.size(); ++j) {
-                const auto coeff = motion_interp[i * node_v.size() + j];
-                for (auto component = 0U; component < 6U; ++component) {
+            for (auto j : std::views::iota(0U, node_v.size())) {
+                const auto coeff = motion_interp[(i * node_v.size()) + j];
+                for (auto component : std::views::iota(0U, 6U)) {
                     v_motion_map[i][component] += coeff * node_v[j][component];
                 }
             }
         }
 
         // Calculate global rotation of each section
-        for (auto i = 0U; i < qqr_motion_map.size(); ++i) {
-            const auto xr = std::array{
+        for (auto i : std::views::iota(0U, qqr_motion_map.size())) {
+            const auto xr = Eigen::Quaternion<double>{
                 xr_motion_map[i][3], xr_motion_map[i][4], xr_motion_map[i][5], xr_motion_map[i][6]
             };
-            const auto u = std::array{
+            const auto u = Eigen::Quaternion<double>{
                 u_motion_map[i][3], u_motion_map[i][4], u_motion_map[i][5], u_motion_map[i][6]
             };
-            const auto qqr = math::QuaternionCompose(xr, u);
-            for (auto component = 0U; component < 4U; ++component) {
-                qqr_motion_map[i][component] = qqr[component];
-            }
+            const auto qqr = u * xr;
+            qqr_motion_map[i][0] = qqr.w();
+            qqr_motion_map[i][1] = qqr.x();
+            qqr_motion_map[i][2] = qqr.y();
+            qqr_motion_map[i][3] = qqr.z();
         }
 
         // Calculate motion of aerodynamic centers in global coordinates
-        for (auto i = 0U; i < x_motion.size(); ++i) {
-            const auto qqr_con = math::RotateVectorByQuaternion(qqr_motion_map[i], con_motion[i]);
+        for (auto i : std::views::iota(0U, x_motion.size())) {
+            const auto qqr_mm = Eigen::Quaternion<double>(
+                qqr_motion_map[i][0], qqr_motion_map[i][1], qqr_motion_map[i][2],
+                qqr_motion_map[i][3]
+            );
+            const auto con_m = Eigen::Matrix<double, 3, 1>(con_motion[i].data());
+            const auto qqr_con = qqr_mm._transformVector(con_m);
 
-            for (auto component = 0U; component < 3U; ++component) {
+            for (auto component : std::views::iota(0U, 3U)) {
                 x_motion[i][component] =
-                    xr_motion_map[i][component] + u_motion_map[i][component] + qqr_con[component];
+                    xr_motion_map[i][component] + u_motion_map[i][component] + qqr_con(component);
             }
 
-            const auto omega =
-                std::array{v_motion_map[i][3], v_motion_map[i][4], v_motion_map[i][5]};
-            const auto omega_qqr_con = math::CrossProduct(omega, qqr_con);
-            for (auto component = 0U; component < 3U; ++component) {
-                v_motion[i][component] = v_motion_map[i][component] + omega_qqr_con[component];
+            const auto omega = Eigen::Matrix<double, 3, 1>(&v_motion_map[i][3]);
+            const auto omega_qqr_con = omega.cross(qqr_con);
+            for (auto component : std::views::iota(0U, 3U)) {
+                v_motion[i][component] = v_motion_map[i][component] + omega_qqr_con(component);
             }
         }
 
         auto node_x = std::vector<double>(node_u.size() * 3U);
-        for (auto node = 0U; node < node_u.size(); ++node) {
-            for (auto component = 0U; component < 3U; ++component) {
-                node_x[component * node_u.size() + node] = state.x(node_ids[node], component);
+        for (auto node : std::views::iota(0U, node_f.size())) {
+            for (auto component : std::views::iota(0U, 3U)) {
+                node_x[(component * node_u.size()) + node] = state.x(node_ids[node], component);
             }
         }
 
@@ -233,8 +324,8 @@ public:
 
     template <typename DeviceType>
     void AddNodalLoadsToState(HostState<DeviceType>& state) {
-        for (auto node = 0U; node < node_f.size(); ++node) {
-            for (auto component = 0U; component < 6U; ++component) {
+        for (auto node : std::views::iota(0U, node_f.size())) {
+            for (auto component : std::views::iota(0U, 6U)) {
                 state.f(node_ids[node], component) += node_f[node][component];
             }
         }

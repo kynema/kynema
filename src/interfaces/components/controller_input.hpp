@@ -13,10 +13,11 @@ namespace kynema::interfaces::components {
  * dynamic loading of controller implementations at runtime.
  */
 struct ControllerInput {
-    std::string shared_lib_path;  ///< Path to controller shared library
-    std::string function_name;    ///< Controller function name (default: "DISCON")
-    std::string input_file_path;  ///< Path to controller input file
-    std::string simulation_name;  ///< Simulation name for controller
+    std::string shared_lib_path;      ///< Path to controller shared library
+    std::string function_name;        ///< Controller function name (default: "DISCON")
+    std::string input_file_path;      ///< Path to controller input file
+    std::string simulation_name;      ///< Simulation name for controller
+    bool yaw_control_enabled{false};  ///< Flag to enable yaw control
 
     /// @brief Default constructor - creates empty controller input
     ControllerInput() = default;

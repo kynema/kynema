@@ -26,7 +26,7 @@ struct CalculateStiffnessMatrix {
         auto r_tilde_data = Kokkos::Array<double, 9>{};
         auto r_tilde = View<double[3][3]>(r_tilde_data.data());
 
-        const double diag_term = c1 - c2 * l * l;
+        const double diag_term = c1 - (c2 * l * l);
         a(0, 0) = diag_term;
         a(1, 1) = diag_term;
         a(2, 2) = diag_term;

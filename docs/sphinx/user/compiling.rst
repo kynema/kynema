@@ -95,7 +95,7 @@ Before building Kynema, you'll need the following:
 - `KokkosKernels <https://github.com/kokkos/kokkoskernels>`_: performance portable linear algebra library
 - `netCDF <https://github.com/Unidata/netcdf-c>`_: I/O data Format
 - `Suite-Sparse <https://github.com/DrTimothyAldenDavis/SuiteSparse>`_: For the KLU sparse direct solver.  Other solvers, such as SuperLU are also possible to use.
-- A LAPACK implementation, such as `OpenBLAS <https://github.com/OpenMathLib/OpenBLAS>`_ or `netlib-lapack <https://github.com/Reference-LAPACK/lapack>`_
+- `Eigen <http://eigen.tuxfamily.org/>`_: For the Eigen linear algebra package
 - `yaml-cpp <https://github.com/jbeder/yaml-cpp>`_: A package for reading YAML files, to be used by regression tests
 - `GoogleTest <https://github.com/google/googletest>`_: unit testing package
 
@@ -116,14 +116,14 @@ Clone the spack repository, load the spack environment, and let spack learn abou
     spack compiler find
     spack external find
 
-Install GoogleTest, netCDF, Suite-Sparse, and LAPACK
+Install GoogleTest, netCDF, Suite-Sparse, and Eigen
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: bash
 
     spack install googletest
     spack install netcdf-c
-    spack install lapack
+    spack install eigen
     spack install suite-sparse
 
 Install Kokkos and Kokkos Kernels
@@ -166,7 +166,7 @@ Load the TPLs into your environment
     spack load googletest
     spack load suite-sparse
     spack load netcdf-c
-    spack load lapack
+    spack load eigen
     spack load kokkos
     spack load kokkos-kernels
 

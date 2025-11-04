@@ -4,18 +4,17 @@
 #include "step/step.hpp"
 #include "test_utilities.hpp"
 
-namespace kynema::tests {
-
+namespace {
 inline auto SetUpHeavyTopTest() {
-    auto model = Model();
+    auto model = kynema::Model();
     model.SetGravity(0., 0., -9.81);
 
     // Heavy top model parameters
-    constexpr auto mass = 15.;                                         // mass
-    constexpr auto inertia = std::array{0.234375, 0.46875, 0.234375};  // inertia matrix
-    const auto x = std::array{0., 1., 0.};                             // initial position
-    const auto omega = std::array{0., 150., -4.61538};                 // initial angular velocity
-    const auto x_dot = math::CrossProduct(omega, x);                   // initial velocity
+    constexpr auto mass = 15.;                                           // mass
+    constexpr auto inertia = std::array{0.234375, 0.46875, 0.234375};    // inertia matrix
+    const auto x = Eigen::Matrix<double, 3, 1>(0., 1., 0.);              // initial position
+    const auto omega = Eigen::Matrix<double, 3, 1>(0., 150., -4.61538);  // initial angular velocity
+    const auto x_dot = omega.cross(x);                                   // initial velocity
     const auto omega_dot =
         std::array{661.3461692307691919, 0., 0.};  // initial anguluar acceleration
     const auto x_ddot =
@@ -28,8 +27,8 @@ inline auto SetUpHeavyTopTest() {
     // Add node with initial position and velocity
     auto mass_node_id =
         model.AddNode()
-            .SetPosition(x[0], x[1], x[2], 1., 0., 0., 0.)
-            .SetVelocity(x_dot[0], x_dot[1], x_dot[2], omega[0], omega[1], omega[2])
+            .SetPosition(x(0), x(1), x(2), 1., 0., 0., 0.)
+            .SetVelocity(x_dot(0), x_dot(1), x_dot(2), omega(0), omega(1), omega(2))
             .SetAcceleration(
                 x_ddot[0], x_ddot[1], x_ddot[2], omega_dot[0], omega_dot[1], omega_dot[2]
             )
@@ -51,7 +50,7 @@ inline auto SetUpHeavyTopTest() {
     auto ground_node_id = model.AddNode().SetPosition(0., 0., 0., 1., 0., 0., 0.).Build();
 
     // Add constraints (6 DOF base node -> 3 DOF target node)
-    model.AddRigidJoint6DOFsTo3DOFs({mass_node_id, ground_node_id});
+    model.AddRigidJoint6DOFsTo3DOFs(std::array{mass_node_id, ground_node_id});
     model.AddPrescribedBC3DOFs(ground_node_id);
 
     // Set up step parameters
@@ -61,7 +60,8 @@ inline auto SetUpHeavyTopTest() {
     constexpr double rho_inf(0.9);
     constexpr double a_tol(1e-5);
     constexpr double r_tol(1e-3);
-    auto parameters = StepParameters(is_dynamic_solve, max_iter, step_size, rho_inf, a_tol, r_tol);
+    auto parameters =
+        kynema::StepParameters(is_dynamic_solve, max_iter, step_size, rho_inf, a_tol, r_tol);
 
     // Create solver, elements, constraints, and state
     auto [state, elements, constraints, solver] = model.CreateSystemWithSolver<>();
@@ -72,7 +72,7 @@ inline auto SetUpHeavyTopTest() {
         EXPECT_TRUE(converged);
     }
 
-    const auto q = kokkos_view_2D_to_vector(state.q);
+    const auto q = kynema::tests::kokkos_view_2D_to_vector(state.q);
 
     EXPECT_NEAR(q[0][0], -0.42217802273894345, 1e-10);
     EXPECT_NEAR(q[0][1], -0.09458263530050703, 1e-10);
@@ -82,6 +82,10 @@ inline auto SetUpHeavyTopTest() {
     EXPECT_NEAR(q[0][5], -0.9594776960853596, 1e-10);
     EXPECT_NEAR(q[0][6], -0.017268392381761217, 1e-10);
 }
+
+}  // namespace
+
+namespace kynema::tests {
 
 TEST(HeavyTopTest, FinalState) {
     SetUpHeavyTopTest();

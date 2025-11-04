@@ -40,8 +40,10 @@ int main() {
             .SetGravity({0., 0., -9.81})
             .SetMaximumNonlinearIterations(6)
             .SetAbsoluteErrorTolerance(1e-6)
-            .SetRelativeErrorTolerance(1e-4)
-            .SetOutputFile("TurbineInterfaceTest.IEA15");
+            .SetRelativeErrorTolerance(1e-4);
+
+        // Set output file path
+        builder.Outputs().SetOutputFilePath("TurbineInterfaceTest.IEA15");
 
         // Read WindIO yaml file
         // System parameters will usually be provided in the form of a .yaml file.  Here,
@@ -203,7 +205,7 @@ int main() {
 
         // Set tower base position from first reference axis point
         const auto tower_base_position =
-            std::array<double, 7>{x_values[0], y_values[0], z_values[0], 1., 0., 0., 0.};
+            std::array{x_values[0], y_values[0], z_values[0], 1., 0., 0., 0.};
         turbine_builder.SetTowerBasePosition(tower_base_position);
 
         // Add reference axis twist (zero for tower)

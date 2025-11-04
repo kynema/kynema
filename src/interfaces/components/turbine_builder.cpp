@@ -1,5 +1,6 @@
 #include "turbine_builder.hpp"
 
+#include "model/model.hpp"
 #include "turbine.hpp"
 
 namespace kynema::interfaces::components {
@@ -45,6 +46,14 @@ TurbineBuilder& TurbineBuilder::SetHubInertiaMatrix(
     const std::array<std::array<double, 6>, 6>& matrix
 ) {
     this->input.hub_inertia_matrix = matrix;
+    return *this;
+}
+
+TurbineBuilder& TurbineBuilder::SetNacelleInertiaMatrix(
+    const std::array<std::array<double, 6>, 6>& matrix, const std::array<double, 3>& cm_offset
+) {
+    this->input.nacelle_inertia_matrix = matrix;
+    this->input.nacelle_cm_offset = cm_offset;
     return *this;
 }
 
@@ -100,6 +109,21 @@ TurbineBuilder& TurbineBuilder::SetAzimuthAngle(double angle) {
 
 TurbineBuilder& TurbineBuilder::SetRotorSpeed(double speed) {
     this->input.rotor_speed = speed;
+    return *this;
+}
+
+TurbineBuilder& TurbineBuilder::SetGearBoxRatio(double ratio) {
+    this->input.gear_box_ratio = ratio;
+    return *this;
+}
+
+TurbineBuilder& TurbineBuilder::SetGeneratorPower(double power) {
+    this->input.generator_power = power;
+    return *this;
+}
+
+TurbineBuilder& TurbineBuilder::SetHubWindSpeed(double speed) {
+    this->input.hub_wind_speed = speed;
     return *this;
 }
 }  // namespace kynema::interfaces::components

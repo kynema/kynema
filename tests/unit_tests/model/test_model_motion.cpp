@@ -84,7 +84,7 @@ TEST_F(ModelMotionTest, RotateBeamAboutOrigin) {
 
 TEST_F(ModelMotionTest, RotateBeamAboutArbitraryPoint) {
     // First translate the beam to have Node 1 at (1, 1, 0) and Node 2 at (2, 1, 0)
-    model.TranslateBeam(beam_element, {1., 1., 0.});
+    model.TranslateBeam(beam_element, std::array{1., 1., 0.});
 
     // Now rotate around point (1, 1, 0) by 90 degrees around y-axis
     const auto rotation = std::array{0.7071068, 0., 0.7071068, 0.};  // 90 degrees around y-axis
@@ -239,7 +239,7 @@ TEST_F(ModelMotionTest, ComplexMotionSequence) {
     // ----------------------------------------------
     // Step 1: Translate beam up along z-axis
     // ----------------------------------------------
-    model.TranslateBeam(beam_element, {0., 0., 1.});
+    model.TranslateBeam(beam_element, std::array{0., 0., 1.});
 
     // ----------------------------------------------
     // Step 2: Rotate 90 degrees around x-axis

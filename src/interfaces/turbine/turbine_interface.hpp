@@ -3,7 +3,9 @@
 #include "interfaces/components/aerodynamics.hpp"
 #include "interfaces/components/aerodynamics_input.hpp"
 #include "interfaces/components/controller_input.hpp"
+#include "interfaces/components/outputs_config.hpp"
 #include "interfaces/components/turbine.hpp"
+#include "interfaces/host_constraints.hpp"
 #include "interfaces/host_state.hpp"
 #include "interfaces/outputs.hpp"
 #include "model/model.hpp"
@@ -13,6 +15,7 @@
 namespace kynema::interfaces::components {
 struct SolutionInput;
 struct TurbineInput;
+struct OutputsConfig;
 }  // namespace kynema::interfaces::components
 
 namespace kynema::interfaces {
@@ -34,19 +37,29 @@ public:
      * @param turbine_input Configuration parameters for the turbine geometry
      * @param aerodynamics_input Configuration parameters for the aerodynamic loads
      * @param controller_input Configuration parameters for the controller
+     * @param outputs_config Configuration parameters for the outputs
      */
     explicit TurbineInterface(
         const components::SolutionInput& solution_input,
         const components::TurbineInput& turbine_input,
         const components::AerodynamicsInput& aerodynamics_input = {},
-        const components::ControllerInput& controller_input = {}
+        const components::ControllerInput& controller_input = {},
+        const components::OutputsConfig& outputs_config = {}
     );
 
     /// @brief Returns a reference to the turbine model
-    [[nodiscard]] components::Turbine& Turbine();
+    [[nodiscard]] components::Turbine& Turbine() { return this->turbine; }
+
+    /// @brief Returns a reference to the aerodynamics model
+    [[nodiscard]] components::Aerodynamics& Aerodynamics() {
+        if (!aerodynamics) {
+            throw std::runtime_error("Aerodynamics component not initialized in TurbineInterface.");
+        }
+        return *aerodynamics;
+    }
 
     /**
-     * @brief Updates the aerodynamic loads to be applied to the sturcture based on a provided
+     * @brief Updates the aerodynamic loads to be applied to the structure based on a provided
      * function
      *
      * @param fluid_density The density of the air (assumed constant)
@@ -57,8 +70,16 @@ public:
         const std::function<std::array<double, 3>(const std::array<double, 3>&)>& inflow_function
     );
 
+    std::array<double, 3> GetHubNodePosition() const;
+
+    /**
+     * @brief Update controller inputs from current system state
+     */
+    void ApplyController(double t);
+
     /**
      * @brief Steps forward in time
+     *
      * @return true if solver converged, false otherwise
      * @note This function updates the host state with current node loads,
      *       solves the dynamic system, and updates the node motion with the new state.
@@ -100,9 +121,11 @@ private:
     Solver<DeviceType> solver;            ///< Kynema class for solving the dynamic system
     State<DeviceType> state_save;         ///< Kynema class state class for temporarily saving state
     HostState<DeviceType> host_state;     ///< Host local copy of node state data
-    std::unique_ptr<Outputs> outputs;     ///< handle to Output for writing to NetCDF
-    std::unique_ptr<util::TurbineController> controller;     ///< DISCON-style controller
+    HostConstraints<DeviceType> host_constraints;         ///< Host local copy of constraint data
+    std::unique_ptr<Outputs> outputs;                     ///< handle to Output for writing to NetCDF
+    std::unique_ptr<util::TurbineController> controller;  ///< DISCON-style controller
     std::unique_ptr<components::Aerodynamics> aerodynamics;  ///< Aerodynamics component
+    std::array<double, 3> hub_inflow{0., 0., 0.};            ///< Inflow velocity at the hub node
 
     /**
      * @brief Write rotor time-series data based on constraint outputs
@@ -113,7 +136,7 @@ private:
      * - Index 0: Azimuth angle (radians)
      * - Index 1: Rotor speed (rad/s)
      */
-    void WriteRotorTimeSeriesData();
+    void WriteTimeSeriesData() const;
 
     /**
      * @brief Initialize controller with turbine parameters and connect to constraints
@@ -123,13 +146,6 @@ private:
         const components::TurbineInput& turbine_input,
         const components::SolutionInput& solution_input
     );
-
-    void ApplyController();
-
-    /**
-     * @brief Update controller inputs from current system state
-     */
-    void UpdateControllerInputs();
 };
 
 }  // namespace kynema::interfaces

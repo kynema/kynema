@@ -44,10 +44,16 @@ public:
     );
 
     /// @brief Get the NetCDF file object
-    [[nodiscard]] const NetCDFFile& GetFile() const;
+    [[nodiscard]] const NetCdfFile& GetFile() const;
+
+    /// @brief Manually close the underlying NetCDF file
+    void Close() { this->file_.Close(); }
+
+    /// @brief Manually (re)open the underlying NetCDF file
+    void Open() { this->file_.Open(); }
 
 private:
-    NetCDFFile file_;
+    NetCdfFile file_;
     int time_dim_;
 };
 

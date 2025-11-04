@@ -2,14 +2,13 @@
 
 #include <array>
 #include <cmath>
-#include <numbers>
 #include <numeric>
 #include <span>
 #include <stdexcept>
 #include <string>
+#include <utility>
 #include <vector>
 
-#include "math/quaternion_operations.hpp"
 #include "vendor/dylib/dylib.hpp"
 
 namespace kynema::util {
@@ -142,12 +141,10 @@ struct TurbineConfig {
         }
 
         // Check if there are any nodes defined for each blade
-        for (const auto& blade : blade_initial_states) {
-            if (blade.node_initial_positions.empty()) {
-                throw std::runtime_error(
-                    "No nodes defined for a blade. At least one node is required."
-                );
-            }
+        if (std::ranges::any_of(blade_initial_states, [](auto& blade) {
+                return blade.node_initial_positions.empty();
+            })) {
+            throw std::runtime_error("No nodes defined for a blade. At least one node is required.");
         }
     }
 
@@ -172,7 +169,11 @@ inline void SetPositionAndOrientation(
     }
 
     // Set orientation (converts last 4 elements i.e. quaternion -> 3x3 rotation matrix)
-    orientation = math::QuaternionToRotationMatrix({data[3], data[4], data[5], data[6]});
+    const auto om = Eigen::Quaternion<double>(data[3], data[4], data[5], data[6]).toRotationMatrix();
+    orientation = std::array{
+        std::array{om(0, 0), om(0, 1), om(0, 2)}, std::array{om(1, 0), om(1, 1), om(1, 2)},
+        std::array{om(2, 0), om(2, 1), om(2, 2)}
+    };
 }
 
 /**
@@ -194,7 +195,7 @@ struct MeshData {
     std::vector<std::array<float, 6>> load;  //< N x 6 array [Fx, Fy, Fz, Mx, My, Mz]
 
     /// Constructor to initialize all mesh data to zero based on provided number of nodes
-    MeshData(size_t n_nodes)
+    explicit MeshData(size_t n_nodes)
         : n_points(static_cast<int32_t>(n_nodes)),
           position(n_nodes, std::array{0.F, 0.F, 0.F}),
           orientation(
@@ -258,7 +259,7 @@ struct MeshData {
         size_t point_number, std::span<const double, 7> pos, std::span<const double, 6> vel,
         std::span<const double, 6> acc
     ) {
-        if (point_number >= static_cast<size_t>(n_points)) {
+        if (std::cmp_greater_equal(point_number, n_points)) {
             throw std::out_of_range("point number out of range.");
         }
         SetPositionAndOrientation(
@@ -311,7 +312,7 @@ struct TurbineData {
      *
      * @param tc The TurbineConfig object containing the initial state of the turbine
      */
-    TurbineData(const TurbineConfig& tc)
+    explicit TurbineData(const TurbineConfig& tc)
         : n_blades(static_cast<int32_t>(tc.NumberOfBlades())),
           hub(1),
           nacelle(1),
@@ -357,10 +358,12 @@ struct TurbineData {
 
         // Check if the total number of blade nodes is valid - should be the same as the number of
         // aggregrated blade nodes
-        size_t total_nodes = 0;
-        for (const auto& bl : node_indices_by_blade) {
-            total_nodes += bl.size();
-        }
+        const auto total_nodes = std::transform_reduce(
+            std::cbegin(node_indices_by_blade), std::cend(node_indices_by_blade), 0UL, std::plus{},
+            [](const auto& blade) {
+                return blade.size();
+            }
+        );
         if (total_nodes != blade_nodes.NumberOfMeshPoints()) {
             throw std::runtime_error("Total number of blade nodes mismatch.");
         }
@@ -394,17 +397,19 @@ struct TurbineData {
         }
 
         // Rotation to convert blade orientation
-        const auto r_x2z = math::RotationVectorToQuaternion({0., std::numbers::pi / 2., 0.});
+        const auto r_x2z = Eigen::Quaternion<double>(
+            Eigen::AngleAxis<double>(std::numbers::pi / 2., Eigen::Matrix<double, 3, 1>::Unit(1))
+        );
 
         // Original orientation
-        const std::array<double, 4> r{position[3], position[4], position[5], position[6]};
+        const auto r = Eigen::Quaternion<double>(position[3], position[4], position[5], position[6]);
 
         // Converted orientation
-        const auto r_adi = math::QuaternionCompose(r, r_x2z);
+        const auto r_adi = r * r_x2z;
 
         // Position with new orientation
-        const std::array<double, 7> position_new{position[0], position[1], position[2], r_adi[0],
-                                                 r_adi[1],    r_adi[2],    r_adi[3]};
+        const std::array<double, 7> position_new{position[0], position[1], position[2], r_adi.w(),
+                                                 r_adi.x(),   r_adi.y(),   r_adi.z()};
 
         const size_t node_index = node_indices_by_blade[blade_number][node_number];
         blade_nodes.SetValues(node_index, position_new, velocity, acceleration);
@@ -426,22 +431,24 @@ struct TurbineData {
         size_t blade_number, const std::array<double, 7>& position,
         const std::array<double, 6>& velocity, const std::array<double, 6>& acceleration
     ) {
-        if (blade_number >= static_cast<size_t>(n_blades)) {
+        if (std::cmp_greater_equal(blade_number, n_blades)) {
             throw std::out_of_range("Blade number out of range.");
         }
 
         // Rotation to convert blade orientation
-        const auto r_x2z = math::RotationVectorToQuaternion({0., std::numbers::pi / 2., 0.});
+        const auto r_x2z = Eigen::Quaternion<double>(
+            Eigen::AngleAxis<double>(std::numbers::pi / 2., Eigen::Matrix<double, 3, 1>::Unit(1))
+        );
 
         // Original orientation
-        const auto r = std::array{position[3], position[4], position[5], position[6]};
+        const auto r = Eigen::Quaternion<double>(position[3], position[4], position[5], position[6]);
 
         // Converted orientation
-        const auto r_adi = math::QuaternionCompose(r, r_x2z);
+        const auto r_adi = r * r_x2z;
 
         // Position with new orientation
-        const auto position_new = std::array{position[0], position[1], position[2], r_adi[0],
-                                             r_adi[1],    r_adi[2],    r_adi[3]};
+        const auto position_new = std::array{position[0], position[1], position[2], r_adi.w(),
+                                             r_adi.x(),   r_adi.y(),   r_adi.z()};
 
         blade_roots.SetValues(blade_number, position_new, velocity, acceleration);
     }
@@ -491,7 +498,7 @@ struct TurbineData {
      */
     [[nodiscard]] std::array<double, 6> GetBladeNodeLoad(size_t blade_number, size_t node_number)
         const {
-        if (blade_number >= static_cast<size_t>(n_blades) ||
+        if (std::cmp_greater_equal(blade_number, n_blades) ||
             node_number >= node_indices_by_blade[blade_number].size()) {
             throw std::out_of_range("Blade or node number out of range.");
         }
@@ -671,7 +678,7 @@ public:
      * @param sc Simulation control settings
      * @param vtk VTK output settings
      */
-    AeroDynInflowLibrary(
+    explicit AeroDynInflowLibrary(
         const std::string& shared_lib_path = "aerodyn_inflow_c_binding.dll",
         ErrorHandling eh = ErrorHandling{}, FluidProperties fp = FluidProperties{},
         EnvironmentalConditions ec = EnvironmentalConditions{},
@@ -815,8 +822,8 @@ public:
         auto inflowwind_input_length = static_cast<int32_t>(sim_controls_.inflowwind_input.size());
 
         // Channel name and channel unit string arrays
-        std::string channel_names_c(20 * 8000 + 1, ' ');  //< Output channel names
-        std::string channel_units_c(20 * 8000 + 1, ' ');  //< Output channel units
+        std::string channel_names_c((20 * 8000) + 1, ' ');  //< Output channel names
+        std::string channel_units_c((20 * 8000) + 1, ' ');  //< Output channel units
 
         // Number of output channels (set by ADI_C_Init)
         int32_t n_channels{0};

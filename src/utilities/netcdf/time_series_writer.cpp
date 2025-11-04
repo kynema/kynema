@@ -49,7 +49,7 @@ void TimeSeriesWriter::WriteValueAtTimestep(
     WriteValuesAtTimestep(variable_name, timestep, std::array{value});
 }
 
-const NetCDFFile& TimeSeriesWriter::GetFile() const {
+const NetCdfFile& TimeSeriesWriter::GetFile() const {
     return file_;
 }
 }  // namespace kynema::util

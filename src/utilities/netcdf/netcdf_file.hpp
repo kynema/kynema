@@ -8,22 +8,23 @@
 
 namespace kynema::util {
 
-/// @brief Class for managing NetCDF files for writing outputs
-class NetCDFFile {
+/*
+ * @brief Class for managing NetCDF files for writing outputs
+ *
+ * This class provides a wrapper around the NetCDF library's functions for creating,
+ * writing, and reading NetCDF files. It is primarily used to write Kynema output data
+ * to a NetCDF file.
+ */
+class NetCdfFile {
 public:
     /**
-     * @brief Constructor to create a NetCDFFile object
+     * @brief Constructor to create a NetCdfFile object
      *
-     * This constructor creates a new NetCDF file if the create flag is true.
-     * Otherwise, it opens an existing NetCDF file.
+     * This is a wrapper around the NetCDF library's "nc_create" function.
+     * It creates a new NetCDF file if the create flag is true. Otherwise,
+     * it opens an existing NetCDF file.
      */
-    explicit NetCDFFile(const std::string& file_path, bool create = true);
-
-    // Prevent copying and moving (since we don't want copies made of output file)
-    NetCDFFile(const NetCDFFile&) = delete;
-    NetCDFFile& operator=(const NetCDFFile&) = delete;
-    NetCDFFile(NetCDFFile&&) = delete;
-    NetCDFFile& operator=(NetCDFFile&&) = delete;
+    explicit NetCdfFile(const std::string& file_path, bool create = true);
 
     /**
      * @brief Destructor to close the NetCDF file
@@ -31,7 +32,30 @@ public:
      * This function is a wrapper around the NetCDF library's "nc_close" function.
      * It closes the NetCDF file with the given (valid) ID.
      */
-    ~NetCDFFile();
+    ~NetCdfFile();
+
+    /// Explicitly prevent copying and moving -- rule of 5
+    NetCdfFile(const NetCdfFile&) = delete;
+    NetCdfFile& operator=(const NetCdfFile&) = delete;
+    NetCdfFile(NetCdfFile&&) = delete;
+    NetCdfFile& operator=(NetCdfFile&&) = delete;
+
+    /// @brief Synchronizes (flushes) the NetCDF file to disk
+    void Sync() const;
+
+    /**
+     * @brief Manually flushes and closes the NetCDF file
+     *
+     * @note If the file is already closed, no action is taken
+     */
+    void Close();
+
+    /**
+     * @brief Manually (re)opens the NetCDF file in write mode
+     *
+     * @note If the file is already open, no action is taken
+     */
+    void Open();
 
     //--------------------------------------------------------------------------
     // Setter/Write methods
@@ -118,8 +142,20 @@ public:
         std::span<const std::string> data
     ) const;
 
-    /// @brief Synchronizes (flushes) the NetCDF file to disk
-    void Sync() const;
+    /**
+     * @brief Configures chunking for a NetCDF variable to optimize I/O and compression performance
+     *
+     * Chunking divides a variable's data into fixed-size multidimensional blocks,
+     * improving efficiency for partial reads and writes. For time-series variables,
+     * it is typically best to chunk along the time dimension.
+     *
+     * This function must be called while the file is in define mode.
+     *
+     * @param var_name   Name of the variable to configure.
+     * @param chunk_sizes Chunk sizes for each dimension, in the same order as the variable’s
+     * dimensions.
+     */
+    void SetChunking(const std::string& var_name, std::span<const size_t> chunk_sizes) const;
 
     //--------------------------------------------------------------------------
     // Getter/Read methods
@@ -224,6 +260,7 @@ public:
 
 private:
     int netcdf_id_{-1};
+    std::string file_path_;
 };
 
 }  // namespace kynema::util

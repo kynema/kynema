@@ -11,6 +11,7 @@ from typing import Dict, List, Optional
 # Helper functions
 # -------------------------------------------------------------------------------
 
+
 def quaternion_to_rotation_matrix(quaternion: List[float]) -> np.ndarray:
     """Converts a 4x1 quaternion [w, i, j, k] to a 3x3 rotation matrix.
 
@@ -36,19 +37,20 @@ def quaternion_to_rotation_matrix(quaternion: List[float]) -> np.ndarray:
     # Create rotation matrix
     R = np.zeros((3, 3))
 
-    R[0, 0] = 1. - 2. * (jj + kk)
-    R[0, 1] = 2. * (ij - wk)
-    R[0, 2] = 2. * (ik + wj)
+    R[0, 0] = 1.0 - 2.0 * (jj + kk)
+    R[0, 1] = 2.0 * (ij - wk)
+    R[0, 2] = 2.0 * (ik + wj)
 
-    R[1, 0] = 2. * (ij + wk)
-    R[1, 1] = 1. - 2. * (ii + kk)
-    R[1, 2] = 2. * (jk - wi)
+    R[1, 0] = 2.0 * (ij + wk)
+    R[1, 1] = 1.0 - 2.0 * (ii + kk)
+    R[1, 2] = 2.0 * (jk - wi)
 
-    R[2, 0] = 2. * (ik - wj)
-    R[2, 1] = 2. * (jk + wi)
-    R[2, 2] = 1. - 2. * (ii + jj)
+    R[2, 0] = 2.0 * (ik - wj)
+    R[2, 1] = 2.0 * (jk + wi)
+    R[2, 2] = 1.0 - 2.0 * (ii + jj)
 
     return R
+
 
 def create_vector_array(name: str, num_components: int = 3):
     """Creates a VTK double array with the given name and number of components.
@@ -66,9 +68,11 @@ def create_vector_array(name: str, num_components: int = 3):
 
     return array
 
+
 # -------------------------------------------------------------------------------
 # Core VTK output logic
 # -------------------------------------------------------------------------------
+
 
 class VTKOutput:
     """Class to generate VTK files from Kynema (NetCDF-based) outputs and mesh connectivity (YAML-based)."""
@@ -241,15 +245,18 @@ class VTKOutput:
                 "acceleration": [acceleration[j_comp][i_node] for j_comp in range(6)],
                 "force": (
                     [force[j_comp][i_node] for j_comp in range(3)]
-                    if force is not None else None
+                    if force is not None
+                    else None
                 ),
                 "moment": (
                     [moment[j_comp][i_node] for j_comp in range(3)]
-                    if moment is not None else None
+                    if moment is not None
+                    else None
                 ),
                 "deformation": (
                     [deformation[j_comp][i_node] for j_comp in range(3)]
-                    if deformation is not None else None
+                    if deformation is not None
+                    else None
                 ),
             }
             nodes.append(node)
@@ -313,6 +320,17 @@ class VTKOutput:
 
         vtk_object.GetPointData().AddArray(trans_accel)
         vtk_object.GetPointData().AddArray(rot_accel)
+
+        # Add load data
+        force = create_vector_array("Force")
+        moment = create_vector_array("Moment")
+
+        for node in nodes:
+            force.InsertNextTuple3(*node["force"])
+            moment.InsertNextTuple3(*node["moment"])
+
+        vtk_object.GetPointData().AddArray(force)
+        vtk_object.GetPointData().AddArray(moment)
 
     def generate_visualization(self, timestep: int, output_dir: str):
         """Generates visualization for the specified timestep based on mesh connectivity.
@@ -534,9 +552,11 @@ class VTKOutput:
 
         print(f"Wrote PVD file to {pvd_filename}")
 
+
 # -------------------------------------------------------------------------------
 # Main function
 # -------------------------------------------------------------------------------
+
 
 def main():
     """Main function to parse arguments and generate VTK files.
@@ -618,15 +638,25 @@ def main():
     # Generate visualization for timestep range or all timesteps
     if args.start_timestep is not None or args.end_timestep is not None:
         start = args.start_timestep if args.start_timestep is not None else 0
-        end = args.end_timestep if args.end_timestep is not None else vtk_output.num_timesteps - 1
+        end = (
+            args.end_timestep
+            if args.end_timestep is not None
+            else vtk_output.num_timesteps - 1
+        )
 
         # Validate range
         if start < 0 or start >= vtk_output.num_timesteps:
-            raise ValueError(f"Start timestep {start} out of range (0-{vtk_output.num_timesteps-1})")
+            raise ValueError(
+                f"Start timestep {start} out of range (0-{vtk_output.num_timesteps-1})"
+            )
         if end < 0 or end >= vtk_output.num_timesteps:
-            raise ValueError(f"End timestep {end} out of range (0-{vtk_output.num_timesteps-1})")
+            raise ValueError(
+                f"End timestep {end} out of range (0-{vtk_output.num_timesteps-1})"
+            )
         if start > end:
-            raise ValueError(f"Start timestep {start} cannot be greater than end timestep {end}")
+            raise ValueError(
+                f"Start timestep {start} cannot be greater than end timestep {end}"
+            )
 
         # Generate visualization for the specified range
         print(f"Generating visualization for timesteps {start} to {end}")
@@ -636,6 +666,7 @@ def main():
         # Generate visualization for all timesteps
         print("Generating visualization for all timesteps")
         vtk_output.visualize_all_timesteps(args.output_dir)
+
 
 if __name__ == "__main__":
     main()

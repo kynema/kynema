@@ -1,3 +1,5 @@
+#include <ranges>
+
 #include <Kokkos_Core.hpp>
 #include <gtest/gtest.h>
 
@@ -30,7 +32,12 @@ TEST(CalculateFixedBCConstraintTests, OneConstraint) {
 
     Kokkos::parallel_for(
         "CalculateFixedBCConstraint", 1,
-        ExecuteCalculateFixedBCConstraint{X0, node_u, residual_terms, target_gradient_terms}
+        ExecuteCalculateFixedBCConstraint{
+            .X0 = X0,
+            .node_u = node_u,
+            .residual_terms = residual_terms,
+            .target_gradient_terms = target_gradient_terms
+        }
     );
 
     const auto residual_terms_mirror =

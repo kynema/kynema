@@ -64,7 +64,7 @@ struct CalculateQuadraturePointValues {
         const auto num_qps = num_qps_per_element(element);
         constexpr auto width = simd_type::size();
         const auto extra_component = num_nodes % width == 0U ? 0U : 1U;
-        const auto simd_nodes = num_nodes / width + extra_component;
+        const auto simd_nodes = (num_nodes / width) + extra_component;
         const auto padded_num_nodes = simd_nodes * width;
 
         const auto qp_pair = make_pair(0UL, num_qps);

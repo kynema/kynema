@@ -28,11 +28,19 @@ machine precision) of those produced with BeamDyn.
 +---------+----------------------+---------------------+--------------------+
 
 
-   .. container:: csl-entry
-      :name: ref-Wang-etal:2017
+.. note::
 
-      Wang, Q., M.A. Sprague, J. Jonkman, N. Johnson, B. Johnkman. 2017. “BeamDyn:
-      a high-fidelity wind turbine blade solver in the FAST modular framework."
-      *Wind Energy* 20: 1439-1462.
-      https://onlinelibrary.wiley.com/doi/pdf/10.1002/we.2101
+   This benchmark is included as a regression test in the Kynema code base.
+   The test is implemented in:
+
+     https://github.com/kynema/kynema/blob/main/tests/regression_tests/regression/verification/static_composite_beam_bending.cpp
+
+
+.. container:: csl-entry
+   :name: ref-Wang-etal:2017
+
+   Wang, Q., M.A. Sprague, J. Jonkman, N. Johnson, B. Johnkman. 2017. “BeamDyn:
+   a high-fidelity wind turbine blade solver in the FAST modular framework."
+   *Wind Energy* 20: 1439-1462.
+   https://onlinelibrary.wiley.com/doi/pdf/10.1002/we.2101
 

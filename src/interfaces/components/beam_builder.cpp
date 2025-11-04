@@ -4,11 +4,20 @@
 
 #include "beam.hpp"
 #include "math/matrix_operations.hpp"
-#include "math/quaternion_operations.hpp"
 
 namespace kynema::interfaces::components {
 BeamBuilder& BeamBuilder::SetElementOrder(size_t element_order) {
     input.element_order = element_order;
+    return *this;
+}
+
+BeamBuilder& BeamBuilder::SetQuadratureRule(BeamInput::QuadratureRule rule) {
+    input.quadrature_rule = rule;
+    return *this;
+}
+
+BeamBuilder& BeamBuilder::SetQuadratureStyle(BeamInput::QuadratureStyle style) {
+    input.quadrature_style = style;
     return *this;
 }
 
@@ -32,9 +41,12 @@ BeamBuilder& BeamBuilder::AddRefAxisPoint(
         return *this;
     }
     if (ref_axis == ReferenceAxisOrientation::Z) {
-        const auto q_z_to_x = math::RotationVectorToQuaternion({0., std::numbers::pi / 2., 0.});
-        input.ref_axis.coordinates.emplace_back(math::RotateVectorByQuaternion(q_z_to_x, coordinates)
-        );
+        const auto r =
+            Eigen::Quaternion<double>(
+                Eigen::AngleAxis<double>(std::numbers::pi / 2., Eigen::Matrix<double, 3, 1>::Unit(1))
+            )
+                ._transformVector(Eigen::Matrix<double, 3, 1>(coordinates.data()));
+        input.ref_axis.coordinates.emplace_back(std::array{r[0], r[1], r[2]});
         return *this;
     }
     throw std::invalid_argument("Invalid reference axis orientation");
@@ -81,10 +93,14 @@ BeamBuilder& BeamBuilder::AddSection(
         return *this;
     }
     if (ref_axis == ReferenceAxisOrientation::Z) {
-        const auto q_z_to_x = math::RotationVectorToQuaternion({0., std::numbers::pi / 2., 0.});
+        const auto q_z_to_x = Eigen::Quaternion<double>(
+            Eigen::AngleAxis<double>(std::numbers::pi / 2., Eigen::Matrix<double, 3, 1>::Unit(1))
+        );
+        const auto q_z_to_x_array =
+            std::array{q_z_to_x.w(), q_z_to_x.x(), q_z_to_x.y(), q_z_to_x.z()};
         input.sections.emplace_back(
-            grid_location, math::RotateMatrix6(mass_matrix, q_z_to_x),
-            math::RotateMatrix6(stiffness_matrix, q_z_to_x)
+            grid_location, math::RotateMatrix6(mass_matrix, q_z_to_x_array),
+            math::RotateMatrix6(stiffness_matrix, q_z_to_x_array)
         );
         return *this;
     }

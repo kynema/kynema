@@ -8,7 +8,6 @@
 
 #include "interfaces/components/turbine_input.hpp"
 #include "math/quaternion_operations.hpp"
-#include "math/vector_operations.hpp"
 #include "model/model.hpp"
 
 namespace kynema::interfaces::components {
@@ -18,10 +17,12 @@ Turbine::Turbine(const TurbineInput& input, Model& model)
       hub_node(invalid_id),
       azimuth_node(invalid_id),
       shaft_base_node(invalid_id),
+      nacelle_cm_node(invalid_id),
       yaw_bearing_node(invalid_id),
       tower_base{invalid_id},
       tower_top_to_yaw_bearing{invalid_id},
       yaw_bearing_to_shaft_base{invalid_id},
+      yaw_bearing_to_nacelle_cm{invalid_id},
       shaft_base_to_azimuth{invalid_id},
       azimuth_to_hub{invalid_id},
       blade_pitch_control(input.blades.size(), input.blade_pitch_angle) {
@@ -48,6 +49,27 @@ void Turbine::GetMotion(const HostState<DeviceType>& host_state) {
         blade.GetMotion(host_state);
     }
     this->tower.GetMotion(host_state);
+    this->hub_node.GetMotion(host_state);
+    this->azimuth_node.GetMotion(host_state);
+    this->shaft_base_node.GetMotion(host_state);
+    this->yaw_bearing_node.GetMotion(host_state);
+    for (auto& apex_node : this->apex_nodes) {
+        apex_node.GetMotion(host_state);
+    }
+}
+
+void Turbine::GetLoads(const HostConstraints<DeviceType>& host_constraints) {
+    this->tower_base.GetLoads(host_constraints);
+    this->tower_top_to_yaw_bearing.GetLoads(host_constraints);
+    this->yaw_bearing_to_shaft_base.GetLoads(host_constraints);
+    this->shaft_base_to_azimuth.GetLoads(host_constraints);
+    this->azimuth_to_hub.GetLoads(host_constraints);
+    for (auto& pitch_constraint : this->blade_pitch) {
+        pitch_constraint.GetLoads(host_constraints);
+    }
+    for (auto& apex_constraint : this->apex_to_hub) {
+        apex_constraint.GetLoads(host_constraints);
+    }
 }
 
 void Turbine::SetLoads(HostState<DeviceType>& host_state) const {
@@ -55,6 +77,13 @@ void Turbine::SetLoads(HostState<DeviceType>& host_state) const {
         blade.SetLoads(host_state);
     }
     this->tower.SetLoads(host_state);
+    this->hub_node.SetLoads(host_state);
+    this->azimuth_node.SetLoads(host_state);
+    this->shaft_base_node.SetLoads(host_state);
+    this->yaw_bearing_node.SetLoads(host_state);
+    for (const auto& apex_node : this->apex_nodes) {
+        apex_node.SetLoads(host_state);
+    }
 }
 
 const TurbineInput& Turbine::GetTurbineInput() const {
@@ -101,17 +130,23 @@ void Turbine::PositionNodes(const TurbineInput& input, Model& model) {
 
     // Calculate rotation quaternion to align a component from x-axis to z-axis (i.e.
     // rotate about y-axis by -90 degrees)
-    const auto q_x_to_z = math::RotationVectorToQuaternion({0., -std::numbers::pi / 2., 0.});
+    const auto q_x_to_z = Eigen::Quaternion<double>(
+        Eigen::AngleAxis<double>(-std::numbers::pi / 2., Eigen::Matrix<double, 3, 1>::Unit(1))
+    );
+    const auto q_x_to_z_array = std::array{q_x_to_z.w(), q_x_to_z.x(), q_x_to_z.y(), q_x_to_z.z()};
 
     // Calculate cone angle rotation quaternion (rotate about y-axis by -cone angle)
-    const auto q_cone = math::RotationVectorToQuaternion({0., -input.cone_angle, 0.});
+    const auto q_cone = Eigen::Quaternion<double>(
+        Eigen::AngleAxis<double>(-input.cone_angle, Eigen::Matrix<double, 3, 1>::Unit(1))
+    );
+    const auto q_cone_array = std::array{q_cone.w(), q_cone.x(), q_cone.y(), q_cone.z()};
 
     //--------------------------------------------------------------------------
     // Position tower
     //--------------------------------------------------------------------------
 
     // Rotate tower to align with global Z-axis
-    model.RotateBeamAboutPoint(this->tower.beam_element_id, q_x_to_z, origin);
+    model.RotateBeamAboutPoint(this->tower.beam_element_id, q_x_to_z_array, origin);
 
     // Calculate hub position based on tower top and rotor apex offset
     const auto& tower_top_node = model.GetNode(this->tower.nodes.back().id);
@@ -150,8 +185,8 @@ void Turbine::PositionNodes(const TurbineInput& input, Model& model) {
         // then translate to hub radius so blade root is at the hub radius
         for (const auto& node_id : current_blade_node_ids) {
             model.GetNode(node_id)
-                .RotateAboutPoint(q_x_to_z, origin)             // Rotate to align with Z-axis
-                .Translate({0., 0., input.hub_diameter / 2.});  // Translate to hub radius
+                .RotateAboutPoint(q_x_to_z_array, origin)  // Rotate to align with Z-axis
+                .Translate(std::array{0., 0., input.hub_diameter / 2.});  // Translate to hub radius
         }
 
         // Add blade apex node -> current_blade_node_ids vector
@@ -162,15 +197,19 @@ void Turbine::PositionNodes(const TurbineInput& input, Model& model) {
         //----------------------------------------------------
 
         // Calculate azimuth angle rotation quaternion (rotate about x-axis)
-        const auto q_azimuth =
-            math::RotationVectorToQuaternion({static_cast<double>(beam) * blade_angle_delta, 0., 0.}
-            );
+        const auto q_azimuth = Eigen::Quaternion<double>(Eigen::AngleAxis<double>(
+            static_cast<double>(beam) * blade_angle_delta, Eigen::Matrix<double, 3, 1>::Unit(0)
+        ));
+        const auto q_azimuth_array =
+            std::array{q_azimuth.w(), q_azimuth.x(), q_azimuth.y(), q_azimuth.z()};
 
         // Rotate blade nodes (including apex node) -> cone angle -> azimuth angle
         for (const auto& node_id : current_blade_node_ids) {
             model.GetNode(node_id)
-                .RotateAboutPoint(q_cone, origin)      // Rotate to cone angle (about y-axis)
-                .RotateAboutPoint(q_azimuth, origin);  // Rotate to azimuth angle (about x-axis)
+                .RotateAboutPoint(q_cone_array, origin)  // Rotate to cone angle (about y-axis)
+                .RotateAboutPoint(
+                    q_azimuth_array, origin
+                );  // Rotate to azimuth angle (about x-axis)
         }
     }
 
@@ -179,13 +218,17 @@ void Turbine::PositionNodes(const TurbineInput& input, Model& model) {
     //--------------------------------------------------------------------------
 
     // Create shaft rotation quaternion
-    const auto q_shaft_tilt = math::RotationVectorToQuaternion({0., input.shaft_tilt_angle, 0.});
+    const auto q_shaft_tilt = Eigen::Quaternion<double>(
+        Eigen::AngleAxis<double>(input.shaft_tilt_angle, Eigen::Matrix<double, 3, 1>::Unit(1))
+    );
+    const auto q_shaft_tilt_array =
+        std::array{q_shaft_tilt.w(), q_shaft_tilt.x(), q_shaft_tilt.y(), q_shaft_tilt.z()};
 
     // Rotate rotor nodes by shaft tilt angle and translate to apex position
     for (const auto& node_id : this->rotor_node_ids) {
         model.GetNode(node_id)
-            .RotateAboutPoint(q_shaft_tilt, origin)  // Rotate about shaft tilt
-            .Translate(apex_position);               // Translate to apex position
+            .RotateAboutPoint(q_shaft_tilt_array, origin)  // Rotate about shaft tilt
+            .Translate(apex_position);                     // Translate to apex position
     }
 }
 
@@ -201,22 +244,37 @@ void Turbine::CreateIntermediateNodes(const TurbineInput& input, Model& model) {
     //--------------------------------------------------------------------------
 
     // Create hub node at origin with hub CM offset
-    this->hub_node = NodeData(
-        model.AddNode().SetPosition({-input.rotor_apex_to_hub, 0., 0., 1., 0., 0., 0.}).Build()
-    );
+    this->hub_node =
+        NodeData(model.AddNode()
+                     .SetPosition(std::array{-input.rotor_apex_to_hub, 0., 0., 1., 0., 0., 0.})
+                     .Build());
 
     // Create azimuth node at shaft length from origin
-    this->azimuth_node =
-        NodeData(model.AddNode().SetPosition({shaft_length, 0., 0., 1., 0., 0., 0.}).Build());
+    this->azimuth_node = NodeData(
+        model.AddNode().SetPosition(std::array{shaft_length, 0., 0., 1., 0., 0., 0.}).Build()
+    );
 
     // Create shaft base node at shaft length from origin
-    this->shaft_base_node =
-        NodeData(model.AddNode().SetPosition({shaft_length, 0., 0., 1., 0., 0., 0.}).Build());
+    this->shaft_base_node = NodeData(
+        model.AddNode().SetPosition(std::array{shaft_length, 0., 0., 1., 0., 0., 0.}).Build()
+    );
 
     // Create yaw bearing node at tower top position
-    this->yaw_bearing_node = NodeData(
-        model.AddNode().SetPosition(tower_top_node.x0).SetOrientation({1., 0., 0., 0.}).Build()
-    );
+    const auto yaw_position =
+        std::array{tower_top_node.x0[0], tower_top_node.x0[1], tower_top_node.x0[2], 1., 0., 0., 0.};
+    this->yaw_bearing_node = NodeData(model.AddNode().SetPosition(yaw_position).Build());
+
+    // Create nacelle center of mass node at tower top position
+    const auto nacelle_position = std::array{
+        tower_top_node.x0[0] + input.nacelle_cm_offset[0],
+        tower_top_node.x0[1] + input.nacelle_cm_offset[1],
+        tower_top_node.x0[2] + input.nacelle_cm_offset[2],
+        1.,
+        0.,
+        0.,
+        0.
+    };
+    this->nacelle_cm_node = NodeData(model.AddNode().SetPosition(nacelle_position).Build());
 
     //--------------------------------------------------------------------------
     // Create blade apex nodes
@@ -226,7 +284,8 @@ void Turbine::CreateIntermediateNodes(const TurbineInput& input, Model& model) {
 
     // Create one apex node per blade at origin
     for ([[maybe_unused]] auto beam : std::views::iota(0U, this->blades.size())) {
-        const auto apex_node_id = model.AddNode().SetPosition({0., 0., 0., 1., 0., 0., 0.}).Build();
+        const auto apex_node_id =
+            model.AddNode().SetPosition(std::array{0., 0., 0., 1., 0., 0., 0.}).Build();
         this->apex_nodes.emplace_back(apex_node_id);
     }
 
@@ -321,9 +380,13 @@ void Turbine::CreateIntermediateNodes(const TurbineInput& input, Model& model) {
 }
 
 void Turbine::AddMassElements(const TurbineInput& input, Model& model) {
-    // Add mass element at yaw bearing node (nacelle mass + yaw bearing mass)
+    // Add mass element at yaw bearing node
     this->yaw_bearing_mass_element_id =
         model.AddMassElement(this->yaw_bearing_node.id, input.yaw_bearing_inertia_matrix);
+
+    // Add mass element at nacelle CM node
+    this->nacelle_cm_mass_element_id =
+        model.AddMassElement(this->nacelle_cm_node.id, input.nacelle_inertia_matrix);
 
     // Add mass element at hub node (hub assembly mass)
     this->hub_mass_element_id = model.AddMassElement(this->hub_node.id, input.hub_inertia_matrix);
@@ -343,21 +406,21 @@ void Turbine::AddConstraints(const TurbineInput& input, Model& model) {
         const auto& root_node =
             model.GetNode(this->blades[beam].nodes[0].id);  // first node of blade
 
-        // Calculate the pitch axis for the blade (from apex to root)
-        const auto pitch_axis = std::array{
-            root_node.x0[0] - apex_node.x0[0],
-            root_node.x0[1] - apex_node.x0[1],
-            root_node.x0[2] - apex_node.x0[2],
-        };
+        // Calculate the pitch axis for the blade
+        // (from root to apex so that positive pitch angles point the leading edge into the wind)
+        const auto pitch_axis = (Eigen::Matrix<double, 3, 1>(apex_node.x0.data()) -
+                                 Eigen::Matrix<double, 3, 1>(root_node.x0.data()))
+                                    .normalized();
 
         // Create pitch control constraint
-        this->blade_pitch.emplace_back(ConstraintData{model.AddRotationControl(
-            {root_node.id, apex_node.id}, pitch_axis, &this->blade_pitch_control[beam]
-        )});
+        this->blade_pitch.emplace_back(model.AddRotationControl(
+            std::array{apex_node.id, root_node.id}, std::span<const double, 3>{pitch_axis.data(), 3},
+            &this->blade_pitch_control[beam]
+        ));
 
         // Add rigid constraint between hub and blade apex
         this->apex_to_hub.emplace_back(
-            ConstraintData{model.AddRigidJointConstraint({this->hub_node.id, apex_node.id})}
+            model.AddRigidJointConstraint(std::array{this->hub_node.id, apex_node.id})
         );
     }
 
@@ -366,29 +429,46 @@ void Turbine::AddConstraints(const TurbineInput& input, Model& model) {
     //--------------------------------------------------------------------------
 
     // Add rigid constraint between hub and azimuth node
-    this->azimuth_to_hub =
-        ConstraintData{model.AddRigidJointConstraint({this->azimuth_node.id, this->hub_node.id})};
+    this->azimuth_to_hub = ConstraintData{
+        model.AddRigidJointConstraint(std::array{this->azimuth_node.id, this->hub_node.id})
+    };
 
-    // Shaft axis constraint - add revolute joint between shaft base and azimuth node
-    const auto shaft_axis =
-        std::array{-cos(input.shaft_tilt_angle), 0., sin(input.shaft_tilt_angle)};
+    // Get the blade apex node
+    const auto& shaft_base_position = model.GetNode(this->shaft_base_node.id).DisplacedPosition();
+
+    // Get the hub node
+    const auto& hub_position = model.GetNode(this->hub_node.id).DisplacedPosition();
+
+    // Shaft axis constraint - add revolute joint between shaft base and hub node
+    // Points from hub to shaft base, CCW rotation of rotor is positive rotation;
+    // which requires a negative torque to counteract rotation
+    const auto shaft_axis = (Eigen::Matrix<double, 3, 1>(shaft_base_position.data()) -
+                             Eigen::Matrix<double, 3, 1>(hub_position.data()))
+                                .normalized();
     this->shaft_base_to_azimuth = ConstraintData{model.AddRevoluteJointConstraint(
-        {this->shaft_base_node.id, this->azimuth_node.id}, shaft_axis, &torque_control
+        std::array{this->shaft_base_node.id, this->azimuth_node.id},
+        std::span<const double, 3>{shaft_axis.data(), 3}, &torque_control
     )};
 
     // Add rigid constraint from yaw bearing to shaft base
-    this->yaw_bearing_to_shaft_base = ConstraintData{
-        model.AddRigidJointConstraint({this->yaw_bearing_node.id, this->shaft_base_node.id})
-    };
+    this->yaw_bearing_to_shaft_base = ConstraintData{model.AddRigidJointConstraint(
+        std::array{this->yaw_bearing_node.id, this->shaft_base_node.id}
+    )};
+
+    // Add rigid constraint from yaw bearing to nacelle center of mass
+    this->yaw_bearing_to_nacelle_cm = ConstraintData{model.AddRigidJointConstraint(
+        std::array{this->yaw_bearing_node.id, this->nacelle_cm_node.id}
+    )};
 
     //--------------------------------------------------------------------------
-    // Nacelle control constraints
+    // Nacelle constraints
     //--------------------------------------------------------------------------
 
     // Add constraint from tower top to yaw bearing
     this->yaw_control = input.nacelle_yaw_angle;
     this->tower_top_to_yaw_bearing = ConstraintData{model.AddRotationControl(
-        {this->tower.nodes.back().id, this->yaw_bearing_node.id}, {0., 0., 1.}, &this->yaw_control
+        std::array{this->tower.nodes.back().id, this->yaw_bearing_node.id}, std::array{0., 0., 1.},
+        &this->yaw_control
     )};
 
     //--------------------------------------------------------------------------
@@ -420,29 +500,24 @@ void Turbine::SetInitialDisplacements(const TurbineInput& input, Model& model) {
         const auto& apex_node = model.GetNode(this->apex_nodes[beam].id);
 
         // Calculate the pitch axis
-        const auto pitch_axis = std::array{
-            root_node.x0[0] - apex_node.x0[0],
-            root_node.x0[1] - apex_node.x0[1],
-            root_node.x0[2] - apex_node.x0[2],
-        };
+        const auto root_node_x0 = Eigen::Matrix<double, 3, 1>(root_node.x0.data());
+        const auto apex_node_x0 = Eigen::Matrix<double, 3, 1>(apex_node.x0.data());
+        const auto pitch_axis = root_node_x0 - apex_node_x0;
 
         // Create rotation vector about the pitch axis
-        const auto pitch_axis_unit = math::UnitVector(pitch_axis);
-        const auto rotation_vector = std::array{
-            input.blade_pitch_angle * pitch_axis_unit[0],
-            input.blade_pitch_angle * pitch_axis_unit[1],
-            input.blade_pitch_angle * pitch_axis_unit[2]
-        };
+        const auto pitch_axis_unit = pitch_axis.normalized();
+        const auto rotation_vector = Eigen::AngleAxis(input.blade_pitch_angle, pitch_axis_unit);
 
         // Calculate pitch rotation quaternion
-        const auto q_pitch = math::RotationVectorToQuaternion(rotation_vector);
+        const auto q_pitch = Eigen::Quaternion<double>(rotation_vector);
+        const auto q_pitch_array = std::array{q_pitch.w(), q_pitch.x(), q_pitch.y(), q_pitch.z()};
 
         // Use apex node position as rotation center
         const auto pitch_center = std::array{apex_node.x0[0], apex_node.x0[1], apex_node.x0[2]};
 
         // Apply pitch rotation as displacement to all blade nodes and apex node
         for (const auto& blade_node : this->blades[beam].nodes) {
-            model.GetNode(blade_node.id).RotateDisplacementAboutPoint(q_pitch, pitch_center);
+            model.GetNode(blade_node.id).RotateDisplacementAboutPoint(q_pitch_array, pitch_center);
         }
     }
 
@@ -456,12 +531,16 @@ void Turbine::SetInitialDisplacements(const TurbineInput& input, Model& model) {
         const auto& tower_top_node = model.GetNode(this->tower.nodes.back().id);
 
         // Create yaw rotation quaternion (rotation about tower Z-axis)
-        const auto q_yaw = math::RotationVectorToQuaternion({0., 0., input.nacelle_yaw_angle});
+        const auto q_yaw = Eigen::Quaternion<double>(
+            Eigen::AngleAxis<double>(input.nacelle_yaw_angle, Eigen::Matrix<double, 3, 1>::Unit(2))
+        );
+        const auto q_yaw_array = std::array{q_yaw.w(), q_yaw.x(), q_yaw.y(), q_yaw.z()};
 
         // Rotate all nacelle components about tower top position
         for (const auto& node_id : this->nacelle_node_ids) {
             model.GetNode(node_id).RotateDisplacementAboutPoint(
-                q_yaw, {tower_top_node.x0[0], tower_top_node.x0[1], tower_top_node.x0[2]}
+                q_yaw_array,
+                std::array{tower_top_node.x0[0], tower_top_node.x0[1], tower_top_node.x0[2]}
             );
         }
     }
@@ -480,6 +559,8 @@ void Turbine::SetInitialDisplacements(const TurbineInput& input, Model& model) {
         input.tower_base_position[1] - ref_tower_base_position[1],
         input.tower_base_position[2] - ref_tower_base_position[2]
     };
+    const auto tower_base_displacement_vec =
+        Eigen::Matrix<double, 3, 1>(tower_base_displacement.data());
 
     // Get tower base orientation at input position
     const auto tower_base_orientation = std::array{
@@ -488,7 +569,7 @@ void Turbine::SetInitialDisplacements(const TurbineInput& input, Model& model) {
     };
 
     // Apply tower base displacement if displacement is non-zero or rotation is non-identity
-    if (math::Norm(tower_base_displacement) > kZeroTolerance ||
+    if (tower_base_displacement_vec.norm() > kZeroTolerance ||
         !math::IsIdentityQuaternion(tower_base_orientation, kZeroTolerance)) {
         // Apply displacement to all turbine nodes
         for (const auto& node_id : this->all_turbine_node_ids) {
@@ -511,12 +592,11 @@ void Turbine::SetInitialDisplacements(const TurbineInput& input, Model& model) {
 
 void Turbine::SetInitialRotorVelocity(const TurbineInput& input, Model& model) {
     // Calculate shaft axis in current configuration
-    const auto hub_position = model.GetNode(this->hub_node.id).DisplacedPosition();
     const auto shaft_base_position = model.GetNode(this->shaft_base_node.id).DisplacedPosition();
-    const auto shaft_axis = math::UnitVector(
-        {hub_position[0] - shaft_base_position[0], hub_position[1] - shaft_base_position[1],
-         hub_position[2] - shaft_base_position[2]}
-    );
+    const auto hub_position = model.GetNode(this->hub_node.id).DisplacedPosition();
+    const auto shaft_axis = (Eigen::Matrix<double, 3, 1>(shaft_base_position.data()) -
+                             Eigen::Matrix<double, 3, 1>(hub_position.data()))
+                                .normalized();
 
     // Collect all rotor node IDs (hub, azimuth, blade nodes, and apex nodes)
     std::vector<size_t> rotor_velocity_node_ids{this->hub_node.id, this->azimuth_node.id};
@@ -547,7 +627,7 @@ void Turbine::SetInitialRotorVelocity(const TurbineInput& input, Model& model) {
     // Apply rotational velocity to all rotor nodes about hub node
     for (const auto& node_id : rotor_velocity_node_ids) {
         model.GetNode(node_id).SetVelocityAboutPoint(
-            rigid_body_velocity, {hub_position[0], hub_position[1], hub_position[2]}
+            rigid_body_velocity, std::array{hub_position[0], hub_position[1], hub_position[2]}
         );
     }
 }

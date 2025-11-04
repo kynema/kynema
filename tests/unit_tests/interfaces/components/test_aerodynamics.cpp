@@ -57,14 +57,20 @@ TEST(AerodynamicsComponentTest, CalculateAerodynamicLoad_Case1) {
     constexpr auto qqr = std::array{1., 0., 0., 0.};
     constexpr auto con_force = std::array{0., -.5, 0.};
 
+    auto alpha = 0.;
+    auto cn = 0.;
+    auto ct = 0.;
+    auto cm = 0.;
+    auto v_rel = std::array<double, 3>{};
+
     auto ref_axis_moment = std::array<double, 3>{};
     auto load = kynema::interfaces::components::CalculateAerodynamicLoad(
         ref_axis_moment, v_inflow, v_motion, aoa_polar, cl_polar, cd_polar, cm_polar, chord, delta_s,
-        fluid_density, con_force, qqr
+        fluid_density, con_force, qqr, v_rel, alpha, cn, ct, cm
     );
 
     constexpr auto expected_load = std::array{0., 45.9375, -91.875, -7.35, 0., 0.};
-    constexpr auto expected_ref_axis_moment = std::array{-7.35 - 91.875 / 2., 0., 0.};
+    constexpr auto expected_ref_axis_moment = std::array{-7.35 - (91.875 / 2.), 0., 0.};
 
     EXPECT_NEAR(load[0], expected_load[0], 1.e-10);
     EXPECT_NEAR(load[1], expected_load[1], 1.e-10);
@@ -92,15 +98,22 @@ TEST(AerodynamicsComponentTest, CalculateAerodynamicLoad_Case2) {
     constexpr auto qqr = std::array{1., 0., 0., 0.};
     constexpr auto con_force = std::array{0., -.5, 0.};
 
+    auto alpha = 0.;
+    auto cn = 0.;
+    auto ct = 0.;
+    auto cm = 0.;
+    auto v_rel = std::array<double, 3>{};
+
     auto ref_axis_moment = std::array<double, 3>{};
     auto load = kynema::interfaces::components::CalculateAerodynamicLoad(
         ref_axis_moment, v_inflow, v_motion, aoa_polar, cl_polar, cd_polar, cm_polar, chord, delta_s,
-        fluid_density, con_force, qqr
+        fluid_density, con_force, qqr, v_rel, alpha, cn, ct, cm
     );
 
     constexpr auto expected_load =
         std::array{0., 31.04778878834331, -104.68509627290281, -7.7175, 0., 0.};
-    constexpr auto expected_ref_axis_moment = std::array{-7.7175 - 104.68509627290281 / 2., 0., 0.};
+    constexpr auto expected_ref_axis_moment =
+        std::array{-7.7175 - (104.68509627290281 / 2.), 0., 0.};
 
     EXPECT_NEAR(load[0], expected_load[0], 1.e-10);
     EXPECT_NEAR(load[1], expected_load[1], 1.e-10);
@@ -199,7 +212,7 @@ TEST(AerodynamicsComponentTest, CalculateAeroNodeWidths_Straight) {
     for (auto i = 0U; i < jacobian_xi.size(); ++i) {
         kynema::math::LagrangePolynomialDerivWeights(jacobian_xi[i], beam_node_xi, weights);
         for (auto j = 0U; j < beam_node_xi.size(); ++j) {
-            jacobian_integration_matrix[i * beam_node_xi.size() + j] = weights[j];
+            jacobian_integration_matrix[(i * beam_node_xi.size()) + j] = weights[j];
         }
     }
 
@@ -228,7 +241,7 @@ TEST(AerodynamicsComponentTest, CalculateAeroNodeWidths_Curved) {
     for (auto i = 0U; i < jacobian_xi.size(); ++i) {
         kynema::math::LagrangePolynomialDerivWeights(jacobian_xi[i], beam_node_xi, weights);
         for (auto j = 0U; j < beam_node_xi.size(); ++j) {
-            jacobian_integration_matrix[i * beam_node_xi.size() + j] = weights[j];
+            jacobian_integration_matrix[(i * beam_node_xi.size()) + j] = weights[j];
         }
     }
 

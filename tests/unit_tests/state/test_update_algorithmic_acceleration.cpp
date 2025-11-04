@@ -19,7 +19,7 @@ TEST(UpdateAlgorithmicAcceleration, OneNode) {
     Kokkos::parallel_for(
         "UpdateAlgorithmicAcceleration", 1,
         state::UpdateAlgorithmicAcceleration<Kokkos::DefaultExecutionSpace>{
-            acceleration, vd, alpha_f, alpha_m
+            .acceleration = acceleration, .vd = vd, .alpha_f = alpha_f, .alpha_m = alpha_m
         }
     );
 

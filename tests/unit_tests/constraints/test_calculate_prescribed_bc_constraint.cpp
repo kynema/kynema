@@ -1,3 +1,5 @@
+#include <ranges>
+
 #include <Kokkos_Core.hpp>
 #include <gtest/gtest.h>
 
@@ -34,7 +36,11 @@ TEST(CalculatePrescribedBCConstraintTests, OneConstraint) {
     Kokkos::parallel_for(
         "CalculatePrescribedBCConstraint", 1,
         ExecuteCalculatePrescribedBCConstraint{
-            X0, constraint_inputs, node_u, residual_terms, target_gradient_terms
+            .X0 = X0,
+            .inputs = constraint_inputs,
+            .node_u = node_u,
+            .residual_terms = residual_terms,
+            .target_gradient_terms = target_gradient_terms
         }
     );
 
