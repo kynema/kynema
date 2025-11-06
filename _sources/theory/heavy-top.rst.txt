@@ -21,8 +21,8 @@ coordinates is
    0 & 15 \mathrm{~kg} & 0 & 0 & 0 & 0\\
    0 & 0 & 15 \mathrm{~kg} & 0 & 0 & 0\\
    0 & 0 & 0 & 0.234375 \mathrm{~kg~m}^2 & 0 & 0\\
-   0 & 0 & 0 & 0 & 0.234375 \mathrm{~kg~m}^2 & 0\\
-   0 & 0 & 0 & 0 & 0 &  0.46875 \mathrm{~kg~m}^2 \\
+   0 & 0 & 0 & 0 &  0.46875 \mathrm{~kg~m}^2 & 0\\
+   0 & 0 & 0 & 0 & 0 & 0.234375 \mathrm{~kg~m}^2 \\
    \end{bmatrix}
 
 The heavy-top center of mass reference position and orientation (see
@@ -30,7 +30,7 @@ Eq. :eq:`rigid-ref`) are given by
 
 .. math::
 
-   \underline{x}^\mathrm{r} = ( 0, 0 , -1 )^T\,, \quad
+   \underline{x}^\mathrm{r} = ( 0, 1 , 0 )^T\, \mathrm{m}, \quad
    \underline{\underline{R}}^\mathrm{r} = \underline{\underline{I}} \,, \\
 
 respectively. The only component of external force (see
@@ -66,20 +66,14 @@ problem with the following initial conditions:
 .. math::
 
    \begin{aligned}
-   \underline{u}^\mathrm{init} &= \left[ 0, 1, 1 \right]^T \, \mathrm{m}\\
-   \underline{\underline{R}}^\mathrm{init} &= \begin{bmatrix}
-   1 & 0 & 0 \\
-   0 & \cos(\theta) & - \sin(\theta) \\
-   0 & \sin(\theta) & \cos(\theta)
-   \end{bmatrix}\,, 
+   \underline{u}^\mathrm{init} &= \left[ 0, 0, 0 \right]^T \, \mathrm{m}\\
+   \underline{\underline{R}}^\mathrm{init} &=  \underline{\underline{R}}^\mathrm{r}
    \end{aligned}
-
-where :math:`\theta = \pi/2`,
 
 .. math::
 
    \begin{aligned}
-   \omega^\mathrm{init} &= (-4.61538,-150,0)^T \, \mathrm{rad/s}\\
+   \omega^\mathrm{init} &= (0, 150, -4.61538)^T \, \mathrm{rad/s}\\
    \dot{\underline{u}}^\mathrm{init} &= \widetilde{\omega^\mathrm{init}}\left(\underline{x}^\mathrm{r}+\underline{u}^\mathrm{init}\right)\, \mathrm{m/s}
    \end{aligned}
 
