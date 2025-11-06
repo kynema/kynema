@@ -381,12 +381,16 @@ void Turbine::CreateIntermediateNodes(const TurbineInput& input, Model& model) {
 
 void Turbine::AddMassElements(const TurbineInput& input, Model& model) {
     // Add mass element at yaw bearing node
-    this->yaw_bearing_mass_element_id =
-        model.AddMassElement(this->yaw_bearing_node.id, input.yaw_bearing_inertia_matrix);
+    if (input.yaw_bearing_inertia_matrix_set) {
+        this->yaw_bearing_mass_element_id =
+            model.AddMassElement(this->yaw_bearing_node.id, input.yaw_bearing_inertia_matrix);
+    }
 
     // Add mass element at nacelle CM node
-    this->nacelle_cm_mass_element_id =
-        model.AddMassElement(this->nacelle_cm_node.id, input.nacelle_inertia_matrix);
+    if (input.nacelle_inertia_matrix_set) {
+        this->nacelle_cm_mass_element_id =
+            model.AddMassElement(this->nacelle_cm_node.id, input.nacelle_inertia_matrix);
+    }
 
     // Add mass element at hub node (hub assembly mass)
     this->hub_mass_element_id = model.AddMassElement(this->hub_node.id, input.hub_inertia_matrix);
