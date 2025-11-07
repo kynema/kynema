@@ -120,7 +120,7 @@ void TurbineInterface::UpdateAerodynamicLoads(
     }
 }
 
-bool TurbineInterface::Step() {
+bool TurbineInterface::Step(bool allow_output) {
     auto step_resion = Kokkos::Profiling::ScopedRegion("TurbineInterface::Step");
     // Update the host state with current node loads
     {
@@ -158,7 +158,7 @@ bool TurbineInterface::Step() {
     }
 
     // Write outputs and increment timestep counter
-    if (this->outputs) {
+    if (this->outputs && allow_output) {
         auto output_region = Kokkos::Profiling::ScopedRegion("Output Data");
         // Write node state outputs
         this->outputs->WriteNodeOutputsAtTimestep(this->host_state, this->state.time_step);
@@ -573,5 +573,29 @@ void TurbineInterface::ApplyController(double t) {
     this->turbine.blade_pitch_control[1] = controller->io.pitch_collective_command;
     this->turbine.blade_pitch_control[2] = controller->io.pitch_collective_command;
     this->turbine.yaw_control = controller->YawAngleCommand();
+}
+
+void TurbineInterface::CloseOutputFile()
+{
+    if (this->outputs) {
+        this->outputs->Close();
+    }
+}
+
+void TurbineInterface::OutputNow(int timestep)
+{
+    // Write outputs and increment timestep counter
+    if (this->outputs) {
+        this->outputs->Open();
+
+        auto output_region = Kokkos::Profiling::ScopedRegion("Output Data");
+        // Write node state outputs
+        this->outputs->WriteNodeOutputsAtTimestep(this->host_state, timestep);
+
+        // Calculate rotor azimuth and speed -> write rotor time-series data
+        this->WriteTimeSeriesData();
+
+        this->outputs->Close();
+    }
 }
 }  // namespace kynema::interfaces
