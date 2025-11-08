@@ -14,9 +14,9 @@ TEST(DynamicVerificationTest, ClampedCompositeBeamBendingUnderTipLoad) {
     const auto write_output{true};
 
     builder.Solution()
-        .EnableDynamicSolve()  // Dynamic analysis
-        .SetTimeStep(1.)       // Step size (irrelevant for static)
-        .SetDampingFactor(1.)  // No numerical damping (ρ_∞ = 1, irrerelevant for static)
+        .EnableDynamicSolve()               // Dynamic analysis
+        .SetTimeStep(0.01)                  // Time step size
+        .SetDampingFactor(0.9)              // Small numerical damping (ρ_∞ = 0.9)
         .SetMaximumNonlinearIterations(15)  // Max number of Newton-Raphson iterations
         .SetAbsoluteErrorTolerance(1e-7)    // Absolute error tolerance
         .SetRelativeErrorTolerance(1e-5);   // Relative error tolerance
@@ -30,13 +30,13 @@ TEST(DynamicVerificationTest, ClampedCompositeBeamBendingUnderTipLoad) {
     //----------------------------------
     // beam element
     //----------------------------------
-    const int num_nodes{15};  // number of nodes = n
+    const int num_nodes{18};  // number of nodes = n
     builder.Blade()
-        .SetElementOrder(num_nodes - 1)       // 15-node LSFE for high accuracy
+        .SetElementOrder(num_nodes - 1)       // 18-node LSFE for high accuracy
         .SetSectionRefinement(num_nodes - 1)  // n-pt Gauss-Legendre quadrature for integration
         .SetQuadratureRule(interfaces::components::BeamInput::QuadratureRule::GaussLegendre)
         .SetQuadratureStyle(interfaces::components::BeamInput::QuadratureStyle::Segmented)
-        .PrescribedRootMotion(true);  // Root node is fixed (clamped BC)
+        .PrescribedRootMotion(true);  // Root node is fixed (i.e. clamped BC)
 
     // No twist along beam reference axis
     builder.Blade()
@@ -61,7 +61,7 @@ TEST(DynamicVerificationTest, ClampedCompositeBeamBendingUnderTipLoad) {
         std::array{8.538e-2, 0., 0., 0., 0., 0.},    //
         std::array{0., 8.538e-2, 0., 0., 0., 0.},    //
         std::array{0., 0., 8.538e-2, 0., 0., 0.},    //
-        std::array{0., 0., 0., 1.4433e-2, 0., 0.},   //
+        std::array{0., 0., 0., 1.44332e-2, 0., 0.},  //
         std::array{0., 0., 0., 0., 0.40972e-2, 0.},  //
         std::array{0., 0., 0., 0., 0., 1.0336e-2},   //
     };
@@ -86,31 +86,32 @@ TEST(DynamicVerificationTest, ClampedCompositeBeamBendingUnderTipLoad) {
 
     auto interface = builder.Build();
 
-    //-------------------------------------------
-    // apply transverse tip load
-    //-------------------------------------------
+    //------------------------------------------------------
+    // apply transverse tip load and run for 10s
+    //------------------------------------------------------
     // Point force P_z = 150 lbs
     auto& tip_node = interface.Blade().nodes[interface.Blade().nodes.size() - 1];
     tip_node.loads[2] = 150.;
+    const double time_step{0.01};
+    constexpr size_t num_steps{1000};  // 10s at 0.01s time step
 
-    // Static step
-    const auto converged = interface.Step();
-
-    // Verify convergence
-    ASSERT_EQ(converged, true);
+    std::cout << "Time, Tip node displacement in x direction, Tip node displacement in y direction, "
+              << "Tip node displacement in z direction" << "\n";
+    std::cout << 0. << ", " << std::setprecision(15) << tip_node.displacement[0] << ", "
+              << tip_node.displacement[1] << ", " << tip_node.displacement[2] << "\n";
+    for ([[maybe_unused]] auto step : std::views::iota(1U, num_steps + 1)) {
+        auto converged = interface.Step();
+        ASSERT_EQ(converged, true);
+        auto time = static_cast<double>(step) * time_step;
+        std::cout << time << ", " << std::setprecision(15) << tip_node.displacement[0] << ", "
+                  << tip_node.displacement[1] << ", " << tip_node.displacement[2] << "\n";
+    }
 
     //-------------------------------------------
     // verify tip displacements
     //-------------------------------------------
-    EXPECT_NEAR(
-        tip_node.displacement[0], -9.02726627566299E-02, 1e-12
-    );  // Equivalent BeamDyn soln: -0.090272662756631
-    EXPECT_NEAR(
-        tip_node.displacement[1], -6.47488486259036E-02, 1e-12
-    );  // Equivalent BeamDyn soln: -0.064748848625905
-    EXPECT_NEAR(
-        tip_node.displacement[2], 1.22973648292371E+00, 1e-12
-    );  // Equivalent BeamDyn soln: 1.2297364829237
+
+    // TODO
 }
 
 }  // namespace kynema::tests

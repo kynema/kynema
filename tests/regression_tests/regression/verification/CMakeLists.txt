@@ -3,6 +3,7 @@ target_sources(
     kynema_regression_tests
     PRIVATE
     dynamic_composite_beam_bending.cpp
+    dynamic_IEA15MW_blade_bending.cpp
     static_composite_beam_bending.cpp
     static_curved_composite_beam_bending.cpp
     static_twisted_composite_beam_bending.cpp
