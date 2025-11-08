@@ -113,6 +113,8 @@ public:
 
     void OutputNow(int timestep);
 
+    void OpenOutputFile();
+
     void CloseOutputFile();
 
 private:

@@ -575,6 +575,13 @@ void TurbineInterface::ApplyController(double t) {
     this->turbine.yaw_control = controller->YawAngleCommand();
 }
 
+void TurbineInterface::OpenOutputFile()
+{
+    if (this->outputs) {
+        this->outputs->Open();
+    }
+}
+
 void TurbineInterface::CloseOutputFile()
 {
     if (this->outputs) {
@@ -586,7 +593,6 @@ void TurbineInterface::OutputNow(int timestep)
 {
     // Write outputs and increment timestep counter
     if (this->outputs) {
-        this->outputs->Open();
 
         auto output_region = Kokkos::Profiling::ScopedRegion("Output Data");
         // Write node state outputs
@@ -595,7 +601,6 @@ void TurbineInterface::OutputNow(int timestep)
         // Calculate rotor azimuth and speed -> write rotor time-series data
         this->WriteTimeSeriesData();
 
-        this->outputs->Close();
     }
 }
 }  // namespace kynema::interfaces
