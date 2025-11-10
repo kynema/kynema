@@ -101,18 +101,24 @@
              
   <div class="section" id="heavy-top-constrained-rigid-body-example">
 <span id="sec-heavy-top"></span><h1>Heavy top constrained-rigid-body example<a class="headerlink" href="#heavy-top-constrained-rigid-body-example" title="Permalink to this heading"></a></h1>
-<p>We provide here a simple application of the Kynema formulation for
-the heavy-top problem, which is a rotating body fixed to the ground
-by a spherical joint. It is a common benchmark problem for
-constrained-rigid-body dynamics and for testing Lie-group time
-integrators like that used in Kynema. We follow the problem
-description found in [&#64;Bruls-etal:2012], but with the key difference
-that we formulate the problem in inertial coordinates rather than
-material coordinates. We assume the heavy top is a thin disk with mass
-<span class="math notranslate nohighlight">\(m=15\)</span> kg. The <span class="math notranslate nohighlight">\(6\times6\)</span> mass matrix in material
-coordinates is</p>
+<p>We provide here a simple application of the Kynema formulation for the
+heavy-top problem, which is a rotating body fixed to the ground by a spherical
+joint. It is a common benchmark problem for constrained-rigid-body dynamics and
+for testing Lie-group time integrators like that used in Kynema. Our approach
+follows much of what is described in in [&#64;Bruls-etal:2012], but with the key
+differences that we formulate the problem in inertial coordinates rather than
+material coordinates and we include three translational DOFs for the spherical joint, <span class="math notranslate nohighlight">\(\underline{u}_\mathrm{SJ}\)</span>.   The generalized coordinates for this problem are</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\underline{\underline{M}}^* = \begin{bmatrix}
+\[\begin{split}\underline{q} = \begin{bmatrix}
+ \underline{u}_\mathrm{HT} \\
+ \underline{\underline{R}}_\mathrm{HT} \\
+ \underline{u}_\mathrm{SJ}
+\end{bmatrix}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\underline{q} = \mathbb{R}^{9}\)</span>.</p>
+<p>We assume the heavy top is a thin disk with mass
+<span class="math notranslate nohighlight">\(m=15\)</span> kg. The <span class="math notranslate nohighlight">\(6\times6\)</span> mass matrix in material coordinates is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\underline{\underline{M}}^*_\mathrm{HT} = \begin{bmatrix}
 15 \mathrm{~kg}&amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\
 0 &amp; 15 \mathrm{~kg} &amp; 0 &amp; 0 &amp; 0 &amp; 0\\
 0 &amp; 0 &amp; 15 \mathrm{~kg} &amp; 0 &amp; 0 &amp; 0\\
@@ -120,45 +126,80 @@ coordinates is</p>
 0 &amp; 0 &amp; 0 &amp; 0 &amp;  0.46875 \mathrm{~kg~m}^2 &amp; 0\\
 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.234375 \mathrm{~kg~m}^2 \\
 \end{bmatrix}\end{split}\]</div>
+<p>and the <span class="math notranslate nohighlight">\(9\times9\)</span> system mass matrix in material coordinates is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\underline{\underline{M}}^* = \begin{bmatrix}
+\underline{\underline{M}}^*_\mathrm{HT} &amp; \underline{\underline{0}}\\
+\underline{\underline{0}} &amp; \underline{\underline{0}}
+\end{bmatrix}\end{split}\]</div>
 <p>The heavy-top center of mass reference position and orientation (see
 Eq. <a class="reference internal" href="rigid.html#equation-rigid-ref">(5)</a>) are given by</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\underline{x}^\mathrm{r} = ( 0, 1 , 0 )^T\, \mathrm{m}, \quad
-\underline{\underline{R}}^\mathrm{r} = \underline{\underline{I}} \,, \\\end{split}\]</div>
+\[\begin{split}\underline{x}^\mathrm{r}_\mathrm{HT} = ( 0, 1 , 0 )^T\, \mathrm{m}, \quad
+\underline{\underline{R}}^\mathrm{r}_\mathrm{HT} = \underline{\underline{I}} \,, \\\end{split}\]</div>
 <p>respectively. The only component of external force (see
 Eq. <a class="reference internal" href="rigid.html#equation-rbresid">(6)</a>) is gravity:</p>
 <div class="math notranslate nohighlight">
-\[\underline{f} = [0,0,-g,0,0,0]^T\]</div>
-<p>where <span class="math notranslate nohighlight">\(g=9.81\)</span> m/s<span class="math notranslate nohighlight">\(^2\)</span>. The problem is constrained such
-that the center of mass is located 1 m from the origin, which can be
-written as three constraint equations as</p>
+\[\underline{f} = [0,0,-g,0,0,0,0,0,0]^T\]</div>
+<p>where <span class="math notranslate nohighlight">\(g=9.81\)</span> m/s<span class="math notranslate nohighlight">\(^2\)</span>.</p>
+<p>The problem is constrained such that the spherical joint is located at the global origin, the heavy-top center of mass is located 1 m from the
+origin, and the heavy-top body-attached-coordinate-system y-axis is pointing away from the global origin.  The Kynema implementation employs the following constraint:</p>
 <div class="math notranslate nohighlight">
-\[\underline{\Phi} = \underline{\underline{R}}\, \underline{x}^\mathrm{r} - \underline{x}^c \in  \mathbb{R}^3\]</div>
-<p>where <span class="math notranslate nohighlight">\(\underline{\Phi} \in \mathbb{R}^3\)</span>, <span class="math notranslate nohighlight">\(\underline{x}^c\)</span> is the current center-of-mass position,
-and for which the constraint gradient matrix is</p>
+\[\begin{split}\underline{\Phi} = \begin{bmatrix}
+\underline{u}_\mathrm{HT} - \underline{u}_\mathrm{SJ}
+- \left( \underline{\underline{R}}_\mathrm{HT} - \underline{\underline{I}}\right)
+\underline{x}^r_\mathrm{HT} \\
+\underline{u}_\mathrm{SJ}
+\end{bmatrix}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\underline{\Phi} \in  \mathbb{R}^6\)</span>, and the contraints <span class="math notranslate nohighlight">\(\underline{\lambda} \in \mathbb{R}^6\)</span> are denoted</p>
 <div class="math notranslate nohighlight">
-\[\underline{\underline{B}}  = \begin{bmatrix}
--\underline{\underline{I}} &amp; \widetilde{- \underline{\underline{R}}\, \underline{x}^\mathrm{r}}
-\end{bmatrix}\]</div>
-<p><span class="math notranslate nohighlight">\(\underline{\underline{B}} \in \mathbb{R}^{3 \times 6}\)</span>. The
-stiffness matrix associated with linearization of the constraint forces (see Eq. <a class="reference internal" href="overview.html#equation-variation">(3)</a>) is</p>
+\[\begin{split}\underline{\lambda} = \begin{bmatrix}
+ \underline{\lambda}_\mathrm{HT} \\
+ \underline{\lambda}_\mathrm{SJ}
+\end{bmatrix}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\underline{\lambda}_\mathrm{HT},\, \underline{\lambda}_\mathrm{SJ}
+\in \mathbb{R}^3\)</span>.</p>
+<p>The constraint gradient matrix is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\underline{\underline{B}} = \begin{bmatrix}
+  \underline{\underline{I}} &amp; \widetilde{ \underline{\underline{R}}_\mathrm{HT} \underline{x}^{\mathrm{r}}_\mathrm{HT} } &amp; - \underline{\underline{I}} \\
+  \underline{\underline{0}} &amp;
+  \underline{\underline{0}} &amp;
+  \underline{\underline{I}}
+\end{bmatrix}\end{split}\]</div>
+<p>and the contribution to the iteration matrix in Eq. <a class="reference internal" href="gen-alpha.html#equation-iteration">(4)</a> is</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\underline{\underline{K}}^\Phi = \begin{bmatrix}
-\underline{\underline{0}} &amp; \underline{\underline{0}}\\
-\underline{\underline{0}} &amp;
-\widetilde{\lambda} \, \widetilde{\underline{\underline{R}} \underline{x}^\mathrm{r}}
+  \underline{\underline{0}} &amp;
+  \underline{\underline{0}} &amp;
+  \underline{\underline{0}} \\
+  \underline{\underline{0}} &amp;
+  \widetilde{\lambda_\mathrm{HT}}
+  \widetilde{\underline{\underline{R}}_\mathrm{HT} \underline{x}^{\mathrm{r}}_\mathrm{HT} }  &amp; \underline{\underline{0}}  \\
+  \underline{\underline{0}} &amp;
+  \underline{\underline{0}} &amp;
+  \underline{\underline{0}}
 \end{bmatrix}\end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(\underline{\lambda} \in  \mathbb{R}^3\)</span> are the Lagrange multipliers.  The Kynema regression test suite includes the spinning, heavy top
+<p>The Kynema regression test suite includes the spinning, heavy top
 problem with the following initial conditions:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{aligned}
-\underline{u}^\mathrm{init} &amp;= \left[ 0, 0, 0 \right]^T \, \mathrm{m}\\
-\underline{\underline{R}}^\mathrm{init} &amp;=  \underline{\underline{R}}^\mathrm{r}
+\underline{u}^\mathrm{init}_\mathrm{HT} &amp;= \left[ 0, 0, 0 \right]^T \,
+\mathrm{m}\\
+\underline{\underline{R}}_\mathrm{HT}^\mathrm{init} &amp;=  \underline{\underline{R}}^\mathrm{r}_\mathrm{HT} \\
+\underline{u}^\mathrm{init}_\mathrm{SJ} &amp;= \left[ 0, 0, 0 \right]^T \,
+\mathrm{m}
 \end{aligned}\end{split}\]</div>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{aligned}
-\omega^\mathrm{init} &amp;= (0, 150, -4.61538)^T \, \mathrm{rad/s}\\
-\dot{\underline{u}}^\mathrm{init} &amp;= \widetilde{\omega^\mathrm{init}}\left(\underline{x}^\mathrm{r}+\underline{u}^\mathrm{init}\right)\, \mathrm{m/s}
+\dot{\underline{u}}^\mathrm{init}_\mathrm{HT} &amp;=
+\widetilde{\omega^\mathrm{init}_\mathrm{HT}}
+\left(\underline{x}^\mathrm{r}_\mathrm{HT}
++\underline{u}^\mathrm{init}_\mathrm{HT}\right) \\
+\omega^\mathrm{init}_\mathrm{HT} &amp;= (0, 150, -4.61538)^T \,
+\mathrm{rad/s}\\
+\dot{\underline{u}}^\mathrm{init}_\mathrm{SJ} &amp;= \left[ 0, 0, 0 \right]^T\,
+\mathrm{m/s}
 \end{aligned}\end{split}\]</div>
 <div class="references csl-bib-body hanging-indent docutils container" id="refs">
 <div class="csl-entry docutils container" id="ref-bruls-etal-2012">
