@@ -12,15 +12,15 @@ TEST(DynamicVerificationTest, Iea15MwBladeBending) {
     // solution parameters
     //----------------------------------
     auto builder = interfaces::BladeInterfaceBuilder{};
-    const auto write_output{true};
+    const auto write_output{false};
     const double time_step{0.01};
     builder.Solution()
-        .EnableDynamicSolve()
-        .SetTimeStep(time_step)
-        .SetDampingFactor(0.)
-        .SetMaximumNonlinearIterations(15)
-        .SetAbsoluteErrorTolerance(1e-7)
-        .SetRelativeErrorTolerance(1e-5);
+        .EnableDynamicSolve()               // Dynamic analysis
+        .SetTimeStep(time_step)             // Time step size
+        .SetDampingFactor(0.)               // Max numerical damping (ρ_∞ = 0.)
+        .SetMaximumNonlinearIterations(15)  // Max Newton-Raphson iterations
+        .SetAbsoluteErrorTolerance(1e-7)    // Absolute error tolerance
+        .SetRelativeErrorTolerance(1e-5);   // Relative error tolerance
 
     if (write_output) {
         builder.Outputs().SetOutputFilePath("DynamicVerificationTest.Iea15MwTurbineBladeBending");
@@ -29,9 +29,11 @@ TEST(DynamicVerificationTest, Iea15MwBladeBending) {
     //----------------------------------
     // beam element
     //----------------------------------
-    const int num_nodes{15};
-    const int element_order{num_nodes - 1};
-    const int section_refinement{num_nodes - 1};
+    const int num_nodes{15};                 // number of nodes = n
+    const int element_order{num_nodes - 1};  // element order = n-1
+    const int section_refinement{
+        num_nodes - 1
+    };  // each section of blade uses n-pt Gauss-Legendre quadrature for integration
 
     builder.Blade()
         .SetElementOrder(element_order)
@@ -111,21 +113,28 @@ TEST(DynamicVerificationTest, Iea15MwBladeBending) {
     //------------------------------------------------------
     auto& tip_node = interface.Blade().nodes.back();
 
-    // Apply tip load in flapwise direction i.e. -y axis
-    tip_node.loads[1] = -2.e5;
+    // Apply tip load in flapwise direction i.e. -y axis, enough to cause ~10% deflection of tip node
+    tip_node.loads[1] = -2.e5;  // 200 kN
 
-    constexpr size_t num_steps{1000};  // 10 s at 0.01 s
+    /*
     std::cout << "Time, Tip node displacement in x direction, Tip node displacement in y direction, "
               << "Tip node displacement in z direction" << "\n";
     std::cout << 0. << ", " << std::setprecision(15) << tip_node.displacement[0] << ", "
               << tip_node.displacement[1] << ", " << tip_node.displacement[2] << "\n";
-
+    */
+    const auto num_steps = static_cast<size_t>(1. / time_step);  // 1 s at time step size = 0.01 s
     for ([[maybe_unused]] auto step : std::views::iota(1U, num_steps + 1)) {
+        // Take a single time step in dynamic solve
         auto converged = interface.Step();
+
+        // Verify we reach convergence
         ASSERT_EQ(converged, true);
+
+        /*
         auto time = static_cast<double>(step) * time_step;
         std::cout << time << ", " << std::setprecision(15) << tip_node.displacement[0] << ", "
                   << tip_node.displacement[1] << ", " << tip_node.displacement[2] << "\n";
+        */
     }
 
     //-----------------------------------------------------

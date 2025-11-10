@@ -12,10 +12,10 @@ TEST(DynamicVerificationTest, ClampedCompositeBeamBendingUnderTipLoad) {
     //----------------------------------
     auto builder = interfaces::BladeInterfaceBuilder{};
     const auto write_output{true};
-
+    const double time_step{0.01};
     builder.Solution()
         .EnableDynamicSolve()               // Dynamic analysis
-        .SetTimeStep(0.01)                  // Time step size
+        .SetTimeStep(time_step)             // Time step size
         .SetDampingFactor(0.9)              // Small numerical damping (ρ_∞ = 0.9)
         .SetMaximumNonlinearIterations(15)  // Max number of Newton-Raphson iterations
         .SetAbsoluteErrorTolerance(1e-7)    // Absolute error tolerance
@@ -92,19 +92,26 @@ TEST(DynamicVerificationTest, ClampedCompositeBeamBendingUnderTipLoad) {
     // Point force P_z = 150 lbs
     auto& tip_node = interface.Blade().nodes[interface.Blade().nodes.size() - 1];
     tip_node.loads[2] = 150.;
-    const double time_step{0.01};
-    constexpr size_t num_steps{1000};  // 10s at 0.01s time step
 
+    /*
     std::cout << "Time, Tip node displacement in x direction, Tip node displacement in y direction, "
               << "Tip node displacement in z direction" << "\n";
     std::cout << 0. << ", " << std::setprecision(15) << tip_node.displacement[0] << ", "
               << tip_node.displacement[1] << ", " << tip_node.displacement[2] << "\n";
+    */
+    const auto num_steps = static_cast<size_t>(1. / time_step);  // 1 s at time step size = 0.01 s
     for ([[maybe_unused]] auto step : std::views::iota(1U, num_steps + 1)) {
+        // Take a single time step in dynamic solve
         auto converged = interface.Step();
+
+        // Verify we reach convergence
         ASSERT_EQ(converged, true);
+
+        /*
         auto time = static_cast<double>(step) * time_step;
         std::cout << time << ", " << std::setprecision(15) << tip_node.displacement[0] << ", "
                   << tip_node.displacement[1] << ", " << tip_node.displacement[2] << "\n";
+        */
     }
 
     //-------------------------------------------
