@@ -58,14 +58,14 @@ The GEBT equations are motion are given by
 .. math::
 
    \begin{aligned}
-   \dot{\underline{h}} - \underline{\mathcal{F}}^\prime &= \underline{f}\\
-   \dot{\underline{g}} + \widetilde{u}\, \underline{h} - \underline{\mathcal{M}}^\prime - \left(\widetilde{x}^{\mathrm{r}\prime} + \widetilde{u}^\prime \right) \underline{\mathcal{F}}&= \underline{m}
+   \dot{\underline{h}} - \underline{\mathcal{N}}^\prime &= \underline{f}\\
+   \dot{\underline{g}} + \widetilde{u}\, \underline{h} - \underline{\mathcal{M}}^\prime - \left(\widetilde{x}^{\mathrm{r}\prime} + \widetilde{u}^\prime \right) \underline{\mathcal{N}}&= \underline{m}
    \end{aligned}
 
 where :math:`\underline{h}(s,t),\underline{g}(s,t) \in \mathbb{R}^3` are
 linear and angular momenta, respectively, resolved in the inertial
 coordinate system,
-:math:`\underline{\mathcal{F}}(s,t),\underline{\mathcal{M}}(s,t) \in \mathbb{R}^3`
+:math:`\underline{\mathcal{N}}(s,t),\underline{\mathcal{M}}(s,t) \in \mathbb{R}^3`
 are section force and moments, respectively,
 :math:`\underline{f}(s,t),\underline{m}(s,t)\in \mathbb{R}^3` are
 externally applied forces and moments, respectively, a prime denotes a
@@ -78,7 +78,7 @@ time derivative. The constitutive equations are given by
    \begin{bmatrix}  \underline{h} \\ \underline{g} \end{bmatrix} 
    &= \underline{\underline{M}} 
    \begin{bmatrix}  \dot{\underline{u}} \\ \underline{\omega} \end{bmatrix} \\
-   \begin{bmatrix}  \underline{\mathcal{F}} \\ \underline{\mathcal{M}} \end{bmatrix} 
+   \begin{bmatrix}  \underline{\mathcal{N}} \\ \underline{\mathcal{M}} \end{bmatrix} 
    &= \underline{\underline{C}} 
    \begin{bmatrix}  \underline{\epsilon} \\ \underline{\kappa} \end{bmatrix}
     \label{eq:constitutive}
@@ -239,7 +239,7 @@ where :math:`\underline{\underline{D}}\in \mathbb{R}^{6 \times 6}` is the dampin
    \end{bmatrix} = 
    \underline{\underline{\mathcal{RR}^\mathrm{r}}}\, \underline{\underline{\mu}} \underline{\underline{C}}^*\, \underline{\underline{\mathcal{RR}^\mathrm{r}}}^T
 
-where :math:`\underline{\underline{\mu}} \in \mathbb{R}^6` is a diagonal matrix of user-defined damping coefficients.
+where :math:`\underline{\underline{\mu}} \in \mathbb{R}^{6\times 6}` is a diagonal matrix of user-defined damping coefficients.
 
 We describe the variation of the residual,
 Eq. :eq:`residual1`, in parts. Variation of the
@@ -298,8 +298,8 @@ Variation of the elastic forces are as follows:
    \begin{aligned}
    \underline{\underline{\mathcal{K}}}^\mathrm{E1} =
    \begin{bmatrix}
-   \underline{\underline{0}} &  -\widetilde{N} + \underline{\underline{\mathcal{C}}}_{11}\left(  \tilde{x}^{\mathrm{r} \prime}+ \tilde{u}' \right)   \\
-   \underline{\underline{0}} &  -\widetilde{M} + \underline{\underline{\mathcal{C}}}_{21}\left( \tilde{x}^{\mathrm{r} \prime} + \tilde{u}' \right)
+   \underline{\underline{0}} &  -\widetilde{\mathcal{N}} + \underline{\underline{\mathcal{C}}}_{11}\left(  \tilde{x}^{\mathrm{r} \prime}+ \tilde{u}' \right)   \\
+   \underline{\underline{0}} &  -\widetilde{\mathcal{M}} + \underline{\underline{\mathcal{C}}}_{21}\left( \tilde{x}^{\mathrm{r} \prime} + \tilde{u}' \right)
    \end{bmatrix}
    \end{aligned}
 
@@ -316,7 +316,7 @@ Variation of the elastic forces are as follows:
    \underline{\underline{\mathcal{P}}}^\mathrm{E2} =
    \begin{bmatrix}
    \underline{\underline{0}} & \underline{\underline{0}} \\
-    \widetilde{N} + \left(  \tilde{x}^{\mathrm{r} \prime}+ \tilde{u}' \right)^T
+    \widetilde{\mathcal{N}} + \left(  \tilde{x}^{\mathrm{r} \prime}+ \tilde{u}' \right)^T
    \underline{\underline{C}}_{11} &
    \left( \tilde{x}^{\mathrm{r} \prime} + \tilde{u}' \right)^T
    \underline{\underline{C}}_{12}
@@ -331,7 +331,7 @@ Variation of the elastic forces are as follows:
    \underline{\underline{0}} & \underline{\underline{0}} \\
     \underline{\underline{0}} &
    \left( \tilde{x}^{\mathrm{r} \prime} + \tilde{u}' \right)^T
-   \left[-\widetilde{N} + \underline{\underline{C}}_{11} \left( \tilde{x}^{\mathrm{r} \prime} + \tilde{u}' \right) \right]
+   \left[-\widetilde{\mathcal{N}} + \underline{\underline{C}}_{11} \left( \tilde{x}^{\mathrm{r} \prime} + \tilde{u}' \right) \right]
    \end{bmatrix}
    \end{aligned}
 
@@ -440,7 +440,7 @@ Variation of the damping forces are as follows:
    +\underline{\underline{D}}_{11} \widetilde{\dot{\epsilon}}
    -\widetilde{\underline{\underline{D}}_{12} \underline{\dot{\kappa}}}
    +\underline{\underline{D}}_{12} \widetilde{\dot{\kappa}}
-   +\underline{\underline{D}}_{r1} \widetilde{\omega} 
+   +\underline{\underline{D}}_{11} \widetilde{\omega} 
    \widetilde{\underline{\underline{R}}\, \underline{x}^{0\prime} }
    - \underline{\underline{D}}_{12} \widetilde{\omega}\widetilde{\kappa}
    \end{bmatrix}

@@ -20,4 +20,5 @@ limits.
    composite
    curved
    twisted
+   heavytop
 
