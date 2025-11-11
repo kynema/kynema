@@ -120,7 +120,7 @@ void TurbineInterface::UpdateAerodynamicLoads(
     }
 }
 
-bool TurbineInterface::Step(bool allow_output) {
+bool TurbineInterface::Step() {
     auto step_resion = Kokkos::Profiling::ScopedRegion("TurbineInterface::Step");
     // Update the host state with current node loads
     {
@@ -155,16 +155,6 @@ bool TurbineInterface::Step(bool allow_output) {
 
         // Update the turbine constraint loads based on the host constraints
         this->turbine.GetLoads(this->host_constraints);
-    }
-
-    // Write outputs and increment timestep counter
-    if (this->outputs && allow_output) {
-        auto output_region = Kokkos::Profiling::ScopedRegion("Output Data");
-        // Write node state outputs
-        this->outputs->WriteNodeOutputsAtTimestep(this->host_state, this->state.time_step);
-
-        // Calculate rotor azimuth and speed -> write rotor time-series data
-        this->WriteTimeSeriesData();
     }
 
     return true;
