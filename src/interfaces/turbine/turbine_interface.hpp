@@ -111,7 +111,7 @@ public:
      */
     [[nodiscard]] double CalculateRotorSpeed() const;
 
-    void OutputNow(int timestep);
+    void WriteOutput();
 
     void OpenOutputFile();
 
