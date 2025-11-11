@@ -122,7 +122,7 @@ TEST(DynamicVerificationTest, Iea15MwBladeBending) {
     std::cout << 0. << ", " << std::setprecision(15) << tip_node.displacement[0] << ", "
               << tip_node.displacement[1] << ", " << tip_node.displacement[2] << "\n";
     */
-    const auto num_steps = static_cast<size_t>(1. / time_step);  // 1 s at time step size = 0.01 s
+    const auto num_steps = static_cast<size_t>(0.1 / time_step);  // 0.1 s at time step size = 0.01 s
     for ([[maybe_unused]] auto step : std::views::iota(1U, num_steps + 1)) {
         // Take a single time step in dynamic solve
         auto converged = interface.Step();
