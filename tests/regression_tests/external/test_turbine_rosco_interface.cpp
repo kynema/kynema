@@ -49,7 +49,7 @@ TEST(TurbineInterfaceTest, IEA15_ROSCOControllerWithAero) {
         .SetRelativeErrorTolerance(1e-6);
 
     if (write_output) {
-        builder.Outputs().SetOutputFilePath("TurbineInterfaceTest.IEA15");
+        builder.Outputs().SetOutputFilePath("TurbineInterfaceTest.IEA15_ROSCOControllerWithAero");
     }
 
     // Read WindIO yaml file
