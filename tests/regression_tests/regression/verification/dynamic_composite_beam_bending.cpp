@@ -6,7 +6,7 @@
 
 namespace kynema::tests {
 
-TEST(DynamicVerificationTest, ClampedCompositeBeamBendingUnderTipLoad) {
+TEST(VerificationTest, ClampedCompositeBeamBendingUnderTipLoad) {
     //----------------------------------
     // solution parameters
     //----------------------------------

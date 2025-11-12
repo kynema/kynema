@@ -36,7 +36,7 @@ namespace kynema::tests {
  * @see Kynema documentation for the full benchmark results:
  *      https://kynema.github.io/kynema/testing/twisted.html
  */
-TEST(StaticVerificationTest, CompositeBeamBending_TwistedBeam) {
+TEST(VerificationTest, CompositeBeamBending_TwistedBeam) {
     //----------------------------------
     // solution parameters
     //----------------------------------

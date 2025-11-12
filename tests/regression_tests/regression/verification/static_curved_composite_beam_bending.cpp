@@ -29,7 +29,7 @@ namespace kynema::tests {
  * @see Kynema documentation for the full benchmark results and convergence study:
  *      https://kynema.github.io/kynema/testing/curved.html
  */
-TEST(StaticVerificationTest, CompositeBeamBending_CurvedBeam) {
+TEST(VerificationTest, CompositeBeamBending_CurvedBeam) {
     //----------------------------------
     // solution parameters
     //----------------------------------

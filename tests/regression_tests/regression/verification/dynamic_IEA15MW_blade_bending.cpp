@@ -7,7 +7,7 @@
 
 namespace kynema::tests {
 
-TEST(DynamicVerificationTest, Iea15MwBladeBending) {
+TEST(VerificationTest, Iea15MwBladeBending) {
     //----------------------------------
     // solution parameters
     //----------------------------------
