@@ -381,12 +381,22 @@ void Turbine::CreateIntermediateNodes(const TurbineInput& input, Model& model) {
 
 void Turbine::AddMassElements(const TurbineInput& input, Model& model) {
     // Add mass element at yaw bearing node
-    this->yaw_bearing_mass_element_id =
-        model.AddMassElement(this->yaw_bearing_node.id, input.yaw_bearing_inertia_matrix);
+    const auto sum_half_diag_yaw = input.yaw_bearing_inertia_matrix[0][0] +
+                                   input.yaw_bearing_inertia_matrix[1][1] +
+                                   input.yaw_bearing_inertia_matrix[2][2];
+    if (sum_half_diag_yaw > kZeroTolerance) {
+        this->yaw_bearing_mass_element_id =
+            model.AddMassElement(this->yaw_bearing_node.id, input.yaw_bearing_inertia_matrix);
+    }
 
     // Add mass element at nacelle CM node
-    this->nacelle_cm_mass_element_id =
-        model.AddMassElement(this->nacelle_cm_node.id, input.nacelle_inertia_matrix);
+    const auto sum_half_diag_nacelle = input.nacelle_inertia_matrix[0][0] +
+                                       input.nacelle_inertia_matrix[1][1] +
+                                       input.nacelle_inertia_matrix[2][2];
+    if (sum_half_diag_nacelle > kZeroTolerance) {
+        this->nacelle_cm_mass_element_id =
+            model.AddMassElement(this->nacelle_cm_node.id, input.nacelle_inertia_matrix);
+    }
 
     // Add mass element at hub node (hub assembly mass)
     this->hub_mass_element_id = model.AddMassElement(this->hub_node.id, input.hub_inertia_matrix);
