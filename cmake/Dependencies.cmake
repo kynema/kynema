@@ -69,7 +69,7 @@ function(kynema_setup_dependencies)
   # OpenFAST/AerodynInflow (ADI) library
   #----------------------------------------
   if(Kynema_ENABLE_OPENFAST_ADI)
-    find_library(OpenFast_ADI_LIBRARY NAMES aerodyn_inflow_c_binding)
+    find_library(OpenFast_ADI_LIBRARY NAMES aerodyn_inflow_c_binding REQUIRED)
     set(Kynema_ADI_LIBRARY ${OpenFast_ADI_LIBRARY} CACHE PATH "ADI library")
   endif()
 
@@ -77,7 +77,7 @@ function(kynema_setup_dependencies)
   # ROSCO Controller library
   #----------------------------------------
   if(Kynema_ENABLE_ROSCO_CONTROLLER)
-    find_library(Rosco_LIBRARY NAMES discon)
-    set(Kynema_ROSCO_LIBRARY ${Rosco_LIBRARY} CACHE PATH "Rosco discon library")
+    find_library(Rosco_LIBRARY NAMES discon REQUIRED)
+    set(Kynema_ROSCO_LIBRARY ${Rosco_LIBRARY} CACHE PATH "Rosco discon library" FORCE)
   endif()
 endfunction()

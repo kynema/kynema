@@ -31,7 +31,7 @@ namespace kynema::tests {
  *      points with Gauss-Legendre quadrature case here):
  *      https://kynema.github.io/kynema/testing/composite.html
  */
-TEST(StaticVerificationTest, CompositeBeamBending) {
+TEST(VerificationTest, CompositeBeamBending) {
     //----------------------------------
     // solution parameters
     //----------------------------------
