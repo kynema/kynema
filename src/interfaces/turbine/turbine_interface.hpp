@@ -111,6 +111,12 @@ public:
      */
     [[nodiscard]] double CalculateRotorSpeed() const;
 
+    void WriteOutput();
+
+    void OpenOutputFile();
+
+    void CloseOutputFile();
+
 private:
     Model model;                    ///< Kynema class for model construction
     components::Turbine turbine;    ///< Turbine model input/output data
