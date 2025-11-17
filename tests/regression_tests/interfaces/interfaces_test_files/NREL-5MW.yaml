@@ -15955,10 +15955,10 @@ components:
       inertia:
       - 0.0
       - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
       - 2607890.0
+      - 0.0
+      - 0.0
+      - 0.0
       location:
       - 0.0
       - 0.0
@@ -16021,6 +16021,11 @@ components:
       type: DFIG
       y_tau_p: 0.8
       y_tau_pr: 0.8333333
+      elastic_properties:
+        inertia:
+        - 534.116
+        - 0.0
+        - 0.0
     hss:
       diameter:
       - 0.288
@@ -16064,6 +16069,19 @@ components:
     spin_hole_incr: 1.2
     spinner_gust_ws: 70.0
     spinner_material: glassDB
+    elastic_properties:
+      inertia:
+      - 115926
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      location:
+      - 1.9
+      - 0.0
+      - 1.75
+      mass: 56780.0
   tower:
     outer_shape:
       cd:

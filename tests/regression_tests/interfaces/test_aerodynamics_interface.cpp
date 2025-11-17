@@ -714,8 +714,8 @@ TEST(AerodynamicsInterfaceTest, NREL5_Turbine) {
         const auto converged = turbine_interface.Step();
         ASSERT_EQ(converged, true);
         if (i == 100) {
-            EXPECT_NEAR(turbine_interface.CalculateAzimuthAngle(), 0.10732797765379661, 1.e-5);
-            EXPECT_NEAR(turbine_interface.CalculateRotorSpeed(), 0.11119165539507432, 1.e-9);
+            EXPECT_NEAR(turbine_interface.CalculateAzimuthAngle(), 0.10741013302153046, 1.e-5);
+            EXPECT_NEAR(turbine_interface.CalculateRotorSpeed(), 0.11135329377638137, 1.e-9);
         }
     }
 }

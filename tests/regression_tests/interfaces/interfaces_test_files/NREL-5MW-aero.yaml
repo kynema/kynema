@@ -67462,10 +67462,10 @@ components:
       inertia:
       - 0.0
       - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
       - 2607890.0
+      - 0.0
+      - 0.0
+      - 0.0
       location:
       - 0.0
       - 0.0
@@ -67497,6 +67497,11 @@ components:
       b_s_tau_s: 0.45
       b_so: 0.004
       cofi: 0.9
+      elastic_properties:
+        inertia:
+        - 534.116
+        - 0.0
+        - 0.0
       freq: 60
       h_0: 0.01
       h_i: 0.001
@@ -67559,6 +67564,19 @@ components:
     clearance_hub_spinner: 0.75
     cone_angle: 2.499814860155782
     diameter: 3.0
+    elastic_properties:
+      inertia:
+      - 115926
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      location:
+      - 1.9
+      - 0.0
+      - 1.75
+      mass: 56780.0
     flange_ID2OD: 0.8
     flange_OD2hub_D: 0.5
     flange_t2shell_t: 4.0
