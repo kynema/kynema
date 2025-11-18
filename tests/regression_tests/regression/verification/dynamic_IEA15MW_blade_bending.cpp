@@ -7,13 +7,13 @@
 
 namespace kynema::tests {
 
-TEST(VerificationTest, Iea15MwBladeBending) {
+TEST(VerificationTest, Dynamic_Iea15MwBladeBending) {
     //----------------------------------
     // solution parameters
     //----------------------------------
     auto builder = interfaces::BladeInterfaceBuilder{};
     const auto write_output{false};
-    const double time_step{0.01};
+    const double time_step{0.005};
     builder.Solution()
         .EnableDynamicSolve()               // Dynamic analysis
         .SetTimeStep(time_step)             // Time step size
@@ -23,17 +23,15 @@ TEST(VerificationTest, Iea15MwBladeBending) {
         .SetRelativeErrorTolerance(1e-5);   // Relative error tolerance
 
     if (write_output) {
-        builder.Outputs().SetOutputFilePath("DynamicVerificationTest.Iea15MwTurbineBladeBending");
+        builder.Outputs().SetOutputFilePath("VerificationTest.Dynamic_Iea15MwBladeBending");
     }
 
     //----------------------------------
     // beam element
     //----------------------------------
-    const int num_nodes{15};                 // number of nodes = n
-    const int element_order{num_nodes - 1};  // element order = n-1
-    const int section_refinement{
-        num_nodes - 1
-    };  // each section of blade uses n-pt Gauss-Legendre quadrature for integration
+    const int num_nodes{15};                      // number of nodes = n
+    const int element_order{num_nodes - 1};       // element order = n-1
+    const int section_refinement{num_nodes - 1};  // integrate each section w/ n-pt G-L quadrature
 
     builder.Blade()
         .SetElementOrder(element_order)
@@ -108,21 +106,13 @@ TEST(VerificationTest, Iea15MwBladeBending) {
 
     auto interface = builder.Build();
 
-    //------------------------------------------------------
-    // apply load and advance simulation for 10s
-    //------------------------------------------------------
-    auto& tip_node = interface.Blade().nodes.back();
-
+    //------------------------------------------------------------
+    // apply load and advance simulation for a time period
+    //------------------------------------------------------------
     // Apply tip load in flapwise direction i.e. -y axis, enough to cause ~10% deflection of tip node
-    tip_node.loads[1] = -2.e5;  // 200 kN
-
-    /*
-    std::cout << "Time, Tip node displacement in x direction, Tip node displacement in y direction, "
-              << "Tip node displacement in z direction" << "\n";
-    std::cout << 0. << ", " << std::setprecision(15) << tip_node.displacement[0] << ", "
-              << tip_node.displacement[1] << ", " << tip_node.displacement[2] << "\n";
-    */
-    const auto num_steps = static_cast<size_t>(0.1 / time_step);  // 0.1 s at time step size = 0.01 s
+    auto& tip_node = interface.Blade().nodes.back();
+    tip_node.loads[1] = -2.e5;                                    // -200 kN
+    const auto num_steps = static_cast<size_t>(0.1 / time_step);  // simulate 0.1 seconds
     for ([[maybe_unused]] auto step : std::views::iota(1U, num_steps + 1)) {
         // Take a single time step in dynamic solve
         auto converged = interface.Step();
@@ -138,7 +128,7 @@ TEST(VerificationTest, Iea15MwBladeBending) {
     }
 
     //-----------------------------------------------------
-    // verify tip displacement history against SeaHOWL
+    // verify tip displacement history
     //-----------------------------------------------------
 
     // TODO

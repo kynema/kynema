@@ -36,7 +36,7 @@ namespace kynema::tests {
  * @see Kynema documentation for the full benchmark results:
  *      https://kynema.github.io/kynema/testing/twisted.html
  */
-TEST(VerificationTest, CompositeBeamBending_TwistedBeam) {
+TEST(VerificationTest, Static_TwistedCompositeBeamBending) {
     //----------------------------------
     // solution parameters
     //----------------------------------
@@ -53,8 +53,7 @@ TEST(VerificationTest, CompositeBeamBending_TwistedBeam) {
         .SetRelativeErrorTolerance(1e-9);   // Relative tolerance
 
     if (write_output) {
-        builder.Outputs().SetOutputFilePath("StaticVerificationTest.CompositeBeamBending_TwistedBeam"
-        );
+        builder.Outputs().SetOutputFilePath("VerificationTest.Static_TwistedCompositeBeamBending");
     }
 
     //----------------------------------

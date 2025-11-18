@@ -6,36 +6,34 @@
 
 namespace kynema::tests {
 
-TEST(VerificationTest, ClampedCompositeBeamBendingUnderTipLoad) {
+TEST(VerificationTest, Dynamic_ClampedCompositeBeamBending) {
     //----------------------------------
     // solution parameters
     //----------------------------------
     auto builder = interfaces::BladeInterfaceBuilder{};
-    const auto write_output{true};
-    const double time_step{0.01};
+    const auto write_output{false};
+    const double time_step{0.005};
     builder.Solution()
         .EnableDynamicSolve()               // Dynamic analysis
         .SetTimeStep(time_step)             // Time step size
-        .SetDampingFactor(0.9)              // Small numerical damping (ρ_∞ = 0.9)
+        .SetDampingFactor(0.)               // Max numerical damping (ρ_∞ = 0.)
         .SetMaximumNonlinearIterations(15)  // Max number of Newton-Raphson iterations
         .SetAbsoluteErrorTolerance(1e-7)    // Absolute error tolerance
         .SetRelativeErrorTolerance(1e-5);   // Relative error tolerance
 
     if (write_output) {
-        builder.Outputs().SetOutputFilePath(
-            "DynamicVerificationTest.ClampedCompositeBeamBendingUnderTipLoad"
-        );
+        builder.Outputs().SetOutputFilePath("VerificationTest.Dynamic_ClampedCompositeBeamBending");
     }
 
     //----------------------------------
     // beam element
     //----------------------------------
-    const int num_nodes{18};  // number of nodes = n
+    const int num_nodes{5};  // number of nodes = n
     builder.Blade()
-        .SetElementOrder(num_nodes - 1)       // 18-node LSFE for high accuracy
+        .SetElementOrder(num_nodes - 1)       // element order = n-1
         .SetSectionRefinement(num_nodes - 1)  // n-pt Gauss-Legendre quadrature for integration
         .SetQuadratureRule(interfaces::components::BeamInput::QuadratureRule::GaussLegendre)
-        .SetQuadratureStyle(interfaces::components::BeamInput::QuadratureStyle::Segmented)
+        .SetQuadratureStyle(interfaces::components::BeamInput::QuadratureStyle::WholeBeam)
         .PrescribedRootMotion(true);  // Root node is fixed (i.e. clamped BC)
 
     // No twist along beam reference axis
@@ -58,12 +56,12 @@ TEST(VerificationTest, ClampedCompositeBeamBendingUnderTipLoad) {
 
     // Sectional mass matrix (6x6)
     constexpr auto mass_matrix = std::array{
-        std::array{8.538e-2, 0., 0., 0., 0., 0.},    //
-        std::array{0., 8.538e-2, 0., 0., 0., 0.},    //
-        std::array{0., 0., 8.538e-2, 0., 0., 0.},    //
-        std::array{0., 0., 0., 1.44332e-2, 0., 0.},  //
-        std::array{0., 0., 0., 0., 0.40972e-2, 0.},  //
-        std::array{0., 0., 0., 0., 0., 1.0336e-2},   //
+        std::array{8.538e-2, 0., 0., 0., 0., 0.},   //
+        std::array{0., 8.538e-2, 0., 0., 0., 0.},   //
+        std::array{0., 0., 8.538e-2, 0., 0., 0.},   //
+        std::array{0., 0., 0., 1.4433e-2, 0., 0.},  //
+        std::array{0., 0., 0., 0., 0.4097e-2, 0.},  //
+        std::array{0., 0., 0., 0., 0., 1.0336e-2},  //
     };
 
     // Sectional stiffness matrix (6x6)
@@ -86,19 +84,12 @@ TEST(VerificationTest, ClampedCompositeBeamBendingUnderTipLoad) {
 
     auto interface = builder.Build();
 
-    //------------------------------------------------------
-    // apply transverse tip load and run for 10s
-    //------------------------------------------------------
+    //--------------------------------------------------------------------
+    // apply transverse tip load and run simulation for a time period
+    //--------------------------------------------------------------------
     // Point force P_z = 150 lbs
     auto& tip_node = interface.Blade().nodes[interface.Blade().nodes.size() - 1];
     tip_node.loads[2] = 150.;
-
-    /*
-    std::cout << "Time, Tip node displacement in x direction, Tip node displacement in y direction, "
-              << "Tip node displacement in z direction" << "\n";
-    std::cout << 0. << ", " << std::setprecision(15) << tip_node.displacement[0] << ", "
-              << tip_node.displacement[1] << ", " << tip_node.displacement[2] << "\n";
-    */
     const auto num_steps = static_cast<size_t>(0.1 / time_step);  // 0.1 s at time step size = 0.01 s
     for ([[maybe_unused]] auto step : std::views::iota(1U, num_steps + 1)) {
         // Take a single time step in dynamic solve
