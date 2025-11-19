@@ -5,7 +5,7 @@ Geometrically nonlinear spring
 
 In this section we describe the variables and unconstrained governing
 equations for a two-node spring that is constitutively linear and
-geometrically nonlinear. The spring input properties are is spring constant :math:`k` and  its unstretched length :math:`L`. The spring
+geometrically nonlinear. The spring input properties are the spring constant :math:`k` and its unstretched length :math:`L`. The spring
 element has reference position defined by its endpoint positions,
 
 .. math::

@@ -120,10 +120,29 @@ element reference domain), <span class="math notranslate nohighlight">\(\xi_i\)<
 \end{aligned}\]</div>
 <p>for <span class="math notranslate nohighlight">\(\xi \in[-1,1]\)</span>, where <span class="math notranslate nohighlight">\(L_{P-1}(\xi)\)</span> is the Legendre
 polynomial of degree <span class="math notranslate nohighlight">\((P-1)\)</span> [&#64;Deville-etal:2002]. The beam
-reference line is approximated as</p>
+reference line definition is determined by the nodal values</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+ \underline{q}^\mathrm{r}_i = \begin{bmatrix}
+  \underline{x}^\mathrm{r}_i \\
+  \hat{q}^\mathrm{r}_i \\
+\end{bmatrix}
+\end{aligned}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\underline{x}^\mathrm{r}_i \in \mathbb{R}^3\)</span> is position and
+<span class="math notranslate nohighlight">\(\hat{q}^\mathrm{r}_i \in \mathbb{R}^4\)</span> is the quanternion representation of the reference orientation matrix <span class="math notranslate nohighlight">\(\underline{\underline{R}}^\mathrm{r}_i \in \mathrm{SO}(3)\)</span>.</p>
+<p>The beam reference line position is represented as</p>
 <div class="math notranslate nohighlight">
 \[\begin{aligned}
-\underline{x}^{0,h}(\xi) =  \sum_{\ell=1}^{P} \phi_\ell(\xi) \underline{x}^0_\ell
+\underline{x}^{\mathrm{r},h}(\xi) =  \sum_{\ell=1}^{P} \phi_\ell(\xi) \underline{x}^\mathrm{r}_\ell
+\end{aligned}\]</div>
+<p>and the quaternion orientation representation is</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+\widehat{q}^\mathrm{r} (\xi) =
+\frac{\sum_{\ell=1}^P \widehat{q}^\mathrm{r}_\ell
+ \phi_\ell(\xi) }
+{\left \Vert \sum_{\ell=1}^P \widehat{q}^\mathrm{r}_\ell
+ \phi_\ell (\xi) \right \Vert }
 \end{aligned}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\phi_\ell(\xi)\)</span> is the Lagrangian-interpolant of the
 <span class="math notranslate nohighlight">\(\ell^{th}\)</span> node. For LSFEs, those can be written as</p>
@@ -132,7 +151,22 @@ reference line is approximated as</p>
 \phi_\ell(\xi) = \frac{-1}{P (P-1)}
 \frac{\left(1-\xi^2\right) \frac{\partial L_{P-1}}{\partial \xi}}{(\xi - \xi_\ell) L_{P-1}(\xi_\ell)}
 \end{aligned}\]</div>
-<p>for <span class="math notranslate nohighlight">\(\xi \in [-1,1]\)</span>. The weak form of the residual of the
+<p>for <span class="math notranslate nohighlight">\(\xi \in [-1,1]\)</span>.</p>
+<p>The orientation of the beam reference line at any <span class="math notranslate nohighlight">\(\xi\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+\underline{\underline{R}}^r\left[\hat{q}^r\left(\xi\right)\right]
+\end{aligned}\]</div>
+<p>where, for any quaternion</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\widehat{q} = \begin{bmatrix} q \\ \underline{q} \end{bmatrix}\end{split}\]</div>
+<p>(<span class="math notranslate nohighlight">\(q \in \mathbb{R}\)</span>, <span class="math notranslate nohighlight">\(\underline{q} \in \mathbb{R}^3\)</span>, <span class="math notranslate nohighlight">\(\left \Vert \widehat{q} \right \Vert = 1\)</span>)</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+\underline{\underline{R}}\left(\hat{q}\right) =
+         \underline{\underline{I}} + 2 q \widetilde{q} + 2 \widetilde{q} \widetilde{q}
+        \end{aligned}\]</div>
+<p>The weak form of the residual of the
 governing equations Eq. <a class="reference internal" href="gebt.html#equation-stronggoverning">(9)</a>,
 for the <span class="math notranslate nohighlight">\(i^\mathrm{th}\)</span>-node, can be written (after integration by
 parts) as</p>
@@ -151,13 +185,13 @@ parts) as</p>
 \right)
 \right]
  J d\xi\]</div>
-<p><span class="math notranslate nohighlight">\(\underline{R}\in\mathbb{R}^6\)</span>, for all
+<p><span class="math notranslate nohighlight">\(\underline{R}_i\in\mathbb{R}^6\)</span>, for all
 <span class="math notranslate nohighlight">\(i\in\{1,\ldots,P\}\)</span>, where we have mapped the domain
-<span class="math notranslate nohighlight">\(s\in[0,L]\)</span> to <span class="math notranslate nohighlight">\(\xi \in[-1,1]\)</span>,
+<span class="math notranslate nohighlight">\(s\in[0,L]\)</span> to <span class="math notranslate nohighlight">\(\xi \in[-1,1]\)</span>, and
 <span class="math notranslate nohighlight">\(J(\xi) \in \mathbb{R}\)</span> is the Jacobian of the mapping,</p>
 <div class="math notranslate nohighlight">
 \[\begin{aligned}
-J(\xi) = \sqrt{\frac{\partial \underline{x}^{0,h}}{\partial \xi}^T \frac{\partial \underline{x}^{0,h}}{\partial \xi} }
+J(\xi) = \sqrt{\frac{\partial \underline{x}^{\mathrm{r},h}}{\partial \xi}^T \frac{\partial \underline{x}^{\mathrm{r},h}}{\partial \xi} }
 \end{aligned}\]</div>
 <p>We remark that standard linear (i.e., 2-node) and quadratic (i.e.,
 3-node) elements are a subset of LSFEs.</p>
@@ -192,11 +226,6 @@ is then given as</p>
 \[\begin{aligned}
 \widehat{q}^h = \frac{ \sum_{j=1}^{p} \phi_j \hat{q}_j }
 {|| \sum_{j=1}^{p} \phi_j \hat{q}_j ||}
-\end{aligned}\]</div>
-<p>For a given quaternion, the associated rotation matrix is calculated as</p>
-<div class="math notranslate nohighlight">
-\[\begin{aligned}
-\underline{\underline{R}}\left(\hat{q}\right) = \underline{\underline{I}} + q \widetilde{q} + 2 \widetilde{q} \widetilde{q}
 \end{aligned}\]</div>
 <p>Introducing a quadrature scheme with <span class="math notranslate nohighlight">\(n^Q\)</span> points with locations
 and weights, <span class="math notranslate nohighlight">\(\xi_k^Q\)</span>, <span class="math notranslate nohighlight">\(w_k^Q\)</span>,

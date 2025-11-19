@@ -186,7 +186,7 @@ which are defined as</p>
 \[\underline{\kappa} = \mathrm{axial}\left({ \underline{\underline{R}}^\prime \underline{\underline{R}} }\right)\]</div>
 <p>respectively. In the reference configuration, i.e.,
 <span class="math notranslate nohighlight">\(\underline{\underline{R}}=\underline{\underline{I}}\)</span> and
-<span class="math notranslate nohighlight">\(\underline{u}=\mathrm{r}\)</span>, zero strain requires that</p>
+<span class="math notranslate nohighlight">\(\underline{u}=\underline{0}\)</span>, zero strain requires that</p>
 <div class="math notranslate nohighlight" id="equation-zerostrain">
 <span class="eqno">(8)<a class="headerlink" href="#equation-zerostrain" title="Permalink to this equation"></a></span>\[\underline{x}^{\mathrm{r}\prime} = \underline{\underline{R}}^\mathrm{r} \hat{i}_1.\]</div>
 <p>In our finite-element implementation of
@@ -226,12 +226,12 @@ strong form as</p>
 + \underline{\mathcal{F}}^\mathrm{E2}
 + \underline{\mathcal{F}}^\mathrm{D2}
 - \underline{\mathcal{F}}^\mathrm{ext}\]</div>
-<p>where each term is in <span class="math notranslate nohighlight">\(\mathbb{R}^6\)</span>;
+<p>where each term is in <span class="math notranslate nohighlight">\(\mathbb{R}^6\)</span>:
 <span class="math notranslate nohighlight">\(\underline{\underline{\mathcal{F}}}^\mathrm{I}(s,t)\)</span> is the inertial
 force,
-<span class="math notranslate nohighlight">\(\underline{\underline{\mathcal{F}}}^\mathrm{E1\prime}(s,t)\)</span>
+<span class="math notranslate nohighlight">\(\underline{\underline{\mathcal{F}}}^\mathrm{E1\prime}(s,t)\)</span>,
 <span class="math notranslate nohighlight">\(\underline{\underline{\mathcal{F}}}^\mathrm{E2}(s,t)\)</span> are elastic forces,
-<span class="math notranslate nohighlight">\(\underline{\underline{\mathcal{F}}}^\mathrm{D1\prime}(s,t)\)</span>
+<span class="math notranslate nohighlight">\(\underline{\underline{\mathcal{F}}}^\mathrm{D1\prime}(s,t)\)</span>,
 <span class="math notranslate nohighlight">\(\underline{\underline{\mathcal{F}}}^\mathrm{D2}(s,t)\)</span> are damping forces,
 and <span class="math notranslate nohighlight">\(\underline{\underline{\mathcal{F}}}^\mathrm{ext}\)</span> are the
 external forces and moments. The inertial force in the inertial frame is</p>
@@ -288,6 +288,11 @@ coordinates, i.e.,</p>
   \underline{\dot{u}}^\prime - \widetilde{\omega} \underline{\underline{R}}\, \underline{x}^{0\prime}\\
   \widetilde{\omega} \underline{\kappa} + \underline{\omega}^\prime
 \end{bmatrix}\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\underline{\mathcal{F}}^\mathrm{D2} =
+\begin{bmatrix} \underline{0} \\
+\left(\tilde{x}'^\mathrm{r}+\tilde{u}'\right)^T \left( \underline{\underline{D}}_{11} \underline{\dot{\epsilon}}
++ \underline{\underline{D}}_{12} \underline{\dot{\kappa}}\right)  \end{bmatrix}\end{split}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\underline{\underline{D}}\in \mathbb{R}^{6 \times 6}\)</span> is the damping matrix in inertial coordinates. Kynema currently uses stiffness proportional damping, i.e.,</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\underline{\underline{D}}

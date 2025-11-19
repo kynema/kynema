@@ -115,7 +115,7 @@ and/or twisted along their length. In this section we describe how beams
 are user defined and how the beams are discretized in the reference
 configuration.</p>
 <p>We assume that Kynema beams are defined as a set of points in the
-global coordinate system (
+global coordinate system
 <span class="math notranslate nohighlight">\((\overline{x}^\mathrm{g}, \overline{y}^\mathrm{g},\overline{z}^\mathrm{g})\)</span>
 with the blade root located at the origin and oriented such that the
 pitch axis, or its primary-length direction, is pointing in the
@@ -134,9 +134,9 @@ twist about the reference line is <span class="math notranslate nohighlight">\(\
 must also provide the <span class="math notranslate nohighlight">\(n^Q\)</span> quadrature locations
 <span class="math notranslate nohighlight">\(\xi_k^Q \in [-1,1]\)</span> along the reference axis. Finally, the user
 must provide the translation and rotation,
-<span class="math notranslate nohighlight">\(\underline{u}^\mathrm{init}\)</span> and
-<span class="math notranslate nohighlight">\(\underline{\underline{R}}^\mathrm{init}\)</span>, respectively, of the
-beam that defines the initial/reference position and orientation. In other
+<span class="math notranslate nohighlight">\(\underline{u}^\mathrm{r}\)</span> and
+<span class="math notranslate nohighlight">\(\underline{\underline{R}}^\mathrm{r}\)</span>, respectively, of the
+beam that defines the reference position and orientation. In other
 words, each beam is defined in the global system with its root at the
 origin and it is then translated and rotated into its reference
 position.</p>
@@ -219,17 +219,17 @@ with the requirements
 <span class="math notranslate nohighlight">\(\widehat{q}_i^\mathrm{fit}\)</span>.</p>
 </li>
 <li><p>Nodal positions in the reference position, given
-<span class="math notranslate nohighlight">\(\underline{u}^\mathrm{init}\)</span> and
-<span class="math notranslate nohighlight">\(\underline{\underline{R}}^\mathrm{init}\)</span>, are calculated as</p>
+<span class="math notranslate nohighlight">\(\underline{u}^\mathrm{r}\)</span> and
+<span class="math notranslate nohighlight">\(\underline{\underline{R}}^\mathrm{r}\)</span>, are calculated as</p>
 <div class="math notranslate nohighlight">
 \[\begin{aligned}
-\underline{x}^0_i = \underline{x}^\mathrm{fit}_i + \underline{u}^\mathrm{init} + \underline{\underline{R}}^\mathrm{init}\underline{x}^\mathrm{fit}_i,\quad \forall i \in  \{1,  \ldots, P \}
+\underline{x}^\mathrm{r}_i = \underline{x}^\mathrm{fit}_i + \underline{u}^\mathrm{r} + \underline{\underline{R}}^\mathrm{r}\underline{x}^\mathrm{fit}_i,\quad \forall i \in  \{1,  \ldots, P \}
 \end{aligned}\]</div>
 </li>
 <li><p>Nodal orientations are calculated as</p>
 <div class="math notranslate nohighlight">
 \[\begin{aligned}
-\underline{\underline{R}}^0_i = \underline{\underline{R}}^\mathrm{init} \underline{\underline{R}}\left(\overline{t}_i^\mathrm{fit},\tau^\mathrm{geom} \right) \underline{R}^\mathrm{fit}_i
+\underline{\underline{R}}^\mathrm{r}_i = \underline{\underline{R}}^\mathrm{r} \underline{\underline{R}}\left(\overline{t}_i^\mathrm{fit},\tau^\mathrm{geom} \right) \underline{R}^\mathrm{fit}_i
 ,\quad \forall i \in  \{1,  \ldots, P \}
 \end{aligned}\]</div>
 <p>where
@@ -243,7 +243,7 @@ to <span class="math notranslate nohighlight">\(\xi_i\)</span>.</p>
 <span class="math notranslate nohighlight">\(\xi^\mathrm{Q}_k\)</span>, which are calculated as</p>
 <div class="math notranslate nohighlight">
 \[\begin{aligned}
-\underline{\underline{R}}^{0,\mathrm{Q}}_k = \underline{\underline{R}}^\mathrm{init} \underline{\underline{R}}\left(\overline{t}_k^\mathrm{Q},-\tau^\mathrm{geom,Q} \right) \underline{\underline{R}}\left(\widehat{q}^\mathrm{fit,Q}_k\right)
+\underline{\underline{R}}^{\mathrm{r},\mathrm{Q}}_k = \underline{\underline{R}}^\mathrm{r} \underline{\underline{R}}\left(\overline{t}_k^\mathrm{Q},-\tau^\mathrm{geom,Q} \right) \underline{\underline{R}}\left(\widehat{q}^\mathrm{fit,Q}_k\right)
 ,\quad \forall k \in  \{1,  \ldots, n^\mathrm{Q} \}
 \end{aligned}\]</div>
 <p>where</p>
