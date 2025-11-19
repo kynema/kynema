@@ -399,8 +399,6 @@ int main() {
         // this system through the Turbine Interface object that's created.
         auto interface = builder.Build();
 
-        interface.WriteOutput();
-
         //--------------------------------------------------------------------------
         // Simulation
         //--------------------------------------------------------------------------
@@ -415,7 +413,7 @@ int main() {
         // The process of taking each step is controlled by the user.  Control commands
         // and loads can be changed freely throughout the simulation, either as part
         // of a coupling to an external physics code or in respose to discrete events.
-        for (auto i = 1U; i < n_steps; ++i) {
+        for (auto i = 1U; i <= n_steps; ++i) {
             // Calculate time
             const auto t{static_cast<double>(i) * time_step};
 
