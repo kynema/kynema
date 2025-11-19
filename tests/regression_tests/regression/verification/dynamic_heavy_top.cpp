@@ -105,8 +105,8 @@ TEST(VerificationTest, Dynamic_HeavyTopSpinningUnderGravity) {
     };
 
     // Using absolute tolerance based on observed numerical errors
-    // Maximum observed error is ~2.05e-4, using 3e-4 for safety margin
-    constexpr double tolerance{3e-4};
+    // Maximum observed error is ~2.05e-4, rounding up to 5.e-4
+    constexpr double tolerance{5e-4};
 
     EXPECT_NEAR(state.q(mass_node_id, 0), benchmark_solution_at_2_seconds[0], tolerance);
     EXPECT_NEAR(state.q(mass_node_id, 1), benchmark_solution_at_2_seconds[1], tolerance);

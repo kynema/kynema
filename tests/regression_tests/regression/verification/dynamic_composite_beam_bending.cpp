@@ -94,7 +94,7 @@ TEST(VerificationTest, Dynamic_ClampedCompositeBeamBending) {
     const auto num_steps = static_cast<size_t>(std::round(simulation_time / time_step));
 
     // Reference results from BeamDyn simulation stored in: dynamic_beam_5nodes_0pt005s_beamdyn.csv
-    // Comparing only the z-component (index 2) displacement along the load direction
+    // Comparing only the z-component (index 2) i.e. displacement along the load direction
     const std::map<double, double> beamdyn_displacements{
         {0.05, 7.6836577300452E-01},  // time = 0.05s
         {0.1, 2.0534850126406E+00},   // time = 0.10s
@@ -153,6 +153,8 @@ TEST(VerificationTest, Dynamic_ClampedCompositeBeamBending) {
     // verify tip displacements
     //-------------------------------------------
     // Using relative tolerance (20%) with minimum absolute threshold for small values
+    // NOTE: The tolerance is high since we don't expect Kynema's constraint-based approach
+    // to match BeamDyn's Dirichlet BCs based approach
     constexpr double relative_tolerance{0.20};  // 20% relative tolerance
     constexpr double min_abs_tolerance{1e-5};   // Minimum absolute tolerance for near-zero values
     auto expect_near_with_relative_tolerance = [&](const auto& actual, const auto& expected) {

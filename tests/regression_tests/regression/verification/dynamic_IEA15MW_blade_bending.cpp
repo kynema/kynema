@@ -131,7 +131,7 @@ TEST(VerificationTest, Dynamic_Iea15MwBladeBending) {
     // verify tip displacement history
     //-----------------------------------------------------
 
-    // TODO
+    // TODO revisit after we implement structural damping in Kynema
 }
 
 }  // namespace kynema::tests
