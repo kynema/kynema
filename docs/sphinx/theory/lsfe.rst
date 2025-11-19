@@ -18,13 +18,41 @@ element reference domain), :math:`\xi_i` for
 
 for :math:`\xi \in[-1,1]`, where :math:`L_{P-1}(\xi)` is the Legendre
 polynomial of degree :math:`(P-1)` [@Deville-etal:2002]. The beam
-reference line is approximated as
+reference line definition is determined by the nodal values
 
 .. math::
 
    \begin{aligned}
-   \underline{x}^{0,h}(\xi) =  \sum_{\ell=1}^{P} \phi_\ell(\xi) \underline{x}^0_\ell
+    \underline{q}^\mathrm{r}_i = \begin{bmatrix}
+     \underline{x}^\mathrm{r}_i \\
+     \hat{q}^\mathrm{r}_i \\
+   \end{bmatrix}
    \end{aligned}
+
+where :math:`\underline{x}^\mathrm{r}_i \in \mathbb{R}^3` is position and
+:math:`\hat{q}^\mathrm{r}_i \in \mathbb{R}^4` is the quanternion representation of the reference orientation matrix :math:`\underline{\underline{R}}^\mathrm{r}_i \in \mathrm{SO}(3)`.
+
+
+The beam reference line position is represented as 
+
+.. math::
+
+   \begin{aligned}
+   \underline{x}^{\mathrm{r},h}(\xi) =  \sum_{\ell=1}^{P} \phi_\ell(\xi) \underline{x}^\mathrm{r}_\ell
+   \end{aligned}
+
+and the quaternion orientation representation is 
+
+.. math::
+
+   \begin{aligned}
+   \widehat{q}^\mathrm{r} (\xi) =
+   \frac{\sum_{\ell=1}^P \widehat{q}^\mathrm{r}_\ell
+    \phi_\ell(\xi) }
+   {\left \Vert \sum_{\ell=1}^P \widehat{q}^\mathrm{r}_\ell
+    \phi_\ell (\xi) \right \Vert }
+   \end{aligned}
+
 
 where :math:`\phi_\ell(\xi)` is the Lagrangian-interpolant of the
 :math:`\ell^{th}` node. For LSFEs, those can be written as
@@ -36,7 +64,32 @@ where :math:`\phi_\ell(\xi)` is the Lagrangian-interpolant of the
    \frac{\left(1-\xi^2\right) \frac{\partial L_{P-1}}{\partial \xi}}{(\xi - \xi_\ell) L_{P-1}(\xi_\ell)}
    \end{aligned}
 
-for :math:`\xi \in [-1,1]`. The weak form of the residual of the
+for :math:`\xi \in [-1,1]`. 
+
+The orientation of the beam reference line at any :math:`\xi` is
+
+.. math::
+
+   \begin{aligned}
+   \underline{\underline{R}}^r\left[\hat{q}^r\left(\xi\right)\right] 
+   \end{aligned}
+
+where, for any quaternion 
+
+.. math::
+   \widehat{q} = \begin{bmatrix} q \\ \underline{q} \end{bmatrix}
+
+(:math:`q \in \mathbb{R}`, :math:`\underline{q} \in \mathbb{R}^3`, :math:`\left \Vert \widehat{q} \right \Vert = 1`)
+
+.. math::
+
+   \begin{aligned}
+   \underline{\underline{R}}\left(\hat{q}\right) = 
+	    \underline{\underline{I}} + 2 q \widetilde{q} + 2 \widetilde{q} \widetilde{q}
+	   \end{aligned}
+
+
+The weak form of the residual of the
 governing equations Eq. :eq:`stronggoverning`,
 for the :math:`i^\mathrm{th}`-node, can be written (after integration by
 parts) as
@@ -58,15 +111,15 @@ parts) as
     J d\xi
    :label: weakresidual
 
-:math:`\underline{R}\in\mathbb{R}^6`, for all
+:math:`\underline{R}_i\in\mathbb{R}^6`, for all
 :math:`i\in\{1,\ldots,P\}`, where we have mapped the domain
-:math:`s\in[0,L]` to :math:`\xi \in[-1,1]`,
+:math:`s\in[0,L]` to :math:`\xi \in[-1,1]`, and
 :math:`J(\xi) \in \mathbb{R}` is the Jacobian of the mapping,
 
 .. math::
 
    \begin{aligned}
-   J(\xi) = \sqrt{\frac{\partial \underline{x}^{0,h}}{\partial \xi}^T \frac{\partial \underline{x}^{0,h}}{\partial \xi} }
+   J(\xi) = \sqrt{\frac{\partial \underline{x}^{\mathrm{r},h}}{\partial \xi}^T \frac{\partial \underline{x}^{\mathrm{r},h}}{\partial \xi} }
    \end{aligned}
 
 We remark that standard linear (i.e., 2-node) and quadratic (i.e.,
@@ -116,13 +169,6 @@ but quaternion interpolation requires normalization, i.e.,
    {|| \sum_{j=1}^{p} \phi_j \hat{q}_j ||}
    \end{aligned}
 
-For a given quaternion, the associated rotation matrix is calculated as
-
-.. math::
-
-   \begin{aligned}
-   \underline{\underline{R}}\left(\hat{q}\right) = \underline{\underline{I}} + q \widetilde{q} + 2 \widetilde{q} \widetilde{q}
-   \end{aligned}
 
 Introducing a quadrature scheme with :math:`n^Q` points with locations
 and weights, :math:`\xi_k^Q`, :math:`w_k^Q`,

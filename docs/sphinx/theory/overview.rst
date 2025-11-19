@@ -123,7 +123,7 @@ in the form
 
 where :math:`\underline{\underline{M}} \in \mathbb{R}^{k\times k}` is
 the mass matrix and :math:`\underline{g} \in \mathbb{R}^k` are internal
-and :math:`\underline{f} \in \mathbb{R}^k` are external forces. The
+forces and :math:`\underline{f} \in \mathbb{R}^k` are external forces. The
 variation of Eq. :eq:`residual` can be written
 
 .. math:: 

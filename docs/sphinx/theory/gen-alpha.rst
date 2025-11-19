@@ -39,7 +39,7 @@ in [@Bottasso-etal:2008],
 respectively, where
 :math:`\underline{\underline{D}}_L,\underline{\underline{D}}_R \in \mathbb{R}^{k\times k}`,
 :math:`\underline{\underline{I}}_p` is the :math:`p \times p` identity
-matrix.
+matrix, and :math:`\beta` is a parameter defined in Algorithm 1.
 
 Important to the time-integration scheme is the exponential map, which
 can be written for :math:`k_n` nodes

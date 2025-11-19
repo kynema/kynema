@@ -100,7 +100,7 @@ which are defined as
 
 respectively. In the reference configuration, i.e.,
 :math:`\underline{\underline{R}}=\underline{\underline{I}}` and
-:math:`\underline{u}=\mathrm{r}`, zero strain requires that
+:math:`\underline{u}=\underline{0}`, zero strain requires that
 
 .. math:: \underline{x}^{\mathrm{r}\prime} = \underline{\underline{R}}^\mathrm{r} \hat{i}_1.
    :label: zerostrain
@@ -152,12 +152,12 @@ strong form as
    - \underline{\mathcal{F}}^\mathrm{ext} 
    :label: stronggoverning
 
-where each term is in :math:`\mathbb{R}^6`;
+where each term is in :math:`\mathbb{R}^6`:
 :math:`\underline{\underline{\mathcal{F}}}^\mathrm{I}(s,t)` is the inertial
 force, 
-:math:`\underline{\underline{\mathcal{F}}}^\mathrm{E1\prime}(s,t)`
+:math:`\underline{\underline{\mathcal{F}}}^\mathrm{E1\prime}(s,t)`,
 :math:`\underline{\underline{\mathcal{F}}}^\mathrm{E2}(s,t)` are elastic forces,
-:math:`\underline{\underline{\mathcal{F}}}^\mathrm{D1\prime}(s,t)`
+:math:`\underline{\underline{\mathcal{F}}}^\mathrm{D1\prime}(s,t)`, 
 :math:`\underline{\underline{\mathcal{F}}}^\mathrm{D2}(s,t)` are damping forces,
 and :math:`\underline{\underline{\mathcal{F}}}^\mathrm{ext}` are the
 external forces and moments. The inertial force in the inertial frame is
@@ -227,6 +227,13 @@ The damping-force terms are modeled as
      \widetilde{\omega} \underline{\kappa} + \underline{\omega}^\prime
    \end{bmatrix}
    :label: straindot
+
+.. math::
+
+   \underline{\mathcal{F}}^\mathrm{D2} =
+   \begin{bmatrix} \underline{0} \\ 
+   \left(\tilde{x}'^\mathrm{r}+\tilde{u}'\right)^T \left( \underline{\underline{D}}_{11} \underline{\dot{\epsilon}} 
+   + \underline{\underline{D}}_{12} \underline{\dot{\kappa}}\right)  \end{bmatrix}
 
 where :math:`\underline{\underline{D}}\in \mathbb{R}^{6 \times 6}` is the damping matrix in inertial coordinates. Kynema currently uses stiffness proportional damping, i.e., 
 
