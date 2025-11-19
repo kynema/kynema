@@ -374,10 +374,8 @@ int main() {
         // Build Controller
         //--------------------------------------------------------------------------
 
-        const auto controller_shared_lib_path = std::string{
-            "/Users/mkuhn/exawind-manager/spack/opt/spack/darwin-skylake/"
-            "rosco-2.9.0-5zqbif2gbp33w6i4qv57ps5vxfwmwtlv/lib/libdiscon.dylib"
-        };
+        const auto controller_shared_lib_path =
+            std::string{static_cast<const char*>(Kynema_ROSCO_LIBRARY)};
         const auto controller_function_name = std::string{"DISCON"};
         const auto controller_input_file = std::string{"DISCON.IN"};
         const auto controller_output_file = std::string{"controller_NREL5MW"};
