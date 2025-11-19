@@ -96,17 +96,32 @@
            <div itemprop="articleBody">
              
   <div class="section" id="heavy-top-dynamic-problem">
-<span id="sec-heavytop"></span><h1>Heavy Top Dynamic Problem<a class="headerlink" href="#heavy-top-dynamic-problem" title="Permalink to this heading"></a></h1>
-<p>For this benchmark problem, we use the heavy top problem to evaluate the convergence rate of the Kynema Lie-group generalized-alpha time integrator.   The problem is a rotating body fixed to the ground by a spherical joint and is described in detail in [&#64;Bruls-etal:2012].</p>
-<p>Our benchmark solution is a Kynema simulation with a time step size of <span class="math notranslate nohighlight">\(10^{-5}\)</span> seconds and we examine the vertical displacement at the end of two seconds.</p>
-<blockquote>
-<div><div class="csl-entry docutils container" id="ref-bruls-etal-2012">
-<p>Brüls, O., A. Cardona, and M. Arnold. 2012. “Lie Group
-Generalized-<span class="math notranslate nohighlight">\(\alpha\)</span> Time Integration Fo Constrained
-Flexible Multibody Systems.” <em>Mechanism and Machine Theory</em> 48:
-121–137.</p>
+<span id="sec-heavytop-verification"></span><h1>Heavy Top Dynamic Problem<a class="headerlink" href="#heavy-top-dynamic-problem" title="Permalink to this heading"></a></h1>
+<p>For this benchmark problem, we use the heavy top to evaluate the convergence rate of the Kynema
+Lie-group generalized-alpha time integrator. The problem consists of a rotating body, fixed to the
+ground by a spherical joint, as detailed in [&#64;Bruls-etal:2012]. The formulation of the heavy top
+problem as implemented in Kynema is described in <a class="reference internal" href="../theory/heavy-top.html#sec-heavy-top"><span class="std std-ref">Heavy top constrained-rigid-body example</span></a>.</p>
+<p>Our benchmark solution is computed using a Kynema simulation with a time step size of <span class="math notranslate nohighlight">\(10^{-6}\)</span>
+seconds; we examine the vertical displacement <span class="math notranslate nohighlight">\(u_3\)</span> at the end of two seconds. The following
+figure shows the convergence of the relative error in the vertical displacement as a function of
+time step size, where we observe the expected second-order convergence of the method.</p>
+<div class="figure align-center" id="id1">
+<a class="reference internal image-reference" href="../_images/heavy_top_u3_convergence_plot.png"><img alt="../_images/heavy_top_u3_convergence_plot.png" src="../_images/heavy_top_u3_convergence_plot.png" style="width: 80%;" /></a>
+<p class="caption"><span class="caption-number">7 </span><span class="caption-text">Second-order convergence of the relative error in vertical displacement <span class="math notranslate nohighlight">\(u_3\)</span> at <span class="math notranslate nohighlight">\(t = 2.0\)</span> s
+for the heavy top problem. The benchmark solution is computed with <span class="math notranslate nohighlight">\(\Delta t = 10^{-6}\)</span> s.</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This benchmark is included as a regression test in the Kynema code base.
+The test is implemented in:</p>
+<blockquote>
+<div><p><a class="reference external" href="https://github.com/kynema/kynema/blob/main/tests/regression_tests/regression/verification/dynamic_heavy_top.cpp">https://github.com/kynema/kynema/blob/main/tests/regression_tests/regression/verification/dynamic_heavy_top.cpp</a></p>
 </div></blockquote>
+</div>
+<div class="csl-entry docutils container" id="ref-bruls-etal-2012">
+<p>Brüls, O., A. Cardona, and M. Arnold. 2012. “Lie Group Generalized-<span class="math notranslate nohighlight">\(\alpha\)</span> Time Integration
+For Constrained Flexible Multibody Systems.” <em>Mechanism and Machine Theory</em> 48: 121–137.</p>
+</div>
 </div>
 
 
