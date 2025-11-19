@@ -11,7 +11,7 @@ are user defined and how the beams are discretized in the reference
 configuration.
 
 We assume that Kynema beams are defined as a set of points in the
-global coordinate system (
+global coordinate system 
 :math:`(\overline{x}^\mathrm{g}, \overline{y}^\mathrm{g},\overline{z}^\mathrm{g})`
 with the blade root located at the origin and oriented such that the
 pitch axis, or its primary-length direction, is pointing in the
@@ -31,9 +31,9 @@ twist about the reference line is :math:`\tau_i^\mathrm{geom}`. The user
 must also provide the :math:`n^Q` quadrature locations
 :math:`\xi_k^Q \in [-1,1]` along the reference axis. Finally, the user
 must provide the translation and rotation,
-:math:`\underline{u}^\mathrm{init}` and
-:math:`\underline{\underline{R}}^\mathrm{init}`, respectively, of the
-beam that defines the initial/reference position and orientation. In other
+:math:`\underline{u}^\mathrm{r}` and
+:math:`\underline{\underline{R}}^\mathrm{r}`, respectively, of the
+beam that defines the reference position and orientation. In other
 words, each beam is defined in the global system with its root at the
 origin and it is then translated and rotated into its reference
 position.
@@ -137,13 +137,13 @@ We construct the orientation from the LSFE line as follows:
    :math:`\widehat{q}_i^\mathrm{fit}`.
 
 #. Nodal positions in the reference position, given
-   :math:`\underline{u}^\mathrm{init}` and
-   :math:`\underline{\underline{R}}^\mathrm{init}`, are calculated as
+   :math:`\underline{u}^\mathrm{r}` and
+   :math:`\underline{\underline{R}}^\mathrm{r}`, are calculated as
 
    .. math::
 
       \begin{aligned}
-      \underline{x}^0_i = \underline{x}^\mathrm{fit}_i + \underline{u}^\mathrm{init} + \underline{\underline{R}}^\mathrm{init}\underline{x}^\mathrm{fit}_i,\quad \forall i \in  \{1,  \ldots, P \}
+      \underline{x}^\mathrm{r}_i = \underline{x}^\mathrm{fit}_i + \underline{u}^\mathrm{r} + \underline{\underline{R}}^\mathrm{r}\underline{x}^\mathrm{fit}_i,\quad \forall i \in  \{1,  \ldots, P \}
       \end{aligned}
 
 #. Nodal orientations are calculated as
@@ -151,7 +151,7 @@ We construct the orientation from the LSFE line as follows:
    .. math::
 
       \begin{aligned}
-      \underline{\underline{R}}^0_i = \underline{\underline{R}}^\mathrm{init} \underline{\underline{R}}\left(\overline{t}_i^\mathrm{fit},\tau^\mathrm{geom} \right) \underline{R}^\mathrm{fit}_i
+      \underline{\underline{R}}^\mathrm{r}_i = \underline{\underline{R}}^\mathrm{r} \underline{\underline{R}}\left(\overline{t}_i^\mathrm{fit},\tau^\mathrm{geom} \right) \underline{R}^\mathrm{fit}_i
       ,\quad \forall i \in  \{1,  \ldots, P \}
       \end{aligned}
 
@@ -168,7 +168,7 @@ We construct the orientation from the LSFE line as follows:
    .. math::
 
       \begin{aligned}
-      \underline{\underline{R}}^{0,\mathrm{Q}}_k = \underline{\underline{R}}^\mathrm{init} \underline{\underline{R}}\left(\overline{t}_k^\mathrm{Q},-\tau^\mathrm{geom,Q} \right) \underline{\underline{R}}\left(\widehat{q}^\mathrm{fit,Q}_k\right)
+      \underline{\underline{R}}^{\mathrm{r},\mathrm{Q}}_k = \underline{\underline{R}}^\mathrm{r} \underline{\underline{R}}\left(\overline{t}_k^\mathrm{Q},-\tau^\mathrm{geom,Q} \right) \underline{\underline{R}}\left(\widehat{q}^\mathrm{fit,Q}_k\right)
       ,\quad \forall k \in  \{1,  \ldots, n^\mathrm{Q} \}
       \end{aligned}
 
