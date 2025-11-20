@@ -21,4 +21,5 @@ limits.
    curved
    twisted
    heavytop
+   dynamic-composite
 
