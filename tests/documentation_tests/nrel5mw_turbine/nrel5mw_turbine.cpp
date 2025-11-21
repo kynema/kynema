@@ -24,7 +24,7 @@ int main() {
         constexpr auto vel_h{11.4};
         constexpr auto h_ref{90.};
         constexpr auto pl_exp{0.};
-        constexpr auto flow_angle{0.};
+        constexpr auto flow_angle{30.};
 
         // Create interface builder
         // This object is the main interface for building turbines.
@@ -83,7 +83,8 @@ int main() {
             .SetTowerAxisToRotorApex(wio_drivetrain["outer_shape"]["overhang"].as<double>())
             .SetTowerTopToRotorApex(wio_drivetrain["outer_shape"]["distance_tt_hub"].as<double>())
             .SetGearBoxRatio(wio_drivetrain["gearbox"]["gear_ratio"].as<double>())
-            .SetRotorSpeed(rotor_speed_init);
+            .SetRotorSpeed(rotor_speed_init)
+            .SetNacelleYawAngle(30. * std::numbers::pi / 180.);
 
         //--------------------------------------------------------------------------
         // Build Blades
