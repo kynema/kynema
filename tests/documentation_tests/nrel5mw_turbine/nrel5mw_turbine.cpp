@@ -408,6 +408,8 @@ int main() {
         auto inflow =
             kynema::interfaces::components::Inflow::SteadyWind(vel_h, h_ref, pl_exp, flow_angle);
 
+        interface.CloseOutputFile();
+
         // Loop through solution iterations
         // The process of taking each step is controlled by the user.  Control commands
         // and loads can be changed freely throughout the simulation, either as part
@@ -436,7 +438,9 @@ int main() {
             // Do output every 20 steps
             if (i % 20 == 0) {
                 std::cout << " --- Writing output file\n";
+                interface.OpenOutputFile();
                 interface.WriteOutput();
+                interface.CloseOutputFile();
             }
         }
     }
