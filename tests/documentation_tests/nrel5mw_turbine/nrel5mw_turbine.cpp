@@ -429,6 +429,8 @@ int main() {
 
             interface.ApplyController(t);
 
+            interface.Turbine().yaw_control = flow_angle;
+
             // Take a single time step
             [[maybe_unused]] const auto converged = interface.Step();
 
