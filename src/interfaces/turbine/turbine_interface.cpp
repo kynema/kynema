@@ -378,7 +378,7 @@ void TurbineInterface::WriteTimeSeriesData() const {
 
     // Aerodynamic data
     if (this->aerodynamics) {
-        const auto n_blades = 0U;  // this->aerodynamics->bodies.size()
+        const auto n_blades = this->aerodynamics->bodies.size();
         for (auto i : std::views::iota(0U, n_blades)) {
             const auto& body = this->aerodynamics->bodies[i];
             for (auto j : std::views::iota(0U, body.loads.size())) {
