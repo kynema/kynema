@@ -1,7 +1,6 @@
+from scipy.interpolate import PchipInterpolator, splprep
 import numpy as np
-from sympy import false
 import yaml
-from scipy.interpolate import PchipInterpolator, make_splprep
 
 # Change these settings to modify the interpolation
 N_AIRFOIL_POINTS = 60
@@ -34,8 +33,8 @@ def normalize_airfoil_coordinates(coords, n_points=N_AIRFOIL_POINTS):
         upper_coords, lower_coords = lower_coords, upper_coords
 
     # Create a cubic parametric spline representation of the upper and lower airfoil shapes
-    spl_upper = make_splprep(upper_coords, s=0, k=3)[0]
-    spl_lower = make_splprep(lower_coords, s=0, k=3)[0]
+    spl_upper = splprep(upper_coords, s=0, k=3)[0]
+    spl_lower = splprep(lower_coords, s=0, k=3)[0]
 
     # Evaluate the spline at equally spaced points along the airfoil
     upper_coords = spl_upper(np.linspace(0, 1, n_points // 2 + 1))
@@ -48,7 +47,8 @@ def normalize_airfoil_coordinates(coords, n_points=N_AIRFOIL_POINTS):
     return (coords_x, coords_y)
 
 
-data = yaml.load(open(INPUT_FILE), Loader=yaml.FullLoader)
+with open(INPUT_FILE) as f:
+    data = yaml.safe_load(f)
 blade = data["components"]["blade"]["outer_shape"]
 
 # Get airfoils in span-wise order
@@ -197,23 +197,8 @@ for v in ["cm_x", "cm_y", "i_cp"]:
     if v not in ep["inertia_matrix"]:
         ep["inertia_matrix"][v] = [0.0] * len(ep["inertia_matrix"]["grid"])
 
-for v in [
-    "K12",
-    "K13",
-    "K14",
-    "K15",
-    "K16",
-    "K23",
-    "K24",
-    "K25",
-    "K26",
-    "K34",
-    "K35",
-    "K36",
-    "K45",
-    "K46",
-    "K56",
-]:
+# Fill in missing, off-diagonal, stiffness matrix components with zeros
+for v in "K12 K13 K14 K15 K16 K23 K24 K25 K26 K34 K35 K36 K45 K46 K56".split():
     if v not in ep["stiffness_matrix"]:
         ep["stiffness_matrix"][v] = [0.0] * len(ep["stiffness_matrix"]["grid"])
 
@@ -253,4 +238,5 @@ for c in "xyz":
 # -------------------------------------------------------------------------------
 
 # Save the processed data to a new YAML file
-yaml.dump(data, open(OUTPUT_FILE, "w"))
+with open(OUTPUT_FILE, "w") as f:
+    yaml.dump(data, f)

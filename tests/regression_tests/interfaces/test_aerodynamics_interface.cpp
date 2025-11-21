@@ -58,7 +58,7 @@ void BuildBlades(
             throw std::runtime_error("stiffness and mass matrices not on same grid");
         }
         for (auto i : std::views::iota(0U, n_sections)) {
-            if (abs(m_grid[i] - k_grid[i]) > 1e-8) {
+            if (std::abs(m_grid[i] - k_grid[i]) > 1e-8) {
                 throw std::runtime_error("stiffness and mass matrices not on same grid");
             }
             const auto mass = inertia_matrix["mass"][i].as<double>();
