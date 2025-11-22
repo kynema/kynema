@@ -122,7 +122,8 @@ inline bool SolveStep(
     );
     Kokkos::deep_copy(constraints.host_output, constraints.output);
 
-    return true;
+    // If the error was NaN, return false
+    return !std::isnan(err);
 }
 
 /**
