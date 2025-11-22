@@ -23,7 +23,8 @@ public:
     /// @param yaw_control_enabled Flag to enable yaw control
     TurbineController(
         std::string shared_lib_path, std::string controller_function_name,
-        std::string input_file_path, std::string output_file_path, bool yaw_control_enabled = false
+        std::string input_file_path, std::string output_file_path, double initial_yaw_angle = 0.0,
+        bool yaw_control_enabled = false
     );
 
     /// Method to call the controller function from the shared library
