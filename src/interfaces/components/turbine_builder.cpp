@@ -39,6 +39,7 @@ TurbineBuilder& TurbineBuilder::SetYawBearingInertiaMatrix(
     const std::array<std::array<double, 6>, 6>& matrix
 ) {
     this->input.yaw_bearing_inertia_matrix = matrix;
+    this->input.yaw_bearing_inertia_matrix_set = true;
     return *this;
 }
 
@@ -54,6 +55,7 @@ TurbineBuilder& TurbineBuilder::SetNacelleInertiaMatrix(
 ) {
     this->input.nacelle_inertia_matrix = matrix;
     this->input.nacelle_cm_offset = cm_offset;
+    this->input.nacelle_inertia_matrix_set = true;
     return *this;
 }
 

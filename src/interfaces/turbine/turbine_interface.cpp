@@ -55,7 +55,7 @@ TurbineInterface::TurbineInterface(
             controller = std::make_unique<util::TurbineController>(
                 controller_input.shared_lib_path, controller_input.function_name,
                 controller_input.input_file_path, controller_input.simulation_name,
-                controller_input.yaw_control_enabled
+                turbine_input.nacelle_yaw_angle, controller_input.yaw_control_enabled
             );
 
             // Initialize controller with turbine and solution parameters
