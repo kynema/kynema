@@ -5,7 +5,7 @@ Kynema
 Overview
 ========
 
-`Kynema <https://github.com/kynema/kynema>`_ 
+`Kynema <https://github.com/kynema/kynema>`_ [@Sprague-Mudafort:2022,@Sprague-etal:2025]
 is an open-source flexible multibody dynamics (FMD) solver designed for time-domain simulations.  While originally created for wind turbine structural dynamics, the formulation and implementation are those of a general FMD solver and can readily be applied to other systems.  Kynema was designed with a narrow focus, namely to provide a lightweight, accurate FMD solver for coupling to fluid-dynamics codes in wind turbine research, especially the `ExaWind <https://github.com/exawind>`_ [@Sprague-etal:2020,@Sharma-etal:2023,@Kuhn-etal:2025] suite of computational-fluid-dynamics codes.
 Wind turbine blades and towers are long slender structures; as such turbines can be represented at high-fidelity with beams, rigid bodies, and constraints.  Kynema provides these model elements, where degrees of freedom are defined in the inertial/global frame of reference and include displacements and rotations (formally as rotation matrices, but stored as quaternions).
 The underlying formulation is built on a Lie-group time integrator for index-3 differential-algebraic equations which is second-order accurate in time [@Bruls-etal:2012].
@@ -127,6 +127,21 @@ References (this page)
       "ExaWind: A multi-fidelity modeling and simulation environment for 
       wind energy." *Journal of Physics: Conference Series* **1452**, 012071.
       https://doi.org/10.1088/1742-6596/1452/1/012071
+
+   .. container:: csl-entry
+      :name: ref-Sprague-Mudafort:2022
+
+      Sprague, M.A. and R. Mudafort, 2022, Kynema [SWR-23-07].
+      https://doi.org/10.11578/dc.20251006.3
+
+   .. container:: csl-entry
+      :name: ref-Sprague-etal:2025
+
+      Sprague, M., D. Slaughter, F. Bhuiyan, D. Dement, and P. Crozier, 2025,
+      Introducing Kynema, an open-source performance-portable
+      flexible-multibody-dynamics solver. Presented at NAWEA/WindTech 2025,
+      Richardson, TX, October 15-17.  Published as Technical report
+      NREL/PR-5000-97597.  https://docs.nrel.gov/docs/fy26osti/97597.pdf
 
    .. container:: csl-entry
       :name: ref-Wang-etal:2017
