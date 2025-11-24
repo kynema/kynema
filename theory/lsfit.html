@@ -76,6 +76,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../developer/index.html">Developer Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../testing/index.html">Benchmark Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../publications.html">Kynema Publications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../acknowledgement.html">Acknowledgements</a></li>
 </ul>
 
@@ -116,7 +117,7 @@ are user defined and how the beams are discretized in the reference
 configuration.</p>
 <p>We assume that Kynema beams are defined as a set of points in the
 global coordinate system
-<span class="math notranslate nohighlight">\((\overline{x}^\mathrm{g}, \overline{y}^\mathrm{g},\overline{z}^\mathrm{g})\)</span>
+<span class="math notranslate nohighlight">\((\widehat{x}^\mathrm{g}, \widehat{y}^\mathrm{g},\widehat{z}^\mathrm{g})\)</span>
 with the blade root located at the origin and oriented such that the
 pitch axis, or its primary-length direction, is pointing in the
 <span class="math notranslate nohighlight">\(x\)</span> direction. For turbine blades, the <span class="math notranslate nohighlight">\(y\)</span> direction is the
@@ -127,37 +128,36 @@ easily rotated into our system.</p>
 reference line with the data
 <span class="math notranslate nohighlight">\((\eta_i^\mathrm{geom},\underline{x}_i^\mathrm{geom},\tau_i^\mathrm{geom})\)</span>,
 <span class="math notranslate nohighlight">\(i \in \{ 1, 2, \ldots, n^\mathrm{geom}\}\)</span>, where
-<span class="math notranslate nohighlight">\(\eta_i^\mathrm{geom}\in[0,1]\)</span> defines the nondimensional position
-along the beam reference line where the associated reference line
-position is <span class="math notranslate nohighlight">\(\underline{x}_i^\mathrm{geom} \in \mathbb{R}^3\)</span> and
-twist about the reference line is <span class="math notranslate nohighlight">\(\tau_i^\mathrm{geom}\)</span>. The user
-must also provide the <span class="math notranslate nohighlight">\(n^Q\)</span> quadrature locations
-<span class="math notranslate nohighlight">\(\xi_k^Q \in [-1,1]\)</span> along the reference axis. Finally, the user
-must provide the translation and rotation,
+<span class="math notranslate nohighlight">\(\eta_i^\mathrm{geom}\in[0,1]\)</span> defines the nondimensional position along
+the beam reference line where the associated reference line position is
+<span class="math notranslate nohighlight">\(\underline{x}_i^\mathrm{geom} \in \mathbb{R}^3\)</span> and twist about the
+reference line is <span class="math notranslate nohighlight">\(\tau_i^\mathrm{geom}\)</span>. The user must also provide (through quadrature input choices) the
+<span class="math notranslate nohighlight">\(n^Q\)</span> quadrature locations <span class="math notranslate nohighlight">\(\xi_k^Q \in [-1,1]\)</span> along the reference
+axis. Finally, the user must provide the translation and rotation,
+<span class="math notranslate nohighlight">\(\underline{u}^\mathrm{move}\)</span> and
+<span class="math notranslate nohighlight">\(\underline{\underline{R}}^\mathrm{move}\)</span>, respectively, that moves the
+beam from its setup postion/orientation to its reference position/orientation.
 <span class="math notranslate nohighlight">\(\underline{u}^\mathrm{r}\)</span> and
-<span class="math notranslate nohighlight">\(\underline{\underline{R}}^\mathrm{r}\)</span>, respectively, of the
-beam that defines the reference position and orientation. In other
-words, each beam is defined in the global system with its root at the
-origin and it is then translated and rotated into its reference
-position.</p>
+<span class="math notranslate nohighlight">\(\underline{\underline{R}}^\mathrm{r}\)</span>, respectively.
+In other words, each
+beam is defined in the global system with its root at the origin and it is then
+translated and rotated into its reference position.</p>
 <p>Our approach is to represent the geometry with a single spectral element
 with relatively few points, which we describe here. Given
 <span class="math notranslate nohighlight">\(n^\mathrm{geom}\)</span> points describing the beam as above, we wish to
 represent that beam with a <span class="math notranslate nohighlight">\(P\)</span>-point Legendre spectral finite
-element, where <span class="math notranslate nohighlight">\(P\)</span> is a user input. We first perform a
-least-squares fit to the data using a LSFE polynomial with
-<span class="math notranslate nohighlight">\(\mathrm{min}(P,n^\mathrm{geom})\)</span> points, where the endpoints of
-the fitting polynomial are constrained to coincide with the reference
-data at <span class="math notranslate nohighlight">\(\eta_1^\mathrm{geom}\)</span> and
-<span class="math notranslate nohighlight">\(\eta^\mathrm{geom}_{n^\mathrm{geom}}\)</span>. If
-<span class="math notranslate nohighlight">\(P \le n^\mathrm{geom}\)</span>, that fit defines the <span class="math notranslate nohighlight">\(P\)</span> nodal
-locations of the LSFE. If <span class="math notranslate nohighlight">\(P &gt; n^\mathrm{geom}\)</span>, then a new
-LSFE is constructed with <span class="math notranslate nohighlight">\(P\)</span>-nodes that lie on the lower-order
-<span class="math notranslate nohighlight">\(n^\mathrm{geom}\)</span>-point least-squares fit. The result are nodal
-values <span class="math notranslate nohighlight">\(\underline{x}^\mathrm{fit}_\ell \in \mathbb{R}^3\)</span>, for
-<span class="math notranslate nohighlight">\(\ell \in \{1, \ldots, P\}\)</span>. The geometry of the reference line
-(in the local coordinate system) is given (in the element natural
-coordinates) as</p>
+element, where <span class="math notranslate nohighlight">\(P\)</span> is a user input.</p>
+<p>We first perform a least-squares fit to the data using a LSFE polynomial with
+<span class="math notranslate nohighlight">\(\mathrm{min}(P,n^\mathrm{geom})\)</span> points, where the endpoints of the
+fitting polynomial are constrained to coincide with the reference data at
+<span class="math notranslate nohighlight">\(\eta_1^\mathrm{geom}\)</span> and <span class="math notranslate nohighlight">\(\eta^\mathrm{geom}_{n^\mathrm{geom}}\)</span>.
+If <span class="math notranslate nohighlight">\(P \le n^\mathrm{geom}\)</span>, that fit defines the <span class="math notranslate nohighlight">\(P\)</span> nodal
+locations of the LSFE. If <span class="math notranslate nohighlight">\(P &gt; n^\mathrm{geom}\)</span>, then a new LSFE is
+constructed with <span class="math notranslate nohighlight">\(P\)</span>-nodes that lie on the lower-order
+<span class="math notranslate nohighlight">\(n^\mathrm{geom}\)</span>-point least-squares fit. The result are nodal values
+<span class="math notranslate nohighlight">\(\underline{x}^\mathrm{fit}_\ell \in \mathbb{R}^3\)</span>, for <span class="math notranslate nohighlight">\(\ell \in
+\{1, \ldots, P\}\)</span>. The geometry of the reference line is given (in the element
+natural coordinates) as</p>
 <div class="math notranslate nohighlight">
 \[\begin{aligned}
  \underline{x}^\mathrm{geom}(\xi) = \sum_{\ell=1}^P \underline{x}^\mathrm{fit}_\ell \phi_\ell(\xi)
@@ -184,7 +184,7 @@ We construct the orientation from the LSFE line as follows:</p>
 <li><p>Calculate the unit tangent at each LSFE node:</p>
 <div class="math notranslate nohighlight">
 \[\begin{aligned}
- \overline{t}^{\mathrm{fit}}_i =
+ \widehat{t}^{\mathrm{fit}}_i =
 \sum_{\ell=1}^P \underline{x}^\mathrm{fit}_\ell
 \left .  \frac{\partial \phi_\ell}{\partial \xi}\right|_{\xi=\xi_i} /
 \left \Vert\sum_{i=1}^P \underline{x}^\mathrm{fit}_i
@@ -194,14 +194,14 @@ We construct the orientation from the LSFE line as follows:</p>
 \end{aligned}\]</div>
 </li>
 <li><p>At each LSFE node, calculate a unit vector,
-<span class="math notranslate nohighlight">\(\overline{n}^\mathrm{fit}_i\)</span>, normal to
-<span class="math notranslate nohighlight">\(\overline{t}^\mathrm{fit}_i\)</span> with the additional requirement
+<span class="math notranslate nohighlight">\(\widehat{n}^\mathrm{fit}_i\)</span>, normal to
+<span class="math notranslate nohighlight">\(\widehat{t}^\mathrm{fit}_i\)</span> with the additional requirement
 that it lies in the local
-<span class="math notranslate nohighlight">\(\overline{x}^\mathrm{g}-\overline{y}^\mathrm{g}\)</span> plane, i.e.,
-<span class="math notranslate nohighlight">\(\overline{n}^\mathrm{fit}_i = (n_1^\mathrm{fit},n_2^\mathrm{fit}, 0 )\)</span>
+<span class="math notranslate nohighlight">\(\widehat{x}^\mathrm{g}-\widehat{y}^\mathrm{g}\)</span> plane, i.e.,
+<span class="math notranslate nohighlight">\(\widehat{n}^\mathrm{fit}_i = (n_1^\mathrm{fit},n_2^\mathrm{fit}, 0 )\)</span>
 with the requirements
-<span class="math notranslate nohighlight">\(\left|\overline{n}^\mathrm{fit}_i \right | = 1\)</span> and
-<span class="math notranslate nohighlight">\(\overline{n}^\mathrm{fit}_i \cdot \overline{t}^\mathrm{fit}_i = 0\)</span>.</p></li>
+<span class="math notranslate nohighlight">\(\left|\widehat{n}^\mathrm{fit}_i \right | = 1\)</span> and
+<span class="math notranslate nohighlight">\(\widehat{n}^\mathrm{fit}_i \cdot \widehat{t}^\mathrm{fit}_i = 0\)</span>.</p></li>
 <li><p>The binormal vector is then given by
 <span class="math notranslate nohighlight">\(\underline{b}^\mathrm{fit}_i = \widetilde{t^\mathrm{fit}_i} \underline{n}^\mathrm{fit}_i\)</span>.</p></li>
 <li><p>The orientation at node <span class="math notranslate nohighlight">\(i\)</span> is given by</p>
@@ -209,67 +209,68 @@ with the requirements
 \[\begin{aligned}
 \underline{\underline{R}}^\mathrm{fit}_i =
 \begin{bmatrix}
-\overline{t}^\mathrm{fit}_i \,\,
-\overline{n}^\mathrm{fit}_i \,\,
-\overline{b}^\mathrm{fit}_i
+\widehat{t}^\mathrm{fit}_i \,\,
+\widehat{n}^\mathrm{fit}_i \,\,
+\widehat{b}^\mathrm{fit}_i
 \end{bmatrix}
 ,\, \forall i \in \{1, \ldots, P\}
 \end{aligned}\]</div>
-<p>which have the associated quaternions
+<p>which has the associated quaternions
 <span class="math notranslate nohighlight">\(\widehat{q}_i^\mathrm{fit}\)</span>.</p>
 </li>
 <li><p>Nodal positions in the reference position, given
-<span class="math notranslate nohighlight">\(\underline{u}^\mathrm{r}\)</span> and
-<span class="math notranslate nohighlight">\(\underline{\underline{R}}^\mathrm{r}\)</span>, are calculated as</p>
+<span class="math notranslate nohighlight">\(\underline{u}^\mathrm{move}\)</span> and
+<span class="math notranslate nohighlight">\(\underline{\underline{R}}^\mathrm{move}\)</span>, are calculated as</p>
 <div class="math notranslate nohighlight">
 \[\begin{aligned}
-\underline{x}^\mathrm{r}_i = \underline{x}^\mathrm{fit}_i + \underline{u}^\mathrm{r} + \underline{\underline{R}}^\mathrm{r}\underline{x}^\mathrm{fit}_i,\quad \forall i \in  \{1,  \ldots, P \}
+\underline{x}^\mathrm{r}_i = \underline{x}^\mathrm{fit}_i
++ \underline{u}^\mathrm{move}
++\underline{\underline{R}}^\mathrm{move} \underline{x}^\mathrm{fit}_i
+\quad \forall i \in  \{1,  \ldots, P \}
 \end{aligned}\]</div>
 </li>
 <li><p>Nodal orientations are calculated as</p>
 <div class="math notranslate nohighlight">
 \[\begin{aligned}
-\underline{\underline{R}}^\mathrm{r}_i = \underline{\underline{R}}^\mathrm{r} \underline{\underline{R}}\left(\overline{t}_i^\mathrm{fit},\tau^\mathrm{geom} \right) \underline{R}^\mathrm{fit}_i
+\underline{\underline{R}}^\mathrm{r}_i =
+\underline{\underline{R}}^\mathrm{move} \underline{R}^\mathrm{fit}_i
 ,\quad \forall i \in  \{1,  \ldots, P \}
 \end{aligned}\]</div>
-<p>where
-<span class="math notranslate nohighlight">\(\underline{\underline{R}}\left(\overline{t}_i^\mathrm{fit},-\tau^\mathrm{geom} \right)\)</span>
-denotes a rotation of <span class="math notranslate nohighlight">\(-\tau^\mathrm{geom}\)</span> about the vector
-<span class="math notranslate nohighlight">\(\overline{t}_i^\mathrm{fit}\)</span>, where <span class="math notranslate nohighlight">\(\tau^\mathrm{geom}\)</span>
-is linearly interpolated from user-defined twist at nearest neighbors
-to <span class="math notranslate nohighlight">\(\xi_i\)</span>.</p>
+<p>which has the associated quaternions <span class="math notranslate nohighlight">\(\widehat{q}_i^\mathrm{r}\)</span>.</p>
 </li>
 <li><p>We also require the reference orientations at quadrature points,
-<span class="math notranslate nohighlight">\(\xi^\mathrm{Q}_k\)</span>, which are calculated as</p>
+<span class="math notranslate nohighlight">\(\xi^\mathrm{Q}_k\)</span>, which are calculated and stored as quaternions:</p>
 <div class="math notranslate nohighlight">
 \[\begin{aligned}
-\underline{\underline{R}}^{\mathrm{r},\mathrm{Q}}_k = \underline{\underline{R}}^\mathrm{r} \underline{\underline{R}}\left(\overline{t}_k^\mathrm{Q},-\tau^\mathrm{geom,Q} \right) \underline{\underline{R}}\left(\widehat{q}^\mathrm{fit,Q}_k\right)
-,\quad \forall k \in  \{1,  \ldots, n^\mathrm{Q} \}
-\end{aligned}\]</div>
-<p>where</p>
-<div class="math notranslate nohighlight">
-\[\begin{aligned}
- \overline{t}^{\mathrm{Q}}_k =
-\sum_{\ell=1}^P \underline{x}^\mathrm{fit}_\ell
-\left .  \frac{\partial \phi_\ell}{\partial \xi}\right|_{\xi=\xi_k^\mathrm{Q}} /
-\left \Vert\sum_{\ell=1}^P \underline{x}^\mathrm{fit}_\ell
-\left .  \frac{\partial \phi_\ell}{\partial \xi}\right|_{\xi=\xi_k^\mathrm{Q}}
-\right\Vert
-, \quad \forall k \in \{1, \ldots, n^\mathrm{Q}\}
-\end{aligned}\]</div>
-<div class="math notranslate nohighlight">
-\[\begin{aligned}
-\widehat{q}^{\mathrm{fit,Q}}_k =
-\sum_{\ell=1}^P \widehat{q}^\mathrm{fit}_\ell
+\widehat{q}^{\mathrm{r,Q}}_k =
+\sum_{\ell=1}^P \widehat{q}^\mathrm{r}_\ell
  \phi_\ell\left(\xi_k^\mathrm{Q}\right) /
-\left \Vert\sum_{\ell=1}^P \widehat{q}^\mathrm{fit}_\ell
+\left \Vert\sum_{\ell=1}^P \widehat{q}^\mathrm{r}_\ell
  \phi_\ell\left(\xi_k^\mathrm{Q} \right)
 \right \Vert
 , \quad \forall k \in \{1, \ldots, n^\mathrm{Q}\}
 \end{aligned}\]</div>
-<p>and <span class="math notranslate nohighlight">\(\tau^\mathrm{geom,Q}\)</span> is the twist at
-<span class="math notranslate nohighlight">\(\xi_k^\mathrm{Q}\)</span> linearly interpolated from nearest
-neighbors.</p>
+</li>
+<li><p>Finally, regarding the user defined twist, that is applied at initialization to the sectional material matrices, e.g., for the mass matrices:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{bmatrix}
+\underline{\underline{R}}(\tau_k) &amp; \underline{\underline{0}}  \\
+\underline{\underline{0}} &amp; \underline{\underline{R}}(\tau_k)
+\end{bmatrix}
+\underline{\underline{M}}_k^*
+\begin{bmatrix}
+\underline{\underline{R}}(\tau_k) &amp; \underline{\underline{0}}  \\
+\underline{\underline{0}} &amp; \underline{\underline{R}}(\tau_k)
+\end{bmatrix}^T \rightarrow \underline{\underline{M}}_k^*\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\underline{\underline{M}}_k^*\)</span> and <span class="math notranslate nohighlight">\(\tau_k\)</span> are
+linearly interpolated mass matrix and twist, respectively, from nearest neighbors and</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\underline{\underline{R}}(\tau) =
+\begin{bmatrix}
+\cos(\tau) &amp; - \sin(\tau) &amp; 0 \\
+\sin(\tau) &amp; \cos(\tau) &amp; 0 \\
+0 &amp; 0 &amp; 1 \\
+\end{bmatrix}\end{split}\]</div>
 </li>
 </ol>
 </div>

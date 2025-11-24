@@ -56,6 +56,7 @@
 <li class="toctree-l1"><a class="reference internal" href="theory/index.html">Theory Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="developer/index.html">Developer Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="testing/index.html">Benchmark Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="publications.html">Kynema Publications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="acknowledgement.html">Acknowledgements</a></li>
 </ul>
 
@@ -87,7 +88,7 @@
 <h1>Kynema<a class="headerlink" href="#kynema" title="Permalink to this heading"></a></h1>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a></h2>
-<p><a class="reference external" href="https://github.com/kynema/kynema">Kynema</a>
+<p><a class="reference external" href="https://github.com/kynema/kynema">Kynema</a> [&#64;Sprague-Mudafort:2022,&#64;Sprague-etal:2025]
 is an open-source flexible multibody dynamics (FMD) solver designed for time-domain simulations.  While originally created for wind turbine structural dynamics, the formulation and implementation are those of a general FMD solver and can readily be applied to other systems.  Kynema was designed with a narrow focus, namely to provide a lightweight, accurate FMD solver for coupling to fluid-dynamics codes in wind turbine research, especially the <a class="reference external" href="https://github.com/exawind">ExaWind</a> [&#64;Sprague-etal:2020,&#64;Sharma-etal:2023,&#64;Kuhn-etal:2025] suite of computational-fluid-dynamics codes.
 Wind turbine blades and towers are long slender structures; as such turbines can be represented at high-fidelity with beams, rigid bodies, and constraints.  Kynema provides these model elements, where degrees of freedom are defined in the inertial/global frame of reference and include displacements and rotations (formally as rotation matrices, but stored as quaternions).
 The underlying formulation is built on a Lie-group time integrator for index-3 differential-algebraic equations which is second-order accurate in time [&#64;Bruls-etal:2012].
@@ -156,6 +157,7 @@ learning, and AI.</p></li>
 <li class="toctree-l2"><a class="reference internal" href="testing/index.html#verification-overview">Verification Overview</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="publications.html">Kynema Publications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="acknowledgement.html">Acknowledgements</a></li>
 </ul>
 </div>
@@ -220,6 +222,17 @@ Wind Turbine Simulations in Atmospheric Flows.” <em>Wind Energy</em> <strong>2
 “ExaWind: A multi-fidelity modeling and simulation environment for
 wind energy.” <em>Journal of Physics: Conference Series</em> <strong>1452</strong>, 012071.
 <a class="reference external" href="https://doi.org/10.1088/1742-6596/1452/1/012071">https://doi.org/10.1088/1742-6596/1452/1/012071</a></p>
+</div>
+<div class="csl-entry docutils container" id="ref-sprague-mudafort-2022">
+<p>Sprague, M.A. and R. Mudafort, 2022, Kynema [SWR-23-07].
+<a class="reference external" href="https://doi.org/10.11578/dc.20251006.3">https://doi.org/10.11578/dc.20251006.3</a></p>
+</div>
+<div class="csl-entry docutils container" id="ref-sprague-etal-2025">
+<p>Sprague, M., D. Slaughter, F. Bhuiyan, D. Dement, and P. Crozier, 2025,
+Introducing Kynema, an open-source performance-portable
+flexible-multibody-dynamics solver. Presented at NAWEA/WindTech 2025,
+Richardson, TX, October 15-17.  Published as Technical report
+NREL/PR-5000-97597.  <a class="reference external" href="https://docs.nrel.gov/docs/fy26osti/97597.pdf">https://docs.nrel.gov/docs/fy26osti/97597.pdf</a></p>
 </div>
 <div class="csl-entry docutils container" id="ref-wang-etal-2017">
 <p>Wang, Q., M. A. Sprague, J. Jonkman, N. Johnson, and B. Jonkman.

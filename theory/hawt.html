@@ -76,6 +76,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../developer/index.html">Developer Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../testing/index.html">Benchmark Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../publications.html">Kynema Publications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../acknowledgement.html">Acknowledgements</a></li>
 </ul>
 
@@ -456,7 +457,7 @@ the following contraint gradient matrices:</p>
 <h2>Additional iteration matrix terms due to constraints<a class="headerlink" href="#additional-iteration-matrix-terms-due-to-constraints" title="Permalink to this heading"></a></h2>
 <p>For a residual expressed as in Eq. <a class="reference internal" href="overview.html#equation-residual">(1)</a>,
 there may be additional terms that arise in the
-<span class="math notranslate nohighlight">\(\underline{\underline{K}}\)</span> term in
+<span class="math notranslate nohighlight">\(\underline{\underline{K}}^\Phi\)</span> term in
 Eq. <a class="reference internal" href="gen-alpha.html#equation-iteration">(4)</a> if the constraint-gradient
 matrix is not constant with respect to the depdendent variables, e.g.,
 <span class="math notranslate nohighlight">\(\underline{\underline{B}}=\underline{\underline{B}}(\underline{q})\)</span>.
@@ -471,7 +472,7 @@ for which the associated residual force can be written</p>
 Taking the variation we obtain</p>
 <div class="math notranslate nohighlight" id="equation-xtra-constr-force">
 <span class="eqno">(13)<a class="headerlink" href="#equation-xtra-constr-force" title="Permalink to this equation"></a></span>\[\begin{split}\delta \underline{F}_\mathrm{tb}=
-\underline{\underline{K}}_\mathrm{tb,c}
+\underline{\underline{K}}_\mathrm{tb}^\Phi
 \begin{bmatrix}
 \delta \underline{u}_\mathrm{tb} \\
 \delta \underline{\theta}_\mathrm{tb}
@@ -480,7 +481,7 @@ Taking the variation we obtain</p>
 <p>where</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{aligned}
-\underline{\underline{K}}_\mathrm{tb,c}
+\underline{\underline{K}}_\mathrm{tb}^\Phi
 \begin{bmatrix}
 \delta \underline{u}_\mathrm{tb} \\
 \delta \underline{\theta}_\mathrm{tb}
@@ -508,13 +509,13 @@ Taking the variation we obtain</p>
 Eq. <a class="reference internal" href="#equation-xtra-constr-force">(13)</a> goes in the
 appropriate location in the upper right quadrant of
 Eq. <a class="reference internal" href="gen-alpha.html#equation-iteration">(4)</a> and the
-<span class="math notranslate nohighlight">\(\underline{\underline{K}}_\mathrm{tb,c}\)</span> term is added to the
+<span class="math notranslate nohighlight">\(\underline{\underline{K}}_\mathrm{tb}^\Phi\)</span> term is added to the
 <span class="math notranslate nohighlight">\(\underline{\underline{K}}\)</span> matrix in the upper left quadrant.</p>
 <p>Proceeding in a similar fashion for the remaining constraint forces, we
 find:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{aligned}
-\underline{\underline{K}}_\mathrm{yb-tt,c}
+\underline{\underline{K}}_\mathrm{yb-tt}^\Phi
 \begin{bmatrix}
 \delta \underline{u}_\mathrm{yb} \\
 \delta \underline{\theta}_\mathrm{yb}\\
@@ -549,7 +550,7 @@ a_2 A_{23} + a_1 A_{31} + a_3 A_{33} &amp; a_2 (A_{31}-A_{13}) &amp; -a_1 A_{11}
 \end{aligned}\end{split}\]</div>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{aligned}
-\underline{\underline{K}}_\mathrm{sb-yb,c}
+\underline{\underline{K}}_\mathrm{sb-yb}^\Phi
 \begin{bmatrix}
 \delta \underline{u}_\mathrm{sb} \\
 \delta \underline{\theta}_\mathrm{sb}\\
@@ -575,7 +576,7 @@ a_2 A_{23} + a_1 A_{31} + a_3 A_{33} &amp; a_2 (A_{31}-A_{13}) &amp; -a_1 A_{11}
 \end{aligned}\end{split}\]</div>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{aligned}
-\underline{\underline{K}}_\mathrm{a-sb,c}
+\underline{\underline{K}}_\mathrm{a-sb}^\Phi
 \begin{bmatrix}
 \delta \underline{u}_\mathrm{a} \\
 \delta \underline{\theta}_\mathrm{a}\\
@@ -617,7 +618,7 @@ a_2 A_{23} + a_1 A_{31} + a_3 A_{33} &amp; a_2 (A_{31}-A_{13}) &amp; -a_1 A_{11}
 \end{aligned}\end{split}\]</div>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{aligned}
-\underline{\underline{K}}_\mathrm{h-a,c}
+\underline{\underline{K}}_\mathrm{h-a}^\Phi
 \begin{bmatrix}
 \delta \underline{u}_\mathrm{h} \\
 \delta \underline{\theta}_\mathrm{h}\\
@@ -643,7 +644,7 @@ a_2 A_{23} + a_1 A_{31} + a_3 A_{33} &amp; a_2 (A_{31}-A_{13}) &amp; -a_1 A_{11}
 \end{aligned}\end{split}\]</div>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{aligned}
-\underline{\underline{K}}_{\mathrm{c}i\mathrm{-h,c}}
+\underline{\underline{K}}_{\mathrm{c}i\mathrm{-h}}^\Phi
 \begin{bmatrix}
 \delta \underline{u}_{\mathrm{c}i} \\
 \delta \underline{\theta}_{\mathrm{c}i}\\
@@ -668,7 +669,7 @@ a_2 A_{23} + a_1 A_{31} + a_3 A_{33} &amp; a_2 (A_{31}-A_{13}) &amp; -a_1 A_{11}
 \end{aligned}\end{split}\]</div>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{aligned}
-\underline{\underline{K}}_{\mathrm{b}i-\mathrm{c}i\mathrm{,c}}
+\underline{\underline{K}}_{\mathrm{b}i-\mathrm{c}i}^\Phi
 \begin{bmatrix}
 \delta \underline{u}_{\mathrm{b}i} \\
 \delta \underline{\theta}_{\mathrm{b}i}\\
@@ -694,7 +695,7 @@ a_2 A_{23} + a_1 A_{31} + a_3 A_{33} &amp; a_2 (A_{31}-A_{13}) &amp; -a_1 A_{11}
 \end{aligned}\end{split}\]</div>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{aligned}
-\underline{\underline{K}}_\mathrm{nm-yb,c}
+\underline{\underline{K}}_\mathrm{nm-yb}^\Phi
 \begin{bmatrix}
 \delta \underline{u}_\mathrm{nm} \\
 \delta \underline{\theta}_\mathrm{nm}\\
@@ -718,6 +719,12 @@ a_2 A_{23} + a_1 A_{31} + a_3 A_{33} &amp; a_2 (A_{31}-A_{13}) &amp; -a_1 A_{11}
 \delta \underline{\theta}_\mathrm{yb}
 \end{bmatrix}
 \end{aligned}\end{split}\]</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The term <span class="math notranslate nohighlight">\(\underline{\underline{K}}^\Phi\)</span> is include here for
+completeness, but is not in the current Kynema implementation, and
+nonlinear-system convergence has been satisfactory.</p>
+</div>
 </div>
 <div class="section" id="data-layout">
 <h2>Data layout<a class="headerlink" href="#data-layout" title="Permalink to this heading"></a></h2>
