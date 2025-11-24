@@ -46,6 +46,7 @@ Table of contents
    theory/index
    developer/index
    testing/index
+   publications
    acknowledgement
 
 Indices and tables

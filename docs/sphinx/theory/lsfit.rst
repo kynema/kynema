@@ -24,19 +24,20 @@ The user must provide :math:`n^\mathrm{geom} \ge 2` points defining the
 reference line with the data
 :math:`(\eta_i^\mathrm{geom},\underline{x}_i^\mathrm{geom},\tau_i^\mathrm{geom})`,
 :math:`i \in \{ 1, 2, \ldots, n^\mathrm{geom}\}`, where
-:math:`\eta_i^\mathrm{geom}\in[0,1]` defines the nondimensional position
-along the beam reference line where the associated reference line
-position is :math:`\underline{x}_i^\mathrm{geom} \in \mathbb{R}^3` and
-twist about the reference line is :math:`\tau_i^\mathrm{geom}`. The user
-must also provide the :math:`n^Q` quadrature locations
-:math:`\xi_k^Q \in [-1,1]` along the reference axis. Finally, the user
-must provide the translation and rotation,
+:math:`\eta_i^\mathrm{geom}\in[0,1]` defines the nondimensional position along
+the beam reference line where the associated reference line position is
+:math:`\underline{x}_i^\mathrm{geom} \in \mathbb{R}^3` and twist about the
+reference line is :math:`\tau_i^\mathrm{geom}`. The user must also provide the
+:math:`n^Q` quadrature locations :math:`\xi_k^Q \in [-1,1]` along the reference
+axis. Finally, the user must provide the translation and rotation,
+:math:`\underline{u}^\mathrm{move}` and
+:math:`\underline{\underline{R}}^\mathrm{move}`, respectively, that moves the
+beam from its setup postion/orientation to its reference position/orientation.
 :math:`\underline{u}^\mathrm{r}` and
-:math:`\underline{\underline{R}}^\mathrm{r}`, respectively, of the
-beam that defines the reference position and orientation. In other
-words, each beam is defined in the global system with its root at the
-origin and it is then translated and rotated into its reference
-position.
+:math:`\underline{\underline{R}}^\mathrm{r}`, respectively.
+In other words, each
+beam is defined in the global system with its root at the origin and it is then
+translated and rotated into its reference position.
 
 Our approach is to represent the geometry with a single spectral element
 with relatively few points, which we describe here. Given
@@ -133,12 +134,12 @@ We construct the orientation from the LSFE line as follows:
       ,\, \forall i \in \{1, \ldots, P\}
       \end{aligned}
 
-   which have the associated quaternions
+   which has the associated quaternions
    :math:`\widehat{q}_i^\mathrm{fit}`.
 
 #. Nodal positions in the reference position, given
-   :math:`\underline{u}^\mathrm{r}` and
-   :math:`\underline{\underline{R}}^\mathrm{r}`, are calculated as
+   :math:`\underline{u}^\mathrm{move}` and
+   :math:`\underline{\underline{R}}^\mathrm{move}`, are calculated as
 
    .. math::
 
@@ -151,7 +152,7 @@ We construct the orientation from the LSFE line as follows:
    .. math::
 
       \begin{aligned}
-      \underline{\underline{R}}^\mathrm{r}_i = \underline{\underline{R}}^\mathrm{r} \underline{\underline{R}}\left(\overline{t}_i^\mathrm{fit},\tau^\mathrm{geom} \right) \underline{R}^\mathrm{fit}_i
+      \underline{\underline{R}}^\mathrm{r}_i = \underline{\underline{R}}^\mathrm{move} \underline{\underline{R}}\left(\overline{t}_i^\mathrm{fit},\tau^\mathrm{geom} \right) \underline{R}^\mathrm{fit}_i
       ,\quad \forall i \in  \{1,  \ldots, P \}
       \end{aligned}
 
@@ -168,7 +169,7 @@ We construct the orientation from the LSFE line as follows:
    .. math::
 
       \begin{aligned}
-      \underline{\underline{R}}^{\mathrm{r},\mathrm{Q}}_k = \underline{\underline{R}}^\mathrm{r} \underline{\underline{R}}\left(\overline{t}_k^\mathrm{Q},-\tau^\mathrm{geom,Q} \right) \underline{\underline{R}}\left(\widehat{q}^\mathrm{fit,Q}_k\right)
+      \underline{\underline{R}}^{\mathrm{r},\mathrm{Q}}_k = \underline{\underline{R}}^\mathrm{move} \underline{\underline{R}}\left(\overline{t}_k^\mathrm{Q},-\tau^\mathrm{geom,Q} \right) \underline{\underline{R}}\left(\widehat{q}^\mathrm{fit,Q}_k\right)
       ,\quad \forall k \in  \{1,  \ldots, n^\mathrm{Q} \}
       \end{aligned}
 
