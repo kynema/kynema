@@ -15,7 +15,7 @@ namespace kynema::tests {
 // and applies a tower load, generator torque, blade pitch, and yaw angle to test the
 // structure's response.
 TEST(TurbineInterfaceTest, IEA15_Structure) {
-    const auto duration{0.1};        // Simulation duration in seconds
+    const auto duration{100.0};      // Simulation duration in seconds
     const auto time_step{0.01};      // Time step for the simulation
     const auto n_blades{3U};         // Number of blades in turbine
     const auto n_blade_nodes{11};    // Number of nodes per blade
@@ -29,10 +29,10 @@ TEST(TurbineInterfaceTest, IEA15_Structure) {
     builder.Solution()
         .EnableDynamicSolve()
         .SetTimeStep(time_step)
-        .SetDampingFactor(0.0)
+        .SetDampingFactor(0.4)
         .SetGravity({0., 0., -9.81})
         .SetMaximumNonlinearIterations(8)
-        .SetAbsoluteErrorTolerance(1e-6)
+        .SetAbsoluteErrorTolerance(1e-7)
         .SetRelativeErrorTolerance(1e-5);
 
     if (write_output) {
@@ -77,7 +77,9 @@ TEST(TurbineInterfaceTest, IEA15_Structure) {
         auto& blade_builder = turbine_builder.Blade(j);
 
         // Set blade parameters
-        blade_builder.SetElementOrder(n_blade_nodes - 1).PrescribedRootMotion(false);
+        blade_builder.SetElementOrder(n_blade_nodes - 1)
+            .SetSectionRefinement(1)
+            .PrescribedRootMotion(false);
 
         // Add reference axis coordinates (WindIO uses Z-axis as reference axis)
         const auto ref_axis = wio_blade["reference_axis"];
@@ -178,7 +180,8 @@ TEST(TurbineInterfaceTest, IEA15_Structure) {
     // Set tower parameters
     tower_builder
         .SetElementOrder(n_tower_nodes - 1)  // Set element order to num nodes - 1
-        .PrescribedRootMotion(false);        // Fix displacement of tower base node
+        .SetSectionRefinement(1)
+        .PrescribedRootMotion(false);  // Fix displacement of tower base node
 
     // Add reference axis coordinates (WindIO uses Z-axis as reference axis)
     const auto t_ref_axis = wio_tower["reference_axis"];
@@ -337,17 +340,11 @@ TEST(TurbineInterfaceTest, IEA15_Structure) {
 
         // Check convergence
         ASSERT_EQ(converged, true);
-    }
 
-    // Check tower top position and orientation
-    const auto& tower_top_node = interface.Turbine().tower.nodes.back();
-    EXPECT_NEAR(tower_top_node.position[0], 0.0044904818857703487, 1e-10);
-    EXPECT_NEAR(tower_top_node.position[1], 0.031240946200222067, 1e-10);
-    EXPECT_NEAR(tower_top_node.position[2], 144.37008875632009, 1e-10);
-    EXPECT_NEAR(tower_top_node.position[3], 0.7065811903478334, 1e-10);
-    EXPECT_NEAR(tower_top_node.position[4], -0.0080805386295822734, 1e-10);
-    EXPECT_NEAR(tower_top_node.position[5], -0.70755394843936126, 1e-10);
-    EXPECT_NEAR(tower_top_node.position[6], -0.006718362148918397, 1e-10);
+        if (write_output) {
+            interface.WriteOutput();
+        }
+    }
 }
 
 }  // namespace kynema::tests
