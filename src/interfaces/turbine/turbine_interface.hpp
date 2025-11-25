@@ -74,6 +74,8 @@ public:
 
     std::array<double, 3> GetHubNodePosition() const;
 
+    void SetHubInflow(const std::array<double, 3> inflow);
+
     /**
      * @brief Update controller inputs from current system state
      */
