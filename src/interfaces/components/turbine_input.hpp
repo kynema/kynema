@@ -43,6 +43,11 @@ struct TurbineInput {
     std::array<std::array<double, 6>, 6> yaw_bearing_inertia_matrix{};
 
     /**
+     * @brief Flag indicating if yaw_bearing inertia matrix has been set
+     */
+    bool yaw_bearing_inertia_matrix_set{false};
+
+    /**
      * @brief Hub inertia matrix (6x6)
      * @details Includes hub assembly mass and inertia properties
      */
@@ -53,6 +58,11 @@ struct TurbineInput {
      * @details Includes nacelle mass and inertia properties
      */
     std::array<std::array<double, 6>, 6> nacelle_inertia_matrix{};
+
+    /**
+     * @brief Flag indicating if nacelle inertia matrix has been set
+     */
+    bool nacelle_inertia_matrix_set{false};
 
     /**
      * @brief Nacelle center of mass offset from the yaw bearing (meters)
