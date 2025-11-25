@@ -47,6 +47,8 @@ public:
         const components::OutputsConfig& outputs_config = {}
     );
 
+    TurbineInterface(TurbineInterface& other) = delete;
+
     /// @brief Returns a reference to the turbine model
     [[nodiscard]] components::Turbine& Turbine() { return this->turbine; }
 
