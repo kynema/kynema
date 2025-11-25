@@ -115,10 +115,10 @@ structures like turbine blades. Turbine blades can be curved, swept,
 and/or twisted along their length. In this section we describe how beams
 are user defined and how the beams are discretized in the reference
 configuration.</p>
-<p>We assume that Kynema beams are defined as a set of points in the
+<p>Kynema beams are assumed to be defined as a set of points in the
 global coordinate system
 <span class="math notranslate nohighlight">\((\widehat{x}^\mathrm{g}, \widehat{y}^\mathrm{g},\widehat{z}^\mathrm{g})\)</span>
-with the blade root located at the origin and oriented such that the
+with the blade root positioned on the <span class="math notranslate nohighlight">\(\widehat{x}^\mathrm{g}\)</span> axis and oriented such that the
 pitch axis, or its primary-length direction, is pointing in the
 <span class="math notranslate nohighlight">\(x\)</span> direction. For turbine blades, the <span class="math notranslate nohighlight">\(y\)</span> direction is the
 direction of the trailing edge and defines a zero pitch/twist. Note that
@@ -131,17 +131,22 @@ reference line with the data
 <span class="math notranslate nohighlight">\(\eta_i^\mathrm{geom}\in[0,1]\)</span> defines the nondimensional position along
 the beam reference line where the associated reference line position is
 <span class="math notranslate nohighlight">\(\underline{x}_i^\mathrm{geom} \in \mathbb{R}^3\)</span> and twist about the
-reference line is <span class="math notranslate nohighlight">\(\tau_i^\mathrm{geom}\)</span>. The user must also provide (through quadrature input choices) the
+reference line is <span class="math notranslate nohighlight">\(\tau_i^\mathrm{geom}\)</span>.   Note that Kynema convention
+requires that <span class="math notranslate nohighlight">\(\underline{x}_1^\mathrm{geom} = (x_1, 0, 0)^T\)</span>.</p>
+<p>The user must also provide (through quadrature input choices) the
 <span class="math notranslate nohighlight">\(n^Q\)</span> quadrature locations <span class="math notranslate nohighlight">\(\xi_k^Q \in [-1,1]\)</span> along the reference
-axis. Finally, the user must provide the translation and rotation,
+axis.</p>
+<p>Finally, the user must provide the translation and rotation,
 <span class="math notranslate nohighlight">\(\underline{u}^\mathrm{move}\)</span> and
 <span class="math notranslate nohighlight">\(\underline{\underline{R}}^\mathrm{move}\)</span>, respectively, that moves the
 beam from its setup postion/orientation to its reference position/orientation.
-<span class="math notranslate nohighlight">\(\underline{u}^\mathrm{r}\)</span> and
+<span class="math notranslate nohighlight">\(\underline{x}^\mathrm{r}\)</span> and
 <span class="math notranslate nohighlight">\(\underline{\underline{R}}^\mathrm{r}\)</span>, respectively.
 In other words, each
-beam is defined in the global system with its root at the origin and it is then
-translated and rotated into its reference position.</p>
+beam is defined in the global system and it is then
+translated and rotated into its reference position. While we present a single
+<span class="math notranslate nohighlight">\(\underline{u}^\mathrm{move}\)</span> and a single
+<span class="math notranslate nohighlight">\(\underline{\underline{R}}^\mathrm{move}\)</span>, in practice those are implemented in multiple steps.</p>
 <p>Our approach is to represent the geometry with a single spectral element
 with relatively few points, which we describe here. Given
 <span class="math notranslate nohighlight">\(n^\mathrm{geom}\)</span> points describing the beam as above, we wish to
@@ -225,7 +230,8 @@ with the requirements
 \[\begin{aligned}
 \underline{x}^\mathrm{r}_i = \underline{x}^\mathrm{fit}_i
 + \underline{u}^\mathrm{move}
-+\underline{\underline{R}}^\mathrm{move} \underline{x}^\mathrm{fit}_i
++\underline{\underline{R}}^\mathrm{move}
+\left(\underline{x}^\mathrm{fit}_i- \underline{x}^\mathrm{fit}_1\right)
 \quad \forall i \in  \{1,  \ldots, P \}
 \end{aligned}\]</div>
 </li>
@@ -262,14 +268,15 @@ with the requirements
 \underline{\underline{R}}(\tau_k) &amp; \underline{\underline{0}}  \\
 \underline{\underline{0}} &amp; \underline{\underline{R}}(\tau_k)
 \end{bmatrix}^T \rightarrow \underline{\underline{M}}_k^*\end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(\underline{\underline{M}}_k^*\)</span> and <span class="math notranslate nohighlight">\(\tau_k\)</span> are
-linearly interpolated mass matrix and twist, respectively, from nearest neighbors and</p>
+<p>where <span class="math notranslate nohighlight">\(\underline{\underline{M}}_k^*\)</span> and <span class="math notranslate nohighlight">\(\tau_k\)</span> are linearly
+interpolated mass matrix and twist (at each quadrature point),
+respectively, from nearest neighbors, and</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\underline{\underline{R}}(\tau) =
 \begin{bmatrix}
-\cos(\tau) &amp; - \sin(\tau) &amp; 0 \\
-\sin(\tau) &amp; \cos(\tau) &amp; 0 \\
-0 &amp; 0 &amp; 1 \\
+1 &amp; 0 &amp; 0 \\
+0 &amp; \cos(\tau) &amp; - \sin(\tau)  \\
+0 &amp; \sin(\tau) &amp; \cos(\tau)
 \end{bmatrix}\end{split}\]</div>
 </li>
 </ol>

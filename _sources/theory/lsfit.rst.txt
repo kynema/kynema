@@ -10,10 +10,10 @@ and/or twisted along their length. In this section we describe how beams
 are user defined and how the beams are discretized in the reference
 configuration.
 
-We assume that Kynema beams are defined as a set of points in the
+Kynema beams are assumed to be defined as a set of points in the
 global coordinate system 
 :math:`(\widehat{x}^\mathrm{g}, \widehat{y}^\mathrm{g},\widehat{z}^\mathrm{g})`
-with the blade root located at the origin and oriented such that the
+with the blade root positioned on the :math:`\widehat{x}^\mathrm{g}` axis and oriented such that the
 pitch axis, or its primary-length direction, is pointing in the
 :math:`x` direction. For turbine blades, the :math:`y` direction is the
 direction of the trailing edge and defines a zero pitch/twist. Note that
@@ -27,17 +27,24 @@ reference line with the data
 :math:`\eta_i^\mathrm{geom}\in[0,1]` defines the nondimensional position along
 the beam reference line where the associated reference line position is
 :math:`\underline{x}_i^\mathrm{geom} \in \mathbb{R}^3` and twist about the
-reference line is :math:`\tau_i^\mathrm{geom}`. The user must also provide (through quadrature input choices) the
+reference line is :math:`\tau_i^\mathrm{geom}`.   Note that Kynema convention
+requires that :math:`\underline{x}_1^\mathrm{geom} = (x_1, 0, 0)^T`.
+
+The user must also provide (through quadrature input choices) the
 :math:`n^Q` quadrature locations :math:`\xi_k^Q \in [-1,1]` along the reference
-axis. Finally, the user must provide the translation and rotation,
+axis. 
+
+Finally, the user must provide the translation and rotation,
 :math:`\underline{u}^\mathrm{move}` and
 :math:`\underline{\underline{R}}^\mathrm{move}`, respectively, that moves the
 beam from its setup postion/orientation to its reference position/orientation.
-:math:`\underline{u}^\mathrm{r}` and
+:math:`\underline{x}^\mathrm{r}` and
 :math:`\underline{\underline{R}}^\mathrm{r}`, respectively.
 In other words, each
-beam is defined in the global system with its root at the origin and it is then
-translated and rotated into its reference position.
+beam is defined in the global system and it is then
+translated and rotated into its reference position. While we present a single 
+:math:`\underline{u}^\mathrm{move}` and a single
+:math:`\underline{\underline{R}}^\mathrm{move}`, in practice those are implemented in multiple steps.
 
 Our approach is to represent the geometry with a single spectral element
 with relatively few points, which we describe here. Given
@@ -145,7 +152,8 @@ We construct the orientation from the LSFE line as follows:
       \begin{aligned}
       \underline{x}^\mathrm{r}_i = \underline{x}^\mathrm{fit}_i 
       + \underline{u}^\mathrm{move} 
-      +\underline{\underline{R}}^\mathrm{move} \underline{x}^\mathrm{fit}_i
+      +\underline{\underline{R}}^\mathrm{move} 
+      \left(\underline{x}^\mathrm{fit}_i- \underline{x}^\mathrm{fit}_1\right)
       \quad \forall i \in  \{1,  \ldots, P \}
       \end{aligned}
 
@@ -190,16 +198,17 @@ We construct the orientation from the LSFE line as follows:
       \underline{\underline{0}} & \underline{\underline{R}}(\tau_k)  
       \end{bmatrix}^T \rightarrow \underline{\underline{M}}_k^*
 
-   where :math:`\underline{\underline{M}}_k^*` and :math:`\tau_k` are 
-   linearly interpolated mass matrix and twist, respectively, from nearest neighbors and
+   where :math:`\underline{\underline{M}}_k^*` and :math:`\tau_k` are linearly
+   interpolated mass matrix and twist (at each quadrature point), 
+   respectively, from nearest neighbors, and
 
    .. math::
 
       \underline{\underline{R}}(\tau) = 
       \begin{bmatrix} 
-      \cos(\tau) & - \sin(\tau) & 0 \\
-      \sin(\tau) & \cos(\tau) & 0 \\
-      0 & 0 & 1 \\
+      1 & 0 & 0 \\
+      0 & \cos(\tau) & - \sin(\tau)  \\
+      0 & \sin(\tau) & \cos(\tau) 
       \end{bmatrix}
 
 
