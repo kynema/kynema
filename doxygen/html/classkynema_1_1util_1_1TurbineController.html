@@ -180,9 +180,9 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a9b2455c45ebd604d4b55f7d8471511a2" id="r_a9b2455c45ebd604d4b55f7d8471511a2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1TurbineController.html#a9b2455c45ebd604d4b55f7d8471511a2">TurbineController</a> (std::string shared_lib_path, std::string controller_function_name, std::string input_file_path, std::string output_file_path, bool yaw_control_enabled=false)</td></tr>
-<tr class="memdesc:a9b2455c45ebd604d4b55f7d8471511a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for the <a class="el" href="classkynema_1_1util_1_1TurbineController.html">TurbineController</a> class.  <br /></td></tr>
-<tr class="separator:a9b2455c45ebd604d4b55f7d8471511a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79c58260641e8a4161f7f0657086e375" id="r_a79c58260641e8a4161f7f0657086e375"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1TurbineController.html#a79c58260641e8a4161f7f0657086e375">TurbineController</a> (std::string shared_lib_path, std::string controller_function_name, std::string input_file_path, std::string output_file_path, double initial_yaw_angle=0.0, bool yaw_control_enabled=false)</td></tr>
+<tr class="memdesc:a79c58260641e8a4161f7f0657086e375"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for the <a class="el" href="classkynema_1_1util_1_1TurbineController.html">TurbineController</a> class.  <br /></td></tr>
+<tr class="separator:a79c58260641e8a4161f7f0657086e375"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afbcfe3fbf06db83ec21d278fdd352a7c" id="r_afbcfe3fbf06db83ec21d278fdd352a7c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1TurbineController.html#afbcfe3fbf06db83ec21d278fdd352a7c">CallController</a> ()</td></tr>
 <tr class="memdesc:afbcfe3fbf06db83ec21d278fdd352a7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method to call the controller function from the shared library.  <br /></td></tr>
 <tr class="separator:afbcfe3fbf06db83ec21d278fdd352a7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -199,8 +199,8 @@ Public Attributes</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A turbine controller class that works as a wrapper around the shared library containing the controller logic </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a9b2455c45ebd604d4b55f7d8471511a2" name="a9b2455c45ebd604d4b55f7d8471511a2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9b2455c45ebd604d4b55f7d8471511a2">&#9670;&#160;</a></span>TurbineController()</h2>
+<a id="a79c58260641e8a4161f7f0657086e375" name="a79c58260641e8a4161f7f0657086e375"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a79c58260641e8a4161f7f0657086e375">&#9670;&#160;</a></span>TurbineController()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -232,6 +232,12 @@ Public Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>initial_yaw_angle</em> = <code>0.0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">bool&#160;</td>
           <td class="paramname"><em>yaw_control_enabled</em> = <code>false</code>&#160;</td>
         </tr>
@@ -250,6 +256,7 @@ Public Attributes</h2></td></tr>
     <tr><td class="paramname">controller_function_name</td><td>Name of the controller function in the shared library </td></tr>
     <tr><td class="paramname">input_file_path</td><td>Path to the input file </td></tr>
     <tr><td class="paramname">output_file_path</td><td>Path to the output file </td></tr>
+    <tr><td class="paramname">initial_yaw_angle</td><td>Initial yaw angle (rad) </td></tr>
     <tr><td class="paramname">yaw_control_enabled</td><td>Flag to enable yaw control </td></tr>
   </table>
   </dd>
