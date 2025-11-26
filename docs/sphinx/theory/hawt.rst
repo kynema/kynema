@@ -390,7 +390,7 @@ Additional iteration matrix terms due to constraints
 
 For a residual expressed as in Eq. :eq:`residual`,
 there may be additional terms that arise in the
-:math:`\underline{\underline{K}}` term in
+:math:`\underline{\underline{K}}^\Phi` term in
 Eq. :eq:`iteration` if the constraint-gradient
 matrix is not constant with respect to the depdendent variables, e.g.,
 :math:`\underline{\underline{B}}=\underline{\underline{B}}(\underline{q})`.
@@ -408,7 +408,7 @@ where
 Taking the variation we obtain
 
 .. math:: \delta \underline{F}_\mathrm{tb}=
-   \underline{\underline{K}}_\mathrm{tb,c}
+   \underline{\underline{K}}_\mathrm{tb}^\Phi
    \begin{bmatrix}
    \delta \underline{u}_\mathrm{tb} \\
    \delta \underline{\theta}_\mathrm{tb} 
@@ -421,7 +421,7 @@ where
 .. math::
 
    \begin{aligned}
-   \underline{\underline{K}}_\mathrm{tb,c}  
+   \underline{\underline{K}}_\mathrm{tb}^\Phi  
    \begin{bmatrix}
    \delta \underline{u}_\mathrm{tb} \\
    \delta \underline{\theta}_\mathrm{tb}
@@ -453,7 +453,7 @@ The :math:`\underline{\underline{B}}^T_\mathrm{tb}` term in
 Eq. :eq:`xtra-constr-force` goes in the
 appropriate location in the upper right quadrant of
 Eq. :eq:`iteration` and the
-:math:`\underline{\underline{K}}_\mathrm{tb,c}` term is added to the
+:math:`\underline{\underline{K}}_\mathrm{tb}^\Phi` term is added to the
 :math:`\underline{\underline{K}}` matrix in the upper left quadrant.
 
 Proceeding in a similar fashion for the remaining constraint forces, we
@@ -462,7 +462,7 @@ find:
 .. math::
 
    \begin{aligned}
-   \underline{\underline{K}}_\mathrm{yb-tt,c}  
+   \underline{\underline{K}}_\mathrm{yb-tt}^\Phi
    \begin{bmatrix}
    \delta \underline{u}_\mathrm{yb} \\
    \delta \underline{\theta}_\mathrm{yb}\\
@@ -502,7 +502,7 @@ where
 .. math::
 
    \begin{aligned}
-   \underline{\underline{K}}_\mathrm{sb-yb,c}  
+   \underline{\underline{K}}_\mathrm{sb-yb}^\Phi
    \begin{bmatrix}
    \delta \underline{u}_\mathrm{sb} \\
    \delta \underline{\theta}_\mathrm{sb}\\
@@ -530,7 +530,7 @@ where
 .. math::
 
    \begin{aligned}
-   \underline{\underline{K}}_\mathrm{a-sb,c}  
+   \underline{\underline{K}}_\mathrm{a-sb}^\Phi
    \begin{bmatrix}
    \delta \underline{u}_\mathrm{a} \\
    \delta \underline{\theta}_\mathrm{a}\\
@@ -577,7 +577,7 @@ where
 .. math::
 
    \begin{aligned}
-   \underline{\underline{K}}_\mathrm{h-a,c}  
+   \underline{\underline{K}}_\mathrm{h-a}^\Phi
    \begin{bmatrix}
    \delta \underline{u}_\mathrm{h} \\
    \delta \underline{\theta}_\mathrm{h}\\
@@ -605,7 +605,7 @@ where
 .. math::
 
    \begin{aligned}
-   \underline{\underline{K}}_{\mathrm{c}i\mathrm{-h,c}}  
+   \underline{\underline{K}}_{\mathrm{c}i\mathrm{-h}}^\Phi
    \begin{bmatrix}
    \delta \underline{u}_{\mathrm{c}i} \\
    \delta \underline{\theta}_{\mathrm{c}i}\\
@@ -632,7 +632,7 @@ where
 .. math::
 
    \begin{aligned}
-   \underline{\underline{K}}_{\mathrm{b}i-\mathrm{c}i\mathrm{,c}}
+   \underline{\underline{K}}_{\mathrm{b}i-\mathrm{c}i}^\Phi
    \begin{bmatrix}
    \delta \underline{u}_{\mathrm{b}i} \\
    \delta \underline{\theta}_{\mathrm{b}i}\\
@@ -660,7 +660,7 @@ where
 .. math::
 
    \begin{aligned}
-   \underline{\underline{K}}_\mathrm{nm-yb,c}  
+   \underline{\underline{K}}_\mathrm{nm-yb}^\Phi 
    \begin{bmatrix}
    \delta \underline{u}_\mathrm{nm} \\
    \delta \underline{\theta}_\mathrm{nm}\\
@@ -684,6 +684,14 @@ where
    \delta \underline{\theta}_\mathrm{yb}
    \end{bmatrix}
    \end{aligned}
+
+
+.. note::
+
+   The term :math:`\underline{\underline{K}}^\Phi` is include here for
+   completeness, but is not in the current Kynema implementation, and
+   nonlinear-system convergence has been satisfactory.
+
 
 Data layout
 ~~~~~~~~~~~

@@ -5,7 +5,7 @@ Rigid body
 
 In this section we describe the terms required to calculate the residual
 vector and iteration matrix in Algorithm 1 for simulation of the
-dynamics of a rigid body with six degrees of freedom. An Kynema
+dynamics of a rigid body with six degrees of freedom. A Kynema
 rigid body has reference position and orientation given as
 
 .. math:: \underline{q}^\mathrm{r} = \begin{bmatrix} 
