@@ -359,10 +359,10 @@ Variation of the damping forces are as follows:
    \underline{\underline{\mathcal{G}}}^\mathrm{D1} =
    \begin{bmatrix}
    \underline{\underline{0}} & \underline{\underline{D}}_{11} 
-   \widetilde{\underline{\underline{R}}\,\underline{x}^{0\prime}}
+   \widetilde{\underline{\underline{R}}\,\underline{x}^{r\prime}}
    - \underline{\underline{D}}_{12} \widetilde{\kappa} \\
    \underline{\underline{0}} & \underline{\underline{D}}_{21} 
-   \widetilde{\underline{\underline{R}}\,\underline{x}^{0\prime}}
+   \widetilde{\underline{\underline{R}}\,\underline{x}^{r\prime}}
    - \underline{\underline{D}}_{22} \widetilde{\kappa} \\
    \end{bmatrix}
 
@@ -386,7 +386,7 @@ Variation of the damping forces are as follows:
    -\widetilde{\underline{\underline{D}}_{12} \underline{\dot{\kappa}}}
    +\underline{\underline{D}}_{12} \widetilde{\dot{\kappa}}
    +\underline{\underline{D}}_{11} \widetilde{\omega} 
-   \widetilde{\underline{\underline{R}}\, \underline{x}^{0\prime} }
+   \widetilde{\underline{\underline{R}}\, \underline{x}^{r\prime} }
    - \underline{\underline{D}}_{12} \widetilde{\omega}\widetilde{\kappa}
    \\
    \underline{\underline{0}} & 
@@ -395,7 +395,7 @@ Variation of the damping forces are as follows:
    -\widetilde{\underline{\underline{D}}_{22} \underline{\dot{\kappa}}}
    +\underline{\underline{D}}_{22} \widetilde{\dot{\kappa}}
    +\underline{\underline{D}}_{22} \widetilde{\omega} 
-   \widetilde{\underline{\underline{R}}\, \underline{x}^{0\prime} }
+   \widetilde{\underline{\underline{R}}\, \underline{x}^{r\prime} }
    - \underline{\underline{D}}_{22} \widetilde{\omega}\widetilde{\kappa}
    \end{bmatrix}
 
@@ -420,7 +420,7 @@ Variation of the damping forces are as follows:
    \begin{bmatrix}
    \underline{\underline{0}} & \underline{\underline{0}} \\
    \underline{\underline{0}} & \underline{\underline{D}}_{11} 
-   \widetilde{\underline{\underline{R}}\,\underline{x}^{0\prime}}
+   \widetilde{\underline{\underline{R}}\,\underline{x}^{r\prime}}
    - \underline{\underline{D}}_{12} \widetilde{\kappa} 
    \end{bmatrix}
 
@@ -448,7 +448,7 @@ Variation of the damping forces are as follows:
    -\widetilde{\underline{\underline{D}}_{12} \underline{\dot{\kappa}}}
    +\underline{\underline{D}}_{12} \widetilde{\dot{\kappa}}
    +\underline{\underline{D}}_{11} \widetilde{\omega} 
-   \widetilde{\underline{\underline{R}}\, \underline{x}^{0\prime} }
+   \widetilde{\underline{\underline{R}}\, \underline{x}^{r\prime} }
    - \underline{\underline{D}}_{12} \widetilde{\omega}\widetilde{\kappa}
    \end{bmatrix}
 
