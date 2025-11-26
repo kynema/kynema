@@ -202,8 +202,7 @@ int main() {
         // Set tower parameters
         tower_builder
             .SetElementOrder(n_tower_nodes - 1)  // Set element order to num nodes - 1
-            .SetQuadratureStyle(
-                kynema::interfaces::components::BeamInput::QuadratureStyle::Segmented
+            .SetQuadratureStyle(kynema::interfaces::components::BeamInput::QuadratureStyle::Segmented
             )
             .SetSectionRefinement(4)
             .PrescribedRootMotion(false);  // Fix displacement of tower base node
@@ -222,8 +221,7 @@ int main() {
         }
 
         // Set tower base position from first reference axis point
-        turbine_builder.SetTowerBasePosition(
-            {x_values[0], y_values[0], z_values[0], 1., 0., 0., 0.}
+        turbine_builder.SetTowerBasePosition({x_values[0], y_values[0], z_values[0], 1., 0., 0., 0.}
         );
 
         // Add reference axis twist (zero for tower)
@@ -424,8 +422,7 @@ int main() {
             std::cout << "Step " << i << ", t = " << std::fixed << std::setprecision(6) << t << " s "
                       << " | " << std::setprecision(2) << t / duration * 100. << "%\n";
 
-            interface.UpdateAerodynamicLoads(
-                fluid_density, [t, &inflow](const std::array<double, 3>& pos) {
+            interface.UpdateAerodynamicLoads(fluid_density, [t, &inflow](const std::array<double, 3>& pos) {
                     return inflow.Velocity(t, pos);
                 }
             );
