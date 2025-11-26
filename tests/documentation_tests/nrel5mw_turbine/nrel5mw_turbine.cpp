@@ -14,7 +14,7 @@ int main() {
     // and Kokkos::finalize after all of those data structures have been destroyed.
     Kokkos::initialize();
     {
-        const auto duration{60.};                     // Simulation duration in seconds
+        const auto duration{10.1};                     // Simulation duration in seconds
         const auto time_step{0.0008608815426997245};  // Time step for the simulation
         const auto n_blades{3};                       // Number of blades in turbine
         const auto n_blade_nodes{11};                 // Number of nodes per blade
@@ -430,8 +430,6 @@ int main() {
             );
 
             interface.ApplyController(t);
-
-            interface.Turbine().yaw_control = flow_angle;
 
             // Take a single time step
             [[maybe_unused]] const auto converged = interface.Step();
