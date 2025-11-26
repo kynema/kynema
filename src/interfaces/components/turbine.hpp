@@ -177,6 +177,8 @@ public:
 
     Turbine& operator=(Turbine&&) = delete;
 
+    ~Turbine() = default;
+
     /**
      * @brief Populate node motion from host state
      * @param host_state Host state containing position, displacement, velocity, and acceleration

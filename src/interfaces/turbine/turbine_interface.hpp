@@ -55,6 +55,8 @@ public:
 
     TurbineInterface& operator=(TurbineInterface&&) = delete;
 
+    ~TurbineInterface() = default;
+
     /// @brief Returns a reference to the turbine model
     [[nodiscard]] components::Turbine& Turbine() { return this->turbine; }
 
