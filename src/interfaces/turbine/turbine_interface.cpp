@@ -378,7 +378,7 @@ void TurbineInterface::WriteTimeSeriesData() const {
 
     // Aerodynamic data
     if (this->aerodynamics) {
-        const auto n_blades = 0U;  // this->aerodynamics->bodies.size()
+        const auto n_blades = this->aerodynamics->bodies.size();
         for (auto i : std::views::iota(0U, n_blades)) {
             const auto& body = this->aerodynamics->bodies[i];
             for (auto j : std::views::iota(0U, body.loads.size())) {
@@ -459,6 +459,10 @@ std::array<double, 3> TurbineInterface::GetHubNodePosition() const {
     return std::array{
         turbine.hub_node.position[0], turbine.hub_node.position[1], turbine.hub_node.position[2]
     };
+}
+
+void TurbineInterface::SetHubInflow(const std::array<double, 3>& inflow) {
+    this->hub_inflow = inflow;
 }
 
 void TurbineInterface::InitializeController(
