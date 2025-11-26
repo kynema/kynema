@@ -422,7 +422,9 @@ int main() {
             std::cout << "Step " << i << ", t = " << std::fixed << std::setprecision(6) << t << " s "
                       << " | " << std::setprecision(2) << t / duration * 100. << "%\n";
 
-            interface.UpdateAerodynamicLoads(fluid_density, [t, &inflow](const std::array<double, 3>& pos) {
+            interface.UpdateAerodynamicLoads(
+                fluid_density,
+                [t, &inflow](const std::array<double, 3>& pos) {
                     return inflow.Velocity(t, pos);
                 }
             );
