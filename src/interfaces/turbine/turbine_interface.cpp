@@ -461,7 +461,7 @@ std::array<double, 3> TurbineInterface::GetHubNodePosition() const {
     };
 }
 
-void TurbineInterface::SetHubInflow(const std::array<double, 3> inflow) {
+void TurbineInterface::SetHubInflow(const std::array<double, 3>& inflow) {
     this->hub_inflow = inflow;
 }
 
