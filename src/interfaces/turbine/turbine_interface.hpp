@@ -51,6 +51,10 @@ public:
 
     TurbineInterface(TurbineInterface&& other) = delete;
 
+    TurbineInterface& operator=(const TurbineInterface&) = delete;
+
+    TurbineInterface& operator=(TurbineInterface&&) = delete;
+
     /// @brief Returns a reference to the turbine model
     [[nodiscard]] components::Turbine& Turbine() { return this->turbine; }
 
