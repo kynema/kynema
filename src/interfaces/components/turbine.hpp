@@ -169,6 +169,16 @@ public:
      */
     Turbine(const TurbineInput& input, Model& model);
 
+    Turbine(Turbine& other) = delete;
+
+    Turbine(Turbine&& other) = delete;
+
+    Turbine& operator=(const Turbine&) = delete;
+
+    Turbine& operator=(Turbine&&) = delete;
+
+    ~Turbine() = default;
+
     /**
      * @brief Populate node motion from host state
      * @param host_state Host state containing position, displacement, velocity, and acceleration
