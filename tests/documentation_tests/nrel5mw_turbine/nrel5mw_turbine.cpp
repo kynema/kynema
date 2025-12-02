@@ -45,9 +45,9 @@ int main() {
             .SetTimeStep(time_step)
             .SetDampingFactor(0.0)
             .SetGravity({0., 0., -9.81})
-            .SetMaximumNonlinearIterations(12)
+            .SetMaximumNonlinearIterations(30)
             .SetAbsoluteErrorTolerance(1e-7)
-            .SetRelativeErrorTolerance(1e-6);
+            .SetRelativeErrorTolerance(1e-4);
 
         // Set output file path
         builder.Outputs().SetOutputFilePath("SteadyInflow.NREL5MW");
