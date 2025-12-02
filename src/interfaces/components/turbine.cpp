@@ -12,7 +12,8 @@
 
 namespace kynema::interfaces::components {
 Turbine::Turbine(const TurbineInput& input, Model& model)
-    : blades(CreateBlades(input.blades, model)),
+    : turbine_input(input),
+      blades(CreateBlades(input.blades, model)),
       tower(input.tower, model),
       hub_node(invalid_id),
       azimuth_node(invalid_id),
