@@ -12,8 +12,7 @@
 
 namespace kynema::interfaces::components {
 Turbine::Turbine(const TurbineInput& input, Model& model)
-    : turbine_input(input),
-      blades(CreateBlades(input.blades, model)),
+    : blades(CreateBlades(input.blades, model)),
       tower(input.tower, model),
       hub_node(invalid_id),
       azimuth_node(invalid_id),
@@ -26,7 +25,8 @@ Turbine::Turbine(const TurbineInput& input, Model& model)
       yaw_bearing_to_nacelle_cm{invalid_id},
       shaft_base_to_azimuth{invalid_id},
       azimuth_to_hub{invalid_id},
-      blade_pitch_control(input.blades.size(), input.blade_pitch_angle) {
+      blade_pitch_control(input.blades.size(), input.blade_pitch_angle),
+      turbine_input(input) {
     // Validate turbine inputs
     ValidateInput(input);
 
