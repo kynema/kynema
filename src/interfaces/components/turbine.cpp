@@ -25,7 +25,8 @@ Turbine::Turbine(const TurbineInput& input, Model& model)
       yaw_bearing_to_nacelle_cm{invalid_id},
       shaft_base_to_azimuth{invalid_id},
       azimuth_to_hub{invalid_id},
-      blade_pitch_control(input.blades.size(), input.blade_pitch_angle) {
+      blade_pitch_control(input.blades.size(), input.blade_pitch_angle),
+      turbine_input(input) {
     // Validate turbine inputs
     ValidateInput(input);
 

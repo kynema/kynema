@@ -47,6 +47,16 @@ public:
         const components::OutputsConfig& outputs_config = {}
     );
 
+    TurbineInterface(TurbineInterface& other) = delete;
+
+    TurbineInterface(TurbineInterface&& other) = delete;
+
+    TurbineInterface& operator=(const TurbineInterface&) = delete;
+
+    TurbineInterface& operator=(TurbineInterface&&) = delete;
+
+    ~TurbineInterface() = default;
+
     /// @brief Returns a reference to the turbine model
     [[nodiscard]] components::Turbine& Turbine() { return this->turbine; }
 
@@ -71,6 +81,8 @@ public:
     );
 
     std::array<double, 3> GetHubNodePosition() const;
+
+    void SetHubInflow(const std::array<double, 3>& inflow);
 
     /**
      * @brief Update controller inputs from current system state
