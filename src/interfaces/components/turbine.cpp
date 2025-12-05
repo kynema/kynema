@@ -25,7 +25,8 @@ Turbine::Turbine(const TurbineInput& input, Model& model)
       yaw_bearing_to_nacelle_cm{invalid_id},
       shaft_base_to_azimuth{invalid_id},
       azimuth_to_hub{invalid_id},
-      blade_pitch_control(input.blades.size(), input.blade_pitch_angle) {
+      blade_pitch_control(input.blades.size(), input.blade_pitch_angle),
+      turbine_input(input) {
     // Validate turbine inputs
     ValidateInput(input);
 
@@ -265,16 +266,18 @@ void Turbine::CreateIntermediateNodes(const TurbineInput& input, Model& model) {
     this->yaw_bearing_node = NodeData(model.AddNode().SetPosition(yaw_position).Build());
 
     // Create nacelle center of mass node at tower top position
-    const auto nacelle_position = std::array{
-        tower_top_node.x0[0] + input.nacelle_cm_offset[0],
-        tower_top_node.x0[1] + input.nacelle_cm_offset[1],
-        tower_top_node.x0[2] + input.nacelle_cm_offset[2],
-        1.,
-        0.,
-        0.,
-        0.
-    };
-    this->nacelle_cm_node = NodeData(model.AddNode().SetPosition(nacelle_position).Build());
+    if (input.nacelle_inertia_matrix_set) {
+        const auto nacelle_position = std::array{
+            tower_top_node.x0[0] + input.nacelle_cm_offset[0],
+            tower_top_node.x0[1] + input.nacelle_cm_offset[1],
+            tower_top_node.x0[2] + input.nacelle_cm_offset[2],
+            1.,
+            0.,
+            0.,
+            0.
+        };
+        this->nacelle_cm_node = NodeData(model.AddNode().SetPosition(nacelle_position).Build());
+    }
 
     //--------------------------------------------------------------------------
     // Create blade apex nodes
@@ -311,10 +314,13 @@ void Turbine::CreateIntermediateNodes(const TurbineInput& input, Model& model) {
     //----------------------------------------------------
 
     // Add drivetrain nodes (yaw bearing, shaft base, azimuth, hub) to drivetrain_node_ids vector
-    this->drivetrain_node_ids.reserve(4);
+    this->drivetrain_node_ids.reserve(5);
     this->drivetrain_node_ids = {
         this->yaw_bearing_node.id, this->shaft_base_node.id, this->azimuth_node.id, this->hub_node.id
     };
+    if (input.nacelle_inertia_matrix_set) {
+        this->drivetrain_node_ids.push_back(this->nacelle_cm_node.id);
+    }
 
     //----------------------------------------------------
     // Blade nodes
@@ -381,12 +387,16 @@ void Turbine::CreateIntermediateNodes(const TurbineInput& input, Model& model) {
 
 void Turbine::AddMassElements(const TurbineInput& input, Model& model) {
     // Add mass element at yaw bearing node
-    this->yaw_bearing_mass_element_id =
-        model.AddMassElement(this->yaw_bearing_node.id, input.yaw_bearing_inertia_matrix);
+    if (input.yaw_bearing_inertia_matrix_set) {
+        this->yaw_bearing_mass_element_id =
+            model.AddMassElement(this->yaw_bearing_node.id, input.yaw_bearing_inertia_matrix);
+    }
 
     // Add mass element at nacelle CM node
-    this->nacelle_cm_mass_element_id =
-        model.AddMassElement(this->nacelle_cm_node.id, input.nacelle_inertia_matrix);
+    if (input.nacelle_inertia_matrix_set) {
+        this->nacelle_cm_mass_element_id =
+            model.AddMassElement(this->nacelle_cm_node.id, input.nacelle_inertia_matrix);
+    }
 
     // Add mass element at hub node (hub assembly mass)
     this->hub_mass_element_id = model.AddMassElement(this->hub_node.id, input.hub_inertia_matrix);
@@ -456,9 +466,11 @@ void Turbine::AddConstraints(const TurbineInput& input, Model& model) {
     )};
 
     // Add rigid constraint from yaw bearing to nacelle center of mass
-    this->yaw_bearing_to_nacelle_cm = ConstraintData{model.AddRigidJointConstraint(
-        std::array{this->yaw_bearing_node.id, this->nacelle_cm_node.id}
-    )};
+    if (input.nacelle_inertia_matrix_set) {
+        this->yaw_bearing_to_nacelle_cm = ConstraintData{model.AddRigidJointConstraint(
+            std::array{this->yaw_bearing_node.id, this->nacelle_cm_node.id}
+        )};
+    }
 
     //--------------------------------------------------------------------------
     // Nacelle constraints

@@ -217,3 +217,10 @@ The full matrices :math:`\underline{\underline{C}}`, :math:`\underline{\underlin
    \underline{\underline{0}}_{18 \times 18} 
    \end{bmatrix} \in \mathbb{R}^{24 \times 24}
 
+.. note::
+
+   The term :math:`\underline{\underline{K}}^\Phi` is include here for
+   completeness, but is not in the current Kynema implementation, and
+   nonlinear-system convergence has been satisfactory.
+
+
