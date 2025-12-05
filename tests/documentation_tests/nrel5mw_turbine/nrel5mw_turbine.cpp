@@ -20,6 +20,7 @@ int main() {
         const auto n_blade_nodes{11};                 // Number of nodes per blade
         const auto n_tower_nodes{11};                 // Number of nodes in tower
         const auto rotor_speed_init{12.1 * std::numbers::pi / 30.};
+        const auto generator_power_init{5e6};
         const auto fluid_density{1.0};
         constexpr auto vel_h{11.4};
         constexpr auto h_ref{90.};
@@ -84,6 +85,8 @@ int main() {
             .SetTowerTopToRotorApex(wio_drivetrain["outer_shape"]["distance_tt_hub"].as<double>())
             .SetGearBoxRatio(wio_drivetrain["gearbox"]["gear_ratio"].as<double>())
             .SetRotorSpeed(rotor_speed_init)
+            .SetGeneratorPower(generator_power_init)
+            .SetHubWindSpeed(vel_h * cos(flow_angle))
             .SetNacelleYawAngle(-flow_angle);
 
         //--------------------------------------------------------------------------
@@ -202,9 +205,7 @@ int main() {
         // Set tower parameters
         tower_builder
             .SetElementOrder(n_tower_nodes - 1)  // Set element order to num nodes - 1
-            .SetQuadratureStyle(kynema::interfaces::components::BeamInput::QuadratureStyle::Segmented
-            )
-            .SetSectionRefinement(4)
+            .SetSectionRefinement(2)
             .PrescribedRootMotion(false);  // Fix displacement of tower base node
 
         // Add reference axis coordinates (WindIO uses Z-axis as reference axis)
@@ -407,9 +408,6 @@ int main() {
             kynema::interfaces::components::Inflow::SteadyWind(vel_h, h_ref, pl_exp, flow_angle);
 
         const bool might_crash{false};
-        if (might_crash) {
-            interface.CloseOutputFile();
-        }
 
         // Loop through solution iterations
         // The process of taking each step is controlled by the user.  Control commands
@@ -429,14 +427,6 @@ int main() {
                 }
             );
 
-            interface.ApplyController(t);
-
-            // Take a single time step
-            [[maybe_unused]] const auto converged = interface.Step();
-
-            // Check convergence
-            assert(converged);
-
             // Do output every 20 steps
             if (i % 20 == 0) {
                 std::cout << " --- Writing output file\n";
@@ -448,6 +438,14 @@ int main() {
                     interface.CloseOutputFile();
                 }
             }
+
+            // Take a single time step
+            [[maybe_unused]] const auto converged = interface.Step();
+
+            // Check convergence
+            assert(converged);
+
+            interface.ApplyController(t);
         }
     }
     // Make sure to call finalize after all Kynema data structures are deleted
