@@ -105,6 +105,12 @@ and the contribution to the iteration matrix in Eq. :eq:`iteration` is
      \underline{\underline{0}} 
    \end{bmatrix}
 
+.. note::
+  
+   The term :math:`\underline{\underline{K}}^\Phi` is include here for 
+   completeness, but is not in the current Kynema implementation, and
+   nonlinear-system convergence has been satisfactory. 
+
 
 The Kynema regression test suite includes the spinning, heavy top
 problem with the following initial conditions:

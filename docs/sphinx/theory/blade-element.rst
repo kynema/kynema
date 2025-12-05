@@ -10,11 +10,11 @@ For beams coupled to an aerodynamic solver, we follow the WindIO
 requirement that the aerodynamic reference line is the same as the
 structure reference line.
 
-MAS: blade-root coordinate system
+.. note::
+ 
+   This section is under construction and needs to be finalized to match
+   the Kynema implementation.
 
-MAS: ADD IMAGE
-
-MAS: scratching out some practial details
 
 Initialization
 ~~~~~~~~~~~~~~

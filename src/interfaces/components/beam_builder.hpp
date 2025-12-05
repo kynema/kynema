@@ -49,11 +49,11 @@ public:
      * @brief Sets the Quadrature style to use for this beam
      *
      * @details Segmented applies the quadrature rule between each of the specified
-     * sectional properties.  WholeBeam has just one quadrautre applied to the enire beam.
+     * sectional properties.  WholeBeam has just one quadrature applied to the entire beam.
      *
      * Combining GLL quadrature with the Segmented style wil preserve the user's specified
      * sectional properties at their exact locations.  This is expected to give better
-     * performance for complex property distrubutions.
+     * performance for complex property distributions.
      *
      * WholeBeam will likely be the most efficient for simple property distributions.
      *
@@ -105,7 +105,7 @@ public:
     /**
      * @brief sets if this beam will have prescribed root motion or not
      *
-     * @param enable If prescirbed root motion is enabled
+     * @param enable If prescribed root motion is enabled
      * @return A reference to this BeamBuilder
      */
     BeamBuilder& PrescribedRootMotion(bool enable);
@@ -121,7 +121,7 @@ public:
     /**
      * @brief Sets the velocity of this beam's root node
      *
-     * @param v The root node velocity/angular velcoity
+     * @param v The root node velocity/angular velocity
      * @return A reference to this BeamBuilder
      */
     BeamBuilder& SetRootVelocity(const std::array<double, 6>& v);
