@@ -22,4 +22,5 @@ limits.
    twisted
    heavytop
    dynamic-composite
+   iea15mw-blade
 
