@@ -27,7 +27,7 @@ namespace kynema::tests {
  *      points with Gauss-Legendre quadrature case here):
  *      https://kynema.github.io/kynema/testing/rollup.html
  */
-TEST(StaticVerificationTest, IsotropicBeamRollup) {
+TEST(VerificationTest, Static_IsotropicBeamRollUp) {
     //----------------------------------
     // solution parameters
     //----------------------------------
@@ -43,7 +43,7 @@ TEST(StaticVerificationTest, IsotropicBeamRollup) {
         .SetAbsoluteErrorTolerance(1e-11)
         .SetRelativeErrorTolerance(1e-9);
     if (write_output) {
-        builder.Outputs().SetOutputFilePath("StaticVerificationTest.IsotropicBeamRollup");
+        builder.Outputs().SetOutputFilePath("VerificationTest.Static_IsotropicBeamRollUp");
     }
 
     //----------------------------------

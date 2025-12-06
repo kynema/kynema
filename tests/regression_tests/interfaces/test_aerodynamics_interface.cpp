@@ -219,7 +219,7 @@ TEST(AerodynamicsInterfaceTest, IEA15_Turbine) {
         .SetRelativeErrorTolerance(1e-5);
 
     if (write_output) {
-        builder.Outputs().SetOutputFilePath("TurbineInterfaceTest.IEA15");
+        builder.Outputs().SetOutputFilePath("TurbineInterfaceTest.IEA15_Turbine");
     }
 
     // Read WindIO yaml file

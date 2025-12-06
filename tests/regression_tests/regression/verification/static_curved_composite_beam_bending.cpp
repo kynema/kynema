@@ -29,7 +29,7 @@ namespace kynema::tests {
  * @see Kynema documentation for the full benchmark results and convergence study:
  *      https://kynema.github.io/kynema/testing/curved.html
  */
-TEST(StaticVerificationTest, CompositeBeamBending_CurvedBeam) {
+TEST(VerificationTest, Static_CurvedCompositeBeamBending) {
     //----------------------------------
     // solution parameters
     //----------------------------------
@@ -46,8 +46,7 @@ TEST(StaticVerificationTest, CompositeBeamBending_CurvedBeam) {
         .SetRelativeErrorTolerance(1e-9);   // relative tolerance
 
     if (write_output) {
-        builder.Outputs().SetOutputFilePath("StaticVerificationTest.CompositeBeamBending_CurvedBeam"
-        );
+        builder.Outputs().SetOutputFilePath("VerificationTest.Static_CurvedCompositeBeamBending");
     }
 
     //----------------------------------
