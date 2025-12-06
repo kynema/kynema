@@ -332,7 +332,7 @@ class VTKOutput:
         vtk_object.GetPointData().AddArray(force)
         vtk_object.GetPointData().AddArray(moment)
 
-    def generate_visualization(self, timestep: int, output_dir: str):
+    def generate_visualization(self, timestep: int, output_dir: str, stride: int):
         """Generates visualization for the specified timestep based on mesh connectivity.
 
         This method automatically determines what elements to create based on the
@@ -401,7 +401,8 @@ class VTKOutput:
         grid.GetCellData().AddArray(element_id_array)
 
         # Write the file
-        filename = os.path.join(output_dir, f"timestep_{timestep:04d}.vtu")
+        timestep_str = timestep // stride
+        filename = os.path.join(output_dir, f"timestep_{timestep_str:04d}.vtu")
         writer = vtk.vtkXMLUnstructuredGridWriter()
         writer.SetFileName(filename)
         writer.SetInputData(grid)
@@ -517,7 +518,7 @@ class VTKOutput:
             element_ids[cell_id] = constraint_id
             element_type_names[cell_id] = "Constraint"
 
-    def visualize_all_timesteps(self, output_dir: str):
+    def visualize_all_timesteps(self, output_dir: str, stride: int):
         """Generates visualization for all timesteps.
 
         Args:
@@ -537,8 +538,8 @@ class VTKOutput:
             times = np.arange(self.num_timesteps, dtype=float)
 
             # Generate visualization for each timestep
-            for timestep in range(self.num_timesteps):
-                vtu_file = self.generate_visualization(timestep, output_dir)
+            for timestep in range(0, self.num_timesteps, stride):
+                vtu_file = self.generate_visualization(timestep, output_dir, stride)
                 vtu_basename = os.path.basename(vtu_file)
 
                 # Add to collection
@@ -619,6 +620,14 @@ def main():
         help="Ending timestep to visualize (default: last timestep)",
     )
 
+    parser.add_argument(
+        "--timestep-stride",
+        "-str",
+        type=int,
+        default=1,
+        help="Stride between timesteps to visualize (default: 1)",
+    )
+
     args = parser.parse_args()
 
     # ------------------------------------------------------------
@@ -665,7 +674,7 @@ def main():
     else:
         # Generate visualization for all timesteps
         print("Generating visualization for all timesteps")
-        vtk_output.visualize_all_timesteps(args.output_dir)
+        vtk_output.visualize_all_timesteps(args.output_dir,args.timestep_stride)
 
 
 if __name__ == "__main__":
