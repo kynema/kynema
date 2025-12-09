@@ -532,7 +532,8 @@ void TurbineInterface::ApplyController(double t) {
         (this->hub_inflow[2] * this->hub_inflow[2])
     );
     controller->io.generator_torque_actual = generator_torque;
-    controller->io.generator_power_actual = generator_speed * generator_torque;
+    controller->io.generator_power_actual =
+        generator_speed * generator_torque * this->turbine.GetTurbineInput().generator_efficiency;
     controller->io.pitch_blade1_actual = this->turbine.blade_pitch_control[0];
     controller->io.pitch_blade2_actual = this->turbine.blade_pitch_control[1];
     controller->io.pitch_blade3_actual = this->turbine.blade_pitch_control[2];
