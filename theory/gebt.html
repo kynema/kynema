@@ -184,7 +184,7 @@ which are defined as</p>
 <div class="math notranslate nohighlight" id="equation-strain">
 <span class="eqno">(7)<a class="headerlink" href="#equation-strain" title="Permalink to this equation"></a></span>\[\underline{\epsilon} = \underline{x}^{\mathrm{r}\prime}+\underline{u}^\prime-\left(\underline{\underline{R}}\,\underline{\underline{R}}^\mathrm{r}\right) \hat{i}_1\]</div>
 <div class="math notranslate nohighlight">
-\[\underline{\kappa} = \mathrm{axial}\left({ \underline{\underline{R}}^\prime \underline{\underline{R}} }\right)\]</div>
+\[\underline{\kappa} = \mathrm{axial}\left( \underline{\underline{R}}^\prime \underline{\underline{R}}^T \right)\]</div>
 <p>respectively. In the reference configuration, i.e.,
 <span class="math notranslate nohighlight">\(\underline{\underline{R}}=\underline{\underline{I}}\)</span> and
 <span class="math notranslate nohighlight">\(\underline{u}=\underline{0}\)</span>, zero strain requires that</p>
@@ -433,23 +433,29 @@ inertial forces can be written</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\underline{\underline{\mathcal{D}}}^\mathrm{D2} = \begin{bmatrix}
 \underline{\underline{0}} &amp; \underline{\underline{0}} \\
-\underline{\underline{D}}_{11} &amp; \underline{\underline{D}}_{12}
+\left( \widetilde{x}^{0\prime}+\widetilde{u}^\prime \right)
+\underline{\underline{D}}_{11} &amp;
+\left( \widetilde{x}^{0\prime}+\widetilde{u}^\prime \right)
+\underline{\underline{D}}_{12}
 \end{bmatrix}\end{split}\]</div>
 <div class="math notranslate nohighlight">
 \[\begin{split}\underline{\underline{\mathcal{G}}}^\mathrm{D2} =
 \begin{bmatrix}
 \underline{\underline{0}} &amp; \underline{\underline{0}} \\
-\underline{\underline{0}} &amp; \underline{\underline{D}}_{11}
+\underline{\underline{0}} &amp;
+\left( \widetilde{x}^{0\prime}+\widetilde{u}^\prime \right)
+\left(\underline{\underline{D}}_{11}
 \widetilde{\underline{\underline{R}}\,\underline{x}^{r\prime}}
-- \underline{\underline{D}}_{12} \widetilde{\kappa}
+- \underline{\underline{D}}_{12} \widetilde{\kappa} \right)
 \end{bmatrix}\end{split}\]</div>
 <div class="math notranslate nohighlight">
 \[\begin{split}\underline{\underline{\mathcal{P}}}^\mathrm{D2} =
 \begin{bmatrix}
 \underline{\underline{0}} &amp; \underline{\underline{0}} \\
--\widetilde{\underline{\underline{D}}_{11} \dot{\underline{\epsilon}}}
--\widetilde{\underline{\underline{D}}_{12} \dot{\underline{\kappa}}}
+\left(-\widetilde{\underline{\underline{D}}_{11} \dot{\underline{\epsilon}}}
+-\widetilde{\underline{\underline{D}}_{12} \dot{\underline{\kappa}}}  \right)
 &amp;
+\left( \widetilde{x}^{0\prime}+\widetilde{u}^\prime \right)
 \underline{\underline{D}}_{12} \widetilde{\omega}
 \end{bmatrix}\end{split}\]</div>
 <div class="math notranslate nohighlight">
@@ -459,13 +465,14 @@ inertial forces can be written</p>
 \underline{\underline{0}}
 \\
 \underline{\underline{0}} &amp;
--\widetilde{\underline{\underline{D}}_{11} \underline{\dot{\epsilon}}}
+\left( \widetilde{x}^{0\prime}+\widetilde{u}^\prime \right)
+\left(-\widetilde{\underline{\underline{D}}_{11} \underline{\dot{\epsilon}}}
 +\underline{\underline{D}}_{11} \widetilde{\dot{\epsilon}}
 -\widetilde{\underline{\underline{D}}_{12} \underline{\dot{\kappa}}}
 +\underline{\underline{D}}_{12} \widetilde{\dot{\kappa}}
 +\underline{\underline{D}}_{11} \widetilde{\omega}
 \widetilde{\underline{\underline{R}}\, \underline{x}^{r\prime} }
-- \underline{\underline{D}}_{12} \widetilde{\omega}\widetilde{\kappa}
+- \underline{\underline{D}}_{12} \widetilde{\omega}\widetilde{\kappa} \right)
 \end{bmatrix}\end{split}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\underline{\dot{\epsilon}}\)</span> and <span class="math notranslate nohighlight">\(\underline{\dot{\kappa}}\)</span> are defined in <a class="reference internal" href="#equation-straindot">(10)</a>.</p>
 <p><strong>Local references</strong></p>

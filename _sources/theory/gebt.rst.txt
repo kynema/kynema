@@ -96,7 +96,7 @@ which are defined as
    :label: strain 
 
 .. math::
-    \underline{\kappa} = \mathrm{axial}\left({ \underline{\underline{R}}^\prime \underline{\underline{R}} }\right)
+    \underline{\kappa} = \mathrm{axial}\left( \underline{\underline{R}}^\prime \underline{\underline{R}}^T \right)
 
 respectively. In the reference configuration, i.e.,
 :math:`\underline{\underline{R}}=\underline{\underline{I}}` and
@@ -411,7 +411,10 @@ Variation of the damping forces are as follows:
 
    \underline{\underline{\mathcal{D}}}^\mathrm{D2} = \begin{bmatrix}
    \underline{\underline{0}} & \underline{\underline{0}} \\
-   \underline{\underline{D}}_{11} & \underline{\underline{D}}_{12} 
+   \left( \widetilde{x}^{0\prime}+\widetilde{u}^\prime \right)
+   \underline{\underline{D}}_{11} & 
+   \left( \widetilde{x}^{0\prime}+\widetilde{u}^\prime \right)
+   \underline{\underline{D}}_{12} 
    \end{bmatrix}
 
 .. math::
@@ -419,9 +422,11 @@ Variation of the damping forces are as follows:
    \underline{\underline{\mathcal{G}}}^\mathrm{D2} =
    \begin{bmatrix}
    \underline{\underline{0}} & \underline{\underline{0}} \\
-   \underline{\underline{0}} & \underline{\underline{D}}_{11} 
+   \underline{\underline{0}} & 
+   \left( \widetilde{x}^{0\prime}+\widetilde{u}^\prime \right)
+   \left(\underline{\underline{D}}_{11} 
    \widetilde{\underline{\underline{R}}\,\underline{x}^{r\prime}}
-   - \underline{\underline{D}}_{12} \widetilde{\kappa} 
+   - \underline{\underline{D}}_{12} \widetilde{\kappa} \right)
    \end{bmatrix}
 
 .. math::
@@ -429,9 +434,10 @@ Variation of the damping forces are as follows:
    \underline{\underline{\mathcal{P}}}^\mathrm{D2} =
    \begin{bmatrix}
    \underline{\underline{0}} & \underline{\underline{0}} \\
-   -\widetilde{\underline{\underline{D}}_{11} \dot{\underline{\epsilon}}}  
-   -\widetilde{\underline{\underline{D}}_{12} \dot{\underline{\kappa}}}  
+   \left(-\widetilde{\underline{\underline{D}}_{11} \dot{\underline{\epsilon}}}  
+   -\widetilde{\underline{\underline{D}}_{12} \dot{\underline{\kappa}}}  \right)
    & 
+   \left( \widetilde{x}^{0\prime}+\widetilde{u}^\prime \right)
    \underline{\underline{D}}_{12} \widetilde{\omega}
    \end{bmatrix}
 
@@ -443,13 +449,14 @@ Variation of the damping forces are as follows:
    \underline{\underline{0}} 
    \\
    \underline{\underline{0}} & 
-   -\widetilde{\underline{\underline{D}}_{11} \underline{\dot{\epsilon}}}
+   \left( \widetilde{x}^{0\prime}+\widetilde{u}^\prime \right)
+   \left(-\widetilde{\underline{\underline{D}}_{11} \underline{\dot{\epsilon}}}
    +\underline{\underline{D}}_{11} \widetilde{\dot{\epsilon}}
    -\widetilde{\underline{\underline{D}}_{12} \underline{\dot{\kappa}}}
    +\underline{\underline{D}}_{12} \widetilde{\dot{\kappa}}
    +\underline{\underline{D}}_{11} \widetilde{\omega} 
    \widetilde{\underline{\underline{R}}\, \underline{x}^{r\prime} }
-   - \underline{\underline{D}}_{12} \widetilde{\omega}\widetilde{\kappa}
+   - \underline{\underline{D}}_{12} \widetilde{\omega}\widetilde{\kappa} \right)
    \end{bmatrix}
 
 
