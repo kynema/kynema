@@ -156,6 +156,12 @@ struct TurbineInput {
     double gear_box_ratio{1.};
 
     /**
+     * @brief Generator efficiency (-)
+     * @details Ratio of mechanical power output to electrical power output
+     */
+    double generator_efficiency{1.};
+
+    /**
      * @brief Initial generator power (W)
      * @details Power output of the generator
      */
