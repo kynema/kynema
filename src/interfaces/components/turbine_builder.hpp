@@ -165,6 +165,13 @@ public:
     TurbineBuilder& SetGearBoxRatio(double ratio);
 
     /**
+     * @brief Set the generator efficiency
+     * @param efficiency ratio of mechanical power output to electrical power output
+     * @return Reference to the builder for method chaining
+     */
+    TurbineBuilder& SetGeneratorEfficiency(double efficiency);
+
+    /**
      * @brief Set the generator power
      * @param power initial generator power (W)
      * @return Reference to the builder for method chaining

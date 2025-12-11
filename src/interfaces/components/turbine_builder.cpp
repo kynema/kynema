@@ -119,6 +119,11 @@ TurbineBuilder& TurbineBuilder::SetGearBoxRatio(double ratio) {
     return *this;
 }
 
+TurbineBuilder& TurbineBuilder::SetGeneratorEfficiency(double efficiency) {
+    this->input.generator_efficiency = efficiency;
+    return *this;
+}
+
 TurbineBuilder& TurbineBuilder::SetGeneratorPower(double power) {
     this->input.generator_power = power;
     return *this;

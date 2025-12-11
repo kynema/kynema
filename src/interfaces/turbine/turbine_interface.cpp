@@ -525,13 +525,15 @@ void TurbineInterface::ApplyController(double t) {
 
     // Update generator power and torque
     const double generator_speed = controller->io.generator_speed_actual;
-    const double generator_torque = this->turbine.torque_control;
+    const double generator_torque =
+        this->turbine.torque_control / this->turbine.GetTurbineInput().gear_box_ratio;
     controller->io.horizontal_wind_speed = sqrt(
         (this->hub_inflow[0] * this->hub_inflow[0]) + (this->hub_inflow[1] * this->hub_inflow[1]) +
         (this->hub_inflow[2] * this->hub_inflow[2])
     );
     controller->io.generator_torque_actual = generator_torque;
-    controller->io.generator_power_actual = generator_speed * generator_torque;
+    controller->io.generator_power_actual =
+        generator_speed * generator_torque * this->turbine.GetTurbineInput().generator_efficiency;
     controller->io.pitch_blade1_actual = this->turbine.blade_pitch_control[0];
     controller->io.pitch_blade2_actual = this->turbine.blade_pitch_control[1];
     controller->io.pitch_blade3_actual = this->turbine.blade_pitch_control[2];
@@ -562,7 +564,8 @@ void TurbineInterface::ApplyController(double t) {
     // Call the controller
     controller->CallController();
 
-    this->turbine.torque_control = controller->io.generator_torque_command;
+    this->turbine.torque_control =
+        controller->io.generator_torque_command * this->turbine.GetTurbineInput().gear_box_ratio;
     this->turbine.blade_pitch_control[0] = controller->io.pitch_collective_command;
     this->turbine.blade_pitch_control[1] = controller->io.pitch_collective_command;
     this->turbine.blade_pitch_control[2] = controller->io.pitch_collective_command;
