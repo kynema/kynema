@@ -411,9 +411,9 @@ Variation of the damping forces are as follows:
 
    \underline{\underline{\mathcal{D}}}^\mathrm{D2} = \begin{bmatrix}
    \underline{\underline{0}} & \underline{\underline{0}} \\
-   \left( \widetilde{x}^{0\prime}+\widetilde{u}^\prime \right)
+   \left( \widetilde{x}^{0\prime}+\widetilde{u}^\prime \right)^T
    \underline{\underline{D}}_{11} & 
-   \left( \widetilde{x}^{0\prime}+\widetilde{u}^\prime \right)
+   \left( \widetilde{x}^{0\prime}+\widetilde{u}^\prime \right)^T
    \underline{\underline{D}}_{12} 
    \end{bmatrix}
 
@@ -423,7 +423,7 @@ Variation of the damping forces are as follows:
    \begin{bmatrix}
    \underline{\underline{0}} & \underline{\underline{0}} \\
    \underline{\underline{0}} & 
-   \left( \widetilde{x}^{0\prime}+\widetilde{u}^\prime \right)
+   \left( \widetilde{x}^{0\prime}+\widetilde{u}^\prime \right)^T
    \left(\underline{\underline{D}}_{11} 
    \widetilde{\underline{\underline{R}}\,\underline{x}^{r\prime}}
    - \underline{\underline{D}}_{12} \widetilde{\kappa} \right)
@@ -437,7 +437,7 @@ Variation of the damping forces are as follows:
    \left(-\widetilde{\underline{\underline{D}}_{11} \dot{\underline{\epsilon}}}  
    -\widetilde{\underline{\underline{D}}_{12} \dot{\underline{\kappa}}}  \right)
    & 
-   \left( \widetilde{x}^{0\prime}+\widetilde{u}^\prime \right)
+   \left( \widetilde{x}^{0\prime}+\widetilde{u}^\prime \right)^T
    \underline{\underline{D}}_{12} \widetilde{\omega}
    \end{bmatrix}
 
@@ -449,7 +449,7 @@ Variation of the damping forces are as follows:
    \underline{\underline{0}} 
    \\
    \underline{\underline{0}} & 
-   \left( \widetilde{x}^{0\prime}+\widetilde{u}^\prime \right)
+   \left( \widetilde{x}^{0\prime}+\widetilde{u}^\prime \right)^T
    \left(-\widetilde{\underline{\underline{D}}_{11} \underline{\dot{\epsilon}}}
    +\underline{\underline{D}}_{11} \widetilde{\dot{\epsilon}}
    -\widetilde{\underline{\underline{D}}_{12} \underline{\dot{\kappa}}}
