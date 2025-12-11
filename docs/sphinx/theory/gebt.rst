@@ -394,7 +394,7 @@ Variation of the damping forces are as follows:
    +\underline{\underline{D}}_{21} \widetilde{\dot{\epsilon}}
    -\widetilde{\underline{\underline{D}}_{22} \underline{\dot{\kappa}}}
    +\underline{\underline{D}}_{22} \widetilde{\dot{\kappa}}
-   +\underline{\underline{D}}_{22} \widetilde{\omega} 
+   +\underline{\underline{D}}_{21} \widetilde{\omega} 
    \widetilde{\underline{\underline{R}}\, \underline{x}^{r\prime} }
    - \underline{\underline{D}}_{22} \widetilde{\omega}\widetilde{\kappa}
    \end{bmatrix}
