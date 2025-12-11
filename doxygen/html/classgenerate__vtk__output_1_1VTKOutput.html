@@ -181,10 +181,10 @@ $(function() {
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aa3f8522ab3af7410d8e9b1e4d450f51c" id="r_aa3f8522ab3af7410d8e9b1e4d450f51c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgenerate__vtk__output_1_1VTKOutput.html#aa3f8522ab3af7410d8e9b1e4d450f51c">__init__</a> (self, str <a class="el" href="classgenerate__vtk__output_1_1VTKOutput.html#ae7057f0f64fd40f3adfac92fa64f7845">netcdf_path</a>, str connectivity_path)</td></tr>
 <tr class="separator:aa3f8522ab3af7410d8e9b1e4d450f51c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aab8ef32148338a52245fea3ba945b592" id="r_aab8ef32148338a52245fea3ba945b592"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgenerate__vtk__output_1_1VTKOutput.html#aab8ef32148338a52245fea3ba945b592">generate_visualization</a> (self, int timestep, str output_dir)</td></tr>
-<tr class="separator:aab8ef32148338a52245fea3ba945b592"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0c5be616271fdf3ee040d93b88b84848" id="r_a0c5be616271fdf3ee040d93b88b84848"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgenerate__vtk__output_1_1VTKOutput.html#a0c5be616271fdf3ee040d93b88b84848">visualize_all_timesteps</a> (self, str output_dir)</td></tr>
-<tr class="separator:a0c5be616271fdf3ee040d93b88b84848"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04804673d0f297e71dafb67cbad0b091" id="r_a04804673d0f297e71dafb67cbad0b091"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgenerate__vtk__output_1_1VTKOutput.html#a04804673d0f297e71dafb67cbad0b091">generate_visualization</a> (self, int timestep, str output_dir, int stride)</td></tr>
+<tr class="separator:a04804673d0f297e71dafb67cbad0b091"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a213517f68c110fd319b92566a04c2e" id="r_a5a213517f68c110fd319b92566a04c2e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgenerate__vtk__output_1_1VTKOutput.html#a5a213517f68c110fd319b92566a04c2e">visualize_all_timesteps</a> (self, str output_dir, int stride)</td></tr>
+<tr class="separator:a5a213517f68c110fd319b92566a04c2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -655,8 +655,8 @@ Args:
 </pre> 
 </div>
 </div>
-<a id="aab8ef32148338a52245fea3ba945b592" name="aab8ef32148338a52245fea3ba945b592"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aab8ef32148338a52245fea3ba945b592">&#9670;&#160;</a></span>generate_visualization()</h2>
+<a id="a04804673d0f297e71dafb67cbad0b091" name="a04804673d0f297e71dafb67cbad0b091"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04804673d0f297e71dafb67cbad0b091">&#9670;&#160;</a></span>generate_visualization()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -677,7 +677,13 @@ Args:
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">str&#160;</td>
-          <td class="paramname"><em>output_dir</em>&#160;</td>
+          <td class="paramname"><em>output_dir</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>stride</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -697,8 +703,8 @@ Args:
 </pre> 
 </div>
 </div>
-<a id="a0c5be616271fdf3ee040d93b88b84848" name="a0c5be616271fdf3ee040d93b88b84848"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0c5be616271fdf3ee040d93b88b84848">&#9670;&#160;</a></span>visualize_all_timesteps()</h2>
+<a id="a5a213517f68c110fd319b92566a04c2e" name="a5a213517f68c110fd319b92566a04c2e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a213517f68c110fd319b92566a04c2e">&#9670;&#160;</a></span>visualize_all_timesteps()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -713,7 +719,13 @@ Args:
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">str&#160;</td>
-          <td class="paramname"><em>output_dir</em>&#160;</td>
+          <td class="paramname"><em>output_dir</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>stride</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
