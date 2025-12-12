@@ -10,14 +10,16 @@ of a general FMD solver that can readily be applied to a wide range of systems.
 Kynema was designed with a narrow focus, namely to provide a lightweight, fast,
 accurate FMD solver for coupling to computational-fluid-dynamics (CFD) codes,
 especially the [ExaWind](https://github.com/Exawind) suite, for
-fluid-structure-interaction (FSI) simulations.  Kynema is equipped to model
-systems that can be represented as a collection of beams and rigid bodies that
-are connected through constraints.  Degrees of freedom are defined in the
-inertial/global frame of reference and include displacements and rotations
-(formally as rotation matrices, but stored as quaternions).  The underlying
-formulation is built on a Lie-group time integrator designed for index-3
-differential-algebraic equations, which is second-order accurate in time [Bruls
-et al., 2012](https://www.sciencedirect.com/science/article/pii/S0094114X11001510).
+fluid-structure-interaction (FSI) simulations.  
+
+Kynema is equipped to model systems that can be represented as a collection of
+beams and rigid bodies that are connected through constraints.  Degrees of
+freedom are defined in the inertial/global frame of reference and include
+displacements and rotations (formally as rotation matrices, but stored as
+quaternions).  The underlying formulation is built on a Lie-group time
+integrator designed for index-3 differential-algebraic equations, which is
+second-order accurate in time [Bruls et al.,
+2012](https://www.sciencedirect.com/science/article/pii/S0094114X11001510).
 Beam models are based on geometrically exact beam theory and are discretized as
 high-order spectral finite elements similar to those in BeamDyn [Wang et al.,
 2017](https://onlinelibrary.wiley.com/doi/full/10.1002/we.2101).  The governing
@@ -36,11 +38,13 @@ actuator-force CFD (like that in [Kuhn et al.,
 2025](https://onlinelibrary.wiley.com/doi/full/10.1002/we.70010).  In the
 latter, for actuator-line models, Kynema includes an internal blade-element
 solver that depends on user-provided lookup tables for coefficients of lift and
-drag, i.e., aerodynamic polars.  Kynema is written in C++ and leverages Kokkos
-and Kokkos-Kernels [KokkosEcosystem](https://kokkos.org/) as its performance
-portability layer enabling simulations on both CPU and GPU systems. The
-repository is equipped with extensive automated testing at the unit and
-regression/system levels including a reference megawatt-scale wind turbine.
+drag, i.e., aerodynamic polars.
+
+Kynema is written in C++ and leverages Kokkos and Kokkos-Kernels
+[KokkosEcosystem](https://kokkos.org/) as its performance portability layer
+enabling simulations on both CPU and GPU systems. The repository is equipped
+with extensive automated testing at the unit and regression/system levels
+including a reference megawatt-scale wind turbine.
 
 The following describes the high-level development objectives conceived for Kynema:
 - Kynema will follow modern software development best practices, 
