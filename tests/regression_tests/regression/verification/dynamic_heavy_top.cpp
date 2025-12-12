@@ -108,13 +108,14 @@ TEST(VerificationTest, Dynamic_HeavyTopSpinningUnderGravity) {
     // Maximum observed error is ~2.05e-4, rounding up to 5.e-4
     constexpr double tolerance{5e-4};
 
-    EXPECT_NEAR(state.q(mass_node_id, 0), benchmark_solution_at_2_seconds[0], tolerance);
-    EXPECT_NEAR(state.q(mass_node_id, 1), benchmark_solution_at_2_seconds[1], tolerance);
-    EXPECT_NEAR(state.q(mass_node_id, 2), benchmark_solution_at_2_seconds[2], tolerance);
-    EXPECT_NEAR(state.q(mass_node_id, 3), benchmark_solution_at_2_seconds[3], tolerance);
-    EXPECT_NEAR(state.q(mass_node_id, 4), benchmark_solution_at_2_seconds[4], tolerance);
-    EXPECT_NEAR(state.q(mass_node_id, 5), benchmark_solution_at_2_seconds[5], tolerance);
-    EXPECT_NEAR(state.q(mass_node_id, 6), benchmark_solution_at_2_seconds[6], tolerance);
+    auto qHost = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), state.q);
+    EXPECT_NEAR(qHost(mass_node_id, 0), benchmark_solution_at_2_seconds[0], tolerance);
+    EXPECT_NEAR(qHost(mass_node_id, 1), benchmark_solution_at_2_seconds[1], tolerance);
+    EXPECT_NEAR(qHost(mass_node_id, 2), benchmark_solution_at_2_seconds[2], tolerance);
+    EXPECT_NEAR(qHost(mass_node_id, 3), benchmark_solution_at_2_seconds[3], tolerance);
+    EXPECT_NEAR(qHost(mass_node_id, 4), benchmark_solution_at_2_seconds[4], tolerance);
+    EXPECT_NEAR(qHost(mass_node_id, 5), benchmark_solution_at_2_seconds[5], tolerance);
+    EXPECT_NEAR(qHost(mass_node_id, 6), benchmark_solution_at_2_seconds[6], tolerance);
 }
 
 }  // namespace kynema::tests
