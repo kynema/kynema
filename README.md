@@ -21,8 +21,8 @@ integrator designed for index-3 differential-algebraic equations, which is
 second-order accurate in time ([Bruls et al.,
 2012](https://www.sciencedirect.com/science/article/pii/S0094114X11001510)).
 Beam models are based on geometrically exact beam theory and are discretized as
-high-order spectral finite elements similar to those in BeamDyn [Wang et al.,
-2017](https://onlinelibrary.wiley.com/doi/full/10.1002/we.2101).  The governing
+high-order spectral finite elements similar to those in BeamDyn ([Wang et al.,
+2017](https://onlinelibrary.wiley.com/doi/full/10.1002/we.2101)).  The governing
 equations for a FMD system like a wind turbine constitute a highly nonlinear
 system of constrained partial-differential equations.  Kynema uses analytical
 Jacobians in the nonlinear-system solves in each time step.  Linear systems use
@@ -31,17 +31,17 @@ enabled. Ill conditioning of linear systems is mitigated with preconditioning
 described in [Bottasso et al,
 2008](https://link.springer.com/article/10.1007/s11044-007-9051-9).  Kynema is
 integrated with a simple open-source controller
-[ROSCO](https://github.com/NREL/ROSCO). There is an application programming
+([ROSCO](https://github.com/NREL/ROSCO)). There is an application programming
 interface (API) for coupling to geometry-resolved CFD (like that in [Sharma et
 al., 2023](https://onlinelibrary.wiley.com/doi/full/10.1002/we.2886)) and
 actuator-force CFD (like that in [Kuhn et al.,
-2025](https://onlinelibrary.wiley.com/doi/full/10.1002/we.70010).  In the
+2025](https://onlinelibrary.wiley.com/doi/full/10.1002/we.70010)).  In the
 latter, for actuator-line models, Kynema includes an internal blade-element
 solver that depends on user-provided lookup tables for coefficients of lift and
 drag, i.e., aerodynamic polars.
 
 Kynema is written in C++ and leverages Kokkos and Kokkos-Kernels
-[KokkosEcosystem](https://kokkos.org/) as its performance portability layer
+([KokkosEcosystem](https://kokkos.org/)) as its performance portability layer
 enabling simulations on both CPU and GPU systems. The repository is equipped
 with extensive automated testing at the unit and regression/system levels
 including a reference megawatt-scale wind turbine.
@@ -78,13 +78,13 @@ test (but possibly more) which fails without the fix but now passes.
 
 Kynema's CI process targets a number of different configurations for MacOS and
 Linux, but is not fully comprehensive of the platforms we support.  In your PR,
-please indicate on which platforms you've tested your contribution (i.e. Linux
+please indicate on which platforms you've tested your contribution (i.e., Linux
 x86 and CUDA v12).  This will let us know what other platforms we may have to
 test against in the review process.
 
 ## Development support
 
-Kynema is primarily developed by researchers at The National Laboratory of the
+Kynema is developed by researchers at The National Laboratory of the
 Rockies and Sandia National Laboratories under the support of the U.S.
 Department of Energy (DOE) Office of Critical Minerals and Energy Innovation
 (CMEI) Wind Energy Technology Office and the DOE Office of Science FLOWMAS
@@ -100,7 +100,7 @@ For more information and other integrated modeling software, see:
   Workshop](https://nrel.github.io/WETOStack/workshops/user_workshops_2024.html#high-fidelity-modeling)
 
 
-[Kynema Software Release Record SWR-23-07](https://www.osti.gov/biblio/1908664)
+[Kynema Software Release Record SWR-23-07](https://www.osti.gov/biblio/code-166281)
 
 [Documentation](https://kynema.github.io/kynema/)
 
