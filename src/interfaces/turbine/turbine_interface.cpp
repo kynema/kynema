@@ -47,6 +47,21 @@ TurbineInterface::TurbineInterface(
                 aerodynamics_input.aero_inputs[aerodynamics_input.airfoil_map[blade]]
             );
         }
+        // If there are more entries in the airfoil inputs than blades in the turbine
+        // Assume that the last mapping index is for the tower
+        if (aerodynamics_input.airfoil_map.size() > num_turbine_blades) {
+            auto tower_node_ids = std::vector<size_t>{};
+            std::ranges::transform(
+                turbine.tower.nodes, std::back_inserter(tower_node_ids),
+                [](const auto& node_data) {
+                    return node_data.id;
+                }
+            );
+            aero_inputs.emplace_back(
+                num_turbine_blades, tower_node_ids,
+                aerodynamics_input.aero_inputs[aerodynamics_input.airfoil_map.back()]
+            );
+        }
         aerodynamics = std::make_unique<components::Aerodynamics>(aero_inputs, model.GetNodes());
     }
     // Initialize controller if library path is provided
@@ -378,7 +393,9 @@ void TurbineInterface::WriteTimeSeriesData() const {
 
     // Aerodynamic data
     if (this->aerodynamics) {
-        const auto n_blades = this->aerodynamics->bodies.size();
+        // Loop over blades
+        const auto n_blades =
+            std::min(this->aerodynamics->bodies.size(), this->turbine.blades.size());
         for (auto i : std::views::iota(0U, n_blades)) {
             const auto& body = this->aerodynamics->bodies[i];
             for (auto j : std::views::iota(0U, body.loads.size())) {
