@@ -23,4 +23,4 @@ limits.
    heavytop
    dynamic-composite
    iea15mw-blade
-
+   actuator-line-benchmark
