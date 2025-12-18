@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Actuator-line benchmark: NREL 5MW Turbine &mdash; Kynema 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Kynema Publications" href="../publications.html" />
+    <link rel="prev" title="Dynamic bending of the IEA 15 MW reference wind turbine blade" href="iea15mw-blade.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Kynema
+              <img src="../_static/oturb_logo_v2.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../user/user.html">User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../theory/index.html">Theory Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/index.html">Developer Documentation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Benchmark Testing</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#verification-overview">Verification Overview</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="rollup.html">Static rollup of an isotropic beam</a></li>
+<li class="toctree-l3"><a class="reference internal" href="composite.html">Static bending of a straight composite beam</a></li>
+<li class="toctree-l3"><a class="reference internal" href="curved.html">Static bending of a curved beam</a></li>
+<li class="toctree-l3"><a class="reference internal" href="twisted.html">Static bending of a twisted beam</a></li>
+<li class="toctree-l3"><a class="reference internal" href="heavytop.html">Heavy Top Dynamic Problem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamic-composite.html">Dynamic bending of a straight composite beam</a></li>
+<li class="toctree-l3"><a class="reference internal" href="iea15mw-blade.html">Dynamic bending of the IEA 15 MW reference wind turbine blade</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Actuator-line benchmark: NREL 5MW Turbine</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#simulation-cases">Simulation cases</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#turbine-results">Turbine results</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#blade-loading-profiles">Blade loading profiles</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../publications.html">Kynema Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../acknowledgement.html">Acknowledgements</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Kynema</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Benchmark Testing</a></li>
+      <li class="breadcrumb-item active">Actuator-line benchmark: NREL 5MW Turbine</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/testing/actuator-line-benchmark.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="actuator-line-benchmark-nrel-5mw-turbine">
+<span id="sec-actuator-line-benchmark"></span><h1>Actuator-line benchmark: NREL 5MW Turbine<a class="headerlink" href="#actuator-line-benchmark-nrel-5mw-turbine" title="Permalink to this heading"></a></h1>
+<p>This page documents results from an actuator-line CFD benchmark based on the NREL 5MW reference
+wind turbine, as defined in the ExaWind benchmark repository. The benchmark models a single NREL
+5MW turbine using an actuator-line representation within a slightly convective, unstable
+atmospheric boundary layer (ABL).</p>
+<p>Fully coupled fluid–structure interaction (FSI) simulations performed with Kynema–AMR-Wind are
+compared against the OpenFAST–AMR-Wind reference solution. The purpose of this benchmark is to
+assess consistency in predicted turbine-level performance and spanwise aerodynamic quantities
+between the two simulation frameworks.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Complete details of the benchmark definition, simulation setup, inflow, and
+post-processing steps are provided in the ExaWind Benchmarks documentation:
+<a class="reference external" href="https://exawind.github.io/exawind-benchmarks/amr-wind/actuator_line/NREL5MW_ALM_BD/README.html">ExaWind Benchmarks (Actuator-line NREL 5MW in a convectively unstable ABL)</a>.</p>
+</div>
+<div class="section" id="simulation-cases">
+<h2>Simulation cases<a class="headerlink" href="#simulation-cases" title="Permalink to this heading"></a></h2>
+<p>The figures below compare multiple simulation configurations, identified in the legends as follows:</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Legend label</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>OpenFAST</strong></p></td>
+<td><p>Unchanged ExaWind benchmark case (OpenFAST–AMR-Wind).</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>OF no twr</strong></p></td>
+<td><p>Benchmark case with tower aerodynamic points disabled.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Kynema</strong></p></td>
+<td><p>Kynema–AMR-Wind using the same time step as OpenFAST.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Kyn. 10dt</strong></p></td>
+<td><p>Kynema–AMR-Wind using 10× the OpenFAST time step (2 Kynema steps per AMR-Wind step).</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Kyn. 20dt</strong></p></td>
+<td><p>Kynema–AMR-Wind using 20× the OpenFAST time step (1 Kynema step per AMR-Wind step).</p></td>
+</tr>
+</tbody>
+</table>
+<p>The “OF, no damp,twr” case is included to isolate differences arising from damping treatment and
+tower aerodynamics. The larger time-step cases (Kyn. 10dt, Kyn. 20dt) demonstrate Kynema’s ability
+to maintain accuracy and stability with larger time steps.</p>
+</div>
+<div class="section" id="turbine-results">
+<h2>Turbine results<a class="headerlink" href="#turbine-results" title="Permalink to this heading"></a></h2>
+<p>This section compares time histories of turbine performance quantities from Kynema and OpenFAST.
+The quantities shown include generator power, rotor thrust, rotor speed, blade pitch, and rotor
+torque. These signals reflect both the mean operating state of the turbine and its unsteady
+response to turbulent inflow and control actions.</p>
+<p>Overall, Kynema predictions closely match the OpenFAST reference results, demonstrating consistent
+aeroelastic behavior at the turbine level.</p>
+<div class="figure align-center" id="id1">
+<a class="reference internal image-reference" href="../_images/T0_GenPwr.png"><img alt="Generator power comparison between Kynema and OpenFAST" src="../_images/T0_GenPwr.png" style="width: 90%;" /></a>
+<p class="caption"><span class="caption-number">10 </span><span class="caption-text">Generator power comparison between Kynema and OpenFAST.</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</div>
+<div class="figure align-center" id="id2">
+<a class="reference internal image-reference" href="../_images/T0_RotThrust.png"><img alt="Rotor thrust comparison between Kynema and OpenFAST" src="../_images/T0_RotThrust.png" style="width: 90%;" /></a>
+<p class="caption"><span class="caption-number">11 </span><span class="caption-text">Rotor thrust comparison between Kynema and OpenFAST.</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+</div>
+<div class="figure align-center" id="id3">
+<a class="reference internal image-reference" href="../_images/T0_RotSpeed.png"><img alt="Rotor speed comparison between Kynema and OpenFAST" src="../_images/T0_RotSpeed.png" style="width: 90%;" /></a>
+<p class="caption"><span class="caption-number">12 </span><span class="caption-text">Rotor speed comparison between Kynema and OpenFAST.</span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
+</div>
+<div class="figure align-center" id="id4">
+<a class="reference internal image-reference" href="../_images/T0_BldPitch1.png"><img alt="Blade pitch comparison between Kynema and OpenFAST" src="../_images/T0_BldPitch1.png" style="width: 90%;" /></a>
+<p class="caption"><span class="caption-number">13 </span><span class="caption-text">Blade pitch comparison between Kynema and OpenFAST.</span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
+</div>
+<div class="figure align-center" id="id5">
+<a class="reference internal image-reference" href="../_images/T0_RotTorq.png"><img alt="Rotor torque comparison between Kynema and OpenFAST" src="../_images/T0_RotTorq.png" style="width: 90%;" /></a>
+<p class="caption"><span class="caption-number">14 </span><span class="caption-text">Rotor torque comparison between Kynema and OpenFAST.</span><a class="headerlink" href="#id5" title="Permalink to this image"></a></p>
+</div>
+</div>
+<div class="section" id="blade-loading-profiles">
+<h2>Blade loading profiles<a class="headerlink" href="#blade-loading-profiles" title="Permalink to this heading"></a></h2>
+<p>To further assess the actuator-line implementation, we compare spanwise distributions of sectional
+blade quantities. The results show close agreement between Kynema and OpenFAST for angle of attack,
+normal and tangential force coefficients, and sectional force components.</p>
+<div class="figure align-center" id="id6">
+<a class="reference internal image-reference" href="../_images/T0_AOA.png"><img alt="Angle of attack comparison between Kynema and OpenFAST" src="../_images/T0_AOA.png" style="width: 90%;" /></a>
+<p class="caption"><span class="caption-number">15 </span><span class="caption-text">Angle of attack comparison between Kynema and OpenFAST.</span><a class="headerlink" href="#id6" title="Permalink to this image"></a></p>
+</div>
+<div class="figure align-center" id="id7">
+<a class="reference internal image-reference" href="../_images/T0_CnCt.png"><img alt="Normal/tangential coefficient comparison between Kynema and OpenFAST" src="../_images/T0_CnCt.png" style="width: 90%;" /></a>
+<p class="caption"><span class="caption-number">16 </span><span class="caption-text">Sectional normal/tangential coefficient comparison between Kynema and OpenFAST.</span><a class="headerlink" href="#id7" title="Permalink to this image"></a></p>
+</div>
+<div class="figure align-center" id="id8">
+<a class="reference internal image-reference" href="../_images/T0_FxiFyi.png"><img alt="Sectional force components comparison between Kynema and OpenFAST" src="../_images/T0_FxiFyi.png" style="width: 90%;" /></a>
+<p class="caption"><span class="caption-number">17 </span><span class="caption-text">Sectional force components comparison between Kynema and OpenFAST.</span><a class="headerlink" href="#id8" title="Permalink to this image"></a></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="iea15mw-blade.html" class="btn btn-neutral float-left" title="Dynamic bending of the IEA 15 MW reference wind turbine blade" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../publications.html" class="btn btn-neutral float-right" title="Kynema Publications" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023 - Present, MIT License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
