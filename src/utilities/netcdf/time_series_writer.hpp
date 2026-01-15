@@ -13,6 +13,9 @@ namespace kynema::util {
  */
 class TimeSeriesWriter {
 public:
+    /// Default buffer size (number of rows to accumulate before auto-flush, 0 = no buffering)
+    static constexpr size_t kDefaultBufferSize{0};
+
     /**
      * @brief Constructor to create a TimeSeriesWriter object for writing time-series data with a
      * single variable
@@ -21,6 +24,23 @@ public:
      * @param create Whether to create a new file or open an existing one
      */
     explicit TimeSeriesWriter(const std::string& file_path, bool create = true);
+
+    /**
+     * @brief Constructor to create a TimeSeriesWriter with predefined channels and buffering
+     *
+     * @param file_path Path to the output NetCDF file
+     * @param create Whether to create a new file or open an existing one
+     * @param channel_names Names of the channels (columns) stored in the time-series variable
+     * @param channel_units Optional units for each channel (same size as channel_names if provided)
+     * @param buffer_size Number of rows to buffer before auto-flush (0 = no buffering)
+     */
+    TimeSeriesWriter(
+        const std::string& file_path, bool create, const std::vector<std::string>& channel_names,
+        const std::vector<std::string>& channel_units = {}, size_t buffer_size = kDefaultBufferSize
+    );
+
+    /// @brief Destructor flushes any remaining buffered rows
+    ~TimeSeriesWriter();
 
     /**
      * @brief Writes multiple values for a time-series variable at a specific timestep
@@ -43,26 +63,6 @@ public:
     void WriteValueAtTimestep(
         const std::string& variable_name, size_t timestep, const double& value
     );
-
-    /// Default buffer size (number of rows to accumulate before auto-flush, 0 = no buffering)
-    static constexpr size_t kDefaultBufferSize{0};
-
-    /**
-     * @brief Constructor to create a TimeSeriesWriter with predefined channels and buffering
-     *
-     * @param file_path Path to the output NetCDF file
-     * @param create Whether to create a new file or open an existing one
-     * @param channel_names Names of the channels (columns) stored in the time-series variable
-     * @param channel_units Optional units for each channel (same size as channel_names if provided)
-     * @param buffer_size Number of rows to buffer before auto-flush (0 = no buffering)
-     */
-    TimeSeriesWriter(
-        const std::string& file_path, bool create, const std::vector<std::string>& channel_names,
-        const std::vector<std::string>& channel_units = {}, size_t buffer_size = kDefaultBufferSize
-    );
-
-    /// @brief Destructor flushes any remaining buffered rows
-    ~TimeSeriesWriter();
 
     /**
      * @brief Writes a full row (all channels) at a specific timestep
@@ -102,6 +102,7 @@ private:
     //-----------------------------------
     // channel output variables
     //-----------------------------------
+
     std::vector<std::string> channel_names_;
     std::vector<std::string> channel_units_;
     size_t num_channels_;

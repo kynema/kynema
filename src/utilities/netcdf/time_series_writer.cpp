@@ -11,42 +11,6 @@ TimeSeriesWriter::TimeSeriesWriter(const std::string& file_path, bool create)
     (void)file_.AddDimension("time", NC_UNLIMITED);  // Unlimited timesteps can be added
 }
 
-void TimeSeriesWriter::WriteValuesAtTimestep(
-    const std::string& variable_name, size_t timestep, std::span<const double> values
-) {
-    // Check if the variable already exists in the file
-    try {
-        (void)file_.GetVariableId(variable_name);
-    } catch (const std::runtime_error&) {
-        // Get the time dimension id
-        const int time_dim = file_.GetDimensionId("time");
-
-        // Get or create the value dimension id for this variable
-        const std::string value_dim_name = variable_name + "_dimension";
-        int value_dim{-1};
-        try {
-            value_dim = file_.GetDimensionId(value_dim_name);
-        } catch (const std::runtime_error&) {
-            value_dim = file_.AddDimension(value_dim_name, values.size());
-        }
-
-        // Add the variable to the file [time, value_dim]
-        const std::vector<int> dimensions = {time_dim, value_dim};
-        (void)file_.AddVariable<double>(variable_name, dimensions);
-    }
-
-    // Write the values to the time-series variable
-    const std::vector<size_t> start = {timestep, 0};
-    const std::vector<size_t> count = {1, values.size()};
-    file_.WriteVariableAt(variable_name, start, count, values);
-}
-
-void TimeSeriesWriter::WriteValueAtTimestep(
-    const std::string& variable_name, size_t timestep, const double& value
-) {
-    WriteValuesAtTimestep(variable_name, timestep, std::array{value});
-}
-
 TimeSeriesWriter::TimeSeriesWriter(
     const std::string& file_path, bool create, const std::vector<std::string>& channel_names,
     const std::vector<std::string>& channel_units, size_t buffer_size
@@ -121,6 +85,42 @@ TimeSeriesWriter::TimeSeriesWriter(
 TimeSeriesWriter::~TimeSeriesWriter() {
     // flush any remaining buffered rows before destructing the object
     this->Flush();
+}
+
+void TimeSeriesWriter::WriteValuesAtTimestep(
+    const std::string& variable_name, size_t timestep, std::span<const double> values
+) {
+    // Check if the variable already exists in the file
+    try {
+        (void)file_.GetVariableId(variable_name);
+    } catch (const std::runtime_error&) {
+        // Get the time dimension id
+        const int time_dim = file_.GetDimensionId("time");
+
+        // Get or create the value dimension id for this variable
+        const std::string value_dim_name = variable_name + "_dimension";
+        int value_dim{-1};
+        try {
+            value_dim = file_.GetDimensionId(value_dim_name);
+        } catch (const std::runtime_error&) {
+            value_dim = file_.AddDimension(value_dim_name, values.size());
+        }
+
+        // Add the variable to the file [time, value_dim]
+        const std::vector<int> dimensions = {time_dim, value_dim};
+        (void)file_.AddVariable<double>(variable_name, dimensions);
+    }
+
+    // Write the values to the time-series variable
+    const std::vector<size_t> start = {timestep, 0};
+    const std::vector<size_t> count = {1, values.size()};
+    file_.WriteVariableAt(variable_name, start, count, values);
+}
+
+void TimeSeriesWriter::WriteValueAtTimestep(
+    const std::string& variable_name, size_t timestep, const double& value
+) {
+    WriteValuesAtTimestep(variable_name, timestep, std::array{value});
 }
 
 void TimeSeriesWriter::WriteRowAtTimestep(size_t timestep, std::span<const double> row) {
