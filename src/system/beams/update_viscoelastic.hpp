@@ -11,7 +11,10 @@ struct UpdateViscoelastic {
     template <typename ValueType>
     using ConstView = typename View<ValueType>::const_type;
 
-    KOKKOS_FUNCTION static void invoke(double h, double tau_i, const ConstView<double[6]>& strain_dot_n, const ConstView<double[6]>& strain_dot_n1, const View<double[6]>& visco_hist) {
+    KOKKOS_FUNCTION static void invoke(
+        double h, double tau_i, const ConstView<double[6]>& strain_dot_n,
+        const ConstView<double[6]>& strain_dot_n1, const View<double[6]>& visco_hist
+    ) {
         const auto tmp = -1. * h / tau_i;
         const auto tmp_exp = Kokkos::exp(tmp);
         for (auto component = 0; component < 6; ++component) {
@@ -22,4 +25,4 @@ struct UpdateViscoelastic {
     }
 };
 
-}
+}  // namespace kynema::beams

@@ -5,8 +5,8 @@
 #include <KokkosBlas1_set.hpp>
 #include <Kokkos_Core.hpp>
 
-#include "math/vector_operations.hpp"
 #include "math/quaternion_operations.hpp"
+#include "math/vector_operations.hpp"
 
 namespace kynema::beams {
 
@@ -17,7 +17,11 @@ struct CalculateG_D2 {
     template <typename ValueType>
     using ConstView = typename View<ValueType>::const_type;
 
-    KOKKOS_FUNCTION static void invoke(const ConstView<double[4]>& r, const ConstView<double[3]>& xr_prime, const ConstView<double[3]>& u_prime, const ConstView<double[3]>& kappa, const ConstView<double[3][3]>& D, const View<double[6][6]>& G_D2) {
+    KOKKOS_FUNCTION static void invoke(
+        const ConstView<double[4]>& r, const ConstView<double[3]>& xr_prime,
+        const ConstView<double[3]>& u_prime, const ConstView<double[3]>& kappa,
+        const ConstView<double[3][3]>& D, const View<double[6][6]>& G_D2
+    ) {
         using NoTranspose = KokkosBatched::Trans::NoTranspose;
         using Transpose = KokkosBatched::Trans::Transpose;
         using Default = KokkosBatched::Algo::Gemm::Default;
@@ -59,4 +63,4 @@ struct CalculateG_D2 {
         GemmTN::invoke(1., tilde_xp_up, d_tmp, 0., G_D2_22);
     }
 };
-}
+}  // namespace kynema::beams

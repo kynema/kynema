@@ -12,7 +12,12 @@ struct CalculateForceFD2Viscoelastic {
     template <typename ValueType>
     using ConstView = typename View<ValueType>::const_type;
 
-    KOKKOS_FUNCTION static void invoke(double h, double tau_i, const ConstView<double[6][6]>& kv_i, const ConstView<double[6][6]>& rr0, const ConstView<double[6]>& strain_dot_n, const ConstView<double[6]>& strain_dot_n1, const ConstView<double[6]>& visco_hist, const View<double[6]>& FD1) {
+    KOKKOS_FUNCTION static void invoke(
+        double h, double tau_i, const ConstView<double[6][6]>& kv_i,
+        const ConstView<double[6][6]>& rr0, const ConstView<double[6]>& strain_dot_n,
+        const ConstView<double[6]>& strain_dot_n1, const ConstView<double[6]>& visco_hist,
+        const View<double[6]>& FD1
+    ) {
         using NoTranspose = KokkosBlas::Trans::NoTranspose;
         using Transpose = KokkosBlas::Trans::Transpose;
         using Default = KokkosBlas::Algo::Gemv::Default;
@@ -27,7 +32,9 @@ struct CalculateForceFD2Viscoelastic {
         auto visco_curr = View<double[6]>(visco_curr_data.data());
 
         for (auto component = 0; component < 6; ++component) {
-            visco_curr(component) = tmp_exp * visco_hist(component) + (h / 2.) * tmp_exp * strain_dot_n(component) + (h / 2.) * strain_dot_n1(component);
+            visco_curr(component) = tmp_exp * visco_hist(component) +
+                                    (h / 2.) * tmp_exp * strain_dot_n(component) +
+                                    (h / 2.) * strain_dot_n1(component);
         }
 
         auto fd_tmp_data = Kokkos::Array<double, 6>{};
@@ -39,4 +46,4 @@ struct CalculateForceFD2Viscoelastic {
     }
 };
 
-}
+}  // namespace kynema::beams

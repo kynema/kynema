@@ -16,7 +16,10 @@ struct CalculateD_D1 {
     template <typename ValueType>
     using ConstView = typename View<ValueType>::const_type;
 
-    KOKKOS_FUNCTION static void invoke(const ConstView<double[3]>& omega, const ConstView<double[6][6]>& D, const View<double[6][6]>& D_D1) {
+    KOKKOS_FUNCTION static void invoke(
+        const ConstView<double[3]>& omega, const ConstView<double[6][6]>& D,
+        const View<double[6][6]>& D_D1
+    ) {
         using NoTranspose = KokkosBatched::Trans::NoTranspose;
         using Default = KokkosBatched::Algo::Gemm::Default;
         using GemmNN = KokkosBatched::SerialGemm<NoTranspose, NoTranspose, Default>;
@@ -38,4 +41,4 @@ struct CalculateD_D1 {
         GemmNN::invoke(1., D22, tilde_omega, 0., D_D1_22);
     }
 };
-}
+}  // namespace kynema::beams

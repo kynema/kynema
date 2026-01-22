@@ -5,8 +5,8 @@
 #include <KokkosBlas1_set.hpp>
 #include <Kokkos_Core.hpp>
 
-#include "math/vector_operations.hpp"
 #include "math/quaternion_operations.hpp"
+#include "math/vector_operations.hpp"
 
 namespace kynema::beams {
 
@@ -17,7 +17,11 @@ struct CalculateG_D1 {
     template <typename ValueType>
     using ConstView = typename View<ValueType>::const_type;
 
-    KOKKOS_FUNCTION static void invoke(const ConstView<double[4]>& r, const ConstView<double[3]>& xr_prime, const ConstView<double[3]>& kappa, const ConstView<double[6][6]>& D, const View<double[6][6]>& G_D1) {
+    KOKKOS_FUNCTION static void invoke(
+        const ConstView<double[4]>& r, const ConstView<double[3]>& xr_prime,
+        const ConstView<double[3]>& kappa, const ConstView<double[6][6]>& D,
+        const View<double[6][6]>& G_D1
+    ) {
         using NoTranspose = KokkosBatched::Trans::NoTranspose;
         using Default = KokkosBatched::Algo::Gemm::Default;
         using GemmNN = KokkosBatched::SerialGemm<NoTranspose, NoTranspose, Default>;
@@ -45,9 +49,9 @@ struct CalculateG_D1 {
 
         auto D21 = subview(D, make_pair(3, 6), make_pair(0, 3));
         auto D22 = subview(D, make_pair(3, 6), make_pair(3, 6));
-        auto G_D1_22 = subview(G_D1, make_pair(3, 6), make_pair(3,6));
+        auto G_D1_22 = subview(G_D1, make_pair(3, 6), make_pair(3, 6));
         GemmNN::invoke(1., D21, r_xr_prime_tilde, 0., G_D1_22);
         GemmNN::invoke(-1., D22, kappa_tilde, 1., G_D1_22);
     }
 };
-}
+}  // namespace kynema::beams

@@ -23,4 +23,4 @@ struct CalculateForceFD1 {
     }
 };
 
-}
+}  // namespace kynema::beams

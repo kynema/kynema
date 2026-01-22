@@ -149,13 +149,14 @@ struct CalculateQuadraturePointValues {
             };
         parallel_for(qp_range, stiffness_quad_point_calculator);
 
-    /*
-        const auto dissipation_quad_point_calculator =
-            beams::CalculateDissipationQuadraturePointValues<DeviceType>{
-                element, qp_jacobian, shape_interp, shape_deriv, qp_r0_, qp_FD1, qp_FD2, qp_DD1, qp_DD2, qp_GD1, qp_GD2, qp_PD2, qp_KD1, qp_KD2
-            };
-        parallel_for(qp_range, dissipation_quad_point_calculator);
-      */
+        /*
+            const auto dissipation_quad_point_calculator =
+                beams::CalculateDissipationQuadraturePointValues<DeviceType>{
+                    element, qp_jacobian, shape_interp, shape_deriv, qp_r0_, qp_FD1, qp_FD2, qp_DD1,
+           qp_DD2, qp_GD1, qp_GD2, qp_PD2, qp_KD1, qp_KD2
+                };
+            parallel_for(qp_range, dissipation_quad_point_calculator);
+          */
         member.team_barrier();
 
         const auto residual_integrator = beams::IntegrateResidualVectorElement<DeviceType>{

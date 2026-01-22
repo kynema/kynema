@@ -14,7 +14,12 @@ struct CalculateStrainDot {
     template <typename ValueType>
     using ConstView = typename View<ValueType>::const_type;
 
-    KOKKOS_FUNCTION static void invoke(const ConstView<double[3]>& kappa, const ConstView<double[4]>& r, const ConstView<double[3]>& omega, const ConstView<double[3]>& u_dot_prime, const ConstView<double[3]>& omega_prime, const ConstView<double[3]>& xr_prime, const View<double[6]>& strain_dot) {
+    KOKKOS_FUNCTION static void invoke(
+        const ConstView<double[3]>& kappa, const ConstView<double[4]>& r,
+        const ConstView<double[3]>& omega, const ConstView<double[3]>& u_dot_prime,
+        const ConstView<double[3]>& omega_prime, const ConstView<double[3]>& xr_prime,
+        const View<double[6]>& strain_dot
+    ) {
         using NoTranspose = KokkosBlas::Trans::NoTranspose;
         using Transpose = KokkosBlas::Trans::Transpose;
         using Default = KokkosBlas::Algo::Gemv::Default;
@@ -42,4 +47,4 @@ struct CalculateStrainDot {
     }
 };
 
-}
+}  // namespace kynema::beams

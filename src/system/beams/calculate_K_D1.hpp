@@ -5,8 +5,8 @@
 #include <KokkosBlas1_set.hpp>
 #include <Kokkos_Core.hpp>
 
-#include "math/vector_operations.hpp"
 #include "math/quaternion_operations.hpp"
+#include "math/vector_operations.hpp"
 
 namespace kynema::beams {
 
@@ -17,7 +17,12 @@ struct CalculateK_D1 {
     template <typename ValueType>
     using ConstView = typename View<ValueType>::const_type;
 
-    KOKKOS_FUNCTION static void invoke(const ConstView<double[4]>& r, const ConstView<double[3]>& xr_prime, const ConstView<double[3]>& omega, const ConstView<double[3]>& kappa, const ConstView<double[3]>& eps_dot, const ConstView<double[3]>& kappa_dot, const ConstView<double[3][3]>& D, const View<double[6][6]>& K_D1) {
+    KOKKOS_FUNCTION static void invoke(
+        const ConstView<double[4]>& r, const ConstView<double[3]>& xr_prime,
+        const ConstView<double[3]>& omega, const ConstView<double[3]>& kappa,
+        const ConstView<double[3]>& eps_dot, const ConstView<double[3]>& kappa_dot,
+        const ConstView<double[3][3]>& D, const View<double[6][6]>& K_D1
+    ) {
         using NoTranspose = KokkosBatched::Trans::NoTranspose;
         using Transpose = KokkosBatched::Trans::Transpose;
         using Default = KokkosBatched::Algo::Gemm::Default;
@@ -87,9 +92,10 @@ struct CalculateK_D1 {
         auto K_D1_12 = subview(K_D1, make_pair(0, 3), make_pair(3, 6));
         GemmNN::invoke(1., D11_omega_tilde, r_xr_prime_tilde, 0., K_D1_12);
         GemmNN::invoke(-1., D12_omega_tilde, kappa_tilde, 1., K_D1_12);
-        for (auto i =  0; i < 3; ++i) {
+        for (auto i = 0; i < 3; ++i) {
             for (auto j = 0; j < 3; ++j) {
-                K_D1_12(i, j) += -D11_times_eps_dot_tilde(i, j) + D11_eps_dot_tilde(i, j) - D12_times_kappa_dot_tilde(i, j) + D12_kappa_dot_tilde(i, j);
+                K_D1_12(i, j) += -D11_times_eps_dot_tilde(i, j) + D11_eps_dot_tilde(i, j) -
+                                 D12_times_kappa_dot_tilde(i, j) + D12_kappa_dot_tilde(i, j);
             }
         }
 
@@ -130,9 +136,10 @@ struct CalculateK_D1 {
         GemmNN::invoke(-1., D22_omega_tilde, kappa_tilde, 1., K_D1_22);
         for (auto i = 0; i < 3; ++i) {
             for (auto j = 0; j < 3; ++j) {
-                K_D1_22(i, j) += -D21_times_eps_dot_tilde(i, j) + D21_eps_dot_tilde(i, j) - D22_times_kappa_dot_tilde(i, j) + D22_kappa_dot_tilde(i, j);
+                K_D1_22(i, j) += -D21_times_eps_dot_tilde(i, j) + D21_eps_dot_tilde(i, j) -
+                                 D22_times_kappa_dot_tilde(i, j) + D22_kappa_dot_tilde(i, j);
             }
         }
     }
 };
-}
+}  // namespace kynema::beams

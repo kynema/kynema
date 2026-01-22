@@ -14,7 +14,11 @@ struct CalculateForceFD2 {
     template <typename ValueType>
     using ConstView = typename View<ValueType>::const_type;
 
-    KOKKOS_FUNCTION static void invoke(const ConstView<double[6][6]>& D, const ConstView<double[3]>& xr_prime, const ConstView<double[3]>& u_prime, const ConstView<double[6]>& strain_dot, const View<double[6]>& FD2) {
+    KOKKOS_FUNCTION static void invoke(
+        const ConstView<double[6][6]>& D, const ConstView<double[3]>& xr_prime,
+        const ConstView<double[3]>& u_prime, const ConstView<double[6]>& strain_dot,
+        const View<double[6]>& FD2
+    ) {
         using NoTranspose = KokkosBlas::Trans::NoTranspose;
         using Transpose = KokkosBlas::Trans::Transpose;
         using Default = KokkosBlas::Algo::Gemv::Default;
@@ -49,4 +53,4 @@ struct CalculateForceFD2 {
     }
 };
 
-}
+}  // namespace kynema::beams
