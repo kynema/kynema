@@ -2,6 +2,7 @@
 
 #include <Kokkos_Core.hpp>
 
+#include "calculate_dissipation_quadrature_point_values.hpp"
 #include "calculate_inertial_quadrature_point_values.hpp"
 #include "calculate_stiffness_quadrature_point_values.hpp"
 #include "calculate_system_matrix.hpp"
@@ -91,6 +92,8 @@ struct CalculateQuadraturePointValues {
         const auto qp_Fi = View<double* [6]>(member.team_scratch(1), num_qps);
         const auto qp_Fe = View<double* [6]>(member.team_scratch(1), num_qps);
         const auto qp_Fg = View<double* [6]>(member.team_scratch(1), num_qps);
+        const auto qp_FD1 = View<double* [6]>(member.team_scratch(1), num_qps);
+        const auto qp_FD2 = View<double* [6]>(member.team_scratch(1), num_qps);
 
         const auto qp_Kuu = View<double* [6][6]>(member.team_scratch(1), num_qps);
         const auto qp_Puu = View<double* [6][6]>(member.team_scratch(1), num_qps);
@@ -99,6 +102,13 @@ struct CalculateQuadraturePointValues {
         const auto qp_Quu = View<double* [6][6]>(member.team_scratch(1), num_qps);
         const auto qp_Muu = View<double* [6][6]>(member.team_scratch(1), num_qps);
         const auto qp_Guu = View<double* [6][6]>(member.team_scratch(1), num_qps);
+        const auto qp_DD1 = View<double* [6][6]>(member.team_scratch(1), num_qps);
+        const auto qp_DD2 = View<double* [6][6]>(member.team_scratch(1), num_qps);
+        const auto qp_GD1 = View<double* [6][6]>(member.team_scratch(1), num_qps);
+        const auto qp_GD2 = View<double* [6][6]>(member.team_scratch(1), num_qps);
+        const auto qp_PD2 = View<double* [6][6]>(member.team_scratch(1), num_qps);
+        const auto qp_KD1 = View<double* [6][6]>(member.team_scratch(1), num_qps);
+        const auto qp_KD2 = View<double* [6][6]>(member.team_scratch(1), num_qps);
 
         const auto stiffness_matrix_terms =
             View<double** [6][6]>(member.team_scratch(1), num_nodes, num_nodes);
@@ -138,6 +148,14 @@ struct CalculateQuadraturePointValues {
                 node_u,  qp_Fc,       qp_Fd,        qp_Cuu,      qp_Ouu, qp_Puu,       qp_Quu
             };
         parallel_for(qp_range, stiffness_quad_point_calculator);
+
+    /*
+        const auto dissipation_quad_point_calculator =
+            beams::CalculateDissipationQuadraturePointValues<DeviceType>{
+                element, qp_jacobian, shape_interp, shape_deriv, qp_r0_, qp_FD1, qp_FD2, qp_DD1, qp_DD2, qp_GD1, qp_GD2, qp_PD2, qp_KD1, qp_KD2
+            };
+        parallel_for(qp_range, dissipation_quad_point_calculator);
+      */
         member.team_barrier();
 
         const auto residual_integrator = beams::IntegrateResidualVectorElement<DeviceType>{
