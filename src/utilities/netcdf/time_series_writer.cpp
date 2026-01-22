@@ -7,8 +7,8 @@
 namespace kynema::util {
 
 TimeSeriesWriter::TimeSeriesWriter(const std::string& file_path, bool create)
-    : file_(file_path, create) {
-    (void)file_.AddDimension("time", NC_UNLIMITED);  // Unlimited timesteps can be added
+    : file_(file_path, create), num_channels_{0}, buffer_size_{kDefaultBufferSize} {
+    (void)file_.AddDimension("time", NC_UNLIMITED);
 }
 
 TimeSeriesWriter::TimeSeriesWriter(

@@ -42,6 +42,13 @@ public:
     /// @brief Destructor flushes any remaining buffered rows
     ~TimeSeriesWriter();
 
+    // Rule of five -> explicitly delete the copy ctor, copy assignment operator,
+    // move ctor, and move assignment operator
+    TimeSeriesWriter(const TimeSeriesWriter&) = delete;
+    TimeSeriesWriter& operator=(const TimeSeriesWriter&) = delete;
+    TimeSeriesWriter(TimeSeriesWriter&&) = delete;
+    TimeSeriesWriter& operator=(TimeSeriesWriter&&) = delete;
+
     /**
      * @brief Writes multiple values for a time-series variable at a specific timestep
      *

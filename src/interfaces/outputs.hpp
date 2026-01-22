@@ -57,7 +57,7 @@ public:
         const std::vector<std::string>& time_series_channel_names,
         const std::vector<std::string>& time_series_channel_units = {},
         const std::vector<std::string>& enabled_state_prefixes = {"x", "u", "v", "a", "f"},
-        size_t buffer_size = util::NodeStateWriter::kDefaultBufferSize,
+        size_t node_state_buffer_size = util::NodeStateWriter::kDefaultBufferSize,
         size_t time_series_buffer_size = util::TimeSeriesWriter::kDefaultBufferSize
     );
 
