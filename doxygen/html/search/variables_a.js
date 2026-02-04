@@ -3,7 +3,7 @@ var searchData=
   ['k_0',['k',['../structkynema_1_1Springs.html#ac2d083012772c711481f70e4bd88ddba',1,'kynema::Springs']]],
   ['k_5f_1',['k_',['../structkynema_1_1springs_1_1CalculateQuadraturePointValues.html#ad5fe4b195e37ed274d9f7acb8baf388b',1,'kynema::springs::CalculateQuadraturePointValues']]],
   ['kcornerfreq_2',['kCornerFreq',['../namespacekynema_1_1util.html#a10499c98fdcbc9ed3327a7eeaf14ad8e',1,'kynema::util']]],
-  ['kdefaultbuffersize_3',['kDefaultBufferSize',['../classkynema_1_1util_1_1NodeStateWriter.html#a34284233b5253e3dbea7e03c09ffe009',1,'kynema::util::NodeStateWriter']]],
+  ['kdefaultbuffersize_3',['kdefaultbuffersize',['../classkynema_1_1util_1_1NodeStateWriter.html#a34284233b5253e3dbea7e03c09ffe009',1,'kynema::util::NodeStateWriter::kDefaultBufferSize'],['../classkynema_1_1util_1_1TimeSeriesWriter.html#a7c4c1e3436ca048ada63f2c58b17a4db',1,'kynema::util::TimeSeriesWriter::kDefaultBufferSize']]],
   ['kdefaultstringlength_4',['kDefaultStringLength',['../structkynema_1_1util_1_1SimulationControls.html#aa9d3a23d8acf876e98f5b305bf36e65f',1,'kynema::util::SimulationControls']]],
   ['kerrormessageslength_5',['kErrorMessagesLength',['../structkynema_1_1util_1_1ErrorHandling.html#a8829fe08499ce2a8645f72ed825829fd',1,'kynema::util::ErrorHandling']]],
   ['kinematic_5fviscosity_6',['kinematic_viscosity',['../structkynema_1_1util_1_1FluidProperties.html#a97ab36f8a14997ff2baae3bd0e986820',1,'kynema::util::FluidProperties']]],

@@ -6,7 +6,7 @@ var searchData=
   ['kanimation_3',['kAnimation',['../structkynema_1_1util_1_1VTKSettings.html#ae9a923f1b0f5ac1830f2b6e0f786bf63afa8c38a17c2acc9ae3e7870217c552d5',1,'kynema::util::VTKSettings']]],
   ['kbinary_4',['kBinary',['../structkynema_1_1util_1_1SimulationControls.html#ab99879bffe9cb15b62967d8589c4c049a212f9f34e4e151a9ba569c71e1aace47',1,'kynema::util::SimulationControls']]],
   ['kcornerfreq_5',['kCornerFreq',['../namespacekynema_1_1util.html#a10499c98fdcbc9ed3327a7eeaf14ad8e',1,'kynema::util']]],
-  ['kdefaultbuffersize_6',['kDefaultBufferSize',['../classkynema_1_1util_1_1NodeStateWriter.html#a34284233b5253e3dbea7e03c09ffe009',1,'kynema::util::NodeStateWriter']]],
+  ['kdefaultbuffersize_6',['kdefaultbuffersize',['../classkynema_1_1util_1_1TimeSeriesWriter.html#a7c4c1e3436ca048ada63f2c58b17a4db',1,'kynema::util::TimeSeriesWriter::kDefaultBufferSize'],['../classkynema_1_1util_1_1NodeStateWriter.html#a34284233b5253e3dbea7e03c09ffe009',1,'kynema::util::NodeStateWriter::kDefaultBufferSize']]],
   ['kdefaultstringlength_7',['kDefaultStringLength',['../structkynema_1_1util_1_1SimulationControls.html#aa9d3a23d8acf876e98f5b305bf36e65f',1,'kynema::util::SimulationControls']]],
   ['kdetailed_8',['kDetailed',['../structkynema_1_1util_1_1SimulationControls.html#adda234af694738a4ae6b9f23a475c1f3ade970de858c5ffbaccdc0250e117ea9c',1,'kynema::util::SimulationControls']]],
   ['kerrormessageslength_9',['kErrorMessagesLength',['../structkynema_1_1util_1_1ErrorHandling.html#a8829fe08499ce2a8645f72ed825829fd',1,'kynema::util::ErrorHandling']]],

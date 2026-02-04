@@ -191,6 +191,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aedbf26c6ffb64ee91c64df1c8e0d8f7b" id="r_aedbf26c6ffb64ee91c64df1c8e0d8f7b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1Outputs.html#aedbf26c6ffb64ee91c64df1c8e0d8f7b">Outputs</a> (const std::string &amp;output_file, size_t num_nodes, const std::string &amp;time_series_file=&quot;&quot;, const std::vector&lt; std::string &gt; &amp;enabled_state_prefixes={&quot;x&quot;, &quot;u&quot;, &quot;v&quot;, &quot;a&quot;, &quot;f&quot;}, size_t buffer_size=<a class="el" href="classkynema_1_1util_1_1NodeStateWriter.html#a34284233b5253e3dbea7e03c09ffe009">util::NodeStateWriter::kDefaultBufferSize</a>)</td></tr>
 <tr class="memdesc:aedbf26c6ffb64ee91c64df1c8e0d8f7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor taking an output file and location.  <br /></td></tr>
 <tr class="separator:aedbf26c6ffb64ee91c64df1c8e0d8f7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a68a3e5a0972580f6b987fcee81196d" id="r_a9a68a3e5a0972580f6b987fcee81196d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1Outputs.html#a9a68a3e5a0972580f6b987fcee81196d">Outputs</a> (const std::string &amp;output_file, size_t num_nodes, const std::string &amp;time_series_file, const std::vector&lt; std::string &gt; &amp;time_series_channel_names, const std::vector&lt; std::string &gt; &amp;time_series_channel_units={}, const std::vector&lt; std::string &gt; &amp;enabled_state_prefixes={&quot;x&quot;, &quot;u&quot;, &quot;v&quot;, &quot;a&quot;, &quot;f&quot;}, size_t node_state_buffer_size=<a class="el" href="classkynema_1_1util_1_1NodeStateWriter.html#a34284233b5253e3dbea7e03c09ffe009">util::NodeStateWriter::kDefaultBufferSize</a>, size_t time_series_buffer_size=<a class="el" href="classkynema_1_1util_1_1TimeSeriesWriter.html#a7c4c1e3436ca048ada63f2c58b17a4db">util::TimeSeriesWriter::kDefaultBufferSize</a>)</td></tr>
+<tr class="memdesc:a9a68a3e5a0972580f6b987fcee81196d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor with node state writer multi-channel time-series writer support.  <br /></td></tr>
+<tr class="separator:a9a68a3e5a0972580f6b987fcee81196d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa71238193443daecdd3fd15bed131482" id="r_aa71238193443daecdd3fd15bed131482"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classkynema_1_1util_1_1NodeStateWriter.html">util::NodeStateWriter</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1Outputs.html#aa71238193443daecdd3fd15bed131482">GetOutputWriter</a> ()</td></tr>
 <tr class="memdesc:aa71238193443daecdd3fd15bed131482"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a reference to the NodeStateWriter for direct usage.  <br /></td></tr>
 <tr class="separator:aa71238193443daecdd3fd15bed131482"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -201,8 +204,11 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a778d26801259ab43aa8e5c4f365de1c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write node state outputs to NetCDF file at specified timestep.  <br /></td></tr>
 <tr class="separator:a778d26801259ab43aa8e5c4f365de1c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8a86b8a6de065f98377b373f421c1cbf" id="r_a8a86b8a6de065f98377b373f421c1cbf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1Outputs.html#a8a86b8a6de065f98377b373f421c1cbf">WriteValueAtTimestep</a> (size_t timestep, const std::string &amp;name, double value)</td></tr>
-<tr class="memdesc:a8a86b8a6de065f98377b373f421c1cbf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write rotor time-series data at specified timestep.  <br /></td></tr>
+<tr class="memdesc:a8a86b8a6de065f98377b373f421c1cbf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write a single time-series value at specified timestep.  <br /></td></tr>
 <tr class="separator:a8a86b8a6de065f98377b373f421c1cbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43c2d2055c56b9aab2545b92006d6019" id="r_a43c2d2055c56b9aab2545b92006d6019"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1Outputs.html#a43c2d2055c56b9aab2545b92006d6019">WriteTimeSeriesRowAtTimestep</a> (size_t timestep, std::span&lt; const double &gt; row)</td></tr>
+<tr class="memdesc:a43c2d2055c56b9aab2545b92006d6019"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write a full row of time-series data at specified timestep.  <br /></td></tr>
+<tr class="separator:a43c2d2055c56b9aab2545b92006d6019"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afee9bcb1e8a943a36d9adc2dd7569bfe" id="r_afee9bcb1e8a943a36d9adc2dd7569bfe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1Outputs.html#afee9bcb1e8a943a36d9adc2dd7569bfe">Close</a> ()</td></tr>
 <tr class="memdesc:afee9bcb1e8a943a36d9adc2dd7569bfe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Manually close the underlying NetCDF files.  <br /></td></tr>
 <tr class="separator:afee9bcb1e8a943a36d9adc2dd7569bfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -229,7 +235,7 @@ Public Member Functions</h2></td></tr>
 </div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aedbf26c6ffb64ee91c64df1c8e0d8f7b" name="aedbf26c6ffb64ee91c64df1c8e0d8f7b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aedbf26c6ffb64ee91c64df1c8e0d8f7b">&#9670;&#160;</a></span>Outputs()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aedbf26c6ffb64ee91c64df1c8e0d8f7b">&#9670;&#160;</a></span>Outputs() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -280,6 +286,85 @@ Public Member Functions</h2></td></tr>
     <tr><td class="paramname">time_series_file</td><td>optional name of the file with time-series data (empty string = no time series will be written) </td></tr>
     <tr><td class="paramname">enabled_state_prefixes</td><td>which state component prefixes to enable for writing (default: all states i.e. {"x", "u", "v", "a", "f"}) </td></tr>
     <tr><td class="paramname">buffer_size</td><td>number of timesteps to buffer before auto-flush (default: 0 = no buffering) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a9a68a3e5a0972580f6b987fcee81196d" name="a9a68a3e5a0972580f6b987fcee81196d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a68a3e5a0972580f6b987fcee81196d">&#9670;&#160;</a></span>Outputs() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">kynema::interfaces::Outputs::Outputs </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>output_file</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>num_nodes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>time_series_file</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>time_series_channel_names</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>time_series_channel_units</em> = <code>{}</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>enabled_state_prefixes</em> = <code>{&quot;x&quot;,&#160;&quot;u&quot;,&#160;&quot;v&quot;,&#160;&quot;a&quot;,&#160;&quot;f&quot;}</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>node_state_buffer_size</em> = <code><a class="el" href="classkynema_1_1util_1_1NodeStateWriter.html#a34284233b5253e3dbea7e03c09ffe009">util::NodeStateWriter::kDefaultBufferSize</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>time_series_buffer_size</em> = <code><a class="el" href="classkynema_1_1util_1_1TimeSeriesWriter.html#a7c4c1e3436ca048ada63f2c58b17a4db">util::TimeSeriesWriter::kDefaultBufferSize</a></code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructor with node state writer multi-channel time-series writer support. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">output_file</td><td>name of the output file </td></tr>
+    <tr><td class="paramname">num_nodes</td><td>number of nodes to be written to the file </td></tr>
+    <tr><td class="paramname">time_series_file</td><td>name of the file with time-series data </td></tr>
+    <tr><td class="paramname">time_series_channel_names</td><td>names of the time-series channels (empty = single-value mode) </td></tr>
+    <tr><td class="paramname">time_series_channel_units</td><td>optional units for each channel </td></tr>
+    <tr><td class="paramname">enabled_state_prefixes</td><td>which state component prefixes to enable for writing </td></tr>
+    <tr><td class="paramname">node_state_buffer_size</td><td>number of timesteps to buffer for node states </td></tr>
+    <tr><td class="paramname">time_series_buffer_size</td><td>number of timesteps to buffer for time-series </td></tr>
   </table>
   </dd>
 </dl>
@@ -400,6 +485,43 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a43c2d2055c56b9aab2545b92006d6019" name="a43c2d2055c56b9aab2545b92006d6019"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a43c2d2055c56b9aab2545b92006d6019">&#9670;&#160;</a></span>WriteTimeSeriesRowAtTimestep()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema::interfaces::Outputs::WriteTimeSeriesRowAtTimestep </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>timestep</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::span&lt; const double &gt;&#160;</td>
+          <td class="paramname"><em>row</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Write a full row of time-series data at specified timestep. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">timestep</td><td>The timestep number to write data to </td></tr>
+    <tr><td class="paramname">row</td><td>Vector of values for all channels at this timestep </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a8a86b8a6de065f98377b373f421c1cbf" name="a8a86b8a6de065f98377b373f421c1cbf"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8a86b8a6de065f98377b373f421c1cbf">&#9670;&#160;</a></span>WriteValueAtTimestep()</h2>
 
@@ -432,7 +554,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Write rotor time-series data at specified timestep. </p>
+<p>Write a single time-series value at specified timestep. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">timestep</td><td>The timestep number to write data to </td></tr>

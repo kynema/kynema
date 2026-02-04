@@ -169,7 +169,9 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="classkynema_1_1util_1_1TimeSeriesWriter-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">kynema::util::TimeSeriesWriter Class Reference</div></div>
 </div><!--header-->
@@ -183,29 +185,67 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a176eb59e26bae01b2ac39fa89d246193" id="r_a176eb59e26bae01b2ac39fa89d246193"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1TimeSeriesWriter.html#a176eb59e26bae01b2ac39fa89d246193">TimeSeriesWriter</a> (const std::string &amp;file_path, bool create=true)</td></tr>
-<tr class="memdesc:a176eb59e26bae01b2ac39fa89d246193"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor to create a <a class="el" href="classkynema_1_1util_1_1TimeSeriesWriter.html" title="Class for writing time-series data to NetCDF file.">TimeSeriesWriter</a> object.  <br /></td></tr>
+<tr class="memdesc:a176eb59e26bae01b2ac39fa89d246193"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor to create a <a class="el" href="classkynema_1_1util_1_1TimeSeriesWriter.html" title="Class for writing time-series data to NetCDF file.">TimeSeriesWriter</a> object for writing time-series data with a single variable.  <br /></td></tr>
 <tr class="separator:a176eb59e26bae01b2ac39fa89d246193"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51e58645483937b42d0282f428a471f3" id="r_a51e58645483937b42d0282f428a471f3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1TimeSeriesWriter.html#a51e58645483937b42d0282f428a471f3">TimeSeriesWriter</a> (const std::string &amp;file_path, bool create, const std::vector&lt; std::string &gt; &amp;channel_names, const std::vector&lt; std::string &gt; &amp;channel_units={}, size_t buffer_size=<a class="el" href="classkynema_1_1util_1_1TimeSeriesWriter.html#a7c4c1e3436ca048ada63f2c58b17a4db">kDefaultBufferSize</a>)</td></tr>
+<tr class="memdesc:a51e58645483937b42d0282f428a471f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor to create a <a class="el" href="classkynema_1_1util_1_1TimeSeriesWriter.html" title="Class for writing time-series data to NetCDF file.">TimeSeriesWriter</a> with predefined channels and buffering.  <br /></td></tr>
+<tr class="separator:a51e58645483937b42d0282f428a471f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95db2e3162f51c644ee6128e7e4dbc3c" id="r_a95db2e3162f51c644ee6128e7e4dbc3c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1TimeSeriesWriter.html#a95db2e3162f51c644ee6128e7e4dbc3c">~TimeSeriesWriter</a> ()</td></tr>
+<tr class="memdesc:a95db2e3162f51c644ee6128e7e4dbc3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor flushes any remaining buffered rows.  <br /></td></tr>
+<tr class="separator:a95db2e3162f51c644ee6128e7e4dbc3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64cdfef1a822c4c8f4853ebc1b8372ab" id="r_a64cdfef1a822c4c8f4853ebc1b8372ab"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1TimeSeriesWriter.html#a64cdfef1a822c4c8f4853ebc1b8372ab">TimeSeriesWriter</a> (const <a class="el" href="classkynema_1_1util_1_1TimeSeriesWriter.html">TimeSeriesWriter</a> &amp;)=delete</td></tr>
+<tr class="separator:a64cdfef1a822c4c8f4853ebc1b8372ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a659f7bb7775485ff245da2f965b1c38a" id="r_a659f7bb7775485ff245da2f965b1c38a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema_1_1util_1_1TimeSeriesWriter.html">TimeSeriesWriter</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1TimeSeriesWriter.html#a659f7bb7775485ff245da2f965b1c38a">operator=</a> (const <a class="el" href="classkynema_1_1util_1_1TimeSeriesWriter.html">TimeSeriesWriter</a> &amp;)=delete</td></tr>
+<tr class="separator:a659f7bb7775485ff245da2f965b1c38a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81c269b9d9735b30131cabc3e9aa7583" id="r_a81c269b9d9735b30131cabc3e9aa7583"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1TimeSeriesWriter.html#a81c269b9d9735b30131cabc3e9aa7583">TimeSeriesWriter</a> (<a class="el" href="classkynema_1_1util_1_1TimeSeriesWriter.html">TimeSeriesWriter</a> &amp;&amp;)=delete</td></tr>
+<tr class="separator:a81c269b9d9735b30131cabc3e9aa7583"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adfc1b0944722327b65bab832edd2bdad" id="r_adfc1b0944722327b65bab832edd2bdad"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema_1_1util_1_1TimeSeriesWriter.html">TimeSeriesWriter</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1TimeSeriesWriter.html#adfc1b0944722327b65bab832edd2bdad">operator=</a> (<a class="el" href="classkynema_1_1util_1_1TimeSeriesWriter.html">TimeSeriesWriter</a> &amp;&amp;)=delete</td></tr>
+<tr class="separator:adfc1b0944722327b65bab832edd2bdad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7e699812892e7777ddb2462ff67e2461" id="r_a7e699812892e7777ddb2462ff67e2461"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1TimeSeriesWriter.html#a7e699812892e7777ddb2462ff67e2461">WriteValuesAtTimestep</a> (const std::string &amp;variable_name, size_t timestep, std::span&lt; const double &gt; values)</td></tr>
 <tr class="memdesc:a7e699812892e7777ddb2462ff67e2461"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes multiple values for a time-series variable at a specific timestep.  <br /></td></tr>
 <tr class="separator:a7e699812892e7777ddb2462ff67e2461"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae4846993f8f81129bd8ab79e215366dd" id="r_ae4846993f8f81129bd8ab79e215366dd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1TimeSeriesWriter.html#ae4846993f8f81129bd8ab79e215366dd">WriteValueAtTimestep</a> (const std::string &amp;variable_name, size_t timestep, const double &amp;value)</td></tr>
 <tr class="memdesc:ae4846993f8f81129bd8ab79e215366dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes a single value for a time-series variable at a specific timestep.  <br /></td></tr>
 <tr class="separator:ae4846993f8f81129bd8ab79e215366dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a74b047f7273e5ca79e9347ce2f2d6832" id="r_a74b047f7273e5ca79e9347ce2f2d6832"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classkynema_1_1util_1_1NetCdfFile.html">NetCdfFile</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1TimeSeriesWriter.html#a74b047f7273e5ca79e9347ce2f2d6832">GetFile</a> () const</td></tr>
-<tr class="memdesc:a74b047f7273e5ca79e9347ce2f2d6832"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the NetCDF file object.  <br /></td></tr>
-<tr class="separator:a74b047f7273e5ca79e9347ce2f2d6832"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4bc21e2229c2257d38a2332fef9526a" id="r_af4bc21e2229c2257d38a2332fef9526a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1TimeSeriesWriter.html#af4bc21e2229c2257d38a2332fef9526a">WriteRowAtTimestep</a> (size_t timestep, std::span&lt; const double &gt; row)</td></tr>
+<tr class="memdesc:af4bc21e2229c2257d38a2332fef9526a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes a full row (all channels) at a specific timestep.  <br /></td></tr>
+<tr class="separator:af4bc21e2229c2257d38a2332fef9526a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a187d91c5878d5419e93aa888a6bf0fb3" id="r_a187d91c5878d5419e93aa888a6bf0fb3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1TimeSeriesWriter.html#a187d91c5878d5419e93aa888a6bf0fb3">Flush</a> ()</td></tr>
+<tr class="memdesc:a187d91c5878d5419e93aa888a6bf0fb3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flushes any remaining buffered rows.  <br /></td></tr>
+<tr class="separator:a187d91c5878d5419e93aa888a6bf0fb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0d75789d235e55a44257b0afc0862535" id="r_a0d75789d235e55a44257b0afc0862535"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1TimeSeriesWriter.html#a0d75789d235e55a44257b0afc0862535">Close</a> ()</td></tr>
-<tr class="memdesc:a0d75789d235e55a44257b0afc0862535"><td class="mdescLeft">&#160;</td><td class="mdescRight">Manually close the underlying NetCDF file.  <br /></td></tr>
+<tr class="memdesc:a0d75789d235e55a44257b0afc0862535"><td class="mdescLeft">&#160;</td><td class="mdescRight">Manually closes the underlying NetCDF file and flush any remaining buffered rows.  <br /></td></tr>
 <tr class="separator:a0d75789d235e55a44257b0afc0862535"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7fb368b9ecd75469f00e05582fac33de" id="r_a7fb368b9ecd75469f00e05582fac33de"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1TimeSeriesWriter.html#a7fb368b9ecd75469f00e05582fac33de">Open</a> ()</td></tr>
-<tr class="memdesc:a7fb368b9ecd75469f00e05582fac33de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Manually (re)open the underlying NetCDF file.  <br /></td></tr>
+<tr class="memdesc:a7fb368b9ecd75469f00e05582fac33de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Manually (re)opens the underlying NetCDF file.  <br /></td></tr>
 <tr class="separator:a7fb368b9ecd75469f00e05582fac33de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74b047f7273e5ca79e9347ce2f2d6832" id="r_a74b047f7273e5ca79e9347ce2f2d6832"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classkynema_1_1util_1_1NetCdfFile.html">NetCdfFile</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1TimeSeriesWriter.html#a74b047f7273e5ca79e9347ce2f2d6832">GetFile</a> () const</td></tr>
+<tr class="memdesc:a74b047f7273e5ca79e9347ce2f2d6832"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the NetCDF file object.  <br /></td></tr>
+<tr class="separator:a74b047f7273e5ca79e9347ce2f2d6832"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e3494fd33a633822e345f603a198406" id="r_a3e3494fd33a633822e345f603a198406"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; std::string &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1TimeSeriesWriter.html#a3e3494fd33a633822e345f603a198406">GetChannelNames</a> () const</td></tr>
+<tr class="memdesc:a3e3494fd33a633822e345f603a198406"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the channel names.  <br /></td></tr>
+<tr class="separator:a3e3494fd33a633822e345f603a198406"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb47cbcc41dfbb6b755dd674a0efe30e" id="r_abb47cbcc41dfbb6b755dd674a0efe30e"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; std::string &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1TimeSeriesWriter.html#abb47cbcc41dfbb6b755dd674a0efe30e">GetChannelUnits</a> () const</td></tr>
+<tr class="memdesc:abb47cbcc41dfbb6b755dd674a0efe30e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the channel units.  <br /></td></tr>
+<tr class="separator:abb47cbcc41dfbb6b755dd674a0efe30e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9093569698c27f76d7a1a169c26655bf" id="r_a9093569698c27f76d7a1a169c26655bf"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1TimeSeriesWriter.html#a9093569698c27f76d7a1a169c26655bf">GetNumChannels</a> () const</td></tr>
+<tr class="memdesc:a9093569698c27f76d7a1a169c26655bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the number of channels.  <br /></td></tr>
+<tr class="separator:a9093569698c27f76d7a1a169c26655bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24884d222d7f283ee10802b08847dd08" id="r_a24884d222d7f283ee10802b08847dd08"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1TimeSeriesWriter.html#a24884d222d7f283ee10802b08847dd08">GetBufferSize</a> () const</td></tr>
+<tr class="memdesc:a24884d222d7f283ee10802b08847dd08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the buffer size.  <br /></td></tr>
+<tr class="separator:a24884d222d7f283ee10802b08847dd08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:a7c4c1e3436ca048ada63f2c58b17a4db" id="r_a7c4c1e3436ca048ada63f2c58b17a4db"><td class="memItemLeft" align="right" valign="top">static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1TimeSeriesWriter.html#a7c4c1e3436ca048ada63f2c58b17a4db">kDefaultBufferSize</a> {0}</td></tr>
+<tr class="memdesc:a7c4c1e3436ca048ada63f2c58b17a4db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default buffer size (number of rows to accumulate before auto-flush, 0 = no buffering)  <br /></td></tr>
+<tr class="separator:a7c4c1e3436ca048ada63f2c58b17a4db"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class for writing time-series data to NetCDF file. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a176eb59e26bae01b2ac39fa89d246193" name="a176eb59e26bae01b2ac39fa89d246193"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a176eb59e26bae01b2ac39fa89d246193">&#9670;&#160;</a></span>TimeSeriesWriter()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a176eb59e26bae01b2ac39fa89d246193">&#9670;&#160;</a></span>TimeSeriesWriter() <span class="overload">[1/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -238,7 +278,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Constructor to create a <a class="el" href="classkynema_1_1util_1_1TimeSeriesWriter.html" title="Class for writing time-series data to NetCDF file.">TimeSeriesWriter</a> object. </p>
+<p>Constructor to create a <a class="el" href="classkynema_1_1util_1_1TimeSeriesWriter.html" title="Class for writing time-series data to NetCDF file.">TimeSeriesWriter</a> object for writing time-series data with a single variable. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">file_path</td><td>Path to the output NetCDF file </td></tr>
@@ -249,9 +289,85 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a id="a0d75789d235e55a44257b0afc0862535" name="a0d75789d235e55a44257b0afc0862535"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0d75789d235e55a44257b0afc0862535">&#9670;&#160;</a></span>Close()</h2>
+<a id="a51e58645483937b42d0282f428a471f3" name="a51e58645483937b42d0282f428a471f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51e58645483937b42d0282f428a471f3">&#9670;&#160;</a></span>TimeSeriesWriter() <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">kynema::util::TimeSeriesWriter::TimeSeriesWriter </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>file_path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>create</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>channel_names</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>channel_units</em> = <code>{}</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>buffer_size</em> = <code><a class="el" href="classkynema_1_1util_1_1TimeSeriesWriter.html#a7c4c1e3436ca048ada63f2c58b17a4db">kDefaultBufferSize</a></code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructor to create a <a class="el" href="classkynema_1_1util_1_1TimeSeriesWriter.html" title="Class for writing time-series data to NetCDF file.">TimeSeriesWriter</a> with predefined channels and buffering. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">file_path</td><td>Path to the output NetCDF file </td></tr>
+    <tr><td class="paramname">create</td><td>Whether to create a new file or open an existing one </td></tr>
+    <tr><td class="paramname">channel_names</td><td>Names of the channels (columns) stored in the time-series variable </td></tr>
+    <tr><td class="paramname">channel_units</td><td>Optional units for each channel (same size as channel_names if provided) </td></tr>
+    <tr><td class="paramname">buffer_size</td><td>Number of rows to buffer before auto-flush (0 = no buffering) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a95db2e3162f51c644ee6128e7e4dbc3c" name="a95db2e3162f51c644ee6128e7e4dbc3c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a95db2e3162f51c644ee6128e7e4dbc3c">&#9670;&#160;</a></span>~TimeSeriesWriter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">kynema::util::TimeSeriesWriter::~TimeSeriesWriter </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Destructor flushes any remaining buffered rows. </p>
+
+</div>
+</div>
+<a id="a64cdfef1a822c4c8f4853ebc1b8372ab" name="a64cdfef1a822c4c8f4853ebc1b8372ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64cdfef1a822c4c8f4853ebc1b8372ab">&#9670;&#160;</a></span>TimeSeriesWriter() <span class="overload">[3/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -260,20 +376,141 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void kynema::util::TimeSeriesWriter::Close </td>
+          <td class="memname">kynema::util::TimeSeriesWriter::TimeSeriesWriter </td>
           <td>(</td>
+          <td class="paramtype">const <a class="el" href="classkynema_1_1util_1_1TimeSeriesWriter.html">TimeSeriesWriter</a> &amp;&#160;</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Manually close the underlying NetCDF file. </p>
+</div>
+</div>
+<a id="a81c269b9d9735b30131cabc3e9aa7583" name="a81c269b9d9735b30131cabc3e9aa7583"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81c269b9d9735b30131cabc3e9aa7583">&#9670;&#160;</a></span>TimeSeriesWriter() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">kynema::util::TimeSeriesWriter::TimeSeriesWriter </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classkynema_1_1util_1_1TimeSeriesWriter.html">TimeSeriesWriter</a> &amp;&amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a0d75789d235e55a44257b0afc0862535" name="a0d75789d235e55a44257b0afc0862535"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d75789d235e55a44257b0afc0862535">&#9670;&#160;</a></span>Close()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema::util::TimeSeriesWriter::Close </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Manually closes the underlying NetCDF file and flush any remaining buffered rows. </p>
+
+</div>
+</div>
+<a id="a187d91c5878d5419e93aa888a6bf0fb3" name="a187d91c5878d5419e93aa888a6bf0fb3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a187d91c5878d5419e93aa888a6bf0fb3">&#9670;&#160;</a></span>Flush()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema::util::TimeSeriesWriter::Flush </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Flushes any remaining buffered rows. </p>
+
+</div>
+</div>
+<a id="a24884d222d7f283ee10802b08847dd08" name="a24884d222d7f283ee10802b08847dd08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24884d222d7f283ee10802b08847dd08">&#9670;&#160;</a></span>GetBufferSize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t kynema::util::TimeSeriesWriter::GetBufferSize </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the buffer size. </p>
+
+</div>
+</div>
+<a id="a3e3494fd33a633822e345f603a198406" name="a3e3494fd33a633822e345f603a198406"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e3494fd33a633822e345f603a198406">&#9670;&#160;</a></span>GetChannelNames()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt; std::string &gt; &amp; kynema::util::TimeSeriesWriter::GetChannelNames </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the channel names. </p>
+
+</div>
+</div>
+<a id="abb47cbcc41dfbb6b755dd674a0efe30e" name="abb47cbcc41dfbb6b755dd674a0efe30e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb47cbcc41dfbb6b755dd674a0efe30e">&#9670;&#160;</a></span>GetChannelUnits()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt; std::string &gt; &amp; kynema::util::TimeSeriesWriter::GetChannelUnits </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the channel units. </p>
 
 </div>
 </div>
@@ -292,7 +529,26 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Get the NetCDF file object. </p>
+<p>Gets the NetCDF file object. </p>
+
+</div>
+</div>
+<a id="a9093569698c27f76d7a1a169c26655bf" name="a9093569698c27f76d7a1a169c26655bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9093569698c27f76d7a1a169c26655bf">&#9670;&#160;</a></span>GetNumChannels()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t kynema::util::TimeSeriesWriter::GetNumChannels </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the number of channels. </p>
 
 </div>
 </div>
@@ -301,9 +557,6 @@ Public Member Functions</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void kynema::util::TimeSeriesWriter::Open </td>
@@ -312,14 +565,98 @@ Public Member Functions</h2></td></tr>
           <td></td>
         </tr>
       </table>
+</div><div class="memdoc">
+
+<p>Manually (re)opens the underlying NetCDF file. </p>
+
+</div>
+</div>
+<a id="a659f7bb7775485ff245da2f965b1c38a" name="a659f7bb7775485ff245da2f965b1c38a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a659f7bb7775485ff245da2f965b1c38a">&#9670;&#160;</a></span>operator=() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classkynema_1_1util_1_1TimeSeriesWriter.html">TimeSeriesWriter</a> &amp; kynema::util::TimeSeriesWriter::operator= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classkynema_1_1util_1_1TimeSeriesWriter.html">TimeSeriesWriter</a> &amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Manually (re)open the underlying NetCDF file. </p>
+</div>
+</div>
+<a id="adfc1b0944722327b65bab832edd2bdad" name="adfc1b0944722327b65bab832edd2bdad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adfc1b0944722327b65bab832edd2bdad">&#9670;&#160;</a></span>operator=() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classkynema_1_1util_1_1TimeSeriesWriter.html">TimeSeriesWriter</a> &amp; kynema::util::TimeSeriesWriter::operator= </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classkynema_1_1util_1_1TimeSeriesWriter.html">TimeSeriesWriter</a> &amp;&amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af4bc21e2229c2257d38a2332fef9526a" name="af4bc21e2229c2257d38a2332fef9526a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af4bc21e2229c2257d38a2332fef9526a">&#9670;&#160;</a></span>WriteRowAtTimestep()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema::util::TimeSeriesWriter::WriteRowAtTimestep </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>timestep</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::span&lt; const double &gt;&#160;</td>
+          <td class="paramname"><em>row</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Writes a full row (all channels) at a specific timestep. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">timestep</td><td>Current timestep index </td></tr>
+    <tr><td class="paramname">row</td><td>Vector of values to write at the current timestep </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -408,6 +745,31 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a7c4c1e3436ca048ada63f2c58b17a4db" name="a7c4c1e3436ca048ada63f2c58b17a4db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c4c1e3436ca048ada63f2c58b17a4db">&#9670;&#160;</a></span>kDefaultBufferSize</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr size_t kynema::util::TimeSeriesWriter::kDefaultBufferSize {0}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Default buffer size (number of rows to accumulate before auto-flush, 0 = no buffering) </p>
 
 </div>
 </div>
