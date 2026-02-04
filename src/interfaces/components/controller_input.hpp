@@ -13,34 +13,19 @@ namespace kynema::interfaces::components {
  * dynamic loading of controller implementations at runtime.
  */
 struct ControllerInput {
-    std::string shared_lib_path;      ///< Path to controller shared library
-    std::string function_name;        ///< Controller function name (default: "DISCON")
-    std::string input_file_path;      ///< Path to controller input file
-    std::string simulation_name;      ///< Simulation name for controller
-    bool yaw_control_enabled{false};  ///< Flag to enable yaw control
-
-    /// @brief Default constructor - creates empty controller input
-    ControllerInput() = default;
-
-    /**
-     * @brief Constructor with all parameters
-     * @param lib_path Path to the shared library containing the controller implementation
-     * @param func_name Name of the controller function to call (defaults to "DISCON")
-     * @param inp_file_path Optional path to controller-specific configuration file
-     * @param sim_name Optional identifier for the simulation run
-     */
-    explicit ControllerInput(
-        std::string lib_path, std::string func_name = "DISCON", std::string inp_file_path = "",
-        std::string sim_name = ""
-    )
-        : shared_lib_path(std::move(lib_path)),
-          function_name(std::move(func_name)),
-          input_file_path(std::move(inp_file_path)),
-          simulation_name(std::move(sim_name)) {}
-
-    /// @brief Check if controller is enabled (i.e. has library path)
-    /// @return If the shared library path is set
-    [[nodiscard]] bool IsEnabled() const { return !shared_lib_path.empty(); }
+    bool controller_enabled{false};      ///< Flag to enable controller
+    bool pitch_control_enabled{false};   ///< Flag to enable pitch control
+    bool torque_control_enabled{false};  ///< Flag to enable torque control
+    bool yaw_control_enabled{false};     ///< Flag to enable yaw control
+    double pitch_angle{0.0};             ///< Initial pitch angle (radians)
+    double yaw_angle{0.0};               ///< Initial yaw angle (radians)
+    double rotor_speed{0.0};             ///< Initial rotor speed (rad/s)
+    double power{0.0};                   ///< Initial power (W)
+    double gearbox_ratio{1.0};           ///< Gearbox ratio
+    std::string shared_lib_path;         ///< Path to controller shared library
+    std::string function_name;           ///< Controller function name (default: "DISCON")
+    std::string input_file_path;         ///< Path to controller input file
+    std::string output_file_path;         ///< Simulation name for controller
 };
 
 }  // namespace kynema::interfaces::components

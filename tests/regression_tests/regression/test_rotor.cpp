@@ -8,9 +8,10 @@
 #include <gtest/gtest.h>
 
 #include "iea15_rotor_data.hpp"
+#include "interfaces/components/controller.hpp"
+#include "interfaces/components/controller_input.hpp"
 #include "model/model.hpp"
 #include "step/step.hpp"
-#include "utilities/controllers/turbine_controller.hpp"
 
 namespace {
 auto ComputeIEA15NodeLocations() {
@@ -263,15 +264,18 @@ TEST(RotorTest, IEA15RotorController) {
     constexpr size_t num_blades = 3;
     auto model = CreateIEA15Blades<num_blades>(std::array{0., 0., omega});
 
-    // Add logic related to TurbineController
+    // Add logic related to Controller
     // provide shared library path and controller function name to clamp
     const auto shared_lib_path = std::string{"./DISCON_ROTOR_TEST_CONTROLLER.dll"};
     const auto controller_function_name = std::string{"PITCH_CONTROLLER"};
 
-    // create an instance of TurbineController
-    auto controller = util::TurbineController(
-        shared_lib_path, controller_function_name, "test_input_file", "test_output_file"
-    );
+    // create an instance of Controller
+    auto controller = interfaces::components::Controller(interfaces::components::ControllerInput{
+        .shared_lib_path = shared_lib_path,
+        .function_name = controller_function_name,
+        .input_file_path = "test_input_file",
+        .output_file_path = "test_output_file"
+    });
 
     // Pitch control variable
     auto blade_pitch_command = std::array<double*, 3>{

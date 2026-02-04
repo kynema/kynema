@@ -1,26 +1,27 @@
-#include "turbine_controller.hpp"
+#include "controller.hpp"
 
 #include <array>
 #include <functional>
 #include <iostream>
 #include <stdexcept>
 #include <string>
-#include <utility>
 
-namespace kynema::util {
+namespace kynema::interfaces::components {
 
-TurbineController::TurbineController(
-    std::string shared_lib_path, std::string controller_function_name, std::string input_file_path,
-    std::string output_file_path, double initial_yaw_angle, bool yaw_control_enabled
-)
+Controller::Controller(const ControllerInput& input)
     : io{},
-      input_file_path_(std::move(input_file_path)),
-      output_file_path_(std::move(output_file_path)),
-      shared_lib_path_(std::move(shared_lib_path)),
-      controller_function_name_(std::move(controller_function_name)),
-      lib_(shared_lib_path_, util::dylib::no_filename_decorations),
-      yaw_angle_command_(initial_yaw_angle),
-      yaw_control_enabled_(yaw_control_enabled) {
+      pitch_control_enabled_(input.pitch_control_enabled),
+      torque_control_enabled_(input.torque_control_enabled),
+      yaw_control_enabled_(input.yaw_control_enabled),
+      gearbox_ratio_(input.gearbox_ratio),
+      torque_command_(0.0),
+      pitch_angle_command_(input.pitch_angle),
+      yaw_angle_command_(input.yaw_angle),
+      input_file_path_(input.input_file_path),
+      output_file_path_(input.output_file_path),
+      shared_lib_path_(input.shared_lib_path),
+      controller_function_name_(input.function_name),
+      lib_(shared_lib_path_, util::dylib::no_filename_decorations) {
     // Make sure we have a valid shared library path + controller function name
     try {
         lib_.get_function<void(
@@ -39,11 +40,6 @@ TurbineController::TurbineController(
             this->controller_function_name_
         );
 
-    // Initialize some values required for calling the controller function
-    // std::fill(&this->swap_array_[0], &this->swap_array_[kSwapArraySize], 0.F);
-    // this->status_ = 0;                        // Status of the controller function call
-    // this->message_ = std::string(1024, ' ');  // 1024 characters for message
-
     // Map swap array to ControllerIO structure for easier access
     // this->io = reinterpret_cast<ControllerIO*>(this->swap_array_);
     this->io.infile_array_size = input_file_path_.size();
@@ -51,7 +47,7 @@ TurbineController::TurbineController(
     this->io.message_array_size = 1024U;
 }
 
-void TurbineController::CallController() {
+void Controller::CallController() {
     auto swap_array = std::array<float, kSwapArraySize>{};
     int status{};
     auto message = std::string(1024, ' ');
@@ -73,4 +69,4 @@ void TurbineController::CallController() {
     }
 }
 
-}  // namespace kynema::util
+}  // namespace kynema::interfaces::components

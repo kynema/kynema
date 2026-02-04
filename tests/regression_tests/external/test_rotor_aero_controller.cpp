@@ -15,7 +15,7 @@
 #include "regression/test_utilities.hpp"
 #include "step/step.hpp"
 #include "utilities/aerodynamics/aerodyn_inflow.hpp"
-#include "utilities/controllers/turbine_controller.hpp"
+#include "interfaces/components/controller.hpp"
 
 #include "Kynema_config.h"
 
@@ -196,7 +196,7 @@ TEST(Milestone, IEA15RotorAeroController) {
     //--------------------------------------------------------------------------
 
     // Create controller object and load shared library
-    auto controller = util::TurbineController(
+    auto controller = interfaces::components::Controller(
         controller_shared_lib_path, controller_function_name, controller_input_file_path,
         controller_simulation_name
     );

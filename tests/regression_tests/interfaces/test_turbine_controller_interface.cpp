@@ -256,7 +256,7 @@ TEST(TurbineInterfaceTest, IEA15_Controller) {
                                   .SetLibraryPath(controller_shared_lib_path)
                                   .SetFunctionName(controller_function_name)
                                   .SetInputFilePath(controller_input_file)
-                                  .SetControllerInput(controller_output_file);
+                                  .SetOutputFilePath(controller_output_file);
 
     //--------------------------------------------------------------------------
     // Interface

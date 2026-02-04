@@ -3,38 +3,51 @@
 #include <functional>
 #include <string>
 
-#include "utilities/controllers/controller_io.hpp"
+#include "controller_input.hpp"
+#include "controller_io.hpp"
 #include "vendor/dylib/dylib.hpp"
 
-namespace kynema::util {
+namespace kynema::interfaces::components {
 
 /// A turbine controller class that works as a wrapper around the shared library containing the
 /// controller logic
-class TurbineController {
+class Controller {
 public:
     /// Pointer to structure mapping swap array -> named fields i.e. ControllerIO
     ControllerIO io;
 
-    /// @brief Constructor for the TurbineController class
+    /// @brief Constructor for the Controller class
     /// @param shared_lib_path Path to the shared library containing the controller function
     /// @param controller_function_name Name of the controller function in the shared library
     /// @param input_file_path Path to the input file
     /// @param output_file_path Path to the output file
     /// @param initial_yaw_angle Initial yaw angle (rad)
     /// @param yaw_control_enabled Flag to enable yaw control
-    TurbineController(
-        std::string shared_lib_path, std::string controller_function_name,
-        std::string input_file_path, std::string output_file_path, double initial_yaw_angle = 0.0,
-        bool yaw_control_enabled = false
-    );
+    Controller(const ControllerInput& input);
 
     /// Method to call the controller function from the shared library
     void CallController();
+
+    /// @brief Get the commanded pitch angle (rad)
+    [[nodiscard]] double PitchAngleCommand() const { return this->pitch_angle_command_; }
+
+    /// @brief Get the commanded torque (Nm)
+    [[nodiscard]] double TorqueCommand() const { return this->torque_command_; }
 
     /// @brief Get the commanded yaw angle (rad) integrated from yaw rate command
     [[nodiscard]] double YawAngleCommand() const { return this->yaw_angle_command_; }
 
 private:
+    bool pitch_control_enabled_;   //< Flag to enable pitch control
+    bool torque_control_enabled_;  //< Flag to enable torque control
+    bool yaw_control_enabled_;     //< Flag to enable yaw control
+
+    double gearbox_ratio_;  // Gearbox ratio
+
+    double torque_command_;       //< Commanded torque (Nm)
+    double pitch_angle_command_;  //< Commanded pitch angle (rad)
+    double yaw_angle_command_;    //< Commanded yaw angle (rad) integrated from yaw rate command
+
     std::string input_file_path_;           //< Path to the input file
     std::string output_file_path_;          //< Path to the output file
     std::string shared_lib_path_;           //< Path to shared library
@@ -43,12 +56,6 @@ private:
     util::dylib lib_;  //< Handle to the shared library
     std::function<void(float*, int*, const char* const, char* const, char* const)>
         controller_function_;  //< Function pointer to the controller function
-
-    //< Commanded yaw angle (rad) integrated from yaw rate command
-    double yaw_angle_command_{0.0};
-
-    //< Flag to enable yaw control
-    bool yaw_control_enabled_{false};
 };
 
-}  // namespace kynema::util
+}  // namespace kynema::interfaces::components

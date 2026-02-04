@@ -2,7 +2,7 @@
 
 #include <array>
 
-namespace kynema::util {
+namespace kynema::interfaces::components {
 
 static constexpr int kSwapArraySize = 128;
 

@@ -3,6 +3,7 @@ target_sources(kynema_library
   aerodynamics.cpp
   beam.cpp
   beam_builder.cpp
+  controller.cpp
   inflow.cpp
   solution_builder.cpp
   turbine.cpp
@@ -16,6 +17,8 @@ install(FILES
         beam.hpp
         beam_builder.hpp
         beam_input.hpp
+        controller.hpp
+        controller_io.hpp
         controller_builder.hpp
         controller_input.hpp
         inflow.hpp

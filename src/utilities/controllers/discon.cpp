@@ -6,9 +6,8 @@
 #include <cstring>
 #include <fstream>
 #include <iterator>
-#include <ranges>
 
-#include "controller_io.hpp"
+#include "interfaces/components/controller_io.hpp"
 
 namespace kynema::util {
 
@@ -83,7 +82,7 @@ struct InternalState {
                                       // 2 and 2 1/2, rad/s. 1/2, rad/s
 };
 
-inline int SetupFirstCall(const ControllerIO& swap, InternalState& state, char* const avcMSG) {
+inline int SetupFirstCall(const interfaces::components::ControllerIO& swap, InternalState& state, char* const avcMSG) {
     // Inform users that we are using this user-defined routine:
     auto aviFAIL = 1;
     strncpy(
@@ -196,7 +195,7 @@ inline int SetupFirstCall(const ControllerIO& swap, InternalState& state, char* 
     return aviFAIL;
 }
 
-inline void FilterGeneratorSpeed(const ControllerIO& swap, InternalState& state) {
+inline void FilterGeneratorSpeed(const interfaces::components::ControllerIO& swap, InternalState& state) {
     // NOTE: This is a very simple recursive, single-pole, low-pass filter with exponential
     // smoothing
 
@@ -209,7 +208,7 @@ inline void FilterGeneratorSpeed(const ControllerIO& swap, InternalState& state)
         (1. - alpha) * swap.generator_speed_actual + alpha * state.generator_speed_filtered;
 }
 
-inline void VariableSpeedTorqueControl(ControllerIO& swap, InternalState& state) {
+inline void VariableSpeedTorqueControl(interfaces::components::ControllerIO& swap, InternalState& state) {
     auto elapsed_time = swap.time - state.torque_controller_latest;
 
     // Only perform the control calculations if the elapsed time is greater than or equal to
@@ -273,7 +272,7 @@ inline void VariableSpeedTorqueControl(ControllerIO& swap, InternalState& state)
     swap.generator_torque_command = state.generator_torque_lastest;  // Demanded generator torque
 }
 
-inline void PitchControl(ControllerIO& swap, InternalState& state) {
+inline void PitchControl(interfaces::components::ControllerIO& swap, InternalState& state) {
     const auto elapsed_time = swap.time - state.pitch_controller_latest;
 
     // Only perform the control calculations if the elapsed time is greater than or equal to
@@ -350,7 +349,7 @@ inline void PitchControl(ControllerIO& swap, InternalState& state) {
                                           // pitch
 }
 
-inline int ComputeControl(ControllerIO& swap, InternalState& state, char* const avcMSG) {
+inline int ComputeControl(interfaces::components::ControllerIO& swap, InternalState& state, char* const avcMSG) {
     // Abort if the user has not requested a pitch angle actuator (See Appendix A of Bladed
     // User's Guide)
     auto aviFAIL = 0;
@@ -420,8 +419,8 @@ void DISCON(
     static InternalState state;
 
     // Map swap from calling program to struct
-    ControllerIO swap;
-    auto swap_array = std::array<float, kSwapArraySize>{};
+    interfaces::components::ControllerIO swap;
+    auto swap_array = std::array<float, interfaces::components::kSwapArraySize>{};
     std::copy(avrSWAP, std::next(avrSWAP, 81), swap_array.begin());
     swap.CopyFromSwapArray(swap_array);
 

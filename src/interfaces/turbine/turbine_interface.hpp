@@ -10,7 +10,7 @@
 #include "interfaces/outputs.hpp"
 #include "model/model.hpp"
 #include "step/step_parameters.hpp"
-#include "utilities/controllers/turbine_controller.hpp"
+#include "interfaces/components/controller.hpp"
 
 namespace kynema::interfaces::components {
 struct SolutionInput;
@@ -129,6 +129,18 @@ public:
 
     void CloseOutputFile();
 
+    /**
+     * @brief Write checkpoint file of current state
+     * @param filename Name of the checkpoint file to write
+     */
+    void WriteCheckpointFile(const std::string& file_path) const;
+
+    /**
+     * @brief Read checkpoint file and restore state
+     * @param filename Name of the checkpoint file to read
+     */
+    void ReadCheckpointFile(const std::string& file_path);
+
 private:
     Model model;                    ///< Kynema class for model construction
     components::Turbine turbine;    ///< Turbine model input/output data
@@ -141,7 +153,7 @@ private:
     HostState<DeviceType> host_state;     ///< Host local copy of node state data
     HostConstraints<DeviceType> host_constraints;         ///< Host local copy of constraint data
     std::unique_ptr<Outputs> outputs;                     ///< handle to Output for writing to NetCDF
-    std::unique_ptr<util::TurbineController> controller;  ///< DISCON-style controller
+    std::unique_ptr<components::Controller> controller;   ///< DISCON-style controller
     std::unique_ptr<components::Aerodynamics> aerodynamics;  ///< Aerodynamics component
     std::array<double, 3> hub_inflow{0., 0., 0.};            ///< Inflow velocity at the hub node
 

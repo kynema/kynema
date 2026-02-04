@@ -4,8 +4,9 @@
 
 #include <gtest/gtest.h>
 
-#include "utilities/controllers/controller_io.hpp"
-#include "utilities/controllers/turbine_controller.hpp"
+#include "interfaces/components/controller.hpp"
+#include "interfaces/components/controller_input.hpp"
+#include "interfaces/components/controller_io.hpp"
 #include "vendor/dylib/dylib.hpp"
 
 namespace kynema::tests {
@@ -20,7 +21,7 @@ TEST(ControllerTest, DisconController) {
     const util::dylib lib("./DISCON.dll", util::dylib::no_filename_decorations);
     auto DISCON = lib.get_function<void(float*, int&, char*, char*, char*)>("DISCON");
 
-    util::ControllerIO swap;
+    interfaces::components::ControllerIO swap;
     swap.status = 0.;
     swap.time = 0.;
     swap.pitch_blade1_actual = 0.;
@@ -51,7 +52,7 @@ TEST(ControllerTest, DisconController) {
     swap.variable_slip_status = 0.;
     swap.variable_slip_demand = 0.;
 
-    auto avrSWAP = std::array<float, util::kSwapArraySize>{};
+    auto avrSWAP = std::array<float, interfaces::components::kSwapArraySize>{};
     swap.CopyToSwapArray(avrSWAP);
 
     // Expect demanded generator torque to be 0. before calling the controller
@@ -75,13 +76,18 @@ TEST(ControllerTest, DisconController) {
     EXPECT_FLOAT_EQ(avrSWAP[47], 0.);           // DemandedNacelleYawRate
 }
 
-TEST(ControllerTest, TurbineController) {
-    // Get a handle to the controller function via the TurbineController class and use it to
+TEST(ControllerTest, Controller) {
+    // Get a handle to the controller function via the Controller class and use it to
     // calculate the controller outputs
     const auto shared_lib_path = std::string{"./DISCON.dll"};
     const auto controller_function_name = std::string{"DISCON"};
 
-    auto controller = util::TurbineController(shared_lib_path, controller_function_name, "", "");
+    auto controller = interfaces::components::Controller(interfaces::components::ControllerInput{
+        .shared_lib_path = shared_lib_path,
+        .function_name = controller_function_name,
+        .input_file_path = "",
+        .output_file_path = ""
+    });
 
     controller.io.status = 0.;
     controller.io.time = 0.;
@@ -127,24 +133,34 @@ TEST(ControllerTest, TurbineController) {
     EXPECT_DOUBLE_EQ(controller.io.nacelle_yaw_rate_command, 0.);  // DemandedNacelleYawRate
 }
 
-TEST(ControllerTest, TurbineControllerExceptionInvalidSharedLibraryPath) {
+TEST(ControllerTest, ControllerExceptionInvalidSharedLibraryPath) {
     // Test case: invalid shared library path
     const auto shared_lib_path = std::string{"./INVALID.dll"};
     const auto controller_function_name = std::string{"DISCON"};
 
     EXPECT_THROW(
-        auto controller = util::TurbineController(shared_lib_path, controller_function_name, "", ""),
+        auto controller = interfaces::components::Controller(interfaces::components::ControllerInput{
+            .shared_lib_path = shared_lib_path,
+            .function_name = controller_function_name,
+            .input_file_path = "",
+            .output_file_path = ""
+        }),
         std::runtime_error
     );
 }
 
-TEST(ControllerTest, TurbineControllerExceptionInvalidControllerFunctionName) {
+TEST(ControllerTest, ControllerExceptionInvalidControllerFunctionName) {
     // Test case: invalid controller function name
     const auto shared_lib_path = std::string{"./DISCON.dll"};
     const auto controller_function_name = std::string{"INVALID"};
 
     EXPECT_THROW(
-        auto controller = util::TurbineController(shared_lib_path, controller_function_name, "", ""),
+        auto controller = interfaces::components::Controller(interfaces::components::ControllerInput{
+            .shared_lib_path = shared_lib_path,
+            .function_name = controller_function_name,
+            .input_file_path = "",
+            .output_file_path = ""
+        }),
         std::runtime_error
     );
 }

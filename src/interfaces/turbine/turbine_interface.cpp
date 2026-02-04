@@ -1,12 +1,15 @@
 #include "turbine_interface.hpp"
 
 #include <filesystem>
+#include <fstream>
 #include <numbers>
 #include <string>
 
 #include "interfaces/components/solution_input.hpp"
 #include "state/clone_state.hpp"
 #include "state/copy_state_data.hpp"
+#include "state/read_state_from_file.hpp"
+#include "state/write_state_to_file.hpp"
 #include "step/step.hpp"
 
 namespace kynema::interfaces {
@@ -65,13 +68,9 @@ TurbineInterface::TurbineInterface(
         aerodynamics = std::make_unique<components::Aerodynamics>(aero_inputs, model.GetNodes());
     }
     // Initialize controller if library path is provided
-    if (controller_input.IsEnabled()) {
+    if (controller_input.controller_enabled) {
         try {
-            controller = std::make_unique<util::TurbineController>(
-                controller_input.shared_lib_path, controller_input.function_name,
-                controller_input.input_file_path, controller_input.simulation_name,
-                turbine_input.nacelle_yaw_angle, controller_input.yaw_control_enabled
-            );
+            controller = std::make_unique<components::Controller>(controller_input);
 
             // Initialize controller with turbine and solution parameters
             InitializeController(turbine_input, solution_input);
@@ -612,4 +611,43 @@ void TurbineInterface::WriteOutput() {
     // Calculate rotor azimuth and speed -> write rotor time-series data
     this->WriteTimeSeriesData();
 }
+
+void TurbineInterface::WriteCheckpointFile(const std::string& file_path) const {
+    // Open checkpoint file for writing
+    std::ofstream checkpoint_file(file_path, std::ios::binary);
+    if (!checkpoint_file) {
+        throw std::runtime_error("Failed to open checkpoint file '" + file_path + "' for writing");
+    }
+
+    // Write state to checkpoint file
+    WriteStateToFile(checkpoint_file, this->state);
+
+    // If the controller is enabled
+    if (this->controller) {
+
+    }
+}
+
+void TurbineInterface::ReadCheckpointFile(const std::string& file_path) {
+    // Open checkpoint file for reading
+    std::ifstream checkpoint_file(file_path, std::ios::binary);
+    if (!checkpoint_file) {
+        throw std::runtime_error("Failed to open checkpoint file '" + file_path + "' for reading");
+    }
+
+    // Read state from checkpoint file
+    ReadStateFromFile(checkpoint_file, this->state);
+
+    // Update the host state with current node motion
+    this->host_state.CopyFromState(this->state);
+
+    // Update the turbine node motion based on the host state
+    this->turbine.GetMotion(this->host_state);
+
+    // If the controller is enabled
+    if (this->controller) {
+
+    }
+}
+
 }  // namespace kynema::interfaces
