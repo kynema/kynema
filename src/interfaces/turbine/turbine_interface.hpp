@@ -154,7 +154,7 @@ private:
      * - Index 0: Azimuth angle (radians)
      * - Index 1: Rotor speed (rad/s)
      */
-    void WriteTimeSeriesData() const;
+    void WriteTimeSeriesData();
 
     /**
      * @brief Initialize controller with turbine parameters and connect to constraints
@@ -164,6 +164,59 @@ private:
         const components::TurbineInput& turbine_input,
         const components::SolutionInput& solution_input
     );
+
+    //------------------------------------------
+    // support for time-series outputs
+    //------------------------------------------
+
+    struct TimeSeriesIndexMap {
+        // Basic simulation parameter and other misc. channels
+        size_t time_seconds{};                //< Time in seconds
+        size_t num_convergence_iterations{};  //< Number of convergence iterations
+        size_t convergence_error{};           //< Last convergence error
+        size_t azimuth_angle_degrees{};       //< Azimuth angle in degrees
+        size_t rotor_speed_rpm{};             //< Rotor speed in RPM
+
+        // Yaw position channel
+        size_t yaw_position_degrees{};  //< Yaw position in degrees
+
+        // Tower top and base state channels (contiguous groups, 3 entries each)
+        size_t tower_top_displacement_start{};  //< Start of [x, y, z] displacement
+        size_t tower_top_velocity_start{};      //< Start of [x, y, z] velocity
+        size_t tower_top_acceleration_start{};  //< Start of [x, y, z] acceleration
+        size_t tower_base_force_start{};        //< Start of [Fx, Fy, Fz] forces
+        size_t tower_base_moment_start{};       //< Start of [Mx, My, Mz] moments
+
+        // Rotor thrust channel
+        size_t rotor_thrust_kN{};  //< Thrust in kiloNewtons
+
+        // Blade data channels (dynamic per blade: root forces and moments, pitch angle, tip
+        // velocities and rotational velocities)
+        static constexpr size_t kBladeChannelStride{13};  //< Channels per blade
+        std::vector<size_t> blade_channel_offsets;        //< Base offset per blade
+
+        // Controller channels (optional: generator torque and power)
+        bool has_controller_channels{false};  //< True if controller channels are present
+        size_t generator_torque_kNm{};        //< Generator torque in kiloNewton-meters
+        size_t generator_power_kW{};          //< Generator power in kiloWatts
+
+        // Hub inflow valocity channels
+        size_t hub_inflow_start{};  //< Start of [x, y, z] inflow velocity
+
+        // Aerodynamic channels (dynamic per blade and section:
+        // relative velocity, angle of attack, lift coefficient, drag coefficient, moment
+        // coefficient, force in x-direction, forces (3) and moments (3)
+        static constexpr size_t kAeroChannelStride{11};  //< Vrel, Alpha, Cn, Ct, Cm, Fxi-Mzi
+        std::vector<size_t> aero_body_offsets;           //< Base offset per body
+        std::vector<size_t> aero_section_counts;         //< Number of sections per body
+    };
+
+    bool time_series_enabled_{false};
+    std::vector<std::string> time_series_channels_;
+    TimeSeriesIndexMap index_map_{};
+    std::vector<double> time_series_row_buffer_;
+
+    void BuildTimeSeriesSchema();
 };
 
 }  // namespace kynema::interfaces

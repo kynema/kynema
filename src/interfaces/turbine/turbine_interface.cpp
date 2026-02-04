@@ -1,5 +1,6 @@
 #include "turbine_interface.hpp"
 
+#include <algorithm>
 #include <filesystem>
 #include <numbers>
 #include <string>
@@ -98,11 +99,18 @@ TurbineInterface::TurbineInterface(
             outputs_config.output_file_path + "/mesh_connectivity.yaml"
         );
 
-        // Initialize outputs with both node state and time-series files
+        // Build time-series schema
+        this->BuildTimeSeriesSchema();
+
+        // Initialize outputs with the NEW constructor that supports channels
         this->outputs = std::make_unique<Outputs>(
             outputs_config.output_file_path + "/turbine_interface.nc", this->state.num_system_nodes,
             outputs_config.output_file_path + "/turbine_time_series.nc",
-            outputs_config.output_state_prefixes, outputs_config.buffer_size
+            this->time_series_channels_,  // Channel names from schema
+            std::vector<std::string>{},   // Empty units (units are in channel names)
+            outputs_config.output_state_prefixes,
+            outputs_config.buffer_size,  // Node state buffer
+            outputs_config.buffer_size   // Time-series buffer
         );
 
         // Write initial state
@@ -111,6 +119,141 @@ TurbineInterface::TurbineInterface(
         // Write initial time-series data (test values)
         this->WriteTimeSeriesData();
     }
+}
+
+void TurbineInterface::BuildTimeSeriesSchema() {
+    //------------------------------------------
+    // lambdas
+    //------------------------------------------
+    // lambda to add a channel to the time-series schema
+    auto add = [&](const std::string& name) -> size_t {
+        this->time_series_channels_.push_back(name);
+        return this->time_series_channels_.size() - 1;
+    };
+
+    // lambda to pad a number with leading zeros to 3 digits (e.g., "AB1N001")
+    auto pad_3_digits = [](size_t value) -> std::string {
+        auto s = std::to_string(value);
+        if (s.size() >= 3) {
+            return s;  // Already 3 digits or more
+        }
+        return std::string(3 - s.size(), '0') + s;  // Pad with leading zeros
+    };
+
+    //------------------------------------------
+    // build the time-series schema
+    //------------------------------------------
+
+    this->time_series_channels_.clear();      // clear the channel names
+    this->time_series_enabled_ = false;       // disable time-series output
+    this->index_map_ = TimeSeriesIndexMap{};  // clear the index map
+
+    // Basic simulation parameter and other misc. channels
+    this->index_map_.time_seconds = add("Time (s)");
+    this->index_map_.num_convergence_iterations = add("ConvIter (-)");
+    this->index_map_.convergence_error = add("ConvError (-)");
+    this->index_map_.azimuth_angle_degrees = add("Azimuth (deg)");
+    this->index_map_.rotor_speed_rpm = add("RotSpeed (rpm)");
+    this->index_map_.yaw_position_degrees = add("YawPzn (deg)");
+
+    // Tower top channels
+    this->index_map_.tower_top_displacement_start = add("YawBrTDxt (m)");
+    add("YawBrTDyt (m)");
+    add("YawBrTDzt (m)");
+
+    this->index_map_.tower_top_velocity_start = add("YawBrTVxp (m_s)");
+    add("YawBrTVyp (m_s)");
+    add("YawBrTVzp (m_s)");
+
+    this->index_map_.tower_top_acceleration_start = add("YawBrTAxp (m_s^2)");
+    add("YawBrTAyp (m_s^2)");
+    add("YawBrTAzp (m_s^2)");
+
+    // Tower base loads
+    this->index_map_.tower_base_force_start = add("TwrBsFxt (kN)");
+    add("TwrBsFyt (kN)");
+    add("TwrBsFzt (kN)");
+
+    this->index_map_.tower_base_moment_start = add("TwrBsMxt (kN-m)");
+    add("TwrBsMyt (kN-m)");
+    add("TwrBsMzt (kN-m)");
+
+    // Rotor thrust
+    this->index_map_.rotor_thrust_kN = add("RotThrust (kN)");
+
+    // Blade channels
+    this->index_map_.blade_channel_offsets.clear();
+    this->index_map_.blade_channel_offsets.reserve(this->turbine.blades.size());
+    for (size_t i = 0; i < this->turbine.blades.size(); ++i) {
+        const auto blade_number = std::to_string(i + 1);
+        this->index_map_.blade_channel_offsets.push_back(this->time_series_channels_.size());
+
+        add("B" + blade_number + "RootFxr (N)");
+        add("B" + blade_number + "RootFyr (N)");
+        add("B" + blade_number + "RootFzr (N)");
+        add("B" + blade_number + "RootMxr (N-m)");
+        add("B" + blade_number + "RootMyr (N-m)");
+        add("B" + blade_number + "RootMzr (N-m)");
+        add("BldPitch" + blade_number + " (deg)");
+        add("B" + blade_number + "TipTVXg (m_s)");
+        add("B" + blade_number + "TipTVYg (m_s)");
+        add("B" + blade_number + "TipTVZg (m_s)");
+        add("B" + blade_number + "TipRVXg (deg_s)");
+        add("B" + blade_number + "TipRVYg (deg_s)");
+        add("B" + blade_number + "TipRVZg (deg_s)");
+    }
+
+    // Controller channels
+    this->index_map_.has_controller_channels = (this->controller != nullptr);
+    if (this->index_map_.has_controller_channels) {
+        this->index_map_.generator_torque_kNm = add("GenTq (kN-m)");
+        this->index_map_.generator_power_kW = add("GenPwr (kW)");
+    }
+
+    // Hub inflow velocities channels
+    this->index_map_.hub_inflow_start = add("WindHubVelX (m_s)");
+    add("WindHubVelY (m_s)");
+    add("WindHubVelZ (m_s)");
+
+    // Aerodynamic channels
+    this->index_map_.aero_body_offsets.clear();
+    this->index_map_.aero_section_counts.clear();
+
+    if (this->aerodynamics) {
+        const size_t n_bodies =
+            std::min(this->aerodynamics->bodies.size(), this->turbine.blades.size());
+
+        this->index_map_.aero_body_offsets.reserve(n_bodies);
+        this->index_map_.aero_section_counts.reserve(n_bodies);
+
+        for (size_t body_index = 0; body_index < n_bodies; ++body_index) {
+            const auto& body = this->aerodynamics->bodies[body_index];
+
+            this->index_map_.aero_body_offsets.push_back(this->time_series_channels_.size());
+            this->index_map_.aero_section_counts.push_back(body.loads.size());
+
+            for (size_t section_index = 0; section_index < body.loads.size(); ++section_index) {
+                const auto blade_number = std::to_string(body_index + 1);
+                const auto node_label = "AB" + blade_number + "N" + pad_3_digits(section_index + 1);
+
+                add(node_label + "Vrel (m_s)");
+                add(node_label + "Alpha (deg)");
+                add(node_label + "Cn (-)");
+                add(node_label + "Ct (-)");
+                add(node_label + "Cm (-)");
+                add(node_label + "Fxi (N_m)");
+                add(node_label + "Fyi (N_m)");
+                add(node_label + "Fzi (N_m)");
+                add(node_label + "Mxi (N_m)");
+                add(node_label + "Myi (N_m)");
+                add(node_label + "Mzi (N_m)");
+            }
+        }
+    }
+
+    // Allocate row buffer
+    this->time_series_row_buffer_.assign(this->time_series_channels_.size(), 0.);
+    this->time_series_enabled_ = true;
 }
 
 void TurbineInterface::UpdateAerodynamicLoads(
@@ -190,110 +333,71 @@ void TurbineInterface::RestoreState() {
     this->turbine.GetMotion(this->host_state);
 }
 
-void TurbineInterface::WriteTimeSeriesData() const {
-    if (!this->outputs) {
+void TurbineInterface::WriteTimeSeriesData() {
+    if (!this->outputs || !this->time_series_enabled_) {
         return;
     }
 
-    using namespace std::string_literals;
-    constexpr auto rpm_to_radps{0.104719755};            // RPM to rad/s
-    constexpr auto deg_to_rad{std::numbers::pi / 180.};  // Degrees to radians
+    // initialize the time-series row buffer
+    std::fill(this->time_series_row_buffer_.begin(), this->time_series_row_buffer_.end(), 0.);
 
-    const auto time_step = static_cast<double>(this->state.time_step);
-    this->outputs->WriteValueAtTimestep(
-        this->state.time_step, "Time (s)", time_step * this->parameters.h
-    );
-    const auto num_iterations = static_cast<double>(this->solver.convergence_err.size());
-    this->outputs->WriteValueAtTimestep(this->state.time_step, "ConvIter (-)", num_iterations);
-    this->outputs->WriteValueAtTimestep(
-        this->state.time_step, "ConvError (-)",
-        this->solver.convergence_err.empty() ? 0. : this->solver.convergence_err.back()
-    );
-    this->outputs->WriteValueAtTimestep(
-        this->state.time_step, "Azimuth (deg)",
-        this->CalculateAzimuthAngle() * 180. / std::numbers::pi
-    );
-    this->outputs->WriteValueAtTimestep(
-        this->state.time_step, "RotSpeed (rpm)", this->CalculateRotorSpeed() / rpm_to_radps
-    );
+    //------------------------------------------
+    // conversion constants
+    //------------------------------------------
+    constexpr auto rpm_to_radps{0.104719755};
+    constexpr auto rad_to_deg{180. / std::numbers::pi};
+    constexpr auto deg_to_rad{std::numbers::pi / 180.};
 
-    // Yaw angle
-    this->outputs->WriteValueAtTimestep(
-        this->state.time_step, "YawPzn (deg)", this->turbine.yaw_control * 180. / std::numbers::pi
-    );
+    //------------------------------------------
+    // write the time-series data
+    //------------------------------------------
 
-    // Tower top displacements
-    this->outputs->WriteValueAtTimestep(
-        this->state.time_step, "YawBrTDxt (m)", this->turbine.yaw_bearing_node.displacement[0]
-    );
-    this->outputs->WriteValueAtTimestep(
-        this->state.time_step, "YawBrTDyt (m)", this->turbine.yaw_bearing_node.displacement[1]
-    );
-    this->outputs->WriteValueAtTimestep(
-        this->state.time_step, "YawBrTDzt (m)", this->turbine.yaw_bearing_node.displacement[2]
-    );
+    const size_t time_step{this->state.time_step};
 
-    // Tower top velocities
-    this->outputs->WriteValueAtTimestep(
-        this->state.time_step, "YawBrTVxp (m_s)", this->turbine.yaw_bearing_node.velocity[0]
-    );
-    this->outputs->WriteValueAtTimestep(
-        this->state.time_step, "YawBrTVyp (m_s)", this->turbine.yaw_bearing_node.velocity[1]
-    );
-    this->outputs->WriteValueAtTimestep(
-        this->state.time_step, "YawBrTVzp (m_s)", this->turbine.yaw_bearing_node.velocity[2]
-    );
+    // Basic simulation parameter and other misc. channels
+    this->time_series_row_buffer_[this->index_map_.time_seconds] =
+        static_cast<double>(time_step) * this->parameters.h;
+    this->time_series_row_buffer_[this->index_map_.num_convergence_iterations] =
+        static_cast<double>(this->solver.convergence_err.size());
+    this->time_series_row_buffer_[this->index_map_.convergence_error] =
+        this->solver.convergence_err.empty() ? 0. : this->solver.convergence_err.back();
+    this->time_series_row_buffer_[this->index_map_.azimuth_angle_degrees] =
+        this->CalculateAzimuthAngle() * rad_to_deg;
+    this->time_series_row_buffer_[this->index_map_.rotor_speed_rpm] =
+        this->CalculateRotorSpeed() / rpm_to_radps;
+    this->time_series_row_buffer_[this->index_map_.yaw_position_degrees] =
+        this->turbine.yaw_control * rad_to_deg;
 
-    // Tower top accelerations
-    this->outputs->WriteValueAtTimestep(
-        this->state.time_step, "YawBrTAxp (m_s^2)", this->turbine.yaw_bearing_node.acceleration[0]
-    );
-    this->outputs->WriteValueAtTimestep(
-        this->state.time_step, "YawBrTAyp (m_s^2)", this->turbine.yaw_bearing_node.acceleration[1]
-    );
-    this->outputs->WriteValueAtTimestep(
-        this->state.time_step, "YawBrTAzp (m_s^2)", this->turbine.yaw_bearing_node.acceleration[2]
-    );
-
-    // Tower base forces
-    this->outputs->WriteValueAtTimestep(
-        this->state.time_step, "TwrBsFxt (kN)", this->turbine.tower_base.loads[0] / 1000.
-    );
-    this->outputs->WriteValueAtTimestep(
-        this->state.time_step, "TwrBsFyt (kN)", this->turbine.tower_base.loads[1] / 1000.
-    );
-    this->outputs->WriteValueAtTimestep(
-        this->state.time_step, "TwrBsFzt (kN)", this->turbine.tower_base.loads[2] / 1000.
-    );
-
-    // Tower base moments
-    this->outputs->WriteValueAtTimestep(
-        this->state.time_step, "TwrBsMxt (kN-m)", this->turbine.tower_base.loads[3] / 1000.
-    );
-    this->outputs->WriteValueAtTimestep(
-        this->state.time_step, "TwrBsMyt (kN-m)", this->turbine.tower_base.loads[4] / 1000.
-    );
-    this->outputs->WriteValueAtTimestep(
-        this->state.time_step, "TwrBsMzt (kN-m)", this->turbine.tower_base.loads[5] / 1000.
-    );
+    // Tower top and base state data (3 values each)
+    for (size_t i = 0; i < 3; ++i) {
+        this->time_series_row_buffer_[this->index_map_.tower_top_displacement_start + i] =
+            this->turbine.yaw_bearing_node.displacement[i];
+        this->time_series_row_buffer_[this->index_map_.tower_top_velocity_start + i] =
+            this->turbine.yaw_bearing_node.velocity[i];
+        this->time_series_row_buffer_[this->index_map_.tower_top_acceleration_start + i] =
+            this->turbine.yaw_bearing_node.acceleration[i];
+        this->time_series_row_buffer_[this->index_map_.tower_base_force_start + i] =
+            this->turbine.tower_base.loads[i] / 1000.;
+        this->time_series_row_buffer_[this->index_map_.tower_base_moment_start + i] =
+            this->turbine.tower_base.loads[i + 3] / 1000.;
+    }
 
     // Rotor thrust
     {
-        const auto position = this->turbine.azimuth_node.position;
+        const auto& position = this->turbine.azimuth_node.position;
         const auto q_global_local =
             Eigen::Quaternion<double>(position[3], position[4], position[5], position[6]).inverse();
         const auto shaft_loads =
             Eigen::Matrix<double, 3, 1>(this->turbine.shaft_base_to_azimuth.loads.data());
         const auto shaft_forces = q_global_local._transformVector(shaft_loads);
-        this->outputs->WriteValueAtTimestep(
-            this->state.time_step, "RotThrust (kN)", shaft_forces[0] / 1000.
-        );
+        this->time_series_row_buffer_[this->index_map_.rotor_thrust_kN] = shaft_forces[0] / 1000.;
     }
 
-    // Blade based data
-    for (auto i : std::views::iota(0U, this->turbine.blades.size())) {
-        // Get rotation from global to blade local coordinates
-        const auto position = this->turbine.blades[i].nodes[0].position;
+    // Blade data
+    for (size_t i = 0; i < this->turbine.blades.size(); ++i) {
+        const size_t base = this->index_map_.blade_channel_offsets[i];
+
+        const auto& position = this->turbine.blades[i].nodes[0].position;
         const auto rotation = Eigen::Quaternion<double>(
             Eigen::AngleAxis<double>(-90. * deg_to_rad, Eigen::Matrix<double, 3, 1>::Unit(1))
         );
@@ -305,153 +409,69 @@ void TurbineInterface::WriteTimeSeriesData() const {
         const auto blade_root_forces = q_global_to_local._transformVector(
             Eigen::Matrix<double, 3, 1>(this->turbine.blade_pitch[i].loads.data())
         );
-
-        // Blade root forces angles
-        const auto blade_number = std::to_string(i + 1);
-        this->outputs->WriteValueAtTimestep(
-            this->state.time_step, "B"s + blade_number + "RootFxr (N)"s, blade_root_forces[0]
-        );
-        this->outputs->WriteValueAtTimestep(
-            this->state.time_step, "B"s + blade_number + "RootFyr (N)"s, blade_root_forces[1]
-        );
-        this->outputs->WriteValueAtTimestep(
-            this->state.time_step, "B"s + blade_number + "RootFzr (N)"s, blade_root_forces[2]
-        );
-
-        // Blade root moments in blade coordinates
         const auto blade_root_moments = q_global_to_local._transformVector(
             Eigen::Matrix<double, 3, 1>(&this->turbine.blade_pitch[i].loads[3])
         );
 
-        // Blade root moments angles
-        this->outputs->WriteValueAtTimestep(
-            this->state.time_step, "B"s + blade_number + "RootMxr (N-m)"s, blade_root_moments[0]
-        );
-        this->outputs->WriteValueAtTimestep(
-            this->state.time_step, "B"s + blade_number + "RootMyr (N-m)"s, blade_root_moments[1]
-        );
-        this->outputs->WriteValueAtTimestep(
-            this->state.time_step, "B"s + blade_number + "RootMzr (N-m)"s, blade_root_moments[2]
-        );
+        this->time_series_row_buffer_[base + 0] = blade_root_forces[0];
+        this->time_series_row_buffer_[base + 1] = blade_root_forces[1];
+        this->time_series_row_buffer_[base + 2] = blade_root_forces[2];
+        this->time_series_row_buffer_[base + 3] = blade_root_moments[0];
+        this->time_series_row_buffer_[base + 4] = blade_root_moments[1];
+        this->time_series_row_buffer_[base + 5] = blade_root_moments[2];
+        this->time_series_row_buffer_[base + 6] = this->turbine.blade_pitch_control[i] * rad_to_deg;
 
-        // Blade pitch angles
-        this->outputs->WriteValueAtTimestep(
-            this->state.time_step, "BldPitch"s + blade_number + " (deg)"s,
-            this->turbine.blade_pitch_control[i] * 180. / std::numbers::pi
-        );
-
-        // Blade tip translational velocity in inertial frame
-        this->outputs->WriteValueAtTimestep(
-            this->state.time_step, "B"s + blade_number + "TipTVXg (m_s)",
-            this->turbine.blades[i].nodes.back().velocity[0]
-        );
-        this->outputs->WriteValueAtTimestep(
-            this->state.time_step, "B"s + blade_number + "TipTVYg (m_s)",
-            this->turbine.blades[i].nodes.back().velocity[1]
-        );
-        this->outputs->WriteValueAtTimestep(
-            this->state.time_step, "B"s + blade_number + "TipTVZg (m_s)",
-            this->turbine.blades[i].nodes.back().velocity[2]
-        );
-
-        // Blade tip rotational velocity in inertial frame
-        this->outputs->WriteValueAtTimestep(
-            this->state.time_step, "B"s + blade_number + "TipRVXg (deg_s)",
-            this->turbine.blades[i].nodes.back().velocity[3] / deg_to_rad
-        );
-        this->outputs->WriteValueAtTimestep(
-            this->state.time_step, "B"s + blade_number + "TipRVYg (deg_s)",
-            this->turbine.blades[i].nodes.back().velocity[4] / deg_to_rad
-        );
-        this->outputs->WriteValueAtTimestep(
-            this->state.time_step, "B"s + blade_number + "TipRVZg (deg_s)",
-            this->turbine.blades[i].nodes.back().velocity[5] / deg_to_rad
-        );
+        const auto& tip = this->turbine.blades[i].nodes.back();
+        this->time_series_row_buffer_[base + 7] = tip.velocity[0];
+        this->time_series_row_buffer_[base + 8] = tip.velocity[1];
+        this->time_series_row_buffer_[base + 9] = tip.velocity[2];
+        this->time_series_row_buffer_[base + 10] = tip.velocity[3] / deg_to_rad;
+        this->time_series_row_buffer_[base + 11] = tip.velocity[4] / deg_to_rad;
+        this->time_series_row_buffer_[base + 12] = tip.velocity[5] / deg_to_rad;
     }
 
-    // Generator torque and power if controller is present
-    if (this->controller) {
-        this->outputs->WriteValueAtTimestep(
-            this->state.time_step, "GenTq (kN-m)",
-            this->controller->io.generator_torque_command / 1000.
-        );
-        this->outputs->WriteValueAtTimestep(
-            this->state.time_step, "GenPwr (kW)", this->controller->io.generator_power_actual / 1000.
-        );
+    // Controller data
+    if (this->index_map_.has_controller_channels && this->controller) {
+        this->time_series_row_buffer_[this->index_map_.generator_torque_kNm] =
+            this->controller->io.generator_torque_command / 1000.;
+        this->time_series_row_buffer_[this->index_map_.generator_power_kW] =
+            this->controller->io.generator_power_actual / 1000.;
     }
 
-    // Hub inflow velocities in inertial frame
-    this->outputs->WriteValueAtTimestep(
-        this->state.time_step, "WindHubVelX (m_s)", this->hub_inflow[0]
-    );
-    this->outputs->WriteValueAtTimestep(
-        this->state.time_step, "WindHubVelY (m_s)", this->hub_inflow[1]
-    );
-    this->outputs->WriteValueAtTimestep(
-        this->state.time_step, "WindHubVelZ (m_s)", this->hub_inflow[2]
-    );
+    // Hub inflow
+    for (size_t i = 0; i < 3; ++i) {
+        this->time_series_row_buffer_[this->index_map_.hub_inflow_start + i] = this->hub_inflow[i];
+    }
 
     // Aerodynamic data
-    if (this->aerodynamics) {
-        // Loop over blades
-        const auto n_blades =
-            std::min(this->aerodynamics->bodies.size(), this->turbine.blades.size());
-        for (auto i : std::views::iota(0U, n_blades)) {
+    if (this->aerodynamics && !this->index_map_.aero_body_offsets.empty()) {
+        const size_t n_bodies = this->index_map_.aero_body_offsets.size();
+        for (size_t i = 0; i < n_bodies; ++i) {
             const auto& body = this->aerodynamics->bodies[i];
-            for (auto j : std::views::iota(0U, body.loads.size())) {
-                // Construct the node label
-                const auto blade_number = std::to_string(i + 1);
-                const auto node_number = std::to_string(j + 1);
-                const auto extra_zeros = std::string(3 - node_number.size(), '0');
-                auto node_label = "AB"s;
-                node_label += blade_number;
-                node_label += "N"s;
-                node_label += extra_zeros;
-                node_label += node_number;
+            const size_t body_base = this->index_map_.aero_body_offsets[i];
+            const size_t stride = TimeSeriesIndexMap::kAeroChannelStride;
 
-                this->outputs->WriteValueAtTimestep(
-                    this->state.time_step, node_label + "Vrel (m_s)",
-                    Eigen::Matrix<double, 3, 1>(body.v_rel[j].data()).norm()
-                );
-                this->outputs->WriteValueAtTimestep(
-                    this->state.time_step, node_label + "Alpha (deg)", body.alpha[j] / deg_to_rad
-                );
-                this->outputs->WriteValueAtTimestep(
-                    this->state.time_step, node_label + "Cn (-)", body.cn[j]
-                );
-                this->outputs->WriteValueAtTimestep(
-                    this->state.time_step, node_label + "Ct (-)", body.ct[j]
-                );
-                this->outputs->WriteValueAtTimestep(
-                    this->state.time_step, node_label + "Cm (-)", body.cm[j]
-                );
-                this->outputs->WriteValueAtTimestep(
-                    this->state.time_step, node_label + "Fxi (N_m)",
-                    body.loads[j][0] / body.delta_s[j]
-                );
-                this->outputs->WriteValueAtTimestep(
-                    this->state.time_step, node_label + "Fyi (N_m)",
-                    body.loads[j][1] / body.delta_s[j]
-                );
-                this->outputs->WriteValueAtTimestep(
-                    this->state.time_step, node_label + "Fzi (N_m)",
-                    body.loads[j][2] / body.delta_s[j]
-                );
-                this->outputs->WriteValueAtTimestep(
-                    this->state.time_step, node_label + "Mxi (N_m)",
-                    body.loads[j][3] / body.delta_s[j]
-                );
-                this->outputs->WriteValueAtTimestep(
-                    this->state.time_step, node_label + "Myi (N_m)",
-                    body.loads[j][4] / body.delta_s[j]
-                );
-                this->outputs->WriteValueAtTimestep(
-                    this->state.time_step, node_label + "Mzi (N_m)",
-                    body.loads[j][5] / body.delta_s[j]
-                );
+            for (size_t j = 0; j < body.loads.size(); ++j) {
+                const size_t base = body_base + j * stride;
+
+                this->time_series_row_buffer_[base + 0] =
+                    Eigen::Matrix<double, 3, 1>(body.v_rel[j].data()).norm();
+                this->time_series_row_buffer_[base + 1] = body.alpha[j] / deg_to_rad;
+                this->time_series_row_buffer_[base + 2] = body.cn[j];
+                this->time_series_row_buffer_[base + 3] = body.ct[j];
+                this->time_series_row_buffer_[base + 4] = body.cm[j];
+                this->time_series_row_buffer_[base + 5] = body.loads[j][0] / body.delta_s[j];
+                this->time_series_row_buffer_[base + 6] = body.loads[j][1] / body.delta_s[j];
+                this->time_series_row_buffer_[base + 7] = body.loads[j][2] / body.delta_s[j];
+                this->time_series_row_buffer_[base + 8] = body.loads[j][3] / body.delta_s[j];
+                this->time_series_row_buffer_[base + 9] = body.loads[j][4] / body.delta_s[j];
+                this->time_series_row_buffer_[base + 10] = body.loads[j][5] / body.delta_s[j];
             }
         }
     }
+
+    // write the time-series row at the current time step
+    this->outputs->WriteTimeSeriesRowAtTimestep(time_step, this->time_series_row_buffer_);
 }
 
 double TurbineInterface::CalculateAzimuthAngle() const {
@@ -612,4 +632,5 @@ void TurbineInterface::WriteOutput() {
     // Calculate rotor azimuth and speed -> write rotor time-series data
     this->WriteTimeSeriesData();
 }
+
 }  // namespace kynema::interfaces
