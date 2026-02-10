@@ -463,7 +463,7 @@ void TurbineInterface::WriteTimeSeriesData() {
             const size_t stride = TimeSeriesIndexMap::kAeroChannelStride;
 
             for (size_t j = 0; j < body.loads.size(); ++j) {
-                const size_t base = body_base + j * stride;
+                const size_t base = body_base + (j * stride);
 
                 this->time_series_row_buffer_[base + 0] =
                     Eigen::Matrix<double, 3, 1>(body.v_rel[j].data()).norm();
