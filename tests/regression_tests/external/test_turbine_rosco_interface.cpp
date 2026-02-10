@@ -514,7 +514,7 @@ TEST(TurbineInterfaceTest, ROSCOControllerReadCheckpoint) {
     controller.SetRotorSpeed(rotor_speed);
     controller.SetGeneratorSpeed(rotor_speed * gearbox_ratio);
     controller.SetWindSpeed(hub_wind_speed);
-    controller.SetSimulationTime(10.*time_step);
+    controller.SetSimulationTime(10. * time_step);
     controller.CallController();
 }
 }  // namespace kynema::tests

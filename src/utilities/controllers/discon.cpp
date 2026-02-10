@@ -82,7 +82,9 @@ struct InternalState {
                                       // 2 and 2 1/2, rad/s. 1/2, rad/s
 };
 
-inline int SetupFirstCall(const interfaces::components::ControllerIO& swap, InternalState& state, char* const avcMSG) {
+inline int SetupFirstCall(
+    const interfaces::components::ControllerIO& swap, InternalState& state, char* const avcMSG
+) {
     // Inform users that we are using this user-defined routine:
     auto aviFAIL = 1;
     strncpy(
@@ -195,7 +197,9 @@ inline int SetupFirstCall(const interfaces::components::ControllerIO& swap, Inte
     return aviFAIL;
 }
 
-inline void FilterGeneratorSpeed(const interfaces::components::ControllerIO& swap, InternalState& state) {
+inline void FilterGeneratorSpeed(
+    const interfaces::components::ControllerIO& swap, InternalState& state
+) {
     // NOTE: This is a very simple recursive, single-pole, low-pass filter with exponential
     // smoothing
 
@@ -208,7 +212,9 @@ inline void FilterGeneratorSpeed(const interfaces::components::ControllerIO& swa
         (1. - alpha) * swap.generator_speed_actual + alpha * state.generator_speed_filtered;
 }
 
-inline void VariableSpeedTorqueControl(interfaces::components::ControllerIO& swap, InternalState& state) {
+inline void VariableSpeedTorqueControl(
+    interfaces::components::ControllerIO& swap, InternalState& state
+) {
     auto elapsed_time = swap.time - state.torque_controller_latest;
 
     // Only perform the control calculations if the elapsed time is greater than or equal to
@@ -349,7 +355,9 @@ inline void PitchControl(interfaces::components::ControllerIO& swap, InternalSta
                                           // pitch
 }
 
-inline int ComputeControl(interfaces::components::ControllerIO& swap, InternalState& state, char* const avcMSG) {
+inline int ComputeControl(
+    interfaces::components::ControllerIO& swap, InternalState& state, char* const avcMSG
+) {
     // Abort if the user has not requested a pitch angle actuator (See Appendix A of Bladed
     // User's Guide)
     auto aviFAIL = 0;

@@ -15,7 +15,6 @@
 #include "regression/test_utilities.hpp"
 #include "step/step.hpp"
 #include "utilities/aerodynamics/aerodyn_inflow.hpp"
-#include "interfaces/components/controller.hpp"
 
 #include "Kynema_config.h"
 
@@ -157,7 +156,7 @@ TEST(Milestone, IEA15RotorAeroController) {
     constexpr double azimuth_init{0.};                       // Azimuth angle (rad)
     constexpr double hub_height{150.};                       // Hub height (meters)
     constexpr double hub_radius{3.97};                       // Hub radius (meters)
-    constexpr double gearbox_ratio{1.};                     // Gear box ratio (-)
+    constexpr double gearbox_ratio{1.};                      // Gear box ratio (-)
     constexpr double rotor_speed_init{7.56 * rpm_to_radps};  // Rotor speed (rad/s)
     constexpr double hub_overhang{-50};                      // Hub overhang (meters)
     constexpr auto shaft_axis = std::array{1., 0., 0.};      // Shaft along x-axis
@@ -217,9 +216,9 @@ TEST(Milestone, IEA15RotorAeroController) {
         rotor_speed_init * gearbox_ratio;  // Generator speed (rad/s)
     controller.io.generator_torque_actual =
         generator_power_init / (rotor_speed_init * gearbox_ratio);  // Generator torque
-    controller.io.generator_power_actual = generator_power_init;     // Generator power (W)
-    controller.io.rotor_speed_actual = rotor_speed_init;             // Rotor speed (rad/s)
-    controller.io.horizontal_wind_speed = hub_wind_speed_init;       // Hub wind speed (m/s)
+    controller.io.generator_power_actual = generator_power_init;    // Generator power (W)
+    controller.io.rotor_speed_actual = rotor_speed_init;            // Rotor speed (rad/s)
+    controller.io.horizontal_wind_speed = hub_wind_speed_init;      // Hub wind speed (m/s)
 
     // Signal first call
     controller.io.status = 0;
