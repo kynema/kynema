@@ -36,6 +36,13 @@ TurbineInterface::TurbineInterface(
       host_constraints(constraints),
       gearbox_ratio(turbine_input.gearbox_ratio),
       generator_efficiency(turbine_input.generator_efficiency) {
+
+    // If checkpoint file path is provided for restart
+    if (!turbine_input.checkpoint_file_path.empty()) {
+        this->ReadCheckpointFile(turbine_input.checkpoint_file_path);
+    }
+
+    // If aerodynamics are enabled
     if (aerodynamics_input.is_enabled) {
         auto aero_inputs = std::vector<components::AerodynamicBodyInput>{};
         const auto num_turbine_blades = turbine.blades.size();
@@ -69,7 +76,8 @@ TurbineInterface::TurbineInterface(
         }
         aerodynamics = std::make_unique<components::Aerodynamics>(aero_inputs, model.GetNodes());
     }
-    // Initialize controller if library path is provided
+
+    // Initialize controller if enabled
     if (controller_input.controller_enabled) {
         try {
             controller = std::make_unique<components::Controller>(controller_input);
@@ -494,7 +502,7 @@ void TurbineInterface::InitializeController(const components::TurbineInput& turb
     }
 
     // Set controller initial values
-    controller->SetSimulationTime(0.);                           // Current time (seconds)
+    controller->SetSimulationTime(turbine_input.start_time);     // Current time (seconds)
     controller->SetRotorAzimuth(turbine_input.azimuth_angle);    // Initial azimuth
     controller->SetBladePitch(turbine_input.blade_pitch_angle);  // Blade pitch (rad)
 
@@ -507,9 +515,6 @@ void TurbineInterface::InitializeController(const components::TurbineInput& turb
     controller->SetRotorSpeed(turbine_input.rotor_speed);          // Rotor speed (rad/s)
     controller->SetWindSpeed(turbine_input.hub_wind_speed);        // Hub wind speed (m/s)
     controller->SetYawAngle(turbine_input.nacelle_yaw_angle);      // Yaw angle (rad)
-
-    // Signal first call to controller
-    controller->SetStatusInit();
 
     // Make first call to controller to initialize
     controller->CallController();
@@ -624,10 +629,6 @@ void TurbineInterface::WriteCheckpointFile(const std::string& file_path) const {
 
     // Write state to checkpoint file
     WriteStateToFile(checkpoint_file, this->state);
-
-    // If the controller is enabled
-    if (this->controller) {
-    }
 }
 
 void TurbineInterface::ReadCheckpointFile(const std::string& file_path) {
@@ -645,10 +646,6 @@ void TurbineInterface::ReadCheckpointFile(const std::string& file_path) {
 
     // Update the turbine node motion based on the host state
     this->turbine.GetMotion(this->host_state);
-
-    // If the controller is enabled
-    if (this->controller) {
-    }
 }
 
 }  // namespace kynema::interfaces

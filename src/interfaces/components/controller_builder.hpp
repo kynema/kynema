@@ -65,21 +65,31 @@ public:
         return *this;
     }
 
+    /// @brief Set flag to enable reading of checkpoint file for restart
+    ControllerBuilder& EnableReadCheckpoint(bool enable = true) {
+        input.read_checkpoint = enable;
+        return *this;
+    }
+
+    /// @brief Set library path for the controller
     ControllerBuilder& SetLibraryPath(std::string_view lib_path) {
         input.shared_lib_path = std::string(lib_path);
         return *this;
     }
 
+    /// @brief Set function name for the controller
     ControllerBuilder& SetFunctionName(std::string_view func_name) {
         input.function_name = std::string(func_name);
         return *this;
     }
 
+    /// @brief Set input file path for the controller
     ControllerBuilder& SetInputFilePath(std::string_view inp_file_path) {
         input.input_file_path = std::string(inp_file_path);
         return *this;
     }
 
+    /// @brief Set output file path for the controller
     ControllerBuilder& SetOutputFilePath(std::string_view sim_name) {
         input.output_file_path = std::string(sim_name);
         return *this;

@@ -185,6 +185,20 @@ public:
      */
     TurbineBuilder& SetHubWindSpeed(double speed);
 
+    /**
+     * @brief Set the restart file path
+     * @param path The path to the restart file
+     * @return Reference to the builder for method chaining
+     */
+    TurbineBuilder& SetRestartFilePath(const std::string& path);
+
+    /**
+     * @brief Set simulation start time
+     * @param time The start time of the simulation for restart
+     * @return Reference to the builder for method chaining
+     */
+    TurbineBuilder& SetStartTime(double time);
+
 private:
     TurbineInput input;                       ///< turbine configuration being built
     std::vector<BeamBuilder> blade_builders;  ///< builders for the blade components

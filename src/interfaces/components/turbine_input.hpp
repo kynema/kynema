@@ -172,6 +172,18 @@ struct TurbineInput {
      * @details Wind speed at the hub height
      */
     double hub_wind_speed{0.};
+
+    /**
+     * @brief Path to checkpoint file for restart
+     * @details Path to checkpoint file for restart
+     */
+    std::string checkpoint_file_path;
+
+    /**
+     * @brief Start time (s)
+     * @details Time at which to start the simulation
+     */
+    double start_time{0.};
 };
 
 }  // namespace kynema::interfaces::components

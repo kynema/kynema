@@ -45,6 +45,11 @@ Controller::Controller(const ControllerInput& input)
     this->io.message_array_size = 1024U;
 
     // Initialize ControllerIO structure
+    if (input.read_checkpoint) {
+        this->SetStatusReadCheckpoint();
+    } else {
+        this->SetStatusInit();
+    }
     this->io.dt = input.time_step;
     this->io.n_blades = input.n_blades;
     this->io.pitch_actuator_type_req = static_cast<double>(input.pitch_actuator_type);

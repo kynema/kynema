@@ -133,4 +133,15 @@ TurbineBuilder& TurbineBuilder::SetHubWindSpeed(double speed) {
     this->input.hub_wind_speed = speed;
     return *this;
 }
+
+TurbineBuilder& TurbineBuilder::SetRestartFilePath(const std::string& path) {
+    this->input.checkpoint_file_path = path;
+    return *this;
+}
+
+TurbineBuilder& TurbineBuilder::SetStartTime(double time) {
+    this->input.start_time = time;
+    return *this;
+}
+
 }  // namespace kynema::interfaces::components
