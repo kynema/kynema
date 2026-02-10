@@ -28,6 +28,35 @@ Outputs::Outputs(
     this->w_data_.resize(num_nodes_);
 }
 
+Outputs::Outputs(
+    const std::string& output_file, size_t num_nodes, const std::string& time_series_file,
+    const std::vector<std::string>& time_series_channel_names,
+    const std::vector<std::string>& time_series_channel_units,
+    const std::vector<std::string>& enabled_state_prefixes, size_t node_state_buffer_size,
+    size_t time_series_buffer_size
+)
+    : output_writer_(std::make_unique<util::NodeStateWriter>(
+          output_file, true, num_nodes, enabled_state_prefixes, node_state_buffer_size
+      )),
+      num_nodes_(num_nodes),
+      time_series_writer_(
+          time_series_file.empty() || time_series_channel_names.empty()
+              ? nullptr
+              : std::make_unique<util::TimeSeriesWriter>(
+                    time_series_file, true, time_series_channel_names, time_series_channel_units,
+                    time_series_buffer_size
+                )
+      ),
+      enabled_state_prefixes_(enabled_state_prefixes) {
+    this->x_data_.resize(num_nodes_);
+    this->y_data_.resize(num_nodes_);
+    this->z_data_.resize(num_nodes_);
+    this->i_data_.resize(num_nodes_);
+    this->j_data_.resize(num_nodes_);
+    this->k_data_.resize(num_nodes_);
+    this->w_data_.resize(num_nodes_);
+}
+
 std::unique_ptr<util::NodeStateWriter>& Outputs::GetOutputWriter() {
     return this->output_writer_;
 }
@@ -133,6 +162,12 @@ void Outputs::WriteNodeOutputsAtTimestep(const HostState<DeviceType>& host_state
 void Outputs::WriteValueAtTimestep(size_t timestep, const std::string& name, double value) {
     if (this->time_series_writer_) {
         this->time_series_writer_->WriteValueAtTimestep(name, timestep, value);
+    }
+}
+
+void Outputs::WriteTimeSeriesRowAtTimestep(size_t timestep, std::span<const double> row) {
+    if (this->time_series_writer_) {
+        this->time_series_writer_->WriteRowAtTimestep(timestep, row);
     }
 }
 

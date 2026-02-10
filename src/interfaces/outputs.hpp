@@ -41,6 +41,27 @@ public:
     );
 
     /**
+     * @brief Constructor with node state writer multi-channel time-series writer support
+     *
+     * @param output_file name of the output file
+     * @param num_nodes number of nodes to be written to the file
+     * @param time_series_file name of the file with time-series data
+     * @param time_series_channel_names names of the time-series channels (empty = single-value mode)
+     * @param time_series_channel_units optional units for each channel
+     * @param enabled_state_prefixes which state component prefixes to enable for writing
+     * @param node_state_buffer_size number of timesteps to buffer for node states
+     * @param time_series_buffer_size number of timesteps to buffer for time-series
+     */
+    Outputs(
+        const std::string& output_file, size_t num_nodes, const std::string& time_series_file,
+        const std::vector<std::string>& time_series_channel_names,
+        const std::vector<std::string>& time_series_channel_units = {},
+        const std::vector<std::string>& enabled_state_prefixes = {"x", "u", "v", "a", "f"},
+        size_t node_state_buffer_size = util::NodeStateWriter::kDefaultBufferSize,
+        size_t time_series_buffer_size = util::TimeSeriesWriter::kDefaultBufferSize
+    );
+
+    /**
      * @brief Gets a reference to the NodeStateWriter for direct usage
      */
     [[nodiscard]] std::unique_ptr<util::NodeStateWriter>& GetOutputWriter();
@@ -59,13 +80,21 @@ public:
     void WriteNodeOutputsAtTimestep(const HostState<DeviceType>& host_state, size_t timestep);
 
     /**
-     * @brief Write rotor time-series data at specified timestep
+     * @brief Write a single time-series value at specified timestep
      *
      * @param timestep The timestep number to write data to
      * @param name The name of the variable to write (e.g., "azimuth_angle", "rotor_speed")
      * @param value The current value of the variable
      */
     void WriteValueAtTimestep(size_t timestep, const std::string& name, double value);
+
+    /**
+     * @brief Write a full row of time-series data at specified timestep
+     *
+     * @param timestep The timestep number to write data to
+     * @param row Vector of values for all channels at this timestep
+     */
+    void WriteTimeSeriesRowAtTimestep(size_t timestep, std::span<const double> row);
 
     /// @brief Manually close the underlying NetCDF files
     void Close();
