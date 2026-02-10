@@ -146,4 +146,4 @@ struct ControllerIO {
     }
 };
 
-}  // namespace kynema::util
+}  // namespace kynema::interfaces::components
