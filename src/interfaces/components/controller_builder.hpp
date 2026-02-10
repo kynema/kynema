@@ -29,6 +29,18 @@ public:
         return *this;
     }
 
+    // Set time step (seconds)
+    ControllerBuilder& SetTimeStep(double time_step) {
+        input.time_step = time_step;
+        return *this;
+    }
+
+    // Set number of blades
+    ControllerBuilder& SetNumberOfBlades(uint n_blades) {
+        input.n_blades = n_blades;
+        return *this;
+    }
+
     // Enable or disable yaw control
     ControllerBuilder& EnableYawControl(bool enable = true) {
         input.yaw_control_enabled = enable;
@@ -50,12 +62,6 @@ public:
     // Set initial power (W)
     ControllerBuilder& SetPower(double power) {
         input.power = power;
-        return *this;
-    }
-
-    // Set the gearbox ratio
-    ControllerBuilder& SetGearboxRatio(double ratio) {
-        input.gearbox_ratio = ratio;
         return *this;
     }
 

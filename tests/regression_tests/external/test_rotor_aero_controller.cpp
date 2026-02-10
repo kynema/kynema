@@ -157,7 +157,7 @@ TEST(Milestone, IEA15RotorAeroController) {
     constexpr double azimuth_init{0.};                       // Azimuth angle (rad)
     constexpr double hub_height{150.};                       // Hub height (meters)
     constexpr double hub_radius{3.97};                       // Hub radius (meters)
-    constexpr double gear_box_ratio{1.};                     // Gear box ratio (-)
+    constexpr double gearbox_ratio{1.};                     // Gear box ratio (-)
     constexpr double rotor_speed_init{7.56 * rpm_to_radps};  // Rotor speed (rad/s)
     constexpr double hub_overhang{-50};                      // Hub overhang (meters)
     constexpr auto shaft_axis = std::array{1., 0., 0.};      // Shaft along x-axis
@@ -214,9 +214,9 @@ TEST(Milestone, IEA15RotorAeroController) {
     controller.io.pitch_blade2_actual = blade_pitch_init;  // Blade pitch (rad)
     controller.io.pitch_blade3_actual = blade_pitch_init;  // Blade pitch (rad)
     controller.io.generator_speed_actual =
-        rotor_speed_init * gear_box_ratio;  // Generator speed (rad/s)
+        rotor_speed_init * gearbox_ratio;  // Generator speed (rad/s)
     controller.io.generator_torque_actual =
-        generator_power_init / (rotor_speed_init * gear_box_ratio);  // Generator torque
+        generator_power_init / (rotor_speed_init * gearbox_ratio);  // Generator torque
     controller.io.generator_power_actual = generator_power_init;     // Generator power (W)
     controller.io.rotor_speed_actual = rotor_speed_init;             // Rotor speed (rad/s)
     controller.io.horizontal_wind_speed = hub_wind_speed_init;       // Hub wind speed (m/s)
@@ -591,7 +591,7 @@ TEST(Milestone, IEA15RotorAeroController) {
         }
 
         // Set controller inputs and call controller to get commands for this step
-        const auto generator_speed = rotor_speed * gear_box_ratio;
+        const auto generator_speed = rotor_speed * gearbox_ratio;
         const auto generator_power = generator_speed * torque_actual;
         controller.io.status = 1;               // Subsequent call
         controller.io.time = current_time;      // Current time (seconds)

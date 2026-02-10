@@ -6,6 +6,8 @@
 #include <yaml-cpp/yaml.h>
 
 #include "elements/beams/hollow_circle_properties.hpp"
+#include "interfaces/components/controller.hpp"
+#include "interfaces/components/controller_builder.hpp"
 #include "interfaces/components/inflow.hpp"
 #include "interfaces/turbine/turbine_interface.hpp"
 #include "interfaces/turbine/turbine_interface_builder.hpp"
@@ -314,18 +316,17 @@ TEST(TurbineInterfaceTest, IEA15_ROSCOControllerWithAero) {
     );
 
     // Setup the controller and its input file
-    const auto controller_shared_lib_path =
-        std::string{static_cast<const char*>(Kynema_ROSCO_LIBRARY)};
-    const auto controller_function_name = std::string{"DISCON"};
-    const auto controller_input_file = std::string{"./IEA-15-240-RWT/DISCON.IN"};
-    const auto controller_output_file = std::string{"./IEA-15-240-RWT"};
-
-    auto controller_builder = builder.Controller()
-                                  .SetLibraryPath(controller_shared_lib_path)
-                                  .SetFunctionName(controller_function_name)
-                                  .SetInputFilePath(controller_input_file)
-                                  .SetOutputFilePath(controller_output_file)
-                                  .EnableYawControl(true);
+    builder.Controller()
+        .EnableController()
+        .SetLibraryPath(static_cast<const char*>(Kynema_ROSCO_LIBRARY))
+        .SetFunctionName("DISCON")
+        .SetInputFilePath("./IEA-15-240-RWT/DISCON.IN")
+        .SetOutputFilePath("./IEA-15-240-RWT")
+        .EnablePitchControl(true)
+        .EnableTorqueControl(true)
+        .EnableYawControl(true)
+        .SetTimeStep(time_step)
+        .SetNumberOfBlades(n_blades);
 
     auto& aero_builder =
         builder.Aerodynamics().EnableAero().SetNumberOfAirfoils(1UL).SetAirfoilToBladeMap(
@@ -425,8 +426,95 @@ TEST(TurbineInterfaceTest, IEA15_ROSCOControllerWithAero) {
         if (i == 100) {
             EXPECT_NEAR(interface.CalculateAzimuthAngle(), 0.38739641940509217, 1.e-4);
             EXPECT_NEAR(interface.CalculateRotorSpeed(), 0.78296280436836629, 1.e-3);
-            EXPECT_NEAR(interface.Turbine().torque_control, 19786768., 1.e-5);
+            EXPECT_NEAR(interface.Turbine().rotor_torque_control, 19786768., 1.e-5);
         }
     }
+}
+
+TEST(TurbineInterfaceTest, ROSCOControllerWriteCheckpoint) {
+    // Conversions
+    constexpr auto rpm_to_radps{0.104719755};  // RPM to rad/s
+
+    constexpr auto time_step{0.005};                  // Time step for the simulation
+    constexpr auto n_blades{3U};                      // Number of blades in turbine
+    constexpr auto rotor_speed{7.56 * rpm_to_radps};  // Rotor speed (rad/s)
+    constexpr double hub_wind_speed{10.6};            // Initial Hub height wind speed (m/s)
+    constexpr double gearbox_ratio{1.0};              // Gearbox ratio
+
+    // Setup the controller
+    interfaces::components::ControllerBuilder builder;
+    builder.EnableController()
+        .SetLibraryPath(static_cast<const char*>(Kynema_ROSCO_LIBRARY))
+        .SetFunctionName("DISCON")
+        .SetInputFilePath("./IEA-15-240-RWT/DISCON.IN")
+        .SetOutputFilePath("./IEA-15-240-RWT/rosco-write")
+        .EnablePitchControl(true)
+        .EnableTorqueControl(true)
+        .EnableYawControl(true)
+        .SetTimeStep(time_step)
+        .SetNumberOfBlades(n_blades);
+
+    // Initialize time
+    double time{0.0};
+
+    // Create new instance of controller
+    auto controller = interfaces::components::Controller(builder.Input());
+
+    // Initialize the controller
+    controller.SetStatusInit();
+    controller.SetSimulationTime(time);
+    controller.SetRotorSpeed(rotor_speed);
+    controller.SetGeneratorSpeed(rotor_speed * gearbox_ratio);
+    controller.SetWindSpeed(hub_wind_speed);
+    controller.CallController();
+
+    // Loop through the simulation
+    for (auto i = 1; i < 10; ++i) {
+        time += time_step;
+        controller.SetStatusOperating();
+        controller.SetSimulationTime(time);
+        controller.CallController();
+    }
+
+    // Write checkpoint
+    time += time_step;
+    controller.SetStatusWriteCheckpoint();
+    controller.SetSimulationTime(time);
+    controller.CallController();
+}
+
+TEST(TurbineInterfaceTest, ROSCOControllerReadCheckpoint) {
+    // Conversions
+    constexpr auto rpm_to_radps{0.104719755};  // RPM to rad/s
+
+    constexpr auto time_step{0.005};                  // Time step for the simulation
+    constexpr auto n_blades{3U};                      // Number of blades in turbine
+    constexpr auto rotor_speed{7.56 * rpm_to_radps};  // Rotor speed (rad/s)
+    constexpr double hub_wind_speed{10.6};            // Initial Hub height wind speed (m/s)
+    constexpr double gearbox_ratio{1.0};              // Gearbox ratio
+
+    // Setup the controller
+    interfaces::components::ControllerBuilder builder;
+    builder.EnableController()
+        .SetLibraryPath(static_cast<const char*>(Kynema_ROSCO_LIBRARY))
+        .SetFunctionName("DISCON")
+        .SetInputFilePath("./IEA-15-240-RWT/DISCON.IN")
+        .SetOutputFilePath("./IEA-15-240-RWT/rosco-read")
+        .EnablePitchControl(true)
+        .EnableTorqueControl(true)
+        .EnableYawControl(true)
+        .SetTimeStep(time_step)
+        .SetNumberOfBlades(n_blades);
+
+    // Create new instance of controller
+    auto controller = interfaces::components::Controller(builder.Input());
+
+    // Read checkpoint
+    controller.SetStatusReadCheckpoint();
+    controller.SetRotorSpeed(rotor_speed);
+    controller.SetGeneratorSpeed(rotor_speed * gearbox_ratio);
+    controller.SetWindSpeed(hub_wind_speed);
+    controller.SetSimulationTime(10.*time_step);
+    controller.CallController();
 }
 }  // namespace kynema::tests

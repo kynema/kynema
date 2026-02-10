@@ -115,7 +115,7 @@ TurbineBuilder& TurbineBuilder::SetRotorSpeed(double speed) {
 }
 
 TurbineBuilder& TurbineBuilder::SetGearBoxRatio(double ratio) {
-    this->input.gear_box_ratio = ratio;
+    this->input.gearbox_ratio = ratio;
     return *this;
 }
 

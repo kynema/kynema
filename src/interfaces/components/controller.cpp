@@ -13,8 +13,7 @@ Controller::Controller(const ControllerInput& input)
       pitch_control_enabled_(input.pitch_control_enabled),
       torque_control_enabled_(input.torque_control_enabled),
       yaw_control_enabled_(input.yaw_control_enabled),
-      gearbox_ratio_(input.gearbox_ratio),
-      torque_command_(0.0),
+      generator_torque_command_(0.0),
       pitch_angle_command_(input.pitch_angle),
       yaw_angle_command_(input.yaw_angle),
       input_file_path_(input.input_file_path),
@@ -36,27 +35,32 @@ Controller::Controller(const ControllerInput& input)
 
     // Store the controller function from the shared lib in a function pointer for later use
     this->controller_function_ =
-        lib_.get_function<void(float*, int*, const char* const, char* const, char* const)>(
+        lib_.get_function<void(float*, int*, const char* const, const char* const, char* const)>(
             this->controller_function_name_
         );
 
     // Map swap array to ControllerIO structure for easier access
-    // this->io = reinterpret_cast<ControllerIO*>(this->swap_array_);
     this->io.infile_array_size = input_file_path_.size();
     this->io.outname_array_size = output_file_path_.size();
     this->io.message_array_size = 1024U;
+
+    // Initialize ControllerIO structure
+    this->io.dt = input.time_step;
+    this->io.n_blades = input.n_blades;
+    this->io.pitch_actuator_type_req = static_cast<double>(input.pitch_actuator_type);
+    this->io.pitch_control_type = static_cast<double>(input.pitch_control_type);
 }
 
 void Controller::CallController() {
     auto swap_array = std::array<float, kSwapArraySize>{};
-    int status{};
+    int status{0};
     auto message = std::string(1024, ' ');
     io.CopyToSwapArray(swap_array);
     this->controller_function_(
-        swap_array.data(), &status, this->input_file_path_.c_str(), this->output_file_path_.data(),
+        swap_array.data(), &status, this->input_file_path_.c_str(), this->output_file_path_.c_str(),
         message.data()
     );
-    io.CopyFromSwapArray(swap_array);
+    this->io.CopyFromSwapArray(swap_array);
     if (status < 0) {
         throw std::runtime_error("Error raised in controller: " + message);
     } else if (status > 0) {
@@ -66,6 +70,16 @@ void Controller::CallController() {
     // Integrate yaw angle command from yaw rate command
     if (this->yaw_control_enabled_) {
         this->yaw_angle_command_ += this->io.nacelle_yaw_rate_command * this->io.dt;
+    }
+
+    // If pitch control is enabled, update pitch angle command from pitch collective command
+    if (this->pitch_control_enabled_) {
+        this->pitch_angle_command_ = this->io.pitch_collective_command;
+    }
+
+    // If torque control is enabled, update torque command from torque collective command
+    if (this->torque_control_enabled_) {
+        this->generator_torque_command_ = this->io.generator_torque_command;
     }
 }
 

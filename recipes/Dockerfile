@@ -35,7 +35,7 @@ RUN git clone https://github.com/spack/spack.git && \
     spack --insecure install cppcheck && \
     spack install yaml-cpp && \
     spack install kokkos && \
-    spack install kokkos-kernels && \
+    spack install kokkos-kernels@4.7.02 && \
     spack install netcdf-c && \
     spack install suite-sparse && \
     spack install eigen && \
@@ -55,7 +55,7 @@ ARG CMAKE_OPTIONS="-DKynema_WRITE_OUTPUTS=ON \
 ARG N_PARALLEL_JOBS=4
 
 RUN . /spack/share/spack/setup-env.sh && \
-    spack load kokkos kokkos-kernels netdcf-c suite-sparse eigen googletest yaml-cpp rosco openfast && \
+    spack load kokkos kokkos-kernels netdcf-c suite-sparse eigen googletest yaml-cpp rosco@2.9.0 openfast && \
     mkdir docker-build && \
     cd docker-build && \
     cmake .. ${CMAKE_OPTIONS} && \

@@ -153,7 +153,7 @@ struct TurbineInput {
      * @brief Gearbox ratio of the turbine (-)
      * @details Ratio between generator speed and rotor speed
      */
-    double gear_box_ratio{1.};
+    double gearbox_ratio{1.};
 
     /**
      * @brief Generator efficiency (-)

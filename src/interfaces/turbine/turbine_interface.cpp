@@ -33,7 +33,9 @@ TurbineInterface::TurbineInterface(
       solver(CreateSolver(state, elements, constraints)),
       state_save(CloneState(state)),
       host_state(state),
-      host_constraints(constraints) {
+      host_constraints(constraints),
+      gearbox_ratio(turbine_input.gearbox_ratio),
+      generator_efficiency(turbine_input.generator_efficiency) {
     if (aerodynamics_input.is_enabled) {
         auto aero_inputs = std::vector<components::AerodynamicBodyInput>{};
         const auto num_turbine_blades = turbine.blades.size();
@@ -73,7 +75,7 @@ TurbineInterface::TurbineInterface(
             controller = std::make_unique<components::Controller>(controller_input);
 
             // Initialize controller with turbine and solution parameters
-            InitializeController(turbine_input, solution_input);
+            InitializeController(turbine_input);
         } catch (const std::runtime_error& e) {
             std::cerr << "Warning: Failed to load controller library '"
                       << controller_input.shared_lib_path << "': " << e.what() << "\n";
@@ -198,6 +200,9 @@ void TurbineInterface::WriteTimeSeriesData() const {
     constexpr auto rpm_to_radps{0.104719755};            // RPM to rad/s
     constexpr auto deg_to_rad{std::numbers::pi / 180.};  // Degrees to radians
 
+    const auto rotor_speed = this->CalculateRotorSpeed();
+    const auto generator_speed = rotor_speed * this->gearbox_ratio;
+
     const auto time_step = static_cast<double>(this->state.time_step);
     this->outputs->WriteValueAtTimestep(
         this->state.time_step, "Time (s)", time_step * this->parameters.h
@@ -213,7 +218,7 @@ void TurbineInterface::WriteTimeSeriesData() const {
         this->CalculateAzimuthAngle() * 180. / std::numbers::pi
     );
     this->outputs->WriteValueAtTimestep(
-        this->state.time_step, "RotSpeed (rpm)", this->CalculateRotorSpeed() / rpm_to_radps
+        this->state.time_step, "RotSpeed (rpm)", rotor_speed / rpm_to_radps
     );
 
     // Yaw angle
@@ -370,12 +375,14 @@ void TurbineInterface::WriteTimeSeriesData() const {
 
     // Generator torque and power if controller is present
     if (this->controller) {
+        const double generator_torque = this->controller->GeneratorTorqueCommand();
+        const double generator_power =
+            generator_torque * generator_speed * this->generator_efficiency;
         this->outputs->WriteValueAtTimestep(
-            this->state.time_step, "GenTq (kN-m)",
-            this->controller->io.generator_torque_command / 1000.
+            this->state.time_step, "GenTq (kN-m)", generator_torque / 1000.
         );
         this->outputs->WriteValueAtTimestep(
-            this->state.time_step, "GenPwr (kW)", this->controller->io.generator_power_actual / 1000.
+            this->state.time_step, "GenPwr (kW)", generator_power / 1000.
         );
     }
 
@@ -481,45 +488,39 @@ void TurbineInterface::SetHubInflow(const std::array<double, 3>& inflow) {
     this->hub_inflow = inflow;
 }
 
-void TurbineInterface::InitializeController(
-    const components::TurbineInput& turbine_input, const components::SolutionInput& solution_input
-) {
+void TurbineInterface::InitializeController(const components::TurbineInput& turbine_input) {
     if (!controller) {
         return;
     }
 
-    // Set controller constant parameters
-    controller->io.dt = solution_input.time_step;           // Time step size (seconds)
-    controller->io.pitch_actuator_type_req = 0;             // Pitch position actuator
-    controller->io.pitch_control_type = 0;                  // Collective pitch control
-    controller->io.n_blades = turbine_input.blades.size();  // Number of blades
-
     // Set controller initial values
-    controller->io.time = 0.;                                    // Current time (seconds)
-    controller->io.azimuth_angle = turbine_input.azimuth_angle;  // Initial azimuth
-    controller->io.pitch_blade1_actual = this->turbine.blade_pitch_control[0];  // Blade pitch (rad)
-    controller->io.pitch_blade2_actual = this->turbine.blade_pitch_control[1];  // Blade pitch (rad)
-    controller->io.pitch_blade3_actual = this->turbine.blade_pitch_control[2];  // Blade pitch (rad)
-    controller->io.generator_speed_actual =
-        turbine_input.rotor_speed * turbine_input.gear_box_ratio;  // Generator speed (rad/s)
-    controller->io.generator_torque_actual =
-        turbine_input.generator_power /
-        (turbine_input.rotor_speed * turbine_input.gear_box_ratio);         // Generator torque
-    controller->io.generator_power_actual = turbine_input.generator_power;  // Generator power (W)
-    controller->io.rotor_speed_actual = turbine_input.rotor_speed;          // Rotor speed (rad/s)
-    controller->io.horizontal_wind_speed = turbine_input.hub_wind_speed;    // Hub wind speed (m/s)
-    controller->io.yaw_angle_actual = this->turbine.yaw_control;            // Yaw angle (rad)
+    controller->SetSimulationTime(0.);                           // Current time (seconds)
+    controller->SetRotorAzimuth(turbine_input.azimuth_angle);    // Initial azimuth
+    controller->SetBladePitch(turbine_input.blade_pitch_angle);  // Blade pitch (rad)
+
+    const double generator_speed = turbine_input.rotor_speed * turbine_input.gearbox_ratio;
+    controller->SetGeneratorSpeed(generator_speed);  // Generator speed (rad/s)
+    controller->SetGeneratorTorque(
+        turbine_input.generator_power / generator_speed
+    );                                                             // Generator torque
+    controller->SetGeneratorPower(turbine_input.generator_power);  // Generator power (W)
+    controller->SetRotorSpeed(turbine_input.rotor_speed);          // Rotor speed (rad/s)
+    controller->SetWindSpeed(turbine_input.hub_wind_speed);        // Hub wind speed (m/s)
+    controller->SetYawAngle(turbine_input.nacelle_yaw_angle);      // Yaw angle (rad)
 
     // Signal first call to controller
-    controller->io.status = 0;
+    controller->SetStatusInit();
 
     // Make first call to controller to initialize
     controller->CallController();
 
-    this->turbine.torque_control = controller->io.generator_torque_command;
-    this->turbine.blade_pitch_control[0] = turbine_input.blade_pitch_angle;
-    this->turbine.blade_pitch_control[1] = turbine_input.blade_pitch_angle;
-    this->turbine.blade_pitch_control[2] = turbine_input.blade_pitch_angle;
+    // Populate control values in turbine
+    this->turbine.rotor_torque_control = controller->GeneratorTorqueCommand() * this->gearbox_ratio;
+    const double pitch_angle_collective = controller->PitchAngleCommand();
+    this->turbine.blade_pitch_control[0] = pitch_angle_collective;
+    this->turbine.blade_pitch_control[1] = pitch_angle_collective;
+    this->turbine.blade_pitch_control[2] = pitch_angle_collective;
+    this->turbine.yaw_control = controller->YawAngleCommand();
 }
 
 void TurbineInterface::ApplyController(double t) {
@@ -527,34 +528,40 @@ void TurbineInterface::ApplyController(double t) {
         return;
     }
 
-    // Update controller inputs from current system state
+    // Set controller status to operating
+    controller->SetStatusOperating();
+
     // Update time and azimuth
-    controller->io.status = 1;
-    controller->io.time = t;
-    controller->io.azimuth_angle = CalculateAzimuthAngle();
+    controller->SetSimulationTime(t);
+    controller->SetRotorAzimuth(this->CalculateAzimuthAngle());
 
     // Update rotor and generator speeds
     const double rotor_speed = CalculateRotorSpeed();
-    controller->io.rotor_speed_actual = rotor_speed;
-    controller->io.generator_speed_actual =
-        rotor_speed * this->turbine.GetTurbineInput().gear_box_ratio;
+    const double generator_speed = rotor_speed * this->gearbox_ratio;
+    controller->SetRotorSpeed(rotor_speed);
+    controller->SetGeneratorSpeed(generator_speed);
 
     // Update generator power and torque
-    const double generator_speed = controller->io.generator_speed_actual;
-    const double generator_torque =
-        this->turbine.torque_control / this->turbine.GetTurbineInput().gear_box_ratio;
-    controller->io.horizontal_wind_speed = sqrt(
+    const double generator_torque = this->turbine.rotor_torque_control / this->gearbox_ratio;
+    const double generator_power = generator_speed * generator_torque * this->generator_efficiency;
+    controller->SetGeneratorPower(generator_power);
+    controller->SetGeneratorTorque(generator_torque);
+
+    // Update wind speed
+    controller->SetWindSpeed(sqrt(
         (this->hub_inflow[0] * this->hub_inflow[0]) + (this->hub_inflow[1] * this->hub_inflow[1]) +
         (this->hub_inflow[2] * this->hub_inflow[2])
-    );
-    controller->io.generator_torque_actual = generator_torque;
-    controller->io.generator_power_actual =
-        generator_speed * generator_torque * this->turbine.GetTurbineInput().generator_efficiency;
-    controller->io.pitch_blade1_actual = this->turbine.blade_pitch_control[0];
-    controller->io.pitch_blade2_actual = this->turbine.blade_pitch_control[1];
-    controller->io.pitch_blade3_actual = this->turbine.blade_pitch_control[2];
+    ));
+
+    // Set blade pitch
+    controller->SetBladePitch({
+        this->turbine.blade_pitch_control[0],
+        this->turbine.blade_pitch_control[1],
+        this->turbine.blade_pitch_control[2],
+    });
 
     // Loop through blades and calculate out of plane root bending moments
+    std::array<double, 3> blade_oop_root_moments{0.0};
     for (auto i : std::views::iota(0U, this->turbine.blades.size())) {
         // Get rotation from global to blade root coordinates
         // Apex node orientation is the same as blade root node without pitch angle
@@ -563,28 +570,24 @@ void TurbineInterface::ApplyController(double t) {
             Eigen::Quaternion<double>(position[3], position[4], position[5], position[6]).inverse();
 
         // Rotate blade root moments into blade root coordinates
-        const auto blade_root_moments = q_global_to_local._transformVector(
+        const auto root_moment_xyz = q_global_to_local._transformVector(
             Eigen::Matrix<double, 3, 1>(&this->turbine.blade_pitch[i].loads[3])
         );
 
         // Set out-of-plane root bending moment for each blade (y-axis in blade coords)
-        if (i == 0) {
-            controller->io.out_of_plane_root_bending_moment_blade1 = blade_root_moments[1];
-        } else if (i == 1) {
-            controller->io.out_of_plane_root_bending_moment_blade2 = blade_root_moments[1];
-        } else if (i == 2) {
-            controller->io.out_of_plane_root_bending_moment_blade3 = blade_root_moments[1];
-        }
+        blade_oop_root_moments[i] = root_moment_xyz[1];
     }
+    controller->SetOutOfPlaneRootBendingMoment(blade_oop_root_moments);
 
     // Call the controller
     controller->CallController();
 
-    this->turbine.torque_control =
-        controller->io.generator_torque_command * this->turbine.GetTurbineInput().gear_box_ratio;
-    this->turbine.blade_pitch_control[0] = controller->io.pitch_collective_command;
-    this->turbine.blade_pitch_control[1] = controller->io.pitch_collective_command;
-    this->turbine.blade_pitch_control[2] = controller->io.pitch_collective_command;
+    // Populate control values in turbine
+    this->turbine.rotor_torque_control = controller->GeneratorTorqueCommand() * this->gearbox_ratio;
+    const auto pitch_angle_collective = controller->PitchAngleCommandIndividual();
+    this->turbine.blade_pitch_control[0] = pitch_angle_collective[0];
+    this->turbine.blade_pitch_control[1] = pitch_angle_collective[1];
+    this->turbine.blade_pitch_control[2] = pitch_angle_collective[2];
     this->turbine.yaw_control = controller->YawAngleCommand();
 }
 
@@ -624,7 +627,6 @@ void TurbineInterface::WriteCheckpointFile(const std::string& file_path) const {
 
     // If the controller is enabled
     if (this->controller) {
-
     }
 }
 
@@ -646,7 +648,6 @@ void TurbineInterface::ReadCheckpointFile(const std::string& file_path) {
 
     // If the controller is enabled
     if (this->controller) {
-
     }
 }
 

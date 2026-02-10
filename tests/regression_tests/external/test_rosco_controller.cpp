@@ -18,10 +18,10 @@ TEST(ROSCO_Controller, initialize) {
         .output_file_path = ""
     });
 
-    controller.io.status = 0;
-    controller.io.time = 0.;
-    controller.io.dt = 0.01;
-    controller.io.rotor_speed_actual = 5.;
+    controller.SetStatusInit();
+    controller.SetSimulationTime(0.);
+    controller.SetSimulationTimeStep(0.01);
+    controller.SetRotorSpeed(5.);
 
     controller.CallController();
 }

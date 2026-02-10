@@ -9,6 +9,7 @@
 
 #include "iea15_rotor_data.hpp"
 #include "interfaces/components/controller.hpp"
+#include "interfaces/components/controller_builder.hpp"
 #include "interfaces/components/controller_input.hpp"
 #include "model/model.hpp"
 #include "step/step.hpp"
@@ -264,24 +265,16 @@ TEST(RotorTest, IEA15RotorController) {
     constexpr size_t num_blades = 3;
     auto model = CreateIEA15Blades<num_blades>(std::array{0., 0., omega});
 
-    // Add logic related to Controller
-    // provide shared library path and controller function name to clamp
-    const auto shared_lib_path = std::string{"./DISCON_ROTOR_TEST_CONTROLLER.dll"};
-    const auto controller_function_name = std::string{"PITCH_CONTROLLER"};
+    // Build controller
+    interfaces::components::ControllerBuilder builder;
+    builder.SetLibraryPath("./DISCON_ROTOR_TEST_CONTROLLER.dll")
+        .SetFunctionName("PITCH_CONTROLLER")
+        .SetInputFilePath("test_input_file")
+        .SetOutputFilePath("test_output_file");
+    auto controller = interfaces::components::Controller(builder.Input());
 
-    // create an instance of Controller
-    auto controller = interfaces::components::Controller(interfaces::components::ControllerInput{
-        .shared_lib_path = shared_lib_path,
-        .function_name = controller_function_name,
-        .input_file_path = "test_input_file",
-        .output_file_path = "test_output_file"
-    });
-
-    // Pitch control variable
-    auto blade_pitch_command = std::array<double*, 3>{
-        &controller.io.pitch_blade1_command, &controller.io.pitch_blade2_command,
-        &controller.io.pitch_blade3_command
-    };
+    // Pitch control variables
+    auto blade_pitch_command = std::array<double, 3>{0.0};
 
     // Define hub node and associated constraints
     auto hub_node_id = model.AddNode().SetPosition(0., 0., 0., 1., 0., 0., 0.).Build();
@@ -295,7 +288,7 @@ TEST(RotorTest, IEA15RotorController) {
         model.AddRotationControl(
             std::array{hub_node_id, beam_elem.node_ids[0]},
             std::array{pitch_axis(0), pitch_axis(1), pitch_axis(2)},
-            blade_pitch_command[beam_elem.ID]
+            &blade_pitch_command[beam_elem.ID]
         );
     }
     auto hub_bc_id = model.AddPrescribedBC(hub_node_id);
@@ -318,10 +311,13 @@ TEST(RotorTest, IEA15RotorController) {
         constraints.UpdateDisplacement(hub_bc_id, u_hub);
 
         // Update time in controller
-        controller.io.time = t;
+        controller.SetSimulationTime(t);
 
         // call controller to get signals for this step
         controller.CallController();
+
+        // Update blade pitch command
+        blade_pitch_command = controller.PitchAngleCommandIndividual();
 
         // Take step
         auto converged = Step(parameters, solver, elements, state, constraints);

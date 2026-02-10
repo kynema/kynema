@@ -37,9 +37,9 @@ jobs:
         spack install yaml-cpp
         spack install suite-sparse
         spack install superlu
-        spack install rosco
+        spack install rosco@2.9.0
         spack install openfast
-        spack install kokkos-kernels
+        spack install kokkos-kernels@4.7.02
         spack install eigen
     - name: Clone
       uses: actions/checkout@v4
@@ -54,13 +54,13 @@ jobs:
         brew install netcdf
         brew install llvm
         source spack/share/spack/setup-env.sh
-        spack load kokkos-kernels
+        spack load kokkos-kernels@4.7.02
         spack load suite-sparse
         spack load superlu
         spack load cppcheck
         spack load googletest
         spack load yaml-cpp
-        spack load rosco
+        spack load rosco@2.9.0
         spack load openfast
         spack load eigen
         cd kynema

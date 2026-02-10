@@ -25,8 +25,7 @@ Turbine::Turbine(const TurbineInput& input, Model& model)
       yaw_bearing_to_nacelle_cm{invalid_id},
       shaft_base_to_azimuth{invalid_id},
       azimuth_to_hub{invalid_id},
-      blade_pitch_control(input.blades.size(), input.blade_pitch_angle),
-      turbine_input(input) {
+      blade_pitch_control(input.blades.size(), input.blade_pitch_angle) {
     // Validate turbine inputs
     ValidateInput(input);
 
@@ -85,10 +84,6 @@ void Turbine::SetLoads(HostState<DeviceType>& host_state) const {
     for (const auto& apex_node : this->apex_nodes) {
         apex_node.SetLoads(host_state);
     }
-}
-
-const TurbineInput& Turbine::GetTurbineInput() const {
-    return this->turbine_input;
 }
 
 std::vector<Beam> Turbine::CreateBlades(std::span<const BeamInput> blade_inputs, Model& model) {
@@ -457,7 +452,7 @@ void Turbine::AddConstraints(const TurbineInput& input, Model& model) {
                                 .normalized();
     this->shaft_base_to_azimuth = ConstraintData{model.AddRevoluteJointConstraint(
         std::array{this->shaft_base_node.id, this->azimuth_node.id},
-        std::span<const double, 3>{shaft_axis.data(), 3}, &torque_control
+        std::span<const double, 3>{shaft_axis.data(), 3}, &rotor_torque_control
     )};
 
     // Add rigid constraint from yaw bearing to shaft base

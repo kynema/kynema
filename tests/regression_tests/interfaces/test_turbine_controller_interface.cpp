@@ -247,16 +247,16 @@ TEST(TurbineInterfaceTest, IEA15_Controller) {
     // Set the hub inertia matrix in the turbine builder
     turbine_builder.SetHubInertiaMatrix(hub_inertia_matrix);
 
-    const auto controller_shared_lib_path = std::string{"./DISCON_ROTOR_TEST_CONTROLLER.dll"};
-    const auto controller_function_name = std::string{"PITCH_CONTROLLER"};
-    const auto controller_input_file = std::string{"test_input_file"};
-    const auto controller_output_file = std::string{"test_output_file"};
-
-    auto controller_builder = builder.Controller()
-                                  .SetLibraryPath(controller_shared_lib_path)
-                                  .SetFunctionName(controller_function_name)
-                                  .SetInputFilePath(controller_input_file)
-                                  .SetOutputFilePath(controller_output_file);
+    // Set the controller parameters
+    auto& controller_builder = builder.Controller();
+    controller_builder.EnableController()
+        .EnablePitchControl()
+        .EnableTorqueControl()
+        .SetTimeStep(time_step)
+        .SetLibraryPath("./DISCON_ROTOR_TEST_CONTROLLER.dll")
+        .SetFunctionName("PITCH_CONTROLLER")
+        .SetInputFilePath("test_input_file")
+        .SetOutputFilePath("test_output_file");
 
     //--------------------------------------------------------------------------
     // Interface
