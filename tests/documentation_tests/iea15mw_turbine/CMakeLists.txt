@@ -9,15 +9,13 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 project(
   IEA15MW_Trubine
   VERSION 1.0.0
-  DESCRIPTION "Models a full turbine with defined torque and pitch control"
+  DESCRIPTION "Models a turbine with torque and pitch control"
   LANGUAGES CXX
 )
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 
-if(PROJECT_IS_TOP_LEVEL)
-    find_package(Kynema REQUIRED)
-endif()
+find_package(Kynema REQUIRED)
 
 add_executable(iea15mw_turbine)
 target_link_libraries(iea15mw_turbine PRIVATE Kynema::kynema_library)

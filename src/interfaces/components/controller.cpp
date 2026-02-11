@@ -13,7 +13,6 @@ Controller::Controller(const ControllerInput& input)
       pitch_control_enabled_(input.pitch_control_enabled),
       torque_control_enabled_(input.torque_control_enabled),
       yaw_control_enabled_(input.yaw_control_enabled),
-      generator_torque_command_(0.0),
       pitch_angle_command_(input.pitch_angle),
       yaw_angle_command_(input.yaw_angle),
       input_file_path_(input.input_file_path),
