@@ -113,13 +113,13 @@ private:
     /// Pointer to structure mapping swap array -> named fields i.e. ControllerIO
     ControllerIO io;
 
-    bool pitch_control_enabled_;   //< Flag to enable pitch control
-    bool torque_control_enabled_;  //< Flag to enable torque control
-    bool yaw_control_enabled_;     //< Flag to enable yaw control
+    bool pitch_control_enabled_{false};   //< Flag to enable pitch control
+    bool torque_control_enabled_{false};  //< Flag to enable torque control
+    bool yaw_control_enabled_{false};     //< Flag to enable yaw control
 
-    double generator_torque_command_;  //< Commanded torque (Nm)
-    double pitch_angle_command_;       //< Commanded pitch angle (rad)
-    double yaw_angle_command_;         //< Commanded yaw angle (rad) integrated from yaw rate command
+    double generator_torque_command_{0.0};  //< Commanded torque (Nm)
+    double pitch_angle_command_{0.0};       //< Commanded pitch angle (rad)
+    double yaw_angle_command_{0.0};  //< Commanded yaw angle (rad) integrated from yaw rate command
 
     std::string input_file_path_;           //< Path to the input file
     std::string output_file_path_;          //< Path to the output file

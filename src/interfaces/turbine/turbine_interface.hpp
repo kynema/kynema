@@ -137,7 +137,7 @@ public:
 
     /**
      * @brief Read checkpoint file and restore state
-     * @param filename Name of the checkpoint file to read
+     * @param file_path Name of the checkpoint file to read
      */
     void ReadCheckpointFile(const std::string& file_path);
 
