@@ -21,7 +21,7 @@ public:
     /// @param output_file_path Path to the output file
     /// @param initial_yaw_angle Initial yaw angle (rad)
     /// @param yaw_control_enabled Flag to enable yaw control
-    Controller(const ControllerInput& input);
+    explicit Controller(const ControllerInput& input);
 
     /// Method to call the controller function from the shared library
     void CallController();
