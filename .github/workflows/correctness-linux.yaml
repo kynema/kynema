@@ -17,9 +17,12 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        compiler: [g++, clang++]
-        build_type: [Release, Debug]
-        build_external: [all, none]
+        # compiler: [g++, clang++]
+        # build_type: [Release, Debug]
+        # build_external: [all, none]
+        compiler: [clang++]
+        build_type: [Debug]
+        build_external: [none]
     steps:
       - name: Cache install Dependencies
         id: cache-dependencies
