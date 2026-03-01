@@ -16,16 +16,13 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        # compiler: [g++, clang++]
-        # build_type: [Release, Debug]
-        # build_external: [all, none]
-        compiler: [clang++]
-        build_type: [Debug]
-        build_external: [none]
+        compiler: [g++, clang++]
+        build_type: [Release, Debug]
+        build_external: [all, none]
     steps:
       - name: Cache install Dependencies
         id: cache-dependencies
-        uses: actions/cache@v3
+        uses: actions/cache@v5
         with:
           path: ${{ github.workspace }}/spack
           key: macos-spack_v7
@@ -37,14 +34,14 @@ jobs:
           spack compiler find
           spack external find
           spack install googletest
-          spack install cppcheck
+          spack install cppcheck@2.18.0
           spack install yaml-cpp
           spack install suite-sparse
           spack install superlu
           spack install rosco@2.9.0
           spack install openfast
           spack install kokkos-kernels@4.7.02
-          spack install eigen
+          spack install eigen@5.0.1
       - name: Clone
         uses: actions/checkout@v4
         with:
@@ -77,7 +74,6 @@ jobs:
             -DKynema_ENABLE_CLANG_TIDY=ON \
             -DKynema_WRITE_OUTPUTS=ON \
             -DKynema_WARNINGS_AS_ERRORS=ON \
-            -DKynema_ENABLE_OPENFAST_ADI=${{ matrix.build_external == 'all' }} \
             -DKynema_ENABLE_ROSCO_CONTROLLER=${{ matrix.build_external == 'all' }} \
             -DKynema_ENABLE_KLU=ON \
             -DKynema_ENABLE_UMFPACK=ON \

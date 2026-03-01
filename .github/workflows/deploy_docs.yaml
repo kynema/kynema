@@ -14,60 +14,60 @@ jobs:
   Deploy-Docs:
     runs-on: ubuntu-latest
     steps:
-    - name: Cache install Dependencies
-      id: cache-dependencies
-      uses: actions/cache@v3
-      with:
-        path: ${{ github.workspace }}/spack
-        key: linux-spack_v6
-    - name: Install Dependencies
-      if: steps.cache-dependencies.outputs.cache-hit != 'true'
-      run: |
-        git clone https://github.com/spack/spack.git
-        source spack/share/spack/setup-env.sh
-        spack compiler find
-        spack install googletest
-        spack install cppcheck
-        spack install netcdf-c
-        spack install yaml-cpp
-        spack install suite-sparse
-        spack install superlu
-        spack install rosco
-        spack install openfast
-        spack install kokkos-kernels
-        spack install eigen
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: '3.12'
-    - name: Clone repository
-      uses: actions/checkout@v4
-      with:
-        path: kynema
-    - name: Install documentation dependencies
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y --no-install-recommends graphviz libenchant-2-dev doxygen
-        python3 -m pip install --upgrade pip
-        pip install -r kynema/docs/requirements.txt
-    - name: Build Kynema with documentation
-      run: |
-        source spack/share/spack/setup-env.sh
-        spack load eigen kokkos-kernels yaml-cpp netcdf-c suite-sparse superlu
-        cd kynema
-        mkdir build
-        cd build
-        cmake .. \
-          -DKynema_ENABLE_TESTS=OFF \
-          -DKynema_ENABLE_DOCUMENTATION=ON \
-          -DKynema_ENABLE_KLU=ON \
-          -DKynema_ENABLE_UMFPACK=ON \
-          -DKynema_ENABLE_SUPERLU=ON \
-          -DCMAKE_BUILD_TYPE=Release
-        cmake --build .
-    - name: Deploy documentation
-      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-      uses: peaceiris/actions-gh-pages@v4
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ${{ github.workspace }}/kynema/build/docs/sphinx/html
+      - name: Cache install Dependencies
+        id: cache-dependencies
+        uses: actions/cache@v3
+        with:
+          path: ${{ github.workspace }}/spack
+          key: linux-spack_v6
+      - name: Install Dependencies
+        if: steps.cache-dependencies.outputs.cache-hit != 'true'
+        run: |
+          git clone https://github.com/spack/spack.git
+          source spack/share/spack/setup-env.sh
+          spack compiler find
+          spack install googletest
+          spack install cppcheck
+          spack install netcdf-c
+          spack install yaml-cpp
+          spack install suite-sparse
+          spack install superlu
+          spack install rosco
+          spack install openfast
+          spack install kokkos-kernels
+          spack install eigen
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Clone repository
+        uses: actions/checkout@v4
+        with:
+          path: kynema
+      - name: Install documentation dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends graphviz libenchant-2-dev doxygen
+          python3 -m pip install --upgrade pip
+          pip install -r kynema/docs/requirements.txt
+      - name: Build Kynema with documentation
+        run: |
+          source spack/share/spack/setup-env.sh
+          spack load eigen kokkos-kernels yaml-cpp netcdf-c suite-sparse superlu
+          cd kynema
+          mkdir build
+          cd build
+          cmake .. \
+            -DKynema_ENABLE_TESTS=OFF \
+            -DKynema_ENABLE_DOCUMENTATION=ON \
+            -DKynema_ENABLE_KLU=ON \
+            -DKynema_ENABLE_UMFPACK=ON \
+            -DKynema_ENABLE_SUPERLU=ON \
+            -DCMAKE_BUILD_TYPE=Release
+          cmake --build .
+      - name: Deploy documentation
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ${{ github.workspace }}/kynema/build/docs/sphinx/html
