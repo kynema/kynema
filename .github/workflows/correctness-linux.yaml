@@ -17,12 +17,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        # compiler: [g++, clang++]
-        # build_type: [Release, Debug]
-        # build_external: [all, none]
-        compiler: [clang++]
-        build_type: [Debug]
-        build_external: [none]
+        compiler: [g++, clang++]
+        build_type: [Release, Debug]
+        build_external: [all, none]
     steps:
       - name: Cache install Dependencies
         id: cache-dependencies
@@ -37,7 +34,7 @@ jobs:
           source spack/share/spack/setup-env.sh
           spack compiler find
           spack install googletest
-          spack install cppcheck
+          spack install cppcheck@2.18.0
           spack install netcdf-c
           spack install yaml-cpp
           spack install suite-sparse
@@ -45,7 +42,7 @@ jobs:
           spack install rosco@2.9.0
           spack install openfast
           spack install kokkos-kernels@4.7.02
-          spack install eigen
+          spack install eigen@5.0.1
       - name: Clone
         uses: actions/checkout@v4
         with:

@@ -85,12 +85,12 @@ install(FILES
 # Build tests
 include(CTest)
 if(Kynema_ENABLE_TESTS)
-  add_subdirectory(tests)
+    add_subdirectory(tests)
 endif()
 
 # Build documentation
 if(Kynema_ENABLE_DOCUMENTATION)
-  add_subdirectory(docs)
+    add_subdirectory(docs)
 endif()
 
 configure_file(cmake/Kynema_config.h.in ${CMAKE_CURRENT_BINARY_DIR}/src/Kynema_config.h)
