@@ -15,72 +15,72 @@ jobs:
       CXX: g++
       CC: gcc
     steps:
-    - name: Install Kynema
-      run: |
-        git clone https://github.com/spack/spack.git
-        source spack/share/spack/setup-env.sh
-        spack compiler find
-        spack env create -d .
-        spack env activate .
-        spack add kynema ^netcdf-c~mpi ^hdf5~mpi
-        spack develop kynema@main
-        spack concretize -f
-        cd kynema
-        git checkout ${{ github.head_ref || github.ref_name}}
-        spack install
-    - name: Rigid Body and Springs Test
-      run: |
-        source spack/share/spack/setup-env.sh
-        spack env activate .
-        cd kynema/tests/documentation_tests/floating_platform
-        mkdir build
-        cd build
-        spack build-env kynema -- bash
-        cmake ../ -DCMAKE_BUILD_TYPE=Debug
-        make -j 2
-        ./floating_platform
-    - name: IEA15MW Turbine Test
-      run: |
-        source spack/share/spack/setup-env.sh
-        spack env activate .
-        cd kynema/tests/documentation_tests/iea15mw_turbine
-        mkdir build
-        cd build
-        spack build-env kynema -- bash
-        cmake ../ -DCMAKE_BUILD_TYPE=Debug
-        make -j 2
-        cp ../IEA-15-240-RWT.yaml ./
-        ./iea15mw_turbine
-    - name: Heavy Top
-      run: |
-        source spack/share/spack/setup-env.sh
-        spack env activate .
-        cd kynema/tests/documentation_tests/heavy_top
-        mkdir build
-        cd build
-        spack build-env kynema -- bash
-        cmake ../ -DCMAKE_BUILD_TYPE=Debug
-        make -j 2
-        ./heavy_top
-    - name: Spring Mass System
-      run: |
-        source spack/share/spack/setup-env.sh
-        spack env activate .
-        cd kynema/tests/documentation_tests/spring_mass_system
-        mkdir build
-        cd build
-        spack build-env kynema -- bash
-        cmake ../ -DCMAKE_BUILD_TYPE=Debug
-        make -j 2
-        ./spring_mass_system
-    - name: Three Blade Rotor
-      run: |
-        source spack/share/spack/setup-env.sh
-        spack env activate .
-        cd kynema/tests/documentation_tests/three_blade_rotor
-        mkdir build
-        cd build
-        spack build-env kynema -- bash
-        cmake ../ -DCMAKE_BUILD_TYPE=Debug
-        make -j 2
-        ./three_blade_rotor
+      - name: Install Kynema
+        run: |
+          git clone https://github.com/spack/spack.git
+          source spack/share/spack/setup-env.sh
+          spack compiler find
+          spack env create -d .
+          spack env activate .
+          spack add kynema ^netcdf-c~mpi ^hdf5~mpi ^kokkos@4.7.02 ^kokkos-kernels@4.7.02
+          spack develop kynema@main
+          spack concretize -f
+          cd kynema
+          git checkout ${{ github.head_ref || github.ref_name}}
+          spack install
+      - name: Rigid Body and Springs Test
+        run: |
+          source spack/share/spack/setup-env.sh
+          spack env activate .
+          cd kynema/tests/documentation_tests/floating_platform
+          mkdir build
+          cd build
+          spack build-env kynema -- bash
+          cmake ../ -DCMAKE_BUILD_TYPE=Debug
+          make -j 2
+          ./floating_platform
+      - name: IEA15MW Turbine Test
+        run: |
+          source spack/share/spack/setup-env.sh
+          spack env activate .
+          cd kynema/tests/documentation_tests/iea15mw_turbine
+          mkdir build
+          cd build
+          spack build-env kynema -- bash
+          cmake ../ -DCMAKE_BUILD_TYPE=Debug
+          make -j 2
+          cp ../IEA-15-240-RWT.yaml ./
+          ./iea15mw_turbine
+      - name: Heavy Top
+        run: |
+          source spack/share/spack/setup-env.sh
+          spack env activate .
+          cd kynema/tests/documentation_tests/heavy_top
+          mkdir build
+          cd build
+          spack build-env kynema -- bash
+          cmake ../ -DCMAKE_BUILD_TYPE=Debug
+          make -j 2
+          ./heavy_top
+      - name: Spring Mass System
+        run: |
+          source spack/share/spack/setup-env.sh
+          spack env activate .
+          cd kynema/tests/documentation_tests/spring_mass_system
+          mkdir build
+          cd build
+          spack build-env kynema -- bash
+          cmake ../ -DCMAKE_BUILD_TYPE=Debug
+          make -j 2
+          ./spring_mass_system
+      - name: Three Blade Rotor
+        run: |
+          source spack/share/spack/setup-env.sh
+          spack env activate .
+          cd kynema/tests/documentation_tests/three_blade_rotor
+          mkdir build
+          cd build
+          spack build-env kynema -- bash
+          cmake ../ -DCMAKE_BUILD_TYPE=Debug
+          make -j 2
+          ./three_blade_rotor

@@ -87,6 +87,7 @@ int main() {
             .SetRotorSpeed(rotor_speed_init)
             .SetGeneratorPower(generator_power_init)
             .SetHubWindSpeed(vel_h * cos(flow_angle))
+            .SetGeneratorEfficiency(wio_drivetrain["gearbox"]["efficiency"].as<double>())
             .SetNacelleYawAngle(-flow_angle);
 
         //--------------------------------------------------------------------------
@@ -340,12 +341,18 @@ int main() {
         //--------------------------------------------------------------------------
 
         auto& aero_builder =
-            builder.Aerodynamics().EnableAero().SetNumberOfAirfoils(1UL).SetAirfoilToBladeMap(
-                std::array{0UL, 0UL, 0UL}
+            builder.Aerodynamics().EnableAero().SetNumberOfAirfoils(2UL).SetAirfoilToBladeMap(
+                std::array{
+                    0UL,  // Blade 1
+                    0UL,  // Blade 2
+                    0UL,  // Blade 3
+                    1UL,  // Tower
+                }
             );
 
+        // Blade airfoil sections
         const auto& airfoil_io = wio["airfoils"];
-        auto aero_sections = std::vector<kynema::interfaces::components::AerodynamicSection>{};
+        auto blade_aero_sections = std::vector<kynema::interfaces::components::AerodynamicSection>{};
         auto id = 0UL;
         for (const auto& af : airfoil_io) {
             const auto s = af["spanwise_position"].as<double>();
@@ -361,14 +368,35 @@ int main() {
             const auto cl = af["polars"][0]["re_sets"][0]["cl"]["values"].as<std::vector<double>>();
             const auto cd = af["polars"][0]["re_sets"][0]["cd"]["values"].as<std::vector<double>>();
             const auto cm = af["polars"][0]["re_sets"][0]["cm"]["values"].as<std::vector<double>>();
-            aero_sections.emplace_back(
+            blade_aero_sections.emplace_back(
                 id, s, chord, section_offset_x, section_offset_y, aerodynamic_center, twist, aoa, cl,
                 cd, cm
             );
             ++id;
         }
+        aero_builder.SetAirfoilSections(0UL, blade_aero_sections);
 
-        aero_builder.SetAirfoilSections(0UL, aero_sections);
+        // Tower airfoil sections (simple circular cylinder)
+        auto tower_aero_sections = std::vector<kynema::interfaces::components::AerodynamicSection>{};
+        const auto& tower_os = wio["components"]["tower"]["outer_shape"];
+        const auto aoa = std::vector<double>{-180., 180.};
+        const auto cl = std::vector<double>{0., 0.};
+        const auto cm = std::vector<double>{0., 0.};
+        const auto twist = 0.0;
+        const auto section_offset_x = 0.0;
+        const auto section_offset_y = 0.0;
+        const auto aerodynamic_center = 0.5;
+        id = 0UL;
+        for (const auto& chord : tower_os["outer_diameter"]["values"].as<std::vector<double>>()) {
+            const auto s = tower_os["outer_diameter"]["grid"].as<std::vector<double>>()[id];
+            const auto cd = tower_os["cd"]["values"].as<std::vector<double>>()[id];
+            tower_aero_sections.emplace_back(
+                id, s, chord, section_offset_x, section_offset_y, aerodynamic_center, twist, aoa, cl,
+                std::vector<double>{cd, cd}, cm
+            );
+            ++id;
+        }
+        aero_builder.SetAirfoilSections(1UL, tower_aero_sections);
 
         //--------------------------------------------------------------------------
         // Build Controller

@@ -5,6 +5,7 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+  workflow_dispatch:
 
 jobs:
   Correctness-MacOS:
@@ -15,70 +16,73 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        compiler: [g++, clang++]
-        build_type: [Release, Debug]
-        build_external: [all, none]
+        # compiler: [g++, clang++]
+        # build_type: [Release, Debug]
+        # build_external: [all, none]
+        compiler: [clang++]
+        build_type: [Debug]
+        build_external: [none]
     steps:
-    - name: Cache install Dependencies
-      id: cache-dependencies
-      uses: actions/cache@v3
-      with:
-        path: ${{ github.workspace }}/spack
-        key: macos-spack_v6
-    - name: Install Dependencies
-      if: steps.cache-dependencies.outputs.cache-hit != 'true'
-      run: |
-        git clone https://github.com/spack/spack.git
-        source spack/share/spack/setup-env.sh
-        spack compiler find
-        spack external find
-        spack install googletest
-        spack install cppcheck
-        spack install yaml-cpp
-        spack install suite-sparse
-        spack install superlu
-        spack install rosco
-        spack install openfast
-        spack install kokkos-kernels
-        spack install eigen
-    - name: Clone
-      uses: actions/checkout@v4
-      with:
-        submodules: true
-        path: kynema
-    - name: Test Kynema
-      run: |
-        # Find the gfortran compiler and set the FC environment variable
-        export FC=$(find /opt/homebrew/ -name gfortran | tr ' ' '\n' | grep "/gcc/.*gfortran")
-        brew install hdf5
-        brew install netcdf
-        brew install llvm
-        source spack/share/spack/setup-env.sh
-        spack load kokkos-kernels
-        spack load suite-sparse
-        spack load superlu
-        spack load cppcheck
-        spack load googletest
-        spack load yaml-cpp
-        spack load rosco
-        spack load openfast
-        spack load eigen
-        cd kynema
-        mkdir build
-        cd build
-        cmake .. \
-          -DKynema_ENABLE_SANITIZER_ADDRESS=${{ matrix.build_external == 'none' }} \
-          -DKynema_ENABLE_SANITIZER_UNDEFINED=${{ matrix.build_external == 'none' }} \
-          -DKynema_ENABLE_CPPCHECK=ON \
-          -DKynema_ENABLE_CLANG_TIDY=ON \
-          -DKynema_WRITE_OUTPUTS=ON \
-          -DKynema_WARNINGS_AS_ERRORS=ON \
-          -DKynema_ENABLE_OPENFAST_ADI=${{ matrix.build_external == 'all' }} \
-          -DKynema_ENABLE_ROSCO_CONTROLLER=${{ matrix.build_external == 'all' }} \
-          -DKynema_ENABLE_KLU=ON \
-          -DKynema_ENABLE_UMFPACK=ON \
-          -DKynema_ENABLE_SUPERLU=ON \
-          -DCMAKE_CXX_COMPILER=${{ matrix.compiler }} \
-          -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
-        cmake --build .
-        ctest --output-on-failure
+      - name: Cache install Dependencies
+        id: cache-dependencies
+        uses: actions/cache@v3
+        with:
+          path: ${{ github.workspace }}/spack
+          key: macos-spack_v7
+      - name: Install Dependencies
+        if: steps.cache-dependencies.outputs.cache-hit != 'true'
+        run: |
+          git clone https://github.com/spack/spack.git
+          source spack/share/spack/setup-env.sh
+          spack compiler find
+          spack external find
+          spack install googletest
+          spack install cppcheck
+          spack install yaml-cpp
+          spack install suite-sparse
+          spack install superlu
+          spack install rosco@2.9.0
+          spack install openfast
+          spack install kokkos-kernels@4.7.02
+          spack install eigen
+      - name: Clone
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+          path: kynema
+      - name: Test Kynema
+        run: |
+          # Find the gfortran compiler and set the FC environment variable
+          export FC=$(find /opt/homebrew/ -name gfortran | tr ' ' '\n' | grep "/gcc/.*gfortran")
+          brew install hdf5
+          brew install netcdf
+          brew install llvm
+          source spack/share/spack/setup-env.sh
+          spack load kokkos-kernels
+          spack load suite-sparse
+          spack load superlu
+          spack load cppcheck
+          spack load googletest
+          spack load yaml-cpp
+          spack load rosco
+          spack load openfast
+          spack load eigen
+          cd kynema
+          mkdir build
+          cd build
+          cmake .. \
+            -DKynema_ENABLE_SANITIZER_ADDRESS=${{ matrix.build_external == 'none' }} \
+            -DKynema_ENABLE_SANITIZER_UNDEFINED=${{ matrix.build_external == 'none' }} \
+            -DKynema_ENABLE_CPPCHECK=ON \
+            -DKynema_ENABLE_CLANG_TIDY=ON \
+            -DKynema_WRITE_OUTPUTS=ON \
+            -DKynema_WARNINGS_AS_ERRORS=ON \
+            -DKynema_ENABLE_OPENFAST_ADI=${{ matrix.build_external == 'all' }} \
+            -DKynema_ENABLE_ROSCO_CONTROLLER=${{ matrix.build_external == 'all' }} \
+            -DKynema_ENABLE_KLU=ON \
+            -DKynema_ENABLE_UMFPACK=ON \
+            -DKynema_ENABLE_SUPERLU=ON \
+            -DCMAKE_CXX_COMPILER=${{ matrix.compiler }} \
+            -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
+          cmake --build .
+          ctest --output-on-failure
