@@ -499,9 +499,7 @@ TEST(Milestone, IEA15RotorAeroController) {
         {"ConvError", "(-)"},    //
         {"Azimuth", "(deg)"},    //
         {"BldPitch1", "(deg)"},  //
-        // {"GenSpeed", "(rpm)"},   //
         {"GenTq", "(kN-m)"},     //
-        // {"GenPwr", "(kW)"},      //
         {"B1TipTDxr", "(m)"},    //
         {"B2TipTDxr", "(m)"},    //
         {"B3TipTDxr", "(m)"},
@@ -586,9 +584,7 @@ TEST(Milestone, IEA15RotorAeroController) {
           << "\t" << conv_err                                          // convergence error
           << "\t" << azimuth * 180. / std::numbers::pi                 // azimuth angle (deg)
           << "\t" << pitch_actual * 180. / std::numbers::pi            // blade pitch (deg)
-          // << "\t" << generator_speed / rpm_to_radps                    //
           << "\t" << torque_actual / 1000.                             //
-          // << "\t" << controller.io.generator_power_actual / 1000.      //
           << "\t" << GetNodeData(tip_node_ids[0].id, host_state_q)[0]  // x displacement of tip nodes
           << "\t" << GetNodeData(tip_node_ids[1].id, host_state_q)[0]  // x displacement of tip nodes
           << "\t"
