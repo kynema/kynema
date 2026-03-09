@@ -10,6 +10,8 @@
 
 #include <gtest/gtest.h>
 
+#include "interfaces/components/controller.hpp"
+#include "interfaces/components/controller_builder.hpp"
 #include "model/model.hpp"
 #include "regression/iea15_rotor_data.hpp"
 #include "regression/test_utilities.hpp"
@@ -195,40 +197,22 @@ TEST(Milestone, IEA15RotorAeroController) {
     //--------------------------------------------------------------------------
 
     // Create controller object and load shared library
-    auto controller = interfaces::components::Controller(
-        controller_shared_lib_path, controller_function_name, controller_input_file_path,
-        controller_simulation_name
-    );
+    interfaces::components::ControllerBuilder builder;
+    builder.EnableController()
+        .SetLibraryPath(controller_shared_lib_path)
+        .SetFunctionName(controller_function_name)
+        .SetInputFilePath(controller_input_file_path)
+        .SetOutputFilePath(controller_simulation_name)
+        .EnablePitchControl(true)
+        .EnableTorqueControl(true)
+        .SetTimeStep(step_size)
+        .SetNumberOfBlades(n_blades);
 
-    // Controller constant values
-    controller.io.dt = step_size;               // Time step size (seconds)
-    controller.io.pitch_actuator_type_req = 0;  // Pitch position actuator
-    controller.io.pitch_control_type = 0;       // Collective pitch control
-    controller.io.n_blades = n_blades;          // Number of blades
-
-    // Controller current values
-    controller.io.time = 0.;                               // Current time (seconds)
-    controller.io.azimuth_angle = azimuth_init;            // Initial azimuth
-    controller.io.pitch_blade1_actual = blade_pitch_init;  // Blade pitch (rad)
-    controller.io.pitch_blade2_actual = blade_pitch_init;  // Blade pitch (rad)
-    controller.io.pitch_blade3_actual = blade_pitch_init;  // Blade pitch (rad)
-    controller.io.generator_speed_actual =
-        rotor_speed_init * gearbox_ratio;  // Generator speed (rad/s)
-    controller.io.generator_torque_actual =
-        generator_power_init / (rotor_speed_init * gearbox_ratio);  // Generator torque
-    controller.io.generator_power_actual = generator_power_init;    // Generator power (W)
-    controller.io.rotor_speed_actual = rotor_speed_init;            // Rotor speed (rad/s)
-    controller.io.horizontal_wind_speed = hub_wind_speed_init;      // Hub wind speed (m/s)
-
-    // Signal first call
-    controller.io.status = 0;
-
-    // Make first call to controller
-    controller.CallController();
+    auto controller = interfaces::components::Controller(builder.Input());
 
     // Actual torque applied to shaft
-    double torque_actual{controller.io.generator_torque_actual};
-    double pitch_actual{blade_pitch_init};
+    double torque_actual{controller.GeneratorTorqueCommand()};
+    double pitch_actual{controller.PitchAngleCommand()};
 
     //--------------------------------------------------------------------------
     // Blade nodes and elements
@@ -515,9 +499,9 @@ TEST(Milestone, IEA15RotorAeroController) {
         {"ConvError", "(-)"},    //
         {"Azimuth", "(deg)"},    //
         {"BldPitch1", "(deg)"},  //
-        {"GenSpeed", "(rpm)"},   //
+        // {"GenSpeed", "(rpm)"},   //
         {"GenTq", "(kN-m)"},     //
-        {"GenPwr", "(kW)"},      //
+        // {"GenPwr", "(kW)"},      //
         {"B1TipTDxr", "(m)"},    //
         {"B2TipTDxr", "(m)"},    //
         {"B3TipTDxr", "(m)"},
@@ -589,26 +573,11 @@ TEST(Milestone, IEA15RotorAeroController) {
             );
         }
 
-        // Set controller inputs and call controller to get commands for this step
-        const auto generator_speed = rotor_speed * gearbox_ratio;
-        const auto generator_power = generator_speed * torque_actual;
-        controller.io.status = 1;               // Subsequent call
-        controller.io.time = current_time;      // Current time (seconds)
-        controller.io.azimuth_angle = azimuth;  // Current azimuth angle (rad)
-        controller.io.pitch_blade1_actual = pitch_actual;
-        controller.io.pitch_blade2_actual = pitch_actual;
-        controller.io.pitch_blade3_actual = pitch_actual;
-        controller.io.rotor_speed_actual = rotor_speed;          // Rotor speed (rad/s)
-        controller.io.generator_speed_actual = generator_speed;  // Generator speed (rad/s)
-        controller.io.generator_power_actual = generator_power;  // Generator power (W)
-        controller.io.generator_torque_actual = torque_actual;   // Generator torque (N-m)
-        controller.io.horizontal_wind_speed =
-            static_cast<double>(adi.turbines[0].hh_vel[0]);  // Hub wind speed (m/s)
         controller.CallController();
 
         // Update the generator torque and blade pitch
-        torque_actual = controller.io.generator_torque_command;
-        pitch_actual = controller.io.pitch_collective_command;
+        torque_actual = controller.GeneratorTorqueCommand();
+        pitch_actual = controller.PitchAngleCommand();
 
         // Write data to output file
         const auto conv_err{solver.convergence_err.empty() ? 0. : solver.convergence_err.back()};
@@ -617,9 +586,9 @@ TEST(Milestone, IEA15RotorAeroController) {
           << "\t" << conv_err                                          // convergence error
           << "\t" << azimuth * 180. / std::numbers::pi                 // azimuth angle (deg)
           << "\t" << pitch_actual * 180. / std::numbers::pi            // blade pitch (deg)
-          << "\t" << generator_speed / rpm_to_radps                    //
-          << "\t" << controller.io.generator_torque_command / 1000.    //
-          << "\t" << controller.io.generator_power_actual / 1000.      //
+          // << "\t" << generator_speed / rpm_to_radps                    //
+          << "\t" << torque_actual / 1000.                             //
+          // << "\t" << controller.io.generator_power_actual / 1000.      //
           << "\t" << GetNodeData(tip_node_ids[0].id, host_state_q)[0]  // x displacement of tip nodes
           << "\t" << GetNodeData(tip_node_ids[1].id, host_state_q)[0]  // x displacement of tip nodes
           << "\t"

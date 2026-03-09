@@ -85,6 +85,9 @@ void Controller::CallController() {
     if (this->torque_control_enabled_) {
         this->generator_torque_command_ = this->io.generator_torque_command;
     }
+
+    // Set status to operating for subsequent calls
+    this->SetStatusOperating();
 }
 
 }  // namespace kynema::interfaces::components
