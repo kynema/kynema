@@ -1,9 +1,10 @@
 #pragma once
 
+#include <ranges>
+
 #include <KokkosBatched_Copy_Decl.hpp>
 #include <Kokkos_Core.hpp>
 
-#include "calculate_strain_dot.hpp"
 #include "calculate_D_D1.hpp"
 #include "calculate_D_D2.hpp"
 #include "calculate_G_D1.hpp"
@@ -13,6 +14,9 @@
 #include "calculate_P_D2.hpp"
 #include "calculate_force_FD1.hpp"
 #include "calculate_force_FD2.hpp"
+#include "calculate_strain.hpp"
+#include "calculate_strain_dot.hpp"
+#include "interpolate_to_quadrature_point_for_damping.hpp"
 #include "system/masses/rotate_section_matrix.hpp"
 
 namespace kynema::beams {
@@ -26,9 +30,12 @@ struct CalculateDampingQuadraturePointValues {
     using LeftView = Kokkos::View<ValueType, Kokkos::LayoutLeft, DeviceType>;
     template <typename ValueType>
     using ConstLeftView = typename LeftView<ValueType>::const_type;
+    using Gemm = KokkosBatched::SerialGemm<
+        KokkosBatched::Trans::NoTranspose, KokkosBatched::Trans::NoTranspose,
+        KokkosBatched::Algo::Gemm::Default>;
 
     size_t element;
-
+    ConstView<double[6]> mu;
     ConstView<double*> qp_jacobian;
     ConstLeftView<double**> shape_interp;
     ConstLeftView<double**> shape_deriv;
@@ -70,6 +77,8 @@ struct CalculateDampingQuadraturePointValues {
         auto r_data = Array<double, 4>{};
         auto r_prime_data = Array<double, 4>{};
         auto Cstar_data = Array<double, 36>{};
+        auto Dstar_data = Array<double, 36>{};
+        auto mu_diag_data = Array<double, 36>{};
 
         auto strain_data = Array<double, 6>{};
         auto x0pupSS_data = Array<double, 9>{};
@@ -78,9 +87,7 @@ struct CalculateDampingQuadraturePointValues {
         auto FD1_data = Array<double, 6>{};
         auto FD2_data = Array<double, 6>{};
         auto Cuu_data = Array<double, 36>{};
-        // auto Ouu_data = Array<double, 36>{};
-        // auto Puu_data = Array<double, 36>{};
-        // auto Quu_data = Array<double, 36>{};
+        auto Duu_data = Array<double, 36>{};
 
         const auto r0 = ConstView<double[4]>(r0_data.data());
         const auto x0_prime = ConstView<double[3]>(x0_prime_data.data());
@@ -96,20 +103,32 @@ struct CalculateDampingQuadraturePointValues {
         const auto FD1 = View<double[6]>(FD1_data.data());
         const auto FD2 = View<double[6]>(FD2_data.data());
         const auto Cstar = View<double[6][6]>(Cstar_data.data());
+        const auto Dstar = View<double[6][6]>(Dstar_data.data());
+        const auto mu_diag = View<double[6][6]>(mu_diag_data.data());
         const auto Cuu = View<double[6][6]>(Cuu_data.data());
-        // const auto Ouu = View<double[6][6]>(Ouu_data.data());
-        // const auto Puu = View<double[6][6]>(Puu_data.data());
-        // const auto Quu = View<double[6][6]>(Quu_data.data());
+        const auto Duu = View<double[6][6]>(Duu_data.data());
 
         CopyMatrix::invoke(subview(qp_Cstar, element, qp, ALL, ALL), Cstar);
 
-        // beams::InterpolateToQuadraturePointForStiffness<DeviceType>::invoke(
-        //     qp_jacobian(qp), subview(shape_interp, ALL, qp), subview(shape_deriv, ALL, qp), node_u,
-        //     u, r, u_prime, r_prime
-        // );
+        for (auto i : std::views::iota(0, 6)) {
+            for (auto j : std::views::iota(0, 6)) {
+                mu_diag(i, j) = 0.0;
+            }
+        }
+        for (auto i : std::views::iota(0, 6)) {
+            mu_diag(i, i) = mu(i);
+        }
+
+        Gemm::invoke(1., mu_diag, Cstar, 0., Dstar);
+
+        beams::InterpolateToQuadraturePointForDamping<DeviceType>::invoke(
+            qp_jacobian(qp), subview(shape_interp, ALL, qp), subview(shape_deriv, ALL, qp), node_u, node_v,
+            u, r, u_prime, r_prime
+        );
         math::QuaternionCompose(r, r0, xr);
 
         masses::RotateSectionMatrix<DeviceType>::invoke(xr, Cstar, Cuu);
+        masses::RotateSectionMatrix<DeviceType>::invoke(xr, Dstar, Duu);
 
         CalculateForceFD1<DeviceType>::invoke();
         CalculateForceFD2<DeviceType>::invoke();
