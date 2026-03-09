@@ -1,5 +1,6 @@
 #pragma once
 
+#include <array>
 #include <span>
 #include <tuple>
 
@@ -160,10 +161,11 @@ public:
      */
     size_t AddBeamElement(
         std::span<const size_t> node_ids, std::span<const BeamSection> sections,
-        std::span<const std::array<double, 2>> quadrature
+        std::span<const std::array<double, 2>> quadrature,
+        const std::array<double, 6>& mu = {0., 0., 0., 0., 0., 0.}
     ) {
         const auto elem_id = this->beam_elements_.size();
-        this->beam_elements_.emplace_back(elem_id, node_ids, sections, quadrature);
+        this->beam_elements_.emplace_back(elem_id, node_ids, sections, quadrature, mu);
         this->mesh_connectivity_.AddBeamElementConnectivity(elem_id, node_ids);
         return elem_id;
     }

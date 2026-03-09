@@ -27,16 +27,18 @@ struct Beams {
     size_t max_elem_nodes;  // Maximum number of nodes per element
     size_t max_elem_qps;    // Maximum number of quadrature points per element
 
+    // Element-based data
     View<size_t*> num_nodes_per_element;
     View<size_t*> num_qps_per_element;
     View<size_t**> node_state_indices;  // State row index for each node
     View<dof::FreedomSignature**> element_freedom_signature;
     View<size_t** [6]> element_freedom_table;
+    View<double* [6]> element_mu;  // Damping coefficients per element
 
     View<double[3]> gravity;
 
     // Node-based data
-    View<double** [7]> node_x0;      // Inital position/rotation
+    View<double** [7]> node_x0;      // Initial position/rotation
     View<double** [7]> node_u;       // State: translation/rotation displacement
     View<double** [6]> node_u_dot;   // State: translation/rotation velocity
     View<double** [6]> node_u_ddot;  // State: translation/rotation acceleration
@@ -94,6 +96,7 @@ struct Beams {
               Kokkos::view_alloc("element_freedom_table", Kokkos::WithoutInitializing), num_elems,
               max_elem_nodes
           ),
+          element_mu(Kokkos::view_alloc("mu", Kokkos::WithoutInitializing), num_elems),
           gravity(Kokkos::view_alloc("gravity", Kokkos::WithoutInitializing)),
           // Node Data
           node_x0(

@@ -158,7 +158,7 @@ void Beam::CreateBeamElement(const BeamInput& input, Model& model) {
               );
 
     // Add beam element and get ID
-    this->beam_element_id = model.AddBeamElement(node_ids, sections, quadrature);
+    this->beam_element_id = model.AddBeamElement(node_ids, sections, quadrature, input.mu);
 }
 
 void Beam::PositionBladeInSpace(const BeamInput& input, Model& model) const {

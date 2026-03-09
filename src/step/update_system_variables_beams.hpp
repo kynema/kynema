@@ -39,7 +39,7 @@ inline void UpdateSystemVariablesBeams(
         .set_scratch_size(0, Kokkos::PerTeam(smem));
 
     Kokkos::parallel_for(
-        "CalculateQuadraturePointValues", range_policy,
+        "beams::CalculateQuadraturePointValues", range_policy,
         beams::CalculateQuadraturePointValues<DeviceType>{
             parameters.beta_prime,
             parameters.gamma_prime,
@@ -50,6 +50,7 @@ inline void UpdateSystemVariablesBeams(
             beams.node_state_indices,
             beams.num_nodes_per_element,
             beams.num_qps_per_element,
+            beams.element_mu,
             beams.qp_weight,
             beams.qp_jacobian,
             beams.shape_interp,

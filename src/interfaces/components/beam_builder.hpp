@@ -79,6 +79,14 @@ public:
     BeamBuilder& ClearReferenceAxisPoints();
 
     /**
+     * @brief Sets the stiffness-proportional damping coefficients
+     *
+     * @param mu Stiffness-proportional damping coefficients
+     * @return A reference to this BeamBuilder
+     */
+    BeamBuilder& SetDampingProperties(const std::array<double, 6>& mu);
+
+    /**
      * @brief Adds a reference axis point with specified orientation
      * @param grid_location Location [0,1] along the blade
      * @param coordinates Coordinates (x,y,z) of the reference axis point
