@@ -31,7 +31,7 @@ enabled. Ill conditioning of linear systems is mitigated with preconditioning
 described in [Bottasso et al,
 2008](https://link.springer.com/article/10.1007/s11044-007-9051-9).  Kynema is
 integrated with a simple open-source controller
-([ROSCO](https://github.com/NREL/ROSCO)). There is an application programming
+([ROSCO](https://github.com/NatLabRockies/ROSCO)). There is an application programming
 interface (API) for coupling to geometry-resolved CFD (like that in [Sharma et
 al., 2023](https://onlinelibrary.wiley.com/doi/full/10.1002/we.2886)) and
 actuator-force CFD (like that in [Kuhn et al.,
@@ -87,21 +87,21 @@ test against in the review process.
 Kynema is developed by researchers at The National Laboratory of the
 Rockies and Sandia National Laboratories under the support of the U.S.
 Department of Energy (DOE) Office of Critical Minerals and Energy Innovation
-(CMEI) Wind Energy Technology Office and the DOE Office of Science FLOWMAS
+(CMEI) and the DOE Office of Science FLOWMAS
 Energy Earthshot Research Center.
 
-Kynema is part of the [WETO Software Stack](https://nrel.github.io/WETOStack).
+Kynema is part of the [WETO Software Stack](https://natlabrockies.github.io/WETOStack/).
 For more information and other integrated modeling software, see:
 - [Portfolio
-  Overview](https://nrel.github.io/WETOStack/portfolio_analysis/overview.html)
+  Overview](https://natlabrockies.github.io/WETOStack/portfolio_analysis/overview.html)
 - [Entry
-  Guide](https://nrel.github.io/WETOStack/_static/entry_guide/index.html)
+  Guide](https://natlabrockies.github.io/WETOStack/_static/entry_guide/index.html)
 - [High-Fidelity Modeling
-  Workshop](https://nrel.github.io/WETOStack/workshops/user_workshops_2024.html#high-fidelity-modeling)
+  Workshop](https://natlabrockies.github.io/WETOStack/workshops/user_workshops_2024.html#high-fidelity-modeling)
 
 
 [Kynema Software Release Record SWR-23-07](https://www.osti.gov/biblio/code-166281)
 
 [Documentation](https://kynema.github.io/kynema/)
 
-Send questions to michael.a.sprague@nrel.gov, Kynema Principal Investigator.
+Send questions to michael.a.sprague@nlr.gov, Kynema Principal Investigator.
