@@ -158,13 +158,9 @@ TEST(Milestone, IEA15RotorAeroController) {
     constexpr double azimuth_init{0.};                       // Azimuth angle (rad)
     constexpr double hub_height{150.};                       // Hub height (meters)
     constexpr double hub_radius{3.97};                       // Hub radius (meters)
-    constexpr double gearbox_ratio{1.};                      // Gear box ratio (-)
     constexpr double rotor_speed_init{7.56 * rpm_to_radps};  // Rotor speed (rad/s)
     constexpr double hub_overhang{-50};                      // Hub overhang (meters)
     constexpr auto shaft_axis = std::array{1., 0., 0.};      // Shaft along x-axis
-    constexpr double hub_wind_speed_init{10.59};             // Hub height wind speed (m/s)
-    constexpr double generator_power_init{15.0e6};           // Generator power (W)
-    constexpr double blade_pitch_init{0.};                   // Initial blade pitch (rad)
     constexpr auto gravity = std::array{0., 0., -9.81};      // Gravity (m/s/s)
 
     // Controller parameters
@@ -203,6 +199,7 @@ TEST(Milestone, IEA15RotorAeroController) {
         .SetFunctionName(controller_function_name)
         .SetInputFilePath(controller_input_file_path)
         .SetOutputFilePath(controller_simulation_name)
+        .SetRotorSpeed(rotor_speed_init)
         .EnablePitchControl(true)
         .EnableTorqueControl(true)
         .SetTimeStep(step_size)
@@ -524,8 +521,7 @@ TEST(Milestone, IEA15RotorAeroController) {
     // Time stepping
     //--------------------------------------------------------------------------
 
-    // Initialize rotor speed
-    auto rotor_speed = rotor_speed_init;
+    // Initialize azimuth angle
     auto azimuth = azimuth_init;
 
     // Perform time steps and check for convergence within max_iter iterations
@@ -603,7 +599,6 @@ TEST(Milestone, IEA15RotorAeroController) {
         if (azimuth < 0) {
             azimuth += 2. * std::numbers::pi;
         }
-        rotor_speed = constraints.host_output(azimuth_constraint_id, 1);
     }
 }
 
