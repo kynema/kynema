@@ -131,7 +131,7 @@ public:
 
     /**
      * @brief Write checkpoint file of current state
-     * @param filename Name of the checkpoint file to write
+     * @param file_path Name of the checkpoint file to write
      */
     void WriteCheckpointFile(const std::string& file_path) const;
 
