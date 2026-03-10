@@ -15,12 +15,7 @@ namespace kynema::interfaces::components {
 class Controller {
 public:
     /// @brief Constructor for the Controller class
-    /// @param shared_lib_path Path to the shared library containing the controller function
-    /// @param controller_function_name Name of the controller function in the shared library
-    /// @param input_file_path Path to the input file
-    /// @param output_file_path Path to the output file
-    /// @param initial_yaw_angle Initial yaw angle (rad)
-    /// @param yaw_control_enabled Flag to enable yaw control
+    /// @param input Controller input parameters structure
     explicit Controller(const ControllerInput& input);
 
     /// Method to call the controller function from the shared library
