@@ -1,18 +1,16 @@
 #pragma once
 
-#include <sys/types.h>
-
 #include <cstdint>
 #include <string>
 
 namespace kynema::interfaces::components {
 
-enum class PitchActuatorType : uint8_t {
+enum class PitchActuatorType : std::uint8_t {
     POSITION = 0,
     VELOCITY = 1,
 };
 
-enum class PitchControlType : uint8_t {
+enum class PitchControlType : std::uint8_t {
     COLLECTIVE = 0,
     INDIVIDUAL = 1,
 };
