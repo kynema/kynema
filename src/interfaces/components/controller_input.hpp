@@ -34,7 +34,7 @@ struct ControllerInput {
     PitchControlType pitch_control_type{PitchControlType::COLLECTIVE
     };  ///< Pitch control type (default: 0 for collective)
     double time_step{0.0};         ///< Time step for controller simulation (s)
-    uint n_blades{0};              ///< Number of blades
+    std::uint32_t n_blades{0};     ///< Number of blades
     double pitch_angle{0.0};       ///< Initial pitch angle (radians)
     double yaw_angle{0.0};         ///< Initial yaw angle (radians)
     double rotor_speed{0.0};       ///< Initial rotor speed (rad/s)
