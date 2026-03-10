@@ -526,7 +526,7 @@ void TurbineInterface::InitializeController(const components::TurbineInput& turb
     const double generator_speed = turbine_input.rotor_speed * turbine_input.gearbox_ratio;
     controller->SetGeneratorSpeed(generator_speed);  // Generator speed (rad/s)
     controller->SetGeneratorTorque(
-        turbine_input.generator_power / generator_speed
+        generator_speed != 0.0 ? turbine_input.generator_power / generator_speed : 0.0
     );                                                             // Generator torque
     controller->SetGeneratorPower(turbine_input.generator_power);  // Generator power (W)
     controller->SetRotorSpeed(turbine_input.rotor_speed);          // Rotor speed (rad/s)
