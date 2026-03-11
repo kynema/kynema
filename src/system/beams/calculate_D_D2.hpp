@@ -39,11 +39,11 @@ struct CalculateD_D2 {
         math::VecTilde(xr_u_prime, tilde_xp_up);
 
         auto D11 = subview(D, make_pair(0, 3), make_pair(0, 3));
-        auto D_D2_21 = subview(D, make_pair(3, 6), make_pair(0, 3));
+        auto D_D2_21 = subview(D_D2, make_pair(3, 6), make_pair(0, 3));
         GemmTN::invoke(1., tilde_xp_up, D11, 0., D_D2_21);
 
         auto D12 = subview(D, make_pair(0, 3), make_pair(3, 6));
-        auto D_D2_22 = subview(D, make_pair(3, 6), make_pair(3, 6));
+        auto D_D2_22 = subview(D_D2, make_pair(3, 6), make_pair(3, 6));
         GemmTN::invoke(1., tilde_xp_up, D12, 0., D_D2_22);
     }
 };

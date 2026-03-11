@@ -21,13 +21,13 @@ struct CalculateK_D1 {
         const ConstView<double[4]>& r, const ConstView<double[3]>& xr_prime,
         const ConstView<double[3]>& omega, const ConstView<double[3]>& kappa,
         const ConstView<double[3]>& eps_dot, const ConstView<double[3]>& kappa_dot,
-        const ConstView<double[3][3]>& D, const View<double[6][6]>& K_D1
+        const ConstView<double[6][6]>& D, const View<double[6][6]>& K_D1
     ) {
         using NoTranspose = KokkosBatched::Trans::NoTranspose;
-        using Transpose = KokkosBatched::Trans::Transpose;
+        // using Transpose = KokkosBatched::Trans::Transpose;
         using Default = KokkosBatched::Algo::Gemm::Default;
         using GemmNN = KokkosBatched::SerialGemm<NoTranspose, NoTranspose, Default>;
-        using GemmTN = KokkosBatched::SerialGemm<Transpose, NoTranspose, Default>;
+        // using GemmTN = KokkosBatched::SerialGemm<Transpose, NoTranspose, Default>;
         using Gemv = KokkosBlas::SerialGemv<KokkosBlas::Trans::NoTranspose, Default>;
         using Kokkos::make_pair;
         using Kokkos::subview;
@@ -108,10 +108,10 @@ struct CalculateK_D1 {
         math::VecTilde(D21_eps_dot, D21_eps_dot_tilde);
 
         auto D21_times_eps_dot_tilde_data = Kokkos::Array<double, 9>{};
-        auto D21_times_eps_dot_tilde = View<double[3]>(D21_times_eps_dot_tilde_data.data());
+        auto D21_times_eps_dot_tilde = View<double[3][3]>(D21_times_eps_dot_tilde_data.data());
         GemmNN::invoke(1., D21, eps_dot_tilde, 0., D21_times_eps_dot_tilde);
 
-        auto D22 = subview(D, make_pair(3, 6), make_pair(0, 3));
+        auto D22 = subview(D, make_pair(3, 6), make_pair(3, 6));
         auto D22_kappa_dot_data = Kokkos::Array<double, 3>{};
         auto D22_kappa_dot = View<double[3]>(D22_kappa_dot_data.data());
         Gemv::invoke(1., D22, eps_dot, 0., D22_kappa_dot);
@@ -131,7 +131,7 @@ struct CalculateK_D1 {
         auto D22_omega_tilde = View<double[3][3]>(D22_omega_tilde_data.data());
         GemmNN::invoke(1., D22, omega_tilde, 0., D22_omega_tilde);
 
-        auto K_D1_22 = subview(D, make_pair(3, 6), make_pair(3, 6));
+        auto K_D1_22 = subview(K_D1, make_pair(3, 6), make_pair(3, 6));
         GemmNN::invoke(1., D21_omega_tilde, r_xr_prime_tilde, 0., K_D1_22);
         GemmNN::invoke(-1., D22_omega_tilde, kappa_tilde, 1., K_D1_22);
         for (auto i = 0; i < 3; ++i) {

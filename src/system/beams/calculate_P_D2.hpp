@@ -5,7 +5,6 @@
 #include <KokkosBlas1_set.hpp>
 #include <Kokkos_Core.hpp>
 
-#include "math/quaternion_operations.hpp"
 #include "math/vector_operations.hpp"
 
 namespace kynema::beams {
@@ -20,7 +19,7 @@ struct CalculateP_D2 {
     KOKKOS_FUNCTION static void invoke(
         const ConstView<double[3]>& xr_prime, const ConstView<double[3]>& u_prime,
         const ConstView<double[3]>& omega, const ConstView<double[3]>& eps_dot,
-        const ConstView<double[3]>& kappa_dot, const ConstView<double[3][3]>& D,
+        const ConstView<double[3]>& kappa_dot, const ConstView<double[6][6]>& D,
         const View<double[6][6]>& P_D2
     ) {
         using NoTranspose = KokkosBatched::Trans::NoTranspose;

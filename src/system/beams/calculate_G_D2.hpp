@@ -20,7 +20,7 @@ struct CalculateG_D2 {
     KOKKOS_FUNCTION static void invoke(
         const ConstView<double[4]>& r, const ConstView<double[3]>& xr_prime,
         const ConstView<double[3]>& u_prime, const ConstView<double[3]>& kappa,
-        const ConstView<double[3][3]>& D, const View<double[6][6]>& G_D2
+        const ConstView<double[6][6]>& D, const View<double[6][6]>& G_D2
     ) {
         using NoTranspose = KokkosBatched::Trans::NoTranspose;
         using Transpose = KokkosBatched::Trans::Transpose;

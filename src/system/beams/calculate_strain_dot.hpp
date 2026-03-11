@@ -21,10 +21,10 @@ struct CalculateStrainDot {
         const View<double[6]>& strain_dot
     ) {
         using NoTranspose = KokkosBlas::Trans::NoTranspose;
-        using Transpose = KokkosBlas::Trans::Transpose;
+        // using Transpose = KokkosBlas::Trans::Transpose;
         using Default = KokkosBlas::Algo::Gemv::Default;
         using Gemv = KokkosBlas::SerialGemv<NoTranspose, Default>;
-        using GemvT = KokkosBlas::SerialGemv<Transpose, Default>;
+        // using GemvT = KokkosBlas::SerialGemv<Transpose, Default>;
         using Kokkos::make_pair;
         using Kokkos::subview;
 
@@ -39,11 +39,11 @@ struct CalculateStrainDot {
         for (auto component = 0; component < 3; ++component) {
             strain_dot(component) = u_dot_prime(component);
         }
-        Gemv(1., omega_tilde, r_xr_prime, 1., subview(strain_dot, make_pair(0, 3)));
+        Gemv::invoke(-1., omega_tilde, r_xr_prime, 1., subview(strain_dot, make_pair(0, 3)));
         for (auto component = 0; component < 3; ++component) {
             strain_dot(component + 3) = omega_prime(component);
         }
-        Gemv(1., omega_tilde, kappa, 1., subview(strain_dot, make_pair(3, 6)));
+        Gemv::invoke(1., omega_tilde, kappa, 1., subview(strain_dot, make_pair(3, 6)));
     }
 };
 

@@ -16,7 +16,7 @@
 namespace kynema::beams {
 
 template <typename DeviceType>
-struct CalculateStiffnessQuadraturePointValues {
+struct CalculateQuadraturePointStiffnessValues {
     template <typename ValueType>
     using View = Kokkos::View<ValueType, DeviceType>;
     template <typename ValueType>

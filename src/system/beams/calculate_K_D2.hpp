@@ -21,13 +21,13 @@ struct CalculateK_D2 {
         const ConstView<double[4]>& r, const ConstView<double[3]>& xr_prime,
         const ConstView<double[3]>& omega, const ConstView<double[3]>& kappa,
         const ConstView<double[3]>& eps_dot, const ConstView<double[3]>& kappa_dot,
-        const ConstView<double[3][3]>& D, const View<double[6][6]>& K_D2
+        const ConstView<double[6][6]>& D, const View<double[6][6]>& K_D2
     ) {
         using NoTranspose = KokkosBatched::Trans::NoTranspose;
-        using Transpose = KokkosBatched::Trans::Transpose;
+        // using Transpose = KokkosBatched::Trans::Transpose;
         using Default = KokkosBatched::Algo::Gemm::Default;
         using GemmNN = KokkosBatched::SerialGemm<NoTranspose, NoTranspose, Default>;
-        using GemmTN = KokkosBatched::SerialGemm<Transpose, NoTranspose, Default>;
+        // using GemmTN = KokkosBatched::SerialGemm<Transpose, NoTranspose, Default>;
         using Gemv = KokkosBlas::SerialGemv<KokkosBlas::Trans::NoTranspose, Default>;
         using Kokkos::make_pair;
         using Kokkos::subview;

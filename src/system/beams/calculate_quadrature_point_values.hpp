@@ -2,9 +2,9 @@
 
 #include <Kokkos_Core.hpp>
 
-#include "calculate_damping_quadrature_point_values.hpp"
-#include "calculate_inertial_quadrature_point_values.hpp"
-#include "calculate_stiffness_quadrature_point_values.hpp"
+#include "calculate_quadrature_point_damping_values.hpp"
+#include "calculate_quadrature_point_inertial_values.hpp"
+#include "calculate_quadrature_point_stiffness_values.hpp"
 #include "calculate_system_matrix.hpp"
 #include "integrate_inertia_matrix.hpp"
 #include "integrate_residual_vector.hpp"
@@ -56,6 +56,7 @@ struct CalculateQuadraturePointValues {
         using Kokkos::make_pair;
         using Kokkos::parallel_for;
         using Kokkos::subview;
+        using Kokkos::Array;
         using Kokkos::TeamVectorRange;
         using CopyMatrix = KokkosBatched::TeamVectorCopy<member_type>;
         using CopyVector =
@@ -84,18 +85,17 @@ struct CalculateQuadraturePointValues {
         const auto qp_weight = View<double*>(member.team_scratch(0), num_qps);
         const auto qp_jacobian = View<double*>(member.team_scratch(0), num_qps);
 
-        const auto mu = View<double[6]>(member.team_scratch(1));
         const auto node_u = View<double* [7]>(member.team_scratch(1), num_nodes);
         const auto node_u_dot = View<double* [6]>(member.team_scratch(1), num_nodes);
         const auto node_u_ddot = View<double* [6]>(member.team_scratch(1), num_nodes);
         const auto node_FX = View<double* [6]>(member.team_scratch(1), num_nodes);
-        const auto qp_Fc = View<double* [6]>(member.team_scratch(1), num_qps);
-        const auto qp_Fd = View<double* [6]>(member.team_scratch(1), num_qps);
+        const auto qp_FE1 = View<double* [6]>(member.team_scratch(1), num_qps);
+        const auto qp_FE2 = View<double* [6]>(member.team_scratch(1), num_qps);
+        const auto qp_FD1 = View<double* [6]>(member.team_scratch(1), num_qps);
+        const auto qp_FD2 = View<double* [6]>(member.team_scratch(1), num_qps);
         const auto qp_Fi = View<double* [6]>(member.team_scratch(1), num_qps);
         const auto qp_Fe = View<double* [6]>(member.team_scratch(1), num_qps);
         const auto qp_Fg = View<double* [6]>(member.team_scratch(1), num_qps);
-        const auto qp_FD1 = View<double* [6]>(member.team_scratch(1), num_qps);
-        const auto qp_FD2 = View<double* [6]>(member.team_scratch(1), num_qps);
 
         const auto qp_Kuu = View<double* [6][6]>(member.team_scratch(1), num_qps);
         const auto qp_Puu = View<double* [6][6]>(member.team_scratch(1), num_qps);
@@ -128,9 +128,12 @@ struct CalculateQuadraturePointValues {
         CopyMatrix::invoke(member, subview(qp_FE_, element, qp_pair, ALL), qp_Fe);
         CopyMatrix::invoke(member, subview(node_FX_, element, node_pair, ALL), node_FX);
 
-        CopyVector::invoke(member, subview(element_mu, element, ALL), mu);
         CopyVector::invoke(member, subview(qp_weight_, element, qp_pair), qp_weight);
         CopyVector::invoke(member, subview(qp_jacobian_, element, qp_pair), qp_jacobian);
+
+        auto mu_data = Array<double, 6>{};
+        const auto mu = View<double[6]>(mu_data.data());
+        CopyVector::invoke(member, subview(element_mu, element, ALL), mu);
 
         const auto node_state_updater = beams::UpdateNodeStateElement<DeviceType>{
             element, node_state_indices, node_u, node_u_dot, node_u_ddot, Q, V, A
@@ -139,31 +142,33 @@ struct CalculateQuadraturePointValues {
         member.team_barrier();
 
         const auto inertia_quad_point_calculator =
-            beams::CalculateInertialQuadraturePointValues<DeviceType>{
+            beams::CalculateQuadraturePointInertialValues<DeviceType>{
                 element,     shape_interp, gravity_, qp_r0_, qp_Mstar_, node_u, node_u_dot,
                 node_u_ddot, qp_Fi,        qp_Fg,    qp_Muu, qp_Guu,    qp_Kuu
             };
         parallel_for(qp_range, inertia_quad_point_calculator);
 
         const auto stiffness_quad_point_calculator =
-            beams::CalculateStiffnessQuadraturePointValues<DeviceType>{
+            beams::CalculateQuadraturePointStiffnessValues<DeviceType>{
                 element, qp_jacobian, shape_interp, shape_deriv, qp_r0_, qp_x0_prime_, qp_Cstar_,
-                node_u,  qp_Fc,       qp_Fd,        qp_Cuu,      qp_Ouu, qp_Puu,       qp_Quu
+                node_u,  qp_FE1,      qp_FE2,       qp_Cuu,      qp_Ouu, qp_Puu,       qp_Quu
             };
         parallel_for(qp_range, stiffness_quad_point_calculator);
 
-        // const auto damping_quad_point_calculator =
-        //     beams::CalculateDampingQuadraturePointValues<DeviceType>{
-        //         element, mu, qp_jacobian, shape_interp, shape_deriv, qp_r0_, qp_FD1, qp_FD2,
-        //         qp_DD1,  qp_DD2,      qp_GD1,       qp_GD2,      qp_PD2, qp_KD1, qp_KD2
-        //     };
-        // parallel_for(qp_range, damping_quad_point_calculator);
+        const auto damping_quad_point_calculator =
+            beams::CalculateQuadraturePointDampingValues<DeviceType>{
+                element,   mu,     qp_jacobian, shape_interp, shape_deriv, qp_r0_, qp_x0_prime_,
+                qp_Cstar_, node_u, node_u_dot,  qp_FD1,       qp_FD2,      qp_DD1, qp_DD2,
+                qp_GD1,    qp_GD2, qp_PD2,      qp_KD1,       qp_KD2
+            };
+        parallel_for(qp_range, damping_quad_point_calculator);
 
         member.team_barrier();
 
         const auto residual_integrator = beams::IntegrateResidualVectorElement<DeviceType>{
-            element, num_qps, qp_weight, qp_jacobian, shape_interp, shape_deriv,           node_FX,
-            qp_Fc,   qp_Fd,   qp_Fi,     qp_Fe,       qp_Fg,        residual_vector_terms_
+            element,     num_qps, qp_weight, qp_jacobian, shape_interp,
+            shape_deriv, node_FX, qp_FE1,    qp_FE2,      qp_FD1,
+            qp_FD2,      qp_Fi,   qp_Fe,     qp_Fg,       residual_vector_terms_
         };
         parallel_for(node_range, residual_integrator);
 

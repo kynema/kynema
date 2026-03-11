@@ -14,7 +14,7 @@
 namespace kynema::beams {
 
 template <typename DeviceType>
-struct CalculateInertialQuadraturePointValues {
+struct CalculateQuadraturePointInertialValues {
     template <typename ValueType>
     using View = Kokkos::View<ValueType, DeviceType>;
     template <typename ValueType>

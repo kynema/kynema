@@ -253,7 +253,7 @@ constexpr std::array<double, 56> kDerivWeightsFlat = {
     1.449107912342756,
 };
 
-constexpr std::array<double, kNumQPs * 6> kFc = {
+constexpr std::array<double, kNumQPs * 6> kFE1 = {
     19377.66142402,  -9011.48579619,  3582.628416357,
     5433.695299839,  7030.727457672,  -854.6894329742,  // QP 1
     35490.84254734,  -8099.471990103, 3825.137533463,
@@ -270,7 +270,7 @@ constexpr std::array<double, kNumQPs * 6> kFc = {
     7133.754559318,  2143.593577595,  8032.504691472  // QP 4
 };
 
-constexpr std::array<double, kNumQPs * 6> kFd = {
+constexpr std::array<double, kNumQPs * 6> kFE2 = {
     0., 0., 0., -413.0521579912, 176.1330689806,  2677.142143344,  // QP 1
     0., 0., 0., -175.2982322707, -336.0628883725, 914.8821391247,  // QP 2
     0., 0., 0., -27.38979513032, -976.3905881431, 214.6996893003,  // QP 3
@@ -279,6 +279,9 @@ constexpr std::array<double, kNumQPs * 6> kFd = {
     0., 0., 0., -198.0160029009, 18894.3224851,   40156.0515182,   // QP 6
     0., 0., 0., 3609.312381055,  24425.88953965,  65272.65615984   // QP 7
 };
+
+constexpr std::array<double, kNumQPs * 6> kFD1 = {};
+constexpr std::array<double, kNumQPs * 6> kFD2 = {};
 
 constexpr std::array<double, kNumQPs * 6> kFi = {
     0.02197622144767,  -0.03476996186535, 0.005820529971857,

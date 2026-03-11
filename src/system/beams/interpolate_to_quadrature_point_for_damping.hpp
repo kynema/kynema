@@ -19,8 +19,10 @@ struct InterpolateToQuadraturePointForDamping {
     KOKKOS_FUNCTION static void invoke(
         double jacobian, const ConstLeftView<double*>& shape_interp,
         const ConstLeftView<double*>& shape_deriv, const ConstView<double* [7]>& node_u,
-        const ConstView<double* [7]>& node_v, const View<double[3]>& u, const View<double[4]>& r,
-        const View<double[3]>& u_prime, const View<double[4]>& r_prime
+        const ConstView<double* [6]>& node_u_dot, const View<double[3]>& u, const View<double[4]>& r,
+        const View<double[3]>& u_prime, const View<double[4]>& r_prime, const View<double[3]>& u_dot,
+        const View<double[3]>& omega, const View<double[3]>& u_dot_prime,
+        const View<double[3]>& omega_prime
     ) {
         for (auto node = 0U; node < node_u.extent(0); ++node) {
             const auto phi = shape_interp(node);
@@ -28,6 +30,10 @@ struct InterpolateToQuadraturePointForDamping {
             for (auto component = 0U; component < 3U; ++component) {
                 u(component) += node_u(node, component) * phi;
                 u_prime(component) += node_u(node, component) * dphiJ;
+                u_dot(component) += node_u_dot(node, component) * phi;
+                u_dot_prime(component) += node_u_dot(node, component) * dphiJ;
+                omega(component) += node_u_dot(node, component + 3) * phi;
+                omega_prime(component) += node_u_dot(node, component + 3) * dphiJ;
             }
             for (auto component = 0U; component < 4U; ++component) {
                 r(component) += node_u(node, component + 3) * phi;
