@@ -47,6 +47,7 @@ struct CalculateQuadraturePointDampingValues {
 
     View<double* [6]> qp_FD1;
     View<double* [6]> qp_FD2;
+    View<double* [6][6]> qp_Duu;
     View<double* [6][6]> qp_DD1;
     View<double* [6][6]> qp_DD2;
     View<double* [6][6]> qp_GD1;
@@ -71,6 +72,7 @@ struct CalculateQuadraturePointDampingValues {
                 qp_FD1(qp, i) = 0.;
                 qp_FD2(qp, i) = 0.;
                 for (auto j : std::views::iota(0, 6)) {
+                    qp_Duu(qp, i, j) = 0.0;
                     qp_DD1(qp, i, j) = 0.0;
                     qp_DD2(qp, i, j) = 0.0;
                     qp_GD1(qp, i, j) = 0.0;
@@ -215,9 +217,10 @@ struct CalculateQuadraturePointDampingValues {
         CalculateD_D2<DeviceType>::invoke(xr_prime, u_prime, Duu, DD2);
         CalculateG_D1<DeviceType>::invoke(r, xr_prime, kappa, Duu, GD1);
         CalculateG_D2<DeviceType>::invoke(r, xr_prime, u_prime, kappa, Duu, GD2);
-        // CalculateP_D2<DeviceType>::invoke(xr_prime, u_prime, omega, eps_dot, kappa_dot, Duu, PD2);
-        // CalculateK_D1<DeviceType>::invoke(r, xr_prime, omega, kappa, eps_dot, kappa_dot, Duu, KD1);
-        // CalculateK_D2<DeviceType>::invoke(r, xr_prime, omega, kappa, eps_dot, kappa_dot, Duu, KD2);
+        CalculateP_D2<DeviceType>::invoke(xr_prime, u_prime, omega, eps_dot, kappa_dot, Duu, PD2);
+        CalculateK_D1<DeviceType>::invoke(r, xr_prime, omega, kappa, eps_dot, kappa_dot, Duu, KD1);
+        CalculateK_D2<DeviceType>::invoke(r, xr_prime, omega, kappa, eps_dot, kappa_dot, Duu, KD2);
+        CopyMatrix::invoke(subview(qp_Duu, qp, ALL, ALL), Duu);
         CopyMatrix::invoke(subview(qp_DD1, qp, ALL, ALL), DD1);
         CopyMatrix::invoke(subview(qp_DD2, qp, ALL, ALL), DD2);
         CopyMatrix::invoke(subview(qp_GD1, qp, ALL, ALL), GD1);

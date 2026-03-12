@@ -347,6 +347,10 @@ TEST(CurvedBeamTests, IntegrateStiffnessMatrixForCurvedBeam) {
     const auto qp_Cuu = CreateView<double[kNumQPs][6][6]>("qp_Cuu", kCuu);
     const auto qp_Ouu = CreateView<double[kNumQPs][6][6]>("qp_Ouu", kOuu);
     const auto qp_Quu = CreateView<double[kNumQPs][6][6]>("qp_Quu", kQuu);
+    const auto qp_DD1 = Kokkos::View<double[kNumQPs][6][6]>("DD1");
+    const auto qp_KD1 = Kokkos::View<double[kNumQPs][6][6]>("KD1");
+    const auto qp_KD2 = Kokkos::View<double[kNumQPs][6][6]>("KD2");
+    const auto qp_PD2 = Kokkos::View<double[kNumQPs][6][6]>("PD2");
 
     const auto stiffness_matrix_terms =
         Kokkos::View<double[kNumNodes][kNumNodes][6][6]>("stiffness_matrix_terms");
@@ -370,6 +374,10 @@ TEST(CurvedBeamTests, IntegrateStiffnessMatrixForCurvedBeam) {
             .qp_Cuu_ = qp_Cuu,
             .qp_Ouu_ = qp_Ouu,
             .qp_Quu_ = qp_Quu,
+            .qp_DD1_ = qp_DD1,
+            .qp_KD1_ = qp_KD1,
+            .qp_KD2_ = qp_KD2,
+            .qp_PD2_ = qp_PD2,
             .gbl_M_ = stiffness_matrix_terms
         }
     );

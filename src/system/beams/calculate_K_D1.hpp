@@ -28,7 +28,7 @@ struct CalculateK_D1 {
         using Default = KokkosBatched::Algo::Gemm::Default;
         using GemmNN = KokkosBatched::SerialGemm<NoTranspose, NoTranspose, Default>;
         // using GemmTN = KokkosBatched::SerialGemm<Transpose, NoTranspose, Default>;
-        using Gemv = KokkosBlas::SerialGemv<KokkosBlas::Trans::NoTranspose, Default>;
+        using Gemv = KokkosBlas::SerialGemv<KokkosBlas::Trans::NoTranspose, KokkosBlas::Algo::Gemv::Default>;
         using Kokkos::make_pair;
         using Kokkos::subview;
 
