@@ -29,6 +29,10 @@ inline void IntegrateInertiaMatrix_TestOneElementOneNodeOneQP_Muu() {
         kynema::beams::tests::CreateLeftView<double[max_simd_size][number_of_qps]>(
             "shape_interp", std::array<double, max_simd_size>{5.}
         );
+    const auto shape_deriv =
+        kynema::beams::tests::CreateLeftView<double[max_simd_size][number_of_qps]>(
+            "shape_deriv", std::array<double, max_simd_size>{1.}
+        );
     const auto qp_Muu = kynema::beams::tests::CreateView<double[number_of_qps][6][6]>(
         "qp_Muu", std::array{0001., 0002., 0003., 0004., 0005., 0006., 1001., 1002., 1003.,
                              1004., 1005., 1006., 2001., 2002., 2003., 2004., 2005., 2006.,
@@ -57,6 +61,7 @@ inline void IntegrateInertiaMatrix_TestOneElementOneNodeOneQP_Muu() {
             .qp_weight_ = qp_weights,
             .qp_jacobian_ = qp_jacobian,
             .shape_interp_ = shape_interp,
+            .shape_deriv_ = shape_deriv,
             .qp_Muu_ = qp_Muu,
             .qp_G_I_ = qp_Guu,
             .qp_Duu_ = qp_Duu,
@@ -96,6 +101,10 @@ void IntegrateInertiaMatrix_TestOneElementOneNodeOneQP_Guu() {
         kynema::beams::tests::CreateLeftView<double[max_simd_size][number_of_qps]>(
             "shape_interp", std::vector<double>{5., 0., 0., 0., 0., 0., 0., 0.}
         );
+    const auto shape_deriv =
+        kynema::beams::tests::CreateLeftView<double[max_simd_size][number_of_qps]>(
+            "shape_deriv", std::vector<double>{5., 0., 0., 0., 0., 0., 0., 0.}
+        );
     const auto qp_Muu = kynema::beams::tests::CreateView<double[number_of_qps][6][6]>(
         "qp_Muu", std::array{0001., 0002., 0003., 0004., 0005., 0006., 1001., 1002., 1003.,
                              1004., 1005., 1006., 2001., 2002., 2003., 2004., 2005., 2006.,
@@ -124,6 +133,7 @@ void IntegrateInertiaMatrix_TestOneElementOneNodeOneQP_Guu() {
             .qp_weight_ = qp_weights,
             .qp_jacobian_ = qp_jacobian,
             .shape_interp_ = shape_interp,
+            .shape_deriv_ = shape_deriv,
             .qp_Muu_ = qp_Muu,
             .qp_G_I_ = qp_Guu,
             .qp_Duu_ = qp_Duu,
@@ -165,6 +175,11 @@ void IntegrateInertiaMatrix_TestOneElementTwoNodesOneQP() {
             "shape_interp",
             std::vector<double>{1., 2., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.}
         );
+    const auto shape_deriv =
+        kynema::beams::tests::CreateLeftView<double[max_simd_size][number_of_qps]>(
+            "shape_deriv",
+            std::vector<double>{1., 2., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.}
+        );
     const auto qp_Muu = kynema::beams::tests::CreateView<double[number_of_qps][6][6]>(
         "qp_Muu", std::array{001., 002., 003., 004., 005., 006., 101., 102., 103., 104., 105., 106.,
                              201., 202., 203., 204., 205., 206., 301., 302., 303., 304., 305., 306.,
@@ -187,6 +202,7 @@ void IntegrateInertiaMatrix_TestOneElementTwoNodesOneQP() {
             .qp_weight_ = qp_weights,
             .qp_jacobian_ = qp_jacobian,
             .shape_interp_ = shape_interp,
+            .shape_deriv_ = shape_deriv,
             .qp_Muu_ = qp_Muu,
             .qp_G_I_ = qp_Guu,
             .qp_Duu_ = qp_Duu,
@@ -235,6 +251,10 @@ void IntegrateInertiaMatrix_TestOneElementOneNodeTwoQPs() {
         kynema::beams::tests::CreateLeftView<double[max_simd_size][number_of_qps]>(
             "shape_interp", std::array<double, max_simd_size * number_of_qps>{1. / 3., 1. / 2.}
         );
+    const auto shape_deriv =
+        kynema::beams::tests::CreateLeftView<double[max_simd_size][number_of_qps]>(
+            "shape_deriv", std::array<double, max_simd_size * number_of_qps>{1. / 3., 1. / 2.}
+        );
     const auto qp_Muu = kynema::beams::tests::CreateView<double[number_of_qps][6][6]>(
         "qp_Muu", std::array{00001., 00002., 00003., 00004., 00005., 00006., 00011., 00012., 00013.,
                              00014., 00015., 00016., 00021., 00022., 00023., 00024., 00025., 00026.,
@@ -262,6 +282,7 @@ void IntegrateInertiaMatrix_TestOneElementOneNodeTwoQPs() {
             .qp_weight_ = qp_weights,
             .qp_jacobian_ = qp_jacobian,
             .shape_interp_ = shape_interp,
+            .shape_deriv_ = shape_deriv,
             .qp_Muu_ = qp_Muu,
             .qp_G_I_ = qp_Guu,
             .qp_Duu_ = qp_Duu,
@@ -300,6 +321,10 @@ void IntegrateInertiaMatrix_TestOneElementOneNodeOneQP_WithMultiplicationFactor(
         kynema::beams::tests::CreateLeftView<double[max_simd_size][number_of_qps]>(
             "shape_interp", std::vector<double>{1., 0., 0., 0., 0., 0., 0., 0.}
         );
+    const auto shape_deriv =
+        kynema::beams::tests::CreateLeftView<double[max_simd_size][number_of_qps]>(
+            "shape_deriv", std::vector<double>{1., 0., 0., 0., 0., 0., 0., 0.}
+        );
     const auto qp_Muu = kynema::beams::tests::CreateView<double[number_of_qps][6][6]>(
         "qp_Muu", std::array{0001., 0002., 0003., 0004., 0005., 0006., 1001., 1002., 1003.,
                              1004., 1005., 1006., 2001., 2002., 2003., 2004., 2005., 2006.,
@@ -325,6 +350,7 @@ void IntegrateInertiaMatrix_TestOneElementOneNodeOneQP_WithMultiplicationFactor(
             .qp_weight_ = qp_weights,
             .qp_jacobian_ = qp_jacobian,
             .shape_interp_ = shape_interp,
+            .shape_deriv_ = shape_deriv,
             .qp_Muu_ = qp_Muu,
             .qp_G_I_ = qp_Guu,
             .qp_Duu_ = qp_Duu,

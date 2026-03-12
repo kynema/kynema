@@ -195,9 +195,10 @@ struct CalculateQuadraturePointValues {
         parallel_for(node_squared_simd_range, stiffness_matrix_integrator);
 
         const auto inertia_matrix_integrator = beams::IntegrateInertiaMatrixElement<DeviceType>{
-            element,      num_nodes, num_qps,     qp_weight,    qp_jacobian,
-            shape_interp, qp_Muu,    qp_G_I,      qp_Duu,       qp_G_D1,
-            qp_G_D2,      qp_D_D2,   beta_prime_, gamma_prime_, inertia_matrix_terms
+            element,     num_nodes,    num_qps,      qp_weight,
+            qp_jacobian, shape_interp, shape_deriv,  qp_Muu,
+            qp_G_I,      qp_Duu,       qp_G_D1,      qp_G_D2,
+            qp_D_D2,     beta_prime_,  gamma_prime_, inertia_matrix_terms
         };
         parallel_for(node_squared_simd_range, inertia_matrix_integrator);
         member.team_barrier();
