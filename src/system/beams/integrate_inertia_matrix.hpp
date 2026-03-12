@@ -84,7 +84,7 @@ struct IntegrateInertiaMatrixElement {
                 const auto GD2 = simd_type(GD2_local(i));
                 const auto DD2 = simd_type(DD2_local(i));
                 const auto Mij = c4 * Muu;
-                const auto Gij = c1 * Duu + c2 * GD1 + c3 * DD2 + c4 * (G_I + GD2) ;
+                const auto Gij = c1 * Duu + c2 * GD1 + c3 * DD2 + c4 * (G_I + GD2);
                 local_M[i] = local_M[i] + (beta_prime_ * Mij) + (gamma_prime_ * Gij);
             }
         }
