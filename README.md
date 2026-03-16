@@ -1,7 +1,7 @@
 # Kynema
 [Documentation](https://kynema.github.io/kynema) | [Nightly test dashboard](http://my.cdash.org/index.php?project=Exawind) 
 
-**Kynema development began in 2023, is ongoing, and we aim for beta release in 2025**
+**Kynema development began in 2023, is ongoing, and we aim for beta release in 2026**
 
 Kynema is an open-source performance portable flexible multibody dynamics (FMD)
 solver designed for time-domain simulations.  While originally tailored for

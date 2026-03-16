@@ -311,7 +311,7 @@ TEST(TurbineInterfaceTest, IEA15_Structure) {
     interface.Turbine().tower.nodes.back().loads = {1e5, 0., 0., 0., 0., 0.};
 
     // Apply torque to turbine shaft
-    interface.Turbine().torque_control = -1e8;
+    interface.Turbine().rotor_torque_control = -1e8;
 
     // Calculate number of steps
     const auto n_steps{static_cast<size_t>(duration / time_step)};
@@ -329,7 +329,7 @@ TEST(TurbineInterfaceTest, IEA15_Structure) {
 
         // Turn off the torque control after 500 steps
         if (i % 500 == 0) {
-            interface.Turbine().torque_control = 0.;
+            interface.Turbine().rotor_torque_control = 0.;
         }
 
         // Take step

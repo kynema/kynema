@@ -109,7 +109,15 @@ include(../cmake/SharedLibraries.cmake)
 # Define shared libraries for controllers
 #----------------------------------------
 add_shared_library(DISCON)
+target_include_directories(DISCON
+  PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src>
+)
 add_shared_library(DISCON_ROTOR_TEST_CONTROLLER)
+target_include_directories(DISCON_ROTOR_TEST_CONTROLLER
+  PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src>
+)
 
 #----------------------------------------
 # Set include directories

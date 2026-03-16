@@ -141,7 +141,7 @@ public:
     //--------------------------------------------------------------------------
 
     std::vector<double> blade_pitch_control;  //< Blade pitch angles
-    double torque_control{0.};                //< Torque control value
+    double rotor_torque_control{0.};          //< Torque control value
     double yaw_control{0.};                   //< Yaw control value
 
     /**
@@ -221,8 +221,6 @@ private:
     //--------------------------------------------------------------------------
     // Turbine inputs
     //--------------------------------------------------------------------------
-
-    TurbineInput turbine_input;  ///< Turbine input configuration
 
     /**
      * @brief Create blades from input configuration

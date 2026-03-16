@@ -138,7 +138,7 @@ int main() {
         const double step_size(0.01);
         const double rho_inf(0.9);
         const double t_end(0.1);
-        const auto num_steps = static_cast<size_t>(std::floor(t_end / step_size + 1.0));
+        const auto num_steps = static_cast<size_t>(std::floor((t_end / step_size) + 1.0));
         auto parameters = kynema::StepParameters(is_dynamic_solve, max_iter, step_size, rho_inf);
 
         // Kynema allows the user to control the actual time stepping process.  This includes

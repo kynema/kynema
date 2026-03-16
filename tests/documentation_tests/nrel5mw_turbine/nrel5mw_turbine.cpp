@@ -330,7 +330,7 @@ int main() {
             {{{hub_mass, 0., 0., 0., 0., 0.},
               {0., hub_mass, 0., 0., 0., 0.},
               {0., 0., hub_mass, 0., 0., 0.},
-              {0., 0., 0., hub_inertia[0] + generator_inertia[0] * gearbox_ratio * gearbox_ratio,
+              {0., 0., 0., hub_inertia[0] + (generator_inertia[0] * gearbox_ratio * gearbox_ratio),
                hub_inertia[3], hub_inertia[4]},
               {0., 0., 0., hub_inertia[3], hub_inertia[1], hub_inertia[5]},
               {0., 0., 0., hub_inertia[4], hub_inertia[5], hub_inertia[2]}}}
@@ -402,17 +402,17 @@ int main() {
         // Build Controller
         //--------------------------------------------------------------------------
 
-        const auto controller_shared_lib_path =
-            std::string{static_cast<const char*>(Kynema_ROSCO_LIBRARY)};
-        const auto controller_function_name = std::string{"DISCON"};
-        const auto controller_input_file = std::string{"DISCON.IN"};
-        const auto controller_output_file = std::string{"controller_NREL5MW"};
-
-        auto controller_builder = builder.Controller()
-                                      .SetLibraryPath(controller_shared_lib_path)
-                                      .SetFunctionName(controller_function_name)
-                                      .SetInputFilePath(controller_input_file)
-                                      .SetControllerInput(controller_output_file);
+        builder.Controller()
+            .EnableController()
+            .EnableYawControl()
+            .EnablePitchControl()
+            .EnableTorqueControl()
+            .SetNumberOfBlades(n_blades)
+            .SetTimeStep(time_step)
+            .SetLibraryPath(static_cast<const char*>(Kynema_ROSCO_LIBRARY))
+            .SetFunctionName("DISCON")
+            .SetInputFilePath("DISCON.IN")
+            .SetOutputFilePath("controller_NREL5MW");
 
         //--------------------------------------------------------------------------
         // Interface

@@ -1,0 +1,6 @@
+add_subdirectory(floating_platform)
+add_subdirectory(heavy_top)
+add_subdirectory(iea15mw_turbine)
+add_subdirectory(nrel5mw_turbine)
+add_subdirectory(spring_mass_system)
+add_subdirectory(three_blade_rotor)

@@ -133,30 +133,30 @@ For a simple serial build
 
 .. code-block:: bash
 
-    spack install kokkos
-    spack install kokkos-kernels
+    spack install kokkos@4.7.02
+    spack install kokkos-kernels@4.7.02
 
 
 To compile with OpenMP support for parallelism on CPU based machines
 
 .. code-block:: bash
 
-    spack install kokkos+openmp
-    spack install kokkos-kernels+openmp
+    spack install kokkos@4.7.02+openmp
+    spack install kokkos-kernels@4.7.02+openmp
 
 To compile with CUDA support
 
 .. code-block:: bash
 
-    spack install kokkos+cuda+wrapper
-    spack install kokkos-kernels+cuda+cublas
+    spack install kokkos@4.7.02+cuda+wrapper
+    spack install kokkos-kernels@4.7.02+cuda+cublas
 
 To compile with ROCm support
 
 .. code-block:: bash
 
-    spack install kokkos+rocm
-    spack install kokkos-kernels+rocblas
+    spack install kokkos@4.7.02+rocm
+    spack install kokkos-kernels@4.7.02+rocblas
 
 Load the TPLs into your environment
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

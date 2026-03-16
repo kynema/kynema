@@ -15,7 +15,9 @@ project(
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 
-find_package(Kynema REQUIRED)
+if(PROJECT_IS_TOP_LEVEL)
+    find_package(Kynema REQUIRED)
+endif()
 
 add_executable(floating_platform)
 target_link_libraries(floating_platform PRIVATE Kynema::kynema_library)
