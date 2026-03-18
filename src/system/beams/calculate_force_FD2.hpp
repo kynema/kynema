@@ -15,7 +15,7 @@ struct CalculateForceFD2 {
     using ConstView = typename View<ValueType>::const_type;
 
     KOKKOS_FUNCTION static void invoke(
-        const ConstView<double[6][6]>& D, const ConstView<double[3]>& xr_prime,
+        const ConstView<double[6][6]>& Duu, const ConstView<double[3]>& xr_prime,
         const ConstView<double[3]>& u_prime, const ConstView<double[6]>& strain_dot,
         const View<double[6]>& FD2
     ) {
@@ -45,10 +45,14 @@ struct CalculateForceFD2 {
         auto eps_kappa_sum_data = Kokkos::Array<double, 3>{};
         auto eps_kappa_sum = View<double[3]>(eps_kappa_sum_data.data());
 
-        auto eps = subview(D, make_pair(0, 3), make_pair(0, 3));
-        Gemv::invoke(1., eps, subview(strain_dot, make_pair(0, 3)), 0., eps_kappa_sum);
-        auto kappa = subview(D, make_pair(0, 3), make_pair(3, 6));
-        Gemv::invoke(1., kappa, subview(strain_dot, make_pair(3, 6)), 1., eps_kappa_sum);
+        const auto eps_dot = subview(strain_dot, make_pair(0, 3));
+        const auto kappa_dot = subview(strain_dot, make_pair(3, 6));
+
+        auto D11 = subview(Duu, make_pair(0, 3), make_pair(0, 3));
+        Gemv::invoke(1., D11, eps_dot, 0., eps_kappa_sum);
+        auto D12 = subview(Duu, make_pair(0, 3), make_pair(3, 6));
+        Gemv::invoke(1., D12, kappa_dot, 1., eps_kappa_sum);
+
         GemvT::invoke(1., xr_plus_u_prime_tilde, eps_kappa_sum, 0., subview(FD2, make_pair(3, 6)));
     }
 };

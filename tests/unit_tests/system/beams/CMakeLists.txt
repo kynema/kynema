@@ -11,6 +11,8 @@ target_sources(
     test_calculate_temporary_variables.cpp
     test_calculate_force_FC.cpp
     test_calculate_force_FD.cpp
+    test_calculate_force_FD1.cpp
+    test_calculate_force_FD2.cpp
     test_calculate_Ouu.cpp
     test_calculate_Puu.cpp
     test_calculate_Quu.cpp
