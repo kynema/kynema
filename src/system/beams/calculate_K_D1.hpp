@@ -39,7 +39,7 @@ struct CalculateK_D1 {
         auto omega_tilde = View<double[3][3]>(omega_tilde_data.data());
         math::VecTilde(omega, omega_tilde);
 
-        auto kappa_tilde_data = Kokkos::Array<double, 0>{};
+        auto kappa_tilde_data = Kokkos::Array<double, 9>{};
         auto kappa_tilde = View<double[3][3]>(kappa_tilde_data.data());
         math::VecTilde(kappa, kappa_tilde);
 

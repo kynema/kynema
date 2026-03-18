@@ -16,4 +16,5 @@ target_sources(
     test_calculate_Ouu.cpp
     test_calculate_Puu.cpp
     test_calculate_Quu.cpp
+    test_calculate_KD1.cpp
 )
