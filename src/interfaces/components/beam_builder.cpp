@@ -32,7 +32,7 @@ BeamBuilder& BeamBuilder::ClearReferenceAxisPoints() {
     return *this;
 }
 
-BeamBuilder& BeamBuilder::SetDampingProperties(const std::array<double, 6>& mu){
+BeamBuilder& BeamBuilder::SetDampingProperties(const std::array<double, 6>& mu) {
     input.mu = mu;
     return *this;
 }
