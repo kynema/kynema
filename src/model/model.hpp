@@ -156,6 +156,7 @@ public:
      * @param node_ids A list of the node IDs to be contained in the beam
      * @param sections The physical properties defined at each quadrature point
      * @param quadrature The quadrature point locations and weights
+     * @param mu Stiffness-proportional damping coefficients
      *
      * @return the index of the newly added beam
      */
