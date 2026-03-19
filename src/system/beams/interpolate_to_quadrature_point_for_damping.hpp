@@ -32,12 +32,12 @@ struct InterpolateToQuadraturePointForDamping {
                 u_prime(component) += node_u(node, component) * dphiJ;
                 u_dot(component) += node_u_dot(node, component) * phi;
                 u_dot_prime(component) += node_u_dot(node, component) * dphiJ;
-                omega(component) += node_u_dot(node, component + 3) * phi;
-                omega_prime(component) += node_u_dot(node, component + 3) * dphiJ;
+                omega(component) += node_u_dot(node, component + 3U) * phi;
+                omega_prime(component) += node_u_dot(node, component + 3U) * dphiJ;
             }
             for (auto component = 0U; component < 4U; ++component) {
-                r(component) += node_u(node, component + 3) * phi;
-                r_prime(component) += node_u(node, component + 3) * dphiJ;
+                r(component) += node_u(node, component + 3U) * phi;
+                r_prime(component) += node_u(node, component + 3U) * dphiJ;
             }
         }
         const auto r_length = KokkosBlas::serial_nrm2(r);

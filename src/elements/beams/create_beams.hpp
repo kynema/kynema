@@ -45,7 +45,7 @@ inline Beams<DeviceType> CreateBeams(const BeamsInput& beams_input, std::span<co
         create_mirror_view(WithoutInitializing, beams.num_nodes_per_element);
     auto host_num_qps_per_element =
         create_mirror_view(WithoutInitializing, beams.num_qps_per_element);
-    auto host_mu = create_mirror_view(WithoutInitializing, beams.element_mu);
+    auto host_element_mu = create_mirror_view(WithoutInitializing, beams.element_mu);
     auto host_node_state_indices = create_mirror_view(WithoutInitializing, beams.node_state_indices);
     auto host_node_x0 = create_mirror_view(WithoutInitializing, beams.node_x0);
     auto host_node_u = create_mirror_view(WithoutInitializing, beams.node_u);
@@ -74,7 +74,7 @@ inline Beams<DeviceType> CreateBeams(const BeamsInput& beams_input, std::span<co
 
         // Set element damping coefficients
         for (auto i : std::views::iota(0U, 6U)) {
-            host_mu(element, i) = beams_input.elements[element].mu[i];
+            host_element_mu(element, i) = beams_input.elements[element].mu[i];
         }
 
         // Populate beam node->state indices
@@ -110,7 +110,7 @@ inline Beams<DeviceType> CreateBeams(const BeamsInput& beams_input, std::span<co
 
     deep_copy(beams.num_nodes_per_element, host_num_nodes_per_element);
     deep_copy(beams.num_qps_per_element, host_num_qps_per_element);
-    deep_copy(beams.element_mu, host_mu);
+    deep_copy(beams.element_mu, host_element_mu);
     deep_copy(beams.gravity, host_gravity);
     deep_copy(beams.node_state_indices, host_node_state_indices);
     deep_copy(beams.node_x0, host_node_x0);

@@ -1,3 +1,5 @@
+#include <array>
+#include <iostream>
 #include <numbers>
 
 #include <gtest/gtest.h>
@@ -366,8 +368,8 @@ TEST(BladeInterfaceTest, TwoBeams) {
     }
 }
 
-TEST(BladeInterfaceTest, DISABLED_DampedBeam) {
-    const auto time_step{0.01};
+TEST(BladeInterfaceTest, DampedBeam) {
+    const auto time_step{0.001};
     const auto write_output{false};
 
     // Create interface builder
@@ -377,7 +379,7 @@ TEST(BladeInterfaceTest, DISABLED_DampedBeam) {
     builder.Solution()
         .EnableDynamicSolve()
         .SetTimeStep(time_step)
-        .SetDampingFactor(0.0)
+        .SetDampingFactor(1.0)
         .SetMaximumNonlinearIterations(6)
         .SetAbsoluteErrorTolerance(1e-6)
         .SetRelativeErrorTolerance(1e-4);
@@ -386,23 +388,25 @@ TEST(BladeInterfaceTest, DISABLED_DampedBeam) {
         builder.Outputs().SetOutputFilePath("BladeInterfaceTest.DampedBeam");
     }
 
-    // Node locations (GLL quadrature)
-    const auto node_s = std::vector{
-        0., 0.11747233803526763, 0.35738424175967748, 0.64261575824032247, 0.88252766196473242, 1.
-    };
+    // Key point locations (GLL quadrature)
+    const auto kp_s = std::vector{0., 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.};
 
+    // Damping coefficients
+    const auto mu =
+        std::array<double, 6>{0.0006491373694471284, 0.0009188425719996698, 0.0007085173437304416,
+                              0.0006491373694471284, 0.0007085173437304416, 0.0009188425719996698};
+
+    // Build blade
     builder.Blade()
-        .SetElementOrder(5)
+        .SetElementOrder(7)
         .PrescribedRootMotion(true)
-        .AddRefAxisTwist(0., 0.)
-        .AddRefAxisTwist(1., 0.)
-        .SetDampingProperties(std::array<double, 6>{0.01, 0.02, 0.03, 0.04, 0.05, 0.06})
+        .SetDampingProperties(mu)
         .SetSectionRefinement(19)
         .SetQuadratureStyle(interfaces::components::BeamInput::QuadratureStyle::WholeBeam);
 
     // Add reference axis coordinates and twist
-    for (const auto s : node_s) {
-        builder.Blade().AddRefAxisPoint(
+    for (const auto s : kp_s) {
+        builder.Blade().AddRefAxisTwist(s, 0.).AddRefAxisPoint(
             s, {10. * s, 0., 0.}, interfaces::components::ReferenceAxisOrientation::X
         );
     }
@@ -437,12 +441,43 @@ TEST(BladeInterfaceTest, DISABLED_DampedBeam) {
     // Create the interface
     auto interface = builder.Build();
 
-    // Loop through time steps
-    for (auto i : std::views::iota(1U, 10U)) {
-        // Calculate time at end of step
-        [[maybe_unused]] const auto t{static_cast<double>(i) * time_step};
+    interface.Blade().nodes[0].velocity = std::array<double, 6>{0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
+    interface.Blade().nodes[1].velocity =
+        std::array<double, 6>{-4.0020570587681635e-14, -4.062027555065017e-13,
+                              0.4753298502530739,      2.1578271353453053e-13,
+                              -0.8592630411153818,     -5.672163395396767e-13};
+    interface.Blade().nodes[2].velocity = std::array<double, 6>{
+        -1.0809857993658125e-13, -2.286271900308519e-12, 3.15616192519156,
+        4.61836705330706e-13,    -2.3539662167630473,    -1.4075295133279746e-12,
+    };
+    interface.Blade().nodes[3].velocity =
+        std::array<double, 6>{-1.3288082834869155e-13, -6.0327253676138745e-12,
+                              9.71704553971437,        2.851248727807199e-13,
+                              -3.8638735912992024,     -2.197248664874228e-12};
+    interface.Blade().nodes[4].velocity = std::array<double, 6>{
+        -9.755004148121506e-14, -1.1473986031478622e-11, 19.38786450744471,
+        -1.079141139912723e-14, -4.794927228488806,      -2.7542181790032974e-12,
+    };
+    interface.Blade().nodes[5].velocity = std::array<double, 6>{
+        -5.893466163453282e-14, -1.7207307107419817e-11, 29.271224687520572,
+        1.472129711212036e-13,  -5.148246571270651,      -2.9987274577999204e-12,
+    };
+    interface.Blade().nodes[6].velocity = std::array<double, 6>{
+        -3.644142659476899e-14, -2.1551753834574612e-11, 36.65034434982694,
+        1.6625874034777963e-13, -5.20279941289027,       -3.071712480161645e-12,
+    };
+    interface.Blade().nodes[7].velocity = std::array<double, 6>{
+        -3.5374337051474216e-14, -2.35460647327125e-11, 40.0,
+        1.5949545311438602e-13,  -5.206116427200408,    -3.0750525193396004e-12
+    };
 
-        interface.Blade().nodes.back().loads[2] = 10.;
+    const auto& tip_node = interface.Blade().nodes.back();
+
+    // Loop through time steps
+    for ([[maybe_unused]] auto i : std::views::iota(0U, 100U)) {
+        // Print out tip node displacement in z-direction
+        // const auto t{static_cast<double>(i) * time_step};
+        // std::cout << t << "\t" << tip_node.displacement[2] << "\n";
 
         // Calculate state at end of step
         const auto converged = interface.Step();
@@ -452,37 +487,14 @@ TEST(BladeInterfaceTest, DISABLED_DampedBeam) {
     }
 
     //--------------------------------------------------------------------------
-    // Tip Node
+    // Tip Node velocity
     //--------------------------------------------------------------------------
 
-    // EXPECT_NEAR(interface.Blade().nodes[5].position[0], 11.951460424343411, 1e-10);
-    // EXPECT_NEAR(interface.Blade().nodes[5].position[1], 1.0785463019560009, 1e-10);
-    // EXPECT_NEAR(interface.Blade().nodes[5].position[2], 2.2845605555050727E-10, 1e-10);
-    // EXPECT_NEAR(interface.Blade().nodes[5].position[3], 0.99898766738195299, 1e-10);
-    // EXPECT_NEAR(interface.Blade().nodes[5].position[4], 2.6570959740959799E-9, 1e-10);
-    // EXPECT_NEAR(interface.Blade().nodes[5].position[5], -1.0123941616837804E-10, 1e-10);
-    // EXPECT_NEAR(interface.Blade().nodes[5].position[6], 0.044984891005365443, 1e-10);
-
-    // EXPECT_NEAR(interface.Blade().nodes[5].displacement[0], -0.048539575656588806, 1e-10);
-    // EXPECT_NEAR(interface.Blade().nodes[5].displacement[1], 1.0785463019560009, 1e-10);
-    // EXPECT_NEAR(interface.Blade().nodes[5].displacement[2], 2.2845605555050727E-10, 1e-10);
-    // EXPECT_NEAR(interface.Blade().nodes[5].displacement[3], 0.99898766738195299, 1e-10);
-    // EXPECT_NEAR(interface.Blade().nodes[5].displacement[4], 2.6570959740959799E-9, 1e-10);
-    // EXPECT_NEAR(interface.Blade().nodes[5].displacement[5], -1.0123941616837804E-10, 1e-10);
-    // EXPECT_NEAR(interface.Blade().nodes[5].displacement[6], 0.044984891005365443, 1e-10);
-
-    // EXPECT_NEAR(interface.Blade().nodes[5].velocity[0], -1.0786835619583102, 1e-10);
-    // EXPECT_NEAR(interface.Blade().nodes[5].velocity[1], 11.95303967174639, 1e-10);
-    // EXPECT_NEAR(interface.Blade().nodes[5].velocity[2], -6.3862048021175104E-8, 1e-10);
-    // EXPECT_NEAR(interface.Blade().nodes[5].velocity[3], 0.000003159329892760129, 1e-10);
-    // EXPECT_NEAR(interface.Blade().nodes[5].velocity[4], 2.5866107917084571E-7, 1e-10);
-    // EXPECT_NEAR(interface.Blade().nodes[5].velocity[5], 1.0001562024381443, 1e-10);
-
-    // EXPECT_NEAR(interface.Blade().nodes[5].acceleration[0], -11.955952417551353, 1e-10);
-    // EXPECT_NEAR(interface.Blade().nodes[5].acceleration[1], -1.0800839943831992, 1e-10);
-    // EXPECT_NEAR(interface.Blade().nodes[5].acceleration[2], -0.000013544534439173783, 1e-10);
-    // EXPECT_NEAR(interface.Blade().nodes[5].acceleration[3], -0.000046709402446003812, 1e-10);
-    // EXPECT_NEAR(interface.Blade().nodes[5].acceleration[4], 0.000008256203749646939, 1e-10);
-    // EXPECT_NEAR(interface.Blade().nodes[5].acceleration[5], 0.00020635762959181575, 1e-10);
+    EXPECT_NEAR(tip_node.velocity[0], 1.8084205787073924, 1e-10);
+    EXPECT_NEAR(tip_node.velocity[1], -4.0054267785111595e-08, 1e-10);
+    EXPECT_NEAR(tip_node.velocity[2], -37.062858136333055, 1e-10);
+    EXPECT_NEAR(tip_node.velocity[3], 5.0559697669256021e-08, 1e-10);
+    EXPECT_NEAR(tip_node.velocity[4], 4.8363708865071242, 1e-10);
+    EXPECT_NEAR(tip_node.velocity[5], -2.6867656903166214e-09, 1e-10);
 }
 }  // namespace kynema::tests

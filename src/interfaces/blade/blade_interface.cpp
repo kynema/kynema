@@ -58,6 +58,7 @@ bool BladeInterface::Step() {
     // Transfer node loads -> state
     for (const auto& node : this->blade.nodes) {
         for (auto component : std::views::iota(0U, 6U)) {
+            this->host_state.v(node.id, component) = node.velocity[component];
             this->host_state.f(node.id, component) = node.loads[component];
         }
     }

@@ -3,6 +3,7 @@
 #include <ranges>
 
 #include <KokkosBatched_Copy_Decl.hpp>
+#include <KokkosBlas1_set.hpp>
 #include <Kokkos_Core.hpp>
 
 #include "calculate_D_D1.hpp"
@@ -68,20 +69,16 @@ struct CalculateQuadraturePointDampingValues {
         // If mu is all zeros, zero the output and skip the calculation
         if (mu(0) == 0.0 && mu(1) == 0.0 && mu(2) == 0.0 && mu(3) == 0.0 && mu(4) == 0.0 &&
             mu(5) == 0.0) {
-            for (auto i : std::views::iota(0, 6)) {
-                qp_FD1(qp, i) = 0.;
-                qp_FD2(qp, i) = 0.;
-                for (auto j : std::views::iota(0, 6)) {
-                    qp_Duu(qp, i, j) = 0.0;
-                    qp_DD1(qp, i, j) = 0.0;
-                    qp_DD2(qp, i, j) = 0.0;
-                    qp_GD1(qp, i, j) = 0.0;
-                    qp_GD2(qp, i, j) = 0.0;
-                    qp_PD2(qp, i, j) = 0.0;
-                    qp_KD1(qp, i, j) = 0.0;
-                    qp_KD2(qp, i, j) = 0.0;
-                }
-            }
+            KokkosBlas::SerialSet::invoke(0., qp_FD1);
+            KokkosBlas::SerialSet::invoke(0., qp_FD2);
+            KokkosBlas::SerialSet::invoke(0., qp_Duu);
+            KokkosBlas::SerialSet::invoke(0., qp_DD1);
+            KokkosBlas::SerialSet::invoke(0., qp_DD2);
+            KokkosBlas::SerialSet::invoke(0., qp_GD1);
+            KokkosBlas::SerialSet::invoke(0., qp_GD2);
+            KokkosBlas::SerialSet::invoke(0., qp_PD2);
+            KokkosBlas::SerialSet::invoke(0., qp_KD1);
+            KokkosBlas::SerialSet::invoke(0., qp_KD2);
             return;
         }
 
@@ -169,11 +166,7 @@ struct CalculateQuadraturePointDampingValues {
         CopyMatrix::invoke(subview(qp_Cstar, element, qp, ALL, ALL), Cstar);
 
         // Build damping matrix Dstar from Cstar and mu_diag
-        for (auto i : std::views::iota(0, 6)) {
-            for (auto j : std::views::iota(0, 6)) {
-                mu_diag(i, j) = 0.0;
-            }
-        }
+        KokkosBlas::SerialSet::invoke(0., mu_diag);
         for (auto i : std::views::iota(0, 6)) {
             mu_diag(i, i) = mu(i);
         }
@@ -193,7 +186,7 @@ struct CalculateQuadraturePointDampingValues {
         beams::CalculateStrain<DeviceType>::invoke(xr_prime, u_prime, r, r_prime, strain);
         auto kappa_data = Array<double, 3>{};
         const auto kappa = View<double[3]>(kappa_data.data());
-        CopyVector::invoke(kappa, subview(strain, make_pair(3UL, 6UL)));
+        CopyVector::invoke(subview(strain, make_pair(3UL, 6UL)), kappa);
 
         // Calculate strain rate and extract the strain rate components
         beams::CalculateStrainDot<DeviceType>::invoke(
@@ -201,10 +194,10 @@ struct CalculateQuadraturePointDampingValues {
         );
         auto eps_dot_data = Array<double, 3>{};
         const auto eps_dot = View<double[3]>(eps_dot_data.data());
-        CopyVector::invoke(eps_dot, subview(strain_dot, make_pair(0UL, 3UL)));
+        CopyVector::invoke(subview(strain_dot, make_pair(0UL, 3UL)), eps_dot);
         auto kappa_dot_data = Array<double, 3>{};
         const auto kappa_dot = View<double[3]>(kappa_dot_data.data());
-        CopyVector::invoke(kappa_dot, subview(strain_dot, make_pair(3UL, 6UL)));
+        CopyVector::invoke(subview(strain_dot, make_pair(3UL, 6UL)), kappa_dot);
 
         // Calculate damping forces and copy to quadrature point values
         CalculateForceFD1<DeviceType>::invoke(Duu, strain_dot, FD1);
@@ -220,14 +213,14 @@ struct CalculateQuadraturePointDampingValues {
         CalculateP_D2<DeviceType>::invoke(xr_prime, u_prime, omega, eps_dot, kappa_dot, Duu, PD2);
         CalculateK_D1<DeviceType>::invoke(r, xr_prime, omega, kappa, eps_dot, kappa_dot, Duu, KD1);
         CalculateK_D2<DeviceType>::invoke(r, xr_prime, omega, kappa, eps_dot, kappa_dot, Duu, KD2);
-        CopyMatrix::invoke(subview(qp_Duu, qp, ALL, ALL), Duu);
-        CopyMatrix::invoke(subview(qp_DD1, qp, ALL, ALL), DD1);
-        CopyMatrix::invoke(subview(qp_DD2, qp, ALL, ALL), DD2);
-        CopyMatrix::invoke(subview(qp_GD1, qp, ALL, ALL), GD1);
-        CopyMatrix::invoke(subview(qp_GD2, qp, ALL, ALL), GD2);
-        CopyMatrix::invoke(subview(qp_PD2, qp, ALL, ALL), PD2);
-        CopyMatrix::invoke(subview(qp_KD1, qp, ALL, ALL), KD1);
-        CopyMatrix::invoke(subview(qp_KD2, qp, ALL, ALL), KD2);
+        CopyMatrix::invoke(Duu, subview(qp_Duu, qp, ALL, ALL));
+        CopyMatrix::invoke(DD1, subview(qp_DD1, qp, ALL, ALL));
+        CopyMatrix::invoke(DD2, subview(qp_DD2, qp, ALL, ALL));
+        CopyMatrix::invoke(GD1, subview(qp_GD1, qp, ALL, ALL));
+        CopyMatrix::invoke(GD2, subview(qp_GD2, qp, ALL, ALL));
+        CopyMatrix::invoke(PD2, subview(qp_PD2, qp, ALL, ALL));
+        CopyMatrix::invoke(KD1, subview(qp_KD1, qp, ALL, ALL));
+        CopyMatrix::invoke(KD2, subview(qp_KD2, qp, ALL, ALL));
     }
 };
 
