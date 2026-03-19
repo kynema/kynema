@@ -2,19 +2,25 @@
 target_sources(
     kynema_unit_tests
     PRIVATE
-    test_calculate_jacobian.cpp
-    test_curved_beam.cpp
-    test_integrate_stiffness_matrix.cpp
-    test_integrate_inertia_matrix.cpp
-    test_integrate_residual_vector.cpp
-    test_calculate_strain.cpp
-    test_calculate_temporary_variables.cpp
+    test_calculate_DD1.cpp
+    test_calculate_DD2.cpp
+    test_calculate_GD1.cpp
+    test_calculate_GD2.cpp
+    test_calculate_KD1.cpp
+    test_calculate_KD2.cpp
+    test_calculate_Ouu.cpp
+    test_calculate_PD2.cpp
+    test_calculate_Puu.cpp
+    test_calculate_Quu.cpp
     test_calculate_force_FC.cpp
     test_calculate_force_FD.cpp
     test_calculate_force_FD1.cpp
     test_calculate_force_FD2.cpp
-    test_calculate_Ouu.cpp
-    test_calculate_Puu.cpp
-    test_calculate_Quu.cpp
-    test_calculate_KD1.cpp
+    test_calculate_jacobian.cpp
+    test_calculate_strain.cpp
+    test_calculate_temporary_variables.cpp
+    test_curved_beam.cpp
+    test_integrate_inertia_matrix.cpp
+    test_integrate_residual_vector.cpp
+    test_integrate_stiffness_matrix.cpp
 )

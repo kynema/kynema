@@ -1,6 +1,8 @@
 #pragma once
 
 #include <KokkosBlas.hpp>
+#include <KokkosBlas1_scal.hpp>
+#include <KokkosBlas1_set.hpp>
 #include <Kokkos_Core.hpp>
 
 #include "math/vector_operations.hpp"
@@ -38,9 +40,7 @@ struct CalculateForceFD2 {
 
         math::VecTilde(xr_plus_u_prime, xr_plus_u_prime_tilde);
 
-        for (auto component = 0; component < 3; ++component) {
-            FD2(component) = 0.;
-        }
+        KokkosBlas::SerialSet::invoke(0., FD2);
 
         auto eps_kappa_sum_data = Kokkos::Array<double, 3>{};
         auto eps_kappa_sum = View<double[3]>(eps_kappa_sum_data.data());

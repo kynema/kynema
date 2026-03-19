@@ -39,7 +39,7 @@ struct CalculateK_D2 {
         auto omega_tilde = View<double[3][3]>(omega_tilde_data.data());
         math::VecTilde(omega, omega_tilde);
 
-        auto kappa_tilde_data = Kokkos::Array<double, 0>{};
+        auto kappa_tilde_data = Kokkos::Array<double, 9>{};
         auto kappa_tilde = View<double[3][3]>(kappa_tilde_data.data());
         math::VecTilde(kappa, kappa_tilde);
 
@@ -93,12 +93,10 @@ struct CalculateK_D2 {
         auto K_D2_22 = subview(K_D2, make_pair(0, 3), make_pair(3, 6));
         GemmNN::invoke(1., D11_omega_tilde, r_xr_prime_tilde, 0., K_D2_22);
         GemmNN::invoke(-1., D12_omega_tilde, kappa_tilde, 1., K_D2_22);
-        for (auto i = 0; i < 3; ++i) {
-            for (auto j = 0; j < 3; ++j) {
-                K_D2_22(i, j) += -D11_times_eps_dot_tilde(i, j) + D11_eps_dot_tilde(i, j) -
-                                 D12_times_kappa_dot_tilde(i, j) + D12_kappa_dot_tilde(i, j);
-            }
-        }
+        KokkosBlas::serial_axpy(-1., D11_eps_dot_tilde, K_D2_22);
+        KokkosBlas::serial_axpy(1., D11_times_eps_dot_tilde, K_D2_22);
+        KokkosBlas::serial_axpy(-1., D12_kappa_dot_tilde, K_D2_22);
+        KokkosBlas::serial_axpy(1., D12_times_kappa_dot_tilde, K_D2_22);
     }
 };
 }  // namespace kynema::beams

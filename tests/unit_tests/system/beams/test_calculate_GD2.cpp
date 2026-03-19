@@ -6,12 +6,12 @@
 #include <Kokkos_Macros.hpp>
 #include <gtest/gtest.h>
 
-#include "system/beams/calculate_K_D1.hpp"
+#include "system/beams/calculate_G_D2.hpp"
 #include "test_calculate.hpp"
 
 namespace {
 
-void TestCalculateK_D1() {
+void TestCalculateG_D2() {
     const auto Duu = kynema::beams::tests::CreateView<double[6][6]>(
         "Duu", std::array{1.,  2.,  3.,  4.,  5.,  6.,  7.,  8.,  9.,  10., 11., 12.,
                           13., 14., 15., 16., 17., 18., 19., 20., 21., 22., 23., 24.,
@@ -20,6 +20,8 @@ void TestCalculateK_D1() {
     const auto r = kynema::beams::tests::CreateView<double[4]>("r", std::array{40., 41., 42., 43.});
     const auto xr_prime =
         kynema::beams::tests::CreateView<double[3]>("xr_prime", std::array{62., 63., 64.});
+    const auto u_prime =
+        kynema::beams::tests::CreateView<double[3]>("u_prime", std::array{65., 66., 67.});
     const auto omega =
         kynema::beams::tests::CreateView<double[3]>("omega", std::array{47., 48., 49.});
     const auto kappa =
@@ -29,38 +31,38 @@ void TestCalculateK_D1() {
     const auto kappa_dot =
         kynema::beams::tests::CreateView<double[3]>("kappa_dot", std::array{59., 60., 61.});
 
-    const auto K_D1 = Kokkos::View<double[6][6]>("K_D1");
+    const auto G_D2 = Kokkos::View<double[6][6]>("G_D2");
 
     Kokkos::parallel_for(
-        "CalculateK_D1", 1,
+        "CalculateG_D2", 1,
         KOKKOS_LAMBDA(size_t) {
-            kynema::beams::CalculateK_D1<Kokkos::DefaultExecutionSpace>::invoke(
-                r, xr_prime, omega, kappa, eps_dot, kappa_dot, Duu, K_D1
+            kynema::beams::CalculateG_D2<Kokkos::DefaultExecutionSpace>::invoke(
+                r, xr_prime, u_prime, kappa, Duu, G_D2
             );
         }
     );
 
-    constexpr auto K_D1_exact_data = std::array{
-        0.0, 0.0, 0.0, 61038794.0, 1126704.0, -58800314.0,  //
-        0.0, 0.0, 0.0, 53071816.0, 975002.0,  -51126612.0,  //
-        0.0, 0.0, 0.0, 45119106.0, 827512.0,  -43458754.0,  //
-        0.0, 0.0, 0.0, 37154234.0, 694290.0,  -35799320.0,  //
-        0.0, 0.0, 0.0, 29180938.0, 536270.0,  -28112982.0,  //
-        0.0, 0.0, 0.0, 21240864.0, 382462.0,  -20451442.0,  //
+    constexpr auto G_D2_exact_data = std::array{
+        0.0, 0.0, 0.0, 0.0,        0.0,         0.0,          //
+        0.0, 0.0, 0.0, 0.0,        0.0,         0.0,          //
+        0.0, 0.0, 0.0, 0.0,        0.0,         0.0,          //
+        0.0, 0.0, 0.0, -6291004.0, 20202488.0,  -13931644.0,  //
+        0.0, 0.0, 0.0, 12582008.0, -40404976.0, 27863288.0,   //
+        0.0, 0.0, 0.0, -6291004.0, 20202488.0,  -13931644.0,  //
     };
-    const auto K_D1_exact =
-        Kokkos::View<double[6][6], Kokkos::HostSpace>::const_type(K_D1_exact_data.data());
+    const auto G_D2_exact =
+        Kokkos::View<double[6][6], Kokkos::HostSpace>::const_type(G_D2_exact_data.data());
 
-    const auto K_D1_mirror = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), K_D1);
-    kynema::beams::tests::CompareWithExpected(K_D1_mirror, K_D1_exact);
+    const auto G_D2_mirror = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), G_D2);
+    kynema::beams::tests::CompareWithExpected(G_D2_mirror, G_D2_exact);
 }
 
 }  // namespace
 
 namespace kynema::tests {
 
-TEST(CalculateK_D1Tests, OneNode) {
-    TestCalculateK_D1();
+TEST(CalculateG_D2Tests, OneNode) {
+    TestCalculateG_D2();
 }
 
 }  // namespace kynema::tests
