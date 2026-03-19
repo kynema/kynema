@@ -90,7 +90,7 @@ struct CalculateK_D2 {
         auto r_xr_prime_tilde = View<double[3][3]>(r_xr_prime_tilde_data.data());
         math::VecTilde(r_xr_prime, r_xr_prime_tilde);
 
-        auto K_D2_22 = subview(K_D2, make_pair(0, 3), make_pair(3, 6));
+        auto K_D2_22 = subview(K_D2, make_pair(3, 6), make_pair(3, 6));
         GemmNN::invoke(1., D11_omega_tilde, r_xr_prime_tilde, 0., K_D2_22);
         GemmNN::invoke(-1., D12_omega_tilde, kappa_tilde, 1., K_D2_22);
         KokkosBlas::serial_axpy(-1., D11_eps_dot_tilde, K_D2_22);
