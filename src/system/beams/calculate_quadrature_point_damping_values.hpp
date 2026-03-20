@@ -69,16 +69,16 @@ struct CalculateQuadraturePointDampingValues {
         // If mu is all zeros, zero the output and skip the calculation
         if (mu(0) == 0.0 && mu(1) == 0.0 && mu(2) == 0.0 && mu(3) == 0.0 && mu(4) == 0.0 &&
             mu(5) == 0.0) {
-            KokkosBlas::SerialSet::invoke(0., qp_FD1);
-            KokkosBlas::SerialSet::invoke(0., qp_FD2);
-            KokkosBlas::SerialSet::invoke(0., qp_Duu);
-            KokkosBlas::SerialSet::invoke(0., qp_DD1);
-            KokkosBlas::SerialSet::invoke(0., qp_DD2);
-            KokkosBlas::SerialSet::invoke(0., qp_GD1);
-            KokkosBlas::SerialSet::invoke(0., qp_GD2);
-            KokkosBlas::SerialSet::invoke(0., qp_PD2);
-            KokkosBlas::SerialSet::invoke(0., qp_KD1);
-            KokkosBlas::SerialSet::invoke(0., qp_KD2);
+            KokkosBlas::SerialSet::invoke(0., subview(qp_FD1, qp, ALL));
+            KokkosBlas::SerialSet::invoke(0., subview(qp_FD2, qp, ALL));
+            KokkosBlas::SerialSet::invoke(0., subview(qp_Duu, qp, ALL, ALL));
+            KokkosBlas::SerialSet::invoke(0., subview(qp_DD1, qp, ALL, ALL));
+            KokkosBlas::SerialSet::invoke(0., subview(qp_DD2, qp, ALL, ALL));
+            KokkosBlas::SerialSet::invoke(0., subview(qp_GD1, qp, ALL, ALL));
+            KokkosBlas::SerialSet::invoke(0., subview(qp_GD2, qp, ALL, ALL));
+            KokkosBlas::SerialSet::invoke(0., subview(qp_PD2, qp, ALL, ALL));
+            KokkosBlas::SerialSet::invoke(0., subview(qp_KD1, qp, ALL, ALL));
+            KokkosBlas::SerialSet::invoke(0., subview(qp_KD2, qp, ALL, ALL));
             return;
         }
 

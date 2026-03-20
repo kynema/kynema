@@ -152,7 +152,7 @@ struct CalculateQuadraturePointValues {
         const auto stiffness_quad_point_calculator =
             beams::CalculateQuadraturePointStiffnessValues<DeviceType>{
                 element, qp_jacobian, shape_interp, shape_deriv, qp_r0_,  qp_x0_prime_, qp_Cstar_,
-                node_u,  qp_F_E1,     qp_F_E2,      qp_Cuu,      qp_K_E1, qp_Puu,      qp_K_E2
+                node_u,  qp_F_E1,     qp_F_E2,      qp_Cuu,      qp_K_E1, qp_Puu,       qp_K_E2
             };
         parallel_for(qp_range, stiffness_quad_point_calculator);
 
