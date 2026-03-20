@@ -278,7 +278,7 @@ TEST(CurvedBeamTests, IntegrateResidualVectorForCurvedBeam) {
     const auto qp_FE1 = CreateView<double[kNumQPs][6]>("qp_FE1", kFE1);
     const auto qp_FE2 = CreateView<double[kNumQPs][6]>("qp_FE2", kFE2);
     const auto qp_FD1 = CreateView<double[kNumQPs][6]>("qp_FD1", kFD1);
-    const auto qp_FD2 = CreateView<double[kNumQPs][6]>("qp_FD1", kFD2);
+    const auto qp_FD2 = CreateView<double[kNumQPs][6]>("qp_FD2", kFD2);
     const auto qp_Fi = CreateView<double[kNumQPs][6]>("qp_Fi", kFi);
     const auto qp_Fe = Kokkos::View<double[kNumQPs][6]>("qp_Fe");
     const auto qp_Fg = Kokkos::View<double[kNumQPs][6]>("qp_Fg");

@@ -121,15 +121,6 @@ struct CalculateQuadraturePointDampingValues {
         auto strain_dot_data = Array<double, 6>{};
         const auto strain_dot = View<double[6]>(strain_dot_data.data());
 
-        auto x0pupSS_data = Array<double, 9>{};
-        const auto x0pupSS = View<double[3][3]>(x0pupSS_data.data());
-
-        auto M_tilde_data = Array<double, 9>{};
-        const auto M_tilde = View<double[3][3]>(M_tilde_data.data());
-
-        auto N_tilde_data = Array<double, 9>{};
-        const auto N_tilde = View<double[3][3]>(N_tilde_data.data());
-
         auto Cstar_data = Array<double, 36>{};
         const auto Cstar = View<double[6][6]>(Cstar_data.data());
         auto Dstar_data = Array<double, 36>{};
@@ -167,7 +158,7 @@ struct CalculateQuadraturePointDampingValues {
 
         // Build damping matrix Dstar from Cstar and mu_diag
         KokkosBlas::SerialSet::invoke(0., mu_diag);
-        for (auto i : std::views::iota(0, 6)) {
+        for (auto i = 0U; i < 6U; ++i) {
             mu_diag(i, i) = mu(i);
         }
         Gemm::invoke(1., mu_diag, Cstar, 0., Dstar);
