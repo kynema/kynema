@@ -27,9 +27,11 @@ TEST(IntegrateResidualVector, OneElementOneNodeOneQP_Fc) {
     );
 
     const auto node_FX = Kokkos::View<double[number_of_nodes][6]>("node_FX");
-    const auto qp_Fc =
-        CreateView<double[number_of_qps][6]>("qp_Fc", std::array{1., 2., 3., 4., 5., 6.});
-    const auto qp_Fd = Kokkos::View<double[number_of_qps][6]>("qp_Fd");
+    const auto qp_FE1 =
+        CreateView<double[number_of_qps][6]>("qp_FE1", std::array{1., 2., 3., 4., 5., 6.});
+    const auto qp_FE2 = Kokkos::View<double[number_of_qps][6]>("qp_FE2");
+    const auto qp_FD1 = Kokkos::View<double[number_of_qps][6]>("qp_FD1");
+    const auto qp_FD2 = Kokkos::View<double[number_of_qps][6]>("qp_FD2");
     const auto qp_Fi = Kokkos::View<double[number_of_qps][6]>("qp_Fi");
     const auto qp_Fe = Kokkos::View<double[number_of_qps][6]>("qp_Fe");
     const auto qp_Fg = Kokkos::View<double[number_of_qps][6]>("qp_Fg");
@@ -47,8 +49,10 @@ TEST(IntegrateResidualVector, OneElementOneNodeOneQP_Fc) {
             .shape_interp_ = shape_interp,
             .shape_deriv_ = shape_deriv,
             .node_FX_ = node_FX,
-            .qp_Fc_ = qp_Fc,
-            .qp_Fd_ = qp_Fd,
+            .qp_FE1_ = qp_FE1,
+            .qp_FE2_ = qp_FE2,
+            .qp_FD1_ = qp_FD1,
+            .qp_FD2_ = qp_FD2,
             .qp_Fi_ = qp_Fi,
             .qp_Fe_ = qp_Fe,
             .qp_Fg_ = qp_Fg,
@@ -84,9 +88,11 @@ TEST(IntegrateResidualVector, OneElementOneNodeOneQP_Fd) {
     );
 
     const auto node_FX = Kokkos::View<double[number_of_nodes][6]>("node_FX");
-    const auto qp_Fc = Kokkos::View<double[number_of_qps][6]>("qp_Fc");
-    const auto qp_Fd =
-        CreateView<double[number_of_qps][6]>("qp_Fd", std::array{1., 2., 3., 4., 5., 6.});
+    const auto qp_FE1 = Kokkos::View<double[number_of_qps][6]>("qp_FE1");
+    const auto qp_FE2 =
+        CreateView<double[number_of_qps][6]>("qp_FE2", std::array{1., 2., 3., 4., 5., 6.});
+    const auto qp_FD1 = Kokkos::View<double[number_of_qps][6]>("qp_FD1");
+    const auto qp_FD2 = Kokkos::View<double[number_of_qps][6]>("qp_FD2");
     const auto qp_Fi = Kokkos::View<double[number_of_qps][6]>("qp_Fi");
     const auto qp_Fe = Kokkos::View<double[number_of_qps][6]>("qp_Fe");
     const auto qp_Fg = Kokkos::View<double[number_of_qps][6]>("qp_Fg");
@@ -104,8 +110,10 @@ TEST(IntegrateResidualVector, OneElementOneNodeOneQP_Fd) {
             .shape_interp_ = shape_interp,
             .shape_deriv_ = shape_deriv,
             .node_FX_ = node_FX,
-            .qp_Fc_ = qp_Fc,
-            .qp_Fd_ = qp_Fd,
+            .qp_FE1_ = qp_FE1,
+            .qp_FE2_ = qp_FE2,
+            .qp_FD1_ = qp_FD1,
+            .qp_FD2_ = qp_FD2,
             .qp_Fi_ = qp_Fi,
             .qp_Fe_ = qp_Fe,
             .qp_Fg_ = qp_Fg,
@@ -141,9 +149,11 @@ TEST(IntegrateResidualVector, OneElementOneNodeOneQP_Fi) {
     );
 
     const auto node_FX = Kokkos::View<double[number_of_nodes][6]>("node_FX");
-    const auto qp_Fc = Kokkos::View<double[number_of_qps][6]>("qp_Fc");
-    const auto qp_Fd =
-        CreateView<double[number_of_qps][6]>("qp_Fd", std::array{1., 2., 3., 4., 5., 6.});
+    const auto qp_FE1 = Kokkos::View<double[number_of_qps][6]>("qp_FE1");
+    const auto qp_FE2 =
+        CreateView<double[number_of_qps][6]>("qp_FE2", std::array{1., 2., 3., 4., 5., 6.});
+    const auto qp_FD1 = Kokkos::View<double[number_of_qps][6]>("qp_FD1");
+    const auto qp_FD2 = Kokkos::View<double[number_of_qps][6]>("qp_FD2");
     const auto qp_Fi = Kokkos::View<double[number_of_qps][6]>("qp_Fi");
     const auto qp_Fe = Kokkos::View<double[number_of_qps][6]>("qp_Fe");
     const auto qp_Fg = Kokkos::View<double[number_of_qps][6]>("qp_Fg");
@@ -161,8 +171,10 @@ TEST(IntegrateResidualVector, OneElementOneNodeOneQP_Fi) {
             .shape_interp_ = shape_interp,
             .shape_deriv_ = shape_deriv,
             .node_FX_ = node_FX,
-            .qp_Fc_ = qp_Fc,
-            .qp_Fd_ = qp_Fd,
+            .qp_FE1_ = qp_FE1,
+            .qp_FE2_ = qp_FE2,
+            .qp_FD1_ = qp_FD1,
+            .qp_FD2_ = qp_FD2,
             .qp_Fi_ = qp_Fi,
             .qp_Fe_ = qp_Fe,
             .qp_Fg_ = qp_Fg,
@@ -198,8 +210,10 @@ TEST(IntegrateResidualVector, OneElementOneNodeOneQP_Fe) {
     );
 
     const auto node_FX = Kokkos::View<double[number_of_nodes][6]>("node_FX");
-    const auto qp_Fc = Kokkos::View<double[number_of_qps][6]>("qp_Fc");
-    const auto qp_Fd = Kokkos::View<double[number_of_qps][6]>("qp_Fd");
+    const auto qp_FE1 = Kokkos::View<double[number_of_qps][6]>("qp_FE1");
+    const auto qp_FE2 = Kokkos::View<double[number_of_qps][6]>("qp_FE2");
+    const auto qp_FD1 = Kokkos::View<double[number_of_qps][6]>("qp_FD1");
+    const auto qp_FD2 = Kokkos::View<double[number_of_qps][6]>("qp_FD2");
     const auto qp_Fi = Kokkos::View<double[number_of_qps][6]>("qp_Fi");
     const auto qp_Fe =
         CreateView<double[number_of_qps][6]>("qp_Fe", std::array{1., 2., 3., 4., 5., 6.});
@@ -218,8 +232,10 @@ TEST(IntegrateResidualVector, OneElementOneNodeOneQP_Fe) {
             .shape_interp_ = shape_interp,
             .shape_deriv_ = shape_deriv,
             .node_FX_ = node_FX,
-            .qp_Fc_ = qp_Fc,
-            .qp_Fd_ = qp_Fd,
+            .qp_FE1_ = qp_FE1,
+            .qp_FE2_ = qp_FE2,
+            .qp_FD1_ = qp_FD1,
+            .qp_FD2_ = qp_FD2,
             .qp_Fi_ = qp_Fi,
             .qp_Fe_ = qp_Fe,
             .qp_Fg_ = qp_Fg,
@@ -254,8 +270,10 @@ TEST(IntegrateResidualVector, OneElementOneNodeOneQP_Fg) {
     );
 
     const auto node_FX = Kokkos::View<double[number_of_nodes][6]>("node_FX");
-    const auto qp_Fc = Kokkos::View<double[number_of_qps][6]>("qp_Fc");
-    const auto qp_Fd = Kokkos::View<double[number_of_qps][6]>("qp_Fd");
+    const auto qp_FE1 = Kokkos::View<double[number_of_qps][6]>("qp_FE1");
+    const auto qp_FE2 = Kokkos::View<double[number_of_qps][6]>("qp_FE2");
+    const auto qp_FD1 = Kokkos::View<double[number_of_qps][6]>("qp_FD1");
+    const auto qp_FD2 = Kokkos::View<double[number_of_qps][6]>("qp_FD2");
     const auto qp_Fi = Kokkos::View<double[number_of_qps][6]>("qp_Fi");
     const auto qp_Fe = Kokkos::View<double[number_of_qps][6]>("qp_Fe");
     const auto qp_Fg =
@@ -274,8 +292,10 @@ TEST(IntegrateResidualVector, OneElementOneNodeOneQP_Fg) {
             .shape_interp_ = shape_interp,
             .shape_deriv_ = shape_deriv,
             .node_FX_ = node_FX,
-            .qp_Fc_ = qp_Fc,
-            .qp_Fd_ = qp_Fd,
+            .qp_FE1_ = qp_FE1,
+            .qp_FE2_ = qp_FE2,
+            .qp_FD1_ = qp_FD1,
+            .qp_FD2_ = qp_FD2,
             .qp_Fi_ = qp_Fi,
             .qp_Fe_ = qp_Fe,
             .qp_Fg_ = qp_Fg,
@@ -311,8 +331,10 @@ TEST(IntegrateResidualVector, OneElementOneNodeOneQP_FX) {
 
     const auto node_FX =
         CreateView<double[number_of_nodes][6]>("node_FX", std::array{1., 2., 3., 4., 5., 6.});
-    const auto qp_Fc = Kokkos::View<double[number_of_qps][6]>("qp_Fc");
-    const auto qp_Fd = Kokkos::View<double[number_of_qps][6]>("qp_Fd");
+    const auto qp_FE1 = Kokkos::View<double[number_of_qps][6]>("qp_FE1");
+    const auto qp_FE2 = Kokkos::View<double[number_of_qps][6]>("qp_FE2");
+    const auto qp_FD1 = Kokkos::View<double[number_of_qps][6]>("qp_FD1");
+    const auto qp_FD2 = Kokkos::View<double[number_of_qps][6]>("qp_FD2");
     const auto qp_Fi = Kokkos::View<double[number_of_qps][6]>("qp_Fi");
     const auto qp_Fe = Kokkos::View<double[number_of_qps][6]>("qp_Fe");
     const auto qp_Fg = Kokkos::View<double[number_of_qps][6]>("qp_Fg");
@@ -330,8 +352,10 @@ TEST(IntegrateResidualVector, OneElementOneNodeOneQP_FX) {
             .shape_interp_ = shape_interp,
             .shape_deriv_ = shape_deriv,
             .node_FX_ = node_FX,
-            .qp_Fc_ = qp_Fc,
-            .qp_Fd_ = qp_Fd,
+            .qp_FE1_ = qp_FE1,
+            .qp_FE2_ = qp_FE2,
+            .qp_FD1_ = qp_FD1,
+            .qp_FD2_ = qp_FD2,
             .qp_Fi_ = qp_Fi,
             .qp_Fe_ = qp_Fe,
             .qp_Fg_ = qp_Fg,
@@ -366,11 +390,13 @@ TEST(IntegrateResidualVector, TwoElementsOneNodeOneQP) {
     );
 
     const auto node_FX = Kokkos::View<double[number_of_nodes][6]>("node_FX");
-    const auto qp_Fc_1 =
-        CreateView<double[number_of_qps][6]>("qp_Fc_1", std::array{1., 2., 3., 4., 5., 6.});
-    const auto qp_Fc_2 =
-        CreateView<double[number_of_qps][6]>("qp_Fc_2", std::array{2., 4., 6., 8., 10., 12.});
-    const auto qp_Fd = Kokkos::View<double[number_of_qps][6]>("qp_Fd");
+    const auto qp_FE1_1 =
+        CreateView<double[number_of_qps][6]>("qp_FE1_1", std::array{1., 2., 3., 4., 5., 6.});
+    const auto qp_FE1_2 =
+        CreateView<double[number_of_qps][6]>("qp_FE1_2", std::array{2., 4., 6., 8., 10., 12.});
+    const auto qp_FE2 = Kokkos::View<double[number_of_qps][6]>("qp_FE2");
+    const auto qp_FD1 = Kokkos::View<double[number_of_qps][6]>("qp_FD1");
+    const auto qp_FD2 = Kokkos::View<double[number_of_qps][6]>("qp_FD2");
     const auto qp_Fi = Kokkos::View<double[number_of_qps][6]>("qp_Fi");
     const auto qp_Fe = Kokkos::View<double[number_of_qps][6]>("qp_Fe");
     const auto qp_Fg = Kokkos::View<double[number_of_qps][6]>("qp_Fg");
@@ -388,8 +414,10 @@ TEST(IntegrateResidualVector, TwoElementsOneNodeOneQP) {
             .shape_interp_ = shape_interp,
             .shape_deriv_ = shape_deriv,
             .node_FX_ = node_FX,
-            .qp_Fc_ = qp_Fc_1,
-            .qp_Fd_ = qp_Fd,
+            .qp_FE1_ = qp_FE1_1,
+            .qp_FE2_ = qp_FE2,
+            .qp_FD1_ = qp_FD1,
+            .qp_FD2_ = qp_FD2,
             .qp_Fi_ = qp_Fi,
             .qp_Fe_ = qp_Fe,
             .qp_Fg_ = qp_Fg,
@@ -407,8 +435,10 @@ TEST(IntegrateResidualVector, TwoElementsOneNodeOneQP) {
             .shape_interp_ = shape_interp,
             .shape_deriv_ = shape_deriv,
             .node_FX_ = node_FX,
-            .qp_Fc_ = qp_Fc_2,
-            .qp_Fd_ = qp_Fd,
+            .qp_FE1_ = qp_FE1_2,
+            .qp_FE2_ = qp_FE2,
+            .qp_FD1_ = qp_FD1,
+            .qp_FD2_ = qp_FD2,
             .qp_Fi_ = qp_Fi,
             .qp_Fe_ = qp_Fe,
             .qp_Fg_ = qp_Fg,
@@ -441,10 +471,12 @@ TEST(IntegrateResidualVector, OneElementOneNodeTwoQPs) {
 
     const auto node_FX = Kokkos::View<double[number_of_nodes][6]>("node_FX");
     // Note: using std::vector because of compiler bug in nvcc
-    const auto qp_Fc = CreateView<double[number_of_qps][6]>(
-        "qp_FC", std::vector{1., 2., 3., 4., 5., 6., 7., 8., 9., 10., 11., 12.}
+    const auto qp_FE1 = CreateView<double[number_of_qps][6]>(
+        "qp_FE1", std::vector{1., 2., 3., 4., 5., 6., 7., 8., 9., 10., 11., 12.}
     );
-    const auto qp_Fd = Kokkos::View<double[number_of_qps][6]>("qp_Fd");
+    const auto qp_FE2 = Kokkos::View<double[number_of_qps][6]>("qp_FE2");
+    const auto qp_FD1 = Kokkos::View<double[number_of_qps][6]>("qp_FD1");
+    const auto qp_FD2 = Kokkos::View<double[number_of_qps][6]>("qp_FD2");
     const auto qp_Fi = Kokkos::View<double[number_of_qps][6]>("qp_Fi");
     const auto qp_Fe = Kokkos::View<double[number_of_qps][6]>("qp_Fe");
     const auto qp_Fg = Kokkos::View<double[number_of_qps][6]>("qp_Fg");
@@ -462,8 +494,10 @@ TEST(IntegrateResidualVector, OneElementOneNodeTwoQPs) {
             .shape_interp_ = shape_interp,
             .shape_deriv_ = shape_deriv,
             .node_FX_ = node_FX,
-            .qp_Fc_ = qp_Fc,
-            .qp_Fd_ = qp_Fd,
+            .qp_FE1_ = qp_FE1,
+            .qp_FE2_ = qp_FE2,
+            .qp_FD1_ = qp_FD1,
+            .qp_FD2_ = qp_FD2,
             .qp_Fi_ = qp_Fi,
             .qp_Fe_ = qp_Fe,
             .qp_Fg_ = qp_Fg,
@@ -496,9 +530,11 @@ TEST(IntegrateResidualVector, OneElementTwoNodesOneQP) {
         CreateLeftView<double[number_of_nodes][number_of_qps]>("shape_deriv", std::array{3., 0.});
 
     const auto node_FX = Kokkos::View<double[number_of_nodes][6]>("node_FX");
-    const auto qp_Fc =
-        CreateView<double[number_of_qps][6]>("qp_FC", std::array{1., 2., 3., 4., 5., 6.});
-    const auto qp_Fd = Kokkos::View<double[number_of_qps][6]>("qp_Fd");
+    const auto qp_FE1 =
+        CreateView<double[number_of_qps][6]>("qp_FE1", std::array{1., 2., 3., 4., 5., 6.});
+    const auto qp_FE2 = Kokkos::View<double[number_of_qps][6]>("qp_FE2");
+    const auto qp_FD1 = Kokkos::View<double[number_of_qps][6]>("qp_FD1");
+    const auto qp_FD2 = Kokkos::View<double[number_of_qps][6]>("qp_FD2");
     const auto qp_Fi = Kokkos::View<double[number_of_qps][6]>("qp_Fi");
     const auto qp_Fe = Kokkos::View<double[number_of_qps][6]>("qp_Fe");
     const auto qp_Fg = Kokkos::View<double[number_of_qps][6]>("qp_Fg");
@@ -515,8 +551,10 @@ TEST(IntegrateResidualVector, OneElementTwoNodesOneQP) {
             .shape_interp_ = shape_interp,
             .shape_deriv_ = shape_deriv,
             .node_FX_ = node_FX,
-            .qp_Fc_ = qp_Fc,
-            .qp_Fd_ = qp_Fd,
+            .qp_FE1_ = qp_FE1,
+            .qp_FE2_ = qp_FE2,
+            .qp_FD1_ = qp_FD1,
+            .qp_FD2_ = qp_FD2,
             .qp_Fi_ = qp_Fi,
             .qp_Fe_ = qp_Fe,
             .qp_Fg_ = qp_Fg,

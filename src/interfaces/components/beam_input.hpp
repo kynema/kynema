@@ -113,6 +113,9 @@ struct BeamInput {
 
     /// @brief Section properties
     std::vector<Section> sections;
+
+    /// @brief Stiffness-proportional damping coefficients
+    std::array<double, 6> mu{0., 0., 0., 0., 0., 0.};
 };
 
 }  // namespace kynema::interfaces::components

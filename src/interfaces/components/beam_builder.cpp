@@ -32,6 +32,11 @@ BeamBuilder& BeamBuilder::ClearReferenceAxisPoints() {
     return *this;
 }
 
+BeamBuilder& BeamBuilder::SetDampingProperties(const std::array<double, 6>& mu) {
+    input.mu = mu;
+    return *this;
+}
+
 BeamBuilder& BeamBuilder::AddRefAxisPoint(
     double grid_location, const std::array<double, 3>& coordinates, ReferenceAxisOrientation ref_axis
 ) {

@@ -22,8 +22,13 @@ struct IntegrateInertiaMatrixElement {
     ConstView<double*> qp_weight_;
     ConstView<double*> qp_jacobian_;
     ConstLeftView<double**> shape_interp_;
+    ConstLeftView<double**> shape_deriv_;
     ConstView<double* [6][6]> qp_Muu_;
-    ConstView<double* [6][6]> qp_Guu_;
+    ConstView<double* [6][6]> qp_G_I_;
+    ConstView<double* [6][6]> qp_Duu_;
+    ConstView<double* [6][6]> qp_GD1_;
+    ConstView<double* [6][6]> qp_GD2_;
+    ConstView<double* [6][6]> qp_DD2_;
     double beta_prime_;
     double gamma_prime_;
     Kokkos::View<double** [6][6], DeviceType> gbl_M_;
@@ -46,7 +51,11 @@ struct IntegrateInertiaMatrixElement {
         auto local_M = Array<simd_type, 36>{};
 
         const auto qp_Muu = ConstView<double* [36]>(qp_Muu_.data(), num_qps);
-        const auto qp_Guu = ConstView<double* [36]>(qp_Guu_.data(), num_qps);
+        const auto qp_G_I = ConstView<double* [36]>(qp_G_I_.data(), num_qps);
+        const auto qp_Duu = ConstView<double* [36]>(qp_Duu_.data(), num_qps);
+        const auto qp_GD1 = ConstView<double* [36]>(qp_GD1_.data(), num_qps);
+        const auto qp_GD2 = ConstView<double* [36]>(qp_GD2_.data(), num_qps);
+        const auto qp_DD2 = ConstView<double* [36]>(qp_DD2_.data(), num_qps);
 
         for (auto qp = 0U; qp < num_qps; ++qp) {
             const auto w = simd_type(qp_weight_(qp));
@@ -54,14 +63,29 @@ struct IntegrateInertiaMatrixElement {
             const auto phi_1 = simd_type(shape_interp_(node, qp));
             auto phi_2 = simd_type{};
             phi_2.copy_from(&shape_interp_(simd_node, qp), tag_type());
-            const auto coeff = phi_1 * phi_2 * w * jacobian;
+            const auto phi_prime_1 = simd_type(shape_deriv_(node, qp));
+            auto phi_prime_2 = simd_type{};
+            phi_prime_2.copy_from(&shape_deriv_(simd_node, qp), tag_type());
+            const auto c1 = (phi_prime_1 * phi_prime_2) * (w / jacobian);
+            const auto c2 = (phi_prime_1 * phi_2) * w;
+            const auto c3 = (phi_1 * phi_prime_2) * w;
+            const auto c4 = (phi_1 * phi_2) * (w * jacobian);
             const auto Muu_local = subview(qp_Muu, qp, ALL);
-            const auto Guu_local = subview(qp_Guu, qp, ALL);
-            for (auto component = 0; component < 36; ++component) {
-                const auto contribution = simd_type(
-                    (beta_prime_ * Muu_local(component)) + (gamma_prime_ * Guu_local(component))
-                );
-                local_M[component] = local_M[component] + coeff * contribution;
+            const auto G_I_local = subview(qp_G_I, qp, ALL);
+            const auto Duu_local = subview(qp_Duu, qp, ALL);
+            const auto GD1_local = subview(qp_GD1, qp, ALL);
+            const auto GD2_local = subview(qp_GD2, qp, ALL);
+            const auto DD2_local = subview(qp_DD2, qp, ALL);
+            for (auto i = 0; i < 36; ++i) {
+                const auto Muu = simd_type(Muu_local(i));
+                const auto G_I = simd_type(G_I_local(i));
+                const auto Duu = simd_type(Duu_local(i));
+                const auto GD1 = simd_type(GD1_local(i));
+                const auto GD2 = simd_type(GD2_local(i));
+                const auto DD2 = simd_type(DD2_local(i));
+                const auto Mij = c4 * Muu;
+                const auto Gij = c1 * Duu + c2 * GD1 + c3 * DD2 + c4 * (G_I + GD2);
+                local_M[i] = local_M[i] + (beta_prime_ * Mij) + (gamma_prime_ * Gij);
             }
         }
 

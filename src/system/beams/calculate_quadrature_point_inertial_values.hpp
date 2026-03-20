@@ -14,7 +14,7 @@
 namespace kynema::beams {
 
 template <typename DeviceType>
-struct CalculateInertialQuadraturePointValues {
+struct CalculateQuadraturePointInertialValues {
     template <typename ValueType>
     using View = Kokkos::View<ValueType, DeviceType>;
     template <typename ValueType>
@@ -37,8 +37,8 @@ struct CalculateInertialQuadraturePointValues {
     View<double* [6]> qp_Fi;
     View<double* [6]> qp_Fg;
     View<double* [6][6]> qp_Muu;
-    View<double* [6][6]> qp_Guu;
-    View<double* [6][6]> qp_Kuu;
+    View<double* [6][6]> qp_G_I;
+    View<double* [6][6]> qp_K_I;
 
     KOKKOS_FUNCTION
     void operator()(size_t qp) const {
@@ -67,8 +67,8 @@ struct CalculateInertialQuadraturePointValues {
         auto FI_data = Array<double, 6>{};
         auto FG_data = Array<double, 6>{};
         auto Muu_data = Array<double, 36>{};
-        auto Guu_data = Array<double, 36>{};
-        auto Kuu_data = Array<double, 36>{};
+        auto G_I_data = Array<double, 36>{};
+        auto K_I_data = Array<double, 36>{};
 
         const auto r0 = ConstView<double[4]>(r0_data.data());
         const auto r = View<double[4]>(r_data.data());
@@ -86,8 +86,8 @@ struct CalculateInertialQuadraturePointValues {
         const auto FG = View<double[6]>(FG_data.data());
         const auto Mstar = View<double[6][6]>(Mstar_data.data());
         const auto Muu = View<double[6][6]>(Muu_data.data());
-        const auto Guu = View<double[6][6]>(Guu_data.data());
-        const auto Kuu = View<double[6][6]>(Kuu_data.data());
+        const auto G_I = View<double[6][6]>(G_I_data.data());
+        const auto K_I = View<double[6][6]>(K_I_data.data());
 
         CopyMatrix::invoke(subview(qp_Mstar, element, qp, ALL, ALL), Mstar);
         beams::InterpolateToQuadraturePointForInertia<DeviceType>::invoke(
@@ -112,17 +112,17 @@ struct CalculateInertialQuadraturePointValues {
         masses::CalculateGravityForce<DeviceType>::invoke(mass, gravity, eta_tilde, FG);
 
         masses::CalculateGyroscopicMatrix<DeviceType>::invoke(
-            mass, omega, eta, rho, omega_tilde, Guu
+            mass, omega, eta, rho, omega_tilde, G_I
         );
         masses::CalculateInertiaStiffnessMatrix<DeviceType>::invoke(
-            mass, u_ddot, omega, omega_dot, eta, rho, omega_tilde, omega_dot_tilde, Kuu
+            mass, u_ddot, omega, omega_dot, eta, rho, omega_tilde, omega_dot_tilde, K_I
         );
 
         CopyVector::invoke(FI, subview(qp_Fi, qp, ALL));
         CopyVector::invoke(FG, subview(qp_Fg, qp, ALL));
         CopyMatrix::invoke(Muu, subview(qp_Muu, qp, ALL, ALL));
-        CopyMatrix::invoke(Guu, subview(qp_Guu, qp, ALL, ALL));
-        CopyMatrix::invoke(Kuu, subview(qp_Kuu, qp, ALL, ALL));
+        CopyMatrix::invoke(G_I, subview(qp_G_I, qp, ALL, ALL));
+        CopyMatrix::invoke(K_I, subview(qp_K_I, qp, ALL, ALL));
     }
 };
 

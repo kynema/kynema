@@ -275,8 +275,10 @@ TEST(CurvedBeamTests, IntegrateResidualVectorForCurvedBeam) {
         CreateLeftView<double[kNumNodes][kNumQPs]>("shape_deriv", kDerivWeightsFlat);
 
     const auto node_FX = Kokkos::View<double[kNumNodes][6]>("node_FX");
-    const auto qp_Fc = CreateView<double[kNumQPs][6]>("qp_Fc", kFc);
-    const auto qp_Fd = CreateView<double[kNumQPs][6]>("qp_Fd", kFd);
+    const auto qp_FE1 = CreateView<double[kNumQPs][6]>("qp_FE1", kFE1);
+    const auto qp_FE2 = CreateView<double[kNumQPs][6]>("qp_FE2", kFE2);
+    const auto qp_FD1 = CreateView<double[kNumQPs][6]>("qp_FD1", kFD1);
+    const auto qp_FD2 = CreateView<double[kNumQPs][6]>("qp_FD2", kFD2);
     const auto qp_Fi = CreateView<double[kNumQPs][6]>("qp_Fi", kFi);
     const auto qp_Fe = Kokkos::View<double[kNumQPs][6]>("qp_Fe");
     const auto qp_Fg = Kokkos::View<double[kNumQPs][6]>("qp_Fg");
@@ -294,8 +296,10 @@ TEST(CurvedBeamTests, IntegrateResidualVectorForCurvedBeam) {
             .shape_interp_ = shape_interp,
             .shape_deriv_ = shape_deriv,
             .node_FX_ = node_FX,
-            .qp_Fc_ = qp_Fc,
-            .qp_Fd_ = qp_Fd,
+            .qp_FE1_ = qp_FE1,
+            .qp_FE2_ = qp_FE2,
+            .qp_FD1_ = qp_FD1,
+            .qp_FD2_ = qp_FD2,
             .qp_Fi_ = qp_Fi,
             .qp_Fe_ = qp_Fe,
             .qp_Fg_ = qp_Fg,
@@ -343,6 +347,10 @@ TEST(CurvedBeamTests, IntegrateStiffnessMatrixForCurvedBeam) {
     const auto qp_Cuu = CreateView<double[kNumQPs][6][6]>("qp_Cuu", kCuu);
     const auto qp_Ouu = CreateView<double[kNumQPs][6][6]>("qp_Ouu", kOuu);
     const auto qp_Quu = CreateView<double[kNumQPs][6][6]>("qp_Quu", kQuu);
+    const auto qp_DD1 = Kokkos::View<double[kNumQPs][6][6]>("DD1");
+    const auto qp_KD1 = Kokkos::View<double[kNumQPs][6][6]>("KD1");
+    const auto qp_KD2 = Kokkos::View<double[kNumQPs][6][6]>("KD2");
+    const auto qp_PD2 = Kokkos::View<double[kNumQPs][6][6]>("PD2");
 
     const auto stiffness_matrix_terms =
         Kokkos::View<double[kNumNodes][kNumNodes][6][6]>("stiffness_matrix_terms");
@@ -366,6 +374,10 @@ TEST(CurvedBeamTests, IntegrateStiffnessMatrixForCurvedBeam) {
             .qp_Cuu_ = qp_Cuu,
             .qp_Ouu_ = qp_Ouu,
             .qp_Quu_ = qp_Quu,
+            .qp_DD1_ = qp_DD1,
+            .qp_KD1_ = qp_KD1,
+            .qp_KD2_ = qp_KD2,
+            .qp_PD2_ = qp_PD2,
             .gbl_M_ = stiffness_matrix_terms
         }
     );
