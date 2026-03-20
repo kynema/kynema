@@ -98,7 +98,7 @@ struct CalculateQuadraturePointValues {
         const auto qp_Fg = View<double* [6]>(member.team_scratch(1), num_qps);
 
         const auto qp_K_I = View<double* [6][6]>(member.team_scratch(1), num_qps);
-        const auto qp_P_E2 = View<double* [6][6]>(member.team_scratch(1), num_qps);
+        const auto qp_Puu = View<double* [6][6]>(member.team_scratch(1), num_qps);
         const auto qp_Cuu = View<double* [6][6]>(member.team_scratch(1), num_qps);
         const auto qp_Duu = View<double* [6][6]>(member.team_scratch(1), num_qps);
         const auto qp_K_E1 = View<double* [6][6]>(member.team_scratch(1), num_qps);
@@ -152,7 +152,7 @@ struct CalculateQuadraturePointValues {
         const auto stiffness_quad_point_calculator =
             beams::CalculateQuadraturePointStiffnessValues<DeviceType>{
                 element, qp_jacobian, shape_interp, shape_deriv, qp_r0_,  qp_x0_prime_, qp_Cstar_,
-                node_u,  qp_F_E1,     qp_F_E2,      qp_Cuu,      qp_K_E1, qp_P_E2,      qp_K_E2
+                node_u,  qp_F_E1,     qp_F_E2,      qp_Cuu,      qp_K_E1, qp_Puu,      qp_K_E2
             };
         parallel_for(qp_range, stiffness_quad_point_calculator);
 
@@ -182,7 +182,7 @@ struct CalculateQuadraturePointValues {
             shape_interp,
             shape_deriv,
             qp_K_I,
-            qp_P_E2,
+            qp_Puu,
             qp_Cuu,
             qp_K_E1,
             qp_K_E2,
