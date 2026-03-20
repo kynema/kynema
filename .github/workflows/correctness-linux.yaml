@@ -17,12 +17,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        # compiler: [g++, clang++]
-        # build_type: [Release, Debug]
-        # build_external: [all, none]
-        compiler: [clang++]
-        build_type: [Debug]
-        build_external: [none]
+        compiler: [g++, clang++]
+        build_type: [Release, Debug]
+        build_external: [all, none]
     steps:
       - name: Cache install Dependencies
         id: cache-dependencies
@@ -74,7 +71,7 @@ jobs:
             -DKynema_ENABLE_CPPCHECK=ON \
             -DKynema_ENABLE_CLANG_TIDY=ON \
             -DKynema_WARNINGS_AS_ERRORS=ON \
-            -DKynema_ENABLE_OPENFAST_ADI=${{ matrix.build_external == 'all' }} \
+            -DKynema_ENABLE_OPENFAST_ADI=OFF \
             -DKynema_ENABLE_ROSCO_CONTROLLER=${{ matrix.build_external == 'all' }} \
             -DKynema_ENABLE_KLU=ON \
             -DKynema_ENABLE_UMFPACK=ON \
