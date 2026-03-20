@@ -197,6 +197,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a6a44aa880ab68e05be5548b855ab7800" id="r_a6a44aa880ab68e05be5548b855ab7800"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1BeamBuilder.html">BeamBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1BeamBuilder.html#a6a44aa880ab68e05be5548b855ab7800">ClearReferenceAxisPoints</a> ()</td></tr>
 <tr class="memdesc:a6a44aa880ab68e05be5548b855ab7800"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes all currently set reference axis points.  <br /></td></tr>
 <tr class="separator:a6a44aa880ab68e05be5548b855ab7800"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b6cf464f4da3a0500491796bff853c4" id="r_a3b6cf464f4da3a0500491796bff853c4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1BeamBuilder.html">BeamBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1BeamBuilder.html#a3b6cf464f4da3a0500491796bff853c4">SetDampingProperties</a> (const std::array&lt; double, 6 &gt; &amp;mu)</td></tr>
+<tr class="memdesc:a3b6cf464f4da3a0500491796bff853c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the stiffness-proportional damping coefficients.  <br /></td></tr>
+<tr class="separator:a3b6cf464f4da3a0500491796bff853c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ada924d936c994ef14cdefa9995aa5f67" id="r_ada924d936c994ef14cdefa9995aa5f67"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1BeamBuilder.html">BeamBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1BeamBuilder.html#ada924d936c994ef14cdefa9995aa5f67">AddRefAxisPoint</a> (double grid_location, const std::array&lt; double, 3 &gt; &amp;coordinates, <a class="el" href="namespacekynema_1_1interfaces_1_1components.html#a3aa9229afb501f41091a7322274775b0">ReferenceAxisOrientation</a> ref_axis)</td></tr>
 <tr class="memdesc:ada924d936c994ef14cdefa9995aa5f67"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a reference axis point with specified orientation.  <br /></td></tr>
 <tr class="separator:ada924d936c994ef14cdefa9995aa5f67"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -475,6 +478,33 @@ Public Member Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">enable</td><td>If prescribed root motion is enabled </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A reference to this <a class="el" href="classkynema_1_1interfaces_1_1components_1_1BeamBuilder.html" title="Builder class for creating Blade objects.">BeamBuilder</a> </dd></dl>
+
+</div>
+</div>
+<a id="a3b6cf464f4da3a0500491796bff853c4" name="a3b6cf464f4da3a0500491796bff853c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b6cf464f4da3a0500491796bff853c4">&#9670;&#160;</a></span>SetDampingProperties()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classkynema_1_1interfaces_1_1components_1_1BeamBuilder.html">BeamBuilder</a> &amp; kynema::interfaces::components::BeamBuilder::SetDampingProperties </td>
+          <td>(</td>
+          <td class="paramtype">const std::array&lt; double, 6 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>mu</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the stiffness-proportional damping coefficients. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mu</td><td>Stiffness-proportional damping coefficients </td></tr>
   </table>
   </dd>
 </dl>

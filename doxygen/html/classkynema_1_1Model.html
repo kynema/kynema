@@ -207,9 +207,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a8980e48c0a332b84a033e4702595429a" id="r_a8980e48c0a332b84a033e4702595429a"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; <a class="el" href="structkynema_1_1Node.html">Node</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1Model.html#a8980e48c0a332b84a033e4702595429a">GetNodes</a> () const</td></tr>
 <tr class="memdesc:a8980e48c0a332b84a033e4702595429a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns constant reference to nodes vector.  <br /></td></tr>
 <tr class="separator:a8980e48c0a332b84a033e4702595429a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab1788cbf17109b401443c0fd6d294c58" id="r_ab1788cbf17109b401443c0fd6d294c58"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1Model.html#ab1788cbf17109b401443c0fd6d294c58">AddBeamElement</a> (std::span&lt; const size_t &gt; node_ids, std::span&lt; const <a class="el" href="structkynema_1_1BeamSection.html">BeamSection</a> &gt; sections, std::span&lt; const std::array&lt; double, 2 &gt; &gt; quadrature)</td></tr>
-<tr class="memdesc:ab1788cbf17109b401443c0fd6d294c58"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a beam element to the model.  <br /></td></tr>
-<tr class="separator:ab1788cbf17109b401443c0fd6d294c58"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad93d9a7b1e0e94b4dbbe639bbf362d12" id="r_ad93d9a7b1e0e94b4dbbe639bbf362d12"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1Model.html#ad93d9a7b1e0e94b4dbbe639bbf362d12">AddBeamElement</a> (std::span&lt; const size_t &gt; node_ids, std::span&lt; const <a class="el" href="structkynema_1_1BeamSection.html">BeamSection</a> &gt; sections, std::span&lt; const std::array&lt; double, 2 &gt; &gt; quadrature, const std::array&lt; double, 6 &gt; &amp;mu={0., 0., 0., 0., 0., 0.})</td></tr>
+<tr class="memdesc:ad93d9a7b1e0e94b4dbbe639bbf362d12"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a beam element to the model.  <br /></td></tr>
+<tr class="separator:ad93d9a7b1e0e94b4dbbe639bbf362d12"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a70b44c366b7b229858a964a566a7f286" id="r_a70b44c366b7b229858a964a566a7f286"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structkynema_1_1BeamElement.html">BeamElement</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1Model.html#a70b44c366b7b229858a964a566a7f286">GetBeamElement</a> (size_t id) const</td></tr>
 <tr class="memdesc:a70b44c366b7b229858a964a566a7f286"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a beam element by ID.  <br /></td></tr>
 <tr class="separator:a70b44c366b7b229858a964a566a7f286"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -405,8 +405,8 @@ Static Public Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="ab1788cbf17109b401443c0fd6d294c58" name="ab1788cbf17109b401443c0fd6d294c58"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab1788cbf17109b401443c0fd6d294c58">&#9670;&#160;</a></span>AddBeamElement()</h2>
+<a id="ad93d9a7b1e0e94b4dbbe639bbf362d12" name="ad93d9a7b1e0e94b4dbbe639bbf362d12"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad93d9a7b1e0e94b4dbbe639bbf362d12">&#9670;&#160;</a></span>AddBeamElement()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -430,7 +430,13 @@ Static Public Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">std::span&lt; const std::array&lt; double, 2 &gt; &gt;&#160;</td>
-          <td class="paramname"><em>quadrature</em>&#160;</td>
+          <td class="paramname"><em>quadrature</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::array&lt; double, 6 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>mu</em> = <code>{0.,&#160;0.,&#160;0.,&#160;0.,&#160;0.,&#160;0.}</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -450,7 +456,8 @@ Static Public Attributes</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">node_ids</td><td>A list of the node IDs to be contained in the beam </td></tr>
     <tr><td class="paramname">sections</td><td>The physical properties defined at each quadrature point </td></tr>
-    <tr><td class="paramname">quadrature</td><td>The quadrature point locations and weights</td></tr>
+    <tr><td class="paramname">quadrature</td><td>The quadrature point locations and weights </td></tr>
+    <tr><td class="paramname">mu</td><td>Stiffness-proportional damping coefficients</td></tr>
   </table>
   </dd>
 </dl>

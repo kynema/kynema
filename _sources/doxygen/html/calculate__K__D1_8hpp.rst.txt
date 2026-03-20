@@ -1,0 +1,14 @@
+.. meta::c4bcb1b4381a931cbadf641bfb2f185af71d997eb810c32545a06b47c0bbae3f2bfda0a200a64e9623fbe9962243bcef324dad9ca0e696b3b8276773b3064018
+
+:orphan:
+
+.. title:: Kynema API: /home/runner/work/kynema/kynema/kynema/src/system/beams/calculate_K_D1.hpp File Reference
+
+/home/runner/work/kynema/kynema/kynema/src/system/beams/calculate\_K\_D1.hpp File Reference
+===========================================================================================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: calculate__K__D1_8hpp.html

@@ -183,8 +183,8 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aad9279a2ccee985f6f35d1e39c9236c6" id="r_aad9279a2ccee985f6f35d1e39c9236c6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema_1_1BeamElement.html#aad9279a2ccee985f6f35d1e39c9236c6">BeamElement</a> (size_t id, std::span&lt; const size_t &gt; n, std::span&lt; const <a class="el" href="structkynema_1_1BeamSection.html">BeamSection</a> &gt; s, std::span&lt; const std::array&lt; double, 2 &gt; &gt; q)</td></tr>
-<tr class="separator:aad9279a2ccee985f6f35d1e39c9236c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f759ef6de2aa765140aa6a0f5b172fd" id="r_a5f759ef6de2aa765140aa6a0f5b172fd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema_1_1BeamElement.html#a5f759ef6de2aa765140aa6a0f5b172fd">BeamElement</a> (size_t id, std::span&lt; const size_t &gt; n, std::span&lt; const <a class="el" href="structkynema_1_1BeamSection.html">BeamSection</a> &gt; s, std::span&lt; const std::array&lt; double, 2 &gt; &gt; q, const std::array&lt; double, 6 &gt; &amp;mu_={0., 0., 0., 0., 0., 0.})</td></tr>
+<tr class="separator:a5f759ef6de2aa765140aa6a0f5b172fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -196,13 +196,15 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a05d627c65e1a8060ae19eeb4d2ff5d63"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af12166dba5581afcb4efdc235870130e" id="r_af12166dba5581afcb4efdc235870130e"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::array&lt; double, 2 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema_1_1BeamElement.html#af12166dba5581afcb4efdc235870130e">quadrature</a></td></tr>
 <tr class="separator:af12166dba5581afcb4efdc235870130e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33a4fe60ef6f5b8ad4819d71b88a6b3b" id="r_a33a4fe60ef6f5b8ad4819d71b88a6b3b"><td class="memItemLeft" align="right" valign="top">std::array&lt; double, 6 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema_1_1BeamElement.html#a33a4fe60ef6f5b8ad4819d71b88a6b3b">mu</a></td></tr>
+<tr class="separator:a33a4fe60ef6f5b8ad4819d71b88a6b3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Beam element constitutes flexible beams material behavior in kynema. </p>
 <p>A beam element is defined by a set of nodes and sections. Each section is defined by a 6x6 mass matrix and a 6x6 stiffness matrix. The element quadrature is used to integrate the mass and stiffness matrices along the length of the beam. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="aad9279a2ccee985f6f35d1e39c9236c6" name="aad9279a2ccee985f6f35d1e39c9236c6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aad9279a2ccee985f6f35d1e39c9236c6">&#9670;&#160;</a></span>BeamElement()</h2>
+<a id="a5f759ef6de2aa765140aa6a0f5b172fd" name="a5f759ef6de2aa765140aa6a0f5b172fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f759ef6de2aa765140aa6a0f5b172fd">&#9670;&#160;</a></span>BeamElement()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -232,7 +234,13 @@ Public Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">std::span&lt; const std::array&lt; double, 2 &gt; &gt;&#160;</td>
-          <td class="paramname"><em>q</em>&#160;</td>
+          <td class="paramname"><em>q</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::array&lt; double, 6 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>mu_</em> = <code>{0.,&#160;0.,&#160;0.,&#160;0.,&#160;0.,&#160;0.}</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -258,6 +266,20 @@ Public Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">size_t kynema::BeamElement::ID</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a33a4fe60ef6f5b8ad4819d71b88a6b3b" name="a33a4fe60ef6f5b8ad4819d71b88a6b3b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33a4fe60ef6f5b8ad4819d71b88a6b3b">&#9670;&#160;</a></span>mu</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::array&lt;double, 6&gt; kynema::BeamElement::mu</td>
         </tr>
       </table>
 </div><div class="memdoc">

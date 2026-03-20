@@ -1,0 +1,14 @@
+.. meta::c1afa8d657e13df4b4f7b7c3a0990d4baca8f3dff9dab4120a5dda8275a091e49ac8caab145a41da4dc6abac8ecf911421adb2baebdf18011028d245290afd01
+
+:orphan:
+
+.. title:: Kynema API: /home/runner/work/kynema/kynema/kynema/src/system/beams/calculate_quadrature_point_inertial_values.hpp File Reference
+
+/home/runner/work/kynema/kynema/kynema/src/system/beams/calculate\_quadrature\_point\_inertial\_values.hpp File Reference
+=========================================================================================================================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: calculate__quadrature__point__inertial__values_8hpp.html

@@ -1,0 +1,14 @@
+.. meta::0a26f44628bc19eb596852166c9948470ebbb3b7ea3d7bd9e85347c995ca011a826549ff8d1137fd35c87421b93e5ee413e11dfc660bde371bf6f5ecc233c299
+
+:orphan:
+
+.. title:: Kynema API: /home/runner/work/kynema/kynema/kynema/src/system/beams/calculate_D_D2.hpp Source File
+
+/home/runner/work/kynema/kynema/kynema/src/system/beams/calculate\_D\_D2.hpp Source File
+========================================================================================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: calculate__D__D2_8hpp_source.html

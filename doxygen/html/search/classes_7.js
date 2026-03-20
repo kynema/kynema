@@ -15,7 +15,8 @@ var searchData=
   ['interpolateqpstate_5fu_12',['InterpolateQPState_u',['../structkynema_1_1beams_1_1InterpolateQPState__u.html',1,'kynema::beams']]],
   ['interpolateqpstate_5fuprime_13',['InterpolateQPState_uprime',['../structkynema_1_1beams_1_1InterpolateQPState__uprime.html',1,'kynema::beams']]],
   ['interpolateqpvector_14',['InterpolateQPVector',['../structkynema_1_1beams_1_1InterpolateQPVector.html',1,'kynema::beams']]],
-  ['interpolatetoquadraturepointforinertia_15',['InterpolateToQuadraturePointForInertia',['../structkynema_1_1beams_1_1InterpolateToQuadraturePointForInertia.html',1,'kynema::beams']]],
-  ['interpolatetoquadraturepointforstiffness_16',['InterpolateToQuadraturePointForStiffness',['../structkynema_1_1beams_1_1InterpolateToQuadraturePointForStiffness.html',1,'kynema::beams']]],
-  ['interpolatetoquadraturepoints_17',['InterpolateToQuadraturePoints',['../structkynema_1_1beams_1_1InterpolateToQuadraturePoints.html',1,'kynema::beams']]]
+  ['interpolatetoquadraturepointfordamping_15',['InterpolateToQuadraturePointForDamping',['../structkynema_1_1beams_1_1InterpolateToQuadraturePointForDamping.html',1,'kynema::beams']]],
+  ['interpolatetoquadraturepointforinertia_16',['InterpolateToQuadraturePointForInertia',['../structkynema_1_1beams_1_1InterpolateToQuadraturePointForInertia.html',1,'kynema::beams']]],
+  ['interpolatetoquadraturepointforstiffness_17',['InterpolateToQuadraturePointForStiffness',['../structkynema_1_1beams_1_1InterpolateToQuadraturePointForStiffness.html',1,'kynema::beams']]],
+  ['interpolatetoquadraturepoints_18',['InterpolateToQuadraturePoints',['../structkynema_1_1beams_1_1InterpolateToQuadraturePoints.html',1,'kynema::beams']]]
 ];

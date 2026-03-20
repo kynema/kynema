@@ -1,0 +1,14 @@
+.. meta::82d3882935c2edf1a0cfa5ca1d39654b2468e501552f2b97bf758745fe20a2df0578defbbe4414de0e29ad7ef565803e9e681754c95f21a364e30a337156dec9
+
+:orphan:
+
+.. title:: Kynema API: /home/runner/work/kynema/kynema/kynema/src/system/beams/calculate_quadrature_point_damping_values.hpp Source File
+
+/home/runner/work/kynema/kynema/kynema/src/system/beams/calculate\_quadrature\_point\_damping\_values.hpp Source File
+=====================================================================================================================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: calculate__quadrature__point__damping__values_8hpp_source.html

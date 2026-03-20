@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kynema API: /home/runner/work/kynema/kynema/kynema/src/system/beams/calculate_D_D2.hpp Source File &mdash; Kynema 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Kynema
+              <img src="../../_static/oturb_logo_v2.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/user.html">User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../theory/index.html">Theory Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/index.html">Developer Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/index.html">Benchmark Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../publications.html">Kynema Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../acknowledgement.html">Acknowledgements</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Kynema</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Kynema API: /home/runner/work/kynema/kynema/kynema/src/system/beams/calculate_D_D2.hpp Source File</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/doxygen/html/calculate__D__D2_8hpp_source.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="home-runner-work-kynema-kynema-kynema-src-system-beams-calculate-d-d2-hpp-source-file">
+<h1>/home/runner/work/kynema/kynema/kynema/src/system/beams/calculate_D_D2.hpp Source File<a class="headerlink" href="#home-runner-work-kynema-kynema-kynema-src-system-beams-calculate-d-d2-hpp-source-file" title="Permalink to this heading"></a></h1>
+<div class="doxygen-content docutils container">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Kynema API: /home/runner/work/kynema/kynema/kynema/src/system/beams/calculate_D_D2.hpp Source File</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Kynema API
+   </div>
+   <div id="projectbrief">A flexible multibody structural dynamics code for wind turbines</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_d501334aeb1b78ad67cd3c72c37b1e87.html">system</a></li><li class="navelem"><a class="el" href="dir_37eb4ec866a8ba29a0a8baa7630b26f9.html">beams</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">calculate_D_D2.hpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="calculate__D__D2_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;KokkosBatched_Gemm_Decl.hpp&gt;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;KokkosBlas.hpp&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;KokkosBlas1_set.hpp&gt;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;Kokkos_Core.hpp&gt;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;<a class="code" href="vector__operations_8hpp.html">math/vector_operations.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacekynema_1_1beams.html">kynema::beams</a> {</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> DeviceType&gt;</div>
+<div class="foldopen" id="foldopen00013" data-start="{" data-end="};">
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="structkynema_1_1beams_1_1CalculateD__D2.html">   13</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structkynema_1_1beams_1_1CalculateD__D2.html">CalculateD_D2</a> {</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> ValueType&gt;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="structkynema_1_1beams_1_1CalculateD__D2.html#a2ba04f4c4fc25bb85e8b916a1817d58c">   15</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateD__D2.html#a2ba04f4c4fc25bb85e8b916a1817d58c">View</a> = Kokkos::View&lt;ValueType, DeviceType&gt;;</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> ValueType&gt;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="structkynema_1_1beams_1_1CalculateD__D2.html#aa5b739ef2ba97751716acc33ef1029fb">   17</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateD__D2.html#aa5b739ef2ba97751716acc33ef1029fb">ConstView</a> = <span class="keyword">typename</span> <a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateD__D2.html#a2ba04f4c4fc25bb85e8b916a1817d58c">View&lt;ValueType&gt;::const_type</a>;</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="foldopen" id="foldopen00019" data-start="{" data-end="}">
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="structkynema_1_1beams_1_1CalculateD__D2.html#ab737be8932cd1fa48e9cf79fb177a4eb">   19</a></span>    <a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateD__D2.html#a2ba04f4c4fc25bb85e8b916a1817d58c">KOKKOS_FUNCTION</a> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="structkynema_1_1beams_1_1CalculateD__D2.html#ab737be8932cd1fa48e9cf79fb177a4eb">invoke</a>(</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        <span class="keyword">const</span> <a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateD__D2.html#aa5b739ef2ba97751716acc33ef1029fb">ConstView</a>&lt;<span class="keywordtype">double</span>[3]&gt;&amp; <a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateD__D2.html#a2ba04f4c4fc25bb85e8b916a1817d58c">xr_prime</a>, <span class="keyword">const</span> <a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateD__D2.html#aa5b739ef2ba97751716acc33ef1029fb">ConstView</a>&lt;<span class="keywordtype">double</span>[3]&gt;&amp; <a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateD__D2.html#a2ba04f4c4fc25bb85e8b916a1817d58c">u_prime</a>,</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        <span class="keyword">const</span> <a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateD__D2.html#aa5b739ef2ba97751716acc33ef1029fb">ConstView</a>&lt;<span class="keywordtype">double</span>[6][6]&gt;&amp; <a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateD__D2.html#a2ba04f4c4fc25bb85e8b916a1817d58c">D</a>, <span class="keyword">const</span> <a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateD__D2.html#a2ba04f4c4fc25bb85e8b916a1817d58c">View</a>&lt;<span class="keywordtype">double</span>[6][6]&gt;&amp; <a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateD__D2.html#a2ba04f4c4fc25bb85e8b916a1817d58c">D_D2</a></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    ) {</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        <span class="keyword">using </span><a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateD__D2.html#a2ba04f4c4fc25bb85e8b916a1817d58c">NoTranspose</a> = KokkosBatched::Trans::NoTranspose;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        <span class="keyword">using </span><a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateD__D2.html#a2ba04f4c4fc25bb85e8b916a1817d58c">Transpose</a> = KokkosBatched::Trans::Transpose;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        <span class="keyword">using </span><a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateD__D2.html#a2ba04f4c4fc25bb85e8b916a1817d58c">Default</a> = KokkosBatched::Algo::Gemm::Default;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        <span class="keyword">using </span><a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateD__D2.html#a2ba04f4c4fc25bb85e8b916a1817d58c">GemmTN</a> = KokkosBatched::SerialGemm&lt;Transpose, NoTranspose, Default&gt;;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        <span class="keyword">using </span>Kokkos::make_pair;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        <span class="keyword">using </span>Kokkos::subview;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        KokkosBlas::SerialSet::invoke(0., <a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateD__D2.html#a2ba04f4c4fc25bb85e8b916a1817d58c">D_D2</a>);</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        <span class="keyword">auto</span> <a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateD__D2.html#a2ba04f4c4fc25bb85e8b916a1817d58c">xr_u_prime_data</a> = Kokkos::Array&lt;double, 3&gt;{};</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <span class="keyword">auto</span> <a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateD__D2.html#a2ba04f4c4fc25bb85e8b916a1817d58c">xr_u_prime</a> = <a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateD__D2.html#a2ba04f4c4fc25bb85e8b916a1817d58c">View&lt;double[3]&gt;</a>(<a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateD__D2.html#a2ba04f4c4fc25bb85e8b916a1817d58c">xr_u_prime_data</a>.data());</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> <a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateD__D2.html#a2ba04f4c4fc25bb85e8b916a1817d58c">component</a> = 0; <a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateD__D2.html#a2ba04f4c4fc25bb85e8b916a1817d58c">component</a> &lt; 3; ++<a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateD__D2.html#a2ba04f4c4fc25bb85e8b916a1817d58c">component</a>) {</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>            <a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateD__D2.html#a2ba04f4c4fc25bb85e8b916a1817d58c">xr_u_prime</a>(<a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateD__D2.html#a2ba04f4c4fc25bb85e8b916a1817d58c">component</a>) = <a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateD__D2.html#a2ba04f4c4fc25bb85e8b916a1817d58c">xr_prime</a>(<a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateD__D2.html#a2ba04f4c4fc25bb85e8b916a1817d58c">component</a>) + <a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateD__D2.html#a2ba04f4c4fc25bb85e8b916a1817d58c">u_prime</a>(<a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateD__D2.html#a2ba04f4c4fc25bb85e8b916a1817d58c">component</a>);</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        }</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <span class="keyword">auto</span> <a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateD__D2.html#a2ba04f4c4fc25bb85e8b916a1817d58c">tilde_xp_up_data</a> = Kokkos::Array&lt;double, 9&gt;{};</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <span class="keyword">auto</span> <a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateD__D2.html#a2ba04f4c4fc25bb85e8b916a1817d58c">tilde_xp_up</a> = <a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateD__D2.html#a2ba04f4c4fc25bb85e8b916a1817d58c">View&lt;double[3][3]&gt;</a>(<a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateD__D2.html#a2ba04f4c4fc25bb85e8b916a1817d58c">tilde_xp_up_data</a>.data());</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <a class="code hl_function" href="namespacekynema_1_1math.html#a60a43d6a9aaac7df2dd712b108156b62">math::VecTilde</a>(<a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateD__D2.html#a2ba04f4c4fc25bb85e8b916a1817d58c">xr_u_prime</a>, <a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateD__D2.html#a2ba04f4c4fc25bb85e8b916a1817d58c">tilde_xp_up</a>);</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <span class="keyword">auto</span> <a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateD__D2.html#a2ba04f4c4fc25bb85e8b916a1817d58c">D11</a> = <a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateD__D2.html#a2ba04f4c4fc25bb85e8b916a1817d58c">subview</a>(<a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateD__D2.html#a2ba04f4c4fc25bb85e8b916a1817d58c">D</a>, <a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateD__D2.html#a2ba04f4c4fc25bb85e8b916a1817d58c">make_pair</a>(0, 3), <a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateD__D2.html#a2ba04f4c4fc25bb85e8b916a1817d58c">make_pair</a>(0, 3));</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <span class="keyword">auto</span> <a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateD__D2.html#a2ba04f4c4fc25bb85e8b916a1817d58c">D_D2_21</a> = <a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateD__D2.html#a2ba04f4c4fc25bb85e8b916a1817d58c">subview</a>(<a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateD__D2.html#a2ba04f4c4fc25bb85e8b916a1817d58c">D_D2</a>, <a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateD__D2.html#a2ba04f4c4fc25bb85e8b916a1817d58c">make_pair</a>(3, 6), <a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateD__D2.html#a2ba04f4c4fc25bb85e8b916a1817d58c">make_pair</a>(0, 3));</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        GemmTN::invoke(1., <a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateD__D2.html#a2ba04f4c4fc25bb85e8b916a1817d58c">tilde_xp_up</a>, <a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateD__D2.html#a2ba04f4c4fc25bb85e8b916a1817d58c">D11</a>, 0., <a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateD__D2.html#a2ba04f4c4fc25bb85e8b916a1817d58c">D_D2_21</a>);</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        <span class="keyword">auto</span> <a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateD__D2.html#a2ba04f4c4fc25bb85e8b916a1817d58c">D12</a> = <a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateD__D2.html#a2ba04f4c4fc25bb85e8b916a1817d58c">subview</a>(<a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateD__D2.html#a2ba04f4c4fc25bb85e8b916a1817d58c">D</a>, <a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateD__D2.html#a2ba04f4c4fc25bb85e8b916a1817d58c">make_pair</a>(0, 3), <a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateD__D2.html#a2ba04f4c4fc25bb85e8b916a1817d58c">make_pair</a>(3, 6));</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <span class="keyword">auto</span> <a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateD__D2.html#a2ba04f4c4fc25bb85e8b916a1817d58c">D_D2_22</a> = <a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateD__D2.html#a2ba04f4c4fc25bb85e8b916a1817d58c">subview</a>(<a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateD__D2.html#a2ba04f4c4fc25bb85e8b916a1817d58c">D_D2</a>, <a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateD__D2.html#a2ba04f4c4fc25bb85e8b916a1817d58c">make_pair</a>(3, 6), <a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateD__D2.html#a2ba04f4c4fc25bb85e8b916a1817d58c">make_pair</a>(3, 6));</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        GemmTN::invoke(1., <a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateD__D2.html#a2ba04f4c4fc25bb85e8b916a1817d58c">tilde_xp_up</a>, <a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateD__D2.html#a2ba04f4c4fc25bb85e8b916a1817d58c">D12</a>, 0., <a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateD__D2.html#a2ba04f4c4fc25bb85e8b916a1817d58c">D_D2_22</a>);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    }</div>
+</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>};</div>
+</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>}  <span class="comment">// namespace kynema::beams</span></div>
+<div class="ttc" id="anamespacekynema_1_1beams_html"><div class="ttname"><a href="namespacekynema_1_1beams.html">kynema::beams</a></div><div class="ttdef"><b>Definition</b> beam_quadrature.hpp:14</div></div>
+<div class="ttc" id="anamespacekynema_1_1math_html_a60a43d6a9aaac7df2dd712b108156b62"><div class="ttname"><a href="namespacekynema_1_1math.html#a60a43d6a9aaac7df2dd712b108156b62">kynema::math::VecTilde</a></div><div class="ttdeci">KOKKOS_INLINE_FUNCTION void VecTilde(const VectorType &amp;vector, const MatrixType &amp;matrix)</div><div class="ttdoc">Converts a 3x1 vector to a 3x3 skew-symmetric matrix and returns the result.</div><div class="ttdef"><b>Definition</b> vector_operations.hpp:10</div></div>
+<div class="ttc" id="astructkynema_1_1beams_1_1CalculateD__D2_html"><div class="ttname"><a href="structkynema_1_1beams_1_1CalculateD__D2.html">kynema::beams::CalculateD_D2</a></div><div class="ttdef"><b>Definition</b> calculate_D_D2.hpp:13</div></div>
+<div class="ttc" id="astructkynema_1_1beams_1_1CalculateD__D2_html_a2ba04f4c4fc25bb85e8b916a1817d58c"><div class="ttname"><a href="structkynema_1_1beams_1_1CalculateD__D2.html#a2ba04f4c4fc25bb85e8b916a1817d58c">kynema::beams::CalculateD_D2::View</a></div><div class="ttdeci">Kokkos::View&lt; ValueType, DeviceType &gt; View</div><div class="ttdef"><b>Definition</b> calculate_D_D2.hpp:15</div></div>
+<div class="ttc" id="astructkynema_1_1beams_1_1CalculateD__D2_html_aa5b739ef2ba97751716acc33ef1029fb"><div class="ttname"><a href="structkynema_1_1beams_1_1CalculateD__D2.html#aa5b739ef2ba97751716acc33ef1029fb">kynema::beams::CalculateD_D2::ConstView</a></div><div class="ttdeci">typename View&lt; ValueType &gt;::const_type ConstView</div><div class="ttdef"><b>Definition</b> calculate_D_D2.hpp:17</div></div>
+<div class="ttc" id="astructkynema_1_1beams_1_1CalculateD__D2_html_ab737be8932cd1fa48e9cf79fb177a4eb"><div class="ttname"><a href="structkynema_1_1beams_1_1CalculateD__D2.html#ab737be8932cd1fa48e9cf79fb177a4eb">kynema::beams::CalculateD_D2::invoke</a></div><div class="ttdeci">static KOKKOS_FUNCTION void invoke(const ConstView&lt; double[3]&gt; &amp;xr_prime, const ConstView&lt; double[3]&gt; &amp;u_prime, const ConstView&lt; double[6][6]&gt; &amp;D, const View&lt; double[6][6]&gt; &amp;D_D2)</div><div class="ttdef"><b>Definition</b> calculate_D_D2.hpp:19</div></div>
+<div class="ttc" id="avector__operations_8hpp_html"><div class="ttname"><a href="vector__operations_8hpp.html">vector_operations.hpp</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023 - Present, MIT License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

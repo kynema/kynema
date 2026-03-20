@@ -1,0 +1,14 @@
+.. meta::b555b572d36f531990a2bc21886f500b6986988dce33f81fe9e1a8da9dcaeb79d1ca780a53b7612f51c9fdf74cd23b365421aac879106d4464f4d7672c4a718d
+
+:orphan:
+
+.. title:: Kynema API: Member List
+
+Member List
+===========
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: structkynema_1_1beams_1_1CalculateStrainDot-members.html
