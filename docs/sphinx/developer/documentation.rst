@@ -97,7 +97,7 @@ To build the documentation:
 
 .. code-block:: bash
 
-    $ cd build && cmake -DKYNEMA_ENABLE_DOCUMENTATION:BOOL=ON .. && cmake --build . -t docs
+    $ cd build && cmake -DKynema_ENABLE_DOCUMENTATION:BOOL=ON .. && cmake --build . -t docs
 
 .. note::
 

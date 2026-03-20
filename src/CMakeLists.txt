@@ -25,7 +25,7 @@ target_link_libraries(kynema_library PRIVATE
 # Add compile definitions
 #----------------------------------------
 if(Kynema_WRITE_OUTPUTS)
-  target_compile_definitions(kynema_library PRIVATE Kynema_WRITE_OUTPUTS)
+    target_compile_definitions(kynema_library PRIVATE Kynema_WRITE_OUTPUTS)
 endif()
 
 #--------------------------------------------------------------------------
@@ -35,22 +35,22 @@ endif()
 # yaml-cpp
 #----------------------------------------
 if(TARGET yaml-cpp::yaml-cpp)
-  set(YAML_CPP_TARGET yaml-cpp::yaml-cpp)
+    set(YAML_CPP_TARGET yaml-cpp::yaml-cpp)
 else()
-  set(YAML_CPP_TARGET yaml-cpp)
+    set(YAML_CPP_TARGET yaml-cpp)
 endif()
 
 #----------------------------------------
 # NetCDF
 #----------------------------------------
 if(TARGET netCDF::netcdf)
-  set(NETCDF_TARGET netCDF::netcdf)
+    set(NETCDF_TARGET netCDF::netcdf)
 elseif(TARGET NetCDF::NetCDF)
-  set(NETCDF_TARGET NetCDF::NetCDF)
+    set(NETCDF_TARGET NetCDF::NetCDF)
 elseif(TARGET netcdf)
-  set(NETCDF_TARGET netcdf)
+    set(NETCDF_TARGET netcdf)
 else()
-  message(FATAL_ERROR "NetCDF library not found")
+    message(FATAL_ERROR "NetCDF library not found")
 endif()
 
 #--------------------------------------------------------------------------
@@ -65,37 +65,37 @@ target_link_system_libraries(kynema_library PUBLIC
 )
 
 if(Kynema_ENABLE_CUDSS)
-target_link_system_libraries(kynema_library PUBLIC
+    target_link_system_libraries(kynema_library PUBLIC
   cudss
 )
 endif()
 
 if(Kynema_ENABLE_MKL)
-target_link_system_libraries(kynema_library PUBLIC
+    target_link_system_libraries(kynema_library PUBLIC
   MKL::MKL
 )
 endif()
 
 if(Kynema_ENABLE_SUPERLU)
-target_link_system_libraries(kynema_library PUBLIC
+    target_link_system_libraries(kynema_library PUBLIC
   superlu::superlu
 )
 endif()
 
 if(Kynema_ENABLE_SUPERLU_MT)
-target_link_system_libraries(kynema_library PUBLIC
+    target_link_system_libraries(kynema_library PUBLIC
   superlu_mt::superlu_mt
 )
 endif()
 
 if(Kynema_ENABLE_KLU)
-target_link_system_libraries(kynema_library PUBLIC
+    target_link_system_libraries(kynema_library PUBLIC
   SuiteSparse::KLU
 )
 endif()
 
 if(Kynema_ENABLE_UMFPACK)
-target_link_system_libraries(kynema_library PUBLIC
+    target_link_system_libraries(kynema_library PUBLIC
   SuiteSparse::UMFPACK
 )
 endif()

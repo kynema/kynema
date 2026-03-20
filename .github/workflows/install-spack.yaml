@@ -22,7 +22,7 @@ jobs:
           spack compiler find
           spack env create -d .
           spack env activate .
-          spack add kynema ^netcdf-c~mpi ^hdf5~mpi ^kokkos@4.7.02 ^kokkos-kernels@4.7.02
+          spack add kynema ^netcdf-c~mpi ^hdf5~mpi ^kokkos-kernels@4.7.02
           spack develop kynema@main
           spack concretize -f
           cd kynema
