@@ -186,7 +186,7 @@ void TimeSeriesWriter::FlushBuffer() {
 
 void TimeSeriesWriter::Flush() {
     this->FlushBuffer();
-    if (file_.GetNetCDFId() != -1) {
+    if (file_.IsOpen()) {
         // Only do sync when file is open
         file_.Sync();
     }
