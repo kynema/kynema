@@ -60,7 +60,7 @@ public:
     /**
      * @brief Checks if the NetCDF file is open
      */
-    bool IsOpen() const { return netcdf_id_ != -1; }
+    [[nodiscard]] bool IsOpen() const { return netcdf_id_ != -1; }
 
     //--------------------------------------------------------------------------
     // Setter/Write methods
