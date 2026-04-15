@@ -26,7 +26,13 @@ jobs:
           spack develop kynema@main
           spack concretize -f
           cd kynema
-          git checkout ${{ github.head_ref || github.ref_name}}
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            git remote add pr-source ${{ github.event.pull_request.head.repo.clone_url }}
+            git fetch pr-source ${{ github.head_ref }}
+            git checkout -B ${{ github.head_ref }} --track pr-source/${{ github.head_ref }}
+          else
+            git checkout ${{ github.ref_name }}
+          fi
           spack install
       - name: Rigid Body and Springs Test
         run: |
