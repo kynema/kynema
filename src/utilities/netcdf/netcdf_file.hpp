@@ -57,6 +57,11 @@ public:
      */
     void Open();
 
+    /**
+     * @brief Checks if the NetCDF file is open
+     */
+    [[nodiscard]] bool IsOpen() const { return netcdf_id_ != -1; }
+
     //--------------------------------------------------------------------------
     // Setter/Write methods
     //--------------------------------------------------------------------------

@@ -79,7 +79,7 @@ public:
      */
     void WriteRowAtTimestep(size_t timestep, std::span<const double> row);
 
-    /// @brief Flushes any remaining buffered rows
+    /// @brief Flushes any remaining buffered rows and, if the file is open, syncs
     void Flush();
 
     /// @brief Manually closes the underlying NetCDF file and flush any remaining buffered rows

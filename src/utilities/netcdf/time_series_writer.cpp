@@ -186,7 +186,10 @@ void TimeSeriesWriter::FlushBuffer() {
 
 void TimeSeriesWriter::Flush() {
     this->FlushBuffer();
-    file_.Sync();
+    if (file_.IsOpen()) {
+        // Only do sync when file is open
+        file_.Sync();
+    }
 }
 
 void TimeSeriesWriter::Close() {
