@@ -63,6 +63,7 @@ bool BladeInterface::Step() {
         }
     }
     Kokkos::deep_copy(this->state.f, this->host_state.f);
+    Kokkos::deep_copy(this->state.v, this->host_state.v);
 
     // Solve for state at end of step
     auto converged =
