@@ -211,7 +211,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:af4bc21e2229c2257d38a2332fef9526a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes a full row (all channels) at a specific timestep.  <br /></td></tr>
 <tr class="separator:af4bc21e2229c2257d38a2332fef9526a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a187d91c5878d5419e93aa888a6bf0fb3" id="r_a187d91c5878d5419e93aa888a6bf0fb3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1TimeSeriesWriter.html#a187d91c5878d5419e93aa888a6bf0fb3">Flush</a> ()</td></tr>
-<tr class="memdesc:a187d91c5878d5419e93aa888a6bf0fb3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flushes any remaining buffered rows.  <br /></td></tr>
+<tr class="memdesc:a187d91c5878d5419e93aa888a6bf0fb3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flushes any remaining buffered rows and, if the file is open, syncs.  <br /></td></tr>
 <tr class="separator:a187d91c5878d5419e93aa888a6bf0fb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0d75789d235e55a44257b0afc0862535" id="r_a0d75789d235e55a44257b0afc0862535"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema_1_1util_1_1TimeSeriesWriter.html#a0d75789d235e55a44257b0afc0862535">Close</a> ()</td></tr>
 <tr class="memdesc:a0d75789d235e55a44257b0afc0862535"><td class="mdescLeft">&#160;</td><td class="mdescRight">Manually closes the underlying NetCDF file and flush any remaining buffered rows.  <br /></td></tr>
@@ -453,7 +453,7 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Flushes any remaining buffered rows. </p>
+<p>Flushes any remaining buffered rows and, if the file is open, syncs. </p>
 
 </div>
 </div>
