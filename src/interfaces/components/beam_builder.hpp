@@ -4,7 +4,7 @@
 
 #include "beam_input.hpp"
 
-namespace kynema {
+namespace kynema_fmb {
 class Model;
 }
 

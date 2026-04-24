@@ -2,7 +2,7 @@
 
 #include "state.hpp"
 
-namespace kynema {
+namespace kynema_fmb {
 
 /**
  * @brief Performs a deep copy of the state data which might have changed in a given
@@ -33,4 +33,4 @@ inline void CopyStateData(State<DeviceType>& copy, const State<DeviceType>& old)
     deep_copy(copy.tangent, old.tangent);
 }
 
-}  // namespace kynema
+}  // namespace kynema_fmb

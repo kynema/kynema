@@ -2,7 +2,7 @@
 
 #include <cstddef>
 
-namespace kynema {
+namespace kynema_fmb {
 
 /**
  * @brief A Struct containing the paramters used to control the time stepping process.
@@ -55,4 +55,4 @@ struct StepParameters {
           static_load_retries(num_retries) {}
 };
 
-}  // namespace kynema
+}  // namespace kynema_fmb

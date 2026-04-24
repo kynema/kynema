@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Kynema_config.h"
+#include "Kynema_FMB_config.h"
 
 namespace kynema_fmb::dss {
 

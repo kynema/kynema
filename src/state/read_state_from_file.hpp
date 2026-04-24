@@ -6,7 +6,7 @@
 
 #include "state.hpp"
 
-namespace kynema {
+namespace kynema_fmb {
 
 /**
  * @brief Reads State data from a provided restart file.
@@ -64,4 +64,4 @@ inline void ReadStateFromFile(std::istream& input, State<DeviceType>& state) {
     read_6(state.f);
 }
 
-}  // namespace kynema
+}  // namespace kynema_fmb

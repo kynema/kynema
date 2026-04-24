@@ -5,10 +5,10 @@
 
 #include "interfaces/node_data.hpp"
 
-namespace kynema {
+namespace kynema_fmb {
 class Model;
 struct BeamSection;
-}  // namespace kynema
+}  // namespace kynema_fmb
 
 namespace kynema_fmb::interfaces::components {
 

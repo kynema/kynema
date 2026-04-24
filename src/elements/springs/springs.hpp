@@ -4,7 +4,7 @@
 
 #include "dof_management/freedom_signature.hpp"
 
-namespace kynema {
+namespace kynema_fmb {
 
 /**
  * @brief Contains field variables for spring elements to compute per-element
@@ -59,4 +59,4 @@ struct Springs {
     }
 };
 
-}  // namespace kynema
+}  // namespace kynema_fmb

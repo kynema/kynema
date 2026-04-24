@@ -144,7 +144,7 @@ add_subdirectory(vendor)
 # Install targets and export configuration
 #----------------------------------------
 install(
-  TARGETS kynema_fmb_library kynema_options kynema_warnings
+  TARGETS kynema_fmb_library kynema_fmb_options kynema_fmb_warnings
   EXPORT KynemaFMBTargets
   ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
   LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR} COMPONENT ${PACKAGE_NAME}

@@ -8,7 +8,7 @@
 
 #include "beam_element.hpp"
 
-namespace kynema {
+namespace kynema_fmb {
 
 /**
  * @brief Represents the input data for creating flexible beams
@@ -85,4 +85,4 @@ struct BeamsInput {
     }
 };
 
-}  // namespace kynema
+}  // namespace kynema_fmb

@@ -12,7 +12,7 @@
 #include "dof_management/freedom_signature.hpp"
 #include "model/node.hpp"
 
-namespace kynema {
+namespace kynema_fmb {
 
 /**
  * @brief Container class for managing multiple constraints in a simulation
@@ -355,4 +355,4 @@ struct Constraints {
     }
 };
 
-}  // namespace kynema
+}  // namespace kynema_fmb

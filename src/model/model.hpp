@@ -24,7 +24,7 @@
 #include "solver/solver.hpp"
 #include "state/state.hpp"
 
-namespace kynema {
+namespace kynema_fmb {
 
 /**
  * @brief Compute freedom tables for state, elements, and constraints, then construct and return
@@ -697,4 +697,4 @@ private:
         mesh_connectivity_;  //< Mesh connectivity tracking element-node relationships
 };
 
-}  // namespace kynema
+}  // namespace kynema_fmb

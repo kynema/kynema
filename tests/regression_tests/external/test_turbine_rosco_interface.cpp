@@ -11,7 +11,7 @@
 #include "interfaces/turbine/turbine_interface.hpp"
 #include "interfaces/turbine/turbine_interface_builder.hpp"
 
-#include "Kynema_config.h"
+#include "Kynema_FMB_config.h"
 
 namespace kynema_fmb::tests {
 

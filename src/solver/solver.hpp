@@ -10,9 +10,9 @@
 #include "linear_solver/dss_handle.hpp"
 #include "linear_solver/dss_symbolic.hpp"
 
-#include "Kynema_config.h"
+#include "Kynema_FMB_config.h"
 
-namespace kynema {
+namespace kynema_fmb {
 
 /** @brief This object manages the assembly and solution of linear system arising from the
  * generalized-alpha based time integration of the dynamic structural problem.
@@ -123,4 +123,4 @@ struct Solver {
     }
 };
 
-}  // namespace kynema
+}  // namespace kynema_fmb

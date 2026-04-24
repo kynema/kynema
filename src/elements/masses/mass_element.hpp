@@ -2,7 +2,7 @@
 
 #include <array>
 
-namespace kynema {
+namespace kynema_fmb {
 
 /**
  * @brief Mass element constitutes rigid bodies/masses material behavior in kynema.
@@ -17,4 +17,4 @@ struct MassElement {
         : ID(id), node_id(n_id), M_star(mass_matrix) {}
 };
 
-}  // namespace kynema
+}  // namespace kynema_fmb

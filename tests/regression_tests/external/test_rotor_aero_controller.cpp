@@ -17,7 +17,7 @@
 #include "utilities/aerodynamics/aerodyn_inflow.hpp"
 #include "utilities/controllers/turbine_controller.hpp"
 
-#include "Kynema_config.h"
+#include "Kynema_FMB_config.h"
 
 namespace {
 

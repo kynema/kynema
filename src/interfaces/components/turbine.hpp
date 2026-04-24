@@ -9,7 +9,7 @@
 #include "interfaces/host_state.hpp"
 #include "interfaces/node_data.hpp"
 
-namespace kynema {
+namespace kynema_fmb {
 class Model;
 }
 

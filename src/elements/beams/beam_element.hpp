@@ -6,7 +6,7 @@
 
 #include "beam_section.hpp"
 
-namespace kynema {
+namespace kynema_fmb {
 
 /**
  * @brief Beam element constitutes flexible beams material behavior in kynema.
@@ -34,4 +34,4 @@ struct BeamElement {
     }
 };
 
-}  // namespace kynema
+}  // namespace kynema_fmb
