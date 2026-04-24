@@ -1,8 +1,8 @@
 Example: Heavy Top Problem
 ==========================
 
-This example will walk through how to run a simulation of a processing top using Kynema-FMB's low level API.
-Unline Kynema-FMB's high level APIs, you will have to manually set up all nodes and their connectivities.
+This example will walk through how to run a simulation of a precessing top using Kynema-FMB's low level API.
+Unlike Kynema-FMB's high level APIs, you will have to manually set up all nodes and their connectivities.
 While this extra work adds complexity compared to the higher level APIs, it also provides unlimited freedom.
 The heavy top problem is one of the simplest problems you'll want to solve with Kynema-FMB, so it is a good introduction to our low level APIs.
 For the most up to date and working version of this code, see ``tests/documentation_tests/heavy_top/``.
