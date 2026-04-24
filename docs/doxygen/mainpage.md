@@ -3,7 +3,7 @@
 This document is intended for developers who want to understand the C++ code
 structure and modify the codebase and, therefore, assumes that the reader is
 familiar with the installation, compilation, and execution steps. If you are new to
-Kynema and haven't installed/used Kynema previously, we recommend starting
+Kynema-FMB and haven't installed/used Kynema-FMB previously, we recommend starting
 with the [user manual](https://kynema.github.io/kynema-fmb/) that provides a detailed
 overview of the installation process as well as general usage.
 

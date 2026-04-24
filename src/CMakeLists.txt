@@ -158,6 +158,6 @@ install(EXPORT KynemaFMBTargets
   DESTINATION lib/cmake/KynemaFMB
 )
 
-install(FILES
-  DESTINATION include/KynemaFMB/
-)
+#install(FILES
+#  DESTINATION include/KynemaFMB/
+#)
