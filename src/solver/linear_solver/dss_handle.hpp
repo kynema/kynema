@@ -2,7 +2,7 @@
 
 #include "dss_algorithm.hpp"
 
-#include "KYNEMA_FMB_FMB_config.h"
+#include "KYNEMA_FMB_config.h"
 
 namespace kynema_fmb::dss {
 
