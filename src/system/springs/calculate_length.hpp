@@ -2,7 +2,7 @@
 
 #include <Kokkos_Core.hpp>
 
-namespace kynema::springs {
+namespace kynema_fmb::springs {
 
 template <typename DeviceType>
 KOKKOS_INLINE_FUNCTION double CalculateLength(
@@ -11,4 +11,4 @@ KOKKOS_INLINE_FUNCTION double CalculateLength(
     return Kokkos::sqrt((r(0) * r(0)) + (r(1) * r(1)) + (r(2) * r(2)));
 }
 
-}  // namespace kynema::springs
+}  // namespace kynema_fmb::springs

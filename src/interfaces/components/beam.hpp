@@ -10,7 +10,7 @@ class Model;
 struct BeamSection;
 }  // namespace kynema
 
-namespace kynema::interfaces::components {
+namespace kynema_fmb::interfaces::components {
 
 struct BeamInput;
 
@@ -172,4 +172,4 @@ private:
     static std::vector<BeamSection> BuildBeamSections_WholeBeamGL(const BeamInput& input);
 };
 
-}  // namespace kynema::interfaces::components
+}  // namespace kynema_fmb::interfaces::components

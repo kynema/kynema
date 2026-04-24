@@ -10,7 +10,7 @@
 #include "state/update_static_prediction.hpp"
 #include "step_parameters.hpp"
 
-namespace kynema::step {
+namespace kynema_fmb::step {
 
 /**
  * @brief Updates the predicted next state values, based on computed solver solution, solver.x
@@ -70,4 +70,4 @@ inline void UpdateStatePrediction(
     );
 }
 
-}  // namespace kynema::step
+}  // namespace kynema_fmb::step

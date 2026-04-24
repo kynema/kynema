@@ -6,7 +6,7 @@
 #include "dss_algorithm.hpp"
 #include "dss_handle_mkl.hpp"
 
-namespace kynema::dss {
+namespace kynema_fmb::dss {
 template <typename CrsMatrixType, typename MultiVectorType>
 struct SolveFunction<Handle<Algorithm::MKL>, CrsMatrixType, MultiVectorType> {
     static void solve(
@@ -25,4 +25,4 @@ struct SolveFunction<Handle<Algorithm::MKL>, CrsMatrixType, MultiVectorType> {
         Kokkos::deep_copy(x, x_host);
     }
 };
-}  // namespace kynema::dss
+}  // namespace kynema_fmb::dss

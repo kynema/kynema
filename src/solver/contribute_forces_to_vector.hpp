@@ -4,7 +4,7 @@
 
 #include "dof_management/freedom_signature.hpp"
 
-namespace kynema::solver {
+namespace kynema_fmb::solver {
 
 /**
  * @brief A Kernel which sums the nodal forces into the global RHS vector
@@ -48,4 +48,4 @@ struct ContributeForcesToVector {
     }
 };
 
-}  // namespace kynema::solver
+}  // namespace kynema_fmb::solver

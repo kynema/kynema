@@ -6,7 +6,7 @@
 #include "dss_handle_superlu_mt.hpp"
 #include "slu_mt_ddefs.h"
 
-namespace kynema::dss {
+namespace kynema_fmb::dss {
 template <typename CrsMatrixType, typename MultiVectorType>
 struct SolveFunction<Handle<DSSAlgorithm::SUPERLU_MT>, CrsMatrixType, MultiVectorType> {
     static void solve(
@@ -35,4 +35,4 @@ struct SolveFunction<Handle<DSSAlgorithm::SUPERLU_MT>, CrsMatrixType, MultiVecto
     }
 };
 
-}  // namespace kynema::dss
+}  // namespace kynema_fmb::dss

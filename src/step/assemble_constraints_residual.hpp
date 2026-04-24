@@ -9,7 +9,7 @@
 #include "solver/copy_constraints_residual_to_vector.hpp"
 #include "solver/solver.hpp"
 
-namespace kynema::step {
+namespace kynema_fmb::step {
 
 template <typename DeviceType>
 inline void AssembleConstraintsResidual(
@@ -50,4 +50,4 @@ inline void AssembleConstraintsResidual(
     );
 }
 
-}  // namespace kynema::step
+}  // namespace kynema_fmb::step

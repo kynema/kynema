@@ -2,7 +2,7 @@
 
 #include <Kokkos_Core.hpp>
 
-namespace kynema::solver {
+namespace kynema_fmb::solver {
 
 /**
  * @brief A Kernel which sums the residual contributions computed at each of the nodes in a spring
@@ -45,4 +45,4 @@ struct ContributeSpringsToVector {
     };
 };
 
-}  // namespace kynema::solver
+}  // namespace kynema_fmb::solver

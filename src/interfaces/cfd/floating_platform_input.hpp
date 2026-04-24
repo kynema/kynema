@@ -5,7 +5,7 @@
 
 #include "interfaces/cfd/mooring_line_input.hpp"
 
-namespace kynema::interfaces::cfd {
+namespace kynema_fmb::interfaces::cfd {
 
 /**
  * @brief The input configuration options describing a FloatingPlatform object
@@ -30,4 +30,4 @@ struct FloatingPlatformInput {
     std::vector<MooringLineInput> mooring_lines;
 };
 
-}  // namespace kynema::interfaces::cfd
+}  // namespace kynema_fmb::interfaces::cfd

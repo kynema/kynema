@@ -7,7 +7,7 @@
 #include <string>
 #include <utility>
 
-namespace kynema::util {
+namespace kynema_fmb::util {
 
 TurbineController::TurbineController(
     std::string shared_lib_path, std::string controller_function_name, std::string input_file_path,
@@ -73,4 +73,4 @@ void TurbineController::CallController() {
     }
 }
 
-}  // namespace kynema::util
+}  // namespace kynema_fmb::util

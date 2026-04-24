@@ -6,7 +6,7 @@
 #include "state/copy_state_data.hpp"
 #include "step/step.hpp"
 
-namespace kynema::interfaces {
+namespace kynema_fmb::interfaces {
 
 BladeInterface::BladeInterface(
     const components::SolutionInput& solution_input, const components::BeamInput& blade_input,
@@ -67,7 +67,7 @@ bool BladeInterface::Step() {
 
     // Solve for state at end of step
     auto converged =
-        kynema::Step(this->parameters, this->solver, this->elements, this->state, this->constraints);
+        kynema_fmb::Step(this->parameters, this->solver, this->elements, this->state, this->constraints);
     if (!converged) {
         return false;
     }
@@ -106,4 +106,4 @@ void BladeInterface::SetRootDisplacement(const std::array<double, 7>& u) const {
     }
     this->constraints.UpdateDisplacement(this->blade.prescribed_root_constraint_id, u);
 }
-}  // namespace kynema::interfaces
+}  // namespace kynema_fmb::interfaces

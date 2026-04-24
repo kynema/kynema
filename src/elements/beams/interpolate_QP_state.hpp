@@ -4,7 +4,7 @@
 
 #include "math/quaternion_operations.hpp"
 
-namespace kynema::beams {
+namespace kynema_fmb::beams {
 
 /**
  * @brief Interpolates the displacement (u) part of the state at a quadrature point
@@ -135,4 +135,4 @@ struct InterpolateQPState_rprime {
     }
 };
 
-}  // namespace kynema::beams
+}  // namespace kynema_fmb::beams

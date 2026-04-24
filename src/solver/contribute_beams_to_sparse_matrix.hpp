@@ -5,7 +5,7 @@
 
 #include "dof_management/freedom_signature.hpp"
 
-namespace kynema::solver {
+namespace kynema_fmb::solver {
 
 /**
  * @brief A Kernel which sums the system matrix contributions computed at each node in a beam
@@ -73,4 +73,4 @@ struct ContributeBeamsToSparseMatrix {
     }
 };
 
-}  // namespace kynema::solver
+}  // namespace kynema_fmb::solver

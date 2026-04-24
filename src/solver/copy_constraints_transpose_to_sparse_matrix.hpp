@@ -5,7 +5,7 @@
 
 #include "dof_management/freedom_signature.hpp"
 
-namespace kynema::solver {
+namespace kynema_fmb::solver {
 
 /**
  * @brief A Kernel which copies the transpose gradient matrix contributions for the
@@ -97,4 +97,4 @@ struct CopyConstraintsTransposeToSparseMatrix {
         );
     }
 };
-}  // namespace kynema::solver
+}  // namespace kynema_fmb::solver

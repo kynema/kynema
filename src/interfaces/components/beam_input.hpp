@@ -5,7 +5,7 @@
 #include <stdexcept>
 #include <vector>
 
-namespace kynema::interfaces::components {
+namespace kynema_fmb::interfaces::components {
 
 /**
  * @brief Reference axis definition for a beam
@@ -118,4 +118,4 @@ struct BeamInput {
     std::array<double, 6> mu{0., 0., 0., 0., 0., 0.};
 };
 
-}  // namespace kynema::interfaces::components
+}  // namespace kynema_fmb::interfaces::components

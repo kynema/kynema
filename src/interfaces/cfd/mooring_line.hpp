@@ -4,7 +4,7 @@
 
 #include "node_data.hpp"
 
-namespace kynema::interfaces::cfd {
+namespace kynema_fmb::interfaces::cfd {
 
 /**
  * @brief A description of a mooring line including its node and spring indices
@@ -26,4 +26,4 @@ struct MooringLine {
     size_t spring_element_id{0U};
 };
 
-}  // namespace kynema::interfaces::cfd
+}  // namespace kynema_fmb::interfaces::cfd

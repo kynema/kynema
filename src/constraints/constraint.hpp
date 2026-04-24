@@ -4,7 +4,7 @@
 
 #include "constraint_type.hpp"
 
-namespace kynema::constraints {
+namespace kynema_fmb::constraints {
 
 /**
  * @brief Defines a constraint between two nodes or enforces a boundary condition at a single node
@@ -45,4 +45,4 @@ struct Constraint {
           control(ctrl) {}
 };
 
-}  // namespace kynema::constraints
+}  // namespace kynema_fmb::constraints

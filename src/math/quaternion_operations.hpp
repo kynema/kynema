@@ -7,7 +7,7 @@
 #include <Eigen/Geometry>
 #include <Kokkos_Core.hpp>
 
-namespace kynema::math {
+namespace kynema_fmb::math {
 
 /**
  * @brief Converts a 4x1 quaternion to a 3x3 rotation matrix and returns the result
@@ -199,4 +199,4 @@ inline bool IsIdentityQuaternion(const std::array<double, 4>& q, double toleranc
            std::abs(q[2]) <= tolerance && std::abs(q[3]) <= tolerance;
 }
 
-}  // namespace kynema::math
+}  // namespace kynema_fmb::math

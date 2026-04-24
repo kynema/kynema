@@ -2,7 +2,7 @@
 
 #include <Kokkos_Core.hpp>
 
-namespace kynema::solver {
+namespace kynema_fmb::solver {
 
 /**
  * @brief A Kernel which sums the residual contributions computed at a mass element's node
@@ -38,4 +38,4 @@ struct ContributeMassesToVector {
     }
 };
 
-}  // namespace kynema::solver
+}  // namespace kynema_fmb::solver

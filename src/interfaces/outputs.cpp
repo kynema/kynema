@@ -4,7 +4,7 @@
 
 #include "host_state.hpp"
 
-namespace kynema::interfaces {
+namespace kynema_fmb::interfaces {
 
 Outputs::Outputs(
     const std::string& output_file, size_t num_nodes, const std::string& time_series_file,
@@ -189,4 +189,4 @@ void Outputs::Open() {
     }
 }
 
-}  // namespace kynema::interfaces
+}  // namespace kynema_fmb::interfaces

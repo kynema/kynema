@@ -4,7 +4,7 @@
 
 #include "dof_management/freedom_signature.hpp"
 
-namespace kynema::state {
+namespace kynema_fmb::state {
 
 /**
  * @brief A Kernel to update the change in state at a node for a static problem
@@ -37,4 +37,4 @@ struct UpdateStaticPrediction {
     }
 };
 
-}  // namespace kynema::state
+}  // namespace kynema_fmb::state

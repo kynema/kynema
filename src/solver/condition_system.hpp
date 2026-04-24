@@ -2,7 +2,7 @@
 
 #include <Kokkos_Core.hpp>
 
-namespace kynema::solver {
+namespace kynema_fmb::solver {
 
 /**
  * @brief A Kernel which applies the given factor to the system RHS vector
@@ -30,4 +30,4 @@ struct UnconditionSolution {
     void operator()(size_t i) const { x(i + num_system_dofs, 0) /= conditioner; }
 };
 
-}  // namespace kynema::solver
+}  // namespace kynema_fmb::solver

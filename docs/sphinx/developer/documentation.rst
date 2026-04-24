@@ -20,7 +20,7 @@ using a python package Sphinx. Since the manuals are written in simple
 text files, they can be version controlled alongside the source
 code. Documentation is automatically generated with new updates to the
 GitHub repository and deployed at `Kynema-FMB documentation site
-<https://kynema.github.io/kynema>`_.
+<https://kynema.github.io/kynema-fmb>`_.
 
 Writing documentation
 `````````````````````

@@ -7,7 +7,7 @@
 #include "step_parameters.hpp"
 #include "system/beams/calculate_quadrature_point_values.hpp"
 
-namespace kynema::step {
+namespace kynema_fmb::step {
 
 template <typename DeviceType>
 inline void UpdateSystemVariablesBeams(
@@ -69,4 +69,4 @@ inline void UpdateSystemVariablesBeams(
     );
 }
 
-}  // namespace kynema::step
+}  // namespace kynema_fmb::step

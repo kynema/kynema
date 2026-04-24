@@ -8,7 +8,7 @@
 
 #include "math/vector_operations.hpp"
 
-namespace kynema::masses {
+namespace kynema_fmb::masses {
 
 template <typename DeviceType>
 struct CalculateGyroscopicMatrix {
@@ -59,4 +59,4 @@ struct CalculateGyroscopicMatrix {
         GemmNN::invoke(1., omega_tilde, rho, -1., Guu_22);
     }
 };
-}  // namespace kynema::masses
+}  // namespace kynema_fmb::masses

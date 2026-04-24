@@ -10,7 +10,7 @@
 #include "state/copy_state_data.hpp"
 #include "step/step.hpp"
 
-namespace kynema::interfaces {
+namespace kynema_fmb::interfaces {
 
 TurbineInterface::TurbineInterface(
     const components::SolutionInput& solution_input, const components::TurbineInput& turbine_input,
@@ -293,7 +293,7 @@ bool TurbineInterface::Step() {
 
     // Solve for state at end of step
     auto converged =
-        kynema::Step(this->parameters, this->solver, this->elements, this->state, this->constraints);
+        kynema_fmb::Step(this->parameters, this->solver, this->elements, this->state, this->constraints);
 
     // If not converged, return false
     if (!converged) {
@@ -633,4 +633,4 @@ void TurbineInterface::WriteOutput() {
     this->WriteTimeSeriesData();
 }
 
-}  // namespace kynema::interfaces
+}  // namespace kynema_fmb::interfaces

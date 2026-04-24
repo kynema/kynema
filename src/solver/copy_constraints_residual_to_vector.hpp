@@ -2,7 +2,7 @@
 
 #include <Kokkos_Core.hpp>
 
-namespace kynema::solver {
+namespace kynema_fmb::solver {
 
 /**
  * @brief A Kernel which copies the residual contributions for each constraint to their correct
@@ -41,4 +41,4 @@ struct CopyConstraintsResidualToVector {
         }
     }
 };
-}  // namespace kynema::solver
+}  // namespace kynema_fmb::solver

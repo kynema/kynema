@@ -2,7 +2,7 @@
 
 #include <Kokkos_Core.hpp>
 
-namespace kynema::beams {
+namespace kynema_fmb::beams {
 
 template <typename DeviceType>
 struct IntegrateResidualVectorElement {
@@ -53,4 +53,4 @@ struct IntegrateResidualVectorElement {
     }
 };
 
-}  // namespace kynema::beams
+}  // namespace kynema_fmb::beams

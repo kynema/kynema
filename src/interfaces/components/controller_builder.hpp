@@ -5,7 +5,7 @@
 
 #include "controller_input.hpp"
 
-namespace kynema::interfaces::components {
+namespace kynema_fmb::interfaces::components {
 
 class ControllerBuilder {
 public:
@@ -40,4 +40,4 @@ private:
     ControllerInput input;
 };
 
-}  // namespace kynema::interfaces::components
+}  // namespace kynema_fmb::interfaces::components

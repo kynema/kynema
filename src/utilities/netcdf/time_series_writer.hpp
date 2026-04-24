@@ -6,7 +6,7 @@
 
 #include "netcdf_file.hpp"
 
-namespace kynema::util {
+namespace kynema_fmb::util {
 
 /**
  * @brief Class for writing time-series data to NetCDF file
@@ -134,4 +134,4 @@ private:
     void FlushBuffer();
 };
 
-}  // namespace kynema::util
+}  // namespace kynema_fmb::util

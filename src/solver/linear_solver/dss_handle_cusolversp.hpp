@@ -6,7 +6,7 @@
 
 #include "dss_algorithm.hpp"
 
-namespace kynema::dss {
+namespace kynema_fmb::dss {
 template <>
 class Handle<Algorithm::CUSOLVER_SP> {
     struct cuSolverDssHandleType {
@@ -43,4 +43,4 @@ public:
     Kokkos::View<char*>& get_buffer() { return cusolver_dss_handle->buffer; }
 };
 
-}  // namespace kynema::dss
+}  // namespace kynema_fmb::dss

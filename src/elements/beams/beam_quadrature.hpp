@@ -11,7 +11,7 @@
 #include "math/gl_quadrature.hpp"
 #include "math/gll_quadrature.hpp"
 
-namespace kynema::beams {
+namespace kynema_fmb::beams {
 
 /**
  * @brief Creates a trapezoidal quadrature rule based on a given grid.
@@ -114,4 +114,4 @@ inline std::vector<std::array<double, 2>> CreateGaussLegendreQuadrature(
     return quadrature;
 }
 
-}  // namespace kynema::beams
+}  // namespace kynema_fmb::beams

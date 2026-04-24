@@ -10,7 +10,7 @@
 #include <string>
 #include <vector>
 
-namespace kynema::math {
+namespace kynema_fmb::math {
 
 /**
  * @brief Computes weights for linear interpolation
@@ -224,4 +224,4 @@ inline std::vector<double> GenerateGLLPoints(const size_t order) {
     return gll_points;
 }
 
-}  // namespace kynema::math
+}  // namespace kynema_fmb::math

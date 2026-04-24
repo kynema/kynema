@@ -10,7 +10,7 @@
 #include "math/quaternion_operations.hpp"
 #include "model/model.hpp"
 
-namespace kynema::interfaces::components {
+namespace kynema_fmb::interfaces::components {
 Turbine::Turbine(const TurbineInput& input, Model& model)
     : blades(CreateBlades(input.blades, model)),
       tower(input.tower, model),
@@ -643,4 +643,4 @@ void Turbine::SetInitialRotorVelocity(const TurbineInput& input, Model& model) {
         );
     }
 }
-}  // namespace kynema::interfaces::components
+}  // namespace kynema_fmb::interfaces::components

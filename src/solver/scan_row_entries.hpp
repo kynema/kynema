@@ -2,7 +2,7 @@
 
 #include <Kokkos_Core.hpp>
 
-namespace kynema::solver {
+namespace kynema_fmb::solver {
 
 /**
  * @brief A Scanning Kernel which calculates the row pointers from a list of the number
@@ -23,4 +23,4 @@ struct ScanRowEntries {
     }
 };
 
-}  // namespace kynema::solver
+}  // namespace kynema_fmb::solver

@@ -15,7 +15,7 @@ inline void check_netCDF_error(int status, const std::string& message = "") {
 
 }  // namespace
 
-namespace kynema::util {
+namespace kynema_fmb::util {
 
 NetCdfFile::NetCdfFile(const std::string& file_path, bool create) : file_path_(file_path) {
     if (create) {
@@ -388,4 +388,4 @@ void NetCdfFile::ReadVariableWithStride(
     );
 }
 
-}  // namespace kynema::util
+}  // namespace kynema_fmb::util

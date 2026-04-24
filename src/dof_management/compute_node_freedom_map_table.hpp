@@ -5,7 +5,7 @@
 #include "freedom_signature.hpp"
 #include "state/state.hpp"
 
-namespace kynema::dof {
+namespace kynema_fmb::dof {
 
 /**
  * @brief A Scanning Kernel which to convert the number of active degrees of freedom per node to
@@ -49,4 +49,4 @@ inline void compute_node_freedom_map_table(State<DeviceType>& state) {
     );
 }
 
-}  // namespace kynema::dof
+}  // namespace kynema_fmb::dof

@@ -2,7 +2,7 @@
 
 #include <Kokkos_Core.hpp>
 
-namespace kynema::springs {
+namespace kynema_fmb::springs {
 
 template <typename DeviceType>
 KOKKOS_INLINE_FUNCTION double CalculateForceCoefficient1(double k, double l_ref, double l) {
@@ -14,4 +14,4 @@ KOKKOS_INLINE_FUNCTION double CalculateForceCoefficient2(double k, double l_ref,
     return k * l_ref / (l * l * l);
 }
 
-}  // namespace kynema::springs
+}  // namespace kynema_fmb::springs

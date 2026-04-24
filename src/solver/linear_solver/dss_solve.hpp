@@ -2,14 +2,14 @@
 
 #include "Kynema_config.h"
 
-namespace kynema::dss {
+namespace kynema_fmb::dss {
 
 template <typename DSSHandleType, typename CrsMatrixType, typename MultiVectorType>
 struct SolveFunction {
     SolveFunction() = delete;
 };
 
-}  // namespace kynema::dss
+}  // namespace kynema_fmb::dss
 
 #ifdef Kynema_ENABLE_CUSOLVERSP
 #include "dss_solve_cusolversp.hpp"
@@ -39,11 +39,11 @@ struct SolveFunction {
 #include "dss_solve_superlu_mt.hpp"
 #endif
 
-namespace kynema::dss {
+namespace kynema_fmb::dss {
 
 template <typename DSSHandleType, typename CrsMatrixType, typename MultiVectorType>
 void solve(DSSHandleType& dss_handle, CrsMatrixType& A, MultiVectorType& b, MultiVectorType& x) {
     SolveFunction<DSSHandleType, CrsMatrixType, MultiVectorType>::solve(dss_handle, A, b, x);
 }
 
-}  // namespace kynema::dss
+}  // namespace kynema_fmb::dss

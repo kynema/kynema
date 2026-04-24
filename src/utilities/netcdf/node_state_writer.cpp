@@ -5,7 +5,7 @@
 #include <stdexcept>
 #include <unordered_map>
 
-namespace kynema::util {
+namespace kynema_fmb::util {
 
 NodeStateWriter::NodeStateWriter(
     const std::string& file_path, bool create, size_t num_nodes,
@@ -213,4 +213,4 @@ void NodeStateWriter::FlushAllBuffers() {
     this->file_.Sync();
 }
 
-}  // namespace kynema::util
+}  // namespace kynema_fmb::util

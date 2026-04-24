@@ -4,7 +4,7 @@
 
 #include "math/quaternion_operations.hpp"
 
-namespace kynema::constraints {
+namespace kynema_fmb::constraints {
 
 /**
  * @brief Kernel for calculating the residual and system gradient for a Prescribed BC constraint
@@ -73,4 +73,4 @@ struct CalculatePrescribedBC3DOFConstraint {
     }
 };
 
-}  // namespace kynema::constraints
+}  // namespace kynema_fmb::constraints

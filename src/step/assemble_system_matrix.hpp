@@ -10,7 +10,7 @@
 #include "solver/solver.hpp"
 #include "step_parameters.hpp"
 
-namespace kynema::step {
+namespace kynema_fmb::step {
 
 template <typename DeviceType>
 inline void AssembleSystemMatrix(
@@ -54,4 +54,4 @@ inline void AssembleSystemMatrix(
     );
 }
 
-}  // namespace kynema::step
+}  // namespace kynema_fmb::step

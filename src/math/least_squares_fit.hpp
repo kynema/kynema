@@ -10,7 +10,7 @@
 
 #include "interpolation.hpp"
 
-namespace kynema::math {
+namespace kynema_fmb::math {
 
 /**
  * @brief Maps input geometric locations -> normalized domain using linear mapping
@@ -122,4 +122,4 @@ std::vector<std::array<double, 3>> PerformLeastSquaresFitting(
     std::span<const std::vector<double>> shape_functions,
     std::span<const std::array<double, 3>> points_to_fit
 );
-}  // namespace kynema::math
+}  // namespace kynema_fmb::math

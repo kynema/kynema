@@ -8,7 +8,7 @@
 
 #include <yaml-cpp/yaml.h>
 
-namespace kynema::model {
+namespace kynema_fmb::model {
 
 /**
  * @brief Class to manage element-to-node connectivity information for a mesh
@@ -210,4 +210,4 @@ private:
     }
 };
 
-}  // namespace kynema::model
+}  // namespace kynema_fmb::model

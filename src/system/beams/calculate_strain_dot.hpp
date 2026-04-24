@@ -6,7 +6,7 @@
 #include "math/quaternion_operations.hpp"
 #include "math/vector_operations.hpp"
 
-namespace kynema::beams {
+namespace kynema_fmb::beams {
 template <typename DeviceType>
 struct CalculateStrainDot {
     template <typename ValueType>
@@ -47,4 +47,4 @@ struct CalculateStrainDot {
     }
 };
 
-}  // namespace kynema::beams
+}  // namespace kynema_fmb::beams

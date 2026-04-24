@@ -13,7 +13,7 @@ namespace kynema {
 class Model;
 }
 
-namespace kynema::interfaces::components {
+namespace kynema_fmb::interfaces::components {
 /**
  * @brief Represents a turbine with nodes, elements, and constraints
  *
@@ -419,4 +419,4 @@ private:
     void SetInitialRotorVelocity(const TurbineInput& input, Model& model);
 };
 
-}  // namespace kynema::interfaces::components
+}  // namespace kynema_fmb::interfaces::components

@@ -7,7 +7,7 @@
 #include "compute_col_inds.hpp"
 #include "compute_row_ptrs.hpp"
 
-namespace kynema::solver {
+namespace kynema_fmb::solver {
 
 /**
  * @brief The top level function object which creates the CRS matrix structure for the linear system
@@ -72,4 +72,4 @@ struct CreateFullMatrix {
         );
     }
 };
-}  // namespace kynema::solver
+}  // namespace kynema_fmb::solver

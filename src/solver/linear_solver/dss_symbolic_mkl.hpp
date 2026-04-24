@@ -6,7 +6,7 @@
 #include "dss_algorithm.hpp"
 #include "dss_handle_mkl.hpp"
 
-namespace kynema::dss {
+namespace kynema_fmb::dss {
 template <typename CrsMatrixType>
 struct SymbolicFunction<Handle<Algorithm::MKL>, CrsMatrixType> {
     static void symbolic(Handle<Algorithm::MKL>& dss_handle, CrsMatrixType& A) {
@@ -30,4 +30,4 @@ struct SymbolicFunction<Handle<Algorithm::MKL>, CrsMatrixType> {
         dss_reorder(handle, reorder_opt, perm.data());
     }
 };
-}  // namespace kynema::dss
+}  // namespace kynema_fmb::dss

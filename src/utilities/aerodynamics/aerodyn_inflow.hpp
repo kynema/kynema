@@ -11,7 +11,7 @@
 
 #include "vendor/dylib/dylib.hpp"
 
-namespace kynema::util {
+namespace kynema_fmb::util {
 
 /**
  * AeroDynInflowLibrary: C++ wrapper for the AeroDyn/InflowWind (ADI) shared library
@@ -1035,4 +1035,4 @@ private:
     VTKSettings vtk_settings_;                //< VTK output settings
 };
 
-}  // namespace kynema::util
+}  // namespace kynema_fmb::util

@@ -7,7 +7,7 @@
 #include "freedom_signature.hpp"
 #include "state/state.hpp"
 
-namespace kynema::dof {
+namespace kynema_fmb::dof {
 
 /**
  * @brief A Kernel for applying a Beam element's freedom signature to all nodes it contains
@@ -191,4 +191,4 @@ inline void assemble_node_freedom_allocation_table(
     );
 }
 
-}  // namespace kynema::dof
+}  // namespace kynema_fmb::dof

@@ -2,7 +2,7 @@
 
 #include <stdexcept>
 
-namespace kynema::interfaces::components {
+namespace kynema_fmb::interfaces::components {
 SolutionBuilder& SolutionBuilder::EnableStaticSolve() {
     input.dynamic_solve = false;
     return *this;
@@ -53,4 +53,4 @@ const SolutionInput& SolutionBuilder::Input() const {
     return this->input;
 }
 
-}  // namespace kynema::interfaces::components
+}  // namespace kynema_fmb::interfaces::components

@@ -8,7 +8,7 @@
 #include "math/quaternion_operations.hpp"
 #include "math/vector_operations.hpp"
 
-namespace kynema::beams {
+namespace kynema_fmb::beams {
 
 template <typename DeviceType>
 struct CalculateK_D2 {
@@ -99,4 +99,4 @@ struct CalculateK_D2 {
         KokkosBlas::serial_axpy(1., D12_times_kappa_dot_tilde, K_D2_22);
     }
 };
-}  // namespace kynema::beams
+}  // namespace kynema_fmb::beams

@@ -6,7 +6,7 @@
 
 #include <netcdf.h>
 
-namespace kynema::util {
+namespace kynema_fmb::util {
 
 /*
  * @brief Class for managing NetCDF files for writing outputs
@@ -268,4 +268,4 @@ private:
     std::string file_path_;
 };
 
-}  // namespace kynema::util
+}  // namespace kynema_fmb::util

@@ -2,14 +2,14 @@
 
 #include "Kynema_config.h"
 
-namespace kynema::dss {
+namespace kynema_fmb::dss {
 
 template <typename DSHandleType, typename CrsMatrixType>
 struct NumericFunction {
     NumericFunction() = delete;
 };
 
-}  // namespace kynema::dss
+}  // namespace kynema_fmb::dss
 
 #ifdef Kynema_ENABLE_CUSOLVERSP
 #include "dss_numeric_cusolversp.hpp"
@@ -39,11 +39,11 @@ struct NumericFunction {
 #include "dss_numeric_superlu_mt.hpp"
 #endif
 
-namespace kynema::dss {
+namespace kynema_fmb::dss {
 
 template <typename DSSHandleType, typename CrsMatrixType>
 void numeric_factorization(DSSHandleType& dss_handle, CrsMatrixType& A) {
     NumericFunction<DSSHandleType, CrsMatrixType>::numeric(dss_handle, A);
 }
 
-}  // namespace kynema::dss
+}  // namespace kynema_fmb::dss

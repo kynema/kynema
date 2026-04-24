@@ -7,7 +7,7 @@
 #include "constraints/constraints.hpp"
 #include "state/state.hpp"
 
-namespace kynema::step {
+namespace kynema_fmb::step {
 
 template <typename DeviceType>
 inline void UpdateConstraintVariables(
@@ -36,4 +36,4 @@ inline void UpdateConstraintVariables(
     );
 }
 
-}  // namespace kynema::step
+}  // namespace kynema_fmb::step

@@ -2,7 +2,7 @@
 
 #include <array>
 
-namespace kynema::interfaces::cfd {
+namespace kynema_fmb::interfaces::cfd {
 
 /**
  * @brief A descritpion of the configuration of a mooring line for use in initialization
@@ -33,4 +33,4 @@ struct MooringLineInput {
     std::array<double, 3> anchor_acceleration{0., 0., 0.};
 };
 
-}  // namespace kynema::interfaces::cfd
+}  // namespace kynema_fmb::interfaces::cfd

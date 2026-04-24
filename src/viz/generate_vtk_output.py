@@ -15,7 +15,7 @@ from typing import Dict, List, Optional
 def quaternion_to_rotation_matrix(quaternion: List[float]) -> np.ndarray:
     """Converts a 4x1 quaternion [w, i, j, k] to a 3x3 rotation matrix.
 
-    The rotation matrix is computed using the following formula (used in Kynema):
+    The rotation matrix is computed using the following formula (used in Kynema-FMB):
     R = | 1 - 2(j^2 + k^2)  2(i*j - w*k)  2(i*k + w*j) |
         | 2(i*j + w*k)  1 - 2(i^2 + k^2)  2(j*k - w*i) |
         | 2(i*k - w*j)  2(j*k + w*i)  1 - 2(i^2 + j^2) |
@@ -75,7 +75,7 @@ def create_vector_array(name: str, num_components: int = 3):
 
 
 class VTKOutput:
-    """Class to generate VTK files from Kynema (NetCDF-based) outputs and mesh connectivity (YAML-based)."""
+    """Class to generate VTK files from Kynema-FMB (NetCDF-based) outputs and mesh connectivity (YAML-based)."""
 
     def __init__(self, netcdf_path: str, connectivity_path: str):
         """Initializes the visualizer with the path to the NetCDF file and mesh connectivity file.
@@ -132,7 +132,7 @@ class VTKOutput:
     def _extract_node_data_at_timestep(
         self, timestep: int, node_indices: Optional[List[int]] = None
     ) -> List[Dict[str, List[float]]]:
-        """Extracts node data for a specific timestep and returns a list of Kynema's NodeData-like structures.
+        """Extracts node data for a specific timestep and returns a list of Kynema-FMB's NodeData-like structures.
 
         Node data contains the following components:
         - Position: x_x, x_y, x_z, x_w, x_i, x_j, x_k
@@ -573,7 +573,7 @@ def main():
     NOTE: Files are overwritten in the output directory if they already exist.
     """
     parser = argparse.ArgumentParser(
-        description="Generate VTK files from Kynema NetCDF output"
+        description="Generate VTK files from Kynema-FMB NetCDF output"
     )
 
     # ------------------------------------------------------------
@@ -584,7 +584,7 @@ def main():
     parser.add_argument(
         "netcdf_file",
         type=str,
-        help="Path to Kynema NetCDF output file e.g. blade_interface.nc",
+        help="Path to Kynema-FMB NetCDF output file e.g. blade_interface.nc",
     )
 
     # Mesh connectivity file -- required argument

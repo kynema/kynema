@@ -3,7 +3,7 @@
 #include <array>
 #include <cmath>
 
-namespace kynema::beams {
+namespace kynema_fmb::beams {
 
 /**
  * @brief Generates a 6x6 cross-sectional stiffness matrix for use in beam elements
@@ -171,4 +171,4 @@ static std::array<std::array<double, 6>, 6> GenerateMassMatrix(
     return mass_matrix;
 }
 
-}  // namespace kynema::beams
+}  // namespace kynema_fmb::beams

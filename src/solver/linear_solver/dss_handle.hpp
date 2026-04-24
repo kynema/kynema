@@ -4,14 +4,14 @@
 
 #include "Kynema_config.h"
 
-namespace kynema::dss {
+namespace kynema_fmb::dss {
 
 template <Algorithm>
 class Handle {
 public:
     Handle() = delete;
 };
-}  // namespace kynema::dss
+}  // namespace kynema_fmb::dss
 
 #ifdef Kynema_ENABLE_CUSOLVERSP
 #include "dss_handle_cusolversp.hpp"

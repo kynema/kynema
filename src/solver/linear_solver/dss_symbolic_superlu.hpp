@@ -6,7 +6,7 @@
 #include "dss_handle_superlu.hpp"
 #include "slu_ddefs.h"
 
-namespace kynema::dss {
+namespace kynema_fmb::dss {
 template <typename CrsMatrixType>
 struct SymbolicFunction<Handle<Algorithm::SUPERLU>, CrsMatrixType> {
     static void symbolic(Handle<Algorithm::SUPERLU>& dss_handle, CrsMatrixType& A) {
@@ -37,4 +37,4 @@ struct SymbolicFunction<Handle<Algorithm::SUPERLU>, CrsMatrixType> {
     }
 };
 
-}  // namespace kynema::dss
+}  // namespace kynema_fmb::dss

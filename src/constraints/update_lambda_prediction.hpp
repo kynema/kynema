@@ -2,7 +2,7 @@
 
 #include <Kokkos_Core.hpp>
 
-namespace kynema::constraints {
+namespace kynema_fmb::constraints {
 
 /**
  * @brief A Kernel to update the predicted constraint Lagrange multiplier values at each
@@ -42,4 +42,4 @@ struct UpdateLambdaPrediction {
     }
 };
 
-}  // namespace kynema::constraints
+}  // namespace kynema_fmb::constraints

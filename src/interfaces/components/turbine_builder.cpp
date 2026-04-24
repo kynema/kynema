@@ -3,7 +3,7 @@
 #include "model/model.hpp"
 #include "turbine.hpp"
 
-namespace kynema::interfaces::components {
+namespace kynema_fmb::interfaces::components {
 [[nodiscard]] const TurbineInput& TurbineBuilder::Input() {
     // Add the blade inputs from the blade builders
     this->input.blades.clear();
@@ -133,4 +133,4 @@ TurbineBuilder& TurbineBuilder::SetHubWindSpeed(double speed) {
     this->input.hub_wind_speed = speed;
     return *this;
 }
-}  // namespace kynema::interfaces::components
+}  // namespace kynema_fmb::interfaces::components

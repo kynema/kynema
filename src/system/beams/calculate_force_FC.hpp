@@ -3,7 +3,7 @@
 #include <KokkosBlas.hpp>
 #include <Kokkos_Core.hpp>
 
-namespace kynema::beams {
+namespace kynema_fmb::beams {
 
 template <typename DeviceType>
 struct CalculateForceFC {
@@ -22,4 +22,4 @@ struct CalculateForceFC {
         Gemv::invoke(1., Cuu, strain, 0., FC);
     }
 };
-}  // namespace kynema::beams
+}  // namespace kynema_fmb::beams

@@ -8,7 +8,7 @@
 #include "math/quaternion_operations.hpp"
 #include "math/vector_operations.hpp"
 
-namespace kynema::beams {
+namespace kynema_fmb::beams {
 
 template <typename DeviceType>
 struct CalculateG_D2 {
@@ -63,4 +63,4 @@ struct CalculateG_D2 {
         GemmTN::invoke(1., tilde_xp_up, d_tmp, 0., G_D2_22);
     }
 };
-}  // namespace kynema::beams
+}  // namespace kynema_fmb::beams

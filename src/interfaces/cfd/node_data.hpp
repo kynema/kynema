@@ -3,7 +3,7 @@
 #include <array>
 #include <cstddef>
 
-namespace kynema::interfaces::cfd {
+namespace kynema_fmb::interfaces::cfd {
 
 /**
  * @brief All of the data describing the state at a node in an ergonomic way
@@ -19,4 +19,4 @@ struct NodeData {
     explicit NodeData(size_t id_) : id(id_) {}
 };
 
-}  // namespace kynema::interfaces::cfd
+}  // namespace kynema_fmb::interfaces::cfd

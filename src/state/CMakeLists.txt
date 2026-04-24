@@ -10,5 +10,5 @@ install(FILES
         update_dynamic_prediction.hpp
         update_global_position.hpp
         update_static_prediction.hpp
-        DESTINATION include/Kynema/state/
+        DESTINATION include/KynemaFMB/state/
 )

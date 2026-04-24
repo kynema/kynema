@@ -5,7 +5,7 @@
 #include "beam.hpp"
 #include "math/matrix_operations.hpp"
 
-namespace kynema::interfaces::components {
+namespace kynema_fmb::interfaces::components {
 BeamBuilder& BeamBuilder::SetElementOrder(size_t element_order) {
     input.element_order = element_order;
     return *this;
@@ -119,4 +119,4 @@ const BeamInput& BeamBuilder::Input() const {
 Beam BeamBuilder::Build(Model& model) const {
     return {this->input, model};
 }
-}  // namespace kynema::interfaces::components
+}  // namespace kynema_fmb::interfaces::components

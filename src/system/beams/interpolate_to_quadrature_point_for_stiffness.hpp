@@ -3,7 +3,7 @@
 #include <KokkosBlas.hpp>
 #include <Kokkos_Core.hpp>
 
-namespace kynema::beams {
+namespace kynema_fmb::beams {
 
 template <typename DeviceType>
 struct InterpolateToQuadraturePointForStiffness {
@@ -40,4 +40,4 @@ struct InterpolateToQuadraturePointForStiffness {
         }
     }
 };
-}  // namespace kynema::beams
+}  // namespace kynema_fmb::beams

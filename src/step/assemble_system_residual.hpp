@@ -11,7 +11,7 @@
 #include "solver/solver.hpp"
 #include "state/state.hpp"
 
-namespace kynema::step {
+namespace kynema_fmb::step {
 
 template <typename DeviceType>
 inline void AssembleSystemResidual(
@@ -63,4 +63,4 @@ inline void AssembleSystemResidual(
     Kokkos::fence();
 }
 
-}  // namespace kynema::step
+}  // namespace kynema_fmb::step

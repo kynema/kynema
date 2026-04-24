@@ -5,7 +5,7 @@
 #include <KokkosBlas1_set.hpp>
 #include <Kokkos_Core.hpp>
 
-namespace kynema::beams {
+namespace kynema_fmb::beams {
 
 template <typename DeviceType>
 struct CalculatePuu {
@@ -35,4 +35,4 @@ struct CalculatePuu {
         GemmTN::invoke(1., x0pupSS, C12, 0., Puu_22);
     }
 };
-}  // namespace kynema::beams
+}  // namespace kynema_fmb::beams

@@ -4,7 +4,7 @@
 
 #include "math/quaternion_operations.hpp"
 
-namespace kynema::state {
+namespace kynema_fmb::state {
 
 /**
  * @brief A Kernel for applying the computed change in state (displacement) to the previous state
@@ -50,4 +50,4 @@ struct CalculateDisplacement {
     }
 };
 
-}  // namespace kynema::state
+}  // namespace kynema_fmb::state

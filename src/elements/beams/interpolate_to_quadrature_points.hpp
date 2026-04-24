@@ -6,7 +6,7 @@
 #include "interpolate_QP_state.hpp"
 #include "interpolate_QP_vector.hpp"
 
-namespace kynema::beams {
+namespace kynema_fmb::beams {
 
 /**
  * @brief Interpolates various quantities from nodes to quadrature points for beam elements
@@ -116,4 +116,4 @@ struct InterpolateToQuadraturePoints {
     }
 };
 
-}  // namespace kynema::beams
+}  // namespace kynema_fmb::beams

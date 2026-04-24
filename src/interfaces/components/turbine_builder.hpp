@@ -6,7 +6,7 @@
 #include "beam_builder.hpp"
 #include "turbine_input.hpp"
 
-namespace kynema::interfaces::components {
+namespace kynema_fmb::interfaces::components {
 
 class Turbine;
 
@@ -191,4 +191,4 @@ private:
     BeamBuilder tower_builder;                ///< builder for the tower component
 };
 
-}  // namespace kynema::interfaces::components
+}  // namespace kynema_fmb::interfaces::components

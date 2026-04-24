@@ -2,7 +2,7 @@
 
 #include "state/state.hpp"
 
-namespace kynema::interfaces {
+namespace kynema_fmb::interfaces {
 
 /**
  * @brief Host-side mirror of the simulation state for a given time increment
@@ -59,4 +59,4 @@ struct HostState {
     void CopyForcesToState(State<DeviceType>& state) const { Kokkos::deep_copy(state.f, this->f); }
 };
 
-}  // namespace kynema::interfaces
+}  // namespace kynema_fmb::interfaces

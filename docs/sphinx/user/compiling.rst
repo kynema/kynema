@@ -15,19 +15,19 @@ Once you have downloaded and set up Spack for your environment, simply run
 
 .. code-block:: bash
 
-    spack install kynema
+    spack install kynema-fmb
 
 To see the latest list of supported configuration options, check out the package file or run
 
 .. code-block:: bash
 
-    spack info kynema
+    spack info kynema-fmb
 
 Once it is installed, you can load the Kynema-FMB library and its dependencies into your environment using
 
 .. code-block:: bash
 
-    spack load kynema
+    spack load kynema-fmb
 
 Development using Spack Developer Workflow
 ------------------------------------------
@@ -37,21 +37,21 @@ To setup an environment for working on Kynema-FMB, setup Spack and then run the 
 
 .. code-block:: bash
 
-    mkdir kynema
-    cd kynema
+    mkdir kynema-fmb
+    cd kynema-fmb
     spack env create -d .
     spack env activate .
-    spack add kynema+tests
+    spack add kynema-fmb+tests
     spack install
-    spack develop kynema@main
+    spack develop kynema-fmb@main
     spack concretize -f
     spack install
 
-Kynema-FMB's source code will now be located in the kynema folder, but can be accessed from anywhere by
+Kynema-FMB's source code will now be located in the kynema-fmb folder, but can be accessed from anywhere by
 
 .. code-block:: bash
 
-    spack cd -c kynema
+    spack cd -c kynema-fmb
 
 After editing the code here, it can be rebuilt by running
 
@@ -63,7 +63,7 @@ To run the tests, first access the build folder through the spack command
 
 .. code-block:: bash
 
-    spack cd -b kynema
+    spack cd -b kynema-fmb
 
 Next, the tests can be run either through ctest or directly from the unit test or regression test executables
 
@@ -180,8 +180,8 @@ Clone Kynema-FMB and setup a build directory
 
 .. code-block:: bash
 
-    git clone git@github.com:kynema/kynema.git
-    cd kynema
+    git clone git@github.com:kynema/kynema-fmb.git
+    cd kynema-fmb
     mkdir build
     cd build
 

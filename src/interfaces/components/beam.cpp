@@ -12,7 +12,7 @@
 #include "math/quaternion_operations.hpp"
 #include "model/model.hpp"
 
-namespace kynema::interfaces::components {
+namespace kynema_fmb::interfaces::components {
 
 Beam::Beam(const BeamInput& input, Model& model) {
     ValidateInput(input);
@@ -459,4 +459,4 @@ std::vector<BeamSection> Beam::BuildBeamSections_WholeBeamGL(const BeamInput& in
     return BuildBeamSections_WholeBeam(input, math::GetGlLocations(input.section_refinement + 1U));
 }
 
-}  // namespace kynema::interfaces::components
+}  // namespace kynema_fmb::interfaces::components

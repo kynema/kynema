@@ -2,7 +2,7 @@
 
 #include <Kokkos_Core.hpp>
 
-namespace kynema::solver {
+namespace kynema_fmb::solver {
 
 /**
  * @brief A Kernel for computing the system elements' contribution to the
@@ -131,4 +131,4 @@ struct ComputeSystemColInds {
     }
 };
 
-}  // namespace kynema::solver
+}  // namespace kynema_fmb::solver

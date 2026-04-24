@@ -4,7 +4,7 @@
 
 #include "math/quaternion_operations.hpp"
 
-namespace kynema::beams {
+namespace kynema_fmb::beams {
 
 /**
  * @brief Functor to calculate current position and orientation at quadrature points
@@ -58,4 +58,4 @@ struct CalculateQPPosition {
     }
 };
 
-}  // namespace kynema::beams
+}  // namespace kynema_fmb::beams

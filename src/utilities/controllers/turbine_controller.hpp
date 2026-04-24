@@ -6,7 +6,7 @@
 #include "utilities/controllers/controller_io.hpp"
 #include "vendor/dylib/dylib.hpp"
 
-namespace kynema::util {
+namespace kynema_fmb::util {
 
 /// A turbine controller class that works as a wrapper around the shared library containing the
 /// controller logic
@@ -51,4 +51,4 @@ private:
     bool yaw_control_enabled_{false};
 };
 
-}  // namespace kynema::util
+}  // namespace kynema_fmb::util

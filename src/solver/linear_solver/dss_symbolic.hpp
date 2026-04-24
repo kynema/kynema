@@ -2,14 +2,14 @@
 
 #include "Kynema_config.h"
 
-namespace kynema::dss {
+namespace kynema_fmb::dss {
 
 template <typename DSSHandleType, typename CrsMatrixType>
 struct SymbolicFunction {
     SymbolicFunction() = delete;
 };
 
-}  // namespace kynema::dss
+}  // namespace kynema_fmb::dss
 
 #ifdef Kynema_ENABLE_CUSOLVERSP
 #include "dss_symbolic_cusolversp.hpp"
@@ -39,11 +39,11 @@ struct SymbolicFunction {
 #include "dss_symbolic_superlu_mt.hpp"
 #endif
 
-namespace kynema::dss {
+namespace kynema_fmb::dss {
 
 template <typename DSSHandleType, typename CrsMatrixType>
 void symbolic_factorization(DSSHandleType& dss_handle, CrsMatrixType& A) {
     SymbolicFunction<DSSHandleType, CrsMatrixType>::symbolic(dss_handle, A);
 }
 
-}  // namespace kynema::dss
+}  // namespace kynema_fmb::dss

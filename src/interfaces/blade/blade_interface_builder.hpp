@@ -4,7 +4,7 @@
 #include "interfaces/components/outputs_builder.hpp"
 #include "interfaces/components/solution_builder.hpp"
 
-namespace kynema::interfaces {
+namespace kynema_fmb::interfaces {
 
 class BladeInterface;
 
@@ -54,4 +54,4 @@ private:
     components::OutputsBuilder outputs_builder;    ///< Builder for the Outputs component
 };
 
-}  // namespace kynema::interfaces
+}  // namespace kynema_fmb::interfaces
