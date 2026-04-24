@@ -3,7 +3,7 @@
 Formulation overview
 --------------------
 
-Kynema was designed to solve flexible multibody problems that have
+Kynema-FMB was designed to solve flexible multibody problems that have
 been discretized into a collection of :math:`k_n` nodes representing
 massless points, rigid bodies, and flexible-beam nodes, where each node
 has three translational degrees of freedom (DOFs) and three DOFs
@@ -62,7 +62,7 @@ entries :math:`A_{ij}`,
    \end{bmatrix}
    \end{aligned}
 
-Note that in Kynema, degrees of freedom are defined in the inertial
+Note that in Kynema-FMB, degrees of freedom are defined in the inertial
 coordinate system.
 
 For a discretized flexible multibody system with :math:`k_n` nodes, the
@@ -98,7 +98,7 @@ where
 :math:`\underline{v} \in \mathbb{R}^k`, :math:`k=6k_n`.
 
 For a discretized flexible multibody system with :math:`k` degrees of
-freedom and :math:`m` kinematic constraints, Kynema is restricted
+freedom and :math:`m` kinematic constraints, Kynema-FMB is restricted
 to problems where the governing equations of motion and the constraint
 equations form a residual vector
 :math:`\underline{r}\in \mathbb{R}^{k+m}` where
@@ -112,7 +112,7 @@ is the *unconstrained*-equations-of-motion residual,
 is the constraint-gradient matrix associated with the constraints
 :math:`\underline{\Phi}(\underline{q},t)\in \mathbb{R}^m`, and
 :math:`\underline{\lambda}\in \mathbb{R}^m` are the Lagrange multipliers
-associated with the constraints. Kynema is restricted to problems
+associated with the constraints. Kynema-FMB is restricted to problems
 for which the unconstrained-equations-of-motion residual can be written
 in the form
 
@@ -170,7 +170,7 @@ inertial coordinates associated with node :math:`i`.
 
 In the following, we describe the time-integration algorithm for index-3
 differential-algebraic-equation (DAE-3) systems, which is the backbone
-of the Kynema framework. We then discuss the governing equations
+of the Kynema-FMB framework. We then discuss the governing equations
 for a single rigid body, and then the theory and numerical
 discretization for flexible beams and practical consideration in
 modeling wind turbine blades. The full constrained system for a

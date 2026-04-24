@@ -13,7 +13,7 @@ structure reference line.
 .. note::
  
    This section is under construction and needs to be finalized to match
-   the Kynema implementation.
+   the Kynema-FMB implementation.
 
 
 Initialization

@@ -3,12 +3,12 @@
 Heavy Top Dynamic Problem
 -------------------------
 
-For this benchmark problem, we use the heavy top to evaluate the convergence rate of the Kynema
+For this benchmark problem, we use the heavy top to evaluate the convergence rate of the Kynema-FMB
 Lie-group generalized-alpha time integrator. The problem consists of a rotating body, fixed to the
 ground by a spherical joint, as detailed in [@Bruls-etal:2012]. The formulation of the heavy top
-problem as implemented in Kynema is described in :ref:`sec-heavy-top`.
+problem as implemented in Kynema-FMB is described in :ref:`sec-heavy-top`.
 
-Our benchmark solution is computed using a Kynema simulation with a time step size of :math:`10^{-6}`
+Our benchmark solution is computed using a Kynema-FMB simulation with a time step size of :math:`10^{-6}`
 seconds; we examine the vertical displacement :math:`u_3` at the end of two seconds. The following
 figure shows the convergence of the relative error in the vertical displacement as a function of
 time step size, where we observe the expected second-order convergence of the method.
@@ -22,10 +22,10 @@ time step size, where we observe the expected second-order convergence of the me
 
 .. note::
 
-   This benchmark is included as a regression test in the Kynema code base.
+   This benchmark is included as a regression test in the Kynema-FMB code base.
    The test is implemented in:
 
-     https://github.com/kynema/kynema/blob/main/tests/regression_tests/regression/verification/dynamic_heavy_top.cpp
+     https://github.com/kynema/kynema-fmb/blob/main/tests/regression_tests/regression/verification/dynamic_heavy_top.cpp
 
 .. container:: csl-entry
    :name: ref-Bruls-etal:2012

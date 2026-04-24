@@ -1,7 +1,7 @@
 Example: IEA15MW Turbine
 ========================
 
-This example will walkthrough how to simulate a wind turbine using Kynema's high level API.
+This example will walkthrough how to simulate a wind turbine using Kynema-FMB's high level API.
 For the most up to date working version of this code, look in ``tests/documentation_tests/iea15mw_turbine``.
 
 As with any C++ program, start with the includes.
@@ -48,7 +48,7 @@ In general, these will be read fom an input file, but we just define them inline
     const auto n_tower_nodes{11};
 
 Next, we create the turbine interface builder.
-This is a factory class which will aid us in setting up all of the structures Kynema needs for its simulation.
+This is a factory class which will aid us in setting up all of the structures Kynema-FMB needs for its simulation.
 
 .. code-block:: cpp
 
@@ -56,7 +56,7 @@ This is a factory class which will aid us in setting up all of the structures Ky
 
 The builder has several groupings of options that we will use to set up our problem.
 The ``.Solution()`` function provides options related to controling the solver, such as the time step, numerical damping, and convergence criteria.
-You can also optionally set an output file in which Kynema will write its solution data each iteration.
+You can also optionally set an output file in which Kynema-FMB will write its solution data each iteration.
 If this file is not set, no output will be performed.
 
 When using the builder, you can string together setter function calls as seen here, or you can call each of them individually.
@@ -105,7 +105,7 @@ The Turbine Interface Builder we created above can create a Turbine Builder, whi
         .SetTowerAxisToRotorApex(wio_nacelle["drivetrain"]["overhang"].as<double>())
         .SetTowerTopToRotorApex(wio_nacelle["drivetrain"]["distance_tt_hub"].as<double>());
 
-Each blade is added in reference coordinates and then rotated onto the rotor automatically by Kynema.
+Each blade is added in reference coordinates and then rotated onto the rotor automatically by Kynema-FMB.
 The blades of a turbine are assumed to be equally spaced around the rotor - for example, a turbine with three blades will have one blade every 120 degrees about the X-axis, with the first blade starting along the global Z-axis.
 
 .. code-block:: cpp
@@ -122,7 +122,7 @@ Blades can be added in any order or edited at any time before final assembly by 
 
    auto& blade_builder = turbine_builder.Blade(j);
 
-Kynema's Turbine model assumes one, high order, element per blade.
+Kynema-FMB's Turbine model assumes one, high order, element per blade.
 In this case, eleven blade node are used, which we have seen to give accurate results for the IEA15MW blades.
 
 The grid points specified in the input will define the number and location of the quadrature points used for assembling the system matrix.
@@ -313,7 +313,7 @@ Within each time step, we set the control commands.
     }
 
 Finally, we call the ``Step()`` function on the turbine interface, which actually performs the action of advancing the solution in time.
-This function returns a boolean stating if Kynema's solver converged or not, which can be checked for error handling.
+This function returns a boolean stating if Kynema-FMB's solver converged or not, which can be checked for error handling.
 
 .. code-block:: cpp
 
@@ -321,7 +321,7 @@ This function returns a boolean stating if Kynema's solver converged or not, whi
     assert(converged);
 
 And that's it, the simulation will advance to the total solution time.
-Kynema will have written out the solution at each time step in NetCDF format.
+Kynema-FMB will have written out the solution at each time step in NetCDF format.
 At any time, the solution can be accessed by looking at the ``interface.Turbine()`` object.
 For example, the position and orientation quaternion can be accessed by calling ``interface.Turbine().tower.nodes.back()``.
 

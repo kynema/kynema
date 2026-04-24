@@ -16,14 +16,14 @@ cause a significant deflection of the tip node (approximately 20% of the blade
 length of ~118 meters), which is important for testing the accuracy of the nonlinear
 response of the geometrically exact beam element.
 
-The transient response is computed with Kynema's dynamic solver using a
+The transient response is computed with Kynema-FMB's dynamic solver using a
 generalized-:math:`\alpha` time integrator with numerical damping parameter
 :math:`\rho_\infty = 0.4`, a time-step size of :math:`\Delta t = 0.001` s, and
 a total simulated time of 10 seconds. BeamDyn is used to provide a benchmark solution
 for the same blade model, loading, and time-integration parameters. The tip
-out-of-plane displacements from Kynema are compared against the BeamDyn
+out-of-plane displacements from Kynema-FMB are compared against the BeamDyn
 benchmark solution in the following figure. The comparison shows good agreement,
-with Kynema results lying within 1% relative difference of the BeamDyn
+with Kynema-FMB results lying within 1% relative difference of the BeamDyn
 displacements over the vast majority of the response history.
 
 .. figure:: images/iea15mw_blade_tip_u3_comparison_11nodes_200kN.png
@@ -31,13 +31,13 @@ displacements over the vast majority of the response history.
    :width: 80%
 
    Comparison of tip flapwise displacement (:math:`u_3`) for the IEA 15 MW
-   reference blade between Kynema and BeamDyn for a single LSFE model with
+   reference blade between Kynema-FMB and BeamDyn for a single LSFE model with
    :math:`n = 11` nodes under a tip load of :math:`-200` kN, with a time-step size
    of :math:`\Delta t = 0.001` s.
 
 .. note::
 
-   This benchmark is included as a regression test in the Kynema code base.
+   This benchmark is included as a regression test in the Kynema-FMB code base.
    The test is implemented in:
 
-     https://github.com/kynema/kynema/blob/main/tests/regression_tests/regression/verification/dynamic_IEA15MW_blade_bending.cpp
+     https://github.com/kynema/kynema-fmb/blob/main/tests/regression_tests/regression/verification/dynamic_IEA15MW_blade_bending.cpp

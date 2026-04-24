@@ -1,16 +1,16 @@
 Example: Heavy Top Problem
 ==========================
 
-This example will walk through how to run a simulation of a processing top using Kynema's low level API.
-Unline Kynema's high level APIs, you will have to manually set up all nodes and their connectivities.
+This example will walk through how to run a simulation of a processing top using Kynema-FMB's low level API.
+Unline Kynema-FMB's high level APIs, you will have to manually set up all nodes and their connectivities.
 While this extra work adds complexity compared to the higher level APIs, it also provides unlimited freedom.
-The heavy top problem is one of the simplest problems you'll want to solve with Kynema, so it is a good introduction to our low level APIs.
+The heavy top problem is one of the simplest problems you'll want to solve with Kynema-FMB, so it is a good introduction to our low level APIs.
 For the most up to date and working version of this code, see ``tests/documentation_tests/heavy_top/``.
 
 As with any C++ program, start with the includes.
 To set up problems like this one, you might need to perform some linear algebra - we'll include ``Eigen/Dense`` to perform these operations, but you can use any libraries or hand written code as you see fit.
-As a Kokkos-based library, you'll need to include ``Kokkos_Core.hpp`` for setup, teardown, and working with Kynema's data structures.
-From Kynema, you'll have to include ``model.hpp`` for the Model class, our tool for setting up and creating the system, and ``step.hpp`` for the Step function which performs the action of system asembly and solve.
+As a Kokkos-based library, you'll need to include ``Kokkos_Core.hpp`` for setup, teardown, and working with Kynema-FMB's data structures.
+From Kynema-FMB, you'll have to include ``model.hpp`` for the Model class, our tool for setting up and creating the system, and ``step.hpp`` for the Step function which performs the action of system asembly and solve.
 
 .. code-block:: cpp
 
@@ -50,8 +50,8 @@ Now, we define the mass matrix and initial position, velocity, and acceleration.
     const auto omega_dot = std::array{661.3461692307691919, 0., 0.};
     const auto x_ddot = std::array{0., -21.3017325444000001, -30.9608307692308244};
 
-A Model is Kynema's low level interface for specifying elements, nodes, constraints, and their connectivities.
-One everything has been specified, we will use model to create Kynema's fundamental data structures and advance the problem in time.
+A Model is Kynema-FMB's low level interface for specifying elements, nodes, constraints, and their connectivities.
+One everything has been specified, we will use model to create Kynema-FMB's fundamental data structures and advance the problem in time.
 
 .. code-block:: cpp
 
@@ -102,7 +102,7 @@ The gravity vector for the problem is set using the well named SetGravity method
 
     model.SetGravity(0., 0., -9.81);
 
-Now that the problem has been fully described in the model, we will create Kynema's main data structures: State, Elements, Constraints, and Solver.
+Now that the problem has been fully described in the model, we will create Kynema-FMB's main data structures: State, Elements, Constraints, and Solver.
 The CreateSystemWithSolver<> method takes an optional template argument with a Kokkos device describing where the system will reside and run.
 By default, it uses Kokkos' default execution/memory space, so a serial build will run on the CPU, a CUDA build will run on a CUDA device, etc.
 
@@ -131,10 +131,10 @@ The final stage is to create a StepParameters object, which contains information
     constexpr auto r_tol(1e-3);
     auto parameters = kynema::StepParameters(is_dynamic_solve, max_iter, step_size, rho_inf, a_tol, r_tol);
 
-Kynema allows the user to control the actual time stepping process.
+Kynema-FMB allows the user to control the actual time stepping process.
 This includes setting forces, post-processing data, coupling to other codes.
 This example does none of that.
-At each time step, we call Kynema's Step function and pass in the previously created structures.
+At each time step, we call Kynema-FMB's Step function and pass in the previously created structures.
 
 .. code-block:: cpp
 

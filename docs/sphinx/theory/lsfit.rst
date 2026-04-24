@@ -10,7 +10,7 @@ and/or twisted along their length. In this section we describe how beams
 are user defined and how the beams are discretized in the reference
 configuration.
 
-Kynema beams are assumed to be defined as a set of points in the
+Kynema-FMB beams are assumed to be defined as a set of points in the
 global coordinate system 
 :math:`(\widehat{x}^\mathrm{g}, \widehat{y}^\mathrm{g},\widehat{z}^\mathrm{g})`
 with the blade root positioned on the :math:`\widehat{x}^\mathrm{g}` axis and oriented such that the
@@ -27,7 +27,7 @@ reference line with the data
 :math:`\eta_i^\mathrm{geom}\in[0,1]` defines the nondimensional position along
 the beam reference line where the associated reference line position is
 :math:`\underline{x}_i^\mathrm{geom} \in \mathbb{R}^3` and twist about the
-reference line is :math:`\tau_i^\mathrm{geom}`.   Note that Kynema convention
+reference line is :math:`\tau_i^\mathrm{geom}`.   Note that Kynema-FMB convention
 requires that :math:`\underline{x}_1^\mathrm{geom} = (x_1, 0, 0)^T`.
 
 The user must also provide (through quadrature input choices) the

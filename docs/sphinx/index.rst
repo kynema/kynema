@@ -1,27 +1,27 @@
 ===========
-Kynema
+Kynema-FMB
 ===========
 
 Overview
 ========
 
-`Kynema <https://github.com/kynema/kynema>`_ [@Sprague-Mudafort:2022,@Sprague-etal:2025]
-is an open-source flexible multibody dynamics (FMD) solver designed for time-domain simulations.  While originally created for wind turbine structural dynamics, the formulation and implementation are those of a general FMD solver and can readily be applied to other systems.  Kynema was designed with a narrow focus, namely to provide a lightweight, accurate FMD solver for coupling to fluid-dynamics codes in wind turbine research, especially the `ExaWind <https://github.com/exawind>`_ [@Sprague-etal:2020,@Sharma-etal:2023,@Kuhn-etal:2025] suite of computational-fluid-dynamics codes.
-Wind turbine blades and towers are long slender structures; as such turbines can be represented at high-fidelity with beams, rigid bodies, and constraints.  Kynema provides these model elements, where degrees of freedom are defined in the inertial/global frame of reference and include displacements and rotations (formally as rotation matrices, but stored as quaternions).
+`Kynema-FMB <https://github.com/kynema/kynema-fmb-fmb>`_ [@Sprague-Mudafort:2022,@Sprague-etal:2025]
+is an open-source flexible multibody dynamics (FMD) solver designed for time-domain simulations.  While originally created for wind turbine structural dynamics, the formulation and implementation are those of a general FMD solver and can readily be applied to other systems.  Kynema-FMB was designed with a narrow focus, namely to provide a lightweight, accurate FMD solver for coupling to fluid-dynamics codes in wind turbine research, especially the `ExaWind <https://github.com/exawind>`_ [@Sprague-etal:2020,@Sharma-etal:2023,@Kuhn-etal:2025] suite of computational-fluid-dynamics codes.
+Wind turbine blades and towers are long slender structures; as such turbines can be represented at high-fidelity with beams, rigid bodies, and constraints.  Kynema-FMB provides these model elements, where degrees of freedom are defined in the inertial/global frame of reference and include displacements and rotations (formally as rotation matrices, but stored as quaternions).
 The underlying formulation is built on a Lie-group time integrator for index-3 differential-algebraic equations which is second-order accurate in time [@Bruls-etal:2012].
 Beam models are based on geometrically exact beam theory (GEBT) and are discretized as high-order spectral finite elements similar to those in the BeamDyn module [@Wang-etal:2017] of `OpenFAST <https://github.com/openfast/>`_ [@Jonkman:2013].
-The governing equations for a FMD system like a wind turbine form a highly nonlinear system of constrained partial-differential equations.  Kynema uses analytical Jacobians in the nonlinear-system solves performed at each time step.  Linear systems use sparse storage and several third-party sparse-linear-system solvers are enabled. Ill conditioning of the linear systems are mitigated with preconditioning described in [@Bottasso-etal:2008].  Kynema is integrated with a simple open-source controller [@Abbas-etal:2022].
-Kynema is written in C++ and leverages Kokkos and Kokkos-Kernels as its performance portability layer enabling simulations on both CPU and GPU systems.   The repository is equipped with extensive automated testing at the unit and regression/system levels including several full reference megawatt-scale reference turbines.
-Kynema fills the need for a lightweight, open-source turbine structural dynamics code that is high fidelity, robust, fast, and capable on running on different computer architectures.
+The governing equations for a FMD system like a wind turbine form a highly nonlinear system of constrained partial-differential equations.  Kynema-FMB uses analytical Jacobians in the nonlinear-system solves performed at each time step.  Linear systems use sparse storage and several third-party sparse-linear-system solvers are enabled. Ill conditioning of the linear systems are mitigated with preconditioning described in [@Bottasso-etal:2008].  Kynema-FMB is integrated with a simple open-source controller [@Abbas-etal:2022].
+Kynema-FMB is written in C++ and leverages Kokkos and Kokkos-Kernels as its performance portability layer enabling simulations on both CPU and GPU systems.   The repository is equipped with extensive automated testing at the unit and regression/system levels including several full reference megawatt-scale reference turbines.
+Kynema-FMB fills the need for a lightweight, open-source turbine structural dynamics code that is high fidelity, robust, fast, and capable on running on different computer architectures.
 
-Software-development objectives of Kynema
+Software-development objectives of Kynema-FMB
 ==============================================
 
-- Kynema adheres to modern software development best practices. The
+- Kynema-FMB adheres to modern software development best practices. The
   development process emphasizes test-driven development (TDD), version control,
   hierarchical automated testing, and continuous integration, leading to a robust
   development environment.
-- Kynema is developed in modern C++ and leverages
+- Kynema-FMB is developed in modern C++ and leverages
   `Kokkos <https://github.com/kokkos/kokkos>`_ as its performance-portability
   library, drawing inspiration from the ExaWind stack.
 - The core data structures are crafted to be memory efficient, enabling
@@ -131,7 +131,7 @@ References (this page)
    .. container:: csl-entry
       :name: ref-Sprague-Mudafort:2022
 
-      Sprague, M.A. and R. Mudafort, 2022, Kynema [SWR-23-07].
+      Sprague, M.A. and R. Mudafort, 2022, Kynema-FMB [SWR-23-07].
       https://doi.org/10.11578/dc.20251006.3
 
    .. container:: csl-entry

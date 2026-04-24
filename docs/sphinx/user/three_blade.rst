@@ -2,14 +2,14 @@ Example: Three Blade Rotor
 ==========================
 
 This example will walk through how to run a simulation of a rotor made of three blades connected to a central hub.
-We'll use Kynema's low level API, which, unlike Kynema's high level APIs, will require us to manually set up all nodes and their connectivities.
+We'll use Kynema-FMB's low level API, which, unlike Kynema-FMB's high level APIs, will require us to manually set up all nodes and their connectivities.
 This extra complexity is the trade-off required for unlimited freedom.
 For the most up to date and working version of this code, see ``tests/documentation_tests/three_blade_rotor/``.
 
 As with any C++ program, start with the includes.
 To set up problems like this one, you might need to perform some linear algebra - we'll include ``Eigen/Dense`` to perform these operations, but you can use any libraries or hand written code as you see fit.
-As a Kokkos-based library, you'll need to include ``Kokkos_Core.hpp`` for setup, teardown, and working with Kynema's data structures.
-From Kynema, you'll have to include ``model.hpp`` for the Model class, our tool for setting up and creating the system, and ``step.hpp`` for the Step function which performs the action of system asembly and solve.
+As a Kokkos-based library, you'll need to include ``Kokkos_Core.hpp`` for setup, teardown, and working with Kynema-FMB's data structures.
+From Kynema-FMB, you'll have to include ``model.hpp`` for the Model class, our tool for setting up and creating the system, and ``step.hpp`` for the Step function which performs the action of system asembly and solve.
 
 .. code-block:: cpp
 
@@ -87,8 +87,8 @@ We've precalculated these to be a seven point GL quadrature rule, which will be 
         {0.9491079123427585, 0.1294849661688697},
     };
 
-A Model is Kynema's low level interface for specifying elements, nodes, constraints, and their connectivities.
-One everything has been specified, we will use model to create Kynema's fundamental data structures and advance the problem in time.
+A Model is Kynema-FMB's low level interface for specifying elements, nodes, constraints, and their connectivities.
+One everything has been specified, we will use model to create Kynema-FMB's fundamental data structures and advance the problem in time.
 
 .. code-block:: cpp
 
@@ -151,7 +151,7 @@ modify during time stepping to create rotation.
     }
     auto hub_bc_id = model.AddPrescribedBC(hub_node_id);
 
-Now that the problem has been fully described in the model, we will create Kynema's main data structures: State, Elements, Constraints, and Solver.
+Now that the problem has been fully described in the model, we will create Kynema-FMB's main data structures: State, Elements, Constraints, and Solver.
 
 The CreateSystem method takes an optional template argument with a Kokkos device describing where the system will reside and run.
 By default, it uses Kokkos' default execution/memory space, so a serial build will run on the CPU, a CUDA build will run on a CUDA device, etc.
@@ -184,7 +184,7 @@ The final stage is to create a StepParameters object, which contains information
     const auto num_steps = static_cast<size_t>(std::floor(t_end / step_size + 1.0));
     auto parameters = kynema::StepParameters(is_dynamic_solve, max_iter, step_size, rho_inf);
 
-Kynema allows the user to control the actual time stepping process.
+Kynema-FMB allows the user to control the actual time stepping process.
 This includes setting forces, post-processing data, or coupling to other codes.
 For this problem, we will prescribe a rotation on the hub boundary condition, which will be transmitted to the blades through their respective constraints.
 

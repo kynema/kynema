@@ -53,10 +53,10 @@ The results show the expected spectral convergence to a converged solution.
 
 .. note::
 
-   This benchmark is included as a regression test in the Kynema code base.
+   This benchmark is included as a regression test in the Kynema-FMB code base.
    The test is implemented in:
 
-     https://github.com/kynema/kynema/blob/main/tests/regression_tests/regression/verification/static_composite_beam_bending_curved.cpp
+     https://github.com/kynema/kynema-fmb/blob/main/tests/regression_tests/regression/verification/static_composite_beam_bending_curved.cpp
 
 
 .. container:: csl-entry
