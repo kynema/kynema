@@ -9,7 +9,7 @@ For the most up to date and working version of this code, see ``tests/documentat
 As with any C++ program, start with the includes.
 To set up problems like this one, you might need to perform some linear algebra - we'll include ``Eigen/Dense`` to perform these operations, but you can use any libraries or hand written code as you see fit.
 As a Kokkos-based library, you'll need to include ``Kokkos_Core.hpp`` for setup, teardown, and working with Kynema-FMB's data structures.
-From Kynema-FMB, you'll have to include ``model.hpp`` for the Model class, our tool for setting up and creating the system, and ``step.hpp`` for the Step function which performs the action of system asembly and solve.
+From Kynema-FMB, you'll have to include ``model.hpp`` for the Model class, our tool for setting up and creating the system, and ``step.hpp`` for the Step function which performs the action of system assembly and solve.
 
 .. code-block:: cpp
 
