@@ -10,7 +10,7 @@
 #include "constraints/calculate_revolute_joint_output.hpp"
 #include "create_view.hpp"
 
-namespace kynema::tests {
+namespace kynema_fmb::tests {
 
 struct ExecuteCalculateRevoluteJointOutput {
     int i_constraint;
@@ -82,4 +82,4 @@ TEST(CalculateRevoluteJointOutputTests, OneConstraint) {
     }
 }
 
-}  // namespace kynema::tests
+}  // namespace kynema_fmb::tests

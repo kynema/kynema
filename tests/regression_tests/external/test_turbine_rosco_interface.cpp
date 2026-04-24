@@ -13,7 +13,7 @@
 
 #include "Kynema_config.h"
 
-namespace kynema::tests {
+namespace kynema_fmb::tests {
 
 TEST(TurbineInterfaceTest, IEA15_ROSCOControllerWithAero) {
     // Conversions
@@ -431,4 +431,4 @@ TEST(TurbineInterfaceTest, IEA15_ROSCOControllerWithAero) {
         }
     }
 }
-}  // namespace kynema::tests
+}  // namespace kynema_fmb::tests

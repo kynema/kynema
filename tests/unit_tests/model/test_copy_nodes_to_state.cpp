@@ -9,7 +9,7 @@
 #include "model/node.hpp"
 #include "state/state.hpp"
 
-namespace kynema::model::tests {
+namespace kynema_fmb::model::tests {
 TEST(CopyNodesToState, OneNode_ID) {
     using DeviceType =
         Kokkos::Device<Kokkos::DefaultExecutionSpace, Kokkos::DefaultExecutionSpace::memory_space>;
@@ -73,4 +73,4 @@ TEST(CopyNodesToState, OneNode_Velocity) {
         EXPECT_EQ(vd(0, i), vd_exact[i]);
     }
 }
-}  // namespace kynema::model::tests
+}  // namespace kynema_fmb::model::tests

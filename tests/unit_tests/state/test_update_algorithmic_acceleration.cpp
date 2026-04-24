@@ -7,7 +7,7 @@
 #include "create_view.hpp"
 #include "state/update_algorithmic_acceleration.hpp"
 
-namespace kynema::tests {
+namespace kynema_fmb::tests {
 TEST(UpdateAlgorithmicAcceleration, OneNode) {
     constexpr auto alpha_f = 0.5;
     constexpr auto alpha_m = 0.75;
@@ -32,4 +32,4 @@ TEST(UpdateAlgorithmicAcceleration, OneNode) {
         EXPECT_EQ(acceleration_mirror(0, j), acceleration_exact(0, j));
     }
 }
-}  // namespace kynema::tests
+}  // namespace kynema_fmb::tests

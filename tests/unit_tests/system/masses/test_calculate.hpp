@@ -4,7 +4,7 @@
 #include <Kokkos_Core.hpp>
 #include <gtest/gtest.h>
 
-namespace kynema::tests {
+namespace kynema_fmb::tests {
 
 template <typename ValueType, typename DataType>
 typename Kokkos::View<ValueType>::const_type CreateView(
@@ -84,4 +84,4 @@ inline void CompareWithExpected(
         }
     }
 }
-}  // namespace kynema::tests
+}  // namespace kynema_fmb::tests

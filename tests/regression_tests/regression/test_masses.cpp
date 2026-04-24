@@ -8,7 +8,7 @@
 namespace {
 inline auto SetUpMasses() {
     // Create model object
-    auto model = kynema::Model();
+    auto model = kynema_fmb::Model();
 
     // Set gravity
     model.SetGravity(0., 0., 9.81);
@@ -36,15 +36,15 @@ inline auto SetUpMasses() {
     // Create state
     auto state = model.CreateState<DeviceType>();
 
-    auto parameters = kynema::StepParameters(false, 0, 0., 0.);
-    kynema::step::UpdateSystemVariablesMasses(parameters, masses, state);
+    auto parameters = kynema_fmb::StepParameters(false, 0, 0., 0.);
+    kynema_fmb::step::UpdateSystemVariablesMasses(parameters, masses, state);
 
     return masses;
 }
 
 }  // namespace
 
-namespace kynema::tests {
+namespace kynema_fmb::tests {
 
 TEST(MassesTest, NodeInitialPosition) {
     const auto masses = SetUpMasses();
@@ -144,4 +144,4 @@ TEST(MassesTest, ExternalForce) {
     EXPECT_NEAR(v_host(0, 5), 0., 1.e-12);
 }
 
-}  // namespace kynema::tests
+}  // namespace kynema_fmb::tests

@@ -5,7 +5,7 @@
 #include "model/model.hpp"
 #include "step/step.hpp"
 
-namespace kynema::tests {
+namespace kynema_fmb::tests {
 
 TEST(VerificationTest, Dynamic_HeavyTopSpinningUnderGravity) {
     //----------------------------------
@@ -118,4 +118,4 @@ TEST(VerificationTest, Dynamic_HeavyTopSpinningUnderGravity) {
     EXPECT_NEAR(qHost(mass_node_id, 6), benchmark_solution_at_2_seconds[6], tolerance);
 }
 
-}  // namespace kynema::tests
+}  // namespace kynema_fmb::tests

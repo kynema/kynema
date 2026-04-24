@@ -37,7 +37,7 @@ void Compare(const T& field_1, const T& field_2) {
 
 template <typename DeviceType>
 void CompareStates(
-    const kynema::State<DeviceType>& state_1, const kynema::State<DeviceType>& state_2
+    const kynema_fmb::State<DeviceType>& state_1, const kynema_fmb::State<DeviceType>& state_2
 ) {
     EXPECT_EQ(state_1.num_system_nodes, state_2.num_system_nodes);
     Compare(state_1.ID, state_2.ID);
@@ -55,12 +55,12 @@ void CompareStates(
 }
 
 template <typename DeviceType>
-kynema::State<DeviceType> CreateTestState() {
+kynema_fmb::State<DeviceType> CreateTestState() {
     constexpr auto num_system_nodes = 2UL;
-    auto state = kynema::State<DeviceType>(num_system_nodes);
+    auto state = kynema_fmb::State<DeviceType>(num_system_nodes);
     Kokkos::deep_copy(state.ID, 1UL);
     Kokkos::deep_copy(
-        state.node_freedom_allocation_table, kynema::dof::FreedomSignature::AllComponents
+        state.node_freedom_allocation_table, kynema_fmb::dof::FreedomSignature::AllComponents
     );
     Kokkos::deep_copy(state.node_freedom_map_table, 3UL);
     Kokkos::deep_copy(state.x0, 4.);
@@ -77,7 +77,7 @@ kynema::State<DeviceType> CreateTestState() {
 
 }  // namespace
 
-namespace kynema::tests {
+namespace kynema_fmb::tests {
 
 TEST(CloneState, CloneState) {
     using DeviceType =
@@ -88,4 +88,4 @@ TEST(CloneState, CloneState) {
     CompareStates(state_1, state_2);
 }
 
-}  // namespace kynema::tests
+}  // namespace kynema_fmb::tests

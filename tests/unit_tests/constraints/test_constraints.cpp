@@ -4,7 +4,7 @@
 #include "constraints/constraint.hpp"
 #include "constraints/constraints.hpp"
 
-namespace kynema::tests {
+namespace kynema_fmb::tests {
 
 TEST(ConstraintsTest, EmptyConstructor) {
     using DeviceType =
@@ -93,4 +93,4 @@ TEST(ConstraintsTest, UpdateViewsWithControlSignal) {
     EXPECT_DOUBLE_EQ(host_input(0, 0), control_signal);
 }
 
-}  // namespace kynema::tests
+}  // namespace kynema_fmb::tests

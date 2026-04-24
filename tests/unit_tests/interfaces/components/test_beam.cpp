@@ -9,11 +9,11 @@
 #include "interfaces/components/beam_input.hpp"
 #include "model/model.hpp"
 
-namespace kynema::tests {
+namespace kynema_fmb::tests {
 
 TEST(BeamComponentTest, InitialBeamHasCorrectRotation) {
-    auto model = kynema::Model();
-    auto beam_input = kynema::interfaces::components::BeamInput{};
+    auto model = kynema_fmb::Model();
+    auto beam_input = kynema_fmb::interfaces::components::BeamInput{};
 
     beam_input.element_order = 2UL;
 
@@ -28,12 +28,12 @@ TEST(BeamComponentTest, InitialBeamHasCorrectRotation) {
                    std::array{0., 0., 1., 0., 0., 0.}, std::array{0., 0., 0., 1., 0., 0.},
                    std::array{0., 0., 0., 0., 1., 0.}, std::array{0., 0., 0., 0., 0., 1.}};
     beam_input.sections = std::vector{
-        kynema::interfaces::components::Section(0., mass_stiff_array, mass_stiff_array),
-        kynema::interfaces::components::Section(0.5, mass_stiff_array, mass_stiff_array),
-        kynema::interfaces::components::Section(1., mass_stiff_array, mass_stiff_array)
+        kynema_fmb::interfaces::components::Section(0., mass_stiff_array, mass_stiff_array),
+        kynema_fmb::interfaces::components::Section(0.5, mass_stiff_array, mass_stiff_array),
+        kynema_fmb::interfaces::components::Section(1., mass_stiff_array, mass_stiff_array)
     };
 
-    auto beam = kynema::interfaces::components::Beam(beam_input, model);
+    auto beam = kynema_fmb::interfaces::components::Beam(beam_input, model);
     const auto& beam_node_ids = model.GetBeamElement(0).node_ids;
 
     const auto& root_node = model.GetNode(beam_node_ids[0]);
@@ -106,8 +106,8 @@ TEST(BeamComponentTest, InitialBeamHasCorrectRotation) {
 }
 
 TEST(BeamComponentTest, UnrotatedBeamHasIdentityRotationMatrix) {
-    auto model = kynema::Model();
-    auto beam_input = kynema::interfaces::components::BeamInput{};
+    auto model = kynema_fmb::Model();
+    auto beam_input = kynema_fmb::interfaces::components::BeamInput{};
 
     beam_input.element_order = 2UL;
 
@@ -122,12 +122,12 @@ TEST(BeamComponentTest, UnrotatedBeamHasIdentityRotationMatrix) {
                    std::array{0., 0., 1., 0., 0., 0.}, std::array{0., 0., 0., 1., 0., 0.},
                    std::array{0., 0., 0., 0., 1., 0.}, std::array{0., 0., 0., 0., 0., 1.}};
     beam_input.sections = std::vector{
-        kynema::interfaces::components::Section(0., mass_stiff_array, mass_stiff_array),
-        kynema::interfaces::components::Section(0.5, mass_stiff_array, mass_stiff_array),
-        kynema::interfaces::components::Section(1., mass_stiff_array, mass_stiff_array)
+        kynema_fmb::interfaces::components::Section(0., mass_stiff_array, mass_stiff_array),
+        kynema_fmb::interfaces::components::Section(0.5, mass_stiff_array, mass_stiff_array),
+        kynema_fmb::interfaces::components::Section(1., mass_stiff_array, mass_stiff_array)
     };
 
-    auto beam = kynema::interfaces::components::Beam(beam_input, model);
+    auto beam = kynema_fmb::interfaces::components::Beam(beam_input, model);
     const auto& beam_node_ids = model.GetBeamElement(0).node_ids;
 
     const auto& root_node = model.GetNode(beam_node_ids[0]);
@@ -151,8 +151,8 @@ TEST(BeamComponentTest, UnrotatedBeamHasIdentityRotationMatrix) {
 }
 
 TEST(BeamComponentTest, RotatedBeamAboutYAxisPointsAlongZAxis) {
-    auto model = kynema::Model();
-    auto beam_input = kynema::interfaces::components::BeamInput{};
+    auto model = kynema_fmb::Model();
+    auto beam_input = kynema_fmb::interfaces::components::BeamInput{};
 
     beam_input.element_order = 2UL;
 
@@ -167,16 +167,16 @@ TEST(BeamComponentTest, RotatedBeamAboutYAxisPointsAlongZAxis) {
                    std::array{0., 0., 1., 0., 0., 0.}, std::array{0., 0., 0., 1., 0., 0.},
                    std::array{0., 0., 0., 0., 1., 0.}, std::array{0., 0., 0., 0., 0., 1.}};
     beam_input.sections = std::vector{
-        kynema::interfaces::components::Section(0., mass_stiff_array, mass_stiff_array),
-        kynema::interfaces::components::Section(0.5, mass_stiff_array, mass_stiff_array),
-        kynema::interfaces::components::Section(1., mass_stiff_array, mass_stiff_array)
+        kynema_fmb::interfaces::components::Section(0., mass_stiff_array, mass_stiff_array),
+        kynema_fmb::interfaces::components::Section(0.5, mass_stiff_array, mass_stiff_array),
+        kynema_fmb::interfaces::components::Section(1., mass_stiff_array, mass_stiff_array)
     };
 
     beam_input.root.position =
         std::array{0., 0., 0., std::cos(std::numbers::pi / 4.), 0., std::sin(std::numbers::pi / 4.),
                    0.};
 
-    auto beam = kynema::interfaces::components::Beam(beam_input, model);
+    auto beam = kynema_fmb::interfaces::components::Beam(beam_input, model);
     const auto& beam_node_ids = model.GetBeamElement(0).node_ids;
 
     const auto& root_node = model.GetNode(beam_node_ids[0]);
@@ -249,8 +249,8 @@ TEST(BeamComponentTest, RotatedBeamAboutYAxisPointsAlongZAxis) {
 }
 
 TEST(BeamComponentTest, RotatedBeamAboutZAxisPointsAlongYAxis) {
-    auto model = kynema::Model();
-    auto beam_input = kynema::interfaces::components::BeamInput{};
+    auto model = kynema_fmb::Model();
+    auto beam_input = kynema_fmb::interfaces::components::BeamInput{};
 
     beam_input.element_order = 2UL;
 
@@ -265,16 +265,16 @@ TEST(BeamComponentTest, RotatedBeamAboutZAxisPointsAlongYAxis) {
                    std::array{0., 0., 1., 0., 0., 0.}, std::array{0., 0., 0., 1., 0., 0.},
                    std::array{0., 0., 0., 0., 1., 0.}, std::array{0., 0., 0., 0., 0., 1.}};
     beam_input.sections = std::vector{
-        kynema::interfaces::components::Section(0., mass_stiff_array, mass_stiff_array),
-        kynema::interfaces::components::Section(0.5, mass_stiff_array, mass_stiff_array),
-        kynema::interfaces::components::Section(1., mass_stiff_array, mass_stiff_array)
+        kynema_fmb::interfaces::components::Section(0., mass_stiff_array, mass_stiff_array),
+        kynema_fmb::interfaces::components::Section(0.5, mass_stiff_array, mass_stiff_array),
+        kynema_fmb::interfaces::components::Section(1., mass_stiff_array, mass_stiff_array)
     };
 
     beam_input.root.position = std::array{
         0., 0., 0., std::cos(std::numbers::pi / 4.), 0., 0., std::sin(std::numbers::pi / 4.)
     };
 
-    auto beam = kynema::interfaces::components::Beam(beam_input, model);
+    auto beam = kynema_fmb::interfaces::components::Beam(beam_input, model);
     const auto& beam_node_ids = model.GetBeamElement(0).node_ids;
 
     const auto& root_node = model.GetNode(beam_node_ids[0]);
@@ -347,8 +347,8 @@ TEST(BeamComponentTest, RotatedBeamAboutZAxisPointsAlongYAxis) {
 }
 
 TEST(BeamComponentTest, RotatedBeamAboutXAxisStillPointsAlongXAxis) {
-    auto model = kynema::Model();
-    auto beam_input = kynema::interfaces::components::BeamInput{};
+    auto model = kynema_fmb::Model();
+    auto beam_input = kynema_fmb::interfaces::components::BeamInput{};
 
     beam_input.element_order = 2UL;
 
@@ -363,16 +363,16 @@ TEST(BeamComponentTest, RotatedBeamAboutXAxisStillPointsAlongXAxis) {
                    std::array{0., 0., 1., 0., 0., 0.}, std::array{0., 0., 0., 1., 0., 0.},
                    std::array{0., 0., 0., 0., 1., 0.}, std::array{0., 0., 0., 0., 0., 1.}};
     beam_input.sections = std::vector{
-        kynema::interfaces::components::Section(0., mass_stiff_array, mass_stiff_array),
-        kynema::interfaces::components::Section(0.5, mass_stiff_array, mass_stiff_array),
-        kynema::interfaces::components::Section(1., mass_stiff_array, mass_stiff_array)
+        kynema_fmb::interfaces::components::Section(0., mass_stiff_array, mass_stiff_array),
+        kynema_fmb::interfaces::components::Section(0.5, mass_stiff_array, mass_stiff_array),
+        kynema_fmb::interfaces::components::Section(1., mass_stiff_array, mass_stiff_array)
     };
 
     beam_input.root.position =
         std::array{0., 0., 0., std::cos(std::numbers::pi / 4.), std::sin(std::numbers::pi / 4.),
                    0., 0.};
 
-    auto beam = kynema::interfaces::components::Beam(beam_input, model);
+    auto beam = kynema_fmb::interfaces::components::Beam(beam_input, model);
     const auto& beam_node_ids = model.GetBeamElement(0).node_ids;
 
     const auto& root_node = model.GetNode(beam_node_ids[0]);
@@ -445,8 +445,8 @@ TEST(BeamComponentTest, RotatedBeamAboutXAxisStillPointsAlongXAxis) {
 }
 
 TEST(BeamComponentTest, Quadrature_GLL_TwoSections_NoRefinement) {
-    auto model = kynema::Model();
-    auto beam_input = kynema::interfaces::components::BeamInput{};
+    auto model = kynema_fmb::Model();
+    auto beam_input = kynema_fmb::interfaces::components::BeamInput{};
 
     beam_input.element_order = 2UL;
 
@@ -460,13 +460,13 @@ TEST(BeamComponentTest, Quadrature_GLL_TwoSections_NoRefinement) {
                    std::array{0., 0., 1., 0., 0., 0.}, std::array{0., 0., 0., 1., 0., 0.},
                    std::array{0., 0., 0., 0., 1., 0.}, std::array{0., 0., 0., 0., 0., 1.}};
     beam_input.sections = std::vector{
-        kynema::interfaces::components::Section(0., mass_stiff_array, mass_stiff_array),
-        kynema::interfaces::components::Section(1., mass_stiff_array, mass_stiff_array)
+        kynema_fmb::interfaces::components::Section(0., mass_stiff_array, mass_stiff_array),
+        kynema_fmb::interfaces::components::Section(1., mass_stiff_array, mass_stiff_array)
     };
 
     beam_input.section_refinement = 0UL;
 
-    const auto beam = kynema::interfaces::components::Beam(beam_input, model);
+    const auto beam = kynema_fmb::interfaces::components::Beam(beam_input, model);
     const auto beam_elements = model.GetBeamElements();
     const auto quadrature = beam_elements.front().quadrature;
 
@@ -478,8 +478,8 @@ TEST(BeamComponentTest, Quadrature_GLL_TwoSections_NoRefinement) {
 }
 
 TEST(BeamComponentTest, Quadrature_GLL_ThreeSections_NoRefinement) {
-    auto model = kynema::Model();
-    auto beam_input = kynema::interfaces::components::BeamInput{};
+    auto model = kynema_fmb::Model();
+    auto beam_input = kynema_fmb::interfaces::components::BeamInput{};
 
     beam_input.element_order = 2UL;
 
@@ -493,14 +493,14 @@ TEST(BeamComponentTest, Quadrature_GLL_ThreeSections_NoRefinement) {
                    std::array{0., 0., 1., 0., 0., 0.}, std::array{0., 0., 0., 1., 0., 0.},
                    std::array{0., 0., 0., 0., 1., 0.}, std::array{0., 0., 0., 0., 0., 1.}};
     beam_input.sections = std::vector{
-        kynema::interfaces::components::Section(0., mass_stiff_array, mass_stiff_array),
-        kynema::interfaces::components::Section(.5, mass_stiff_array, mass_stiff_array),
-        kynema::interfaces::components::Section(1., mass_stiff_array, mass_stiff_array)
+        kynema_fmb::interfaces::components::Section(0., mass_stiff_array, mass_stiff_array),
+        kynema_fmb::interfaces::components::Section(.5, mass_stiff_array, mass_stiff_array),
+        kynema_fmb::interfaces::components::Section(1., mass_stiff_array, mass_stiff_array)
     };
 
     beam_input.section_refinement = 0UL;
 
-    const auto beam = kynema::interfaces::components::Beam(beam_input, model);
+    const auto beam = kynema_fmb::interfaces::components::Beam(beam_input, model);
     const auto beam_elements = model.GetBeamElements();
     const auto quadrature = beam_elements.front().quadrature;
 
@@ -515,8 +515,8 @@ TEST(BeamComponentTest, Quadrature_GLL_ThreeSections_NoRefinement) {
 }
 
 TEST(BeamComponentTest, Quadrature_GLL_FourSections_NoRefinement) {
-    auto model = kynema::Model();
-    auto beam_input = kynema::interfaces::components::BeamInput{};
+    auto model = kynema_fmb::Model();
+    auto beam_input = kynema_fmb::interfaces::components::BeamInput{};
 
     beam_input.element_order = 2UL;
 
@@ -530,15 +530,15 @@ TEST(BeamComponentTest, Quadrature_GLL_FourSections_NoRefinement) {
                    std::array{0., 0., 1., 0., 0., 0.}, std::array{0., 0., 0., 1., 0., 0.},
                    std::array{0., 0., 0., 0., 1., 0.}, std::array{0., 0., 0., 0., 0., 1.}};
     beam_input.sections = std::vector{
-        kynema::interfaces::components::Section(0., mass_stiff_array, mass_stiff_array),
-        kynema::interfaces::components::Section(.5, mass_stiff_array, mass_stiff_array),
-        kynema::interfaces::components::Section(.75, mass_stiff_array, mass_stiff_array),
-        kynema::interfaces::components::Section(1., mass_stiff_array, mass_stiff_array)
+        kynema_fmb::interfaces::components::Section(0., mass_stiff_array, mass_stiff_array),
+        kynema_fmb::interfaces::components::Section(.5, mass_stiff_array, mass_stiff_array),
+        kynema_fmb::interfaces::components::Section(.75, mass_stiff_array, mass_stiff_array),
+        kynema_fmb::interfaces::components::Section(1., mass_stiff_array, mass_stiff_array)
     };
 
     beam_input.section_refinement = 0UL;
 
-    const auto beam = kynema::interfaces::components::Beam(beam_input, model);
+    const auto beam = kynema_fmb::interfaces::components::Beam(beam_input, model);
     const auto beam_elements = model.GetBeamElements();
     const auto quadrature = beam_elements.front().quadrature;
 
@@ -556,8 +556,8 @@ TEST(BeamComponentTest, Quadrature_GLL_FourSections_NoRefinement) {
 }
 
 TEST(BeamComponentTest, Quadrature_GLL_FourSections_NoRefinement_Length2) {
-    auto model = kynema::Model();
-    auto beam_input = kynema::interfaces::components::BeamInput{};
+    auto model = kynema_fmb::Model();
+    auto beam_input = kynema_fmb::interfaces::components::BeamInput{};
 
     beam_input.element_order = 2UL;
 
@@ -571,15 +571,15 @@ TEST(BeamComponentTest, Quadrature_GLL_FourSections_NoRefinement_Length2) {
                    std::array{0., 0., 1., 0., 0., 0.}, std::array{0., 0., 0., 1., 0., 0.},
                    std::array{0., 0., 0., 0., 1., 0.}, std::array{0., 0., 0., 0., 0., 1.}};
     beam_input.sections = std::vector{
-        kynema::interfaces::components::Section(0., mass_stiff_array, mass_stiff_array),
-        kynema::interfaces::components::Section(.5, mass_stiff_array, mass_stiff_array),
-        kynema::interfaces::components::Section(.75, mass_stiff_array, mass_stiff_array),
-        kynema::interfaces::components::Section(1., mass_stiff_array, mass_stiff_array)
+        kynema_fmb::interfaces::components::Section(0., mass_stiff_array, mass_stiff_array),
+        kynema_fmb::interfaces::components::Section(.5, mass_stiff_array, mass_stiff_array),
+        kynema_fmb::interfaces::components::Section(.75, mass_stiff_array, mass_stiff_array),
+        kynema_fmb::interfaces::components::Section(1., mass_stiff_array, mass_stiff_array)
     };
 
     beam_input.section_refinement = 0UL;
 
-    const auto beam = kynema::interfaces::components::Beam(beam_input, model);
+    const auto beam = kynema_fmb::interfaces::components::Beam(beam_input, model);
     const auto beam_elements = model.GetBeamElements();
     const auto quadrature = beam_elements.front().quadrature;
 
@@ -597,8 +597,8 @@ TEST(BeamComponentTest, Quadrature_GLL_FourSections_NoRefinement_Length2) {
 }
 
 TEST(BeamComponentTest, Quadrature_GLL_ElevenSections_NoRefinement) {
-    auto model = kynema::Model();
-    auto beam_input = kynema::interfaces::components::BeamInput{};
+    auto model = kynema_fmb::Model();
+    auto beam_input = kynema_fmb::interfaces::components::BeamInput{};
 
     beam_input.element_order = 2UL;
 
@@ -612,22 +612,22 @@ TEST(BeamComponentTest, Quadrature_GLL_ElevenSections_NoRefinement) {
                    std::array{0., 0., 1., 0., 0., 0.}, std::array{0., 0., 0., 1., 0., 0.},
                    std::array{0., 0., 0., 0., 1., 0.}, std::array{0., 0., 0., 0., 0., 1.}};
     beam_input.sections = std::vector{
-        kynema::interfaces::components::Section(0., mass_stiff_array, mass_stiff_array),
-        kynema::interfaces::components::Section(.1, mass_stiff_array, mass_stiff_array),
-        kynema::interfaces::components::Section(.2, mass_stiff_array, mass_stiff_array),
-        kynema::interfaces::components::Section(.3, mass_stiff_array, mass_stiff_array),
-        kynema::interfaces::components::Section(.4, mass_stiff_array, mass_stiff_array),
-        kynema::interfaces::components::Section(.5, mass_stiff_array, mass_stiff_array),
-        kynema::interfaces::components::Section(.6, mass_stiff_array, mass_stiff_array),
-        kynema::interfaces::components::Section(.7, mass_stiff_array, mass_stiff_array),
-        kynema::interfaces::components::Section(.8, mass_stiff_array, mass_stiff_array),
-        kynema::interfaces::components::Section(.9, mass_stiff_array, mass_stiff_array),
-        kynema::interfaces::components::Section(1., mass_stiff_array, mass_stiff_array)
+        kynema_fmb::interfaces::components::Section(0., mass_stiff_array, mass_stiff_array),
+        kynema_fmb::interfaces::components::Section(.1, mass_stiff_array, mass_stiff_array),
+        kynema_fmb::interfaces::components::Section(.2, mass_stiff_array, mass_stiff_array),
+        kynema_fmb::interfaces::components::Section(.3, mass_stiff_array, mass_stiff_array),
+        kynema_fmb::interfaces::components::Section(.4, mass_stiff_array, mass_stiff_array),
+        kynema_fmb::interfaces::components::Section(.5, mass_stiff_array, mass_stiff_array),
+        kynema_fmb::interfaces::components::Section(.6, mass_stiff_array, mass_stiff_array),
+        kynema_fmb::interfaces::components::Section(.7, mass_stiff_array, mass_stiff_array),
+        kynema_fmb::interfaces::components::Section(.8, mass_stiff_array, mass_stiff_array),
+        kynema_fmb::interfaces::components::Section(.9, mass_stiff_array, mass_stiff_array),
+        kynema_fmb::interfaces::components::Section(1., mass_stiff_array, mass_stiff_array)
     };
 
     beam_input.section_refinement = 0UL;
 
-    const auto beam = kynema::interfaces::components::Beam(beam_input, model);
+    const auto beam = kynema_fmb::interfaces::components::Beam(beam_input, model);
     const auto beam_elements = model.GetBeamElements();
     const auto quadrature = beam_elements.front().quadrature;
 
@@ -666,8 +666,8 @@ TEST(BeamComponentTest, Quadrature_GLL_ElevenSections_NoRefinement) {
 }
 
 TEST(BeamComponentTest, Quadrature_GLL_TwoSections_OneRefinement) {
-    auto model = kynema::Model();
-    auto beam_input = kynema::interfaces::components::BeamInput{};
+    auto model = kynema_fmb::Model();
+    auto beam_input = kynema_fmb::interfaces::components::BeamInput{};
 
     beam_input.element_order = 2UL;
 
@@ -681,13 +681,13 @@ TEST(BeamComponentTest, Quadrature_GLL_TwoSections_OneRefinement) {
                    std::array{0., 0., 1., 0., 0., 0.}, std::array{0., 0., 0., 1., 0., 0.},
                    std::array{0., 0., 0., 0., 1., 0.}, std::array{0., 0., 0., 0., 0., 1.}};
     beam_input.sections = std::vector{
-        kynema::interfaces::components::Section(0., mass_stiff_array, mass_stiff_array),
-        kynema::interfaces::components::Section(1., mass_stiff_array, mass_stiff_array)
+        kynema_fmb::interfaces::components::Section(0., mass_stiff_array, mass_stiff_array),
+        kynema_fmb::interfaces::components::Section(1., mass_stiff_array, mass_stiff_array)
     };
 
     beam_input.section_refinement = 1UL;
 
-    const auto beam = kynema::interfaces::components::Beam(beam_input, model);
+    const auto beam = kynema_fmb::interfaces::components::Beam(beam_input, model);
     const auto beam_elements = model.GetBeamElements();
     const auto quadrature = beam_elements.front().quadrature;
 
@@ -702,8 +702,8 @@ TEST(BeamComponentTest, Quadrature_GLL_TwoSections_OneRefinement) {
 }
 
 TEST(BeamComponentTest, Quadrature_GLL_TwoSections_TwoRefinements) {
-    auto model = kynema::Model();
-    auto beam_input = kynema::interfaces::components::BeamInput{};
+    auto model = kynema_fmb::Model();
+    auto beam_input = kynema_fmb::interfaces::components::BeamInput{};
 
     beam_input.element_order = 2UL;
 
@@ -717,13 +717,13 @@ TEST(BeamComponentTest, Quadrature_GLL_TwoSections_TwoRefinements) {
                    std::array{0., 0., 1., 0., 0., 0.}, std::array{0., 0., 0., 1., 0., 0.},
                    std::array{0., 0., 0., 0., 1., 0.}, std::array{0., 0., 0., 0., 0., 1.}};
     beam_input.sections = std::vector{
-        kynema::interfaces::components::Section(0., mass_stiff_array, mass_stiff_array),
-        kynema::interfaces::components::Section(1., mass_stiff_array, mass_stiff_array)
+        kynema_fmb::interfaces::components::Section(0., mass_stiff_array, mass_stiff_array),
+        kynema_fmb::interfaces::components::Section(1., mass_stiff_array, mass_stiff_array)
     };
 
     beam_input.section_refinement = 2UL;
 
-    const auto beam = kynema::interfaces::components::Beam(beam_input, model);
+    const auto beam = kynema_fmb::interfaces::components::Beam(beam_input, model);
     const auto beam_elements = model.GetBeamElements();
     const auto quadrature = beam_elements.front().quadrature;
 
@@ -741,8 +741,8 @@ TEST(BeamComponentTest, Quadrature_GLL_TwoSections_TwoRefinements) {
 }
 
 TEST(BeamComponentTest, Quadrature_GLL_ThreeSections_OneRefinement) {
-    auto model = kynema::Model();
-    auto beam_input = kynema::interfaces::components::BeamInput{};
+    auto model = kynema_fmb::Model();
+    auto beam_input = kynema_fmb::interfaces::components::BeamInput{};
 
     beam_input.element_order = 2UL;
 
@@ -756,14 +756,14 @@ TEST(BeamComponentTest, Quadrature_GLL_ThreeSections_OneRefinement) {
                    std::array{0., 0., 1., 0., 0., 0.}, std::array{0., 0., 0., 1., 0., 0.},
                    std::array{0., 0., 0., 0., 1., 0.}, std::array{0., 0., 0., 0., 0., 1.}};
     beam_input.sections = std::vector{
-        kynema::interfaces::components::Section(0., mass_stiff_array, mass_stiff_array),
-        kynema::interfaces::components::Section(.5, mass_stiff_array, mass_stiff_array),
-        kynema::interfaces::components::Section(1., mass_stiff_array, mass_stiff_array)
+        kynema_fmb::interfaces::components::Section(0., mass_stiff_array, mass_stiff_array),
+        kynema_fmb::interfaces::components::Section(.5, mass_stiff_array, mass_stiff_array),
+        kynema_fmb::interfaces::components::Section(1., mass_stiff_array, mass_stiff_array)
     };
 
     beam_input.section_refinement = 1UL;
 
-    const auto beam = kynema::interfaces::components::Beam(beam_input, model);
+    const auto beam = kynema_fmb::interfaces::components::Beam(beam_input, model);
     const auto beam_elements = model.GetBeamElements();
     const auto quadrature = beam_elements.front().quadrature;
 
@@ -784,8 +784,8 @@ TEST(BeamComponentTest, Quadrature_GLL_ThreeSections_OneRefinement) {
 }
 
 TEST(BeamComponentTest, Quadrature_GLL_FourSections_TwoRefinement) {
-    auto model = kynema::Model();
-    auto beam_input = kynema::interfaces::components::BeamInput{};
+    auto model = kynema_fmb::Model();
+    auto beam_input = kynema_fmb::interfaces::components::BeamInput{};
 
     beam_input.element_order = 2UL;
 
@@ -799,15 +799,15 @@ TEST(BeamComponentTest, Quadrature_GLL_FourSections_TwoRefinement) {
                    std::array{0., 0., 1., 0., 0., 0.}, std::array{0., 0., 0., 1., 0., 0.},
                    std::array{0., 0., 0., 0., 1., 0.}, std::array{0., 0., 0., 0., 0., 1.}};
     beam_input.sections = std::vector{
-        kynema::interfaces::components::Section(0., mass_stiff_array, mass_stiff_array),
-        kynema::interfaces::components::Section(.5, mass_stiff_array, mass_stiff_array),
-        kynema::interfaces::components::Section(.75, mass_stiff_array, mass_stiff_array),
-        kynema::interfaces::components::Section(1., mass_stiff_array, mass_stiff_array)
+        kynema_fmb::interfaces::components::Section(0., mass_stiff_array, mass_stiff_array),
+        kynema_fmb::interfaces::components::Section(.5, mass_stiff_array, mass_stiff_array),
+        kynema_fmb::interfaces::components::Section(.75, mass_stiff_array, mass_stiff_array),
+        kynema_fmb::interfaces::components::Section(1., mass_stiff_array, mass_stiff_array)
     };
 
     beam_input.section_refinement = 2UL;
 
-    const auto beam = kynema::interfaces::components::Beam(beam_input, model);
+    const auto beam = kynema_fmb::interfaces::components::Beam(beam_input, model);
     const auto beam_elements = model.GetBeamElements();
     const auto quadrature = beam_elements.front().quadrature;
 
@@ -843,8 +843,8 @@ TEST(BeamComponentTest, Quadrature_GLL_FourSections_TwoRefinement) {
 }
 
 TEST(BeamComponentTest, Quadrature_GLL_ElevenSections_OneRefinement) {
-    auto model = kynema::Model();
-    auto beam_input = kynema::interfaces::components::BeamInput{};
+    auto model = kynema_fmb::Model();
+    auto beam_input = kynema_fmb::interfaces::components::BeamInput{};
 
     beam_input.element_order = 2UL;
 
@@ -858,22 +858,22 @@ TEST(BeamComponentTest, Quadrature_GLL_ElevenSections_OneRefinement) {
                    std::array{0., 0., 1., 0., 0., 0.}, std::array{0., 0., 0., 1., 0., 0.},
                    std::array{0., 0., 0., 0., 1., 0.}, std::array{0., 0., 0., 0., 0., 1.}};
     beam_input.sections = std::vector{
-        kynema::interfaces::components::Section(0., mass_stiff_array, mass_stiff_array),
-        kynema::interfaces::components::Section(.1, mass_stiff_array, mass_stiff_array),
-        kynema::interfaces::components::Section(.2, mass_stiff_array, mass_stiff_array),
-        kynema::interfaces::components::Section(.3, mass_stiff_array, mass_stiff_array),
-        kynema::interfaces::components::Section(.4, mass_stiff_array, mass_stiff_array),
-        kynema::interfaces::components::Section(.5, mass_stiff_array, mass_stiff_array),
-        kynema::interfaces::components::Section(.6, mass_stiff_array, mass_stiff_array),
-        kynema::interfaces::components::Section(.7, mass_stiff_array, mass_stiff_array),
-        kynema::interfaces::components::Section(.8, mass_stiff_array, mass_stiff_array),
-        kynema::interfaces::components::Section(.9, mass_stiff_array, mass_stiff_array),
-        kynema::interfaces::components::Section(1., mass_stiff_array, mass_stiff_array)
+        kynema_fmb::interfaces::components::Section(0., mass_stiff_array, mass_stiff_array),
+        kynema_fmb::interfaces::components::Section(.1, mass_stiff_array, mass_stiff_array),
+        kynema_fmb::interfaces::components::Section(.2, mass_stiff_array, mass_stiff_array),
+        kynema_fmb::interfaces::components::Section(.3, mass_stiff_array, mass_stiff_array),
+        kynema_fmb::interfaces::components::Section(.4, mass_stiff_array, mass_stiff_array),
+        kynema_fmb::interfaces::components::Section(.5, mass_stiff_array, mass_stiff_array),
+        kynema_fmb::interfaces::components::Section(.6, mass_stiff_array, mass_stiff_array),
+        kynema_fmb::interfaces::components::Section(.7, mass_stiff_array, mass_stiff_array),
+        kynema_fmb::interfaces::components::Section(.8, mass_stiff_array, mass_stiff_array),
+        kynema_fmb::interfaces::components::Section(.9, mass_stiff_array, mass_stiff_array),
+        kynema_fmb::interfaces::components::Section(1., mass_stiff_array, mass_stiff_array)
     };
 
     beam_input.section_refinement = 1UL;
 
-    const auto beam = kynema::interfaces::components::Beam(beam_input, model);
+    const auto beam = kynema_fmb::interfaces::components::Beam(beam_input, model);
     const auto beam_elements = model.GetBeamElements();
     const auto quadrature = beam_elements.front().quadrature;
 
@@ -942,8 +942,8 @@ TEST(BeamComponentTest, Quadrature_GLL_ElevenSections_OneRefinement) {
 }
 
 TEST(BeamComponentTest, Quadrature_GL_TwoSections_NoRefinement) {
-    auto model = kynema::Model();
-    auto beam_input = kynema::interfaces::components::BeamInput{};
+    auto model = kynema_fmb::Model();
+    auto beam_input = kynema_fmb::interfaces::components::BeamInput{};
 
     beam_input.element_order = 2UL;
 
@@ -957,15 +957,15 @@ TEST(BeamComponentTest, Quadrature_GL_TwoSections_NoRefinement) {
                    std::array{0., 0., 1., 0., 0., 0.}, std::array{0., 0., 0., 1., 0., 0.},
                    std::array{0., 0., 0., 0., 1., 0.}, std::array{0., 0., 0., 0., 0., 1.}};
     beam_input.sections = std::vector{
-        kynema::interfaces::components::Section(0., mass_stiff_array, mass_stiff_array),
-        kynema::interfaces::components::Section(1., mass_stiff_array, mass_stiff_array)
+        kynema_fmb::interfaces::components::Section(0., mass_stiff_array, mass_stiff_array),
+        kynema_fmb::interfaces::components::Section(1., mass_stiff_array, mass_stiff_array)
     };
 
     beam_input.quadrature_rule =
-        kynema::interfaces::components::BeamInput::QuadratureRule::GaussLegendre;
+        kynema_fmb::interfaces::components::BeamInput::QuadratureRule::GaussLegendre;
     beam_input.section_refinement = 0UL;
 
-    const auto beam = kynema::interfaces::components::Beam(beam_input, model);
+    const auto beam = kynema_fmb::interfaces::components::Beam(beam_input, model);
     const auto beam_elements = model.GetBeamElements();
     const auto quadrature = beam_elements.front().quadrature;
 
@@ -974,8 +974,8 @@ TEST(BeamComponentTest, Quadrature_GL_TwoSections_NoRefinement) {
 }
 
 TEST(BeamComponentTest, Quadrature_GL_ThreeSections_NoRefinement) {
-    auto model = kynema::Model();
-    auto beam_input = kynema::interfaces::components::BeamInput{};
+    auto model = kynema_fmb::Model();
+    auto beam_input = kynema_fmb::interfaces::components::BeamInput{};
 
     beam_input.element_order = 2UL;
 
@@ -989,16 +989,16 @@ TEST(BeamComponentTest, Quadrature_GL_ThreeSections_NoRefinement) {
                    std::array{0., 0., 1., 0., 0., 0.}, std::array{0., 0., 0., 1., 0., 0.},
                    std::array{0., 0., 0., 0., 1., 0.}, std::array{0., 0., 0., 0., 0., 1.}};
     beam_input.sections = std::vector{
-        kynema::interfaces::components::Section(0., mass_stiff_array, mass_stiff_array),
-        kynema::interfaces::components::Section(.5, mass_stiff_array, mass_stiff_array),
-        kynema::interfaces::components::Section(1., mass_stiff_array, mass_stiff_array)
+        kynema_fmb::interfaces::components::Section(0., mass_stiff_array, mass_stiff_array),
+        kynema_fmb::interfaces::components::Section(.5, mass_stiff_array, mass_stiff_array),
+        kynema_fmb::interfaces::components::Section(1., mass_stiff_array, mass_stiff_array)
     };
 
     beam_input.quadrature_rule =
-        kynema::interfaces::components::BeamInput::QuadratureRule::GaussLegendre;
+        kynema_fmb::interfaces::components::BeamInput::QuadratureRule::GaussLegendre;
     beam_input.section_refinement = 0UL;
 
-    const auto beam = kynema::interfaces::components::Beam(beam_input, model);
+    const auto beam = kynema_fmb::interfaces::components::Beam(beam_input, model);
     const auto beam_elements = model.GetBeamElements();
     const auto quadrature = beam_elements.front().quadrature;
 
@@ -1010,8 +1010,8 @@ TEST(BeamComponentTest, Quadrature_GL_ThreeSections_NoRefinement) {
 }
 
 TEST(BeamComponentTest, Quadrature_GL_FourSections_NoRefinement) {
-    auto model = kynema::Model();
-    auto beam_input = kynema::interfaces::components::BeamInput{};
+    auto model = kynema_fmb::Model();
+    auto beam_input = kynema_fmb::interfaces::components::BeamInput{};
 
     beam_input.element_order = 2UL;
 
@@ -1025,17 +1025,17 @@ TEST(BeamComponentTest, Quadrature_GL_FourSections_NoRefinement) {
                    std::array{0., 0., 1., 0., 0., 0.}, std::array{0., 0., 0., 1., 0., 0.},
                    std::array{0., 0., 0., 0., 1., 0.}, std::array{0., 0., 0., 0., 0., 1.}};
     beam_input.sections = std::vector{
-        kynema::interfaces::components::Section(0., mass_stiff_array, mass_stiff_array),
-        kynema::interfaces::components::Section(.5, mass_stiff_array, mass_stiff_array),
-        kynema::interfaces::components::Section(.75, mass_stiff_array, mass_stiff_array),
-        kynema::interfaces::components::Section(1., mass_stiff_array, mass_stiff_array)
+        kynema_fmb::interfaces::components::Section(0., mass_stiff_array, mass_stiff_array),
+        kynema_fmb::interfaces::components::Section(.5, mass_stiff_array, mass_stiff_array),
+        kynema_fmb::interfaces::components::Section(.75, mass_stiff_array, mass_stiff_array),
+        kynema_fmb::interfaces::components::Section(1., mass_stiff_array, mass_stiff_array)
     };
 
     beam_input.quadrature_rule =
-        kynema::interfaces::components::BeamInput::QuadratureRule::GaussLegendre;
+        kynema_fmb::interfaces::components::BeamInput::QuadratureRule::GaussLegendre;
     beam_input.section_refinement = 0UL;
 
-    const auto beam = kynema::interfaces::components::Beam(beam_input, model);
+    const auto beam = kynema_fmb::interfaces::components::Beam(beam_input, model);
     const auto beam_elements = model.GetBeamElements();
     const auto quadrature = beam_elements.front().quadrature;
 
@@ -1050,8 +1050,8 @@ TEST(BeamComponentTest, Quadrature_GL_FourSections_NoRefinement) {
 }
 
 TEST(BeamComponentTest, Quadrature_GL_TwoSections_OneRefinement) {
-    auto model = kynema::Model();
-    auto beam_input = kynema::interfaces::components::BeamInput{};
+    auto model = kynema_fmb::Model();
+    auto beam_input = kynema_fmb::interfaces::components::BeamInput{};
 
     beam_input.element_order = 2UL;
 
@@ -1065,15 +1065,15 @@ TEST(BeamComponentTest, Quadrature_GL_TwoSections_OneRefinement) {
                    std::array{0., 0., 1., 0., 0., 0.}, std::array{0., 0., 0., 1., 0., 0.},
                    std::array{0., 0., 0., 0., 1., 0.}, std::array{0., 0., 0., 0., 0., 1.}};
     beam_input.sections = std::vector{
-        kynema::interfaces::components::Section(0., mass_stiff_array, mass_stiff_array),
-        kynema::interfaces::components::Section(1., mass_stiff_array, mass_stiff_array)
+        kynema_fmb::interfaces::components::Section(0., mass_stiff_array, mass_stiff_array),
+        kynema_fmb::interfaces::components::Section(1., mass_stiff_array, mass_stiff_array)
     };
 
     beam_input.quadrature_rule =
-        kynema::interfaces::components::BeamInput::QuadratureRule::GaussLegendre;
+        kynema_fmb::interfaces::components::BeamInput::QuadratureRule::GaussLegendre;
     beam_input.section_refinement = 1UL;
 
-    const auto beam = kynema::interfaces::components::Beam(beam_input, model);
+    const auto beam = kynema_fmb::interfaces::components::Beam(beam_input, model);
     const auto beam_elements = model.GetBeamElements();
     const auto quadrature = beam_elements.front().quadrature;
 
@@ -1085,8 +1085,8 @@ TEST(BeamComponentTest, Quadrature_GL_TwoSections_OneRefinement) {
 }
 
 TEST(BeamComponentTest, Quadrature_GL_ThreeSections_OneRefinement) {
-    auto model = kynema::Model();
-    auto beam_input = kynema::interfaces::components::BeamInput{};
+    auto model = kynema_fmb::Model();
+    auto beam_input = kynema_fmb::interfaces::components::BeamInput{};
 
     beam_input.element_order = 2UL;
 
@@ -1100,16 +1100,16 @@ TEST(BeamComponentTest, Quadrature_GL_ThreeSections_OneRefinement) {
                    std::array{0., 0., 1., 0., 0., 0.}, std::array{0., 0., 0., 1., 0., 0.},
                    std::array{0., 0., 0., 0., 1., 0.}, std::array{0., 0., 0., 0., 0., 1.}};
     beam_input.sections = std::vector{
-        kynema::interfaces::components::Section(0., mass_stiff_array, mass_stiff_array),
-        kynema::interfaces::components::Section(.5, mass_stiff_array, mass_stiff_array),
-        kynema::interfaces::components::Section(1., mass_stiff_array, mass_stiff_array)
+        kynema_fmb::interfaces::components::Section(0., mass_stiff_array, mass_stiff_array),
+        kynema_fmb::interfaces::components::Section(.5, mass_stiff_array, mass_stiff_array),
+        kynema_fmb::interfaces::components::Section(1., mass_stiff_array, mass_stiff_array)
     };
 
     beam_input.quadrature_rule =
-        kynema::interfaces::components::BeamInput::QuadratureRule::GaussLegendre;
+        kynema_fmb::interfaces::components::BeamInput::QuadratureRule::GaussLegendre;
     beam_input.section_refinement = 1UL;
 
-    const auto beam = kynema::interfaces::components::Beam(beam_input, model);
+    const auto beam = kynema_fmb::interfaces::components::Beam(beam_input, model);
     const auto beam_elements = model.GetBeamElements();
     const auto quadrature = beam_elements.front().quadrature;
 
@@ -1127,8 +1127,8 @@ TEST(BeamComponentTest, Quadrature_GL_ThreeSections_OneRefinement) {
 }
 
 TEST(BeamComponentTest, Quadrature_GL_ElevenSections_OneRefinement) {
-    auto model = kynema::Model();
-    auto beam_input = kynema::interfaces::components::BeamInput{};
+    auto model = kynema_fmb::Model();
+    auto beam_input = kynema_fmb::interfaces::components::BeamInput{};
 
     beam_input.element_order = 2UL;
 
@@ -1142,24 +1142,24 @@ TEST(BeamComponentTest, Quadrature_GL_ElevenSections_OneRefinement) {
                    std::array{0., 0., 1., 0., 0., 0.}, std::array{0., 0., 0., 1., 0., 0.},
                    std::array{0., 0., 0., 0., 1., 0.}, std::array{0., 0., 0., 0., 0., 1.}};
     beam_input.sections = std::vector{
-        kynema::interfaces::components::Section(0., mass_stiff_array, mass_stiff_array),
-        kynema::interfaces::components::Section(.1, mass_stiff_array, mass_stiff_array),
-        kynema::interfaces::components::Section(.2, mass_stiff_array, mass_stiff_array),
-        kynema::interfaces::components::Section(.3, mass_stiff_array, mass_stiff_array),
-        kynema::interfaces::components::Section(.4, mass_stiff_array, mass_stiff_array),
-        kynema::interfaces::components::Section(.5, mass_stiff_array, mass_stiff_array),
-        kynema::interfaces::components::Section(.6, mass_stiff_array, mass_stiff_array),
-        kynema::interfaces::components::Section(.7, mass_stiff_array, mass_stiff_array),
-        kynema::interfaces::components::Section(.8, mass_stiff_array, mass_stiff_array),
-        kynema::interfaces::components::Section(.9, mass_stiff_array, mass_stiff_array),
-        kynema::interfaces::components::Section(1., mass_stiff_array, mass_stiff_array)
+        kynema_fmb::interfaces::components::Section(0., mass_stiff_array, mass_stiff_array),
+        kynema_fmb::interfaces::components::Section(.1, mass_stiff_array, mass_stiff_array),
+        kynema_fmb::interfaces::components::Section(.2, mass_stiff_array, mass_stiff_array),
+        kynema_fmb::interfaces::components::Section(.3, mass_stiff_array, mass_stiff_array),
+        kynema_fmb::interfaces::components::Section(.4, mass_stiff_array, mass_stiff_array),
+        kynema_fmb::interfaces::components::Section(.5, mass_stiff_array, mass_stiff_array),
+        kynema_fmb::interfaces::components::Section(.6, mass_stiff_array, mass_stiff_array),
+        kynema_fmb::interfaces::components::Section(.7, mass_stiff_array, mass_stiff_array),
+        kynema_fmb::interfaces::components::Section(.8, mass_stiff_array, mass_stiff_array),
+        kynema_fmb::interfaces::components::Section(.9, mass_stiff_array, mass_stiff_array),
+        kynema_fmb::interfaces::components::Section(1., mass_stiff_array, mass_stiff_array)
     };
 
     beam_input.quadrature_rule =
-        kynema::interfaces::components::BeamInput::QuadratureRule::GaussLegendre;
+        kynema_fmb::interfaces::components::BeamInput::QuadratureRule::GaussLegendre;
     beam_input.section_refinement = 1UL;
 
-    const auto beam = kynema::interfaces::components::Beam(beam_input, model);
+    const auto beam = kynema_fmb::interfaces::components::Beam(beam_input, model);
     const auto beam_elements = model.GetBeamElements();
     const auto quadrature = beam_elements.front().quadrature;
 
@@ -1225,8 +1225,8 @@ TEST(BeamComponentTest, Quadrature_GL_ElevenSections_OneRefinement) {
 }
 
 TEST(BeamComponentTest, Section_GLL_TwoSections_NoRefinement_NoTwist_ConstantSection) {
-    auto model = kynema::Model();
-    auto beam_input = kynema::interfaces::components::BeamInput{};
+    auto model = kynema_fmb::Model();
+    auto beam_input = kynema_fmb::interfaces::components::BeamInput{};
 
     beam_input.element_order = 2UL;
 
@@ -1240,13 +1240,13 @@ TEST(BeamComponentTest, Section_GLL_TwoSections_NoRefinement_NoTwist_ConstantSec
                    std::array{0., 0., 1., 0., 0., 0.}, std::array{0., 0., 0., 1., 0., 0.},
                    std::array{0., 0., 0., 0., 1., 0.}, std::array{0., 0., 0., 0., 0., 1.}};
     beam_input.sections = std::vector{
-        kynema::interfaces::components::Section(0., mass_stiff_array, mass_stiff_array),
-        kynema::interfaces::components::Section(1., mass_stiff_array, mass_stiff_array)
+        kynema_fmb::interfaces::components::Section(0., mass_stiff_array, mass_stiff_array),
+        kynema_fmb::interfaces::components::Section(1., mass_stiff_array, mass_stiff_array)
     };
 
     beam_input.section_refinement = 0UL;
 
-    const auto beam = kynema::interfaces::components::Beam(beam_input, model);
+    const auto beam = kynema_fmb::interfaces::components::Beam(beam_input, model);
     const auto beam_elements = model.GetBeamElements();
     const auto& sections = beam_elements.front().sections;
 
@@ -1266,8 +1266,8 @@ TEST(BeamComponentTest, Section_GLL_TwoSections_NoRefinement_NoTwist_ConstantSec
 }
 
 TEST(BeamComponentTest, Section_GLL_TwoSections_NoRefinement_NoTwist_LinearSection) {
-    auto model = kynema::Model();
-    auto beam_input = kynema::interfaces::components::BeamInput{};
+    auto model = kynema_fmb::Model();
+    auto beam_input = kynema_fmb::interfaces::components::BeamInput{};
 
     beam_input.element_order = 2UL;
 
@@ -1285,13 +1285,13 @@ TEST(BeamComponentTest, Section_GLL_TwoSections_NoRefinement_NoTwist_LinearSecti
                    std::array{0., 0., 2., 0., 0., 0.}, std::array{0., 0., 0., 2., 0., 0.},
                    std::array{0., 0., 0., 0., 2., 0.}, std::array{0., 0., 0., 0., 0., 2.}};
     beam_input.sections = std::vector{
-        kynema::interfaces::components::Section(0., mass_stiff_array_0, mass_stiff_array_0),
-        kynema::interfaces::components::Section(1., mass_stiff_array_1, mass_stiff_array_1)
+        kynema_fmb::interfaces::components::Section(0., mass_stiff_array_0, mass_stiff_array_0),
+        kynema_fmb::interfaces::components::Section(1., mass_stiff_array_1, mass_stiff_array_1)
     };
 
     beam_input.section_refinement = 0UL;
 
-    const auto beam = kynema::interfaces::components::Beam(beam_input, model);
+    const auto beam = kynema_fmb::interfaces::components::Beam(beam_input, model);
     const auto beam_elements = model.GetBeamElements();
     const auto& sections = beam_elements.front().sections;
 
@@ -1311,8 +1311,8 @@ TEST(BeamComponentTest, Section_GLL_TwoSections_NoRefinement_NoTwist_LinearSecti
 }
 
 TEST(BeamComponentTest, Section_GLL_ThreeSections_NoRefinement_NoTwist_LinearSection) {
-    auto model = kynema::Model();
-    auto beam_input = kynema::interfaces::components::BeamInput{};
+    auto model = kynema_fmb::Model();
+    auto beam_input = kynema_fmb::interfaces::components::BeamInput{};
 
     beam_input.element_order = 2UL;
 
@@ -1334,14 +1334,14 @@ TEST(BeamComponentTest, Section_GLL_ThreeSections_NoRefinement_NoTwist_LinearSec
                    std::array{0., 0., 4., 0., 0., 0.}, std::array{0., 0., 0., 4., 0., 0.},
                    std::array{0., 0., 0., 0., 4., 0.}, std::array{0., 0., 0., 0., 0., 4.}};
     beam_input.sections = std::vector{
-        kynema::interfaces::components::Section(0., mass_stiff_array_0, mass_stiff_array_0),
-        kynema::interfaces::components::Section(.5, mass_stiff_array_1, mass_stiff_array_1),
-        kynema::interfaces::components::Section(1., mass_stiff_array_2, mass_stiff_array_2)
+        kynema_fmb::interfaces::components::Section(0., mass_stiff_array_0, mass_stiff_array_0),
+        kynema_fmb::interfaces::components::Section(.5, mass_stiff_array_1, mass_stiff_array_1),
+        kynema_fmb::interfaces::components::Section(1., mass_stiff_array_2, mass_stiff_array_2)
     };
 
     beam_input.section_refinement = 0UL;
 
-    const auto beam = kynema::interfaces::components::Beam(beam_input, model);
+    const auto beam = kynema_fmb::interfaces::components::Beam(beam_input, model);
     const auto beam_elements = model.GetBeamElements();
     const auto& sections = beam_elements.front().sections;
 
@@ -1364,8 +1364,8 @@ TEST(BeamComponentTest, Section_GLL_ThreeSections_NoRefinement_NoTwist_LinearSec
 }
 
 TEST(BeamComponentTest, Section_GLL_ThreeSections_OneRefinement_NoTwist_LinearSection) {
-    auto model = kynema::Model();
-    auto beam_input = kynema::interfaces::components::BeamInput{};
+    auto model = kynema_fmb::Model();
+    auto beam_input = kynema_fmb::interfaces::components::BeamInput{};
 
     beam_input.element_order = 2UL;
 
@@ -1395,14 +1395,14 @@ TEST(BeamComponentTest, Section_GLL_ThreeSections_OneRefinement_NoTwist_LinearSe
                    std::array{0., 0., 4., 0., 0., 0.}, std::array{0., 0., 0., 4., 0., 0.},
                    std::array{0., 0., 0., 0., 4., 0.}, std::array{0., 0., 0., 0., 0., 4.}};
     beam_input.sections = std::vector{
-        kynema::interfaces::components::Section(0., mass_stiff_array_0, mass_stiff_array_0),
-        kynema::interfaces::components::Section(.5, mass_stiff_array_2, mass_stiff_array_2),
-        kynema::interfaces::components::Section(1., mass_stiff_array_4, mass_stiff_array_4)
+        kynema_fmb::interfaces::components::Section(0., mass_stiff_array_0, mass_stiff_array_0),
+        kynema_fmb::interfaces::components::Section(.5, mass_stiff_array_2, mass_stiff_array_2),
+        kynema_fmb::interfaces::components::Section(1., mass_stiff_array_4, mass_stiff_array_4)
     };
 
     beam_input.section_refinement = 1UL;
 
-    const auto beam = kynema::interfaces::components::Beam(beam_input, model);
+    const auto beam = kynema_fmb::interfaces::components::Beam(beam_input, model);
     const auto beam_elements = model.GetBeamElements();
     const auto& sections = beam_elements.front().sections;
 
@@ -1431,8 +1431,8 @@ TEST(BeamComponentTest, Section_GLL_ThreeSections_OneRefinement_NoTwist_LinearSe
 }
 
 TEST(BeamComponentTest, Section_GLL_ThreeSections_OneRefinement_ConstantTwist_ConstantSection) {
-    auto model = kynema::Model();
-    auto beam_input = kynema::interfaces::components::BeamInput{};
+    auto model = kynema_fmb::Model();
+    auto beam_input = kynema_fmb::interfaces::components::BeamInput{};
 
     beam_input.element_order = 2UL;
 
@@ -1454,14 +1454,14 @@ TEST(BeamComponentTest, Section_GLL_ThreeSections_OneRefinement_ConstantTwist_Co
                    std::array{0., 0., 6., 0., 0., 0.}, std::array{0., 0., 0., 7., 0., 0.},
                    std::array{0., 0., 0., 0., 8., 0.}, std::array{0., 0., 0., 0., 0., 9.}};
     beam_input.sections = std::vector{
-        kynema::interfaces::components::Section(0., mass_stiff_array_0, mass_stiff_array_0),
-        kynema::interfaces::components::Section(.5, mass_stiff_array_2, mass_stiff_array_2),
-        kynema::interfaces::components::Section(1., mass_stiff_array_4, mass_stiff_array_4)
+        kynema_fmb::interfaces::components::Section(0., mass_stiff_array_0, mass_stiff_array_0),
+        kynema_fmb::interfaces::components::Section(.5, mass_stiff_array_2, mass_stiff_array_2),
+        kynema_fmb::interfaces::components::Section(1., mass_stiff_array_4, mass_stiff_array_4)
     };
 
     beam_input.section_refinement = 1UL;
 
-    const auto beam = kynema::interfaces::components::Beam(beam_input, model);
+    const auto beam = kynema_fmb::interfaces::components::Beam(beam_input, model);
     const auto beam_elements = model.GetBeamElements();
     const auto& sections = beam_elements.front().sections;
 
@@ -1511,8 +1511,8 @@ TEST(BeamComponentTest, Section_GLL_ThreeSections_OneRefinement_ConstantTwist_Co
 }
 
 TEST(BeamComponentTest, Section_GLL_ThreeSections_OneRefinement_LinearTwist_ConstantSection) {
-    auto model = kynema::Model();
-    auto beam_input = kynema::interfaces::components::BeamInput{};
+    auto model = kynema_fmb::Model();
+    auto beam_input = kynema_fmb::interfaces::components::BeamInput{};
 
     beam_input.element_order = 2UL;
 
@@ -1534,14 +1534,14 @@ TEST(BeamComponentTest, Section_GLL_ThreeSections_OneRefinement_LinearTwist_Cons
                    std::array{0., 0., 6., 0., 0., 0.}, std::array{0., 0., 0., 7., 0., 0.},
                    std::array{0., 0., 0., 0., 8., 0.}, std::array{0., 0., 0., 0., 0., 9.}};
     beam_input.sections = std::vector{
-        kynema::interfaces::components::Section(0., mass_stiff_array_0, mass_stiff_array_0),
-        kynema::interfaces::components::Section(.5, mass_stiff_array_2, mass_stiff_array_2),
-        kynema::interfaces::components::Section(1., mass_stiff_array_4, mass_stiff_array_4)
+        kynema_fmb::interfaces::components::Section(0., mass_stiff_array_0, mass_stiff_array_0),
+        kynema_fmb::interfaces::components::Section(.5, mass_stiff_array_2, mass_stiff_array_2),
+        kynema_fmb::interfaces::components::Section(1., mass_stiff_array_4, mass_stiff_array_4)
     };
 
     beam_input.section_refinement = 1UL;
 
-    const auto beam = kynema::interfaces::components::Beam(beam_input, model);
+    const auto beam = kynema_fmb::interfaces::components::Beam(beam_input, model);
     const auto beam_elements = model.GetBeamElements();
     const auto& sections = beam_elements.front().sections;
 
@@ -1591,8 +1591,8 @@ TEST(BeamComponentTest, Section_GLL_ThreeSections_OneRefinement_LinearTwist_Cons
 }
 
 TEST(BeamComponentTest, Section_GLL_ThreeSections_OneRefinement_BiLinearTwist_ConstantSection) {
-    auto model = kynema::Model();
-    auto beam_input = kynema::interfaces::components::BeamInput{};
+    auto model = kynema_fmb::Model();
+    auto beam_input = kynema_fmb::interfaces::components::BeamInput{};
 
     beam_input.element_order = 2UL;
 
@@ -1614,14 +1614,14 @@ TEST(BeamComponentTest, Section_GLL_ThreeSections_OneRefinement_BiLinearTwist_Co
                    std::array{0., 0., 6., 0., 0., 0.}, std::array{0., 0., 0., 7., 0., 0.},
                    std::array{0., 0., 0., 0., 8., 0.}, std::array{0., 0., 0., 0., 0., 9.}};
     beam_input.sections = std::vector{
-        kynema::interfaces::components::Section(0., mass_stiff_array_0, mass_stiff_array_0),
-        kynema::interfaces::components::Section(.5, mass_stiff_array_2, mass_stiff_array_2),
-        kynema::interfaces::components::Section(1., mass_stiff_array_4, mass_stiff_array_4)
+        kynema_fmb::interfaces::components::Section(0., mass_stiff_array_0, mass_stiff_array_0),
+        kynema_fmb::interfaces::components::Section(.5, mass_stiff_array_2, mass_stiff_array_2),
+        kynema_fmb::interfaces::components::Section(1., mass_stiff_array_4, mass_stiff_array_4)
     };
 
     beam_input.section_refinement = 1UL;
 
-    const auto beam = kynema::interfaces::components::Beam(beam_input, model);
+    const auto beam = kynema_fmb::interfaces::components::Beam(beam_input, model);
     const auto beam_elements = model.GetBeamElements();
     const auto& sections = beam_elements.front().sections;
 
@@ -1669,4 +1669,4 @@ TEST(BeamComponentTest, Section_GLL_ThreeSections_OneRefinement_BiLinearTwist_Co
         }
     }
 }
-}  // namespace kynema::tests
+}  // namespace kynema_fmb::tests

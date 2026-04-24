@@ -8,7 +8,7 @@
 #include "create_view.hpp"
 #include "state/calculate_displacement.hpp"
 
-namespace kynema::tests {
+namespace kynema_fmb::tests {
 TEST(CalculateDisplacement, OneNode) {
     constexpr auto h = 2.;
     const auto q_delta = CreateView<double[1][6]>("q_delta", std::array{1., 2., 3., 4., 5., 6.});
@@ -38,4 +38,4 @@ TEST(CalculateDisplacement, OneNode) {
         EXPECT_NEAR(q_mirror(0, i), q_exact(0, i), 1.e-14);
     }
 }
-}  // namespace kynema::tests
+}  // namespace kynema_fmb::tests

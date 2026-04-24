@@ -2,7 +2,7 @@
 
 #include "model/model.hpp"
 
-namespace kynema::tests {
+namespace kynema_fmb::tests {
 
 TEST(ModelTest, AddNodeToModel) {
     Model model;
@@ -169,4 +169,4 @@ TEST(ModelTest, ModelCreateSystem) {
     EXPECT_EQ(constraints.num_constraints, 0);
 }
 
-}  // namespace kynema::tests
+}  // namespace kynema_fmb::tests

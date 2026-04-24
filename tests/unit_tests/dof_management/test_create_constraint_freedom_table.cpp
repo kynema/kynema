@@ -3,7 +3,7 @@
 #include "dof_management/assemble_node_freedom_allocation_table.hpp"
 #include "dof_management/create_constraint_freedom_table.hpp"
 
-namespace kynema::dof::tests {
+namespace kynema_fmb::dof::tests {
 
 TEST(TestCreateConstraintFreedomTable, SingleNodeConstraint_FixedBC) {
     using DeviceType =
@@ -144,4 +144,4 @@ TEST(TestCreateConstraintFreedomTable, DoubeNodeConstraint_RigidBC) {
     }
 }
 
-}  // namespace kynema::dof::tests
+}  // namespace kynema_fmb::dof::tests

@@ -2,7 +2,7 @@
 
 #include "elements/elements.hpp"
 
-namespace kynema::tests {
+namespace kynema_fmb::tests {
 
 TEST(ElementsTest, DefaultConstructor) {
     using DeviceType =
@@ -280,4 +280,4 @@ TEST(ElementsTest, NodeStateIndicesBeamsMassesSprings) {
     EXPECT_EQ(host_indices(3, 1), 15);
 }
 
-}  // namespace kynema::tests
+}  // namespace kynema_fmb::tests

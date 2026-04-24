@@ -19,27 +19,27 @@ inline void IntegrateInertiaMatrix_TestOneElementOneNodeOneQP_Muu() {
     constexpr auto number_of_qps = size_t{1U};
     constexpr auto max_simd_size = size_t{8U};
 
-    const auto qp_weights = kynema::beams::tests::CreateView<double[number_of_qps]>(
+    const auto qp_weights = kynema_fmb::beams::tests::CreateView<double[number_of_qps]>(
         "weights", std::array<double, 1>{2.}
     );
-    const auto qp_jacobian = kynema::beams::tests::CreateView<double[number_of_qps]>(
+    const auto qp_jacobian = kynema_fmb::beams::tests::CreateView<double[number_of_qps]>(
         "jacobian", std::array<double, 1>{3.}
     );
     const auto shape_interp =
-        kynema::beams::tests::CreateLeftView<double[max_simd_size][number_of_qps]>(
+        kynema_fmb::beams::tests::CreateLeftView<double[max_simd_size][number_of_qps]>(
             "shape_interp", std::array<double, max_simd_size>{5.}
         );
     const auto shape_deriv =
-        kynema::beams::tests::CreateLeftView<double[max_simd_size][number_of_qps]>(
+        kynema_fmb::beams::tests::CreateLeftView<double[max_simd_size][number_of_qps]>(
             "shape_deriv", std::array<double, max_simd_size>{1.}
         );
-    const auto qp_Muu = kynema::beams::tests::CreateView<double[number_of_qps][6][6]>(
+    const auto qp_Muu = kynema_fmb::beams::tests::CreateView<double[number_of_qps][6][6]>(
         "qp_Muu", std::array{0001., 0002., 0003., 0004., 0005., 0006., 1001., 1002., 1003.,
                              1004., 1005., 1006., 2001., 2002., 2003., 2004., 2005., 2006.,
                              3001., 3002., 3003., 3004., 3005., 3006., 4001., 4002., 4003.,
                              4004., 4005., 4006., 5001., 5002., 5003., 5004., 5005., 5006.}
     );
-    const auto qp_Guu = kynema::beams::tests::CreateView<double[number_of_qps][6][6]>(
+    const auto qp_Guu = kynema_fmb::beams::tests::CreateView<double[number_of_qps][6][6]>(
         "qp_Guu", std::array{1001., 1002., 1003., 1004., 1005., 1006., 2001., 2002., 2003.,
                              2004., 2005., 2006., 4001., 4002., 4003., 4004., 4005., 4006.,
                              5001., 5002., 5003., 5004., 5005., 5006., 6001., 6002., 6003.,
@@ -54,7 +54,7 @@ inline void IntegrateInertiaMatrix_TestOneElementOneNodeOneQP_Muu() {
 
     const auto policy = Kokkos::RangePolicy(0, number_of_nodes * number_of_simd_nodes);
     const auto integrator =
-        kynema::beams::IntegrateInertiaMatrixElement<Kokkos::DefaultExecutionSpace>{
+        kynema_fmb::beams::IntegrateInertiaMatrixElement<Kokkos::DefaultExecutionSpace>{
             .element = 0U,
             .num_nodes = number_of_nodes,
             .num_qps = number_of_qps,
@@ -84,7 +84,7 @@ inline void IntegrateInertiaMatrix_TestOneElementOneNodeOneQP_Muu() {
         Kokkos::View<double[1][1][6][6], Kokkos::HostSpace>::const_type(exact_M_data.data());
 
     auto gbl_M_mirror = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), gbl_M);
-    kynema::beams::tests::CompareWithExpected(gbl_M_mirror, exact_M);
+    kynema_fmb::beams::tests::CompareWithExpected(gbl_M_mirror, exact_M);
 }
 
 void IntegrateInertiaMatrix_TestOneElementOneNodeOneQP_Guu() {
@@ -94,24 +94,24 @@ void IntegrateInertiaMatrix_TestOneElementOneNodeOneQP_Guu() {
     constexpr auto max_simd_size = size_t{8U};
 
     const auto qp_weights =
-        kynema::beams::tests::CreateView<double[number_of_qps]>("weights", std::array{2.});
+        kynema_fmb::beams::tests::CreateView<double[number_of_qps]>("weights", std::array{2.});
     const auto qp_jacobian =
-        kynema::beams::tests::CreateView<double[number_of_qps]>("jacobian", std::array{3.});
+        kynema_fmb::beams::tests::CreateView<double[number_of_qps]>("jacobian", std::array{3.});
     const auto shape_interp =
-        kynema::beams::tests::CreateLeftView<double[max_simd_size][number_of_qps]>(
+        kynema_fmb::beams::tests::CreateLeftView<double[max_simd_size][number_of_qps]>(
             "shape_interp", std::vector<double>{5., 0., 0., 0., 0., 0., 0., 0.}
         );
     const auto shape_deriv =
-        kynema::beams::tests::CreateLeftView<double[max_simd_size][number_of_qps]>(
+        kynema_fmb::beams::tests::CreateLeftView<double[max_simd_size][number_of_qps]>(
             "shape_deriv", std::vector<double>{5., 0., 0., 0., 0., 0., 0., 0.}
         );
-    const auto qp_Muu = kynema::beams::tests::CreateView<double[number_of_qps][6][6]>(
+    const auto qp_Muu = kynema_fmb::beams::tests::CreateView<double[number_of_qps][6][6]>(
         "qp_Muu", std::array{0001., 0002., 0003., 0004., 0005., 0006., 1001., 1002., 1003.,
                              1004., 1005., 1006., 2001., 2002., 2003., 2004., 2005., 2006.,
                              3001., 3002., 3003., 3004., 3005., 3006., 4001., 4002., 4003.,
                              4004., 4005., 4006., 5001., 5002., 5003., 5004., 5005., 5006.}
     );
-    const auto qp_Guu = kynema::beams::tests::CreateView<double[number_of_qps][6][6]>(
+    const auto qp_Guu = kynema_fmb::beams::tests::CreateView<double[number_of_qps][6][6]>(
         "qp_Guu", std::array{1001., 1002., 1003., 1004., 1005., 1006., 2001., 2002., 2003.,
                              2004., 2005., 2006., 3001., 3002., 3003., 3004., 3005., 3006.,
                              4001., 4002., 4003., 4004., 4005., 4006., 5001., 5002., 5003.,
@@ -126,7 +126,7 @@ void IntegrateInertiaMatrix_TestOneElementOneNodeOneQP_Guu() {
 
     const auto policy = Kokkos::RangePolicy(0, number_of_nodes * number_of_simd_nodes);
     const auto integrator =
-        kynema::beams::IntegrateInertiaMatrixElement<Kokkos::DefaultExecutionSpace>{
+        kynema_fmb::beams::IntegrateInertiaMatrixElement<Kokkos::DefaultExecutionSpace>{
             .element = 0U,
             .num_nodes = number_of_nodes,
             .num_qps = number_of_qps,
@@ -156,7 +156,7 @@ void IntegrateInertiaMatrix_TestOneElementOneNodeOneQP_Guu() {
 
     auto gbl_M_mirror = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), gbl_M);
     Kokkos::deep_copy(gbl_M_mirror, gbl_M);
-    kynema::beams::tests::CompareWithExpected(gbl_M_mirror, exact_M);
+    kynema_fmb::beams::tests::CompareWithExpected(gbl_M_mirror, exact_M);
 }
 
 void IntegrateInertiaMatrix_TestOneElementTwoNodesOneQP() {
@@ -167,20 +167,20 @@ void IntegrateInertiaMatrix_TestOneElementTwoNodesOneQP() {
     constexpr auto max_simd_size = size_t{8U};
 
     const auto qp_weights =
-        kynema::beams::tests::CreateView<double[number_of_qps]>("weights", std::array{1.});
+        kynema_fmb::beams::tests::CreateView<double[number_of_qps]>("weights", std::array{1.});
     const auto qp_jacobian =
-        kynema::beams::tests::CreateView<double[number_of_qps]>("jacobian", std::array{1.});
+        kynema_fmb::beams::tests::CreateView<double[number_of_qps]>("jacobian", std::array{1.});
     const auto shape_interp =
-        kynema::beams::tests::CreateLeftView<double[max_simd_size][number_of_qps]>(
+        kynema_fmb::beams::tests::CreateLeftView<double[max_simd_size][number_of_qps]>(
             "shape_interp",
             std::vector<double>{1., 2., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.}
         );
     const auto shape_deriv =
-        kynema::beams::tests::CreateLeftView<double[max_simd_size][number_of_qps]>(
+        kynema_fmb::beams::tests::CreateLeftView<double[max_simd_size][number_of_qps]>(
             "shape_deriv",
             std::vector<double>{1., 2., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.}
         );
-    const auto qp_Muu = kynema::beams::tests::CreateView<double[number_of_qps][6][6]>(
+    const auto qp_Muu = kynema_fmb::beams::tests::CreateView<double[number_of_qps][6][6]>(
         "qp_Muu", std::array{001., 002., 003., 004., 005., 006., 101., 102., 103., 104., 105., 106.,
                              201., 202., 203., 204., 205., 206., 301., 302., 303., 304., 305., 306.,
                              401., 402., 403., 404., 405., 406., 501., 502., 503., 504., 505., 506.}
@@ -195,7 +195,7 @@ void IntegrateInertiaMatrix_TestOneElementTwoNodesOneQP() {
 
     const auto policy = Kokkos::RangePolicy(0, number_of_nodes * number_of_simd_nodes);
     const auto integrator =
-        kynema::beams::IntegrateInertiaMatrixElement<Kokkos::DefaultExecutionSpace>{
+        kynema_fmb::beams::IntegrateInertiaMatrixElement<Kokkos::DefaultExecutionSpace>{
             .element = 0U,
             .num_nodes = number_of_nodes,
             .num_qps = number_of_qps,
@@ -234,7 +234,7 @@ void IntegrateInertiaMatrix_TestOneElementTwoNodesOneQP() {
         Kokkos::View<double[2][2][6][6], Kokkos::HostSpace>::const_type(exact_M_data.data());
 
     auto gbl_M_mirror = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), gbl_M);
-    kynema::beams::tests::CompareWithExpected(gbl_M_mirror, exact_M);
+    kynema_fmb::beams::tests::CompareWithExpected(gbl_M_mirror, exact_M);
 }
 
 void IntegrateInertiaMatrix_TestOneElementOneNodeTwoQPs() {
@@ -244,18 +244,18 @@ void IntegrateInertiaMatrix_TestOneElementOneNodeTwoQPs() {
     constexpr auto max_simd_size = size_t{8U};
 
     const auto qp_weights =
-        kynema::beams::tests::CreateView<double[number_of_qps]>("weights", std::array{9., 1.});
+        kynema_fmb::beams::tests::CreateView<double[number_of_qps]>("weights", std::array{9., 1.});
     const auto qp_jacobian =
-        kynema::beams::tests::CreateView<double[number_of_qps]>("jacobian", std::array{1., 4.});
+        kynema_fmb::beams::tests::CreateView<double[number_of_qps]>("jacobian", std::array{1., 4.});
     const auto shape_interp =
-        kynema::beams::tests::CreateLeftView<double[max_simd_size][number_of_qps]>(
+        kynema_fmb::beams::tests::CreateLeftView<double[max_simd_size][number_of_qps]>(
             "shape_interp", std::array<double, max_simd_size * number_of_qps>{1. / 3., 1. / 2.}
         );
     const auto shape_deriv =
-        kynema::beams::tests::CreateLeftView<double[max_simd_size][number_of_qps]>(
+        kynema_fmb::beams::tests::CreateLeftView<double[max_simd_size][number_of_qps]>(
             "shape_deriv", std::array<double, max_simd_size * number_of_qps>{1. / 3., 1. / 2.}
         );
-    const auto qp_Muu = kynema::beams::tests::CreateView<double[number_of_qps][6][6]>(
+    const auto qp_Muu = kynema_fmb::beams::tests::CreateView<double[number_of_qps][6][6]>(
         "qp_Muu", std::array{00001., 00002., 00003., 00004., 00005., 00006., 00011., 00012., 00013.,
                              00014., 00015., 00016., 00021., 00022., 00023., 00024., 00025., 00026.,
                              00031., 00032., 00033., 00034., 00035., 00036., 00041., 00042., 00043.,
@@ -275,7 +275,7 @@ void IntegrateInertiaMatrix_TestOneElementOneNodeTwoQPs() {
 
     const auto policy = Kokkos::RangePolicy(0, number_of_nodes * number_of_simd_nodes);
     const auto integrator =
-        kynema::beams::IntegrateInertiaMatrixElement<Kokkos::DefaultExecutionSpace>{
+        kynema_fmb::beams::IntegrateInertiaMatrixElement<Kokkos::DefaultExecutionSpace>{
             .element = 0U,
             .num_nodes = number_of_nodes,
             .num_qps = number_of_qps,
@@ -304,7 +304,7 @@ void IntegrateInertiaMatrix_TestOneElementOneNodeTwoQPs() {
         Kokkos::View<double[1][1][6][6], Kokkos::HostSpace>::const_type(exact_M_data.data());
 
     auto gbl_M_mirror = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), gbl_M);
-    kynema::beams::tests::CompareWithExpected(gbl_M_mirror, exact_M);
+    kynema_fmb::beams::tests::CompareWithExpected(gbl_M_mirror, exact_M);
 }
 
 void IntegrateInertiaMatrix_TestOneElementOneNodeOneQP_WithMultiplicationFactor() {
@@ -314,18 +314,18 @@ void IntegrateInertiaMatrix_TestOneElementOneNodeOneQP_WithMultiplicationFactor(
     constexpr auto max_simd_size = size_t{8U};
 
     const auto qp_weights =
-        kynema::beams::tests::CreateView<double[number_of_qps]>("weights", std::array{1.});
+        kynema_fmb::beams::tests::CreateView<double[number_of_qps]>("weights", std::array{1.});
     const auto qp_jacobian =
-        kynema::beams::tests::CreateView<double[number_of_qps]>("jacobian", std::array{1.});
+        kynema_fmb::beams::tests::CreateView<double[number_of_qps]>("jacobian", std::array{1.});
     const auto shape_interp =
-        kynema::beams::tests::CreateLeftView<double[max_simd_size][number_of_qps]>(
+        kynema_fmb::beams::tests::CreateLeftView<double[max_simd_size][number_of_qps]>(
             "shape_interp", std::vector<double>{1., 0., 0., 0., 0., 0., 0., 0.}
         );
     const auto shape_deriv =
-        kynema::beams::tests::CreateLeftView<double[max_simd_size][number_of_qps]>(
+        kynema_fmb::beams::tests::CreateLeftView<double[max_simd_size][number_of_qps]>(
             "shape_deriv", std::vector<double>{1., 0., 0., 0., 0., 0., 0., 0.}
         );
-    const auto qp_Muu = kynema::beams::tests::CreateView<double[number_of_qps][6][6]>(
+    const auto qp_Muu = kynema_fmb::beams::tests::CreateView<double[number_of_qps][6][6]>(
         "qp_Muu", std::array{0001., 0002., 0003., 0004., 0005., 0006., 1001., 1002., 1003.,
                              1004., 1005., 1006., 2001., 2002., 2003., 2004., 2005., 2006.,
                              3001., 3002., 3003., 3004., 3005., 3006., 4001., 4002., 4003.,
@@ -343,7 +343,7 @@ void IntegrateInertiaMatrix_TestOneElementOneNodeOneQP_WithMultiplicationFactor(
 
     const auto policy = Kokkos::RangePolicy(0, number_of_nodes * number_of_simd_nodes);
     const auto integrator =
-        kynema::beams::IntegrateInertiaMatrixElement<Kokkos::DefaultExecutionSpace>{
+        kynema_fmb::beams::IntegrateInertiaMatrixElement<Kokkos::DefaultExecutionSpace>{
             .element = 0U,
             .num_nodes = number_of_nodes,
             .num_qps = number_of_qps,
@@ -372,11 +372,11 @@ void IntegrateInertiaMatrix_TestOneElementOneNodeOneQP_WithMultiplicationFactor(
         Kokkos::View<double[1][1][6][6], Kokkos::HostSpace>::const_type(exact_M_data.data());
 
     auto gbl_M_mirror = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), gbl_M);
-    kynema::beams::tests::CompareWithExpected(gbl_M_mirror, exact_M);
+    kynema_fmb::beams::tests::CompareWithExpected(gbl_M_mirror, exact_M);
 }
 
 }  // namespace
-namespace kynema::beams::tests {
+namespace kynema_fmb::beams::tests {
 
 TEST(IntegrateInertiaMatrixTests, OneElementOneNodeOneQP_Muu) {
     IntegrateInertiaMatrix_TestOneElementOneNodeOneQP_Muu();
@@ -398,4 +398,4 @@ TEST(IntegrateInertiaMatrixTests, OneElementOneNodeOneQP_WithMultiplicationFacto
     IntegrateInertiaMatrix_TestOneElementOneNodeOneQP_WithMultiplicationFactor();
 }
 
-}  // namespace kynema::beams::tests
+}  // namespace kynema_fmb::beams::tests

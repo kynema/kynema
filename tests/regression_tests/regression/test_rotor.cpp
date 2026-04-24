@@ -14,16 +14,16 @@
 
 namespace {
 auto ComputeIEA15NodeLocations() {
-    auto node_loc = std::array<double, kynema::tests::node_xi.size()>{};
-    std::ranges::transform(kynema::tests::node_xi, std::begin(node_loc), [&](auto xi) {
+    auto node_loc = std::array<double, kynema_fmb::tests::node_xi.size()>{};
+    std::ranges::transform(kynema_fmb::tests::node_xi, std::begin(node_loc), [&](auto xi) {
         return (xi + 1.) / 2.;
     });
     return node_loc;
 }
 
 template <size_t num_blades>
-kynema::Model CreateIEA15Blades(const std::array<double, 3>& omega) {
-    auto model = kynema::Model();
+kynema_fmb::Model CreateIEA15Blades(const std::array<double, 3>& omega) {
+    auto model = kynema_fmb::Model();
 
     // Set gravity in model
     model.SetGravity(-9.81, 0., 0.);
@@ -56,12 +56,12 @@ kynema::Model CreateIEA15Blades(const std::array<double, 3>& omega) {
             [&](const size_t j) {
                 return model.AddNode()
                     .SetElemLocation(node_loc[j])
-                    .SetPosition({kynema::tests::node_coords[j]})
+                    .SetPosition({kynema_fmb::tests::node_coords[j]})
                     .Build();
             }
         );
         auto blade_elem_id = model.AddBeamElement(
-            beam_node_ids, kynema::tests::material_sections, kynema::tests::trapz_quadrature
+            beam_node_ids, kynema_fmb::tests::material_sections, kynema_fmb::tests::trapz_quadrature
         );
         model.TranslateBeam(blade_elem_id, hub_rad);
         model.RotateBeamAboutPoint(blade_elem_id, rotation_quaternion_array, origin);
@@ -90,7 +90,7 @@ void WriteMatrixToFile(const std::vector<std::vector<T>>& data, const std::strin
 
 }  // namespace
 
-namespace kynema::tests {
+namespace kynema_fmb::tests {
 
 TEST(RotorTest, IEA15Rotor) {
     // Rotor angular velocity in rad/s
@@ -382,4 +382,4 @@ TEST(RotorTest, IEA15RotorHost) {
         EXPECT_EQ(converged, true);
     }
 }
-}  // namespace kynema::tests
+}  // namespace kynema_fmb::tests

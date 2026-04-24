@@ -5,7 +5,7 @@
 #include "interfaces/blade/blade_interface_builder.hpp"
 #include "interfaces/components/beam_builder.hpp"
 
-namespace kynema::tests {
+namespace kynema_fmb::tests {
 
 /**
  * @brief Static pure bending benchmark test for an isotropic cantilever beam rolling into a circle
@@ -126,4 +126,4 @@ TEST(VerificationTest, Static_IsotropicBeamRollUp) {
     EXPECT_NEAR(tip_node.displacement[2], 0., 1e-12);                 // Exact analytical soln: 0.
 }
 
-}  // namespace kynema::tests
+}  // namespace kynema_fmb::tests

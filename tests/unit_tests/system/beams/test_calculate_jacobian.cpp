@@ -8,7 +8,7 @@
 #include "elements/beams/calculate_jacobian.hpp"
 #include "test_calculate.hpp"
 
-namespace kynema::beams::tests {
+namespace kynema_fmb::beams::tests {
 
 TEST(CalculateJacobian, LinearElement) {
     constexpr size_t num_elems{1};
@@ -162,4 +162,4 @@ TEST(CalculateJacobian, FourthOrderElement) {
     }
 }
 
-}  // namespace kynema::beams::tests
+}  // namespace kynema_fmb::beams::tests

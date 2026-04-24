@@ -5,7 +5,7 @@
 #include "interfaces/blade/blade_interface_builder.hpp"
 #include "interfaces/components/beam_builder.hpp"
 
-namespace kynema::tests {
+namespace kynema_fmb::tests {
 
 TEST(BladeInterfaceTest, StaticCurledBeam_GlQuadrature) {
     // Create interface builder
@@ -456,4 +456,4 @@ TEST(BladeInterfaceTest, StaticCurledBeam_GlQuadrature_ThreeSections_WholeBeam) 
     EXPECT_NEAR(tip_positions[5][1], 0., 1e-8);
     EXPECT_NEAR(tip_positions[5][2], -2.68489535049099e-08, 1e-8);
 }
-}  // namespace kynema::tests
+}  // namespace kynema_fmb::tests

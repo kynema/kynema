@@ -65,7 +65,7 @@ template <
     typename T1, typename T2, typename T3, typename T4, typename T5, typename T6, typename T7,
     typename T8>
 void SetRotorMotion(
-    kynema::util::TurbineData& turbine, const std::vector<std::vector<size_t>>& beam_elem_node_ids,
+    kynema_fmb::util::TurbineData& turbine, const std::vector<std::vector<size_t>>& beam_elem_node_ids,
     const std::vector<size_t>& root_node_ids, const size_t& hub_node_id, const size_t& n_qps,
     const T1& host_state_x, const T2& host_state_v, const T3& host_state_vd, const T4& host_qp_x,
     const T5& host_qp_u_dot, const T6& host_qp_omega, const T7& host_qp_u_ddot,
@@ -117,8 +117,8 @@ void SetRotorMotion(
 
 template <typename DeviceType, typename T1, typename T2>
 void SetAeroLoads(
-    kynema::Beams<DeviceType>& beams, const size_t n_blades, const size_t n_nodes,
-    const size_t n_qps, const kynema::util::TurbineData& turbine, const T1& host_node_FX,
+    kynema_fmb::Beams<DeviceType>& beams, const size_t n_blades, const size_t n_nodes,
+    const size_t n_qps, const kynema_fmb::util::TurbineData& turbine, const T1& host_node_FX,
     const T2& host_qp_Fe
 ) {
     if (use_node_loads) {
@@ -146,7 +146,7 @@ void SetAeroLoads(
 
 }  // namespace
 
-namespace kynema::tests {
+namespace kynema_fmb::tests {
 
 TEST(Milestone, IEA15RotorAeroController) {
     // Conversions
@@ -643,4 +643,4 @@ TEST(Milestone, IEA15RotorAeroController) {
     }
 }
 
-}  // namespace kynema::tests
+}  // namespace kynema_fmb::tests

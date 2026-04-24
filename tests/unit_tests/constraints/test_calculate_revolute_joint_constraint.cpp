@@ -6,7 +6,7 @@
 #include "constraints/calculate_revolute_joint_constraint.hpp"
 #include "create_view.hpp"
 
-namespace kynema::tests {
+namespace kynema_fmb::tests {
 
 struct ExecuteCalculateRevoluteJointConstraint {
     Kokkos::View<double[3]>::const_type X0;
@@ -97,4 +97,4 @@ TEST(CalculateRevoluteJointConstraintTests, OneConstraint) {
     }
 }
 
-}  // namespace kynema::tests
+}  // namespace kynema_fmb::tests

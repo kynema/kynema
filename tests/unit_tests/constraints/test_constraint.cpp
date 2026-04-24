@@ -6,7 +6,7 @@
 #include "constraints/constraint.hpp"
 #include "constraints/constraint_type.hpp"
 
-namespace kynema::constraints::tests {
+namespace kynema_fmb::constraints::tests {
 
 class ConstraintTest : public ::testing::Test {
 protected:
@@ -151,4 +151,4 @@ TEST_F(ConstraintTest, NullControlSignal) {
     EXPECT_EQ(constraint.control, nullptr);
 }
 
-}  // namespace kynema::constraints::tests
+}  // namespace kynema_fmb::constraints::tests

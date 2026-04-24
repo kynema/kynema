@@ -12,18 +12,18 @@
 namespace {
 
 void TestCalculateOuu() {
-    const auto Cuu = kynema::beams::tests::CreateView<double[6][6]>(
+    const auto Cuu = kynema_fmb::beams::tests::CreateView<double[6][6]>(
         "Cuu", std::array{1.,  2.,  3.,  4.,  5.,  6.,  7.,  8.,  9.,  10., 11., 12.,
                           13., 14., 15., 16., 17., 18., 19., 20., 21., 22., 23., 24.,
                           25., 26., 27., 28., 29., 30., 31., 32., 33., 34., 35., 36.}
     );
-    const auto x0pupSS = kynema::beams::tests::CreateView<double[3][3]>(
+    const auto x0pupSS = kynema_fmb::beams::tests::CreateView<double[3][3]>(
         "x0pupSS", std::array{37., 38., 39., 40., 41., 42., 43., 44., 45.}
     );
-    const auto M_tilde = kynema::beams::tests::CreateView<double[3][3]>(
+    const auto M_tilde = kynema_fmb::beams::tests::CreateView<double[3][3]>(
         "M_tilde", std::array{46., 47., 48., 49., 50., 51., 52., 53., 54.}
     );
-    const auto N_tilde = kynema::beams::tests::CreateView<double[3][3]>(
+    const auto N_tilde = kynema_fmb::beams::tests::CreateView<double[3][3]>(
         "N_tilde", std::array{55., 56., 57., 58., 59., 60., 61., 62., 63.}
     );
 
@@ -32,7 +32,7 @@ void TestCalculateOuu() {
     Kokkos::parallel_for(
         "CalculateOuu", 1,
         KOKKOS_LAMBDA(size_t) {
-            kynema::beams::CalculateOuu<Kokkos::DefaultExecutionSpace>::invoke(
+            kynema_fmb::beams::CalculateOuu<Kokkos::DefaultExecutionSpace>::invoke(
                 Cuu, x0pupSS, M_tilde, N_tilde, Ouu
             );
         }
@@ -46,15 +46,15 @@ void TestCalculateOuu() {
         Kokkos::View<double[6][6], Kokkos::HostSpace>::const_type(Ouu_exact_data.data());
 
     const auto Ouu_mirror = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), Ouu);
-    kynema::beams::tests::CompareWithExpected(Ouu_mirror, Ouu_exact);
+    kynema_fmb::beams::tests::CompareWithExpected(Ouu_mirror, Ouu_exact);
 }
 
 }  // namespace
 
-namespace kynema::tests {
+namespace kynema_fmb::tests {
 
 TEST(CalculateOuuTests, OneNode) {
     TestCalculateOuu();
 }
 
-}  // namespace kynema::tests
+}  // namespace kynema_fmb::tests

@@ -11,7 +11,7 @@
 #include "interfaces/turbine/turbine_interface.hpp"
 #include "interfaces/turbine/turbine_interface_builder.hpp"
 
-namespace kynema::tests {
+namespace kynema_fmb::tests {
 
 void BuildBlades(
     interfaces::components::TurbineBuilder& turbine_builder, const YAML::Node& wio_blade,
@@ -575,4 +575,4 @@ TEST(AerodynamicsInterfaceTest, NREL5_Turbine) {
     }
 }
 
-}  // namespace kynema::tests
+}  // namespace kynema_fmb::tests

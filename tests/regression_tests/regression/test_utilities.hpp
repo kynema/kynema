@@ -5,7 +5,7 @@
 
 #include <Kokkos_Core.hpp>
 
-namespace kynema::tests {
+namespace kynema_fmb::tests {
 
 /// Function to find the project root directory
 std::filesystem::path FindProjectRoot();
@@ -45,4 +45,4 @@ std::vector<std::vector<std::vector<double>>> kokkos_view_3D_to_vector(
     const Kokkos::View<double***>& view
 );
 
-}  // namespace kynema::tests
+}  // namespace kynema_fmb::tests

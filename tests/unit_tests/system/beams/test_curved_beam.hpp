@@ -6,7 +6,7 @@
 
 #include <Kokkos_Core.hpp>
 
-namespace kynema::beams::tests {
+namespace kynema_fmb::beams::tests {
 
 //--------------------------------------------------------------------------
 // FEA inputs/settings for curved beam
@@ -1932,4 +1932,4 @@ constexpr std::array<double, kNumNodes * kNumNodes * 6 * 6> kExpectedStiffnessMa
 const Kokkos::View<double[kNumNodes][kNumNodes][6][6], Kokkos::HostSpace>::const_type
     kExpectedStiffnessMatrix(kExpectedStiffnessMatrix_data.data());
 
-}  // namespace kynema::beams::tests
+}  // namespace kynema_fmb::beams::tests

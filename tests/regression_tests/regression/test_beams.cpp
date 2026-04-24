@@ -9,7 +9,7 @@
 
 namespace {
 inline auto SetUpBeams() {
-    auto model = kynema::Model();
+    auto model = kynema_fmb::Model();
 
     model.SetGravity(0., 0., 9.81);
 
@@ -107,8 +107,8 @@ inline auto SetUpBeams() {
     model.AddBeamElement(
         beam_node_ids,
         std::array{
-            kynema::BeamSection(0., mass_matrix, stiffness_matrix),
-            kynema::BeamSection(1., mass_matrix, stiffness_matrix),
+            kynema_fmb::BeamSection(0., mass_matrix, stiffness_matrix),
+            kynema_fmb::BeamSection(1., mass_matrix, stiffness_matrix),
         },
         std::array{
             std::array{-0.9491079123427585, 0.1294849661688697},
@@ -129,7 +129,7 @@ inline auto SetUpBeams() {
 }
 
 }  // namespace
-namespace kynema::tests {
+namespace kynema_fmb::tests {
 
 TEST(BeamsTest, NodeInitialPositionX0) {
     const auto beams = SetUpBeams();
@@ -185,4 +185,4 @@ TEST(BeamsTest, QuadraturePointStiffnessMatrixInMaterialFrame) {
     );
 }
 
-}  // namespace kynema::tests
+}  // namespace kynema_fmb::tests

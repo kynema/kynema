@@ -1,6 +1,6 @@
 #include <Kokkos_Core.hpp>
 
-namespace kynema::tests {
+namespace kynema_fmb::tests {
 
 template <size_t n_elem, size_t n_nodes>
 auto get_node_state_indices() {
@@ -15,4 +15,4 @@ auto get_node_state_indices() {
     Kokkos::deep_copy(indices, host_indices);
     return indices;
 }
-}  // namespace kynema::tests
+}  // namespace kynema_fmb::tests

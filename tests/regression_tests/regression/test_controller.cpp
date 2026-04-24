@@ -8,7 +8,7 @@
 #include "utilities/controllers/turbine_controller.hpp"
 #include "vendor/dylib/dylib.hpp"
 
-namespace kynema::tests {
+namespace kynema_fmb::tests {
 
 TEST(ControllerTest, DisconController) {
     // Test data generated using the following regression test from the
@@ -149,4 +149,4 @@ TEST(ControllerTest, TurbineControllerExceptionInvalidControllerFunctionName) {
     );
 }
 
-}  // namespace kynema::tests
+}  // namespace kynema_fmb::tests

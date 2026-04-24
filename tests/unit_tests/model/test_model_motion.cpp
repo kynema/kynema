@@ -2,7 +2,7 @@
 
 #include "model/model.hpp"
 
-namespace kynema::tests {
+namespace kynema_fmb::tests {
 
 class ModelMotionTest : public ::testing::Test {
 protected:
@@ -324,4 +324,4 @@ TEST_F(ModelMotionTest, ComplexMotionSequence) {
     ASSERT_NEAR(n2.vd[5], 0., 1e-6);
 }
 
-}  // namespace kynema::tests
+}  // namespace kynema_fmb::tests

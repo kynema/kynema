@@ -9,7 +9,7 @@
 #include "system/masses/calculate_gyroscopic_matrix.hpp"
 #include "test_calculate.hpp"
 
-namespace kynema::tests {
+namespace kynema_fmb::tests {
 
 struct ExecuteCalculateGyroscopicMatrix {
     double mass;
@@ -63,4 +63,4 @@ TEST(CalculateGyroscopicMatrixMassesTests, OneNode) {
     CompareWithExpected(Guu_mirror, Guu_exact);
 }
 
-}  // namespace kynema::tests
+}  // namespace kynema_fmb::tests

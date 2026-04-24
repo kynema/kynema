@@ -81,18 +81,18 @@ const auto quadrature = std::vector<std::array<double, 2>>{
 };
 
 const auto sections = std::vector{
-    kynema::BeamSection(0., mass_matrix, stiffness_matrix),
-    kynema::BeamSection(1., mass_matrix, stiffness_matrix),
+    kynema_fmb::BeamSection(0., mass_matrix, stiffness_matrix),
+    kynema_fmb::BeamSection(1., mass_matrix, stiffness_matrix),
 };
 
 const auto sections_unity = std::vector{
-    kynema::BeamSection(0., mass_matrix_unity, stiffness_matrix_unity),
-    kynema::BeamSection(1., mass_matrix_unity, stiffness_matrix_unity),
+    kynema_fmb::BeamSection(0., mass_matrix_unity, stiffness_matrix_unity),
+    kynema_fmb::BeamSection(1., mass_matrix_unity, stiffness_matrix_unity),
 };
 
 inline void CreateTwoBeamSolverWithSameBeamsAndStep() {
     // Create model for managing nodes and constraints
-    auto model = kynema::Model();
+    auto model = kynema_fmb::Model();
 
     // Gravity vector
     model.SetGravity(0., 0., 0.);
@@ -129,7 +129,7 @@ inline void CreateTwoBeamSolverWithSameBeamsAndStep() {
     const int max_iter(1);
     const double step_size(0.01);  // seconds
     const double rho_inf(0.9);
-    auto parameters = kynema::StepParameters(is_dynamic_solve, max_iter, step_size, rho_inf);
+    auto parameters = kynema_fmb::StepParameters(is_dynamic_solve, max_iter, step_size, rho_inf);
 
     // Create solver, elements, constraints, and state
     auto [state, elements, constraints] = model.CreateSystem();
@@ -162,7 +162,7 @@ inline void CreateTwoBeamSolverWithSameBeamsAndStep() {
     }
 
     // Check that Phi vector is the same for both beams
-    auto Phi = kynema::tests::kokkos_view_2D_to_vector(constraints.residual_terms);
+    auto Phi = kynema_fmb::tests::kokkos_view_2D_to_vector(constraints.residual_terms);
     for (auto i : std::views::iota(0U, m)) {
         EXPECT_NEAR(Phi[0][i], Phi[1][i], 1.e-10);
     }
@@ -173,7 +173,7 @@ void GeneratorTorqueWithAxisTilt(
     const std::vector<double>& expected_azimuth_vel,
     const std::vector<double>& expected_revolute_joint_output
 ) {
-    auto model = kynema::Model();
+    auto model = kynema_fmb::Model();
 
     // Gravity vector - assume no gravity
     model.SetGravity(0., 0., 0.);
@@ -225,7 +225,7 @@ void GeneratorTorqueWithAxisTilt(
     const int max_iter(5);
     const double step_size(0.01);  // seconds
     const double rho_inf(0.);
-    auto parameters = kynema::StepParameters(is_dynamic_solve, max_iter, step_size, rho_inf);
+    auto parameters = kynema_fmb::StepParameters(is_dynamic_solve, max_iter, step_size, rho_inf);
 
     // Create solver, elements, constraints, and state
     auto [state, elements, constraints] = model.CreateSystem();
@@ -240,12 +240,12 @@ void GeneratorTorqueWithAxisTilt(
     // Check that the azimuth node has rotated by the expected amount
     auto azimuth_q = Kokkos::View<double[7]>("azimuth_q");
     Kokkos::deep_copy(azimuth_q, Kokkos::subview(state.q, azimuth_node_id, Kokkos::ALL));
-    kynema::tests::expect_kokkos_view_1D_equal(azimuth_q, expected_azimuth_q);
+    kynema_fmb::tests::expect_kokkos_view_1D_equal(azimuth_q, expected_azimuth_q);
 
     // Check the azimuth node angular velocity is as expected
     auto azimuth_vel = Kokkos::View<double[6]>("azimuth_vel");
     Kokkos::deep_copy(azimuth_vel, Kokkos::subview(state.v, azimuth_node_id, Kokkos::ALL));
-    kynema::tests::expect_kokkos_view_1D_equal(azimuth_vel, expected_azimuth_vel);
+    kynema_fmb::tests::expect_kokkos_view_1D_equal(azimuth_vel, expected_azimuth_vel);
 
     // Get revolute joint output
     auto revolute_joint_out = Kokkos::View<double[3]>("revolute_joint_out");
@@ -253,12 +253,12 @@ void GeneratorTorqueWithAxisTilt(
         revolute_joint_out, Kokkos::subview(constraints.output, shaft_rj_id, Kokkos::ALL)
     );
     // Check output (azimuth, angular velocity, angular acceleration)
-    kynema::tests::expect_kokkos_view_1D_equal(revolute_joint_out, expected_revolute_joint_output);
+    kynema_fmb::tests::expect_kokkos_view_1D_equal(revolute_joint_out, expected_revolute_joint_output);
 }
 
 }  // namespace
 
-namespace kynema::tests {
+namespace kynema_fmb::tests {
 
 TEST(RotatingBeamTest, StepConvergence) {
     auto model = Model();
@@ -725,4 +725,4 @@ TEST(RotatingBeamTest, GeneratorTorque_Tilt90) {
     );
 }
 
-}  // namespace kynema::tests
+}  // namespace kynema_fmb::tests

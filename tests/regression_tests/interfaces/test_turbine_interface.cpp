@@ -9,7 +9,7 @@
 #include "interfaces/turbine/turbine_interface.hpp"
 #include "interfaces/turbine/turbine_interface_builder.hpp"
 
-namespace kynema::tests {
+namespace kynema_fmb::tests {
 
 // This test builds the IEA-15-240-RWT turbine structure from WindIO yaml file
 // and applies a tower load, generator torque, blade pitch, and yaw angle to test the
@@ -350,4 +350,4 @@ TEST(TurbineInterfaceTest, IEA15_Structure) {
     EXPECT_NEAR(tower_top_node.position[6], -0.006718362148918397, 1e-10);
 }
 
-}  // namespace kynema::tests
+}  // namespace kynema_fmb::tests

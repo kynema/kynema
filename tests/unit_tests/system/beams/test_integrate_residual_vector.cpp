@@ -9,7 +9,7 @@
 #include "system/beams/integrate_residual_vector.hpp"
 #include "test_calculate.hpp"
 
-namespace kynema::beams::tests {
+namespace kynema_fmb::beams::tests {
 
 TEST(IntegrateResidualVector, OneElementOneNodeOneQP_Fc) {
     constexpr auto number_of_nodes = size_t{1U};
@@ -574,4 +574,4 @@ TEST(IntegrateResidualVector, OneElementTwoNodesOneQP) {
     CompareWithExpected(residual_vector_terms_mirror, resid_exact);
 }
 
-}  // namespace kynema::beams::tests
+}  // namespace kynema_fmb::beams::tests

@@ -8,7 +8,7 @@
 #include "utilities/netcdf/netcdf_file.hpp"
 #include "utilities/netcdf/time_series_writer.hpp"
 
-namespace kynema::tests {
+namespace kynema_fmb::tests {
 
 class TimeSeriesWriterTest : public ::testing::Test {
 protected:
@@ -90,4 +90,4 @@ TEST_F(TimeSeriesWriterTest, WriteValueCreatesVariableAndWritesSingleValue) {
     EXPECT_EQ(read_data[0], 100.);
 }
 
-}  // namespace kynema::tests
+}  // namespace kynema_fmb::tests

@@ -9,7 +9,7 @@
 #include "system/masses/calculate_inertia_stiffness_matrix.hpp"
 #include "test_calculate.hpp"
 
-namespace kynema::tests {
+namespace kynema_fmb::tests {
 
 struct ExecuteCalculateInertiaStiffnessMatrix {
     double mass;
@@ -78,4 +78,4 @@ TEST(CalculateInertiaStiffnessMatrixMassesTests, OneNode) {
     CompareWithExpected(Kuu_mirror, Kuu_exact);
 }
 
-}  // namespace kynema::tests
+}  // namespace kynema_fmb::tests

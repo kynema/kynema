@@ -5,7 +5,7 @@
 
 namespace {
 inline auto SetUpSprings() {
-    auto model = kynema::Model();
+    auto model = kynema_fmb::Model();
 
     // Add two nodes for the spring element
     auto node1_id =
@@ -28,7 +28,7 @@ inline auto SetUpSprings() {
 
 }  // namespace
 
-namespace kynema::tests {
+namespace kynema_fmb::tests {
 
 TEST(SpringsTest, NodeStateIndices) {
     auto [springs, _] = SetUpSprings();
@@ -58,4 +58,4 @@ TEST(SpringsTest, SpringStiffness) {
     expect_kokkos_view_1D_equal(springs.k, {10.});  // Spring stiffness
 }
 
-}  // namespace kynema::tests
+}  // namespace kynema_fmb::tests

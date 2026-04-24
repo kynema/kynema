@@ -24,7 +24,7 @@ inline void CompareWithExpected(
 
 }  // namespace
 
-namespace kynema::tests {
+namespace kynema_fmb::tests {
 
 TEST(UpdateDynamicPrediction, OneNode) {
     constexpr auto h = .5;
@@ -75,4 +75,4 @@ TEST(UpdateDynamicPrediction, OneNode) {
     CompareWithExpected(vd_mirror, vd_exact);
 }
 
-}  // namespace kynema::tests
+}  // namespace kynema_fmb::tests

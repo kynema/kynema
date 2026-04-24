@@ -8,7 +8,7 @@
 #include "create_view.hpp"
 #include "state/update_global_position.hpp"
 
-namespace kynema::tests {
+namespace kynema_fmb::tests {
 TEST(UpdateGlobalPosition, OneNode) {
     const auto q = CreateView<double[1][7]>("q", std::array{1., 2., 3., 4., 5., 6., 7.});
     const auto x0 = CreateView<double[1][7]>("x0", std::array{8., 9., 10., 11., 12., 13., 14.});
@@ -29,4 +29,4 @@ TEST(UpdateGlobalPosition, OneNode) {
     }
 }
 
-}  // namespace kynema::tests
+}  // namespace kynema_fmb::tests

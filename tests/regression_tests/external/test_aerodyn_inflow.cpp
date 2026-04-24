@@ -5,7 +5,7 @@
 
 #include "Kynema_config.h"
 
-namespace kynema::tests {
+namespace kynema_fmb::tests {
 
 TEST(AerodynInflowTest, BladeInitialState_Constructor) {
     constexpr auto root = std::array{1., 2., 3., 1., 0., 0., 0.};
@@ -649,4 +649,4 @@ TEST(AerodynInflowTest, AeroDynInflowLibrary_FullLoopSimulation) {
     EXPECT_NO_THROW(aerodyn_inflow_library.Finalize());
 }
 
-}  // namespace kynema::tests
+}  // namespace kynema_fmb::tests

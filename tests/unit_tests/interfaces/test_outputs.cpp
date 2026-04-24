@@ -9,9 +9,9 @@
 #include "state/state.hpp"
 #include "utilities/netcdf/netcdf_file.hpp"
 
-namespace kynema::tests {
+namespace kynema_fmb::tests {
 
-using kynema::interfaces::Outputs;
+using kynema_fmb::interfaces::Outputs;
 
 TEST(OutputsTest, ConstructWithAndWithoutTimeSeriesFile) {
     const ::testing::TestInfo* const test_info =
@@ -98,4 +98,4 @@ TEST(OutputsTest, WriteTimeSeriesAndReopen) {
     std::filesystem::remove(time_series_file);
 }
 
-}  // namespace kynema::tests
+}  // namespace kynema_fmb::tests

@@ -10,7 +10,7 @@
 #include <Kokkos_Core.hpp>
 #include <gtest/gtest.h>
 
-namespace kynema::tests {
+namespace kynema_fmb::tests {
 
 std::filesystem::path FindProjectRoot() {
     std::filesystem::path currentPath = std::filesystem::current_path();
@@ -138,4 +138,4 @@ void expect_kokkos_view_3D_equal(
     }
 }
 
-}  // namespace kynema::tests
+}  // namespace kynema_fmb::tests

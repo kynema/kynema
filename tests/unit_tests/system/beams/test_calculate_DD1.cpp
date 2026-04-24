@@ -12,20 +12,20 @@
 namespace {
 
 void TestCalculateD_D1() {
-    const auto Duu = kynema::beams::tests::CreateView<double[6][6]>(
+    const auto Duu = kynema_fmb::beams::tests::CreateView<double[6][6]>(
         "Duu", std::array{1.,  2.,  3.,  4.,  5.,  6.,  7.,  8.,  9.,  10., 11., 12.,
                           13., 14., 15., 16., 17., 18., 19., 20., 21., 22., 23., 24.,
                           25., 26., 27., 28., 29., 30., 31., 32., 33., 34., 35., 36.}
     );
     const auto omega =
-        kynema::beams::tests::CreateView<double[3]>("omega", std::array{47., 48., 49.});
+        kynema_fmb::beams::tests::CreateView<double[3]>("omega", std::array{47., 48., 49.});
 
     const auto D_D1 = Kokkos::View<double[6][6]>("D_D1");
 
     Kokkos::parallel_for(
         "CalculateD_D1", 1,
         KOKKOS_LAMBDA(size_t) {
-            kynema::beams::CalculateD_D1<Kokkos::DefaultExecutionSpace>::invoke(omega, Duu, D_D1);
+            kynema_fmb::beams::CalculateD_D1<Kokkos::DefaultExecutionSpace>::invoke(omega, Duu, D_D1);
         }
     );
 
@@ -41,15 +41,15 @@ void TestCalculateD_D1() {
         Kokkos::View<double[6][6], Kokkos::HostSpace>::const_type(D_D1_exact_data.data());
 
     const auto D_D1_mirror = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), D_D1);
-    kynema::beams::tests::CompareWithExpected(D_D1_mirror, D_D1_exact);
+    kynema_fmb::beams::tests::CompareWithExpected(D_D1_mirror, D_D1_exact);
 }
 
 }  // namespace
 
-namespace kynema::tests {
+namespace kynema_fmb::tests {
 
 TEST(CalculateD_D1Tests, OneNode) {
     TestCalculateD_D1();
 }
 
-}  // namespace kynema::tests
+}  // namespace kynema_fmb::tests

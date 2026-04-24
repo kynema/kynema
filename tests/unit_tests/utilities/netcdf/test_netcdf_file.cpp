@@ -9,7 +9,7 @@
 
 #include "utilities/netcdf/netcdf_file.hpp"
 
-namespace kynema::tests {
+namespace kynema_fmb::tests {
 
 class NetCdfFileTest : public ::testing::Test {
 protected:
@@ -503,4 +503,4 @@ TEST_F(NetCdfFileTest, OpenAfterCloseAllowsFurtherWritesAndFlushes) {
     EXPECT_EQ(read_data, (std::vector<double>{1.1, 2.2, 3.3, 4.4, 5.5}));
 }
 
-}  // namespace kynema::tests
+}  // namespace kynema_fmb::tests

@@ -9,7 +9,7 @@
 #include "interfaces/turbine/turbine_interface.hpp"
 #include "interfaces/turbine/turbine_interface_builder.hpp"
 
-namespace kynema::tests {
+namespace kynema_fmb::tests {
 
 TEST(TurbineInterfaceTest, IEA15_Controller) {
     const auto angular_speed = 0.79063415025;
@@ -287,4 +287,4 @@ TEST(TurbineInterfaceTest, IEA15_Controller) {
     }
 }
 
-}  // namespace kynema::tests
+}  // namespace kynema_fmb::tests

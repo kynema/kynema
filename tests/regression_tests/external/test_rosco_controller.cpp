@@ -5,7 +5,7 @@
 
 #include "Kynema_config.h"
 
-namespace kynema::tests {
+namespace kynema_fmb::tests {
 
 TEST(ROSCO_Controller, initialize) {
     const auto shared_lib_path = std::string{static_cast<const char*>(Kynema_ROSCO_LIBRARY)};
@@ -23,4 +23,4 @@ TEST(ROSCO_Controller, initialize) {
     controller.CallController();
 }
 
-}  // namespace kynema::tests
+}  // namespace kynema_fmb::tests
