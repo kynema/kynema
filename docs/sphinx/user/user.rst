@@ -5,7 +5,7 @@ This manual will describe how to build and link against Kynema-FMB.
 It also provides several examples for how to use Kynema-FMB to model and solve structural dynamics problems.
 To find working versions of each of these problems, see the `tests/documentation_tests/` folder.
 There, you will also find simple CMake scripts demonstrating how to link against Kynema-FMB, as described in this manual.
-These examples are meant to be linked against an Kynema-FMB installation and can serve as the basis for specifiying your own problem using our interfaces.
+These examples are meant to be linked against a Kynema-FMB installation and can serve as the basis for specifying your own problem using our interfaces.
 For more detailed build instructions, see the README files in their respective folders.
 
 .. toctree::
