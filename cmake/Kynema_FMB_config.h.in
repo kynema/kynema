@@ -1,11 +1,11 @@
 #pragma once
 
-#cmakedefine Kynema_ENABLE_CUSOLVERSP
-#cmakedefine Kynema_ENABLE_CUDSS
-#cmakedefine Kynema_ENABLE_MKL
-#cmakedefine Kynema_ENABLE_KLU
-#cmakedefine Kynema_ENABLE_UMFPACK
-#cmakedefine Kynema_ENABLE_SUPERLU
-#cmakedefine Kynema_ENABLE_SUPERLU_MT
-static constexpr char Kynema_ROSCO_LIBRARY[] = "${Kynema_ROSCO_LIBRARY}";
-static constexpr char Kynema_ADI_LIBRARY[] = "${Kynema_ADI_LIBRARY}";
+#cmakedefine KYNEMA_FMB_ENABLE_CUSOLVERSP
+#cmakedefine KYNEMA_FMB_ENABLE_CUDSS
+#cmakedefine KYNEMA_FMB_ENABLE_MKL
+#cmakedefine KYNEMA_FMB_ENABLE_KLU
+#cmakedefine KYNEMA_FMB_ENABLE_UMFPACK
+#cmakedefine KYNEMA_FMB_ENABLE_SUPERLU
+#cmakedefine KYNEMA_FMB_ENABLE_SUPERLU_MT
+static constexpr char KYNEMA_FMB_ROSCO_LIBRARY[] = "${KYNEMA_FMB_ROSCO_LIBRARY}";
+static constexpr char KYNEMA_FMB_ADI_LIBRARY[] = "${KYNEMA_FMB_ADI_LIBRARY}";
