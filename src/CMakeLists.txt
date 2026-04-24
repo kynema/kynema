@@ -17,8 +17,8 @@ set_target_properties(kynema_fmb_library PROPERTIES
 # Link internal libraries and dependencies
 #----------------------------------------
 target_link_libraries(kynema_fmb_library PRIVATE
-  kynema_options
-  kynema_warnings
+  kynema_fmb_options
+  kynema_fmb_warnings
 )
 
 #----------------------------------------
