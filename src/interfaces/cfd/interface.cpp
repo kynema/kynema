@@ -56,9 +56,9 @@ kynema_fmb::interfaces::cfd::FloatingPlatform CreateFloatingPlatform(
     // If floating platform is not enabled, return
     if (!input.enable) {
         return {
-            .active = false,                                // active
+            .active = false,                                    // active
             .node = kynema_fmb::interfaces::cfd::NodeData(0U),  // platform node
-            .mass_element_id = 0U,                          // mass element ID
+            .mass_element_id = 0U,                              // mass element ID
             .mooring_lines = {},
         };
     }
@@ -346,8 +346,9 @@ bool Interface::Step() {
     SetTurbineLoads(this->turbine, this->host_state, this->state);
 
     // Solve for state at end of step
-    auto converged =
-        kynema_fmb::Step(this->parameters, this->solver, this->elements, this->state, this->constraints);
+    auto converged = kynema_fmb::Step(
+        this->parameters, this->solver, this->elements, this->state, this->constraints
+    );
     if (!converged) {
         return false;
     }

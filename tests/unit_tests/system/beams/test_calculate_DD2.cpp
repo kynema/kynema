@@ -25,8 +25,7 @@ void TestCalculateD_D2() {
     const auto D_D2 = Kokkos::View<double[6][6]>("D_D2");
 
     Kokkos::parallel_for(
-        "CalculateD_D2", 1,
-        KOKKOS_LAMBDA(size_t) {
+        "CalculateD_D2", 1, KOKKOS_LAMBDA(size_t) {
             kynema_fmb::beams::CalculateD_D2<Kokkos::DefaultExecutionSpace>::invoke(
                 xr_prime, u_prime, Duu, D_D2
             );

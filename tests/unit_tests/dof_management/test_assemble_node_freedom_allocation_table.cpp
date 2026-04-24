@@ -60,9 +60,9 @@ TEST(TestAssembleNodeFreedomAllocationTable, OneSpringElementWithTwoNodes_NoBeam
     auto masses = Masses<DeviceType>(0U);
     auto springs = Springs<DeviceType>(1U);  // 1 spring element with 2 nodes
     constexpr auto host_node_state_indices_data = std::array{0UL, 1UL};
-    const auto host_node_state_indices =
-        Kokkos::View<size_t[1][2], Kokkos::HostSpace>::const_type(host_node_state_indices_data.data()
-        );
+    const auto host_node_state_indices = Kokkos::View<size_t[1][2], Kokkos::HostSpace>::const_type(
+        host_node_state_indices_data.data()
+    );
     const auto mirror_node_state_indices =
         Kokkos::create_mirror_view(Kokkos::WithoutInitializing, springs.node_state_indices);
     Kokkos::deep_copy(mirror_node_state_indices, host_node_state_indices);
@@ -118,9 +118,9 @@ TEST(TestAssembleNodeFreedomAllocationTable, OneBeamElementWithTwoNodes_NoMassNo
 
     auto beams = Beams<DeviceType>(1U, 2U, 1U);  // 1 beam element with 2 nodes per element
     constexpr auto host_node_state_indices_data = std::array{0UL, 1UL};
-    const auto host_node_state_indices =
-        Kokkos::View<size_t[1][2], Kokkos::HostSpace>::const_type(host_node_state_indices_data.data()
-        );
+    const auto host_node_state_indices = Kokkos::View<size_t[1][2], Kokkos::HostSpace>::const_type(
+        host_node_state_indices_data.data()
+    );
     const auto mirror_node_state_indices =
         Kokkos::create_mirror_view(Kokkos::WithoutInitializing, beams.node_state_indices);
     Kokkos::deep_copy(mirror_node_state_indices, host_node_state_indices);
@@ -150,9 +150,9 @@ TEST(TestAssembleNodeFreedomAllocationTable, TwoBeamElementsWithOneNode_NoMassNo
 
     auto beams = Beams<DeviceType>(2U, 1U, 1U);  // 2 beam elements with 1 node per element
     constexpr auto host_node_state_indices_data = std::array{0UL, 1UL};
-    const auto host_node_state_indices =
-        Kokkos::View<size_t[2][1], Kokkos::HostSpace>::const_type(host_node_state_indices_data.data()
-        );
+    const auto host_node_state_indices = Kokkos::View<size_t[2][1], Kokkos::HostSpace>::const_type(
+        host_node_state_indices_data.data()
+    );
     const auto mirror_node_state_indices =
         Kokkos::create_mirror_view(Kokkos::WithoutInitializing, beams.node_state_indices);
     Kokkos::deep_copy(mirror_node_state_indices, host_node_state_indices);

@@ -76,8 +76,7 @@ int main() {
         for (auto blade_number = 0; blade_number < num_blades; ++blade_number) {
             auto beam_node_ids = std::vector<size_t>(node_s.size());
             std::transform(
-                std::cbegin(node_s), std::cend(node_s), std::begin(beam_node_ids),
-                [&](auto s) {
+                std::cbegin(node_s), std::cend(node_s), std::begin(beam_node_ids), [&](auto s) {
                     return model.AddNode()
                         .SetElemLocation(s)
                         .SetPosition(10. * s, 0., 0., 1., 0., 0., 0.)

@@ -30,8 +30,7 @@ void TestCalculateQuu() {
     const auto Quu = Kokkos::View<double[6][6]>("Quu");
 
     Kokkos::parallel_for(
-        "CalculateQuu", 1,
-        KOKKOS_LAMBDA(size_t) {
+        "CalculateQuu", 1, KOKKOS_LAMBDA(size_t) {
             kynema_fmb::beams::CalculateQuu<Kokkos::DefaultExecutionSpace>::invoke(
                 Cuu, x0pupSS, N_tilde, Quu
             );

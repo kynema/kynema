@@ -30,8 +30,7 @@ void TestCalculateOuu() {
     const auto Ouu = Kokkos::View<double[6][6]>("Ouu");
 
     Kokkos::parallel_for(
-        "CalculateOuu", 1,
-        KOKKOS_LAMBDA(size_t) {
+        "CalculateOuu", 1, KOKKOS_LAMBDA(size_t) {
             kynema_fmb::beams::CalculateOuu<Kokkos::DefaultExecutionSpace>::invoke(
                 Cuu, x0pupSS, M_tilde, N_tilde, Ouu
             );

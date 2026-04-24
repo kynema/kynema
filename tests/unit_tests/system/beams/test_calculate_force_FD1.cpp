@@ -25,8 +25,7 @@ void TestCalculateForceFD1() {
     const auto FD1 = Kokkos::View<double[6]>("FD1");
 
     Kokkos::parallel_for(
-        "CalculateForceFD1", 1,
-        KOKKOS_LAMBDA(size_t) {
+        "CalculateForceFD1", 1, KOKKOS_LAMBDA(size_t) {
             kynema_fmb::beams::CalculateForceFD1<Kokkos::DefaultExecutionSpace>::invoke(
                 Duu, strain_dot, FD1
             );

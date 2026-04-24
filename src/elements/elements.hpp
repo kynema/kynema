@@ -58,8 +58,7 @@ struct Elements {
         auto masses_num_nodes_per_element = masses.num_nodes_per_element;
         auto masses_range = RangePolicy(0, masses.num_elems);
         Kokkos::parallel_for(
-            masses_range,
-            KOKKOS_LAMBDA(size_t element) {
+            masses_range, KOKKOS_LAMBDA(size_t element) {
                 result(element + beams_offset) = masses_num_nodes_per_element(element);
             }
         );
@@ -69,8 +68,7 @@ struct Elements {
         auto springs_num_nodes_per_element = springs.num_nodes_per_element;
         auto springs_range = RangePolicy(0, springs.num_elems);
         Kokkos::parallel_for(
-            springs_range,
-            KOKKOS_LAMBDA(size_t element) {
+            springs_range, KOKKOS_LAMBDA(size_t element) {
                 result(element + beams_and_masses_offset) = springs_num_nodes_per_element(element);
             }
         );
@@ -97,8 +95,7 @@ struct Elements {
         auto beams_node_state_indices = beams.node_state_indices;
         auto beams_range = RangePolicy(0, beams.num_elems);
         Kokkos::parallel_for(
-            beams_range,
-            KOKKOS_LAMBDA(size_t element) {
+            beams_range, KOKKOS_LAMBDA(size_t element) {
                 const auto num_nodes = beams_num_nodes_per_element(element);
                 for (auto node = 0U; node < num_nodes; ++node) {
                     result(element, node) = beams_node_state_indices(element, node);
@@ -111,8 +108,7 @@ struct Elements {
         auto masses_state_indices = masses.state_indices;
         auto masses_range = RangePolicy(0, masses.num_elems);
         Kokkos::parallel_for(
-            masses_range,
-            KOKKOS_LAMBDA(size_t element) {
+            masses_range, KOKKOS_LAMBDA(size_t element) {
                 // Masses always have one node per element
                 result(element + beams_offset, 0) = masses_state_indices(element);
             }
@@ -123,8 +119,7 @@ struct Elements {
         auto springs_node_state_indices = springs.node_state_indices;
         auto springs_range = RangePolicy(0, springs.num_elems);
         Kokkos::parallel_for(
-            springs_range,
-            KOKKOS_LAMBDA(size_t element) {
+            springs_range, KOKKOS_LAMBDA(size_t element) {
                 // Springs always have two nodes per element
                 result(element + beams_and_masses_offset, 0) =
                     springs_node_state_indices(element, 0);

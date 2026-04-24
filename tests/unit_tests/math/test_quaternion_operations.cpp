@@ -40,7 +40,8 @@ Kokkos::View<double[3]> TestRotateVectorByQuaternion(
 Kokkos::View<double[3][4]> TestQuaternionDerivative(const Kokkos::View<double[4]>::const_type& q) {
     auto m = Kokkos::View<double[3][4]>("m");
     Kokkos::parallel_for(
-        "QuaternionDerivative", 1, KOKKOS_LAMBDA(int) { kynema_fmb::math::QuaternionDerivative(q, m); }
+        "QuaternionDerivative", 1,
+        KOKKOS_LAMBDA(int) { kynema_fmb::math::QuaternionDerivative(q, m); }
     );
     return m;
 }
@@ -58,7 +59,8 @@ Kokkos::View<double[4]> TestQuaternionCompose(
 ) {
     auto qn = Kokkos::View<double[4]>("qn");
     Kokkos::parallel_for(
-        "QuaternionCompose", 1, KOKKOS_LAMBDA(int) { kynema_fmb::math::QuaternionCompose(q1, q2, qn); }
+        "QuaternionCompose", 1,
+        KOKKOS_LAMBDA(int) { kynema_fmb::math::QuaternionCompose(q1, q2, qn); }
     );
     return qn;
 }
@@ -382,9 +384,10 @@ TEST(QuaternionTest, CheckTangentTwistToQuaternion) {
              {
                  .twist = std::numbers::pi / 4.,
                  .tan = {0., 0., 1.},
-                 .q_exp =
-                     {0.65328148243818829, 0.27059805007309845, -0.65328148243818818,
-                      0.27059805007309851},
+                 .q_exp = {
+                     0.65328148243818829, 0.27059805007309845, -0.65328148243818818,
+                     0.27059805007309851
+                 },
              },
          }) {
         const auto q_act = math::TangentTwistToQuaternion(td.tan, td.twist);

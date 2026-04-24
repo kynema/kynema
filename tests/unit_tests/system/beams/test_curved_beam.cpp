@@ -56,53 +56,61 @@
 
 namespace {
 void TestCalculateForceFc() {
-    const auto Cuu =
-        kynema_fmb::beams::tests::CreateView<double[6][6]>("Cuu", kynema_fmb::beams::tests::kCurvedBeamCuu);
+    const auto Cuu = kynema_fmb::beams::tests::CreateView<double[6][6]>(
+        "Cuu", kynema_fmb::beams::tests::kCurvedBeamCuu
+    );
     const auto strain = kynema_fmb::beams::tests::CreateView<double[6]>(
         "strain", kynema_fmb::beams::tests::kCurvedBeamStrain
     );
 
     const auto Fc = Kokkos::View<double[6]>("Fc");
     Kokkos::parallel_for(
-        "CalculateForceFc", 1,
-        KOKKOS_LAMBDA(size_t) {
-            kynema_fmb::beams::CalculateForceFC<Kokkos::DefaultExecutionSpace>::invoke(Cuu, strain, Fc);
+        "CalculateForceFc", 1, KOKKOS_LAMBDA(size_t) {
+            kynema_fmb::beams::CalculateForceFC<Kokkos::DefaultExecutionSpace>::invoke(
+                Cuu, strain, Fc
+            );
         }
     );
 
     const auto Fc_mirror = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), Fc);
-    kynema_fmb::beams::tests::CompareWithExpected(Fc_mirror, kynema_fmb::beams::tests::kExpectedFc, 1e-6);
+    kynema_fmb::beams::tests::CompareWithExpected(
+        Fc_mirror, kynema_fmb::beams::tests::kExpectedFc, 1e-6
+    );
 }
 
 void TestCalculateForceFd() {
-    const auto x0pupSS =
-        kynema_fmb::beams::tests::CreateView<double[3][3]>("x0pupSS", kynema_fmb::beams::tests::kX0pupSS);
+    const auto x0pupSS = kynema_fmb::beams::tests::CreateView<double[3][3]>(
+        "x0pupSS", kynema_fmb::beams::tests::kX0pupSS
+    );
     const auto Fc =
         kynema_fmb::beams::tests::CreateView<double[6]>("Fc", kynema_fmb::beams::tests::kExpectedFc);
 
     const auto Fd = Kokkos::View<double[6]>("Fd");
     Kokkos::parallel_for(
-        "CalculateForceFd", 1,
-        KOKKOS_LAMBDA(size_t) {
-            kynema_fmb::beams::CalculateForceFD<Kokkos::DefaultExecutionSpace>::invoke(x0pupSS, Fc, Fd);
+        "CalculateForceFd", 1, KOKKOS_LAMBDA(size_t) {
+            kynema_fmb::beams::CalculateForceFD<Kokkos::DefaultExecutionSpace>::invoke(
+                x0pupSS, Fc, Fd
+            );
         }
     );
 
     const auto Fd_mirror = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), Fd);
-    kynema_fmb::beams::tests::CompareWithExpected(Fd_mirror, kynema_fmb::beams::tests::kExpectedFd, 1e-6);
+    kynema_fmb::beams::tests::CompareWithExpected(
+        Fd_mirror, kynema_fmb::beams::tests::kExpectedFd, 1e-6
+    );
 }
 
 void TestRotateSectionMatrixForCurvedBeam() {
-    const auto xr =
-        kynema_fmb::beams::tests::CreateView<double[4]>("xr", kynema_fmb::beams::tests::kCurvedBeamXr);
+    const auto xr = kynema_fmb::beams::tests::CreateView<double[4]>(
+        "xr", kynema_fmb::beams::tests::kCurvedBeamXr
+    );
     const auto Cstar = kynema_fmb::beams::tests::CreateView<double[6][6]>(
         "Cstar", kynema_fmb::beams::tests::kCurvedBeamCstar
     );
 
     const auto Cuu = Kokkos::View<double[6][6]>("Cuu");
     Kokkos::parallel_for(
-        "RotateSectionMatrix", 1,
-        KOKKOS_LAMBDA(size_t) {
+        "RotateSectionMatrix", 1, KOKKOS_LAMBDA(size_t) {
             kynema_fmb::masses::RotateSectionMatrix<Kokkos::DefaultExecutionSpace>::invoke(
                 xr, Cstar, Cuu
             );
@@ -110,14 +118,18 @@ void TestRotateSectionMatrixForCurvedBeam() {
     );
 
     const auto Cuu_mirror = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), Cuu);
-    kynema_fmb::beams::tests::CompareWithExpected(Cuu_mirror, kynema_fmb::beams::tests::kExpectedCuu, 1e-6);
+    kynema_fmb::beams::tests::CompareWithExpected(
+        Cuu_mirror, kynema_fmb::beams::tests::kExpectedCuu, 1e-6
+    );
 }
 
 void TestCalculateOuu() {
-    const auto Cuu =
-        kynema_fmb::beams::tests::CreateView<double[6][6]>("Cuu", kynema_fmb::beams::tests::kCurvedBeamCuu);
-    const auto x0pupSS =
-        kynema_fmb::beams::tests::CreateView<double[3][3]>("x0pupSS", kynema_fmb::beams::tests::kX0pupSS);
+    const auto Cuu = kynema_fmb::beams::tests::CreateView<double[6][6]>(
+        "Cuu", kynema_fmb::beams::tests::kCurvedBeamCuu
+    );
+    const auto x0pupSS = kynema_fmb::beams::tests::CreateView<double[3][3]>(
+        "x0pupSS", kynema_fmb::beams::tests::kX0pupSS
+    );
     const auto M_tilde = kynema_fmb::beams::tests::CreateView<double[3][3]>(
         "M_tilde", kynema_fmb::beams::tests::kCurvedBeamM_tilde
     );
@@ -127,8 +139,7 @@ void TestCalculateOuu() {
 
     const auto Ouu = Kokkos::View<double[6][6]>("Ouu");
     Kokkos::parallel_for(
-        "CalculateOuu", 1,
-        KOKKOS_LAMBDA(size_t) {
+        "CalculateOuu", 1, KOKKOS_LAMBDA(size_t) {
             kynema_fmb::beams::CalculateOuu<Kokkos::DefaultExecutionSpace>::invoke(
                 Cuu, x0pupSS, M_tilde, N_tilde, Ouu
             );
@@ -136,22 +147,25 @@ void TestCalculateOuu() {
     );
 
     const auto Ouu_mirror = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), Ouu);
-    kynema_fmb::beams::tests::CompareWithExpected(Ouu_mirror, kynema_fmb::beams::tests::kExpectedOuu, 1e-6);
+    kynema_fmb::beams::tests::CompareWithExpected(
+        Ouu_mirror, kynema_fmb::beams::tests::kExpectedOuu, 1e-6
+    );
 }
 
 void TestCalculatePuuForCurvedBeam() {
-    const auto Cuu =
-        kynema_fmb::beams::tests::CreateView<double[6][6]>("Cuu", kynema_fmb::beams::tests::kCurvedBeamCuu);
-    const auto x0pupSS =
-        kynema_fmb::beams::tests::CreateView<double[3][3]>("x0pupSS", kynema_fmb::beams::tests::kX0pupSS);
+    const auto Cuu = kynema_fmb::beams::tests::CreateView<double[6][6]>(
+        "Cuu", kynema_fmb::beams::tests::kCurvedBeamCuu
+    );
+    const auto x0pupSS = kynema_fmb::beams::tests::CreateView<double[3][3]>(
+        "x0pupSS", kynema_fmb::beams::tests::kX0pupSS
+    );
     const auto N_tilde = kynema_fmb::beams::tests::CreateView<double[3][3]>(
         "N_tilde", kynema_fmb::beams::tests::kCurvedBeamN_tilde
     );
 
     const auto Puu = Kokkos::View<double[6][6]>("Puu");
     Kokkos::parallel_for(
-        "CalculatePuu", 1,
-        KOKKOS_LAMBDA(size_t) {
+        "CalculatePuu", 1, KOKKOS_LAMBDA(size_t) {
             kynema_fmb::beams::CalculatePuu<Kokkos::DefaultExecutionSpace>::invoke(
                 Cuu, x0pupSS, N_tilde, Puu
             );
@@ -159,22 +173,25 @@ void TestCalculatePuuForCurvedBeam() {
     );
 
     const auto Puu_mirror = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), Puu);
-    kynema_fmb::beams::tests::CompareWithExpected(Puu_mirror, kynema_fmb::beams::tests::kExpectedPuu, 1e-6);
+    kynema_fmb::beams::tests::CompareWithExpected(
+        Puu_mirror, kynema_fmb::beams::tests::kExpectedPuu, 1e-6
+    );
 }
 
 void TestCalculateQuuForCurvedBeam() {
-    const auto Cuu =
-        kynema_fmb::beams::tests::CreateView<double[6][6]>("Cuu", kynema_fmb::beams::tests::kCurvedBeamCuu);
-    const auto x0pupSS =
-        kynema_fmb::beams::tests::CreateView<double[3][3]>("x0pupSS", kynema_fmb::beams::tests::kX0pupSS);
+    const auto Cuu = kynema_fmb::beams::tests::CreateView<double[6][6]>(
+        "Cuu", kynema_fmb::beams::tests::kCurvedBeamCuu
+    );
+    const auto x0pupSS = kynema_fmb::beams::tests::CreateView<double[3][3]>(
+        "x0pupSS", kynema_fmb::beams::tests::kX0pupSS
+    );
     const auto N_tilde = kynema_fmb::beams::tests::CreateView<double[3][3]>(
         "N_tilde", kynema_fmb::beams::tests::kCurvedBeamN_tilde
     );
 
     const auto Quu = Kokkos::View<double[6][6]>("Quu");
     Kokkos::parallel_for(
-        "CalculateQuu", 1,
-        KOKKOS_LAMBDA(size_t) {
+        "CalculateQuu", 1, KOKKOS_LAMBDA(size_t) {
             kynema_fmb::beams::CalculateQuu<Kokkos::DefaultExecutionSpace>::invoke(
                 Cuu, x0pupSS, N_tilde, Quu
             );
@@ -182,7 +199,9 @@ void TestCalculateQuuForCurvedBeam() {
     );
 
     const auto Quu_mirror = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), Quu);
-    kynema_fmb::beams::tests::CompareWithExpected(Quu_mirror, kynema_fmb::beams::tests::kExpectedQuu, 1e-6);
+    kynema_fmb::beams::tests::CompareWithExpected(
+        Quu_mirror, kynema_fmb::beams::tests::kExpectedQuu, 1e-6
+    );
 }
 
 }  // namespace

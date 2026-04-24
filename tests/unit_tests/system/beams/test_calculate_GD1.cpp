@@ -17,7 +17,8 @@ void TestCalculateG_D1() {
                           13., 14., 15., 16., 17., 18., 19., 20., 21., 22., 23., 24.,
                           25., 26., 27., 28., 29., 30., 31., 32., 33., 34., 35., 36.}
     );
-    const auto r = kynema_fmb::beams::tests::CreateView<double[4]>("r", std::array{40., 41., 42., 43.});
+    const auto r =
+        kynema_fmb::beams::tests::CreateView<double[4]>("r", std::array{40., 41., 42., 43.});
     const auto xr_prime =
         kynema_fmb::beams::tests::CreateView<double[3]>("xr_prime", std::array{62., 63., 64.});
     const auto kappa =
@@ -25,8 +26,7 @@ void TestCalculateG_D1() {
     const auto G_D1 = Kokkos::View<double[6][6]>("G_D1");
 
     Kokkos::parallel_for(
-        "CalculateG_D1", 1,
-        KOKKOS_LAMBDA(size_t) {
+        "CalculateG_D1", 1, KOKKOS_LAMBDA(size_t) {
             kynema_fmb::beams::CalculateG_D1<Kokkos::DefaultExecutionSpace>::invoke(
                 r, xr_prime, kappa, Duu, G_D1
             );

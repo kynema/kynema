@@ -363,7 +363,8 @@ constexpr auto kExpectedCuu_data = std::array{
     -487.0794445915,
     141470.  // row 6
 };
-const Kokkos::View<double[6][6], Kokkos::HostSpace>::const_type kExpectedCuu(kExpectedCuu_data.data()
+const Kokkos::View<double[6][6], Kokkos::HostSpace>::const_type kExpectedCuu(
+    kExpectedCuu_data.data()
 );
 
 constexpr std::array<double, 9> kCurvedBeamM_tilde_data = {
@@ -422,7 +423,8 @@ constexpr std::array<double, 36> kExpectedOuu_data = {
     -5433.695299839,
     0.
 };
-const Kokkos::View<double[6][6], Kokkos::HostSpace>::const_type kExpectedOuu(kExpectedOuu_data.data()
+const Kokkos::View<double[6][6], Kokkos::HostSpace>::const_type kExpectedOuu(
+    kExpectedOuu_data.data()
 );
 
 constexpr std::array<double, 36> kExpectedPuu_data = {
@@ -463,7 +465,8 @@ constexpr std::array<double, 36> kExpectedPuu_data = {
     0.,
     0.
 };
-const Kokkos::View<double[6][6], Kokkos::HostSpace>::const_type kExpectedPuu(kExpectedPuu_data.data()
+const Kokkos::View<double[6][6], Kokkos::HostSpace>::const_type kExpectedPuu(
+    kExpectedPuu_data.data()
 );
 
 constexpr std::array<double, 36> kExpectedQuu_data = {
@@ -504,7 +507,8 @@ constexpr std::array<double, 36> kExpectedQuu_data = {
     3720.671154735,
     70314.11063997
 };
-const Kokkos::View<double[6][6], Kokkos::HostSpace>::const_type kExpectedQuu(kExpectedQuu_data.data()
+const Kokkos::View<double[6][6], Kokkos::HostSpace>::const_type kExpectedQuu(
+    kExpectedQuu_data.data()
 );
 
 //--------------------------------------------------------------------------

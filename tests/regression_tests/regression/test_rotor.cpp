@@ -52,8 +52,7 @@ kynema_fmb::Model CreateIEA15Blades(const std::array<double, 3>& omega) {
         auto beam_node_ids = std::vector<size_t>(num_nodes);
 
         std::ranges::transform(
-            std::views::iota(0U, num_nodes), std::begin(beam_node_ids),
-            [&](const size_t j) {
+            std::views::iota(0U, num_nodes), std::begin(beam_node_ids), [&](const size_t j) {
                 return model.AddNode()
                     .SetElemLocation(node_loc[j])
                     .SetPosition({kynema_fmb::tests::node_coords[j]})
@@ -110,8 +109,7 @@ TEST(RotorTest, IEA15Rotor) {
 
     auto prescribed_bc_ids = std::array<size_t, num_blades>{};
     std::ranges::transform(
-        model.GetBeamElements(), std::begin(prescribed_bc_ids),
-        [&model](const auto& beam_elem) {
+        model.GetBeamElements(), std::begin(prescribed_bc_ids), [&model](const auto& beam_elem) {
             return model.AddPrescribedBC(beam_elem.node_ids[0]);
         }
     );
@@ -346,8 +344,7 @@ TEST(RotorTest, IEA15RotorHost) {
     //    auto prescribed_bc_ids = std::array<size_t, num_blades>{};
     auto prescribed_bc_ids = std::vector<size_t>(num_blades);
     std::ranges::transform(
-        model.GetBeamElements(), std::begin(prescribed_bc_ids),
-        [&model](const auto& beam_elem) {
+        model.GetBeamElements(), std::begin(prescribed_bc_ids), [&model](const auto& beam_elem) {
             return model.AddPrescribedBC(beam_elem.node_ids[0]);
         }
     );

@@ -10,9 +10,11 @@ Outputs::Outputs(
     const std::string& output_file, size_t num_nodes, const std::string& time_series_file,
     const std::vector<std::string>& enabled_state_prefixes, size_t buffer_size
 )
-    : output_writer_(std::make_unique<util::NodeStateWriter>(
-          output_file, true, num_nodes, enabled_state_prefixes, buffer_size
-      )),
+    : output_writer_(
+          std::make_unique<util::NodeStateWriter>(
+              output_file, true, num_nodes, enabled_state_prefixes, buffer_size
+          )
+      ),
       num_nodes_(num_nodes),
       time_series_writer_(
           time_series_file.empty() ? nullptr
@@ -35,9 +37,11 @@ Outputs::Outputs(
     const std::vector<std::string>& enabled_state_prefixes, size_t node_state_buffer_size,
     size_t time_series_buffer_size
 )
-    : output_writer_(std::make_unique<util::NodeStateWriter>(
-          output_file, true, num_nodes, enabled_state_prefixes, node_state_buffer_size
-      )),
+    : output_writer_(
+          std::make_unique<util::NodeStateWriter>(
+              output_file, true, num_nodes, enabled_state_prefixes, node_state_buffer_size
+          )
+      ),
       num_nodes_(num_nodes),
       time_series_writer_(
           time_series_file.empty() || time_series_channel_names.empty()

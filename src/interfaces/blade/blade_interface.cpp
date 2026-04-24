@@ -66,8 +66,9 @@ bool BladeInterface::Step() {
     Kokkos::deep_copy(this->state.v, this->host_state.v);
 
     // Solve for state at end of step
-    auto converged =
-        kynema_fmb::Step(this->parameters, this->solver, this->elements, this->state, this->constraints);
+    auto converged = kynema_fmb::Step(
+        this->parameters, this->solver, this->elements, this->state, this->constraints
+    );
     if (!converged) {
         return false;
     }

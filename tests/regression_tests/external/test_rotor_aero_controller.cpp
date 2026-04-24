@@ -65,7 +65,8 @@ template <
     typename T1, typename T2, typename T3, typename T4, typename T5, typename T6, typename T7,
     typename T8>
 void SetRotorMotion(
-    kynema_fmb::util::TurbineData& turbine, const std::vector<std::vector<size_t>>& beam_elem_node_ids,
+    kynema_fmb::util::TurbineData& turbine,
+    const std::vector<std::vector<size_t>>& beam_elem_node_ids,
     const std::vector<size_t>& root_node_ids, const size_t& hub_node_id, const size_t& n_qps,
     const T1& host_state_x, const T2& host_state_v, const T3& host_state_vd, const T4& host_qp_x,
     const T5& host_qp_u_dot, const T6& host_qp_omega, const T7& host_qp_u_ddot,
@@ -266,8 +267,7 @@ TEST(Milestone, IEA15RotorAeroController) {
     );
     std::vector<Node> tip_node_ids;
     std::ranges::transform(
-        std::views::iota(0U, n_blades), std::back_inserter(beam_elem_ids),
-        [&](const size_t i) {
+        std::views::iota(0U, n_blades), std::back_inserter(beam_elem_ids), [&](const size_t i) {
             // Define root rotation about x-axis
             const auto q_root = q_roots[i] * base_rot;
 

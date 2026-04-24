@@ -60,8 +60,9 @@ struct ComputeSystemColInds {
     }
 
     KOKKOS_FUNCTION
-    RowPtrValueType ComputeColIndsInElement(size_t element, size_t node, RowPtrValueType index)
-        const {
+    RowPtrValueType ComputeColIndsInElement(
+        size_t element, size_t node, RowPtrValueType index
+    ) const {
         for (auto node_index = 0U; node_index < num_nodes_per_element(element); ++node_index) {
             const auto node_state_index = node_state_indices(element, node_index);
             if (node_state_index != node) {

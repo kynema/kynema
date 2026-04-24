@@ -36,9 +36,9 @@ TEST(VerificationTest, Static_IsotropicBeamRollUp) {
 
     // Static analysis with tight convergence tolerances for benchmark accuracy
     builder.Solution()
-        .EnableStaticSolve()   // Static analysis
-        .SetTimeStep(1.)       // Step size (irrelevant for static)
-        .SetDampingFactor(1.)  // No numerical damping (ρ_∞ = 1, irrelevant for static)
+        .EnableStaticSolve()                // Static analysis
+        .SetTimeStep(1.)                    // Step size (irrelevant for static)
+        .SetDampingFactor(1.)               // No numerical damping (ρ_∞ = 1, irrelevant for static)
         .SetMaximumNonlinearIterations(15)  // Max Newton-Raphson iterations
         .SetAbsoluteErrorTolerance(1e-11)
         .SetRelativeErrorTolerance(1e-9);

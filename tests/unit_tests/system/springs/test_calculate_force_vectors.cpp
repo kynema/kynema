@@ -15,8 +15,7 @@ void TestCalculateForceVectors_ThreeElements_1() {
     const auto f0 = Kokkos::View<double[3]>("f0");
 
     Kokkos::parallel_for(
-        "CalculateForceVectors", 1,
-        KOKKOS_LAMBDA(const size_t) {
+        "CalculateForceVectors", 1, KOKKOS_LAMBDA(const size_t) {
             constexpr auto r0_data = Kokkos::Array<double, 3>{1., 2., 3.};
             const auto r0 = Kokkos::View<double[3]>::const_type(r0_data.data());
             constexpr auto c10 = 2.;
@@ -39,8 +38,7 @@ void TestCalculateForceVectors_ThreeElements_2() {
     const auto f1 = Kokkos::View<double[3]>("f1");
 
     Kokkos::parallel_for(
-        "CalculateForceVectors", 1,
-        KOKKOS_LAMBDA(const size_t) {
+        "CalculateForceVectors", 1, KOKKOS_LAMBDA(const size_t) {
             constexpr auto r1_data = Kokkos::Array<double, 3>{4., 5., 6.};
             const auto r1 = Kokkos::View<double[3]>::const_type(r1_data.data());
             constexpr auto c11 = -1.;
@@ -63,8 +61,7 @@ void TestCalculateForceVectors_ThreeElements_3() {
     const auto f2 = Kokkos::View<double[3]>("f2");
 
     Kokkos::parallel_for(
-        "CalculateForceVectors", 1,
-        KOKKOS_LAMBDA(const size_t) {
+        "CalculateForceVectors", 1, KOKKOS_LAMBDA(const size_t) {
             constexpr auto r2_data = Kokkos::Array<double, 3>{7., 8., 9.};
             const auto r2 = Kokkos::View<double[3]>::const_type(r2_data.data());
             constexpr auto c12 = 0.5;

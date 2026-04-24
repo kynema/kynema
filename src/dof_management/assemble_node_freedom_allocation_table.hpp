@@ -184,8 +184,7 @@ inline void assemble_node_freedom_allocation_table(
     const auto node_freedom_allocation_table = state.node_freedom_allocation_table;
     auto system_range = RangePolicy(0, state.num_system_nodes);
     parallel_for(
-        "ComputeActiveDofs", system_range,
-        KOKKOS_LAMBDA(size_t node) {
+        "ComputeActiveDofs", system_range, KOKKOS_LAMBDA(size_t node) {
             active_dofs(node) = count_active_dofs(node_freedom_allocation_table(node));
         }
     );

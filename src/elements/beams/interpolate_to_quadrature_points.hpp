@@ -67,48 +67,42 @@ struct InterpolateToQuadraturePoints {
             InterpolateQPState_u<DeviceType>{element, num_nodes, shape_interp, node_u, qp_u}
         );
         parallel_for(
-            qp_range,
-            InterpolateQPState_uprime<DeviceType>{
-                element, num_nodes, shape_deriv, qp_jacobian, node_u, qp_uprime
-            }
+            qp_range, InterpolateQPState_uprime<DeviceType>{
+                          element, num_nodes, shape_deriv, qp_jacobian, node_u, qp_uprime
+                      }
         );
         parallel_for(
             qp_range,
             InterpolateQPState_r<DeviceType>{element, num_nodes, shape_interp, node_u, qp_r}
         );
         parallel_for(
-            qp_range,
-            InterpolateQPState_rprime<DeviceType>{
-                element, num_nodes, shape_deriv, qp_jacobian, node_u, qp_rprime
-            }
+            qp_range, InterpolateQPState_rprime<DeviceType>{
+                          element, num_nodes, shape_deriv, qp_jacobian, node_u, qp_rprime
+                      }
         );
         parallel_for(
-            qp_range,
-            InterpolateQPVector<DeviceType>{
-                element, num_nodes, shape_interp, subview(node_u_dot, ALL, ALL, make_pair(0, 3)),
-                qp_u_dot
-            }
+            qp_range, InterpolateQPVector<DeviceType>{
+                          element, num_nodes, shape_interp,
+                          subview(node_u_dot, ALL, ALL, make_pair(0, 3)), qp_u_dot
+                      }
         );
         parallel_for(
-            qp_range,
-            InterpolateQPVector<DeviceType>{
-                element, num_nodes, shape_interp, subview(node_u_dot, ALL, ALL, make_pair(3, 6)),
-                qp_omega
-            }
+            qp_range, InterpolateQPVector<DeviceType>{
+                          element, num_nodes, shape_interp,
+                          subview(node_u_dot, ALL, ALL, make_pair(3, 6)), qp_omega
+                      }
         );
         parallel_for(
-            qp_range,
-            InterpolateQPVector<DeviceType>{
-                element, num_nodes, shape_interp, subview(node_u_ddot, ALL, ALL, make_pair(0, 3)),
-                qp_u_ddot
-            }
+            qp_range, InterpolateQPVector<DeviceType>{
+                          element, num_nodes, shape_interp,
+                          subview(node_u_ddot, ALL, ALL, make_pair(0, 3)), qp_u_ddot
+                      }
         );
         parallel_for(
-            qp_range,
-            InterpolateQPVector<DeviceType>{
-                element, num_nodes, shape_interp, subview(node_u_ddot, ALL, ALL, make_pair(3, 6)),
-                qp_omega_dot
-            }
+            qp_range, InterpolateQPVector<DeviceType>{
+                          element, num_nodes, shape_interp,
+                          subview(node_u_ddot, ALL, ALL, make_pair(3, 6)), qp_omega_dot
+                      }
         );
         parallel_for(
             qp_range, CalculateQPPosition<DeviceType>{element, qp_x0, qp_u, qp_r0, qp_r, qp_x}

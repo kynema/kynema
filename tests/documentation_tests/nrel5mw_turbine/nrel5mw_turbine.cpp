@@ -223,7 +223,8 @@ int main() {
         }
 
         // Set tower base position from first reference axis point
-        turbine_builder.SetTowerBasePosition({x_values[0], y_values[0], z_values[0], 1., 0., 0., 0.}
+        turbine_builder.SetTowerBasePosition(
+            {x_values[0], y_values[0], z_values[0], 1., 0., 0., 0.}
         );
 
         // Add reference axis twist (zero for tower)
@@ -352,7 +353,8 @@ int main() {
 
         // Blade airfoil sections
         const auto& airfoil_io = wio["airfoils"];
-        auto blade_aero_sections = std::vector<kynema_fmb::interfaces::components::AerodynamicSection>{};
+        auto blade_aero_sections =
+            std::vector<kynema_fmb::interfaces::components::AerodynamicSection>{};
         auto id = 0UL;
         for (const auto& af : airfoil_io) {
             const auto s = af["spanwise_position"].as<double>();
@@ -377,7 +379,8 @@ int main() {
         aero_builder.SetAirfoilSections(0UL, blade_aero_sections);
 
         // Tower airfoil sections (simple circular cylinder)
-        auto tower_aero_sections = std::vector<kynema_fmb::interfaces::components::AerodynamicSection>{};
+        auto tower_aero_sections =
+            std::vector<kynema_fmb::interfaces::components::AerodynamicSection>{};
         const auto& tower_os = wio["components"]["tower"]["outer_shape"];
         const auto aoa = std::vector<double>{-180., 180.};
         const auto cl = std::vector<double>{0., 0.};
@@ -449,8 +452,7 @@ int main() {
                       << " | " << std::setprecision(2) << t / duration * 100. << "%\n";
 
             interface.UpdateAerodynamicLoads(
-                fluid_density,
-                [t, &inflow](const std::array<double, 3>& pos) {
+                fluid_density, [t, &inflow](const std::array<double, 3>& pos) {
                     return inflow.Velocity(t, pos);
                 }
             );

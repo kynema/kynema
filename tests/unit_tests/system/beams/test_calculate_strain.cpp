@@ -23,8 +23,7 @@ void TestCalculateStrain() {
     const auto strain = Kokkos::View<double[6]>("strain");
 
     Kokkos::parallel_for(
-        "CalculateStrain", 1,
-        KOKKOS_LAMBDA(size_t) {
+        "CalculateStrain", 1, KOKKOS_LAMBDA(size_t) {
             kynema_fmb::beams::CalculateStrain<Kokkos::DefaultExecutionSpace>::invoke(
                 x0_prime, u_prime, r, r_prime, strain
             );

@@ -103,8 +103,8 @@ struct TurbineConfig {
      * qz]
      */
     struct BladeInitialState {
-        std::array<double, 7> root_initial_position{
-        };  //< Initial root position of the blade (1 per blade)
+        std::array<double, 7>
+            root_initial_position{};  //< Initial root position of the blade (1 per blade)
         std::vector<std::array<double, 7>>
             node_initial_positions;  //< Initial node positions of the blade
 
@@ -496,8 +496,9 @@ struct TurbineData {
      * @param blade_number The number of the blade to update.
      * @param node_number The number of the node to update within the specified blade.
      */
-    [[nodiscard]] std::array<double, 6> GetBladeNodeLoad(size_t blade_number, size_t node_number)
-        const {
+    [[nodiscard]] std::array<double, 6> GetBladeNodeLoad(
+        size_t blade_number, size_t node_number
+    ) const {
         if (std::cmp_greater_equal(blade_number, n_blades) ||
             node_number >= node_indices_by_blade[blade_number].size()) {
             throw std::out_of_range("Blade or node number out of range.");
@@ -751,10 +752,10 @@ public:
      * @param turbine_configs Vector of turbine configurations
      */
     void SetupRotors(std::span<const TurbineConfig> turbine_configs) {
-        auto ADI_C_SetupRotor = lib_.get_function<
-            void(int*, int*, const float*, float*, double*, float*, double*, int*, float*, double*, int*, float*, double*, int*, int*, char*)>(
-            "ADI_C_SetupRotor"
-        );
+        auto ADI_C_SetupRotor = lib_.get_function<void(
+            int*, int*, const float*, float*, double*, float*, double*, int*, float*, double*, int*,
+            float*, double*, int*, int*, char*
+        )>("ADI_C_SetupRotor");
 
         // Loop through turbine configurations
         int32_t turbine_number{0};
@@ -785,13 +786,14 @@ public:
                 td.nacelle.orientation[0][0].data(),  // input: initial nacelle orientation
                 &td.n_blades,                         // input: number of blades
                 td.blade_roots.position[0].data(),    // input: initial blade root positions
-                td.blade_roots.orientation[0].data()->data(
-                ),                                        // input: initial blade root orientation
+                td.blade_roots.orientation[0]
+                    .data()
+                    ->data(),                             // input: initial blade root orientation
                 &td.blade_nodes.n_points,                 // input: number of mesh points
                 td.blade_nodes.position[0].data(),        // input: initial node positions
                 td.blade_nodes.orientation[0][0].data(),  // input: initial node orientation
-                td.blade_nodes_to_blade_num_mapping.data(
-                ),                                    // input: blade node to blade number mapping
+                td.blade_nodes_to_blade_num_mapping
+                    .data(),                          // input: blade node to blade number mapping
                 &error_handling_.error_status,        // output: Error status
                 error_handling_.error_message.data()  // output: Error message buffer
             );
@@ -804,10 +806,11 @@ public:
      * @brief Finalizes the initialization process
      */
     void FinalizeInitialization() {
-        auto ADI_C_Init = lib_.get_function<
-            void(int*, char**, int*, int*, char**, int*, const char*, const char*, float*, float*, float*, float*, float*, float*, float*, float*, int*, double*, double*, int*, int*, int*, double*, float*, float*, int*, double*, int*, char*, char*, int*, char*)>(
-            "ADI_C_Init"
-        );
+        auto ADI_C_Init = lib_.get_function<void(
+            int*, char**, int*, int*, char**, int*, const char*, const char*, float*, float*, float*,
+            float*, float*, float*, float*, float*, int*, double*, double*, int*, int*, int*,
+            double*, float*, float*, int*, double*, int*, char*, char*, int*, char*
+        )>("ADI_C_Init");
 
         // Convert bool -> int32_t to pass to the Fortran routine
         int32_t is_aerodyn_input_passed_as_string = 0;     // AeroDyn input is path to file
@@ -896,13 +899,12 @@ public:
      * the hub, nacelle, blade roots, and blade nodes of each turbine.
      */
     void SetRotorMotion() {
-        auto
-            ADI_C_SetRotorMotion =
-                lib_
-                    .get_function<
-                        void(int*, const float*, const double*, const float*, const float*, const float*, const double*, const float*, const float*, const float*, const double*, const float*, const float*, const int*, const float*, const double*, const float*, const float*, int*, char*)>(
-                        "ADI_C_SetRotorMotion"
-                    );
+        auto ADI_C_SetRotorMotion = lib_.get_function<void(
+            int*, const float*, const double*, const float*, const float*, const float*,
+            const double*, const float*, const float*, const float*, const double*, const float*,
+            const float*, const int*, const float*, const double*, const float*, const float*, int*,
+            char*
+        )>("ADI_C_SetRotorMotion");
 
         // Loop through turbines and set the rotor motion
         int32_t turbine_number{0};

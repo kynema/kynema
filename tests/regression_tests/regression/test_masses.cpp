@@ -49,25 +49,23 @@ namespace kynema_fmb::tests {
 TEST(MassesTest, NodeInitialPosition) {
     const auto masses = SetUpMasses();
     expect_kokkos_view_2D_equal(
-        masses.node_x0,
-        {
-            {0., 0., 0., 1., 0., 0., 0.},
-        }
+        masses.node_x0, {
+                            {0., 0., 0., 1., 0., 0., 0.},
+                        }
     );
 }
 
 TEST(MassesTest, MassMatrixInMaterialFrame) {
     const auto masses = SetUpMasses();
     expect_kokkos_view_2D_equal(
-        Kokkos::subview(masses.qp_Mstar, 0, Kokkos::ALL, Kokkos::ALL),
-        {
-            {1., 0., 0., 0., 0., 0.},
-            {0., 1., 0., 0., 0., 0.},
-            {0., 0., 1., 0., 0., 0.},
-            {0., 0., 0., 1., 0., 0.},
-            {0., 0., 0., 0., 1., 0.},
-            {0., 0., 0., 0., 0., 1.},
-        }
+        Kokkos::subview(masses.qp_Mstar, 0, Kokkos::ALL, Kokkos::ALL), {
+                                                                           {1., 0., 0., 0., 0., 0.},
+                                                                           {0., 1., 0., 0., 0., 0.},
+                                                                           {0., 0., 1., 0., 0., 0.},
+                                                                           {0., 0., 0., 1., 0., 0.},
+                                                                           {0., 0., 0., 0., 1., 0.},
+                                                                           {0., 0., 0., 0., 0., 1.},
+                                                                       }
     );
 }
 
@@ -113,9 +111,8 @@ TEST(MassesTest, ExternalForce) {
     auto parameters = StepParameters(true, 5, time_step, 0.0);
 
     auto constraints = model.CreateConstraints<DeviceType>();
-    auto elements = model.CreateElements<
-        Kokkos::Device<Kokkos::DefaultExecutionSpace, Kokkos::DefaultExecutionSpace::memory_space>>(
-    );
+    auto elements = model.CreateElements<Kokkos::Device<
+        Kokkos::DefaultExecutionSpace, Kokkos::DefaultExecutionSpace::memory_space>>();
 
     auto solver = CreateSolver<>(state, elements, constraints);
 

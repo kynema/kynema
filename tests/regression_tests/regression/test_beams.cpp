@@ -121,9 +121,8 @@ inline auto SetUpBeams() {
         }
     );
 
-    auto beams = model.CreateBeams<
-        Kokkos::Device<Kokkos::DefaultExecutionSpace, Kokkos::DefaultExecutionSpace::memory_space>>(
-    );
+    auto beams = model.CreateBeams<Kokkos::Device<
+        Kokkos::DefaultExecutionSpace, Kokkos::DefaultExecutionSpace::memory_space>>();
 
     return beams;
 }
@@ -155,16 +154,15 @@ TEST(BeamsTest, QuadraturePointMassMatrixInMaterialFrame) {
     auto Mstar = Kokkos::View<double[6][6]>("Mstar");
     Kokkos::deep_copy(Mstar, Kokkos::subview(beams.qp_Mstar, 0, 0, Kokkos::ALL, Kokkos::ALL));
     expect_kokkos_view_2D_equal(
-        Mstar,
-        {
-            {2., 0., 0., 0., 0.6, -0.4},
-            {0., 2., 0., -0.6, 0., 0.2},
-            {0., 0., 2., 0.4, -0.2, 0.},
-            {0., -0.6, 0.4, 1., 2., 3.},
-            {0.6, 0., -0.2, 2., 4., 6.},
-            {-0.4, 0.2, 0., 3., 6., 9.},
+        Mstar, {
+                   {2., 0., 0., 0., 0.6, -0.4},
+                   {0., 2., 0., -0.6, 0., 0.2},
+                   {0., 0., 2., 0.4, -0.2, 0.},
+                   {0., -0.6, 0.4, 1., 2., 3.},
+                   {0.6, 0., -0.2, 2., 4., 6.},
+                   {-0.4, 0.2, 0., 3., 6., 9.},
 
-        }
+               }
     );
 }
 
@@ -173,15 +171,14 @@ TEST(BeamsTest, QuadraturePointStiffnessMatrixInMaterialFrame) {
     auto Cstar = Kokkos::View<double[6][6]>("Cstar");
     Kokkos::deep_copy(Cstar, Kokkos::subview(beams.qp_Cstar, 0, 0, Kokkos::ALL, Kokkos::ALL));
     expect_kokkos_view_2D_equal(
-        Cstar,
-        {
-            {1., 2., 3., 4., 5., 6.},
-            {2., 4., 6., 8., 10., 12.},
-            {3., 6., 9., 12., 15., 18.},
-            {4., 8., 12., 16., 20., 24.},
-            {5., 10., 15., 20., 25., 30.},
-            {6., 12., 18., 24., 30., 36.},
-        }
+        Cstar, {
+                   {1., 2., 3., 4., 5., 6.},
+                   {2., 4., 6., 8., 10., 12.},
+                   {3., 6., 9., 12., 15., 18.},
+                   {4., 8., 12., 16., 20., 24.},
+                   {5., 10., 15., 20., 25., 30.},
+                   {6., 12., 18., 24., 30., 36.},
+               }
     );
 }
 

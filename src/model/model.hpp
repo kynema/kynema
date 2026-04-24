@@ -425,7 +425,9 @@ public:
      */
     template <typename DeviceType>
     [[nodiscard]] Springs<DeviceType> CreateSprings() const {
-        return kynema_fmb::CreateSprings<DeviceType>(SpringsInput(this->spring_elements_), this->nodes_);
+        return kynema_fmb::CreateSprings<DeviceType>(
+            SpringsInput(this->spring_elements_), this->nodes_
+        );
     }
 
     //--------------------------------------------------------------------------

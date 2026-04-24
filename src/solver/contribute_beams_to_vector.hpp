@@ -32,8 +32,7 @@ struct ContributeBeamsToVector {
             !std::is_same_v<typename DeviceType::execution_space, Kokkos::Serial>;
 
         Kokkos::parallel_for(
-            Kokkos::TeamVectorRange(member, num_nodes * 6U),
-            [&](size_t node_component) {
+            Kokkos::TeamVectorRange(member, num_nodes * 6U), [&](size_t node_component) {
                 const auto node = node_component % num_nodes;
                 const auto component = node_component / num_nodes;
                 const auto entry = element_freedom_table(element, node, component);

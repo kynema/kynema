@@ -112,8 +112,7 @@ inline void LagrangePolynomialDerivWeights(
                          }) |
                          std::views::common;
             auto prod = std::transform_reduce(
-                std::begin(range), std::end(range), 1., std::multiplies<>(),
-                [&xs, x, xi](auto k) {
+                std::begin(range), std::end(range), 1., std::multiplies<>(), [&xs, x, xi](auto k) {
                     return (x - xs[k]) / (xi - xs[k]);
                 }
             );

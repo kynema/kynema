@@ -12,18 +12,20 @@
 namespace {
 
 void TestCalculateForceCoefficient1_ThreeElements() {
-    const auto k = kynema_fmb::beams::tests::CreateView<double[3]>("k", std::array{100., 200., 300.});
-    const auto l_ref = kynema_fmb::beams::tests::CreateView<double[3]>("l_ref", std::array{1., 5., 3.});
+    const auto k =
+        kynema_fmb::beams::tests::CreateView<double[3]>("k", std::array{100., 200., 300.});
+    const auto l_ref =
+        kynema_fmb::beams::tests::CreateView<double[3]>("l_ref", std::array{1., 5., 3.});
     const auto l = kynema_fmb::beams::tests::CreateView<double[3]>("l", std::array{2., 4., 6.});
 
     const auto c1 = Kokkos::View<double[3]>("c1");
 
     Kokkos::parallel_for(
-        "CalculateForceCoefficients", 3,
-        KOKKOS_LAMBDA(const size_t i_elem) {
-            c1(i_elem) = kynema_fmb::springs::CalculateForceCoefficient1<Kokkos::DefaultExecutionSpace>(
-                k(i_elem), l_ref(i_elem), l(i_elem)
-            );
+        "CalculateForceCoefficients", 3, KOKKOS_LAMBDA(const size_t i_elem) {
+            c1(i_elem) =
+                kynema_fmb::springs::CalculateForceCoefficient1<Kokkos::DefaultExecutionSpace>(
+                    k(i_elem), l_ref(i_elem), l(i_elem)
+                );
         }
     );
 
@@ -36,18 +38,20 @@ void TestCalculateForceCoefficient1_ThreeElements() {
 }
 
 void TestCalculateForceCoefficient2_ThreeElements() {
-    const auto k = kynema_fmb::beams::tests::CreateView<double[3]>("k", std::array{100., 200., 300.});
-    const auto l_ref = kynema_fmb::beams::tests::CreateView<double[3]>("l_ref", std::array{1., 5., 3.});
+    const auto k =
+        kynema_fmb::beams::tests::CreateView<double[3]>("k", std::array{100., 200., 300.});
+    const auto l_ref =
+        kynema_fmb::beams::tests::CreateView<double[3]>("l_ref", std::array{1., 5., 3.});
     const auto l = kynema_fmb::beams::tests::CreateView<double[3]>("l", std::array{2., 4., 6.});
 
     const auto c2 = Kokkos::View<double[3]>("c2");
 
     Kokkos::parallel_for(
-        "CalculateForceCoefficients", 3,
-        KOKKOS_LAMBDA(const size_t i_elem) {
-            c2(i_elem) = kynema_fmb::springs::CalculateForceCoefficient2<Kokkos::DefaultExecutionSpace>(
-                k(i_elem), l_ref(i_elem), l(i_elem)
-            );
+        "CalculateForceCoefficients", 3, KOKKOS_LAMBDA(const size_t i_elem) {
+            c2(i_elem) =
+                kynema_fmb::springs::CalculateForceCoefficient2<Kokkos::DefaultExecutionSpace>(
+                    k(i_elem), l_ref(i_elem), l(i_elem)
+                );
         }
     );
 

@@ -25,9 +25,10 @@ void TestCalculateForceFC() {
     const auto FC = Kokkos::View<double[6]>("FC");
 
     Kokkos::parallel_for(
-        "CalculateForceFC", 1,
-        KOKKOS_LAMBDA(size_t) {
-            kynema_fmb::beams::CalculateForceFC<Kokkos::DefaultExecutionSpace>::invoke(Cuu, strain, FC);
+        "CalculateForceFC", 1, KOKKOS_LAMBDA(size_t) {
+            kynema_fmb::beams::CalculateForceFC<Kokkos::DefaultExecutionSpace>::invoke(
+                Cuu, strain, FC
+            );
         }
     );
 

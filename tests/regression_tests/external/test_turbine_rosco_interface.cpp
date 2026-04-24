@@ -408,8 +408,7 @@ TEST(TurbineInterfaceTest, IEA15_ROSCOControllerWithAero) {
 
         // Update aerodynamic loads based on inflow
         interface.UpdateAerodynamicLoads(
-            fluid_density,
-            [t, &inflow](const std::array<double, 3>& pos) {
+            fluid_density, [t, &inflow](const std::array<double, 3>& pos) {
                 return inflow.Velocity(t, pos);
             }
         );

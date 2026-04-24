@@ -450,10 +450,12 @@ void TestIntegrateStiffnessMatrix_1Element1Node2QPs(
     constexpr auto number_of_qps = size_t{2U};
     constexpr auto max_simd_size = size_t{8U};
 
-    const auto qp_weights =
-        kynema_fmb::beams::tests::CreateView<double[number_of_qps]>("qp_weights", std::array{1., 3.});
-    const auto qp_jacobian =
-        kynema_fmb::beams::tests::CreateView<double[number_of_qps]>("qp_jacobian", std::array{2., 4.});
+    const auto qp_weights = kynema_fmb::beams::tests::CreateView<double[number_of_qps]>(
+        "qp_weights", std::array{1., 3.}
+    );
+    const auto qp_jacobian = kynema_fmb::beams::tests::CreateView<double[number_of_qps]>(
+        "qp_jacobian", std::array{2., 4.}
+    );
     const auto shape_interp =
         kynema_fmb::beams::tests::CreateLeftView<double[max_simd_size][number_of_qps]>(
             "shape_interp", std::array<double, max_simd_size * number_of_qps>{1., 1.}
