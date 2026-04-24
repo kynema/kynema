@@ -1,7 +1,7 @@
 @PACKAGE_INIT@
 
 include(CMakeFindDependencyMacro)
-include("${CMAKE_CURRENT_LIST_DIR}/KynemaTargets.cmake")
+include("${CMAKE_CURRENT_LIST_DIR}/KynemaFMBTargets.cmake")
 
 check_required_components(kynema_fmb_library)
 
