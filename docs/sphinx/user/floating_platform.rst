@@ -65,7 +65,7 @@ These include the gravity, time step size, numerical damping factor, and maximum
 
 .. code-block:: cpp
 
-    auto interface_builder = kynema::interfaces::cfd::InterfaceBuilder{}
+    auto interface_builder = kynema_fmb::interfaces::cfd::InterfaceBuilder{}
                               .SetGravity(gravity)
                               .SetTimeStep(time_step)
                               .SetDampingFactor(rho_inf)

@@ -54,7 +54,7 @@ One everything has been specified, we will use model to create Kynema-FMB's fund
 
 .. code-block:: cpp
 
-    auto model = kynema::Model();
+    auto model = kynema_fmb::Model();
 
 To add a node, we call the AddNode method on Model, which creates a NodeBuilder object.
 This factory lets us string together function calls to specify the initial position, velocity, and acceleration in a human readable fashion.
@@ -130,7 +130,7 @@ Solver contains the linear system (sparse matrix, RHS) and linear system solver
 .. code-block:: cpp
 
     auto [state, elements, constraints] = model.CreateSystem();
-    auto solver = kynema::CreateSolver<>(state, elements, constraints);
+    auto solver = kynema_fmb::CreateSolver<>(state, elements, constraints);
 
 The final stage is to create a StepParameters object, which contains information like the number of non-linear iterations, time step size, and numerical damping factor used to take a single time step.
 
@@ -142,7 +142,7 @@ The final stage is to create a StepParameters object, which contains information
     constexpr double rho_inf(0.);
     const double final_time = 2. * M_PI * sqrt(mass / stiffness);
     const double step_size(final_time / static_cast<double>(num_steps));
-    auto parameters = kynema::StepParameters(is_dynamic_solve, max_iter, step_size, rho_inf);
+    auto parameters = kynema_fmb::StepParameters(is_dynamic_solve, max_iter, step_size, rho_inf);
 
 Kynema-FMB allows the user to control the actual time stepping process.
 This includes setting forces, post-processing data, or coupling to other codes.
@@ -158,7 +158,7 @@ Here, we create a mirror view on host and, at each time step, copy the data to h
     auto q = Kokkos::create_mirror_view(Kokkos::WithoutInitializing, state.q);
     for (auto i = 0; i < 400; ++i) {
         [[maybe_unused]] const auto converged =
-            kynema::Step(parameters, solver, elements, state, constraints);
+            kynema_fmb::Step(parameters, solver, elements, state, constraints);
         assert(converged);
         Kokkos::deep_copy(q, state.q);
         for (auto node = 0; node < 7; ++node) {

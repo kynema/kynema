@@ -52,7 +52,7 @@ This is a factory class which will aid us in setting up all of the structures Ky
 
 .. code-block:: cpp
 
-    auto builder = kynema::interfaces::TurbineInterfaceBuilder{};
+    auto builder = kynema_fmb::interfaces::TurbineInterfaceBuilder{};
 
 The builder has several groupings of options that we will use to set up our problem.
 The ``.Solution()`` function provides options related to controling the solver, such as the time step, numerical damping, and convergence criteria.
@@ -144,7 +144,7 @@ Note that Wind-IO uses the Z-axis as its reference axis, but your application ma
     for (auto i = 0U; i < axis_grid.size(); ++i) {
         blade_builder.AddRefAxisPoint(
             axis_grid[i], {x_values[i], y_values[i], z_values[i]},
-            kynema::interfaces::components::ReferenceAxisOrientation::Z
+            kynema_fmb::interfaces::components::ReferenceAxisOrientation::Z
         );
     }
 
@@ -191,7 +191,7 @@ The WindIO file provides them as their tensor components, so we decompress that 
                 {k[4], k[9], k[13], k[16], k[18], k[19]},
                 {k[5], k[10], k[14], k[17], k[19], k[20]},
             }},
-            kynema::interfaces::components::ReferenceAxisOrientation::Z
+            kynema_fmb::interfaces::components::ReferenceAxisOrientation::Z
         );
     }
 
@@ -210,7 +210,7 @@ This acts much like the Blade builder class, but there is only one Tower.
     for (auto i = 0U; i < axis_grid.size(); ++i) {
         tower_builder.AddRefAxisPoint(
             axis_grid[i], {x_values[i], y_values[i], z_values[i]},
-            kynema::interfaces::components::ReferenceAxisOrientation::Z
+            kynema_fmb::interfaces::components::ReferenceAxisOrientation::Z
         );
     }
     const auto tower_base_position =
@@ -231,7 +231,7 @@ This acts much like the Blade builder class, but there is only one Tower.
     const auto t_diameter_values = t_diameter["values"].as<std::vector<double>>();
     const auto t_wall_thickness = t_layer["thickness"]["values"].as<std::vector<double>>();
    for (auto i = 0U; i < t_diameter_grid.size(); ++i) {
-        const auto section = kynema::beams::GenerateHollowCircleSection(
+        const auto section = kynema_fmb::beams::GenerateHollowCircleSection(
             t_diameter_grid[i], t_material["E"].as<double>(), t_material["G"].as<double>(),
             t_material["rho"].as<double>(), t_diameter_values[i], t_wall_thickness[i],
             t_material["nu"].as<double>()
@@ -240,7 +240,7 @@ This acts much like the Blade builder class, but there is only one Tower.
         // Add section
         tower_builder.AddSection(
             t_diameter_grid[i], section.M_star, section.C_star,
-            kynema::interfaces::components::ReferenceAxisOrientation::Z
+            kynema_fmb::interfaces::components::ReferenceAxisOrientation::Z
         );
     }
 

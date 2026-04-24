@@ -61,8 +61,8 @@ This problem uses a constant-cross-section blade, so the sections at the root an
         std::array{0., 0., 0., -0.3510e3, -0.3700e3, 141.470e3},
     };
     const auto sections = std::vector{
-        kynema::BeamSection(0., mass_matrix, stiffness_matrix),
-        kynema::BeamSection(1., mass_matrix, stiffness_matrix),
+        kynema_fmb::BeamSection(0., mass_matrix, stiffness_matrix),
+        kynema_fmb::BeamSection(1., mass_matrix, stiffness_matrix),
     };
 
 We now define the node locations where our solution will be defined.
@@ -92,7 +92,7 @@ One everything has been specified, we will use model to create Kynema-FMB's fund
 
 .. code-block:: cpp
 
-    auto model = kynema::Model();
+    auto model = kynema_fmb::Model();
 
 The aptly named SetGravity method is used to set the gravity vector for the problem.
 
@@ -170,7 +170,7 @@ Solver contains the linear system (sparse matrix, RHS) and linear system solver
 .. code-block:: cpp
    
     auto [state, elements, constraints] = model.CreateSystem();
-    auto solver = kynema::CreateSolver<>(state, elements, constraints);
+    auto solver = kynema_fmb::CreateSolver<>(state, elements, constraints);
 
 The final stage is to create a StepParameters object, which contains information like the number of non-linear iterations, time step size, and numerical damping factor used to take a single time step.
 
@@ -182,7 +182,7 @@ The final stage is to create a StepParameters object, which contains information
     const double rho_inf(0.9);
     const double t_end(0.1);
     const auto num_steps = static_cast<size_t>(std::floor(t_end / step_size + 1.0));
-    auto parameters = kynema::StepParameters(is_dynamic_solve, max_iter, step_size, rho_inf);
+    auto parameters = kynema_fmb::StepParameters(is_dynamic_solve, max_iter, step_size, rho_inf);
 
 Kynema-FMB allows the user to control the actual time stepping process.
 This includes setting forces, post-processing data, or coupling to other codes.
@@ -191,13 +191,13 @@ For this problem, we will prescribe a rotation on the hub boundary condition, wh
 .. code-block:: cpp
 
     for (auto i = 0U; i < num_steps; ++i) {
-        const auto q_hub = kynema::math::RotationVectorToQuaternion(
+        const auto q_hub = kynema_fmb::math::RotationVectorToQuaternion(
             {step_size * (i + 1) * velocity[3], step_size * (i + 1) * velocity[4],
              step_size * (i + 1) * velocity[5]}
         );
         const auto u_hub = std::array{0., 0., 0., q_hub[0], q_hub[1], q_hub[2], q_hub[3]};
         constraints.UpdateDisplacement(hub_bc_id, u_hub);
         [[maybe_unused]] const auto converged =
-            kynema::Step(parameters, solver, elements, state, constraints);
+            kynema_fmb::Step(parameters, solver, elements, state, constraints);
         assert(converged);
     }

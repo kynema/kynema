@@ -55,7 +55,7 @@ One everything has been specified, we will use model to create Kynema-FMB's fund
 
 .. code-block:: cpp
 
-    auto model = kynema::Model();
+    auto model = kynema_fmb::Model();
 
 To add a node, we call the AddNode method on Model, which creates a NodeBuilder object.
 This factory lets us string together function calls to specify the initial position, velocity, and acceleration in a human readable fashion.
@@ -129,7 +129,7 @@ The final stage is to create a StepParameters object, which contains information
     constexpr auto rho_inf(0.9);
     constexpr auto a_tol(1e-5);
     constexpr auto r_tol(1e-3);
-    auto parameters = kynema::StepParameters(is_dynamic_solve, max_iter, step_size, rho_inf, a_tol, r_tol);
+    auto parameters = kynema_fmb::StepParameters(is_dynamic_solve, max_iter, step_size, rho_inf, a_tol, r_tol);
 
 Kynema-FMB allows the user to control the actual time stepping process.
 This includes setting forces, post-processing data, coupling to other codes.
@@ -139,7 +139,7 @@ At each time step, we call Kynema-FMB's Step function and pass in the previously
 .. code-block:: cpp
 
     for (auto i = 0; i < 400; ++i) {
-        const auto converged = kynema::Step(parameters, solver, elements, state, constraints);
+        const auto converged = kynema_fmb::Step(parameters, solver, elements, state, constraints);
     }
 
 Finally, we can check that our solution is correct.
