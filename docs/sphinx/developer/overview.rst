@@ -3,7 +3,7 @@
 Overview
 ========
 
-Kynema-FMB is developed on GitHub usng git for source control and the GoogleTest
+Kynema-FMB is developed on GitHub using git for source control and the GoogleTest
 framework for unit and regression testing.  Becoming fluent with these tools
 will make the development experience much smoother.  What follows is an overview
 of Kynema-FMB's structure and expectations for contributors.
