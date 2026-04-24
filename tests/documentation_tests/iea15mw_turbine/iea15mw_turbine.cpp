@@ -21,7 +21,7 @@ int main() {
 
         // Create interface builder
         // This object is the main interface for building turbines.
-        auto builder = kynema::interfaces::TurbineInterfaceBuilder{};
+        auto builder = kynema_fmb::interfaces::TurbineInterfaceBuilder{};
 
         // Set solution parameters
         // The .Solution() function provides options related to controling the solver,
@@ -120,7 +120,7 @@ int main() {
             for (auto i = 0U; i < axis_grid.size(); ++i) {
                 blade_builder.AddRefAxisPoint(
                     axis_grid[i], {x_values[i], y_values[i], z_values[i]},
-                    kynema::interfaces::components::ReferenceAxisOrientation::Z
+                    kynema_fmb::interfaces::components::ReferenceAxisOrientation::Z
                 );
             }
 
@@ -171,7 +171,7 @@ int main() {
                         {k[4], k[9], k[13], k[16], k[18], k[19]},
                         {k[5], k[10], k[14], k[17], k[19], k[20]},
                     }},
-                    kynema::interfaces::components::ReferenceAxisOrientation::Z
+                    kynema_fmb::interfaces::components::ReferenceAxisOrientation::Z
                 );
             }
         }
@@ -199,7 +199,7 @@ int main() {
         for (auto i = 0U; i < axis_grid.size(); ++i) {
             tower_builder.AddRefAxisPoint(
                 axis_grid[i], {x_values[i], y_values[i], z_values[i]},
-                kynema::interfaces::components::ReferenceAxisOrientation::Z
+                kynema_fmb::interfaces::components::ReferenceAxisOrientation::Z
             );
         }
 
@@ -236,7 +236,7 @@ int main() {
             // Create section mass and stiffness matrices
             // Kynema provides the helper function GenerateHollowCircleSection to create the
             // inertia and stiffness matrices (M_star and C_star) needed to represent the tower
-            const auto section = kynema::beams::GenerateHollowCircleSection(
+            const auto section = kynema_fmb::beams::GenerateHollowCircleSection(
                 t_diameter_grid[i], t_material["E"].as<double>(), t_material["G"].as<double>(),
                 t_material["rho"].as<double>(), t_diameter_values[i], t_wall_thickness[i],
                 t_material["nu"].as<double>()
@@ -245,7 +245,7 @@ int main() {
             // Add section
             tower_builder.AddSection(
                 t_diameter_grid[i], section.M_star, section.C_star,
-                kynema::interfaces::components::ReferenceAxisOrientation::Z
+                kynema_fmb::interfaces::components::ReferenceAxisOrientation::Z
             );
         }
 

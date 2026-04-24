@@ -2,7 +2,7 @@
 
 #include <vector>
 
-namespace kynema::interfaces::components {
+namespace kynema_fmb::interfaces::components {
 
 struct AerodynamicSection {
     size_t id{};
@@ -30,4 +30,4 @@ public:
     std::vector<std::vector<AerodynamicSection>> aero_inputs;
     std::vector<size_t> airfoil_map;
 };
-}  // namespace kynema::interfaces::components
+}  // namespace kynema_fmb::interfaces::components

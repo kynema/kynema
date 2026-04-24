@@ -4,7 +4,7 @@
 
 #include "dss_algorithm.hpp"
 
-namespace kynema::dss {
+namespace kynema_fmb::dss {
 template <>
 class Handle<Algorithm::CUDSS> {
     struct cudssDssHandleType {
@@ -43,4 +43,4 @@ public:
     bool is_initial_factorization() const { return cudss_dss_handle->is_first_factorization; }
 };
 
-}  // namespace kynema::dss
+}  // namespace kynema_fmb::dss

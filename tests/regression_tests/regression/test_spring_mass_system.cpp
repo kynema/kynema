@@ -22,7 +22,7 @@ namespace {
  */
 template <typename DeviceType>
 inline auto SetUpSpringMassSystem() {
-    auto model = kynema::Model();
+    auto model = kynema_fmb::Model();
 
     // Add two nodes for the spring element
     const auto fixed_node_id =
@@ -62,7 +62,7 @@ inline auto SetUpSpringMassSystem() {
     constexpr size_t max_iter(6);
     constexpr double rho_inf(0.);                                // No damping
     const double step_size(T / static_cast<double>(num_steps));  // Calculate step size
-    auto parameters = kynema::StepParameters(is_dynamic_solve, max_iter, step_size, rho_inf);
+    auto parameters = kynema_fmb::StepParameters(is_dynamic_solve, max_iter, step_size, rho_inf);
 
     // Create solver, elements, constraints, and state
     auto [state, elements, constraints, solver] = model.CreateSystemWithSolver<DeviceType>();
@@ -104,7 +104,7 @@ inline auto SetUpSpringMassSystem() {
  * A ---/\/\/--- M ---/\/\/--- M ---/\/\/--- M ---/\/\/--- A
  */
 inline auto SetUpSpringMassChainSystem() {
-    auto model = kynema::Model();
+    auto model = kynema_fmb::Model();
 
     // Add nodes for each mass and an anchor point on each side
     constexpr auto number_of_masses = 10U;
@@ -155,7 +155,7 @@ inline auto SetUpSpringMassChainSystem() {
     constexpr double rho_inf(0.);
     const double final_time = 2. * std::numbers::pi * sqrt(m / k);
     const double step_size(final_time / static_cast<double>(num_steps));
-    auto parameters = kynema::StepParameters(is_dynamic_solve, max_iter, step_size, rho_inf);
+    auto parameters = kynema_fmb::StepParameters(is_dynamic_solve, max_iter, step_size, rho_inf);
 
     auto q = Kokkos::create_mirror_view(Kokkos::WithoutInitializing, state.q);
 
@@ -172,7 +172,7 @@ inline auto SetUpSpringMassChainSystem() {
 
 }  // namespace
 
-namespace kynema::tests {
+namespace kynema_fmb::tests {
 
 TEST(SpringMassSystemTest, FinalDisplacement) {
     using DeviceType =
@@ -189,4 +189,4 @@ TEST(SpringMassChainSystemTest, FinalDisplacement) {
     SetUpSpringMassChainSystem();
 }
 
-}  // namespace kynema::tests
+}  // namespace kynema_fmb::tests

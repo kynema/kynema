@@ -9,7 +9,7 @@
 #include "system/beams/integrate_residual_vector.hpp"
 #include "test_calculate.hpp"
 
-namespace kynema::beams::tests {
+namespace kynema_fmb::beams::tests {
 
 TEST(IntegrateResidualVector, OneElementOneNodeOneQP_Fc) {
     constexpr auto number_of_nodes = size_t{1U};
@@ -245,9 +245,9 @@ TEST(IntegrateResidualVector, OneElementOneNodeOneQP_Fe) {
 
     constexpr auto resid_exact_data =
         std::array<double, number_of_nodes * 6>{-24., -48., -72., -96., -120., -144.};
-    const auto resid_exact =
-        Kokkos::View<const double[1][number_of_nodes][6], Kokkos::HostSpace>(resid_exact_data.data()
-        );
+    const auto resid_exact = Kokkos::View<const double[1][number_of_nodes][6], Kokkos::HostSpace>(
+        resid_exact_data.data()
+    );
 
     const auto residual_vector_terms_mirror =
         Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), residual_vector_terms);
@@ -305,9 +305,9 @@ TEST(IntegrateResidualVector, OneElementOneNodeOneQP_Fg) {
 
     constexpr auto resid_exact_data =
         std::array<double, number_of_nodes * 6>{-24., -48., -72., -96., -120., -144.};
-    const auto resid_exact =
-        Kokkos::View<const double[1][number_of_nodes][6], Kokkos::HostSpace>(resid_exact_data.data()
-        );
+    const auto resid_exact = Kokkos::View<const double[1][number_of_nodes][6], Kokkos::HostSpace>(
+        resid_exact_data.data()
+    );
 
     const auto residual_vector_terms_mirror =
         Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), residual_vector_terms);
@@ -365,9 +365,9 @@ TEST(IntegrateResidualVector, OneElementOneNodeOneQP_FX) {
 
     constexpr auto resid_exact_data =
         std::array<double, number_of_nodes * 6>{-1., -2., -3., -4., -5., -6.};
-    const auto resid_exact =
-        Kokkos::View<const double[1][number_of_nodes][6], Kokkos::HostSpace>(resid_exact_data.data()
-        );
+    const auto resid_exact = Kokkos::View<const double[1][number_of_nodes][6], Kokkos::HostSpace>(
+        resid_exact_data.data()
+    );
 
     const auto residual_vector_terms_mirror =
         Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), residual_vector_terms);
@@ -449,9 +449,9 @@ TEST(IntegrateResidualVector, TwoElementsOneNodeOneQP) {
     constexpr auto resid_exact_data =
         std::array<double, 2 * number_of_nodes * 6>{6.,  12., 18., 24., 30., 36.,
                                                     12., 24., 36., 48., 60., 72.};
-    const auto resid_exact =
-        Kokkos::View<const double[2][number_of_nodes][6], Kokkos::HostSpace>(resid_exact_data.data()
-        );
+    const auto resid_exact = Kokkos::View<const double[2][number_of_nodes][6], Kokkos::HostSpace>(
+        resid_exact_data.data()
+    );
 
     const auto residual_vector_terms_mirror =
         Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), residual_vector_terms);
@@ -507,9 +507,9 @@ TEST(IntegrateResidualVector, OneElementOneNodeTwoQPs) {
 
     constexpr auto resid_exact_data =
         std::array<double, number_of_nodes * 6>{20., 28., 36., 44., 52., 60.};
-    const auto resid_exact =
-        Kokkos::View<const double[1][number_of_nodes][6], Kokkos::HostSpace>(resid_exact_data.data()
-        );
+    const auto resid_exact = Kokkos::View<const double[1][number_of_nodes][6], Kokkos::HostSpace>(
+        resid_exact_data.data()
+    );
 
     const auto residual_vector_terms_mirror =
         Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), residual_vector_terms);
@@ -565,13 +565,13 @@ TEST(IntegrateResidualVector, OneElementTwoNodesOneQP) {
     constexpr auto resid_exact_data =
         std::array<double, 2 * number_of_nodes * 6>{6., 12., 18., 24., 30., 36.,
                                                     0., 0.,  0.,  0.,  0.,  0.};
-    const auto resid_exact =
-        Kokkos::View<const double[1][number_of_nodes][6], Kokkos::HostSpace>(resid_exact_data.data()
-        );
+    const auto resid_exact = Kokkos::View<const double[1][number_of_nodes][6], Kokkos::HostSpace>(
+        resid_exact_data.data()
+    );
 
     const auto residual_vector_terms_mirror =
         Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), residual_vector_terms);
     CompareWithExpected(residual_vector_terms_mirror, resid_exact);
 }
 
-}  // namespace kynema::beams::tests
+}  // namespace kynema_fmb::beams::tests

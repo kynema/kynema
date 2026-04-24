@@ -5,7 +5,7 @@
 #include "elements/masses/masses_input.hpp"
 #include "model/model.hpp"
 
-namespace kynema::tests {
+namespace kynema_fmb::tests {
 
 class MassesInputTest : public ::testing::Test {
 protected:
@@ -53,4 +53,4 @@ TEST_F(MassesInputTest, NumElements) {
     EXPECT_EQ(input.NumElements(), 2);
 }
 
-}  // namespace kynema::tests
+}  // namespace kynema_fmb::tests

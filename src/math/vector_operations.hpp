@@ -3,7 +3,7 @@
 #include <Eigen/Dense>
 #include <Kokkos_Core.hpp>
 
-namespace kynema::math {
+namespace kynema_fmb::math {
 
 /// Converts a 3x1 vector to a 3x3 skew-symmetric matrix and returns the result
 template <typename VectorType, typename MatrixType>
@@ -39,4 +39,4 @@ KOKKOS_INLINE_FUNCTION void CrossProduct(
     c(2) = a(0) * b(1) - a(1) * b(0);
 }
 
-}  // namespace kynema::math
+}  // namespace kynema_fmb::math

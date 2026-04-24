@@ -1,4 +1,4 @@
-name: Kynema Installation
+name: Kynema-FMB Installation
 
 on:
   push:
@@ -15,17 +15,17 @@ jobs:
       CXX: g++
       CC: gcc
     steps:
-      - name: Install Kynema
+      - name: Install Kynema-FMB
         run: |
           git clone https://github.com/spack/spack.git
           source spack/share/spack/setup-env.sh
           spack compiler find
           spack env create -d .
           spack env activate .
-          spack add kynema ^netcdf-c~mpi ^hdf5~mpi ^kokkos-kernels@4.7.02
-          spack develop kynema@main
+          spack add kynema-fmb ^netcdf-c~mpi ^hdf5~mpi ^kokkos-kernels@4.7.02
+          spack develop kynema-fmb@main
           spack concretize -f
-          cd kynema
+          cd kynema-fmb
           if [ "${{ github.event_name }}" = "pull_request" ]; then
             git remote add pr-source ${{ github.event.pull_request.head.repo.clone_url }}
             git fetch pr-source ${{ github.head_ref }}
@@ -38,10 +38,10 @@ jobs:
         run: |
           source spack/share/spack/setup-env.sh
           spack env activate .
-          cd kynema/tests/documentation_tests/floating_platform
+          cd kynema-fmb/tests/documentation_tests/floating_platform
           mkdir build
           cd build
-          spack build-env kynema -- bash
+          spack build-env kynema-fmb -- bash
           cmake ../ -DCMAKE_BUILD_TYPE=Debug
           make -j 2
           ./floating_platform
@@ -49,10 +49,10 @@ jobs:
         run: |
           source spack/share/spack/setup-env.sh
           spack env activate .
-          cd kynema/tests/documentation_tests/iea15mw_turbine
+          cd kynema-fmb/tests/documentation_tests/iea15mw_turbine
           mkdir build
           cd build
-          spack build-env kynema -- bash
+          spack build-env kynema-fmb -- bash
           cmake ../ -DCMAKE_BUILD_TYPE=Debug
           make -j 2
           cp ../IEA-15-240-RWT.yaml ./
@@ -61,10 +61,10 @@ jobs:
         run: |
           source spack/share/spack/setup-env.sh
           spack env activate .
-          cd kynema/tests/documentation_tests/heavy_top
+          cd kynema-fmb/tests/documentation_tests/heavy_top
           mkdir build
           cd build
-          spack build-env kynema -- bash
+          spack build-env kynema-fmb -- bash
           cmake ../ -DCMAKE_BUILD_TYPE=Debug
           make -j 2
           ./heavy_top
@@ -72,10 +72,10 @@ jobs:
         run: |
           source spack/share/spack/setup-env.sh
           spack env activate .
-          cd kynema/tests/documentation_tests/spring_mass_system
+          cd kynema-fmb/tests/documentation_tests/spring_mass_system
           mkdir build
           cd build
-          spack build-env kynema -- bash
+          spack build-env kynema-fmb -- bash
           cmake ../ -DCMAKE_BUILD_TYPE=Debug
           make -j 2
           ./spring_mass_system
@@ -83,10 +83,10 @@ jobs:
         run: |
           source spack/share/spack/setup-env.sh
           spack env activate .
-          cd kynema/tests/documentation_tests/three_blade_rotor
+          cd kynema-fmb/tests/documentation_tests/three_blade_rotor
           mkdir build
           cd build
-          spack build-env kynema -- bash
+          spack build-env kynema-fmb -- bash
           cmake ../ -DCMAKE_BUILD_TYPE=Debug
           make -j 2
           ./three_blade_rotor

@@ -6,7 +6,7 @@
 #include "constraints/calculate_rotation_control_constraint.hpp"
 #include "create_view.hpp"
 
-namespace kynema::tests {
+namespace kynema_fmb::tests {
 
 struct ExecuteCalculateRotationControlConstraint {
     Kokkos::View<double[3]>::const_type X0;
@@ -121,4 +121,4 @@ TEST(CalculateRotationControlConstraintTests, OneConstraint) {
     }
 }
 
-}  // namespace kynema::tests
+}  // namespace kynema_fmb::tests

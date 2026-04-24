@@ -3,11 +3,11 @@
 Geometrically exact beam theory
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Kynema beam finite elements are based on geometrically exact beam
+Kynema-FMB beam finite elements are based on geometrically exact beam
 theory (GEBT) [@Reissner:1973 @Simo:1985; @Simo-VuQuoc:1986]. Our
 formulation largely follows that described in [@Bauchau:2011] and as
 implemented in Dymore [@Dymore:2013] and the BeamDyn [@Wang-etal:2017]
-module of OpenFAST. A key difference is that Kynema uses
+module of OpenFAST. A key difference is that Kynema-FMB uses
 quaternions to store and track rotations rather than Wiener-Milenkovic
 parameters, thereby removing the challenges associated rescaling
 operations to avoid singularities.
@@ -235,7 +235,7 @@ The damping-force terms are modeled as
    \left(\tilde{x}'^\mathrm{r}+\tilde{u}'\right)^T \left( \underline{\underline{D}}_{11} \underline{\dot{\epsilon}} 
    + \underline{\underline{D}}_{12} \underline{\dot{\kappa}}\right)  \end{bmatrix}
 
-where :math:`\underline{\underline{D}}\in \mathbb{R}^{6 \times 6}` is the damping matrix in inertial coordinates. Kynema currently uses stiffness proportional damping, i.e., 
+where :math:`\underline{\underline{D}}\in \mathbb{R}^{6 \times 6}` is the damping matrix in inertial coordinates. Kynema-FMB currently uses stiffness proportional damping, i.e., 
 
 .. math::
 

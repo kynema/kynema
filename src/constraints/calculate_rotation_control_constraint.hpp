@@ -7,7 +7,7 @@
 #include "math/quaternion_operations.hpp"
 #include "math/vector_operations.hpp"
 
-namespace kynema::constraints {
+namespace kynema_fmb::constraints {
 
 /**
  * @brief A Kernel which calculates the residual and gradient contributions of a rotation
@@ -141,4 +141,4 @@ struct CalculateRotationControlConstraint {
         }
     }
 };
-}  // namespace kynema::constraints
+}  // namespace kynema_fmb::constraints

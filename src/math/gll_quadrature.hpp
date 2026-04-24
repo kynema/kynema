@@ -4,7 +4,7 @@
 #include <stdexcept>
 #include <vector>
 
-namespace kynema::math {
+namespace kynema_fmb::math {
 
 inline std::vector<double> GetGllLocations(size_t order) {
     switch (order) {
@@ -542,4 +542,4 @@ inline std::vector<double> GetGllWeights(size_t order) {
     }
 }
 
-}  // namespace kynema::math
+}  // namespace kynema_fmb::math

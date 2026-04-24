@@ -3,7 +3,7 @@
 #include "interface.hpp"
 #include "interface_input.hpp"
 
-namespace kynema::interfaces::cfd {
+namespace kynema_fmb::interfaces::cfd {
 
 /**
  * @brief A factory for configuring and building a CFD interface object.
@@ -183,4 +183,4 @@ private:
     InterfaceInput interface_input;
 };
 
-}  // namespace kynema::interfaces::cfd
+}  // namespace kynema_fmb::interfaces::cfd

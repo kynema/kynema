@@ -4,7 +4,7 @@
 #include <cmath>
 #include <stdexcept>
 
-namespace kynema::interfaces::components {
+namespace kynema_fmb::interfaces::components {
 
 std::array<double, 3> UniformFlowParameters::Velocity(const std::array<double, 3>& position) const {
     // Calculate horizontal velocity using power law wind shear
@@ -80,4 +80,4 @@ std::array<double, 3> Inflow::Velocity(double t, const std::array<double, 3>& po
     throw std::runtime_error("Unknown inflow type");
 }
 
-}  // namespace kynema::interfaces::components
+}  // namespace kynema_fmb::interfaces::components

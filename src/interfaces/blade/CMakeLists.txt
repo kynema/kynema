@@ -1,4 +1,4 @@
-target_sources(kynema_library
+target_sources(kynema_fmb_library
   PRIVATE
   blade_interface.cpp
   blade_interface_builder.cpp
@@ -7,5 +7,5 @@ target_sources(kynema_library
 install(FILES
         blade_interface.hpp
         blade_interface_builder.hpp
-        DESTINATION include/Kynema/interfaces/blade/
+        DESTINATION include/KynemaFMB/interfaces/blade/
 )

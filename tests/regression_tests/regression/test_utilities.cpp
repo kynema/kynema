@@ -10,7 +10,7 @@
 #include <Kokkos_Core.hpp>
 #include <gtest/gtest.h>
 
-namespace kynema::tests {
+namespace kynema_fmb::tests {
 
 std::filesystem::path FindProjectRoot() {
     std::filesystem::path currentPath = std::filesystem::current_path();
@@ -80,8 +80,7 @@ std::vector<double> kokkos_view_1D_to_vector(const Kokkos::View<double*>& view) 
     auto view_host = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), view);
     std::vector<double> values(view_host.extent(0));
     std::ranges::transform(
-        std::views::iota(0U, view_host.extent(0)), std::begin(values),
-        [view_host](auto i) {
+        std::views::iota(0U, view_host.extent(0)), std::begin(values), [view_host](auto i) {
             return view_host(i);
         }
     );
@@ -138,4 +137,4 @@ void expect_kokkos_view_3D_equal(
     }
 }
 
-}  // namespace kynema::tests
+}  // namespace kynema_fmb::tests

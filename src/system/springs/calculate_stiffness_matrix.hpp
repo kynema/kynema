@@ -7,7 +7,7 @@
 
 #include "math/vector_operations.hpp"
 
-namespace kynema::springs {
+namespace kynema_fmb::springs {
 
 template <typename DeviceType>
 struct CalculateStiffnessMatrix {
@@ -35,4 +35,4 @@ struct CalculateStiffnessMatrix {
         Gemm::invoke(-c2, r_tilde, r_tilde, 1., a);
     }
 };
-}  // namespace kynema::springs
+}  // namespace kynema_fmb::springs

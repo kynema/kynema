@@ -28,10 +28,10 @@ The results show the expected spectral convergence to the exact solution.
 
 .. note::
 
-   This benchmark is included as a regression test in the Kynema code base.
+   This benchmark is included as a regression test in the Kynema-FMB code base.
    The test is implemented in:
 
-     https://github.com/kynema/kynema/blob/main/tests/regression_tests/regression/verification/static_isotropic_beam_rollup.cpp
+     https://github.com/kynema/kynema-fmb/blob/main/tests/regression_tests/regression/verification/static_isotropic_beam_rollup.cpp
 
 
 .. container:: csl-entry

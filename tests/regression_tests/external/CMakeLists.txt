@@ -1,6 +1,6 @@
 # Test ROSCO controller
-if (Kynema_ENABLE_ROSCO_CONTROLLER AND
-    (NOT Kynema_ENABLE_SANITIZER_LEAK))
+if (KYNEMA_FMB_ENABLE_ROSCO_CONTROLLER AND
+    (NOT KYNEMA_FMB_ENABLE_SANITIZER_LEAK))
     target_sources(
         kynema_regression_tests
         PRIVATE
@@ -10,9 +10,9 @@ if (Kynema_ENABLE_ROSCO_CONTROLLER AND
 endif()
 
 # Test AeroDyn Inflow
-if (Kynema_ENABLE_OPENFAST_ADI AND
-    Kynema_ENABLE_ROSCO_CONTROLLER AND
-    (NOT Kynema_ENABLE_SANITIZER_LEAK))
+if (KYNEMA_FMB_ENABLE_OPENFAST_ADI AND
+    KYNEMA_FMB_ENABLE_ROSCO_CONTROLLER AND
+    (NOT KYNEMA_FMB_ENABLE_SANITIZER_LEAK))
     target_sources(
         kynema_regression_tests
         PRIVATE

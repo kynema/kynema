@@ -7,7 +7,7 @@
 
 #include "math/vector_operations.hpp"
 
-namespace kynema::system {
+namespace kynema_fmb::system {
 
 /**
  * @brief A Kernel for calculating the tangent operator at each node
@@ -65,4 +65,4 @@ struct CalculateTangentOperator {
     }
 };
 
-}  // namespace kynema::system
+}  // namespace kynema_fmb::system

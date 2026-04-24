@@ -5,7 +5,7 @@
 #include "interfaces/blade/blade_interface_builder.hpp"
 #include "interfaces/components/beam_builder.hpp"
 
-namespace kynema::tests {
+namespace kynema_fmb::tests {
 
 TEST(VerificationTest, Dynamic_Iea15MwBladeBending) {
     //----------------------------------
@@ -196,4 +196,4 @@ TEST(VerificationTest, Dynamic_Iea15MwBladeBending) {
     }
 }
 
-}  // namespace kynema::tests
+}  // namespace kynema_fmb::tests

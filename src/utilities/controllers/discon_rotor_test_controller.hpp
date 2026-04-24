@@ -1,6 +1,6 @@
 #pragma once
 
-namespace kynema::util {
+namespace kynema_fmb::util {
 
 extern "C" {
 
@@ -12,4 +12,4 @@ void PITCH_CONTROLLER(
 
 }  // extern "C"
 
-}  // namespace kynema::util
+}  // namespace kynema_fmb::util

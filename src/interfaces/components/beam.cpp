@@ -12,7 +12,7 @@
 #include "math/quaternion_operations.hpp"
 #include "model/model.hpp"
 
-namespace kynema::interfaces::components {
+namespace kynema_fmb::interfaces::components {
 
 Beam::Beam(const BeamInput& input, Model& model) {
     ValidateInput(input);
@@ -114,8 +114,7 @@ void Beam::CreateBeamElement(const BeamInput& input, Model& model) {
     // Add nodes to model
     auto node_ids = std::vector<size_t>(this->node_xi.size());
     std::ranges::transform(
-        std::views::iota(0U, this->node_xi.size()), std::begin(node_ids),
-        [&](auto node) {
+        std::views::iota(0U, this->node_xi.size()), std::begin(node_ids), [&](auto node) {
             const auto& pos = this->node_coordinates[node];
             const auto q_rot = math::TangentTwistToQuaternion(this->node_tangents[node], 0.);
             return model.AddNode()
@@ -133,8 +132,7 @@ void Beam::CreateBeamElement(const BeamInput& input, Model& model) {
     if (input.quadrature_style == BeamInput::QuadratureStyle::Segmented) {
         original_section_grid.resize(input.sections.size());
         std::ranges::transform(
-            input.sections, std::begin(original_section_grid),
-            [](const auto& section) {
+            input.sections, std::begin(original_section_grid), [](const auto& section) {
                 return section.location;
             }
         );
@@ -215,8 +213,7 @@ void Beam::CalcNodeTangents() {
 
     // Normalize tangent vectors
     std::ranges::transform(
-        this->node_tangents, this->node_tangents.begin(),
-        [](const std::array<double, 3>& tangent) {
+        this->node_tangents, this->node_tangents.begin(), [](const std::array<double, 3>& tangent) {
             const auto normalized = Eigen::Matrix<double, 3, 1>(tangent.data()).normalized();
             return std::array{normalized(0), normalized(1), normalized(2)};
         }
@@ -396,8 +393,7 @@ std::vector<BeamSection> Beam::BuildBeamSections_WholeBeam(
 
     auto grid_locations = std::vector<double>(quad_locations.size());
     std::ranges::transform(
-        quad_locations, std::begin(grid_locations),
-        [min_location, max_location](auto x) {
+        quad_locations, std::begin(grid_locations), [min_location, max_location](auto x) {
             const auto alpha = (x + 1.) / 2.;
             return ((1. - alpha) * min_location) + (alpha * max_location);
         }
@@ -459,4 +455,4 @@ std::vector<BeamSection> Beam::BuildBeamSections_WholeBeamGL(const BeamInput& in
     return BuildBeamSections_WholeBeam(input, math::GetGlLocations(input.section_refinement + 1U));
 }
 
-}  // namespace kynema::interfaces::components
+}  // namespace kynema_fmb::interfaces::components

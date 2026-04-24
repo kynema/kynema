@@ -11,9 +11,9 @@
 #include "interfaces/turbine/turbine_interface.hpp"
 #include "interfaces/turbine/turbine_interface_builder.hpp"
 
-#include "Kynema_config.h"
+#include "Kynema_FMB_config.h"
 
-namespace kynema::tests {
+namespace kynema_fmb::tests {
 
 TEST(TurbineInterfaceTest, IEA15_ROSCOControllerWithAero) {
     // Conversions
@@ -316,7 +316,7 @@ TEST(TurbineInterfaceTest, IEA15_ROSCOControllerWithAero) {
 
     // Setup the controller and its input file
     const auto controller_shared_lib_path =
-        std::string{static_cast<const char*>(Kynema_ROSCO_LIBRARY)};
+        std::string{static_cast<const char*>(KYNEMA_FMB_ROSCO_LIBRARY)};
     const auto controller_function_name = std::string{"DISCON"};
     const auto controller_input_file = std::string{"./IEA-15-240-RWT/DISCON.IN"};
     const auto controller_output_file = std::string{"./IEA-15-240-RWT"};
@@ -408,8 +408,7 @@ TEST(TurbineInterfaceTest, IEA15_ROSCOControllerWithAero) {
 
         // Update aerodynamic loads based on inflow
         interface.UpdateAerodynamicLoads(
-            fluid_density,
-            [t, &inflow](const std::array<double, 3>& pos) {
+            fluid_density, [t, &inflow](const std::array<double, 3>& pos) {
                 return inflow.Velocity(t, pos);
             }
         );
@@ -431,4 +430,4 @@ TEST(TurbineInterfaceTest, IEA15_ROSCOControllerWithAero) {
         }
     }
 }
-}  // namespace kynema::tests
+}  // namespace kynema_fmb::tests

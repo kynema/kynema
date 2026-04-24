@@ -20,7 +20,7 @@
 #include "interpolate_to_quadrature_point_for_damping.hpp"
 #include "system/masses/rotate_section_matrix.hpp"
 
-namespace kynema::beams {
+namespace kynema_fmb::beams {
 template <typename DeviceType>
 struct CalculateQuadraturePointDampingValues {
     template <typename ValueType>
@@ -215,4 +215,4 @@ struct CalculateQuadraturePointDampingValues {
     }
 };
 
-}  // namespace kynema::beams
+}  // namespace kynema_fmb::beams

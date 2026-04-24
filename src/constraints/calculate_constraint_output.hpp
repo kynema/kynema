@@ -5,7 +5,7 @@
 #include "calculate_revolute_joint_output.hpp"
 #include "constraint_type.hpp"
 
-namespace kynema::constraints {
+namespace kynema_fmb::constraints {
 
 /**
  * @brief Kernel that calculates the output for a constraints, for use as feedback
@@ -39,4 +39,4 @@ struct CalculateConstraintOutput {
     }
 };
 
-}  // namespace kynema::constraints
+}  // namespace kynema_fmb::constraints

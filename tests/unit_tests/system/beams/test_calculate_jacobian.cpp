@@ -8,7 +8,7 @@
 #include "elements/beams/calculate_jacobian.hpp"
 #include "test_calculate.hpp"
 
-namespace kynema::beams::tests {
+namespace kynema_fmb::beams::tests {
 
 TEST(CalculateJacobian, LinearElement) {
     constexpr size_t num_elems{1};
@@ -63,44 +63,43 @@ TEST(CalculateJacobian, FourthOrderElement) {
         CreateView<size_t[num_elems]>("num_nodes", std::array{num_nodes});
     const auto num_qps_per_elem = CreateView<size_t[num_elems]>("num_qps", std::array{num_qps});
     const auto node_position_rotation = CreateView<double[num_elems][num_nodes][7]>(
-        "node_position_rotation",
-        std::array{
-            0.,
-            0.,
-            0.,
-            0.,
-            0.,
-            0.,
-            0.,
-            0.16237631096713473,
-            0.17578464768961147,
-            0.1481911137890286,
-            0.,
-            0.,
-            0.,
-            0.,
-            0.25,
-            1.,
-            1.1875,
-            0.,
-            0.,
-            0.,
-            0.,
-            -0.30523345382427747,
-            2.4670724951675314,
-            2.953849702537502,
-            0.,
-            0.,
-            0.,
-            0.,
-            -1.,
-            3.5,
-            4.,
-            0.,
-            0.,
-            0.,
-            0.
-        }
+        "node_position_rotation", std::array{
+                                      0.,
+                                      0.,
+                                      0.,
+                                      0.,
+                                      0.,
+                                      0.,
+                                      0.,
+                                      0.16237631096713473,
+                                      0.17578464768961147,
+                                      0.1481911137890286,
+                                      0.,
+                                      0.,
+                                      0.,
+                                      0.,
+                                      0.25,
+                                      1.,
+                                      1.1875,
+                                      0.,
+                                      0.,
+                                      0.,
+                                      0.,
+                                      -0.30523345382427747,
+                                      2.4670724951675314,
+                                      2.953849702537502,
+                                      0.,
+                                      0.,
+                                      0.,
+                                      0.,
+                                      -1.,
+                                      3.5,
+                                      4.,
+                                      0.,
+                                      0.,
+                                      0.,
+                                      0.
+                                  }
     );
     const auto shape_derivative = CreateView<double[num_elems][num_nodes][num_qps]>(
         "shape_derivative",
@@ -162,4 +161,4 @@ TEST(CalculateJacobian, FourthOrderElement) {
     }
 }
 
-}  // namespace kynema::beams::tests
+}  // namespace kynema_fmb::beams::tests

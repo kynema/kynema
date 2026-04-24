@@ -4,7 +4,7 @@
 
 #include "math/quaternion_operations.hpp"
 
-namespace kynema::constraints {
+namespace kynema_fmb::constraints {
 
 /**
  * @brief Kernel for calculating the force applied to the system residual as the result of
@@ -46,4 +46,4 @@ struct CalculateRevoluteJointForce {
     }
 };
 
-}  // namespace kynema::constraints
+}  // namespace kynema_fmb::constraints

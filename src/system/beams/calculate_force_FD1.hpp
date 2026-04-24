@@ -3,7 +3,7 @@
 #include <KokkosBlas.hpp>
 #include <Kokkos_Core.hpp>
 
-namespace kynema::beams {
+namespace kynema_fmb::beams {
 
 template <typename DeviceType>
 struct CalculateForceFD1 {
@@ -23,4 +23,4 @@ struct CalculateForceFD1 {
     }
 };
 
-}  // namespace kynema::beams
+}  // namespace kynema_fmb::beams

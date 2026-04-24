@@ -5,7 +5,7 @@
 #include "math/quaternion_operations.hpp"
 #include "math/vector_operations.hpp"
 
-namespace kynema::constraints {
+namespace kynema_fmb::constraints {
 
 /**
  * @brief Kernel for calculating the output for a revolute joint constraint for feedback to
@@ -90,4 +90,4 @@ struct CalculateRevoluteJointOutput {
     }
 };
 
-}  // namespace kynema::constraints
+}  // namespace kynema_fmb::constraints

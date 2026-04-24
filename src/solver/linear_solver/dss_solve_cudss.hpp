@@ -6,7 +6,7 @@
 #include "dss_algorithm.hpp"
 #include "dss_handle_cudss.hpp"
 
-namespace kynema::dss {
+namespace kynema_fmb::dss {
 template <typename CrsMatrixType, typename MultiVectorType>
 struct SolveFunction<Handle<Algorithm::CUDSS>, CrsMatrixType, MultiVectorType> {
     static void solve(
@@ -49,4 +49,4 @@ struct SolveFunction<Handle<Algorithm::CUDSS>, CrsMatrixType, MultiVectorType> {
     }
 };
 
-}  // namespace kynema::dss
+}  // namespace kynema_fmb::dss

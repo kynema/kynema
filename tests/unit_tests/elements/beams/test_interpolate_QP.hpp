@@ -3,7 +3,7 @@
 #include <Kokkos_Core.hpp>
 #include <gtest/gtest.h>
 
-namespace kynema::beams::tests {
+namespace kynema_fmb::beams::tests {
 
 template <typename ValueType, typename DataType>
 typename Kokkos::View<ValueType>::const_type CreateView(
@@ -49,4 +49,4 @@ inline auto create_shape_deriv_TwoNodeTwoQP() {
     return CreateView<double[1][2][2]>("shape_deriv", std::array{4., 9., 8., 15.});
 }
 
-}  // namespace kynema::beams::tests
+}  // namespace kynema_fmb::beams::tests

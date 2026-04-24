@@ -4,7 +4,7 @@
 #include "interfaces/blade/blade_interface_builder.hpp"
 #include "interfaces/components/beam_builder.hpp"
 
-namespace kynema::tests {
+namespace kynema_fmb::tests {
 
 /**
  * @brief Static bending benchmark test for an anisotropic, composite cantilever beam with coupling
@@ -137,4 +137,4 @@ TEST(VerificationTest, Static_CompositeBeamBending) {
     );  // Equivalent BeamDyn soln: 1.2297364829237
 }
 
-}  // namespace kynema::tests
+}  // namespace kynema_fmb::tests

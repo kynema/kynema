@@ -4,7 +4,7 @@
 #include <array>
 #include <stdexcept>
 
-namespace kynema::util {
+namespace kynema_fmb::util {
 
 TimeSeriesWriter::TimeSeriesWriter(const std::string& file_path, bool create)
     : file_(file_path, create), num_channels_{0}, buffer_size_{kDefaultBufferSize} {
@@ -224,4 +224,4 @@ size_t TimeSeriesWriter::GetBufferSize() const {
     return this->buffer_size_;
 }
 
-}  // namespace kynema::util
+}  // namespace kynema_fmb::util

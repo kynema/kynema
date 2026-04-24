@@ -11,7 +11,7 @@ using :math:`n = 5` nodes. The beam is clamped at the root and a point force
 
 BeamDyn is used to provide a benchmark solution. The following figure compares the tip
 displacement components (:math:`u_1`, :math:`u_2`, :math:`u_3`) for the dynamic response of the
-composite beam between Kynema and BeamDyn over 5 seconds of simulation time with a time step size
+composite beam between Kynema-FMB and BeamDyn over 5 seconds of simulation time with a time step size
 of :math:`\Delta t = 0.005` s. The comparison shows good agreement between the two solutions.
 
 .. figure:: images/dynamic_beam_5nodes_0pt005s_comparison.png
@@ -19,15 +19,15 @@ of :math:`\Delta t = 0.005` s. The comparison shows good agreement between the t
    :width: 80%
 
    Comparison of tip displacement components (:math:`u_1`, :math:`u_2`, :math:`u_3`) for the dynamic
-   composite beam between Kynema and BeamDyn for a single LSFE with :math:`n = 5` nodes and time step
+   composite beam between Kynema-FMB and BeamDyn for a single LSFE with :math:`n = 5` nodes and time step
    :math:`\Delta t = 0.005` s.
 
 .. note::
 
-   This benchmark is included as a regression test in the Kynema code base.
+   This benchmark is included as a regression test in the Kynema-FMB code base.
    The test is implemented in:
 
-     https://github.com/kynema/kynema/blob/main/tests/regression_tests/regression/verification/dynamic_composite_beam_bending.cpp
+     https://github.com/kynema/kynema-fmb/blob/main/tests/regression_tests/regression/verification/dynamic_composite_beam_bending.cpp
 
 
 .. container:: csl-entry

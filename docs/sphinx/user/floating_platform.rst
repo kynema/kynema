@@ -1,12 +1,12 @@
 Example: Rigid body with three springs
 ======================================
 
-This example will walkthrough how to run simulation of a forced rigid body supported by three nonlinear springs (see :ref:`sec-rb-springs` for details) using Kynema's high level API.  This model is associated with the DeepCWind platform.
+This example will walkthrough how to run simulation of a forced rigid body supported by three nonlinear springs (see :ref:`sec-rb-springs` for details) using Kynema-FMB's high level API.  This model is associated with the DeepCWind platform.
 For the most up to date working version of this code, look in ``tests/documentation_tests/floating_platform``.
 
 As with any C++ program, start with the includes.
 As a Kokkos-based library, you'll need to include ``Kokkos_Core.hpp`` for setup and teardown operations.
-In this example, we will be interfacing to Kynema using its CFD interface.
+In this example, we will be interfacing to Kynema-FMB using its CFD interface.
 In addition to the interface itself, we will include the builder, which is a factory class which will aid in setting up all the necessary data structures.
 
 .. code-block:: cpp
@@ -65,7 +65,7 @@ These include the gravity, time step size, numerical damping factor, and maximum
 
 .. code-block:: cpp
 
-    auto interface_builder = kynema::interfaces::cfd::InterfaceBuilder{}
+    auto interface_builder = kynema_fmb::interfaces::cfd::InterfaceBuilder{}
                               .SetGravity(gravity)
                               .SetTimeStep(time_step)
                               .SetDampingFactor(rho_inf)
@@ -103,7 +103,7 @@ Pick whichever style best fits your application.
         .SetMooringLineFairleadPosition(2, {20.43, 35.39, -14.})
         .SetMooringLineAnchorPosition(2, {52.73, 91.34, -58.4});
 
-When done, call the ``.Build()`` function to generate all of Kynema's data structures and create the interface itself.
+When done, call the ``.Build()`` function to generate all of Kynema-FMB's data structures and create the interface itself.
 
 .. code-block:: cpp
 
@@ -148,4 +148,4 @@ This function returns a boolean stating if the time step converged or not.
 
 And that's it - the simulation will advance the solution in time.
 At any time, you can access the current position and orientation of the platform as a quaternion through the ``interface/turbine.floating_platform.node.displacement`` variable.
-You can also tell Kynema to write out the solution to a file at each time step by providing an output file name to the ``InterfaceBuilder::SetOutputFile`` method before building the interface.
+You can also tell Kynema-FMB to write out the solution to a file at each time step by providing an output file name to the ``InterfaceBuilder::SetOutputFile`` method before building the interface.

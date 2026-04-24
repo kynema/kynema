@@ -21,7 +21,7 @@ inline void CompareWithExpected(
 }
 
 }  // namespace
-namespace kynema::tests {
+namespace kynema_fmb::tests {
 
 TEST(CalculateNextState, OneNode) {
     constexpr auto h = 2.;
@@ -78,4 +78,4 @@ TEST(CalculateNextState, OneNode) {
     const auto a_mirror = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), a);
     CompareWithExpected(a_mirror, a_exact);
 }
-}  // namespace kynema::tests
+}  // namespace kynema_fmb::tests

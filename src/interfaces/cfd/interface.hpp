@@ -14,7 +14,7 @@
 #include "state/state.hpp"
 #include "step/step_parameters.hpp"
 
-namespace kynema::interfaces::cfd {
+namespace kynema_fmb::interfaces::cfd {
 
 /**
  * @brief The main interface for controlling the CFD problem
@@ -82,7 +82,7 @@ public:
     State<DeviceType> state_save;
 
     /// @brief Host local copy of State
-    kynema::interfaces::HostState<DeviceType> host_state;
+    kynema_fmb::interfaces::HostState<DeviceType> host_state;
 
     /// @brief Current timestep index
     size_t current_timestep_{0};
@@ -91,4 +91,4 @@ public:
     std::unique_ptr<interfaces::Outputs> outputs_;
 };
 
-}  // namespace kynema::interfaces::cfd
+}  // namespace kynema_fmb::interfaces::cfd

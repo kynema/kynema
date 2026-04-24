@@ -21,7 +21,7 @@ Kokkos::View<double[size]> Create1DView(const std::array<double, size>& input) {
 
 Kokkos::View<double[3][3]> TestVecTilde(const Kokkos::View<double[3]>& v) {
     auto m = Kokkos::View<double[3][3]>("m");
-    Kokkos::parallel_for("VecTilde", 1, KOKKOS_LAMBDA(int) { kynema::math::VecTilde(v, m); });
+    Kokkos::parallel_for("VecTilde", 1, KOKKOS_LAMBDA(int) { kynema_fmb::math::VecTilde(v, m); });
     return m;
 }
 
@@ -31,14 +31,14 @@ void test_DotProduct_View() {
     auto c = 0.;
     Kokkos::parallel_reduce(
         "DotProduct_View", 1,
-        KOKKOS_LAMBDA(int, double& result) { result = kynema::math::DotProduct(a, b); }, c
+        KOKKOS_LAMBDA(int, double& result) { result = kynema_fmb::math::DotProduct(a, b); }, c
     );
     ASSERT_EQ(c, 32.);
 }
 
 }  // namespace
 
-namespace kynema::tests {
+namespace kynema_fmb::tests {
 
 TEST(VectorTest, VecTilde) {
     auto v = Create1DView<3>({1., 2., 3.});
@@ -61,4 +61,4 @@ TEST(VectorTest, DotProduct_View) {
     test_DotProduct_View();
 }
 
-}  // namespace kynema::tests
+}  // namespace kynema_fmb::tests

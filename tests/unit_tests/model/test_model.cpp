@@ -2,7 +2,7 @@
 
 #include "model/model.hpp"
 
-namespace kynema::tests {
+namespace kynema_fmb::tests {
 
 TEST(ModelTest, AddNodeToModel) {
     Model model;
@@ -82,12 +82,12 @@ TEST(ModelTest, ModelCreateState) {
     Model model;
 
     // Rotation of 1 radian around x
-    const auto R1 =
-        Eigen::Quaternion<double>(Eigen::AngleAxis<double>(1., Eigen::Matrix<double, 3, 1>::Unit(0))
-        );
-    const auto R2 =
-        Eigen::Quaternion<double>(Eigen::AngleAxis<double>(1., Eigen::Matrix<double, 3, 1>::Unit(1))
-        );
+    const auto R1 = Eigen::Quaternion<double>(
+        Eigen::AngleAxis<double>(1., Eigen::Matrix<double, 3, 1>::Unit(0))
+    );
+    const auto R2 = Eigen::Quaternion<double>(
+        Eigen::AngleAxis<double>(1., Eigen::Matrix<double, 3, 1>::Unit(1))
+    );
 
     // Create node with initial position and displacement from initial position
     static_cast<void>(model.AddNode()
@@ -127,12 +127,12 @@ TEST(ModelTest, ModelCreateSystem) {
     Model model;
 
     // Rotation of 1 radian around x
-    const auto R1 =
-        Eigen::Quaternion<double>(Eigen::AngleAxis<double>(1., Eigen::Matrix<double, 3, 1>::Unit(0))
-        );
-    const auto R2 =
-        Eigen::Quaternion<double>(Eigen::AngleAxis<double>(1., Eigen::Matrix<double, 3, 1>::Unit(1))
-        );
+    const auto R1 = Eigen::Quaternion<double>(
+        Eigen::AngleAxis<double>(1., Eigen::Matrix<double, 3, 1>::Unit(0))
+    );
+    const auto R2 = Eigen::Quaternion<double>(
+        Eigen::AngleAxis<double>(1., Eigen::Matrix<double, 3, 1>::Unit(1))
+    );
 
     // Create node with initial position and displacement from initial position
     static_cast<void>(model.AddNode()
@@ -169,4 +169,4 @@ TEST(ModelTest, ModelCreateSystem) {
     EXPECT_EQ(constraints.num_constraints, 0);
 }
 
-}  // namespace kynema::tests
+}  // namespace kynema_fmb::tests

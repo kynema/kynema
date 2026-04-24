@@ -7,7 +7,7 @@
 
 #include "math/vector_operations.hpp"
 
-namespace kynema::beams {
+namespace kynema_fmb::beams {
 
 template <typename DeviceType>
 struct CalculateD_D1 {
@@ -41,4 +41,4 @@ struct CalculateD_D1 {
         GemmNN::invoke(1., D22, tilde_omega, 0., D_D1_22);
     }
 };
-}  // namespace kynema::beams
+}  // namespace kynema_fmb::beams

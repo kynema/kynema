@@ -1,4 +1,4 @@
-target_sources(kynema_library
+target_sources(kynema_fmb_library
   PRIVATE
   aerodynamics.cpp
   beam.cpp
@@ -26,5 +26,5 @@ install(FILES
         turbine.hpp
         turbine_builder.hpp
         turbine_input.hpp
-        DESTINATION include/Kynema/interfaces/components/
+        DESTINATION include/KynemaFMB/interfaces/components/
 )

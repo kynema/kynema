@@ -6,7 +6,7 @@
 #include "math/quaternion_operations.hpp"
 #include "math/vector_operations.hpp"
 
-namespace kynema::constraints {
+namespace kynema_fmb::constraints {
 
 /**
  * @brief Kernel for calculating the residual and system gradient for a rigid joint constraint
@@ -78,4 +78,4 @@ struct CalculateRigidJoint3DOFConstraint {
         CopyMatrix::invoke(A, subview(base_gradient_terms, make_pair(0, 3), make_pair(3, 6)));
     }
 };
-}  // namespace kynema::constraints
+}  // namespace kynema_fmb::constraints

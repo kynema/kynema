@@ -5,7 +5,7 @@
 #include "interfaces/blade/blade_interface_builder.hpp"
 #include "interfaces/components/beam_builder.hpp"
 
-namespace kynema::tests {
+namespace kynema_fmb::tests {
 
 /**
  * @brief Static pure bending benchmark test for an isotropic cantilever beam rolling into a circle
@@ -36,9 +36,9 @@ TEST(VerificationTest, Static_IsotropicBeamRollUp) {
 
     // Static analysis with tight convergence tolerances for benchmark accuracy
     builder.Solution()
-        .EnableStaticSolve()   // Static analysis
-        .SetTimeStep(1.)       // Step size (irrelevant for static)
-        .SetDampingFactor(1.)  // No numerical damping (ρ_∞ = 1, irrelevant for static)
+        .EnableStaticSolve()                // Static analysis
+        .SetTimeStep(1.)                    // Step size (irrelevant for static)
+        .SetDampingFactor(1.)               // No numerical damping (ρ_∞ = 1, irrelevant for static)
         .SetMaximumNonlinearIterations(15)  // Max Newton-Raphson iterations
         .SetAbsoluteErrorTolerance(1e-11)
         .SetRelativeErrorTolerance(1e-9);
@@ -126,4 +126,4 @@ TEST(VerificationTest, Static_IsotropicBeamRollUp) {
     EXPECT_NEAR(tip_node.displacement[2], 0., 1e-12);                 // Exact analytical soln: 0.
 }
 
-}  // namespace kynema::tests
+}  // namespace kynema_fmb::tests

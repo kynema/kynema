@@ -5,7 +5,7 @@
 #include "model/model.hpp"
 #include "model/node.hpp"
 
-namespace kynema::tests {
+namespace kynema_fmb::tests {
 
 TEST(NodeTest, DisplacedPosition_TranslationOnly) {
     Model model;
@@ -318,4 +318,4 @@ TEST(NodeTest, SetAccelerationAboutPoint) {
     ASSERT_NEAR(node.vd[5], 2., 1e-12);   // αz
 }
 
-}  // namespace kynema::tests
+}  // namespace kynema_fmb::tests

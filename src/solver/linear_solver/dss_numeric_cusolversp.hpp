@@ -6,7 +6,7 @@
 #include "dss_algorithm.hpp"
 #include "dss_handle_cusolversp.hpp"
 
-namespace kynema::dss {
+namespace kynema_fmb::dss {
 template <typename CrsMatrixType>
 struct NumericFunction<Handle<Algorithm::CUSOLVER_SP>, CrsMatrixType> {
     static void numeric(Handle<Algorithm::CUSOLVER_SP>& dss_handle, CrsMatrixType& A) {
@@ -47,4 +47,4 @@ struct NumericFunction<Handle<Algorithm::CUSOLVER_SP>, CrsMatrixType> {
     }
 };
 
-}  // namespace kynema::dss
+}  // namespace kynema_fmb::dss

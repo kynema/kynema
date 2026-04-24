@@ -67,10 +67,10 @@ mkdir -p build-from-script
 cd build-from-script
 cmake .. \
   -DCMAKE_CXX_COMPILER=hipcc \
-  -DKynema_WRITE_OUTPUTS=ON \
-  -DKynema_ENABLE_OPENFAST_ADI=ON \
-  -DKynema_ENABLE_ROSCO_CONTROLLER=ON \
-  -DKynema_ENABLE_KLU=ON \
+  -DKYNEMA_FMB_WRITE_OUTPUTS=ON \
+  -DKYNEMA_FMB_ENABLE_OPENFAST_ADI=ON \
+  -DKYNEMA_FMB_ENABLE_ROSCO_CONTROLLER=ON \
+  -DKYNEMA_FMB_ENABLE_KLU=ON \
   -DCMAKE_BUILD_TYPE="Release"
 
 cmake --build .

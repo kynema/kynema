@@ -10,25 +10,25 @@ Coupling for fluid-structure-interaction
 Overview
 ^^^^^^^^
 
-Kynema was designed as a flexible multibody dynamics solver to be
+Kynema-FMB was designed as a flexible multibody dynamics solver to be
 coupled with external modules for fluid forcing at various
-fluid-dynamics-model fidelity levels. At the lowest level, Kynema
+fluid-dynamics-model fidelity levels. At the lowest level, Kynema-FMB
 is coupled to a blade-element or blade-element-momentum-theory (BEMT)
-solver like AeroDyn. At mid-fidelity, Kynema is coupled to a CFD
+solver like AeroDyn. At mid-fidelity, Kynema-FMB is coupled to a CFD
 solver, such as AMR-Wind, wherein blades are represented in the fluid as
 actuator lines and forces are calculated through BE/BEMT. At the highest
-fidelity, Kynema is directly coupled to a geometry-resolved fluid
+fidelity, Kynema-FMB is directly coupled to a geometry-resolved fluid
 mesh in a solver like Nalu-Wind.
 
 In all of these coupling approaches, the common thread is that forces
-and moments are passed to Kynema and Kynema provides position
+and moments are passed to Kynema-FMB and Kynema-FMB provides position
 and velocity of the structure. For the preliminary development of
-Kynema and the coupling API, we assume that the fluid solver will
+Kynema-FMB and the coupling API, we assume that the fluid solver will
 provide **point** force and moments that are appropriately distributed
 to the nodes in a manner consistent with the beam basis functions.
 
 In the following we describe the fluid-structure coupling between a
-single **structural member** of Kynema and a corresponding fluid model. As
+single **structural member** of Kynema-FMB and a corresponding fluid model. As
 discussed above, a member could be a beam, rigid body, or a massless
 6-DOF point. Each member can be mapped to one or more fluid models. For
 example, in a geometry-resolved CFD model, the CFD domain surrounding a
@@ -243,10 +243,10 @@ Coupling in time
 Overview
 ~~~~~~~~
 
-An Kynema goal is to provide an API that facilitates robust and accurate coupling with fluid-dynamics codes, like those in the ExaWind suite. Kynema needs to provide data to the fluid solver at the "right" time and place. In our approach, we assume that Kynema and the fluid solver are operating on a shared timeline.  However, the structural time integration scheme is typically different than that of the fluid solver, and the codes may be using different time step sizes.  For example, accuracy or stability requirements may require :math:`\Delta t^\mathrm{st} < \Delta t^\mathrm{fl}`, or vice versa, where :math:`\Delta t^\mathrm{st}` and :math:`\Delta t^\mathrm{fl}` are the structure and fluid time steps, respectively.  In the following, :math:`\Delta t^{n+1}` is the FSI timestep for data sharing between codes such that :math:`t^{n+1} = t^{n} + \Delta t^{n+1}`, and we require that :math:`\Delta t^\mathrm{fluid} = A \Delta t^\mathrm{structure}`  
+An Kynema-FMB goal is to provide an API that facilitates robust and accurate coupling with fluid-dynamics codes, like those in the ExaWind suite. Kynema-FMB needs to provide data to the fluid solver at the "right" time and place. In our approach, we assume that Kynema-FMB and the fluid solver are operating on a shared timeline.  However, the structural time integration scheme is typically different than that of the fluid solver, and the codes may be using different time step sizes.  For example, accuracy or stability requirements may require :math:`\Delta t^\mathrm{st} < \Delta t^\mathrm{fl}`, or vice versa, where :math:`\Delta t^\mathrm{st}` and :math:`\Delta t^\mathrm{fl}` are the structure and fluid time steps, respectively.  In the following, :math:`\Delta t^{n+1}` is the FSI timestep for data sharing between codes such that :math:`t^{n+1} = t^{n} + \Delta t^{n+1}`, and we require that :math:`\Delta t^\mathrm{fluid} = A \Delta t^\mathrm{structure}`  
 :math:`A\ge 1` is a positive integer, and :math:`\Delta t^{n+1}` is taken equal to :math:`\Delta t^\mathrm{fluid}`.
 
-Depending on the fluid solver, Kynema output may be required at :math:`t^n` (e.g., fluid solver is explicit), :math:`t^{n+1/2}` (e.g., fluid solver is Crank-Nicolson), or :math:`t^{n+1}` (e.g., fluid solver is backwards Euler). For example, the Nalu-Wind CFD code uses a backwards Euler time integration scheme and AMR-Wind uses a Crank-Nicolson-like solver; these two CFD codes are our primary targets for coupling.
+Depending on the fluid solver, Kynema-FMB output may be required at :math:`t^n` (e.g., fluid solver is explicit), :math:`t^{n+1/2}` (e.g., fluid solver is Crank-Nicolson), or :math:`t^{n+1}` (e.g., fluid solver is backwards Euler). For example, the Nalu-Wind CFD code uses a backwards Euler time integration scheme and AMR-Wind uses a Crank-Nicolson-like solver; these two CFD codes are our primary targets for coupling.
 
 Assume we know the following states at time :math:`t^n`, which are the data being transferred between the fluid and structure (see Eq. :eq:`fsi-data`):
 
@@ -273,7 +273,7 @@ If we are coupling to AMR-Wind for actuator-line type simulations, simulations a
    \forall i \in \{1, \ldots, n^\mathrm{fl} \}
 
 
-The following describes the order of operations for the Kynema FSI API.  It is "serial" in that the fluid and structure solvers are updated sequentially and not concurrently.
+The following describes the order of operations for the Kynema-FMB FSI API.  It is "serial" in that the fluid and structure solvers are updated sequentially and not concurrently.
 
 .. _`sec:fsi-alm`:
 
@@ -301,7 +301,7 @@ Step 1: Predict with first-order extrapolation the fluid forces and moments on s
 
 Note: We do not need the moment at the aerodynamic centers at this time.
 
-Step 2: Advance the Kynema solution to
+Step 2: Advance the Kynema-FMB solution to
 :math:`t^{n+1} = t^n + \Delta t^{n+1}`, using nodal forces
 (either predicted in Step 1 or, if iterating, solved in Step 7) at :math:`t^{n+1}`. In the case that the structure uses
 substeps, use force values linearly interpolated between those at :math:`t^{n+1}` and :math:`t^n`.  
@@ -354,7 +354,7 @@ Step 1: Predict/extrapolate the fluid forces at strcture nodes
    + \frac{\Delta t^{n+1}}{\Delta t^n} \left( \underline{m}^{n}_i - \underline{m}^{n-1}_i \right)
    \end{aligned}
 
-Step 2: Advance the Kynema solution to
+Step 2: Advance the Kynema-FMB solution to
 :math:`t^{n+1} = t^n + \Delta t^{n+1}`, using forces
 predicted/solved at :math:`t^{n+1}`. In the case that the structure uses
 substeps, use force values linearly interpolated between those at :math:`t^{n+1}` and :math:`t^n`.

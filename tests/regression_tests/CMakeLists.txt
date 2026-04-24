@@ -13,7 +13,7 @@ target_sources(kynema_regression_tests PRIVATE rtest_main.cpp)
 target_link_libraries(kynema_regression_tests PRIVATE
   kynema_warnings
   kynema_options
-  Kynema::kynema_library
+  KynemaFMB::kynema_fmb_library
 )
 
 # Link system libraries and dependencies
@@ -44,13 +44,13 @@ target_link_system_libraries(kynema_regression_tests PRIVATE
 )
 
 # Add compile definition for writing outputs
-if(Kynema_WRITE_OUTPUTS)
-  target_compile_definitions(kynema_regression_tests PRIVATE Kynema_WRITE_OUTPUTS)
+if(KYNEMA_FMB_WRITE_OUTPUTS)
+  target_compile_definitions(kynema_regression_tests PRIVATE KYNEMA_FMB_WRITE_OUTPUTS)
 endif()
 
-# Add compile definitions for Kynema_ENABLE_OPENFAST_ADI if enabled
-if(Kynema_ENABLE_OPENFAST_ADI)
-  target_compile_definitions(kynema_regression_tests PRIVATE Kynema_ENABLE_OPENFAST_ADI)
+# Add compile definitions for KYNEMA_FMB_ENABLE_OPENFAST_ADI if enabled
+if(KYNEMA_FMB_ENABLE_OPENFAST_ADI)
+  target_compile_definitions(kynema_regression_tests PRIVATE KYNEMA_FMB_ENABLE_OPENFAST_ADI)
 endif()
 
 target_include_directories(kynema_regression_tests PRIVATE

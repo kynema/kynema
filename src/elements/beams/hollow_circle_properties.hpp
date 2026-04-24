@@ -7,7 +7,7 @@
 #include "beam_section.hpp"
 #include "generate_sectional_properties.hpp"
 
-namespace kynema::beams {
+namespace kynema_fmb::beams {
 
 /**
  * @brief Struct containing geometric properties for a hollow circular cross-section
@@ -120,4 +120,4 @@ static BeamSection GenerateHollowCircleSection(
     return {s, mass, stiffness};
 }
 
-}  // namespace kynema::beams
+}  // namespace kynema_fmb::beams

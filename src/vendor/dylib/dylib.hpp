@@ -53,7 +53,7 @@
 #define DYLIB_WIN_OTHER(win_def, other_def) other_def               // NOLINT
 #endif                                                              // NOLINT
 
-namespace kynema::util {
+namespace kynema_fmb::util {
 
 /**
  *  The `dylib` class represents a single dynamic library instance,
@@ -347,4 +347,4 @@ protected:
 #undef DYLIB_WIN_OTHER
 #undef DYLIB_CPP17
 
-}  // namespace kynema::util
+}  // namespace kynema_fmb::util

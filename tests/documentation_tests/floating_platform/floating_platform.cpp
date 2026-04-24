@@ -48,7 +48,7 @@ int main() {
         // First, general solution parameters should be set - the gravity force,
         // time step, numerical damping factor, and maximum number of nonlinear
         // iterations.
-        auto interface_builder = kynema::interfaces::cfd::InterfaceBuilder{}
+        auto interface_builder = kynema_fmb::interfaces::cfd::InterfaceBuilder{}
                                      .SetGravity(gravity)
                                      .SetTimeStep(time_step)
                                      .SetDampingFactor(rho_inf)

@@ -6,7 +6,7 @@
 #include "interfaces/cfd/mooring_line.hpp"
 #include "interfaces/cfd/node_data.hpp"
 
-namespace kynema::interfaces::cfd {
+namespace kynema_fmb::interfaces::cfd {
 
 //------------------------------------------------------------------------------
 // Data Structures
@@ -29,4 +29,4 @@ struct FloatingPlatform {
     std::vector<MooringLine> mooring_lines;
 };
 
-}  // namespace kynema::interfaces::cfd
+}  // namespace kynema_fmb::interfaces::cfd

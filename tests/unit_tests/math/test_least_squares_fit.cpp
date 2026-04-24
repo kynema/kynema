@@ -7,7 +7,7 @@
 
 #include "math/least_squares_fit.hpp"
 
-namespace kynema::tests {
+namespace kynema_fmb::tests {
 
 TEST(LeastSquaresFitTest, MapGeometricLocations_PositiveRange) {
     const std::vector<double> input = {0., 2.5, 5.};
@@ -191,4 +191,4 @@ TEST(LeastSquaresFitTest, FitsParametricCurve) {
     }
 }
 
-}  // namespace kynema::tests
+}  // namespace kynema_fmb::tests

@@ -2,7 +2,7 @@
 
 #include "math/interpolation.hpp"
 
-namespace kynema::interfaces::components {
+namespace kynema_fmb::interfaces::components {
 
 double CalculateAngleOfAttack(std::span<const double, 3> v_rel) {
     return std::atan2(-v_rel[2], v_rel[1]);
@@ -543,4 +543,4 @@ void Aerodynamics::CalculateNodalLoads() {
         body.CalculateNodalLoads();
     }
 }
-}  // namespace kynema::interfaces::components
+}  // namespace kynema_fmb::interfaces::components

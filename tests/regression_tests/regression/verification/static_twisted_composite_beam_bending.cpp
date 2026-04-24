@@ -6,7 +6,7 @@
 #include "interfaces/blade/blade_interface_builder.hpp"
 #include "interfaces/components/beam_builder.hpp"
 
-namespace kynema::tests {
+namespace kynema_fmb::tests {
 
 /**
  * @brief Static bending benchmark test for a twisted composite cantilever beam
@@ -150,4 +150,4 @@ TEST(VerificationTest, Static_TwistedCompositeBeamBending) {
         // Ansys solid element solution: -3.58423
 }
 
-}  // namespace kynema::tests
+}  // namespace kynema_fmb::tests

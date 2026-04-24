@@ -10,7 +10,7 @@
 #include "dof_management/freedom_signature.hpp"
 #include "state/update_static_prediction.hpp"
 
-namespace kynema::tests {
+namespace kynema_fmb::tests {
 TEST(UpdateStaticPrediction, TwoNodes) {
     constexpr auto h = 2.;
 
@@ -49,4 +49,4 @@ TEST(UpdateStaticPrediction, TwoNodes) {
     }
 }
 
-}  // namespace kynema::tests
+}  // namespace kynema_fmb::tests

@@ -2,7 +2,7 @@
 
 #include "outputs_config.hpp"
 
-namespace kynema::interfaces::components {
+namespace kynema_fmb::interfaces::components {
 
 /**
  * @brief A builder class for building a outputs configuration
@@ -55,4 +55,4 @@ private:
     OutputsConfig config;
 };
 
-}  // namespace kynema::interfaces::components
+}  // namespace kynema_fmb::interfaces::components

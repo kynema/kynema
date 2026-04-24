@@ -7,7 +7,7 @@
 
 #include "dss_algorithm.hpp"
 
-namespace kynema::dss {
+namespace kynema_fmb::dss {
 
 template <>
 class Handle<Algorithm::MKL> {
@@ -39,4 +39,4 @@ public:
 
     std::vector<MKL_INT>& get_perm() { return mkl_dss_handle->perm; }
 };
-}  // namespace kynema::dss
+}  // namespace kynema_fmb::dss

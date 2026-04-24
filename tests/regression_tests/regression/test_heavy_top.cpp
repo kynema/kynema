@@ -6,7 +6,7 @@
 
 namespace {
 inline auto SetUpHeavyTopTest() {
-    auto model = kynema::Model();
+    auto model = kynema_fmb::Model();
     model.SetGravity(0., 0., -9.81);
 
     // Heavy top model parameters
@@ -61,7 +61,7 @@ inline auto SetUpHeavyTopTest() {
     constexpr double a_tol(1e-5);
     constexpr double r_tol(1e-3);
     auto parameters =
-        kynema::StepParameters(is_dynamic_solve, max_iter, step_size, rho_inf, a_tol, r_tol);
+        kynema_fmb::StepParameters(is_dynamic_solve, max_iter, step_size, rho_inf, a_tol, r_tol);
 
     // Create solver, elements, constraints, and state
     auto [state, elements, constraints, solver] = model.CreateSystemWithSolver<>();
@@ -72,7 +72,7 @@ inline auto SetUpHeavyTopTest() {
         EXPECT_TRUE(converged);
     }
 
-    const auto q = kynema::tests::kokkos_view_2D_to_vector(state.q);
+    const auto q = kynema_fmb::tests::kokkos_view_2D_to_vector(state.q);
 
     EXPECT_NEAR(q[0][0], -0.42217802273894345, 1e-10);
     EXPECT_NEAR(q[0][1], -0.09458263530050703, 1e-10);
@@ -85,10 +85,10 @@ inline auto SetUpHeavyTopTest() {
 
 }  // namespace
 
-namespace kynema::tests {
+namespace kynema_fmb::tests {
 
 TEST(HeavyTopTest, FinalState) {
     SetUpHeavyTopTest();
 }
 
-}  // namespace kynema::tests
+}  // namespace kynema_fmb::tests

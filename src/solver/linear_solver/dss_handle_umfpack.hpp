@@ -7,7 +7,7 @@
 
 #include "dss_algorithm.hpp"
 
-namespace kynema::dss {
+namespace kynema_fmb::dss {
 template <>
 class Handle<Algorithm::UMFPACK> {
     struct umfpackDssHandleType {
@@ -42,4 +42,4 @@ public:
     double* get_control() { return umfpack_dss_handle->Control.data(); }
 };
 
-}  // namespace kynema::dss
+}  // namespace kynema_fmb::dss

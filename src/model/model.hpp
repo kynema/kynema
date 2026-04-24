@@ -24,7 +24,7 @@
 #include "solver/solver.hpp"
 #include "state/state.hpp"
 
-namespace kynema {
+namespace kynema_fmb {
 
 /**
  * @brief Compute freedom tables for state, elements, and constraints, then construct and return
@@ -225,7 +225,7 @@ public:
      */
     template <typename DeviceType>
     [[nodiscard]] Beams<DeviceType> CreateBeams() const {
-        return kynema::CreateBeams<DeviceType>(this->CreateBeamsInput(), this->nodes_);
+        return kynema_fmb::CreateBeams<DeviceType>(this->CreateBeamsInput(), this->nodes_);
     }
 
     /**
@@ -356,7 +356,7 @@ public:
      */
     template <typename DeviceType>
     [[nodiscard]] Masses<DeviceType> CreateMasses() const {
-        return kynema::CreateMasses<DeviceType>(
+        return kynema_fmb::CreateMasses<DeviceType>(
             MassesInput(this->mass_elements_, this->gravity_), this->nodes_
         );
     }
@@ -425,7 +425,9 @@ public:
      */
     template <typename DeviceType>
     [[nodiscard]] Springs<DeviceType> CreateSprings() const {
-        return kynema::CreateSprings<DeviceType>(SpringsInput(this->spring_elements_), this->nodes_);
+        return kynema_fmb::CreateSprings<DeviceType>(
+            SpringsInput(this->spring_elements_), this->nodes_
+        );
     }
 
     //--------------------------------------------------------------------------
@@ -697,4 +699,4 @@ private:
         mesh_connectivity_;  //< Mesh connectivity tracking element-node relationships
 };
 
-}  // namespace kynema
+}  // namespace kynema_fmb

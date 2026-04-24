@@ -11,7 +11,7 @@
 #include "interfaces/host_state.hpp"
 #include "model/node.hpp"
 
-namespace kynema::interfaces::components {
+namespace kynema_fmb::interfaces::components {
 
 double CalculateAngleOfAttack(std::span<const double, 3> v_rel);
 
@@ -369,4 +369,4 @@ public:
         }
     }
 };
-}  // namespace kynema::interfaces::components
+}  // namespace kynema_fmb::interfaces::components

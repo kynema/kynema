@@ -10,7 +10,7 @@
 #include "interfaces/components/beam_builder.hpp"
 #include "step/step.hpp"
 
-namespace kynema::tests {
+namespace kynema_fmb::tests {
 
 TEST(BladeInterfaceTest, BladeWindIO) {
     // Read WindIO yaml file
@@ -497,4 +497,4 @@ TEST(BladeInterfaceTest, DampedBeam) {
     EXPECT_NEAR(tip_node.velocity[4], 4.8363708865071242, 1e-10);
     EXPECT_NEAR(tip_node.velocity[5], -2.6867656903166214e-09, 1e-10);
 }
-}  // namespace kynema::tests
+}  // namespace kynema_fmb::tests

@@ -11,7 +11,7 @@
 #include "integrate_stiffness_matrix.hpp"
 #include "update_node_state.hpp"
 
-namespace kynema::beams {
+namespace kynema_fmb::beams {
 
 template <typename DeviceType>
 struct CalculateQuadraturePointValues {
@@ -216,4 +216,4 @@ struct CalculateQuadraturePointValues {
     }
 };
 
-}  // namespace kynema::beams
+}  // namespace kynema_fmb::beams

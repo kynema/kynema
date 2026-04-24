@@ -11,20 +11,20 @@
 namespace {
 
 inline auto create_node_u_dot_OneNode() {
-    return kynema::beams::tests::CreateView<double[1][1][6]>(
+    return kynema_fmb::beams::tests::CreateView<double[1][1][6]>(
         "node_u_dot", std::array{1., 2., 3., 4., 5., 6.}
     );
 }
 
 inline auto create_node_u_dot_TwoNode() {
-    return kynema::beams::tests::CreateView<double[1][2][6]>(
+    return kynema_fmb::beams::tests::CreateView<double[1][2][6]>(
         "node_u_dot", std::array{1., 2., 3., 4., 5., 6., 7., 8., 9., 10., 11., 12.}
     );
 }
 
 }  // namespace
 
-namespace kynema::beams::tests {
+namespace kynema_fmb::beams::tests {
 
 TEST(InterpolateQPVectorTests, OneNodeOneQP) {
     constexpr auto num_qp = size_t{1U};
@@ -103,4 +103,4 @@ TEST(InterpolateQPVectorTests, TwoNodeTwoQP) {
     EXPECT_NEAR(qp_u_dot_mirror(0, 1, 2), 54., tolerance);
 }
 
-}  // namespace kynema::beams::tests
+}  // namespace kynema_fmb::beams::tests

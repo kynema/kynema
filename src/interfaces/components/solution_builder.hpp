@@ -2,7 +2,7 @@
 
 #include "solution_input.hpp"
 
-namespace kynema::interfaces::components {
+namespace kynema_fmb::interfaces::components {
 
 /**
  * @brief A factory class for building a solution input, which is used by interfaces to control
@@ -87,4 +87,4 @@ private:
     SolutionInput input;
 };
 
-}  // namespace kynema::interfaces::components
+}  // namespace kynema_fmb::interfaces::components

@@ -3,7 +3,7 @@ add_subdirectory(blade)
 add_subdirectory(components)
 add_subdirectory(turbine)
 
-target_sources(kynema_library
+target_sources(kynema_fmb_library
   PRIVATE
   node_data.cpp
   constraint_data.cpp
@@ -17,5 +17,5 @@ install(FILES
         host_state.hpp
         node_data.hpp
         outputs.hpp
-        DESTINATION include/Kynema/interfaces/
+        DESTINATION include/KynemaFMB/interfaces/
 )

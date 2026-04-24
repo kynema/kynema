@@ -5,7 +5,7 @@
 
 namespace {
 inline auto SetUpPrecessionTest() {
-    auto model = kynema::Model();
+    auto model = kynema_fmb::Model();
 
     // Add node with initial position and velocity
     auto node_id = model.AddNode().SetVelocity(0., 0., 0., 0.5, 0.5, 1.0).Build();
@@ -28,7 +28,7 @@ inline auto SetUpPrecessionTest() {
     constexpr size_t max_iter(6);
     constexpr double step_size(0.01);
     constexpr double rho_inf(1.0);
-    auto parameters = kynema::StepParameters(is_dynamic_solve, max_iter, step_size, rho_inf);
+    auto parameters = kynema_fmb::StepParameters(is_dynamic_solve, max_iter, step_size, rho_inf);
 
     // Create solver, elements, constraints, and state
     auto [state, elements, constraints, solver] = model.CreateSystemWithSolver<>();
@@ -51,10 +51,10 @@ inline auto SetUpPrecessionTest() {
 
 }  // namespace
 
-namespace kynema::tests {
+namespace kynema_fmb::tests {
 
 TEST(PrecessionTest, FinalRotation) {
     SetUpPrecessionTest();
 }
 
-}  // namespace kynema::tests
+}  // namespace kynema_fmb::tests

@@ -3,7 +3,7 @@
 #include <array>
 #include <cmath>
 
-namespace kynema {
+namespace kynema_fmb {
 
 /**
  * @brief Spring element represents a constitutively linear spring connecting two nodes and defined
@@ -19,4 +19,4 @@ struct SpringElement {
         : ID(id), node_ids(n_ids), stiffness(k), undeformed_length(l0) {}
 };
 
-}  // namespace kynema
+}  // namespace kynema_fmb

@@ -6,7 +6,7 @@
 #include "dss_algorithm.hpp"
 #include "slu_ddefs.h"
 
-namespace kynema::dss {
+namespace kynema_fmb::dss {
 template <>
 class Handle<Algorithm::SUPERLU> {
     struct superluDssHandleType {
@@ -52,4 +52,4 @@ public:
     std::vector<int>& get_etree() { return superlu_dss_handle->etree; }
 };
 
-}  // namespace kynema::dss
+}  // namespace kynema_fmb::dss

@@ -27,7 +27,7 @@ int main() {
         // A Model is Kynema's low level interface for specifying elements, nodes, constraints,
         // and their connectivities.  Once everything has be specified, we will use to model to
         // create Kynema's fundamental data structures and advance the problem in time.
-        auto model = kynema::Model();
+        auto model = kynema_fmb::Model();
 
         // To add a node, we call the AddNode method on Model, which creates a NodeBuilder object.
         // This factory lets us string together function calls to specify the initial position,
@@ -97,7 +97,7 @@ int main() {
         constexpr auto a_tol(1e-5);
         constexpr auto r_tol(1e-3);
         auto parameters =
-            kynema::StepParameters(is_dynamic_solve, max_iter, step_size, rho_inf, a_tol, r_tol);
+            kynema_fmb::StepParameters(is_dynamic_solve, max_iter, step_size, rho_inf, a_tol, r_tol);
 
         // Kynema allows the user to control the actual time stepping process.  This includes
         // setting forces, post-processing data, coupling to other codes.  This example does none of
@@ -105,7 +105,7 @@ int main() {
         // created structures.
         for (auto i = 0; i < 400; ++i) {
             [[maybe_unused]] const auto converged =
-                kynema::Step(parameters, solver, elements, state, constraints);
+                kynema_fmb::Step(parameters, solver, elements, state, constraints);
             assert(converged);
         }
 

@@ -9,7 +9,7 @@
 #include "solver/solver.hpp"
 #include "step_parameters.hpp"
 
-namespace kynema::step {
+namespace kynema_fmb::step {
 
 template <typename DeviceType>
 inline void SolveSystem(StepParameters& parameters, Solver<DeviceType>& solver) {
@@ -38,4 +38,4 @@ inline void SolveSystem(StepParameters& parameters, Solver<DeviceType>& solver) 
     );
 }
 
-}  // namespace kynema::step
+}  // namespace kynema_fmb::step

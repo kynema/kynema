@@ -4,7 +4,7 @@
 #include <KokkosBatched_Gemm_Decl.hpp>
 #include <Kokkos_Core.hpp>
 
-namespace kynema::beams {
+namespace kynema_fmb::beams {
 
 template <typename DeviceType>
 struct CalculateSystemMatrix {
@@ -53,4 +53,4 @@ struct CalculateSystemMatrix {
     }
 };
 
-}  // namespace kynema::beams
+}  // namespace kynema_fmb::beams

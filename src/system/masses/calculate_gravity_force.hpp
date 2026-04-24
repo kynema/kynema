@@ -3,7 +3,7 @@
 #include <KokkosBlas.hpp>
 #include <Kokkos_Core.hpp>
 
-namespace kynema::masses {
+namespace kynema_fmb::masses {
 
 template <typename DeviceType>
 struct CalculateGravityForce {
@@ -26,4 +26,4 @@ struct CalculateGravityForce {
         Gemv::invoke(1., eta_tilde, subview(FG, make_pair(0, 3)), 0., subview(FG, make_pair(3, 6)));
     }
 };
-}  // namespace kynema::masses
+}  // namespace kynema_fmb::masses

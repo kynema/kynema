@@ -5,7 +5,7 @@
 
 #include "utilities/netcdf/node_state_writer.hpp"
 
-namespace kynema::interfaces::components {
+namespace kynema_fmb::interfaces::components {
 
 /**
  * @brief A configuration object used to create the Outputs object
@@ -24,4 +24,4 @@ struct OutputsConfig {
     [[nodiscard]] bool Enabled() const { return !this->output_file_path.empty(); }
 };
 
-}  // namespace kynema::interfaces::components
+}  // namespace kynema_fmb::interfaces::components

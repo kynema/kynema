@@ -1,4 +1,4 @@
-target_sources(kynema_library PRIVATE)
+target_sources(kynema_fmb_library PRIVATE)
 
 install(FILES
         calculate_displacement.hpp
@@ -10,5 +10,5 @@ install(FILES
         update_dynamic_prediction.hpp
         update_global_position.hpp
         update_static_prediction.hpp
-        DESTINATION include/Kynema/state/
+        DESTINATION include/KynemaFMB/state/
 )

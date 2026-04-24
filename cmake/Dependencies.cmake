@@ -1,4 +1,4 @@
-function(kynema_setup_dependencies)
+function(kynema_fmb_setup_dependencies)
     #--------------------------------------------------------------------------
     # Required packages
     #--------------------------------------------------------------------------
@@ -13,35 +13,35 @@ function(kynema_setup_dependencies)
     #----------------------------------------
     # Sparse Direct Linear Solvers
     #----------------------------------------
-    if(Kynema_ENABLE_SUPERLU)
+    if(KYNEMA_FMB_ENABLE_SUPERLU)
         find_package(superlu REQUIRED)
     endif()
 
-    if(Kynema_ENABLE_SUPERLU_MT)
+    if(KYNEMA_FMB_ENABLE_SUPERLU_MT)
         find_package(superlu_mt REQUIRED)
     endif()
 
-    if(Kynema_ENABLE_KLU)
+    if(KYNEMA_FMB_ENABLE_KLU)
         find_package(KLU REQUIRED)
     endif()
 
-    if(Kynema_ENABLE_UMFPACK)
+    if(KYNEMA_FMB_ENABLE_UMFPACK)
         find_package(UMFPACK REQUIRED)
     endif()
 
-    if(Kynema_ENABLE_MKL)
+    if(KYNEMA_FMB_ENABLE_MKL)
         find_package(MKL REQUIRED)
     endif()
 
-    if(Kynema_ENABLE_CUSOLVERSP)
+    if(KYNEMA_FMB_ENABLE_CUSOLVERSP)
         if(NOT DEFINED Kokkos_ENABLE_CUDA)
-            message(FATAL_ERROR "When Kynema_ENABLE_CUSOLVERSP is enabled, Kokkos must also be built with CUDA")
+            message(FATAL_ERROR "When KYNEMA_FMB_ENABLE_CUSOLVERSP is enabled, Kokkos must also be built with CUDA")
         endif()
     endif()
 
-    if(Kynema_ENABLE_CUDSS)
+    if(KYNEMA_FMB_ENABLE_CUDSS)
         if(NOT DEFINED Kokkos_ENABLE_CUDA)
-            message(FATAL_ERROR "When Kynema_ENABLE_CUDSS is enabled, Kokkos must also be built with CUDA")
+            message(FATAL_ERROR "When KYNEMA_FMB_ENABLE_CUDSS is enabled, Kokkos must also be built with CUDA")
         endif()
         find_package(cudss REQUIRED)
     endif()
@@ -49,7 +49,7 @@ function(kynema_setup_dependencies)
     #----------------------------------------
     # GTest
     #----------------------------------------
-    if(Kynema_ENABLE_TESTS)
+    if(KYNEMA_FMB_ENABLE_TESTS)
         find_package(GTest REQUIRED)
     endif()
 
@@ -68,16 +68,16 @@ function(kynema_setup_dependencies)
     #----------------------------------------
     # OpenFAST/AerodynInflow (ADI) library
     #----------------------------------------
-    if(Kynema_ENABLE_OPENFAST_ADI)
+    if(KYNEMA_FMB_ENABLE_OPENFAST_ADI)
         find_library(OpenFast_ADI_LIBRARY NAMES aerodyn_inflow_c_binding REQUIRED)
-        set(Kynema_ADI_LIBRARY ${OpenFast_ADI_LIBRARY} CACHE PATH "ADI library")
+        set(KYNEMA_FMB_ADI_LIBRARY ${OpenFast_ADI_LIBRARY} CACHE PATH "ADI library")
     endif()
 
     #----------------------------------------
     # ROSCO Controller library
     #----------------------------------------
-    if(Kynema_ENABLE_ROSCO_CONTROLLER)
+    if(KYNEMA_FMB_ENABLE_ROSCO_CONTROLLER)
         find_library(Rosco_LIBRARY NAMES discon REQUIRED)
-        set(Kynema_ROSCO_LIBRARY ${Rosco_LIBRARY} CACHE PATH "Rosco discon library" FORCE)
+        set(KYNEMA_FMB_ROSCO_LIBRARY ${Rosco_LIBRARY} CACHE PATH "Rosco discon library" FORCE)
     endif()
 endfunction()

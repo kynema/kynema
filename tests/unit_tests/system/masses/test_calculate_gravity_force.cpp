@@ -9,7 +9,7 @@
 #include "system/masses/calculate_gravity_force.hpp"
 #include "test_calculate.hpp"
 
-namespace kynema::tests {
+namespace kynema_fmb::tests {
 
 struct ExecuteCalculateGravityForce {
     double mass;
@@ -49,4 +49,4 @@ TEST(CalculateGravityForceTestsMasses, OneNode) {
     CompareWithExpected(FG_mirror, FG_exact);
 }
 
-}  // namespace kynema::tests
+}  // namespace kynema_fmb::tests

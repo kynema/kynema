@@ -1,4 +1,4 @@
-name: Deploy Kynema Documentation
+name: Deploy Kynema-FMB Documentation
 
 on:
   push:
@@ -43,26 +43,26 @@ jobs:
       - name: Clone repository
         uses: actions/checkout@v4
         with:
-          path: kynema
+          path: kynema-fmb
       - name: Install documentation dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends graphviz libenchant-2-dev doxygen
           python3 -m pip install --upgrade pip
-          pip install -r kynema/docs/requirements.txt
-      - name: Build Kynema with documentation
+          pip install -r kynema-fmb/docs/requirements.txt
+      - name: Build Kynema-FMB with documentation
         run: |
           source spack/share/spack/setup-env.sh
           spack load eigen kokkos-kernels yaml-cpp netcdf-c suite-sparse superlu
-          cd kynema
+          cd kynema-fmb
           mkdir build
           cd build
           cmake .. \
-            -DKynema_ENABLE_TESTS=OFF \
-            -DKynema_ENABLE_DOCUMENTATION=ON \
-            -DKynema_ENABLE_KLU=ON \
-            -DKynema_ENABLE_UMFPACK=ON \
-            -DKynema_ENABLE_SUPERLU=ON \
+            -DKYNEMA_FMB_ENABLE_TESTS=OFF \
+            -DKYNEMA_FMB_ENABLE_DOCUMENTATION=ON \
+            -DKYNEMA_FMB_ENABLE_KLU=ON \
+            -DKYNEMA_FMB_ENABLE_UMFPACK=ON \
+            -DKYNEMA_FMB_ENABLE_SUPERLU=ON \
             -DCMAKE_BUILD_TYPE=Release
           cmake --build .
       - name: Deploy documentation
@@ -70,4 +70,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ${{ github.workspace }}/kynema/build/docs/sphinx/html
+          publish_dir: ${{ github.workspace }}/kynema-fmb/build/docs/sphinx/html

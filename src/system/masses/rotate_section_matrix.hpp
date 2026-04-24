@@ -6,7 +6,7 @@
 
 #include "math/quaternion_operations.hpp"
 
-namespace kynema::masses {
+namespace kynema_fmb::masses {
 
 template <typename DeviceType>
 struct RotateSectionMatrix {
@@ -50,4 +50,4 @@ struct RotateSectionMatrix {
         GemmNT::invoke(1., Ctmp_right, RR0, 0., Cuu_right);
     }
 };
-}  // namespace kynema::masses
+}  // namespace kynema_fmb::masses

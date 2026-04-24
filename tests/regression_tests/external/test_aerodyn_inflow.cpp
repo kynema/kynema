@@ -3,9 +3,9 @@
 #include "regression/test_utilities.hpp"
 #include "utilities/aerodynamics/aerodyn_inflow.hpp"
 
-#include "Kynema_config.h"
+#include "Kynema_FMB_config.h"
 
-namespace kynema::tests {
+namespace kynema_fmb::tests {
 
 TEST(AerodynInflowTest, BladeInitialState_Constructor) {
     constexpr auto root = std::array{1., 2., 3., 1., 0., 0., 0.};
@@ -521,7 +521,7 @@ TEST(AerodynInflowTest, VTKSettings_Set) {
 
 /// Helper function to get the shared library path
 std::string GetSharedLibraryPath() {
-    return std::string(Kynema_ADI_LIBRARY);
+    return std::string(KYNEMA_FMB_ADI_LIBRARY);
 }
 
 TEST(AerodynInflowTest, AeroDynInflowLibrary_DefaultConstructor) {
@@ -649,4 +649,4 @@ TEST(AerodynInflowTest, AeroDynInflowLibrary_FullLoopSimulation) {
     EXPECT_NO_THROW(aerodyn_inflow_library.Finalize());
 }
 
-}  // namespace kynema::tests
+}  // namespace kynema_fmb::tests

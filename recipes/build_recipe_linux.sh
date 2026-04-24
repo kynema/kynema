@@ -58,10 +58,10 @@ spack load kokkos kokkos-kernels netdcf-c suite-sparse eigen googletest yaml-cpp
 mkdir -p build-from-script
 cd build-from-script
 cmake .. \
-  -DKynema_WRITE_OUTPUTS=ON \
-  -DKynema_ENABLE_OPENFAST_ADI=ON \
-  -DKynema_ENABLE_ROSCO_CONTROLLER=ON \
-  -DKynema_ENABLE_KLU=ON \
+  -DKYNEMA_FMB_WRITE_OUTPUTS=ON \
+  -DKYNEMA_FMB_ENABLE_OPENFAST_ADI=ON \
+  -DKYNEMA_FMB_ENABLE_ROSCO_CONTROLLER=ON \
+  -DKYNEMA_FMB_ENABLE_KLU=ON \
   -DCMAKE_BUILD_TYPE="Release"
 
 cmake --build .

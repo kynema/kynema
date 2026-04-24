@@ -1,4 +1,4 @@
-target_sources(kynema_library PRIVATE)
+target_sources(kynema_fmb_library PRIVATE)
 
 install(FILES
         calculate_constraint_output.hpp
@@ -17,5 +17,5 @@ install(FILES
         constraints.hpp
         constraint_type.hpp
         update_lambda_prediction.hpp
-        DESTINATION include/Kynema/constraints
+        DESTINATION include/KynemaFMB/constraints
 )

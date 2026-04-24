@@ -4,7 +4,7 @@
 #include <KokkosBlas.hpp>
 #include <Kokkos_Core.hpp>
 
-namespace kynema::masses {
+namespace kynema_fmb::masses {
 
 template <typename DeviceType>
 struct CalculateInertialForce {
@@ -52,4 +52,4 @@ struct CalculateInertialForce {
         Gemv::invoke(1., M1, omega, 1., FI_2);
     }
 };
-}  // namespace kynema::masses
+}  // namespace kynema_fmb::masses

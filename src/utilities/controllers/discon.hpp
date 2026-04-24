@@ -1,6 +1,6 @@
 #pragma once
 
-namespace kynema::util {
+namespace kynema_fmb::util {
 
 extern "C" {
 
@@ -24,4 +24,4 @@ void DISCON(float avrSWAP[], int* aviFAIL, const char* accINFILE, char* avcOUTNA
 
 }  // extern "C"
 
-}  // namespace kynema::util
+}  // namespace kynema_fmb::util

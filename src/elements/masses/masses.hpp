@@ -4,7 +4,7 @@
 
 #include "dof_management/freedom_signature.hpp"
 
-namespace kynema {
+namespace kynema_fmb {
 
 /**
  * @brief Contains field variables for mass elements (aka, rigid bodies) to compute per-element
@@ -55,4 +55,4 @@ struct Masses {
     }
 };
 
-}  // namespace kynema
+}  // namespace kynema_fmb

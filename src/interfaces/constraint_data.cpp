@@ -4,7 +4,7 @@
 
 #include "host_constraints.hpp"
 
-namespace kynema::interfaces {
+namespace kynema_fmb::interfaces {
 
 void ConstraintData::GetLoads(const HostConstraints<DeviceType>& host_constraints) {
     for (auto component : std::views::iota(0U, 6U)) {
@@ -24,4 +24,4 @@ void ConstraintData::SetInputs(HostConstraints<DeviceType>& host_constraints) co
     }
 }
 
-}  // namespace kynema::interfaces
+}  // namespace kynema_fmb::interfaces

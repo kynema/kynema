@@ -18,5 +18,5 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 find_package(Kynema REQUIRED)
 
 add_executable(floating_platform)
-target_link_libraries(floating_platform PRIVATE Kynema::kynema_library)
+target_link_libraries(floating_platform PRIVATE KynemaFMB::kynema_fmb_library)
 target_sources(floating_platform PRIVATE floating_platform.cpp)

@@ -21,7 +21,7 @@ Kokkos::View<double[rows][cols]> Create2DView(const std::array<double, rows * co
 inline void test_AX_Matrix() {
     const auto A = Create2DView<3, 3>({1., 2., 3., 4., 5., 6., 7., 8., 9.});
     const auto out = Kokkos::View<double[3][3]>("out");
-    Kokkos::parallel_for(1, KOKKOS_LAMBDA(int) { kynema::math::AX_Matrix(A, out); });
+    Kokkos::parallel_for(1, KOKKOS_LAMBDA(int) { kynema_fmb::math::AX_Matrix(A, out); });
     const auto out_mirror = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), out);
 
     constexpr auto expected_data = std::array{7., -1., -1.5, -2., 5., -3., -3.5, -4., 3.};
@@ -38,14 +38,14 @@ inline void test_AX_Matrix() {
 Kokkos::View<double[3]> TestAxialVectorOfMatrix(const Kokkos::View<const double[3][3]>& m) {
     auto v = Kokkos::View<double[3]>("v");
     Kokkos::parallel_for(
-        "AxialVectorOfMatrix", 1, KOKKOS_LAMBDA(int) { kynema::math::AxialVectorOfMatrix(m, v); }
+        "AxialVectorOfMatrix", 1, KOKKOS_LAMBDA(int) { kynema_fmb::math::AxialVectorOfMatrix(m, v); }
     );
     return v;
 }
 
 }  // namespace
 
-namespace kynema::tests {
+namespace kynema_fmb::tests {
 
 TEST(MatrixTest, AX_Matrix) {
     test_AX_Matrix();
@@ -149,4 +149,4 @@ TEST(MatrixTest, RotateMatrix6_3) {
     }
 }
 
-}  // namespace kynema::tests
+}  // namespace kynema_fmb::tests

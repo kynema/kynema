@@ -5,7 +5,7 @@
 
 #include "dof_management/freedom_signature.hpp"
 
-namespace kynema::solver {
+namespace kynema_fmb::solver {
 
 /**
  * @brief A Kernel which copies the transpose gradient matrix contributions for the
@@ -49,8 +49,7 @@ struct CopyConstraintsTransposeToSparseMatrix {
         const auto base_start_row = static_cast<int>(base_node_freedom_table(constraint, 0));
         const auto base_end_row = base_start_row + num_base_dofs;
         Kokkos::parallel_for(
-            Kokkos::TeamVectorRange(member, base_start_row, base_end_row),
-            [&](int i) {
+            Kokkos::TeamVectorRange(member, base_start_row, base_end_row), [&](int i) {
                 const auto row_number = i - base_start_row;
                 const auto hint = static_cast<typename CrsMatrixType::ordinal_type>(0);
                 auto row = sparse.row(i);
@@ -75,8 +74,7 @@ struct CopyConstraintsTransposeToSparseMatrix {
         const auto target_start_row = static_cast<int>(target_node_freedom_table(constraint, 0));
         const auto target_end_row = target_start_row + num_target_dofs;
         Kokkos::parallel_for(
-            Kokkos::TeamVectorRange(member, target_start_row, target_end_row),
-            [&](int i) {
+            Kokkos::TeamVectorRange(member, target_start_row, target_end_row), [&](int i) {
                 const auto row_number = i - target_start_row;
                 const auto hint = static_cast<typename CrsMatrixType::ordinal_type>(0);
                 auto row = sparse.row(i);
@@ -97,4 +95,4 @@ struct CopyConstraintsTransposeToSparseMatrix {
         );
     }
 };
-}  // namespace kynema::solver
+}  // namespace kynema_fmb::solver

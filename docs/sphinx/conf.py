@@ -72,7 +72,7 @@ htmlhelp_basename = 'kynema_doc'  # Output file base name for HTML help builder
 # Group the document tree into LaTeX files
 latex_documents = [(
     main_doc,          # source start file
-    'kynema.tex', # target name
+    'kynema_fmb.tex', # target name
     title,             # title
     author,            # author
     'manual'           # documentclass [howto, manual, or own class]
@@ -84,7 +84,7 @@ latex_documents = [(
 # One entry per manual page
 man_pages = [(
     main_doc,          # source start file
-    'kynema',     # name
+    'kynema_fmb',     # name
     title,             # description
     [author],          # authors
     1                  # manual section
@@ -96,7 +96,7 @@ man_pages = [(
 # Grouping the document tree into Texinfo files
 texinfo_documents = [(
     main_doc,          # source start file
-    'kynema',     # name
+    'kynema_fmb',     # name
     title,             # description
     author,            # author
     project,           # project

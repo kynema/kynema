@@ -1,4 +1,4 @@
-target_sources(kynema_library PRIVATE
+target_sources(kynema_fmb_library PRIVATE
     least_squares_fit.cpp
 )
 
@@ -9,5 +9,5 @@ install(FILES
         project_points_to_target_polynomial.hpp
         quaternion_operations.hpp
         vector_operations.hpp
-        DESTINATION include/Kynema/math
+        DESTINATION include/KynemaFMB/math
 )

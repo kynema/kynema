@@ -4,7 +4,7 @@
 
 #include "interpolation_operations.hpp"
 
-namespace kynema::beams {
+namespace kynema_fmb::beams {
 
 /**
  * @brief A Kernel which interpolates a rotation quaternion on a given element from its nodes
@@ -44,4 +44,4 @@ struct InterpolateQPRotation {
     }
 };
 
-}  // namespace kynema::beams
+}  // namespace kynema_fmb::beams

@@ -4,7 +4,7 @@
 
 #include "interpolation_operations.hpp"
 
-namespace kynema::beams {
+namespace kynema_fmb::beams {
 
 /**
  * @brief Functor to calculate Jacobians and unit tangent vectors at quadrature points for beam
@@ -76,4 +76,4 @@ struct CalculateJacobian {
     }
 };
 
-}  // namespace kynema::beams
+}  // namespace kynema_fmb::beams

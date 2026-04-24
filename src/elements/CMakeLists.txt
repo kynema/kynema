@@ -1,8 +1,8 @@
-target_sources(kynema_library PRIVATE)
+target_sources(kynema_fmb_library PRIVATE)
 
 install(FILES
         elements.hpp
-        DESTINATION include/Kynema/elements
+        DESTINATION include/KynemaFMB/elements
 )
 
 add_subdirectory(beams)

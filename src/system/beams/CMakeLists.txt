@@ -1,4 +1,4 @@
-target_sources(kynema_library PRIVATE)
+target_sources(kynema_fmb_library PRIVATE)
 
 install(FILES
         calculate_D_D1.hpp
@@ -30,5 +30,5 @@ install(FILES
         interpolate_to_quadrature_point_for_inertia.hpp
         interpolate_to_quadrature_point_for_stiffness.hpp
         update_node_state.hpp
-        DESTINATION include/Kynema/system/beams/
+        DESTINATION include/KynemaFMB/system/beams/
 )

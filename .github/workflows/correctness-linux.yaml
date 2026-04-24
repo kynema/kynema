@@ -1,4 +1,4 @@
-name: Kynema Unit and Regression Testing on Linux
+name: Kynema-FMB Unit and Regression Testing on Linux
 
 on:
   push:
@@ -47,8 +47,8 @@ jobs:
         uses: actions/checkout@v4
         with:
           submodules: true
-          path: kynema
-      - name: Test Kynema
+          path: kynema-fmb
+      - name: Test Kynema-FMB
         run: |
           source spack/share/spack/setup-env.sh
           spack load kokkos-kernels
@@ -65,17 +65,17 @@ jobs:
           mkdir build
           cd build
           cmake .. \
-            -DKynema_ENABLE_SANITIZER_ADDRESS=${{ matrix.build_external == 'none' }} \
-            -DKynema_ENABLE_SANITIZER_LEAK=${{ matrix.build_external == 'none' }} \
-            -DKynema_ENABLE_SANITIZER_UNDEFINED=${{ matrix.build_external == 'none' }} \
-            -DKynema_ENABLE_CPPCHECK=ON \
-            -DKynema_ENABLE_CLANG_TIDY=ON \
-            -DKynema_WARNINGS_AS_ERRORS=ON \
-            -DKynema_ENABLE_OPENFAST_ADI=OFF \
-            -DKynema_ENABLE_ROSCO_CONTROLLER=${{ matrix.build_external == 'all' }} \
-            -DKynema_ENABLE_KLU=ON \
-            -DKynema_ENABLE_UMFPACK=ON \
-            -DKynema_ENABLE_SUPERLU=ON \
+            -DKYNEMA_FMB_ENABLE_SANITIZER_ADDRESS=${{ matrix.build_external == 'none' }} \
+            -DKYNEMA_FMB_ENABLE_SANITIZER_LEAK=${{ matrix.build_external == 'none' }} \
+            -DKYNEMA_FMB_ENABLE_SANITIZER_UNDEFINED=${{ matrix.build_external == 'none' }} \
+            -DKYNEMA_FMB_ENABLE_CPPCHECK=ON \
+            -DKYNEMA_FMB_ENABLE_CLANG_TIDY=ON \
+            -DKYNEMA_FMB_WARNINGS_AS_ERRORS=ON \
+            -DKYNEMA_FMB_ENABLE_OPENFAST_ADI=OFF \
+            -DKYNEMA_FMB_ENABLE_ROSCO_CONTROLLER=${{ matrix.build_external == 'all' }} \
+            -DKYNEMA_FMB_ENABLE_KLU=ON \
+            -DKYNEMA_FMB_ENABLE_UMFPACK=ON \
+            -DKYNEMA_FMB_ENABLE_SUPERLU=ON \
             -DCMAKE_CXX_COMPILER=${{ matrix.compiler }} \
             -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
           cmake --build .

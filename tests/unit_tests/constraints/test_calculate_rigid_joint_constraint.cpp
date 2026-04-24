@@ -6,7 +6,7 @@
 #include "constraints/calculate_rigid_joint_constraint.hpp"
 #include "create_view.hpp"
 
-namespace kynema::tests {
+namespace kynema_fmb::tests {
 
 struct ExecuteCalculateRigidJointConstraint {
     Kokkos::View<double[3]>::const_type X0;
@@ -113,4 +113,4 @@ TEST(CalculateRigidJointConstraintTests, OneConstraint) {
     }
 }
 
-}  // namespace kynema::tests
+}  // namespace kynema_fmb::tests

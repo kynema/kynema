@@ -11,7 +11,7 @@
 #include "interpolate_to_quadrature_points.hpp"
 #include "populate_element_views.hpp"
 
-namespace kynema {
+namespace kynema_fmb {
 
 /**
  * @brief Creates a beams data structure and initializes its data
@@ -171,4 +171,4 @@ inline Beams<DeviceType> CreateBeams(const BeamsInput& beams_input, std::span<co
     return beams;
 }
 
-}  // namespace kynema
+}  // namespace kynema_fmb

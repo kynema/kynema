@@ -5,13 +5,13 @@
 #include "interfaces/components/aerodynamics.hpp"
 #include "math/interpolation.hpp"
 
-namespace kynema::tests {
+namespace kynema_fmb::tests {
 
 TEST(AerodynamicsComponentTest, CalculateAngleOfAttack_Case1) {
     constexpr auto flow_angle = 0.;
     constexpr auto expected_aoa = 0.;
     const auto v_rel = std::array{0., std::cos(flow_angle), std::sin(flow_angle)};
-    const auto aoa = kynema::interfaces::components::CalculateAngleOfAttack(v_rel);
+    const auto aoa = kynema_fmb::interfaces::components::CalculateAngleOfAttack(v_rel);
 
     EXPECT_NEAR(aoa, expected_aoa, 1.e-15);
 }
@@ -20,7 +20,7 @@ TEST(AerodynamicsComponentTest, CalculateAngleOfAttack_Case2) {
     constexpr auto flow_angle = -.1;
     constexpr auto expected_aoa = .1;
     const auto v_rel = std::array{0., std::cos(flow_angle), std::sin(flow_angle)};
-    const auto aoa = kynema::interfaces::components::CalculateAngleOfAttack(v_rel);
+    const auto aoa = kynema_fmb::interfaces::components::CalculateAngleOfAttack(v_rel);
 
     EXPECT_NEAR(aoa, expected_aoa, 1.e-15);
 }
@@ -29,7 +29,7 @@ TEST(AerodynamicsComponentTest, CalculateAngleOfAttack_Case3) {
     constexpr auto flow_angle = .2;
     constexpr auto expected_aoa = -.2;
     const auto v_rel = std::array{0., std::cos(flow_angle), std::sin(flow_angle)};
-    const auto aoa = kynema::interfaces::components::CalculateAngleOfAttack(v_rel);
+    const auto aoa = kynema_fmb::interfaces::components::CalculateAngleOfAttack(v_rel);
 
     EXPECT_NEAR(aoa, expected_aoa, 1.e-15);
 }
@@ -38,7 +38,7 @@ TEST(AerodynamicsComponentTest, CalculateAngleOfAttack_Case4) {
     constexpr auto flow_angle = 1. - M_PI;
     constexpr auto expected_aoa = M_PI - 1.;
     const auto v_rel = std::array{0., std::cos(flow_angle), std::sin(flow_angle)};
-    const auto aoa = kynema::interfaces::components::CalculateAngleOfAttack(v_rel);
+    const auto aoa = kynema_fmb::interfaces::components::CalculateAngleOfAttack(v_rel);
 
     EXPECT_NEAR(aoa, expected_aoa, 1.e-15);
 }
@@ -64,7 +64,7 @@ TEST(AerodynamicsComponentTest, CalculateAerodynamicLoad_Case1) {
     auto v_rel = std::array<double, 3>{};
 
     auto ref_axis_moment = std::array<double, 3>{};
-    auto load = kynema::interfaces::components::CalculateAerodynamicLoad(
+    auto load = kynema_fmb::interfaces::components::CalculateAerodynamicLoad(
         ref_axis_moment, v_inflow, v_motion, aoa_polar, cl_polar, cd_polar, cm_polar, chord, delta_s,
         fluid_density, con_force, qqr, v_rel, alpha, cn, ct, cm
     );
@@ -105,7 +105,7 @@ TEST(AerodynamicsComponentTest, CalculateAerodynamicLoad_Case2) {
     auto v_rel = std::array<double, 3>{};
 
     auto ref_axis_moment = std::array<double, 3>{};
-    auto load = kynema::interfaces::components::CalculateAerodynamicLoad(
+    auto load = kynema_fmb::interfaces::components::CalculateAerodynamicLoad(
         ref_axis_moment, v_inflow, v_motion, aoa_polar, cl_polar, cd_polar, cm_polar, chord, delta_s,
         fluid_density, con_force, qqr, v_rel, alpha, cn, ct, cm
     );
@@ -131,7 +131,7 @@ TEST(AerodynamicsComponentTest, CalculateConMotionVector_Case1) {
     constexpr auto ac_to_ref_axis_horizontal = 1.;
     constexpr auto chord_to_ref_axis_vertical = 0.;
 
-    const auto ac_vector = kynema::interfaces::components::CalculateConMotionVector(
+    const auto ac_vector = kynema_fmb::interfaces::components::CalculateConMotionVector(
         ac_to_ref_axis_horizontal, chord_to_ref_axis_vertical
     );
 
@@ -145,7 +145,7 @@ TEST(AerodynamicsComponentTest, CalculateConMotionVector_Case2) {
     constexpr auto ac_to_ref_axis_horizontal = 1.;
     constexpr auto chord_to_ref_axis_vertical = .5;
 
-    const auto ac_vector = kynema::interfaces::components::CalculateConMotionVector(
+    const auto ac_vector = kynema_fmb::interfaces::components::CalculateConMotionVector(
         ac_to_ref_axis_horizontal, chord_to_ref_axis_vertical
     );
 
@@ -157,7 +157,7 @@ TEST(AerodynamicsComponentTest, CalculateConMotionVector_Case2) {
 
 TEST(AerodynamicsComponentTest, CalculateJoacibanXi_Case1) {
     const auto aero_node_xi = std::vector{-1., 0., 1.};
-    const auto jacobian_xi = kynema::interfaces::components::CalculateJacobianXi(aero_node_xi);
+    const auto jacobian_xi = kynema_fmb::interfaces::components::CalculateJacobianXi(aero_node_xi);
 
     constexpr auto expected_jacobian_xi = std::array{-1., -.75, -.5, 0., .5, .75, 1.};
     EXPECT_NEAR(jacobian_xi[0], expected_jacobian_xi[0], 1.e-10);
@@ -171,7 +171,7 @@ TEST(AerodynamicsComponentTest, CalculateJoacibanXi_Case1) {
 
 TEST(AerodynamicsComponentTest, CalculateJoacibanXi_Case2) {
     const auto aero_node_xi = std::vector{-1., .2, 1.};
-    const auto jacobian_xi = kynema::interfaces::components::CalculateJacobianXi(aero_node_xi);
+    const auto jacobian_xi = kynema_fmb::interfaces::components::CalculateJacobianXi(aero_node_xi);
 
     constexpr auto expected_jacobian_xi = std::array{-1., -.7, -.4, .2, .6, .8, 1.};
     EXPECT_NEAR(jacobian_xi[0], expected_jacobian_xi[0], 1.e-10);
@@ -185,7 +185,7 @@ TEST(AerodynamicsComponentTest, CalculateJoacibanXi_Case2) {
 
 TEST(AerodynamicsComponentTest, CalculateJoacibanXi_Case3) {
     const auto aero_node_xi = std::vector{-1., -.2, .2, 1.};
-    const auto jacobian_xi = kynema::interfaces::components::CalculateJacobianXi(aero_node_xi);
+    const auto jacobian_xi = kynema_fmb::interfaces::components::CalculateJacobianXi(aero_node_xi);
 
     constexpr auto expected_jacobian_xi = std::array{-1., -.8, -.6, -.2, 0., .2, .6, .8, 1.};
     EXPECT_NEAR(jacobian_xi[0], expected_jacobian_xi[0], 1.e-10);
@@ -204,19 +204,19 @@ TEST(AerodynamicsComponentTest, CalculateAeroNodeWidths_Straight) {
                                     0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.};
 
     const auto aero_node_xi = std::vector{-1., 0., 1.};
-    const auto jacobian_xi = kynema::interfaces::components::CalculateJacobianXi(aero_node_xi);
+    const auto jacobian_xi = kynema_fmb::interfaces::components::CalculateJacobianXi(aero_node_xi);
 
     auto jacobian_integration_matrix = std::vector<double>(beam_node_xi.size() * jacobian_xi.size());
 
     auto weights = std::vector<double>{};
     for (auto i = 0U; i < jacobian_xi.size(); ++i) {
-        kynema::math::LagrangePolynomialDerivWeights(jacobian_xi[i], beam_node_xi, weights);
+        kynema_fmb::math::LagrangePolynomialDerivWeights(jacobian_xi[i], beam_node_xi, weights);
         for (auto j = 0U; j < beam_node_xi.size(); ++j) {
             jacobian_integration_matrix[(i * beam_node_xi.size()) + j] = weights[j];
         }
     }
 
-    const auto widths = kynema::interfaces::components::CalculateAeroNodeWidths(
+    const auto widths = kynema_fmb::interfaces::components::CalculateAeroNodeWidths(
         jacobian_xi, jacobian_integration_matrix, node_x
     );
 
@@ -233,19 +233,19 @@ TEST(AerodynamicsComponentTest, CalculateAeroNodeWidths_Curved) {
     const auto node_x = std::vector{0., 1., 2., 0., 1., .5, 0., 0., 0.};
 
     const auto aero_node_xi = std::vector{-1., -.5, 0., .5, 1.};
-    const auto jacobian_xi = kynema::interfaces::components::CalculateJacobianXi(aero_node_xi);
+    const auto jacobian_xi = kynema_fmb::interfaces::components::CalculateJacobianXi(aero_node_xi);
 
     auto jacobian_integration_matrix = std::vector<double>(beam_node_xi.size() * jacobian_xi.size());
 
     auto weights = std::vector<double>{};
     for (auto i = 0U; i < jacobian_xi.size(); ++i) {
-        kynema::math::LagrangePolynomialDerivWeights(jacobian_xi[i], beam_node_xi, weights);
+        kynema_fmb::math::LagrangePolynomialDerivWeights(jacobian_xi[i], beam_node_xi, weights);
         for (auto j = 0U; j < beam_node_xi.size(); ++j) {
             jacobian_integration_matrix[(i * beam_node_xi.size()) + j] = weights[j];
         }
     }
 
-    const auto widths = kynema::interfaces::components::CalculateAeroNodeWidths(
+    const auto widths = kynema_fmb::interfaces::components::CalculateAeroNodeWidths(
         jacobian_xi, jacobian_integration_matrix, node_x
     );
 
@@ -261,4 +261,4 @@ TEST(AerodynamicsComponentTest, CalculateAeroNodeWidths_Curved) {
     EXPECT_NEAR(widths[3], expected_widths[3], 1.e-10);
     EXPECT_NEAR(widths[4], expected_widths[4], 1.e-10);
 }
-}  // namespace kynema::tests
+}  // namespace kynema_fmb::tests

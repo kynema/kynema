@@ -1,7 +1,7 @@
 #pragma once
 #include <cstdint>
 
-namespace kynema::dss {
+namespace kynema_fmb::dss {
 
 enum class Algorithm : std::uint8_t {
     CUSOLVER_SP,
@@ -14,4 +14,4 @@ enum class Algorithm : std::uint8_t {
     NONE,
 };
 
-}  // namespace kynema::dss
+}  // namespace kynema_fmb::dss

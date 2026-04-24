@@ -2,7 +2,7 @@
 
 #include <Kokkos_Core.hpp>
 
-namespace kynema::beams {
+namespace kynema_fmb::beams {
 
 template <typename shape_matrix_type, typename node_type, typename qp_type>
 KOKKOS_INLINE_FUNCTION void InterpVector3(
@@ -91,4 +91,4 @@ KOKKOS_INLINE_FUNCTION void InterpVector4Deriv(
     }
 }
 
-}  // namespace kynema::beams
+}  // namespace kynema_fmb::beams

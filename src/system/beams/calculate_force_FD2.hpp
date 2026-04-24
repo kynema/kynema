@@ -7,7 +7,7 @@
 
 #include "math/vector_operations.hpp"
 
-namespace kynema::beams {
+namespace kynema_fmb::beams {
 
 template <typename DeviceType>
 struct CalculateForceFD2 {
@@ -57,4 +57,4 @@ struct CalculateForceFD2 {
     }
 };
 
-}  // namespace kynema::beams
+}  // namespace kynema_fmb::beams

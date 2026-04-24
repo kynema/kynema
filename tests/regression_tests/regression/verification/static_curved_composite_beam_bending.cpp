@@ -4,7 +4,7 @@
 #include "interfaces/blade/blade_interface_builder.hpp"
 #include "interfaces/components/beam_builder.hpp"
 
-namespace kynema::tests {
+namespace kynema_fmb::tests {
 
 /**
  * @brief Static bending benchmark test for a curved composite cantilever beam
@@ -143,4 +143,4 @@ TEST(VerificationTest, Static_CurvedCompositeBeamBending) {
         // Published solution: 53.4
 }
 
-}  // namespace kynema::tests
+}  // namespace kynema_fmb::tests

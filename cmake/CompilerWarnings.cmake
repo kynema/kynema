@@ -1,4 +1,4 @@
-function(kynema_set_project_warnings project_name WARNINGS_AS_ERRORS CLANG_WARNINGS GCC_WARNINGS CUDA_WARNINGS)
+function(kynema_fmb_set_project_warnings project_name WARNINGS_AS_ERRORS CLANG_WARNINGS GCC_WARNINGS CUDA_WARNINGS)
 
     # Set default Clang warnings if not provided
     if("${CLANG_WARNINGS}" STREQUAL "")

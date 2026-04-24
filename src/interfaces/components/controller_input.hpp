@@ -2,7 +2,7 @@
 
 #include <string>
 
-namespace kynema::interfaces::components {
+namespace kynema_fmb::interfaces::components {
 
 /**
  * @brief Configuration parameters for a DISCON-style turbine controller
@@ -43,4 +43,4 @@ struct ControllerInput {
     [[nodiscard]] bool IsEnabled() const { return !shared_lib_path.empty(); }
 };
 
-}  // namespace kynema::interfaces::components
+}  // namespace kynema_fmb::interfaces::components

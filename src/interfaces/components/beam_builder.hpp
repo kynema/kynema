@@ -4,11 +4,11 @@
 
 #include "beam_input.hpp"
 
-namespace kynema {
+namespace kynema_fmb {
 class Model;
 }
 
-namespace kynema::interfaces::components {
+namespace kynema_fmb::interfaces::components {
 
 class Beam;
 
@@ -178,4 +178,4 @@ private:
     BeamInput input;
 };
 
-}  // namespace kynema::interfaces::components
+}  // namespace kynema_fmb::interfaces::components

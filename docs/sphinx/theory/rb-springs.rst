@@ -220,7 +220,7 @@ The full matrices :math:`\underline{\underline{C}}`, :math:`\underline{\underlin
 .. note::
 
    The term :math:`\underline{\underline{K}}^\Phi` is include here for
-   completeness, but is not in the current Kynema implementation, and
+   completeness, but is not in the current Kynema-FMB implementation, and
    nonlinear-system convergence has been satisfactory.
 
 

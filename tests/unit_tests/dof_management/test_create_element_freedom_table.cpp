@@ -12,7 +12,7 @@
 #include "elements/springs/springs.hpp"
 #include "state/state.hpp"
 
-namespace kynema::dof::tests {
+namespace kynema_fmb::dof::tests {
 
 TEST(TestCreateElementFreedomTable, OneBeamElementWithOneNode_NoMassNoSpring) {
     using DeviceType =
@@ -88,9 +88,9 @@ TEST(TestCreateElementFreedomTable, OneSpringElementWithTwoNodes_NoBeamNoMass) {
     auto masses = Masses<DeviceType>(0U);
     auto springs = Springs<DeviceType>(1U);
     constexpr auto host_node_state_indices_data = std::array{0UL, 1UL};
-    const auto host_node_state_indices =
-        Kokkos::View<size_t[1][2], Kokkos::HostSpace>::const_type(host_node_state_indices_data.data()
-        );
+    const auto host_node_state_indices = Kokkos::View<size_t[1][2], Kokkos::HostSpace>::const_type(
+        host_node_state_indices_data.data()
+    );
     const auto mirror_node_state_indices =
         Kokkos::create_mirror_view(Kokkos::WithoutInitializing, springs.node_state_indices);
     Kokkos::deep_copy(mirror_node_state_indices, host_node_state_indices);
@@ -131,9 +131,9 @@ TEST(TestCreateElementFreedomTable, OneBeamElementWithTwoNodes_NoMassNoSpring) {
 
     auto beams = Beams<DeviceType>(1U, 2U, 1U);
     constexpr auto host_node_state_indices_data = std::array{0UL, 1UL};
-    const auto host_node_state_indices =
-        Kokkos::View<size_t[1][2], Kokkos::HostSpace>::const_type(host_node_state_indices_data.data()
-        );
+    const auto host_node_state_indices = Kokkos::View<size_t[1][2], Kokkos::HostSpace>::const_type(
+        host_node_state_indices_data.data()
+    );
     const auto mirror_node_state_indices =
         Kokkos::create_mirror_view(Kokkos::WithoutInitializing, beams.node_state_indices);
     Kokkos::deep_copy(mirror_node_state_indices, host_node_state_indices);
@@ -223,9 +223,9 @@ TEST(TestCreateElementFreedomTable, TwoBeamElementsWithOneNode_NoMassNoSpring) {
 
     auto beams = Beams<DeviceType>(2U, 1U, 1U);
     constexpr auto host_node_state_indices_data = std::array{0UL, 1UL};
-    const auto host_node_state_indices =
-        Kokkos::View<size_t[2][1], Kokkos::HostSpace>::const_type(host_node_state_indices_data.data()
-        );
+    const auto host_node_state_indices = Kokkos::View<size_t[2][1], Kokkos::HostSpace>::const_type(
+        host_node_state_indices_data.data()
+    );
     const auto mirror_node_state_indices =
         Kokkos::create_mirror_view(Kokkos::WithoutInitializing, beams.node_state_indices);
     Kokkos::deep_copy(mirror_node_state_indices, host_node_state_indices);
@@ -271,9 +271,9 @@ TEST(TestCreateElementFreedomTable, TwoBeamElementsWithTwoNodesShared_NoMassNoSp
 
     auto beams = Beams<DeviceType>(2U, 2U, 1U);
     constexpr auto host_node_state_indices_data = std::array{0UL, 1UL, 1UL, 2UL};
-    const auto host_node_state_indices =
-        Kokkos::View<size_t[2][2], Kokkos::HostSpace>::const_type(host_node_state_indices_data.data()
-        );
+    const auto host_node_state_indices = Kokkos::View<size_t[2][2], Kokkos::HostSpace>::const_type(
+        host_node_state_indices_data.data()
+    );
     const auto mirror_node_state_indices =
         Kokkos::create_mirror_view(Kokkos::WithoutInitializing, beams.node_state_indices);
     Kokkos::deep_copy(mirror_node_state_indices, host_node_state_indices);
@@ -329,9 +329,9 @@ TEST(TestCreateElementFreedomTable, TwoBeamElementsWithTwoNodesShared_Flipped_No
 
     auto beams = Beams<DeviceType>(2U, 2U, 1U);
     constexpr auto host_node_state_indices_data = std::array{1UL, 2UL, 0UL, 1UL};
-    const auto host_node_state_indices =
-        Kokkos::View<size_t[2][2], Kokkos::HostSpace>::const_type(host_node_state_indices_data.data()
-        );
+    const auto host_node_state_indices = Kokkos::View<size_t[2][2], Kokkos::HostSpace>::const_type(
+        host_node_state_indices_data.data()
+    );
     const auto mirror_node_state_indices =
         Kokkos::create_mirror_view(Kokkos::WithoutInitializing, beams.node_state_indices);
     Kokkos::deep_copy(mirror_node_state_indices, host_node_state_indices);
@@ -387,9 +387,9 @@ TEST(TestCreateElementFreedomTable, TwoBeamElementsWithOneNode_OneMassElementWit
 
     auto beams = Beams<DeviceType>(2U, 1U, 1U);
     constexpr auto host_node_state_indices_data = std::array{0UL, 1UL};
-    const auto host_node_state_indices =
-        Kokkos::View<size_t[2][1], Kokkos::HostSpace>::const_type(host_node_state_indices_data.data()
-        );
+    const auto host_node_state_indices = Kokkos::View<size_t[2][1], Kokkos::HostSpace>::const_type(
+        host_node_state_indices_data.data()
+    );
     const auto mirror_node_state_indices =
         Kokkos::create_mirror_view(Kokkos::WithoutInitializing, beams.node_state_indices);
     Kokkos::deep_copy(mirror_node_state_indices, host_node_state_indices);
@@ -498,4 +498,4 @@ TEST(
     }
 }
 
-}  // namespace kynema::dof::tests
+}  // namespace kynema_fmb::dof::tests

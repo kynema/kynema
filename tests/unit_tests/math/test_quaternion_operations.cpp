@@ -21,7 +21,7 @@ Kokkos::View<double[3][3]> TestQuaternionToRotationMatrix(
     auto R_from_q = Kokkos::View<double[3][3]>("R_from_q");
     Kokkos::parallel_for(
         "QuaternionToRotationMatrix", 1,
-        KOKKOS_LAMBDA(int) { kynema::math::QuaternionToRotationMatrix(q, R_from_q); }
+        KOKKOS_LAMBDA(int) { kynema_fmb::math::QuaternionToRotationMatrix(q, R_from_q); }
     );
     return R_from_q;
 }
@@ -32,7 +32,7 @@ Kokkos::View<double[3]> TestRotateVectorByQuaternion(
     auto v_rot = Kokkos::View<double[3]>("v_rot");
     Kokkos::parallel_for(
         "RotateVectorBoyQuaternion", 1,
-        KOKKOS_LAMBDA(int) { kynema::math::RotateVectorByQuaternion(q, v, v_rot); }
+        KOKKOS_LAMBDA(int) { kynema_fmb::math::RotateVectorByQuaternion(q, v, v_rot); }
     );
     return v_rot;
 }
@@ -40,7 +40,8 @@ Kokkos::View<double[3]> TestRotateVectorByQuaternion(
 Kokkos::View<double[3][4]> TestQuaternionDerivative(const Kokkos::View<double[4]>::const_type& q) {
     auto m = Kokkos::View<double[3][4]>("m");
     Kokkos::parallel_for(
-        "QuaternionDerivative", 1, KOKKOS_LAMBDA(int) { kynema::math::QuaternionDerivative(q, m); }
+        "QuaternionDerivative", 1,
+        KOKKOS_LAMBDA(int) { kynema_fmb::math::QuaternionDerivative(q, m); }
     );
     return m;
 }
@@ -48,7 +49,7 @@ Kokkos::View<double[3][4]> TestQuaternionDerivative(const Kokkos::View<double[4]
 Kokkos::View<double[4]> TestQuaternionInverse(const Kokkos::View<double[4]>::const_type& q) {
     auto q_inv = Kokkos::View<double[4]>("q_inv");
     Kokkos::parallel_for(
-        "QuaternionInverse", 1, KOKKOS_LAMBDA(int) { kynema::math::QuaternionInverse(q, q_inv); }
+        "QuaternionInverse", 1, KOKKOS_LAMBDA(int) { kynema_fmb::math::QuaternionInverse(q, q_inv); }
     );
     return q_inv;
 }
@@ -58,7 +59,8 @@ Kokkos::View<double[4]> TestQuaternionCompose(
 ) {
     auto qn = Kokkos::View<double[4]>("qn");
     Kokkos::parallel_for(
-        "QuaternionCompose", 1, KOKKOS_LAMBDA(int) { kynema::math::QuaternionCompose(q1, q2, qn); }
+        "QuaternionCompose", 1,
+        KOKKOS_LAMBDA(int) { kynema_fmb::math::QuaternionCompose(q1, q2, qn); }
     );
     return qn;
 }
@@ -67,7 +69,7 @@ Kokkos::View<double[4]> TestRotationToQuaternion(const Kokkos::View<double[3]>::
     auto quaternion = Kokkos::View<double[4]>("quaternion");
     Kokkos::parallel_for(
         "RotationVectorToQuaternion", 1,
-        KOKKOS_LAMBDA(int) { kynema::math::RotationVectorToQuaternion(phi, quaternion); }
+        KOKKOS_LAMBDA(int) { kynema_fmb::math::RotationVectorToQuaternion(phi, quaternion); }
     );
     return quaternion;
 }
@@ -82,11 +84,11 @@ void test_quaternion_to_rotation_vector_2() {
         auto q = Create1DView<4>({0., 0., 0., 0.});
         Kokkos::parallel_for(
             "RotationVectorToQuaternion", 1,
-            KOKKOS_LAMBDA(int) { kynema::math::RotationVectorToQuaternion(phi, q); }
+            KOKKOS_LAMBDA(int) { kynema_fmb::math::RotationVectorToQuaternion(phi, q); }
         );
         Kokkos::parallel_for(
             "RotationVectorToQuaternion", 1,
-            KOKKOS_LAMBDA(int) { kynema::math::QuaternionToRotationVector(q, phi2); }
+            KOKKOS_LAMBDA(int) { kynema_fmb::math::QuaternionToRotationVector(q, phi2); }
         );
 
         const auto phi2_mirror = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), phi2);
@@ -98,7 +100,7 @@ void test_quaternion_to_rotation_vector_2() {
 
 }  // namespace
 
-namespace kynema::tests {
+namespace kynema_fmb::tests {
 
 TEST(QuaternionTest, ConvertQuaternionToRotationMatrix_90DegreeRotationAboutXAxis) {
     const auto inv_sqrt2 = 1. / std::numbers::sqrt2;
@@ -382,9 +384,10 @@ TEST(QuaternionTest, CheckTangentTwistToQuaternion) {
              {
                  .twist = std::numbers::pi / 4.,
                  .tan = {0., 0., 1.},
-                 .q_exp =
-                     {0.65328148243818829, 0.27059805007309845, -0.65328148243818818,
-                      0.27059805007309851},
+                 .q_exp = {
+                     0.65328148243818829, 0.27059805007309845, -0.65328148243818818,
+                     0.27059805007309851
+                 },
              },
          }) {
         const auto q_act = math::TangentTwistToQuaternion(td.tan, td.twist);
@@ -418,4 +421,4 @@ TEST(QuaternionTest, IsIdentityQuaternion_WithCustomTolerance) {
     EXPECT_TRUE(math::IsIdentityQuaternion(near_identity_q, 1e-9));
 }
 
-}  // namespace kynema::tests
+}  // namespace kynema_fmb::tests

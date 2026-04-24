@@ -2,7 +2,7 @@
 
 #include <Kokkos_Core.hpp>
 
-namespace kynema::solver {
+namespace kynema_fmb::solver {
 
 /**
  * @brief A Reduction kernel which sums the number of active degrees of freedom
@@ -38,4 +38,4 @@ template <typename DeviceType>
     return total_system_dofs;
 }
 
-}  // namespace kynema::solver
+}  // namespace kynema_fmb::solver

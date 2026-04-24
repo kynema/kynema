@@ -24,7 +24,7 @@ typename Kokkos::View<ValueType>::const_type CreateView(
 
 }  // namespace
 
-namespace kynema::solver::tests {
+namespace kynema_fmb::solver::tests {
 
 TEST(ComputeRowPtrs, OneElementOneNode) {
     constexpr auto num_system_dofs = 6U;
@@ -238,4 +238,4 @@ TEST(ComputeRowPtrs, OneElementOneNode_TwoConstraint) {
     }
 }
 
-}  // namespace kynema::solver::tests
+}  // namespace kynema_fmb::solver::tests

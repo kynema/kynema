@@ -4,7 +4,7 @@
 #include <Kokkos_Core.hpp>
 #include <gtest/gtest.h>
 
-namespace kynema::beams::tests {
+namespace kynema_fmb::beams::tests {
 
 constexpr double kTolerance = 1e-15;
 
@@ -104,4 +104,4 @@ inline void CompareWithExpected(
     }
 }
 
-}  // namespace kynema::beams::tests
+}  // namespace kynema_fmb::beams::tests

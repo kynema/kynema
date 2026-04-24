@@ -2,7 +2,7 @@
 
 #include "floating_platform_input.hpp"
 
-namespace kynema::interfaces::cfd {
+namespace kynema_fmb::interfaces::cfd {
 InterfaceBuilder& InterfaceBuilder::SetGravity(const std::array<double, 3>& gravity) {
     interface_input.gravity = gravity;
     return *this;
@@ -114,4 +114,4 @@ Interface InterfaceBuilder::Build() const {
     return Interface(interface_input);
 }
 
-}  // namespace kynema::interfaces::cfd
+}  // namespace kynema_fmb::interfaces::cfd
