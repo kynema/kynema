@@ -403,7 +403,7 @@ int main() {
         //--------------------------------------------------------------------------
 
         const auto controller_shared_lib_path =
-            std::string{static_cast<const char*>(Kynema_ROSCO_LIBRARY)};
+            std::string{static_cast<const char*>(KYNEMA_FMB_ROSCO_LIBRARY)};
         const auto controller_function_name = std::string{"DISCON"};
         const auto controller_input_file = std::string{"DISCON.IN"};
         const auto controller_output_file = std::string{"controller_NREL5MW"};

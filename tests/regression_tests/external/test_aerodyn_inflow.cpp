@@ -521,7 +521,7 @@ TEST(AerodynInflowTest, VTKSettings_Set) {
 
 /// Helper function to get the shared library path
 std::string GetSharedLibraryPath() {
-    return std::string(Kynema_ADI_LIBRARY);
+    return std::string(KYNEMA_FMB_ADI_LIBRARY);
 }
 
 TEST(AerodynInflowTest, AeroDynInflowLibrary_DefaultConstructor) {
