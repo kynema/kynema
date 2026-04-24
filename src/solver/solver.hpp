@@ -10,7 +10,7 @@
 #include "linear_solver/dss_handle.hpp"
 #include "linear_solver/dss_symbolic.hpp"
 
-#include "KYNEMA_FMB_config.h"
+#include "Kynema_FMB_config.h"
 
 namespace kynema_fmb {
 
