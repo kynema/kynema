@@ -54,7 +54,7 @@ jobs:
         run: |
           source spack/share/spack/setup-env.sh
           spack load eigen kokkos-kernels yaml-cpp netcdf-c suite-sparse superlu
-          cd kynema
+          cd kynema-fmb
           mkdir build
           cd build
           cmake .. \
