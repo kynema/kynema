@@ -1,13 +1,13 @@
 #--------------------------------------------------------------------------
 # Define the main library target
 #--------------------------------------------------------------------------
-add_library(kynema_library)
-add_library(Kynema::kynema_library ALIAS kynema_library)
+add_library(kynema_fmb_library)
+add_library(KynemaFMB::kynema_fmb_library ALIAS kynema_fmb_library)
 
 #----------------------------------------
 # Set target properties
 #----------------------------------------
-set_target_properties(kynema_library PROPERTIES
+set_target_properties(kynema_fmb_library PROPERTIES
   LINKER_LANGUAGE CXX
   POSITION_INDEPENDENT_CODE ON  # Ensure position-independent code for shared libraries
   VISIBILITY_INLINES_HIDDEN YES # Hide inline function symbols to reduce binary size
@@ -16,7 +16,7 @@ set_target_properties(kynema_library PROPERTIES
 #----------------------------------------
 # Link internal libraries and dependencies
 #----------------------------------------
-target_link_libraries(kynema_library PRIVATE
+target_link_libraries(kynema_fmb_library PRIVATE
   kynema_options
   kynema_warnings
 )
@@ -24,8 +24,8 @@ target_link_libraries(kynema_library PRIVATE
 #----------------------------------------
 # Add compile definitions
 #----------------------------------------
-if(Kynema_WRITE_OUTPUTS)
-    target_compile_definitions(kynema_library PRIVATE Kynema_WRITE_OUTPUTS)
+if(KYNEMA_FMB_WRITE_OUTPUTS)
+    target_compile_definitions(kynema_fmb_library PRIVATE KYNEMA_FMB_WRITE_OUTPUTS)
 endif()
 
 #--------------------------------------------------------------------------
@@ -56,7 +56,7 @@ endif()
 #--------------------------------------------------------------------------
 # Include directories for system libraries
 #--------------------------------------------------------------------------
-target_link_system_libraries(kynema_library PUBLIC
+target_link_system_libraries(kynema_fmb_library PUBLIC
   KokkosKernels::kokkoskernels
   Eigen3::Eigen
   ${YAML_CPP_TARGET}
@@ -64,38 +64,38 @@ target_link_system_libraries(kynema_library PUBLIC
   ${NETCDF_TARGET}
 )
 
-if(Kynema_ENABLE_CUDSS)
-    target_link_system_libraries(kynema_library PUBLIC
+if(KYNEMA_FMB_ENABLE_CUDSS)
+    target_link_system_libraries(kynema_fmb_library PUBLIC
   cudss
 )
 endif()
 
-if(Kynema_ENABLE_MKL)
-    target_link_system_libraries(kynema_library PUBLIC
+if(KYNEMA_FMB_ENABLE_MKL)
+    target_link_system_libraries(kynema_fmb_library PUBLIC
   MKL::MKL
 )
 endif()
 
-if(Kynema_ENABLE_SUPERLU)
-    target_link_system_libraries(kynema_library PUBLIC
+if(KYNEMA_FMB_ENABLE_SUPERLU)
+    target_link_system_libraries(kynema_fmb_library PUBLIC
   superlu::superlu
 )
 endif()
 
-if(Kynema_ENABLE_SUPERLU_MT)
-    target_link_system_libraries(kynema_library PUBLIC
+if(KYNEMA_FMB_ENABLE_SUPERLU_MT)
+    target_link_system_libraries(kynema_fmb_library PUBLIC
   superlu_mt::superlu_mt
 )
 endif()
 
-if(Kynema_ENABLE_KLU)
-    target_link_system_libraries(kynema_library PUBLIC
+if(KYNEMA_FMB_ENABLE_KLU)
+    target_link_system_libraries(kynema_fmb_library PUBLIC
   SuiteSparse::KLU
 )
 endif()
 
-if(Kynema_ENABLE_UMFPACK)
-    target_link_system_libraries(kynema_library PUBLIC
+if(KYNEMA_FMB_ENABLE_UMFPACK)
+    target_link_system_libraries(kynema_fmb_library PUBLIC
   SuiteSparse::UMFPACK
 )
 endif()
@@ -114,15 +114,15 @@ add_shared_library(DISCON_ROTOR_TEST_CONTROLLER)
 #----------------------------------------
 # Set include directories
 #----------------------------------------
-target_include_directories(kynema_library
+target_include_directories(kynema_fmb_library
   PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>
   $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src>
-  $<INSTALL_INTERFACE:include/Kynema>
+  $<INSTALL_INTERFACE:include/KynemaFMB>
 )
 
 # Set the C++ standard for the target
-target_compile_features(kynema_library PUBLIC cxx_std_20)
+target_compile_features(kynema_fmb_library PUBLIC cxx_std_20)
 
 #----------------------------------------
 # Add subdirectories
@@ -144,20 +144,20 @@ add_subdirectory(vendor)
 # Install targets and export configuration
 #----------------------------------------
 install(
-  TARGETS kynema_library kynema_options kynema_warnings
-  EXPORT KynemaTargets
+  TARGETS kynema_fmb_library kynema_options kynema_warnings
+  EXPORT KynemaFMBTargets
   ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
   LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR} COMPONENT ${PACKAGE_NAME}
   RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
   INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
 )
 
-install(EXPORT KynemaTargets
-  FILE KynemaTargets.cmake
-  NAMESPACE Kynema::
-  DESTINATION lib/cmake/Kynema
+install(EXPORT KynemaFMBTargets
+  FILE KynemaFMBTargets.cmake
+  NAMESPACE KynemaFMB::
+  DESTINATION lib/cmake/KynemaFMB
 )
 
 install(FILES
-  DESTINATION include/Kynema/
+  DESTINATION include/KynemaFMB/
 )

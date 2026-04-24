@@ -1,4 +1,4 @@
-target_sources(kynema_library PRIVATE)
+target_sources(kynema_fmb_library PRIVATE)
 
 install(FILES
         beam_element.hpp
@@ -18,5 +18,5 @@ install(FILES
         interpolate_to_quadrature_points.hpp
         interpolation_operations.hpp
         populate_element_views.hpp
-        DESTINATION include/Kynema/elements/beams/
+        DESTINATION include/KynemaFMB/elements/beams/
 )

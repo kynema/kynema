@@ -1,4 +1,4 @@
-target_sources(kynema_library
+target_sources(kynema_fmb_library
   PRIVATE
   turbine_controller.cpp
 )
@@ -18,5 +18,5 @@ install(FILES
         discon.hpp
         discon_rotor_test_controller.hpp
         turbine_controller.hpp
-        DESTINATION include/Kynema/utilities/controllers/
+        DESTINATION include/KynemaFMB/utilities/controllers/
 )

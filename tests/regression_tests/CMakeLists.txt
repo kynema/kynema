@@ -13,7 +13,7 @@ target_sources(kynema_regression_tests PRIVATE rtest_main.cpp)
 target_link_libraries(kynema_regression_tests PRIVATE
   kynema_warnings
   kynema_options
-  Kynema::kynema_library
+  KynemaFMB::kynema_fmb_library
 )
 
 # Link system libraries and dependencies

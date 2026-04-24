@@ -1,4 +1,4 @@
-target_sources(kynema_library PRIVATE)
+target_sources(kynema_fmb_library PRIVATE)
 
 install(FILES
         assemble_constraints_matrix.hpp
@@ -20,5 +20,5 @@ install(FILES
         update_system_variables_masses.hpp
         update_system_variables_springs.hpp
         update_tangent_operator.hpp
-        DESTINATION include/Kynema/step/
+        DESTINATION include/KynemaFMB/step/
 )

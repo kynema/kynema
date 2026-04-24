@@ -1,4 +1,4 @@
-target_sources(kynema_library 
+target_sources(kynema_fmb_library 
   PRIVATE
 )
 
@@ -8,5 +8,5 @@ install(FILES
         create_constraint_freedom_table.hpp
         create_element_freedom_table.hpp
         freedom_signature.hpp
-        DESTINATION include/Kynema/dof_management
+        DESTINATION include/KynemaFMB/dof_management
 )

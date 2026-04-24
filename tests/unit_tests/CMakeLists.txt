@@ -25,7 +25,7 @@ target_include_directories(kynema_unit_tests PRIVATE
 target_link_libraries(kynema_unit_tests PRIVATE
   kynema_warnings
   kynema_options
-  Kynema::kynema_library
+  KynemaFMB::kynema_fmb_library
 )
 
 #----------------------------------------

@@ -1,9 +1,9 @@
-target_sources(kynema_library PRIVATE)
+target_sources(kynema_fmb_library PRIVATE)
 
 install(FILES
         copy_nodes_to_state.hpp
         mesh_connectivity.hpp
         model.hpp
         node.hpp
-        DESTINATION include/Kynema/model/
+        DESTINATION include/KynemaFMB/model/
 )

@@ -1,4 +1,4 @@
-target_sources(kynema_library PRIVATE)
+target_sources(kynema_fmb_library PRIVATE)
 
 install(FILES
         dss_algorithm.hpp
@@ -34,5 +34,5 @@ install(FILES
         dss_symbolic_mkl.hpp
         dss_symbolic_superlu.hpp
         dss_symbolic_superlu_mt.hpp
-        DESTINATION include/Kynema/solver/linear_solver
+        DESTINATION include/KynemaFMB/solver/linear_solver
 )

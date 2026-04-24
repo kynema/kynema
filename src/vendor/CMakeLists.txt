@@ -1,3 +1,3 @@
-target_sources(kynema_library PRIVATE)
+target_sources(kynema_fmb_library PRIVATE)
 
 add_subdirectory(dylib)
