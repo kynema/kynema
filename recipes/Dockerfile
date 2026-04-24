@@ -1,5 +1,5 @@
 # Run this from the root of the Kynema repository e.g.
-# docker build -f recipes/Dockerfile -t kynema:latest .
+# docker build -f recipes/Dockerfile -t kynema-fmb:latest .
 
 FROM ubuntu:latest
 
@@ -43,13 +43,13 @@ RUN git clone https://github.com/spack/spack.git && \
     spack install openfast
 
 # Step 3: Set up the working directory and copy the Kynema repository
-WORKDIR /projects/kynema
+WORKDIR /projects/kynema-fmb
 COPY . .
 
 # Step 4: Load necessary libraries and build the project
-ARG CMAKE_OPTIONS="-DKynema_WRITE_OUTPUTS=ON \
-    -DKynema_ENABLE_OPENFAST_ADI=ON \
-    -DKynema_ENABLE_ROSCO_CONTROLLER=ON \
+ARG CMAKE_OPTIONS="-DKYNEMA_FMB_WRITE_OUTPUTS=ON \
+    -DKYNEMA_FMB_ENABLE_OPENFAST_ADI=ON \
+    -DKYNEMA_FMB_ENABLE_ROSCO_CONTROLLER=ON \
     -DCMAKE_BUILD_TYPE=Release"
 
 ARG N_PARALLEL_JOBS=4

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Kynema_FMB_config.h"
+#include "KYNEMA_FMB_FMB_config.h"
 
 namespace kynema_fmb::dss {
 
@@ -11,31 +11,31 @@ struct SymbolicFunction {
 
 }  // namespace kynema_fmb::dss
 
-#ifdef Kynema_ENABLE_CUSOLVERSP
+#ifdef KYNEMA_FMB_ENABLE_CUSOLVERSP
 #include "dss_symbolic_cusolversp.hpp"
 #endif
 
-#ifdef Kynema_ENABLE_CUDSS
+#ifdef KYNEMA_FMB_ENABLE_CUDSS
 #include "dss_symbolic_cudss.hpp"
 #endif
 
-#ifdef Kynema_ENABLE_MKL
+#ifdef KYNEMA_FMB_ENABLE_MKL
 #include "dss_symbolic_mkl.hpp"
 #endif
 
-#ifdef Kynema_ENABLE_KLU
+#ifdef KYNEMA_FMB_ENABLE_KLU
 #include "dss_symbolic_klu.hpp"
 #endif
 
-#ifdef Kynema_ENABLE_UMFPACK
+#ifdef KYNEMA_FMB_ENABLE_UMFPACK
 #include "dss_symbolic_umfpack.hpp"
 #endif
 
-#ifdef Kynema_ENABLE_SUPERLU
+#ifdef KYNEMA_FMB_ENABLE_SUPERLU
 #include "dss_symbolic_superlu.hpp"
 #endif
 
-#ifdef Kynema_ENABLE_SUPERLU_MT
+#ifdef KYNEMA_FMB_ENABLE_SUPERLU_MT
 #include "dss_symbolic_superlu_mt.hpp"
 #endif
 

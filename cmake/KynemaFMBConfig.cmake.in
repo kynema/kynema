@@ -10,27 +10,27 @@ find_dependency(yaml-cpp REQUIRED)
 find_dependency(NetCDF REQUIRED)
 find_dependency(Eigen3 REQUIRED)
 
-if(@Kynema_ENABLE_SUPERLU@)
+if(@KYNEMA_FMB_ENABLE_SUPERLU@)
   find_dependency(superlu REQUIRED)
 endif()
 
-if(@Kynema_ENABLE_SUPERLU_MT@)
+if(@KYNEMA_FMB_ENABLE_SUPERLU_MT@)
   find_dependency(superlu_mt REQUIRED)
 endif()
 
-if(@Kynema_ENABLE_KLU@)
+if(@KYNEMA_FMB_ENABLE_KLU@)
   find_dependency(KLU REQUIRED)
 endif()
 
-if(@Kynema_ENABLE_UMFPACK@)
+if(@KYNEMA_FMB_ENABLE_UMFPACK@)
   find_dependency(UMFPACK REQUIRED)
 endif()
 
-if(@Kynema_ENABLE_MKL@)
+if(@KYNEMA_FMB_ENABLE_MKL@)
   find_dependency(MKL REQUIRED)
 endif()
 
-if(@Kynema_ENABLE_CUDSS@)
+if(@KYNEMA_FMB_ENABLE_CUDSS@)
   find_dependency(cudss REQUIRED)
 endif()
 
