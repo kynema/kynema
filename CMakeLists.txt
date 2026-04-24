@@ -11,7 +11,6 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 # Project declaration
 project(
   KynemaFMB
-  VERSION 0.9.0
   DESCRIPTION "A performance-oriented flexible multibody structural dynamics code"
   LANGUAGES CXX
 )
