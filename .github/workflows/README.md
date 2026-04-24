@@ -10,4 +10,4 @@ This collection of GitHub workflow definitions is designed for Continuous Integr
 
 - **formatting.yaml**: Checks formatting for all source, header, and test files. Note that this workflow does not automatically fix formatting errors; developers are responsible for correcting any issues detected.
 
-- **install-spack.yaml**: Builds and installs Kynema using the Spack package manager and then builds each of the documentation tests against this installation.  This script not only tests the documentation tests themselves, also ensures that our Spack package and CMake installation scripts are working properly for our end users.
+- **install-spack.yaml**: Builds and installs Kynema-FMB using the Spack package manager and then builds each of the documentation tests against this installation.  This script not only tests the documentation tests themselves, also ensures that our Spack package and CMake installation scripts are working properly for our end users.
