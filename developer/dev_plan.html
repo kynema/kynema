@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kynema Development Plan &mdash; Kynema 0.0.1 documentation</title>
+  <title>Kynema-FMB Development Plan &mdash; Kynema 0.0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
@@ -56,7 +56,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../theory/index.html">Theory Manual</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Developer Documentation</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="overview.html">Overview</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Kynema Development Plan</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Kynema-FMB Development Plan</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#background-and-overview">Background and overview</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#development-priorities">Development priorities</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#robustness">Robustness</a></li>
@@ -75,7 +75,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../testing/index.html">Benchmark Testing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../publications.html">Kynema Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../publications.html">Kynema-FMB Publications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../acknowledgement.html">Acknowledgements</a></li>
 </ul>
 
@@ -94,7 +94,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Developer Documentation</a></li>
-      <li class="breadcrumb-item active">Kynema Development Plan</li>
+      <li class="breadcrumb-item active">Kynema-FMB Development Plan</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/developer/dev_plan.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -104,23 +104,23 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="kynema-development-plan">
-<span id="dev-plan"></span><h1>Kynema Development Plan<a class="headerlink" href="#kynema-development-plan" title="Permalink to this heading"></a></h1>
+  <div class="section" id="kynema-fmb-development-plan">
+<span id="dev-plan"></span><h1>Kynema-FMB Development Plan<a class="headerlink" href="#kynema-fmb-development-plan" title="Permalink to this heading"></a></h1>
 <div class="section" id="background-and-overview">
 <h2>Background and overview<a class="headerlink" href="#background-and-overview" title="Permalink to this heading"></a></h2>
-<p>Kynema development started in early 2023 with primary funding from the
+<p>Kynema-FMB development started in early 2023 with primary funding from the
 U.S. Department of Energy (DOE) Wind Energy Technologies Office (WETO) and with
 additional funding from the DOE Exascale Computing Project (ECP). It is being
 developed by researchers at the National Renewable Energy Laboratory (NREL)
 and the Sandia National Laboratories (SNL).</p>
-<p>Kynema is an open-source structural dynamics simulation code designed to
+<p>Kynema-FMB is an open-source structural dynamics simulation code designed to
 meet the research needs of WETO and the broader wind energy community for
-land-based and offshore wind turbines. Kynema provides high-fidelity,
+land-based and offshore wind turbines. Kynema-FMB provides high-fidelity,
 highly performant structural dynamics models that can couple with low-fidelity
 aerodynamic/hydrodynamic models like those in <a class="reference external" href="https://github.com/OpenFAST/openfast">OpenFAST</a>,
 and high-fidelity computational fluid dynamics (CFD) models like those in the
 WETO and Office of Science supported <a class="reference external" href="https://github.com/Exawind">ExaWind</a> code suite.
-Kynema is designed deliberately to address shortcomings of legacy wind turbine structural
+Kynema-FMB is designed deliberately to address shortcomings of legacy wind turbine structural
 models and codes that are critical to the success of WETO modeling efforts.</p>
 </div>
 <div class="section" id="development-priorities">
@@ -128,35 +128,35 @@ models and codes that are critical to the success of WETO modeling efforts.</p>
 <div class="section" id="robustness">
 <h3>Robustness<a class="headerlink" href="#robustness" title="Permalink to this heading"></a></h3>
 <p>Considering lessons learned from nearly a decade of OpenFAST development,
-Kynema prioritizes software robustness through a comprehensive unit
+Kynema-FMB prioritizes software robustness through a comprehensive unit
 and regression test suite, which are run through a Continuous Integration
-process.  Beyond that, Kynema continuously runs a variety of static
+process.  Beyond that, Kynema-FMB continuously runs a variety of static
 and dynamic analysis tools to identify potential bugs.  Linters and manual
 code review on every change help to ensure consistent, well designed, and
 sustainable software.</p>
 </div>
 <div class="section" id="performance">
 <h3>Performance<a class="headerlink" href="#performance" title="Permalink to this heading"></a></h3>
-<p>Kynema is performance-focused software.  Core data structures are designed
+<p>Kynema-FMB is performance-focused software.  Core data structures are designed
 to provide optimal cache usage and all algorithms are written to best take
-advantage of on-chip resources.  Kynema performs optimally on both CPU
+advantage of on-chip resources.  Kynema-FMB performs optimally on both CPU
 and GPU, using hiearchical parallelism and other techniques to ensure performance
 portability for problems of all sizes.</p>
 </div>
 <div class="section" id="accessibility">
 <h3>Accessibility<a class="headerlink" href="#accessibility" title="Permalink to this heading"></a></h3>
-<p>Kynema provides a user-friendly, high level API for developers to use
-to define and run their structural dynamics problems and to couple Kynema
-with other codes.  This approach decouples users of Kynema from the low level
+<p>Kynema-FMB provides a user-friendly, high level API for developers to use
+to define and run their structural dynamics problems and to couple Kynema-FMB
+with other codes.  This approach decouples users of Kynema-FMB from the low level
 details of its implementation and improves the speed at which developers can
 define and execute their problem.  Advanced users are able to use the lower level
-Kynema APIs directly or to define their own interfaces, should the high
+Kynema-FMB APIs directly or to define their own interfaces, should the high
 level APIs not address their needs directly.</p>
 </div>
 </div>
 <div class="section" id="programming-language-and-models">
 <h2>Programming language and models<a class="headerlink" href="#programming-language-and-models" title="Permalink to this heading"></a></h2>
-<p>Kynema is written in C++ with tight integration of the
+<p>Kynema-FMB is written in C++ with tight integration of the
 <a class="reference external" href="https://github.com/kokkos/kokkos">Kokkos</a> performance portability library.
 This approach allows a single code base to achieve near-optimal performance
 when run on CPU or any GPU platform, rather than requiring separate code paths.
@@ -166,26 +166,26 @@ state-of-the-art performance.</p>
 </div>
 <div class="section" id="key-numerical-algorithms">
 <h2>Key numerical algorithms<a class="headerlink" href="#key-numerical-algorithms" title="Permalink to this heading"></a></h2>
-<p>Kynema models turbines using a combination of high-order nonlinear beam finite elements,
+<p>Kynema-FMB models turbines using a combination of high-order nonlinear beam finite elements,
 point mass elements, linear spring elements, and constraints tying them together.
 For example, a turbine rotor may be modeled with three 10th-order beam elements, each
 representing a blade, with their “root” nodes constrained to rotate with a hub of finite radius,
 which is modeled by a point mass.</p>
 <p>The models necessary for mid- to high-fidelity simulation of wind turbine
 structural dynamics include linear and nonlinear finite-element models coupled
-through constraints equations. Kynema models These models together constitute a set of
-differential-algebraic equations (DAEs) in the time domain. Kynema builds on the
+through constraints equations. Kynema-FMB models These models together constitute a set of
+differential-algebraic equations (DAEs) in the time domain. Kynema-FMB builds on the
 experiences gained with OpenFAST, particularly its nonlinear beam-dynamics module,
 <a class="reference external" href="https://github.com/OpenFAST/openfast/tree/main/modules/beamdyn">BeamDyn</a>.</p>
-<p>For more details, see the Kynema’s theory documentation.</p>
+<p>For more details, see the Kynema-FMB’s theory documentation.</p>
 </div>
 <div class="section" id="high-level-development-timeline">
 <h2>High-level development timeline<a class="headerlink" href="#high-level-development-timeline" title="Permalink to this heading"></a></h2>
 <p>CY = calendar year, FY = fiscal year</p>
-<p><strong>CY23 Q2</strong>: The Kynema team will implement a rigid-body dynamics solver following the
+<p><strong>CY23 Q2</strong>: The Kynema-FMB team will implement a rigid-body dynamics solver following the
 concepts described above, i.e., DAE-3 coupling, quaternion-based rotation representation, and a
 generalized-alpha time integrator. This proof-of-concept implementation will be made available
-in the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch of Kynema repository and will inform the next steps in Kynema
+in the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch of Kynema-FMB repository and will inform the next steps in Kynema-FMB
 development.</p>
 <p><strong>CY23 Q3</strong>: Implement a general GEBT-based beam element that is appropriate for constrained multi-body
 simulations of a wind turbine. Enable variable order finite elements and user-defined material property
@@ -200,7 +200,7 @@ Compare simulation time against an equivalent model simulated with
 system. Fluid will be represented in two ways. First, through a simple Blade Element Momentum Theory
 (BEMT) solver and second, where the blades are represented as actuator lines in the fluid domain
 (solved with the ExaWind CFD code).</p>
-<p><strong>CY25 Q1</strong>: Release a robust, well-documented, well-tested version of Kynema for land-based
+<p><strong>CY25 Q1</strong>: Release a robust, well-documented, well-tested version of Kynema-FMB for land-based
 turbine simulations. Demonstrate whole turbine simulation (tower, nacelle, drivetrain) capabilities
 with FSI coupling to ExaWind.</p>
 </div>

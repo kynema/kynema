@@ -1,0 +1,14 @@
+.. meta::a5e885a96a6d7746c3c558fe0492470b82c0dfda0d8c3d38736f2e23f2f5e329a3b89426974bf7b7645263b5290961bd2dd2506f24c8ee8d22c820c183e803dc
+
+:orphan:
+
+.. title:: Kynema API: kynema_fmb::constraints::CalculateRotationControlConstraint&lt; DeviceType &gt; Struct Template Reference
+
+CalculateRotationControlConstraint&lt; DeviceType &gt; Struct Template Reference
+================================================================================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: structkynema__fmb_1_1constraints_1_1CalculateRotationControlConstraint.html

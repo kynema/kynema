@@ -1,0 +1,14 @@
+.. meta::f9d6ebb5f65cad0bb340ef188e6564987e7f2eab85746dfa283566c1a61f3c5f7283fa515b59f9fef11d3f8722c14e75d5ee8fdc089d8e327f097d844dd63c3a
+
+:orphan:
+
+.. title:: Kynema API: kynema_fmb::beams::CalculateStrainDot&lt; DeviceType &gt; Struct Template Reference
+
+CalculateStrainDot&lt; DeviceType &gt; Struct Template Reference
+================================================================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: structkynema__fmb_1_1beams_1_1CalculateStrainDot.html

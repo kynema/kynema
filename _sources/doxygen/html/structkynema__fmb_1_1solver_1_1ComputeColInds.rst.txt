@@ -1,0 +1,14 @@
+.. meta::24f034a5f8d4b606fae45a888c3ec50fd63a1e9f7452a12be6761907528982d5311dbd4fc9b20b627755450f442c73858630a638e7fb2860830c7707e27513b3
+
+:orphan:
+
+.. title:: Kynema API: kynema_fmb::solver::ComputeColInds&lt; RowPtrType, IndicesType &gt; Struct Template Reference
+
+ComputeColInds&lt; RowPtrType, IndicesType &gt; Struct Template Reference
+=========================================================================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: structkynema__fmb_1_1solver_1_1ComputeColInds.html

@@ -24,7 +24,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Linking To Kynema" href="linking.html" />
+    <link rel="next" title="Linking To Kynema-FMB" href="linking.html" />
     <link rel="prev" title="Introduction" href="introduction.html" /> 
 </head>
 
@@ -57,7 +57,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Compiling</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#spack-installation">Spack Installation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#development-using-spack-developer-workflow">Development using Spack Developer Workflow</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#building-and-developing-in-kynema-directly">Building and Developing in Kynema Directly</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#building-and-developing-in-kynema-fmb-directly">Building and Developing in Kynema-FMB Directly</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#dependencies">Dependencies</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#installing-third-party-libraries">Installing Third Party Libraries</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#clone-the-spack-repository-load-the-spack-environment-and-let-spack-learn-about-your-system">Clone the spack repository, load the spack environment, and let spack learn about your system</a></li>
@@ -66,8 +66,8 @@
 <li class="toctree-l4"><a class="reference internal" href="#load-the-tpls-into-your-environment">Load the TPLs into your environment</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#building-kynema">Building Kynema</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#clone-kynema-and-setup-a-build-directory">Clone Kynema and setup a build directory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#building-kynema-fmb">Building Kynema-FMB</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#clone-kynema-fmb-and-setup-a-build-directory">Clone Kynema-FMB and setup a build directory</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#configure-cmake">Configure cmake</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#build-and-test">Build and Test</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#external-controllers">External Controllers</a></li>
@@ -76,7 +76,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#build-options">Build Options</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="linking.html">Linking To Kynema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linking.html">Linking To Kynema-FMB</a></li>
 <li class="toctree-l2"><a class="reference internal" href="vtk_visualization.html">VTK Visualization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="floating_platform.html">Example: Rigid body with three springs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="turbine.html">Example: IEA15MW Turbine</a></li>
@@ -88,7 +88,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../theory/index.html">Theory Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../developer/index.html">Developer Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../testing/index.html">Benchmark Testing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../publications.html">Kynema Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../publications.html">Kynema-FMB Publications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../acknowledgement.html">Acknowledgements</a></li>
 </ul>
 
@@ -119,44 +119,44 @@
              
   <div class="section" id="compiling">
 <h1>Compiling<a class="headerlink" href="#compiling" title="Permalink to this heading"></a></h1>
-<p>Kynema is developed in C++20 and is designed to be buildable on any system with a compliant compiler.
+<p>Kynema-FMB is developed in C++20 and is designed to be buildable on any system with a compliant compiler.
 It utilizes <a class="reference external" href="https://github.com/kokkos/kokkos">Kokkos</a> to ensure performance portability, allowing it to run on any platform supported by these projects.
-We strive to test Kynema on a wide range of platforms, including Linux and macOS, although it is not feasible to cover every possible configuration.
+We strive to test Kynema-FMB on a wide range of platforms, including Linux and macOS, although it is not feasible to cover every possible configuration.
 This document outlines the build procedure verified to work on Linux (RHEL8).
 For additional assistance tailored to your specific setup, please contact the developers.</p>
 <div class="section" id="spack-installation">
 <h2>Spack Installation<a class="headerlink" href="#spack-installation" title="Permalink to this heading"></a></h2>
-<p>The easiest way to use Kynema is through the <a class="reference external" href="https://spack.io/">Spack</a> package manager.
+<p>The easiest way to use Kynema-FMB is through the <a class="reference external" href="https://spack.io/">Spack</a> package manager.
 Once you have downloaded and set up Spack for your environment, simply run</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>spack<span class="w"> </span>install<span class="w"> </span>kynema
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>spack<span class="w"> </span>install<span class="w"> </span>kynema-fmb
 </pre></div>
 </div>
 <p>To see the latest list of supported configuration options, check out the package file or run</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>spack<span class="w"> </span>info<span class="w"> </span>kynema
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>spack<span class="w"> </span>info<span class="w"> </span>kynema-fmb
 </pre></div>
 </div>
-<p>Once it is installed, you can load the Kynema library and its dependencies into your environment using</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>spack<span class="w"> </span>load<span class="w"> </span>kynema
+<p>Once it is installed, you can load the Kynema-FMB library and its dependencies into your environment using</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>spack<span class="w"> </span>load<span class="w"> </span>kynema-fmb
 </pre></div>
 </div>
 </div>
 <div class="section" id="development-using-spack-developer-workflow">
 <h2>Development using Spack Developer Workflow<a class="headerlink" href="#development-using-spack-developer-workflow" title="Permalink to this heading"></a></h2>
-<p>One easy way to set up a development environment for Kynema is to use Spack’s Developer Workflow.
-To setup an environment for working on Kynema, setup Spack and then run the following commands:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>kynema
-<span class="nb">cd</span><span class="w"> </span>kynema
+<p>One easy way to set up a development environment for Kynema-FMB is to use Spack’s Developer Workflow.
+To setup an environment for working on Kynema-FMB, setup Spack and then run the following commands:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>kynema-fmb
+<span class="nb">cd</span><span class="w"> </span>kynema-fmb
 spack<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>-d<span class="w"> </span>.
 spack<span class="w"> </span>env<span class="w"> </span>activate<span class="w"> </span>.
-spack<span class="w"> </span>add<span class="w"> </span>kynema+tests
+spack<span class="w"> </span>add<span class="w"> </span>kynema-fmb+tests
 spack<span class="w"> </span>install
-spack<span class="w"> </span>develop<span class="w"> </span>kynema@main
+spack<span class="w"> </span>develop<span class="w"> </span>kynema-fmb@main
 spack<span class="w"> </span>concretize<span class="w"> </span>-f
 spack<span class="w"> </span>install
 </pre></div>
 </div>
-<p>Kynema’s source code will now be located in the kynema folder, but can be accessed from anywhere by</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>spack<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>-c<span class="w"> </span>kynema
+<p>Kynema-FMB’s source code will now be located in the kynema-fmb folder, but can be accessed from anywhere by</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>spack<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>-c<span class="w"> </span>kynema-fmb
 </pre></div>
 </div>
 <p>After editing the code here, it can be rebuilt by running</p>
@@ -164,7 +164,7 @@ spack<span class="w"> </span>install
 </pre></div>
 </div>
 <p>To run the tests, first access the build folder through the spack command</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>spack<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>-b<span class="w"> </span>kynema
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>spack<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>-b<span class="w"> </span>kynema-fmb
 </pre></div>
 </div>
 <p>Next, the tests can be run either through ctest or directly from the unit test or regression test executables</p>
@@ -173,18 +173,18 @@ spack<span class="w"> </span>install
 ./tests/regression_tests/kynema_regression_tests
 </pre></div>
 </div>
-<p>You can also build Kynema from this folder using standard make commands.</p>
+<p>You can also build Kynema-FMB from this folder using standard make commands.</p>
 <p>For more information, please see Spack’s documentation:
 <a class="reference external" href="https://spack-tutorial.readthedocs.io/en/latest/tutorial_developer_workflows.html">https://spack-tutorial.readthedocs.io/en/latest/tutorial_developer_workflows.html</a></p>
 </div>
-<div class="section" id="building-and-developing-in-kynema-directly">
-<h2>Building and Developing in Kynema Directly<a class="headerlink" href="#building-and-developing-in-kynema-directly" title="Permalink to this heading"></a></h2>
-<p>The following sections outline how to build and develop Kynema without Spack’s Developer Workflows.
+<div class="section" id="building-and-developing-in-kynema-fmb-directly">
+<h2>Building and Developing in Kynema-FMB Directly<a class="headerlink" href="#building-and-developing-in-kynema-fmb-directly" title="Permalink to this heading"></a></h2>
+<p>The following sections outline how to build and develop Kynema-FMB without Spack’s Developer Workflows.
 The main complication here is that developers will have to manage their environment and dependencies manually, which may be an unnecessary complication or a freeing feature, depending on your perspective.</p>
 </div>
 <div class="section" id="dependencies">
 <h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this heading"></a></h2>
-<p>Before building Kynema, you’ll need the following:</p>
+<p>Before building Kynema-FMB, you’ll need the following:</p>
 <ul class="simple">
 <li><p>C++ compiler that supports the C++20 standard</p></li>
 <li><p><a class="reference external" href="https://cmake.org/">CMake</a>: the default build system for C++ projects, version 3.21 or later</p></li>
@@ -199,9 +199,9 @@ The main complication here is that developers will have to manage their environm
 </div>
 <div class="section" id="installing-third-party-libraries">
 <h2>Installing Third Party Libraries<a class="headerlink" href="#installing-third-party-libraries" title="Permalink to this heading"></a></h2>
-<p>There are several methods to obtain the necessary Third Party Libraries (TPLs) for building Kynema, however the simplest is to use the <a class="reference external" href="https://spack.io/">spack</a> package manager.
+<p>There are several methods to obtain the necessary Third Party Libraries (TPLs) for building Kynema-FMB, however the simplest is to use the <a class="reference external" href="https://spack.io/">spack</a> package manager.
 Spack offers a comprehensive set of features for development and dependency management.
-The following is a quick-start guide for installing and loading the TPLs required to build Kynema.</p>
+The following is a quick-start guide for installing and loading the TPLs required to build Kynema-FMB.</p>
 <div class="section" id="clone-the-spack-repository-load-the-spack-environment-and-let-spack-learn-about-your-system">
 <h3>Clone the spack repository, load the spack environment, and let spack learn about your system<a class="headerlink" href="#clone-the-spack-repository-load-the-spack-environment-and-let-spack-learn-about-your-system" title="Permalink to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>git@github.com:spack/spack.git
@@ -255,13 +255,13 @@ spack<span class="w"> </span>load<span class="w"> </span>kokkos-kernels
 </div>
 </div>
 </div>
-<div class="section" id="building-kynema">
-<h2>Building Kynema<a class="headerlink" href="#building-kynema" title="Permalink to this heading"></a></h2>
+<div class="section" id="building-kynema-fmb">
+<h2>Building Kynema-FMB<a class="headerlink" href="#building-kynema-fmb" title="Permalink to this heading"></a></h2>
 <p>The following is written assuming the TPLs in hand and the environment configured as described above.</p>
-<div class="section" id="clone-kynema-and-setup-a-build-directory">
-<h3>Clone Kynema and setup a build directory<a class="headerlink" href="#clone-kynema-and-setup-a-build-directory" title="Permalink to this heading"></a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>git@github.com:kynema/kynema.git
-<span class="nb">cd</span><span class="w"> </span>kynema
+<div class="section" id="clone-kynema-fmb-and-setup-a-build-directory">
+<h3>Clone Kynema-FMB and setup a build directory<a class="headerlink" href="#clone-kynema-fmb-and-setup-a-build-directory" title="Permalink to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>git@github.com:kynema/kynema-fmb.git
+<span class="nb">cd</span><span class="w"> </span>kynema-fmb
 mkdir<span class="w"> </span>build
 <span class="nb">cd</span><span class="w"> </span>build
 </pre></div>
@@ -269,34 +269,34 @@ mkdir<span class="w"> </span>build
 </div>
 <div class="section" id="configure-cmake">
 <h3>Configure cmake<a class="headerlink" href="#configure-cmake" title="Permalink to this heading"></a></h3>
-<p>When building Kynema, you must specify which sparse direct solver package you want to use.
+<p>When building Kynema-FMB, you must specify which sparse direct solver package you want to use.
 We support many options here, but the default recommendation is to use suite-sparse’s KLU solver for CPU builds.</p>
 <p>For a CPU-based build which includes building unit tests, you can configure with KLU using the command</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cmake<span class="w"> </span>../<span class="w"> </span>-DKynema_ENABLE_KLU<span class="o">=</span>ON
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cmake<span class="w"> </span>../<span class="w"> </span>-DKynema-FMB_ENABLE_KLU<span class="o">=</span>ON
 </pre></div>
 </div>
 <p>If Kokkos was built with CUDA support, you will need to use the nvcc_wrapper for compilation.
 You will also get your choice of native CUDA solvers (CUDSS or cuSolverSP).
 For best performance, CUDSS is currently recommended.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cmake<span class="w"> </span>../<span class="w"> </span>-DCMAKE_CXX_COMPILER<span class="o">=</span>nvcc_wrapper<span class="w"> </span>-DKynema_ENABLE_CUDSS<span class="o">=</span>ON
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cmake<span class="w"> </span>../<span class="w"> </span>-DCMAKE_CXX_COMPILER<span class="o">=</span>nvcc_wrapper<span class="w"> </span>-DKynema-FMB_ENABLE_CUDSS<span class="o">=</span>ON
 </pre></div>
 </div>
 <p>You can also use any CPU-based direct solver with a CUDA build.
 You may want to do this to reduce memory usage on device, or it may be faster for your problem.
 In this case, the system matrix and residual are calculated on GPU, copied to host for the solve step, and then the solution is copied back to GPU.
-For this mode of operation, simply configure Kynema as</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cmake<span class="w"> </span>../<span class="w"> </span>-DCMAKE_CXX_COMPILER<span class="o">=</span>nvcc_wrapper<span class="w"> </span>-DKynema_ENABLE_KLU<span class="o">=</span>ON
+For this mode of operation, simply configure Kynema-FMB as</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cmake<span class="w"> </span>../<span class="w"> </span>-DCMAKE_CXX_COMPILER<span class="o">=</span>nvcc_wrapper<span class="w"> </span>-DKynema-FMB_ENABLE_KLU<span class="o">=</span>ON
 </pre></div>
 </div>
 <p>If Kokkos was built with ROCm support, you will need to use the hipcc program for compilation.
 Currently, we do not support any native solvers for ROCm, so a CPU based solver (such as KLU) must be used.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cmake<span class="w"> </span>../<span class="w"> </span>-DCMAKE_CXX_COMPILER<span class="o">=</span>hipcc<span class="w"> </span>-DKynema_ENABLE_KLU<span class="o">=</span>ON
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cmake<span class="w"> </span>../<span class="w"> </span>-DCMAKE_CXX_COMPILER<span class="o">=</span>hipcc<span class="w"> </span>-DKynema-FMB_ENABLE_KLU<span class="o">=</span>ON
 </pre></div>
 </div>
 </div>
 <div class="section" id="build-and-test">
 <h3>Build and Test<a class="headerlink" href="#build-and-test" title="Permalink to this heading"></a></h3>
-<p>Currently, Kynema builds several shared libraries by default.
+<p>Currently, Kynema-FMB builds several shared libraries by default.
 To ensure that their unit tests pass, these libraries must be copied into the directory where the tests are executed.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>-j
 ctest<span class="w"> </span>--output-on-failure
@@ -310,49 +310,49 @@ ctest<span class="w"> </span>--output-on-failure
 <div class="section" id="external-controllers">
 <h3>External Controllers<a class="headerlink" href="#external-controllers" title="Permalink to this heading"></a></h3>
 <p>Wind turbine simulations often use shared library controllers to prescribe movements to blades.
-While Kynema supports calling to any shared library provided by the user, it can also detect the ROSCO controller if it is in the system path.
+While Kynema-FMB supports calling to any shared library provided by the user, it can also detect the ROSCO controller if it is in the system path.
 To turn on this feature, configure CMake with the command</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cmake<span class="w"> </span>../<span class="w"> </span>-DKynema_ENABLE_ROSCO_CONTROLLER<span class="o">=</span>ON
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cmake<span class="w"> </span>../<span class="w"> </span>-DKynema-FMB_ENABLE_ROSCO_CONTROLLER<span class="o">=</span>ON
 </pre></div>
 </div>
-<p>This option will define the convenience global variable <cite>Kynema_ROSCO_LIBRARY</cite>, which is a string containing the location of the ROSCO library and can be used to initiaize Kynema’s controller wrapper.</p>
-<p>Similarly, Kynema can call to OpenFAST’s AeroDyn module as a shared library to provide an aerodynamic inflow model.
-To find this library, if it is in the system path, configure Kynema with the command</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cmake<span class="w"> </span>../<span class="w"> </span>-DKynema_ENABLE_OPENFAST_ADI<span class="o">=</span>ON
+<p>This option will define the convenience global variable <cite>Kynema-FMB_ROSCO_LIBRARY</cite>, which is a string containing the location of the ROSCO library and can be used to initiaize Kynema-FMB’s controller wrapper.</p>
+<p>Similarly, Kynema-FMB can call to OpenFAST’s AeroDyn module as a shared library to provide an aerodynamic inflow model.
+To find this library, if it is in the system path, configure Kynema-FMB with the command</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cmake<span class="w"> </span>../<span class="w"> </span>-DKynema-FMB_ENABLE_OPENFAST_ADI<span class="o">=</span>ON
 </pre></div>
 </div>
-<p>This option will define the convenience global variable <cite>Kynema_ADI_LIBRARY</cite>, which is a string containing the location of the AeroDyn library, which can be used to initialize Kynema’s AeroDyn inflow wrapper.</p>
+<p>This option will define the convenience global variable <cite>Kynema-FMB_ADI_LIBRARY</cite>, which is a string containing the location of the AeroDyn library, which can be used to initialize Kynema-FMB’s AeroDyn inflow wrapper.</p>
 </div>
 </div>
 <div class="section" id="build-options">
 <h2>Build Options<a class="headerlink" href="#build-options" title="Permalink to this heading"></a></h2>
-<p>Kynema has several build options which can be set either when running
+<p>Kynema-FMB has several build options which can be set either when running
 CMake from the command line or through a GUI such as ccmake.</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">Kynema_ENABLE_CLANG_TIDY</span></code> enables the Clang-Tidy static analysis tool</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Kynema_ENABLE_COVERAGE</span></code> enables code coverage analysis using gcov</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Kynema_ENABLE_CPPCHECK</span></code> enables the CppCheck static analysis tool</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Kynema_ENABLE_IPO</span></code> enables link time optimization</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Kynema_ENABLE_PCH</span></code> builds precompiled headers to potentially decrease compilation time</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Kynema_ENABLE_SANITIZER_ADDRESS</span></code> enables the address sanitizer runtime analysis tool</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Kynema_ENABLE_SANITIZER_LEAK</span></code> enables the leak sanitizer runtime analysis tool</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Kynema_ENABLE_SANITIZER_MEMORY</span></code> enables the memory sanitizer runtime analysis tool</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Kynema_ENABLE_SANITIZER_THREAD</span></code> enables the thread sanitizer runtime analysis tool</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Kynema_ENABLE_SANITIZER_UNDEFINED</span></code> enables the undefined behavior sanitizer runtime analysis tool</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Kynema_ENABLE_TESTS</span></code> builds Kynema’s test suite</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Kynema_ENABLE_UNITY_BUILD</span></code> uses unity builds to potentially decrease compilation time</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Kynema_WRITE_OUTPUTS</span></code> builds Kynema with VTK support for visualization in tests. Will need the VTK TPL to be properly configured</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Kynema_WARNINGS_AS_ERRORS</span></code> treats warnings as errors, including warnings from static analysis tools</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Kynema_ENABLE_KLU</span></code> builds Kynema with support for Suite-Sparse’s KLU solver; in our experience, this is solver is fast and robust for many of our problems.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Kynema_ENABLE_UMFPACK</span></code> builds Kynema with support for Suite-Sparse’s UMFPACK solver.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Kynema_ENABLE_SUPERLU</span></code> builds Kynema with support forthe  SuperLU solver</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Kynema_ENABLE_SUPERLU_MT</span></code> builds Kynema with support for SuperLU-mt, a threaded version of SuperLU which may be configured to run in parallel on CPU.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Kynema_ENABLE_MKL</span></code> builds Kynema with MKL’s sparse direct solver, which can take advantage
+<li><p><code class="docutils literal notranslate"><span class="pre">Kynema-FMB_ENABLE_CLANG_TIDY</span></code> enables the Clang-Tidy static analysis tool</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Kynema-FMB_ENABLE_COVERAGE</span></code> enables code coverage analysis using gcov</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Kynema-FMB_ENABLE_CPPCHECK</span></code> enables the CppCheck static analysis tool</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Kynema-FMB_ENABLE_IPO</span></code> enables link time optimization</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Kynema-FMB_ENABLE_PCH</span></code> builds precompiled headers to potentially decrease compilation time</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Kynema-FMB_ENABLE_SANITIZER_ADDRESS</span></code> enables the address sanitizer runtime analysis tool</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Kynema-FMB_ENABLE_SANITIZER_LEAK</span></code> enables the leak sanitizer runtime analysis tool</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Kynema-FMB_ENABLE_SANITIZER_MEMORY</span></code> enables the memory sanitizer runtime analysis tool</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Kynema-FMB_ENABLE_SANITIZER_THREAD</span></code> enables the thread sanitizer runtime analysis tool</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Kynema-FMB_ENABLE_SANITIZER_UNDEFINED</span></code> enables the undefined behavior sanitizer runtime analysis tool</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Kynema-FMB_ENABLE_TESTS</span></code> builds Kynema-FMB’s test suite</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Kynema-FMB_ENABLE_UNITY_BUILD</span></code> uses unity builds to potentially decrease compilation time</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Kynema-FMB_WRITE_OUTPUTS</span></code> builds Kynema-FMB with VTK support for visualization in tests. Will need the VTK TPL to be properly configured</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Kynema-FMB_WARNINGS_AS_ERRORS</span></code> treats warnings as errors, including warnings from static analysis tools</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Kynema-FMB_ENABLE_KLU</span></code> builds Kynema-FMB with support for Suite-Sparse’s KLU solver; in our experience, this is solver is fast and robust for many of our problems.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Kynema-FMB_ENABLE_UMFPACK</span></code> builds Kynema-FMB with support for Suite-Sparse’s UMFPACK solver.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Kynema-FMB_ENABLE_SUPERLU</span></code> builds Kynema-FMB with support forthe  SuperLU solver</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Kynema-FMB_ENABLE_SUPERLU_MT</span></code> builds Kynema-FMB with support for SuperLU-mt, a threaded version of SuperLU which may be configured to run in parallel on CPU.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Kynema-FMB_ENABLE_MKL</span></code> builds Kynema-FMB with MKL’s sparse direct solver, which can take advantage
 of multiple threads to run in parallel on CPU.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Kynema_ENABLE_CUDSS</span></code> builds Kynema with cuDSS, the next generation sparse direct solver of CUDA; still in pre-release at the time of writing, it is the preferred CUDA based solver if the platform supports it.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Kynema_ENABLE_CUSOLVERSP</span></code> builds Kynema with the cuSolverSP sparse direct solver.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Kynema_ENABLE_ROSCO_CONTROLLER</span></code> detects the ROSCO controller shared library and defines the <cite>Kynema_ROSCO_LIBRARY</cite> variable</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Kynema_ENABLE_OPENFAST_ADI</span></code> detects the OpenFAST AeroDyn shared library and defines the <cite>Kynema_ADI_LIBRARY</cite> variable</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Kynema-FMB_ENABLE_CUDSS</span></code> builds Kynema-FMB with cuDSS, the next generation sparse direct solver of CUDA; still in pre-release at the time of writing, it is the preferred CUDA based solver if the platform supports it.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Kynema-FMB_ENABLE_CUSOLVERSP</span></code> builds Kynema-FMB with the cuSolverSP sparse direct solver.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Kynema-FMB_ENABLE_ROSCO_CONTROLLER</span></code> detects the ROSCO controller shared library and defines the <cite>Kynema-FMB_ROSCO_LIBRARY</cite> variable</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Kynema-FMB_ENABLE_OPENFAST_ADI</span></code> detects the OpenFAST AeroDyn shared library and defines the <cite>Kynema-FMB_ADI_LIBRARY</cite> variable</p></li>
 </ul>
 </div>
 </div>
@@ -362,7 +362,7 @@ of multiple threads to run in parallel on CPU.</p></li>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="introduction.html" class="btn btn-neutral float-left" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="linking.html" class="btn btn-neutral float-right" title="Linking To Kynema" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="linking.html" class="btn btn-neutral float-right" title="Linking To Kynema-FMB" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

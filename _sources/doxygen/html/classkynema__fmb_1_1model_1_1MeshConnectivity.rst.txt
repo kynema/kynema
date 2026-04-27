@@ -1,0 +1,14 @@
+.. meta::807f1a5b65ce46fc8beaaa01142eb6d62336b9df86b23a494b0a071b89cfcffe2908b40ae7ca8f1215e8844d3be4311b183d3b88580ead13ddd91acc1ffcb8dc
+
+:orphan:
+
+.. title:: Kynema API: kynema_fmb::model::MeshConnectivity Class Reference
+
+MeshConnectivity Class Reference
+================================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: classkynema__fmb_1_1model_1_1MeshConnectivity.html

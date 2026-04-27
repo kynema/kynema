@@ -76,7 +76,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../developer/index.html">Developer Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../testing/index.html">Benchmark Testing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../publications.html">Kynema Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../publications.html">Kynema-FMB Publications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../acknowledgement.html">Acknowledgements</a></li>
 </ul>
 
@@ -109,11 +109,11 @@
              
   <div class="section" id="geometrically-exact-beam-theory">
 <span id="sec-gebt"></span><h1>Geometrically exact beam theory<a class="headerlink" href="#geometrically-exact-beam-theory" title="Permalink to this heading"></a></h1>
-<p>Kynema beam finite elements are based on geometrically exact beam
+<p>Kynema-FMB beam finite elements are based on geometrically exact beam
 theory (GEBT) [&#64;Reissner:1973 &#64;Simo:1985; &#64;Simo-VuQuoc:1986]. Our
 formulation largely follows that described in [&#64;Bauchau:2011] and as
 implemented in Dymore [&#64;Dymore:2013] and the BeamDyn [&#64;Wang-etal:2017]
-module of OpenFAST. A key difference is that Kynema uses
+module of OpenFAST. A key difference is that Kynema-FMB uses
 quaternions to store and track rotations rather than Wiener-Milenkovic
 parameters, thereby removing the challenges associated rescaling
 operations to avoid singularities.</p>
@@ -294,7 +294,7 @@ coordinates, i.e.,</p>
 \begin{bmatrix} \underline{0} \\
 \left(\tilde{x}'^\mathrm{r}+\tilde{u}'\right)^T \left( \underline{\underline{D}}_{11} \underline{\dot{\epsilon}}
 + \underline{\underline{D}}_{12} \underline{\dot{\kappa}}\right)  \end{bmatrix}\end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(\underline{\underline{D}}\in \mathbb{R}^{6 \times 6}\)</span> is the damping matrix in inertial coordinates. Kynema currently uses stiffness proportional damping, i.e.,</p>
+<p>where <span class="math notranslate nohighlight">\(\underline{\underline{D}}\in \mathbb{R}^{6 \times 6}\)</span> is the damping matrix in inertial coordinates. Kynema-FMB currently uses stiffness proportional damping, i.e.,</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\underline{\underline{D}}
 = \begin{bmatrix}

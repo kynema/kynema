@@ -1,0 +1,14 @@
+.. meta::36273c605e7ccc6a8ac0488406882b1525dc37bfb19e7d7a7d68ceb070e77f6a7340efc8f922bd1f9d0d074536811c264231897c403afd902ce043d326c55bbc
+
+:orphan:
+
+.. title:: Kynema API: kynema_fmb::interfaces::components::BeamBuilder Class Reference
+
+BeamBuilder Class Reference
+===========================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.html

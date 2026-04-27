@@ -1,0 +1,14 @@
+.. meta::a7354cae47a9ec0fb463edff68e7d5cb80f39e567daf56144acb2490fb21804041b0230663b8e7b3cf0550c3c63b8a54ab052d6577e8ff07c1a8ea851d166219
+
+:orphan:
+
+.. title:: Kynema API: kynema_fmb::State&lt; DeviceType &gt; Struct Template Reference
+
+State&lt; DeviceType &gt; Struct Template Reference
+===================================================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: structkynema__fmb_1_1State.html

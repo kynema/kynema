@@ -2,7 +2,7 @@ Developer Tools
 ===============
 
 This page describes static and dynamic analysis tools used in the development
-of Kynema. These tools are run and must pass as part of the CI process,
+of Kynema-FMB. These tools are run and must pass as part of the CI process,
 so it will likely become important for integration into a developer's process.
 
 clang-format
@@ -24,7 +24,7 @@ tool which enforces a variety of rules on the code in order to avoid common
 bugs.
 
 ClangTidy is configure by the ``.clang-tidy`` file at the top of the repository.
-To run it, configure Kynema with the ``Kynema_ENABLE_CLANG_TIDY`` option.
+To run it, configure Kynema-FMB with the ``KYNEMA_FMB_ENABLE_CLANG_TIDY`` option.
 
 Cppcheck
 --------
@@ -33,4 +33,4 @@ Cppcheck
 which detects undefined behavior and dangerous constructs with very few
 false positives.
 
-To run Cppcheck, configure Kynema with the ``Kynema_ENABLE_CPPCHECK`` option.
+To run Cppcheck, configure Kynema-FMB with the ``KYNEMA_FMB_ENABLE_CPPCHECK`` option.

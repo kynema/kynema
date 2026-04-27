@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kynema API: /home/runner/work/kynema/kynema/kynema/src/step/predict_next_state.hpp Source File &mdash; Kynema 0.0.1 documentation</title>
+  <title>Kynema API: /home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/step/predict_next_state.hpp Source File &mdash; Kynema 0.0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
@@ -54,7 +54,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../theory/index.html">Theory Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../developer/index.html">Developer Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../testing/index.html">Benchmark Testing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../publications.html">Kynema Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../publications.html">Kynema-FMB Publications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../acknowledgement.html">Acknowledgements</a></li>
 </ul>
 
@@ -72,7 +72,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Kynema API: /home/runner/work/kynema/kynema/kynema/src/step/predict_next_state.hpp Source File</li>
+      <li class="breadcrumb-item active">Kynema API: /home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/step/predict_next_state.hpp Source File</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/doxygen/html/predict__next__state_8hpp_source.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -82,8 +82,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="home-runner-work-kynema-kynema-kynema-src-step-predict-next-state-hpp-source-file">
-<h1>/home/runner/work/kynema/kynema/kynema/src/step/predict_next_state.hpp Source File<a class="headerlink" href="#home-runner-work-kynema-kynema-kynema-src-step-predict-next-state-hpp-source-file" title="Permalink to this heading"></a></h1>
+  <div class="section" id="home-runner-work-kynema-fmb-kynema-fmb-kynema-fmb-src-step-predict-next-state-hpp-source-file">
+<h1>/home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/step/predict_next_state.hpp Source File<a class="headerlink" href="#home-runner-work-kynema-fmb-kynema-fmb-kynema-fmb-src-step-predict-next-state-hpp-source-file" title="Permalink to this heading"></a></h1>
 <div class="doxygen-content docutils container">
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
@@ -92,7 +92,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Kynema API: /home/runner/work/kynema/kynema/kynema/src/step/predict_next_state.hpp Source File</title>
+<title>Kynema API: /home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/step/predict_next_state.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -186,20 +186,20 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;<a class="code" href="state_8hpp.html">state/state.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="code" href="step__parameters_8hpp.html">step_parameters.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacekynema_1_1step.html">kynema::step</a> {</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacekynema__fmb_1_1step.html">kynema_fmb::step</a> {</div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> DeviceType&gt;</div>
 <div class="foldopen" id="foldopen00014" data-start="{" data-end="}">
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="namespacekynema_1_1step.html#abe70d3df1f4df054939303d2b168123d">   14</a></span><span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="namespacekynema_1_1step.html#abe70d3df1f4df054939303d2b168123d">PredictNextState</a>(<a class="code hl_struct" href="structkynema_1_1StepParameters.html">StepParameters</a>&amp; parameters, <a class="code hl_struct" href="structkynema_1_1State.html">State&lt;DeviceType&gt;</a>&amp; state) {</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="namespacekynema__fmb_1_1step.html#a8c34359e19a608c9ab780ffbb23fd1ae">   14</a></span><span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="namespacekynema__fmb_1_1step.html#a8c34359e19a608c9ab780ffbb23fd1ae">PredictNextState</a>(<a class="code hl_struct" href="structkynema__fmb_1_1StepParameters.html">StepParameters</a>&amp; parameters, <a class="code hl_struct" href="structkynema__fmb_1_1State.html">State&lt;DeviceType&gt;</a>&amp; state) {</div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keyword">auto</span> region = Kokkos::Profiling::ScopedRegion(<span class="stringliteral">&quot;Predict Next State&quot;</span>);</div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="keyword">using </span>RangePolicy = Kokkos::RangePolicy&lt;typename DeviceType::execution_space&gt;;</div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    Kokkos::deep_copy(state.<a class="code hl_variable" href="structkynema_1_1State.html#a29b170f3e02714818d2cd9b06f8489a2">q_prev</a>, state.<a class="code hl_variable" href="structkynema_1_1State.html#a6c90d6102d1361688af7eb0564ee7333">q</a>);</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    Kokkos::deep_copy(state.<a class="code hl_variable" href="structkynema__fmb_1_1State.html#a8c8a5b2abaee382ef34b90f2f7a3cc91">q_prev</a>, state.<a class="code hl_variable" href="structkynema__fmb_1_1State.html#adb6ef60b97601d4541a55b105527e690">q</a>);</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    Kokkos::parallel_for(</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        <span class="stringliteral">&quot;CalculateNextState&quot;</span>, RangePolicy(0, state.<a class="code hl_variable" href="structkynema_1_1State.html#a0a5cd22330b63406098812a2f305822c">v</a>.extent(0)),</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        <a class="code hl_struct" href="structkynema_1_1state_1_1CalculateNextState.html">state::CalculateNextState&lt;DeviceType&gt;</a>{</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        <span class="stringliteral">&quot;CalculateNextState&quot;</span>, RangePolicy(0, state.<a class="code hl_variable" href="structkynema__fmb_1_1State.html#a3e897d7d978deaf2ec8a820bece392bf">v</a>.extent(0)),</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        <a class="code hl_struct" href="structkynema__fmb_1_1state_1_1CalculateNextState.html">state::CalculateNextState&lt;DeviceType&gt;</a>{</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>            parameters.h,</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>            parameters.alpha_f,</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>            parameters.alpha_m,</div>
@@ -213,8 +213,8 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    );</div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    Kokkos::parallel_for(</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <span class="stringliteral">&quot;CalculateDisplacement&quot;</span>, RangePolicy(0, state.<a class="code hl_variable" href="structkynema_1_1State.html#a6c90d6102d1361688af7eb0564ee7333">q</a>.extent(0)),</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <a class="code hl_struct" href="structkynema_1_1state_1_1CalculateDisplacement.html">state::CalculateDisplacement&lt;DeviceType&gt;</a>{</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <span class="stringliteral">&quot;CalculateDisplacement&quot;</span>, RangePolicy(0, state.<a class="code hl_variable" href="structkynema__fmb_1_1State.html#adb6ef60b97601d4541a55b105527e690">q</a>.extent(0)),</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <a class="code hl_struct" href="structkynema__fmb_1_1state_1_1CalculateDisplacement.html">state::CalculateDisplacement&lt;DeviceType&gt;</a>{</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>            parameters.h,</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>            state.q_delta,</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>            state.q_prev,</div>
@@ -222,25 +222,25 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        }</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    );</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    state.<a class="code hl_variable" href="structkynema_1_1State.html#ab997d0269303655f7e7c22031901c8ef">time_step</a>++;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    state.<a class="code hl_variable" href="structkynema__fmb_1_1State.html#abb45f2bba424b268bd7d7bfb2c9e3a3e">time_step</a>++;</div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>}</div>
 </div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>}  <span class="comment">// namespace kynema::step</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>}  <span class="comment">// namespace kynema_fmb::step</span></div>
 <div class="ttc" id="acalculate__displacement_8hpp_html"><div class="ttname"><a href="calculate__displacement_8hpp.html">calculate_displacement.hpp</a></div></div>
 <div class="ttc" id="acalculate__next__state_8hpp_html"><div class="ttname"><a href="calculate__next__state_8hpp.html">calculate_next_state.hpp</a></div></div>
-<div class="ttc" id="anamespacekynema_1_1step_html"><div class="ttname"><a href="namespacekynema_1_1step.html">kynema::step</a></div><div class="ttdef"><b>Definition</b> assemble_constraints_matrix.hpp:11</div></div>
-<div class="ttc" id="anamespacekynema_1_1step_html_abe70d3df1f4df054939303d2b168123d"><div class="ttname"><a href="namespacekynema_1_1step.html#abe70d3df1f4df054939303d2b168123d">kynema::step::PredictNextState</a></div><div class="ttdeci">void PredictNextState(StepParameters &amp;parameters, State&lt; DeviceType &gt; &amp;state)</div><div class="ttdef"><b>Definition</b> predict_next_state.hpp:14</div></div>
+<div class="ttc" id="anamespacekynema__fmb_1_1step_html"><div class="ttname"><a href="namespacekynema__fmb_1_1step.html">kynema_fmb::step</a></div><div class="ttdef"><b>Definition</b> assemble_constraints_matrix.hpp:11</div></div>
+<div class="ttc" id="anamespacekynema__fmb_1_1step_html_a8c34359e19a608c9ab780ffbb23fd1ae"><div class="ttname"><a href="namespacekynema__fmb_1_1step.html#a8c34359e19a608c9ab780ffbb23fd1ae">kynema_fmb::step::PredictNextState</a></div><div class="ttdeci">void PredictNextState(StepParameters &amp;parameters, State&lt; DeviceType &gt; &amp;state)</div><div class="ttdef"><b>Definition</b> predict_next_state.hpp:14</div></div>
 <div class="ttc" id="astate_8hpp_html"><div class="ttname"><a href="state_8hpp.html">state.hpp</a></div></div>
 <div class="ttc" id="astep__parameters_8hpp_html"><div class="ttname"><a href="step__parameters_8hpp.html">step_parameters.hpp</a></div></div>
-<div class="ttc" id="astructkynema_1_1State_html"><div class="ttname"><a href="structkynema_1_1State.html">kynema::State</a></div><div class="ttdoc">Container for storing the complete system state of the simulation at a given time increment.</div><div class="ttdef"><b>Definition</b> state.hpp:18</div></div>
-<div class="ttc" id="astructkynema_1_1State_html_a0a5cd22330b63406098812a2f305822c"><div class="ttname"><a href="structkynema_1_1State.html#a0a5cd22330b63406098812a2f305822c">kynema::State::v</a></div><div class="ttdeci">View&lt; double *[6]&gt; v</div><div class="ttdef"><b>Definition</b> state.hpp:34</div></div>
-<div class="ttc" id="astructkynema_1_1State_html_a29b170f3e02714818d2cd9b06f8489a2"><div class="ttname"><a href="structkynema_1_1State.html#a29b170f3e02714818d2cd9b06f8489a2">kynema::State::q_prev</a></div><div class="ttdeci">View&lt; double *[7]&gt; q_prev</div><div class="ttdef"><b>Definition</b> state.hpp:32</div></div>
-<div class="ttc" id="astructkynema_1_1State_html_a6c90d6102d1361688af7eb0564ee7333"><div class="ttname"><a href="structkynema_1_1State.html#a6c90d6102d1361688af7eb0564ee7333">kynema::State::q</a></div><div class="ttdeci">View&lt; double *[7]&gt; q</div><div class="ttdef"><b>Definition</b> state.hpp:33</div></div>
-<div class="ttc" id="astructkynema_1_1State_html_ab997d0269303655f7e7c22031901c8ef"><div class="ttname"><a href="structkynema_1_1State.html#ab997d0269303655f7e7c22031901c8ef">kynema::State::time_step</a></div><div class="ttdeci">size_t time_step</div><div class="ttdef"><b>Definition</b> state.hpp:22</div></div>
-<div class="ttc" id="astructkynema_1_1StepParameters_html"><div class="ttname"><a href="structkynema_1_1StepParameters.html">kynema::StepParameters</a></div><div class="ttdoc">A Struct containing the paramters used to control the time stepping process.</div><div class="ttdef"><b>Definition</b> step_parameters.hpp:12</div></div>
-<div class="ttc" id="astructkynema_1_1state_1_1CalculateDisplacement_html"><div class="ttname"><a href="structkynema_1_1state_1_1CalculateDisplacement.html">kynema::state::CalculateDisplacement</a></div><div class="ttdoc">A Kernel for applying the computed change in state (displacement) to the previous state to get an est...</div><div class="ttdef"><b>Definition</b> calculate_displacement.hpp:14</div></div>
-<div class="ttc" id="astructkynema_1_1state_1_1CalculateNextState_html"><div class="ttname"><a href="structkynema_1_1state_1_1CalculateNextState.html">kynema::state::CalculateNextState</a></div><div class="ttdoc">A Kernel to predict the next state values before nonlinear iteration begins for a given time step.</div><div class="ttdef"><b>Definition</b> calculate_next_state.hpp:12</div></div>
+<div class="ttc" id="astructkynema__fmb_1_1State_html"><div class="ttname"><a href="structkynema__fmb_1_1State.html">kynema_fmb::State</a></div><div class="ttdoc">Container for storing the complete system state of the simulation at a given time increment.</div><div class="ttdef"><b>Definition</b> state.hpp:18</div></div>
+<div class="ttc" id="astructkynema__fmb_1_1State_html_a3e897d7d978deaf2ec8a820bece392bf"><div class="ttname"><a href="structkynema__fmb_1_1State.html#a3e897d7d978deaf2ec8a820bece392bf">kynema_fmb::State::v</a></div><div class="ttdeci">View&lt; double *[6]&gt; v</div><div class="ttdef"><b>Definition</b> state.hpp:34</div></div>
+<div class="ttc" id="astructkynema__fmb_1_1State_html_a8c8a5b2abaee382ef34b90f2f7a3cc91"><div class="ttname"><a href="structkynema__fmb_1_1State.html#a8c8a5b2abaee382ef34b90f2f7a3cc91">kynema_fmb::State::q_prev</a></div><div class="ttdeci">View&lt; double *[7]&gt; q_prev</div><div class="ttdef"><b>Definition</b> state.hpp:32</div></div>
+<div class="ttc" id="astructkynema__fmb_1_1State_html_abb45f2bba424b268bd7d7bfb2c9e3a3e"><div class="ttname"><a href="structkynema__fmb_1_1State.html#abb45f2bba424b268bd7d7bfb2c9e3a3e">kynema_fmb::State::time_step</a></div><div class="ttdeci">size_t time_step</div><div class="ttdef"><b>Definition</b> state.hpp:22</div></div>
+<div class="ttc" id="astructkynema__fmb_1_1State_html_adb6ef60b97601d4541a55b105527e690"><div class="ttname"><a href="structkynema__fmb_1_1State.html#adb6ef60b97601d4541a55b105527e690">kynema_fmb::State::q</a></div><div class="ttdeci">View&lt; double *[7]&gt; q</div><div class="ttdef"><b>Definition</b> state.hpp:33</div></div>
+<div class="ttc" id="astructkynema__fmb_1_1StepParameters_html"><div class="ttname"><a href="structkynema__fmb_1_1StepParameters.html">kynema_fmb::StepParameters</a></div><div class="ttdoc">A Struct containing the paramters used to control the time stepping process.</div><div class="ttdef"><b>Definition</b> step_parameters.hpp:12</div></div>
+<div class="ttc" id="astructkynema__fmb_1_1state_1_1CalculateDisplacement_html"><div class="ttname"><a href="structkynema__fmb_1_1state_1_1CalculateDisplacement.html">kynema_fmb::state::CalculateDisplacement</a></div><div class="ttdoc">A Kernel for applying the computed change in state (displacement) to the previous state to get an est...</div><div class="ttdef"><b>Definition</b> calculate_displacement.hpp:14</div></div>
+<div class="ttc" id="astructkynema__fmb_1_1state_1_1CalculateNextState_html"><div class="ttname"><a href="structkynema__fmb_1_1state_1_1CalculateNextState.html">kynema_fmb::state::CalculateNextState</a></div><div class="ttdoc">A Kernel to predict the next state values before nonlinear iteration begins for a given time step.</div><div class="ttdef"><b>Definition</b> calculate_next_state.hpp:12</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

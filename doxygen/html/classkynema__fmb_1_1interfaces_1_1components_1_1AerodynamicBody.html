@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kynema API: kynema_fmb::interfaces::components::AerodynamicBody Class Reference &mdash; Kynema 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Kynema
+              <img src="../../_static/oturb_logo_v2.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/user.html">User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../theory/index.html">Theory Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/index.html">Developer Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/index.html">Benchmark Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../publications.html">Kynema-FMB Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../acknowledgement.html">Acknowledgements</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Kynema</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Kynema API: kynema_fmb::interfaces::components::AerodynamicBody Class Reference</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/doxygen/html/classkynema__fmb_1_1interfaces_1_1components_1_1AerodynamicBody.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="aerodynamicbody-class-reference">
+<h1>AerodynamicBody Class Reference<a class="headerlink" href="#aerodynamicbody-class-reference" title="Permalink to this heading"></a></h1>
+<div class="doxygen-content docutils container">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Kynema API: kynema_fmb::interfaces::components::AerodynamicBody Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Kynema API
+   </div>
+   <div id="projectbrief">A flexible multibody structural dynamics code for wind turbines</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacekynema__fmb.html">kynema_fmb</a></li><li class="navelem"><a class="el" href="namespacekynema__fmb_1_1interfaces.html">interfaces</a></li><li class="navelem"><a class="el" href="namespacekynema__fmb_1_1interfaces_1_1components.html">components</a></li><li class="navelem"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1AerodynamicBody.html">AerodynamicBody</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="classkynema__fmb_1_1interfaces_1_1components_1_1AerodynamicBody-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">kynema_fmb::interfaces::components::AerodynamicBody Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="aerodynamics_8hpp_source.html">aerodynamics.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a2a30e97730bdce499fba3f8301226825" id="r_a2a30e97730bdce499fba3f8301226825"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1AerodynamicBody.html#a2a30e97730bdce499fba3f8301226825">AerodynamicBody</a> (const <a class="el" href="structkynema__fmb_1_1interfaces_1_1components_1_1AerodynamicBodyInput.html">AerodynamicBodyInput</a> &amp;input, std::span&lt; const <a class="el" href="structkynema__fmb_1_1Node.html">Node</a> &gt; nodes)</td></tr>
+<tr class="separator:a2a30e97730bdce499fba3f8301226825"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ea62dd08cca3e0a54ab1ea1e5bb3a04" id="r_a8ea62dd08cca3e0a54ab1ea1e5bb3a04"><td class="memTemplParams" colspan="2">template&lt;typename DeviceType &gt; </td></tr>
+<tr class="memitem:a8ea62dd08cca3e0a54ab1ea1e5bb3a04"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1AerodynamicBody.html#a8ea62dd08cca3e0a54ab1ea1e5bb3a04">CalculateMotion</a> (const <a class="el" href="structkynema__fmb_1_1interfaces_1_1HostState.html">HostState</a>&lt; DeviceType &gt; &amp;state)</td></tr>
+<tr class="separator:a8ea62dd08cca3e0a54ab1ea1e5bb3a04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abdd1bd17dc41935be91af43204cea38b" id="r_abdd1bd17dc41935be91af43204cea38b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1AerodynamicBody.html#abdd1bd17dc41935be91af43204cea38b">SetInflowFromVector</a> (std::span&lt; const std::array&lt; double, 3 &gt; &gt; inflow_velocity)</td></tr>
+<tr class="separator:abdd1bd17dc41935be91af43204cea38b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf09e303a9e96685f6cbaa13cc50e24d" id="r_abf09e303a9e96685f6cbaa13cc50e24d"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:abf09e303a9e96685f6cbaa13cc50e24d"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1AerodynamicBody.html#abf09e303a9e96685f6cbaa13cc50e24d">SetInflowFromFunction</a> (const T &amp;inflow_velocity_function)</td></tr>
+<tr class="separator:abf09e303a9e96685f6cbaa13cc50e24d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d78c09e345c35e22a8d54a794690612" id="r_a0d78c09e345c35e22a8d54a794690612"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1AerodynamicBody.html#a0d78c09e345c35e22a8d54a794690612">SetAerodynamicLoads</a> (std::span&lt; const std::array&lt; double, 6 &gt; &gt; aerodynamic_loads)</td></tr>
+<tr class="separator:a0d78c09e345c35e22a8d54a794690612"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37ef96dedaf89dbde176a5c13a28a919" id="r_a37ef96dedaf89dbde176a5c13a28a919"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1AerodynamicBody.html#a37ef96dedaf89dbde176a5c13a28a919">CalculateAerodynamicLoads</a> (double fluid_density)</td></tr>
+<tr class="separator:a37ef96dedaf89dbde176a5c13a28a919"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae85e821e692c1490c1bc4e449d65319a" id="r_ae85e821e692c1490c1bc4e449d65319a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1AerodynamicBody.html#ae85e821e692c1490c1bc4e449d65319a">CalculateNodalLoads</a> ()</td></tr>
+<tr class="separator:ae85e821e692c1490c1bc4e449d65319a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9fd003abe2438ef203c468a419e35461" id="r_a9fd003abe2438ef203c468a419e35461"><td class="memTemplParams" colspan="2">template&lt;typename DeviceType &gt; </td></tr>
+<tr class="memitem:a9fd003abe2438ef203c468a419e35461"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1AerodynamicBody.html#a9fd003abe2438ef203c468a419e35461">AddNodalLoadsToState</a> (<a class="el" href="structkynema__fmb_1_1interfaces_1_1HostState.html">HostState</a>&lt; DeviceType &gt; &amp;state)</td></tr>
+<tr class="separator:a9fd003abe2438ef203c468a419e35461"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:a25157393d202f95a17999c63d0c5c190" id="r_a25157393d202f95a17999c63d0c5c190"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1AerodynamicBody.html#a25157393d202f95a17999c63d0c5c190">id</a></td></tr>
+<tr class="separator:a25157393d202f95a17999c63d0c5c190"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad468c270a7d3e5a5c095722dcd4923e2" id="r_ad468c270a7d3e5a5c095722dcd4923e2"><td class="memItemLeft" align="right" valign="top">std::vector&lt; size_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1AerodynamicBody.html#ad468c270a7d3e5a5c095722dcd4923e2">node_ids</a></td></tr>
+<tr class="memdesc:ad468c270a7d3e5a5c095722dcd4923e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">IDs of the beam nodes in this aerodynamic body.  <br /></td></tr>
+<tr class="separator:ad468c270a7d3e5a5c095722dcd4923e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b1147ad9b396c361c5e6af0b9d73f1f" id="r_a1b1147ad9b396c361c5e6af0b9d73f1f"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::array&lt; double, 7 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1AerodynamicBody.html#a1b1147ad9b396c361c5e6af0b9d73f1f">node_u</a></td></tr>
+<tr class="memdesc:a1b1147ad9b396c361c5e6af0b9d73f1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displacements of the beam nodes (copied from state based on node_ids)  <br /></td></tr>
+<tr class="separator:a1b1147ad9b396c361c5e6af0b9d73f1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60b81f373973f131b5442537e7a66b92" id="r_a60b81f373973f131b5442537e7a66b92"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::array&lt; double, 6 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1AerodynamicBody.html#a60b81f373973f131b5442537e7a66b92">node_v</a></td></tr>
+<tr class="memdesc:a60b81f373973f131b5442537e7a66b92"><td class="mdescLeft">&#160;</td><td class="mdescRight">Velocities of the beam nodes (copied from state based on node_ids)  <br /></td></tr>
+<tr class="separator:a60b81f373973f131b5442537e7a66b92"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2b40b6ea8bfc9f9e580acc118b2fe7e" id="r_aa2b40b6ea8bfc9f9e580acc118b2fe7e"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::array&lt; double, 6 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1AerodynamicBody.html#aa2b40b6ea8bfc9f9e580acc118b2fe7e">node_f</a></td></tr>
+<tr class="memdesc:aa2b40b6ea8bfc9f9e580acc118b2fe7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aerodynamic forces at the beam nodes with moment arm applied from aerodynamic center to reference axis (output)  <br /></td></tr>
+<tr class="separator:aa2b40b6ea8bfc9f9e580acc118b2fe7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7d802b012247f4e1d3d357e88631ba3" id="r_ac7d802b012247f4e1d3d357e88631ba3"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::array&lt; double, 7 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1AerodynamicBody.html#ac7d802b012247f4e1d3d357e88631ba3">xr_motion_map</a></td></tr>
+<tr class="memdesc:ac7d802b012247f4e1d3d357e88631ba3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initial position and orientation of beam reference axis at aerodynamic sections.  <br /></td></tr>
+<tr class="separator:ac7d802b012247f4e1d3d357e88631ba3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1796751553f9495ff97991e4e123a5bd" id="r_a1796751553f9495ff97991e4e123a5bd"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::array&lt; double, 7 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1AerodynamicBody.html#a1796751553f9495ff97991e4e123a5bd">u_motion_map</a></td></tr>
+<tr class="memdesc:a1796751553f9495ff97991e4e123a5bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displacements of beam reference axis at aerodynamic sections.  <br /></td></tr>
+<tr class="separator:a1796751553f9495ff97991e4e123a5bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0964c03a3b6803dd5fd60ee4236adec" id="r_ad0964c03a3b6803dd5fd60ee4236adec"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::array&lt; double, 6 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1AerodynamicBody.html#ad0964c03a3b6803dd5fd60ee4236adec">v_motion_map</a></td></tr>
+<tr class="memdesc:ad0964c03a3b6803dd5fd60ee4236adec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Velocities of beam reference axis at aerodynamic sections.  <br /></td></tr>
+<tr class="separator:ad0964c03a3b6803dd5fd60ee4236adec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a994bd54cb28eebe7638ecf8583e9753e" id="r_a994bd54cb28eebe7638ecf8583e9753e"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::array&lt; double, 4 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1AerodynamicBody.html#a994bd54cb28eebe7638ecf8583e9753e">qqr_motion_map</a></td></tr>
+<tr class="memdesc:a994bd54cb28eebe7638ecf8583e9753e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total rotation quaternion of beam reference axis at aerodynamic sections (reference + displacement)  <br /></td></tr>
+<tr class="separator:a994bd54cb28eebe7638ecf8583e9753e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52e6c7f90d81d867b85127026574942e" id="r_a52e6c7f90d81d867b85127026574942e"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::array&lt; double, 3 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1AerodynamicBody.html#a52e6c7f90d81d867b85127026574942e">con_motion</a></td></tr>
+<tr class="memdesc:a52e6c7f90d81d867b85127026574942e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vectors from reference axis to aerodynamic center at aerodynamic sections in reference configuration (includes twist)  <br /></td></tr>
+<tr class="separator:a52e6c7f90d81d867b85127026574942e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd58398b37b03acf389d7cf7bc7e1cb4" id="r_abd58398b37b03acf389d7cf7bc7e1cb4"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::array&lt; double, 3 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1AerodynamicBody.html#abd58398b37b03acf389d7cf7bc7e1cb4">x_motion</a></td></tr>
+<tr class="memdesc:abd58398b37b03acf389d7cf7bc7e1cb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Positions of aerodynamic centers at aerodynamic sections in global coordinates.  <br /></td></tr>
+<tr class="separator:abd58398b37b03acf389d7cf7bc7e1cb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09c192a2fb54c77a919b62a5ae3c1a26" id="r_a09c192a2fb54c77a919b62a5ae3c1a26"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::array&lt; double, 3 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1AerodynamicBody.html#a09c192a2fb54c77a919b62a5ae3c1a26">v_motion</a></td></tr>
+<tr class="memdesc:a09c192a2fb54c77a919b62a5ae3c1a26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Velocities of aerodynamic centers at aerodynamic sections in global coordinates.  <br /></td></tr>
+<tr class="separator:a09c192a2fb54c77a919b62a5ae3c1a26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b71850c1c4c7f2a75d7573b0e4c5e7d" id="r_a2b71850c1c4c7f2a75d7573b0e4c5e7d"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::array&lt; double, 3 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1AerodynamicBody.html#a2b71850c1c4c7f2a75d7573b0e4c5e7d">con_force</a></td></tr>
+<tr class="memdesc:a2b71850c1c4c7f2a75d7573b0e4c5e7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vectors from aerodynamic center to reference axis at aerodynamic sections in reference configuration (negative of con_motion)  <br /></td></tr>
+<tr class="separator:a2b71850c1c4c7f2a75d7573b0e4c5e7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6328f697b8e588bd563bb75bf8fd3480" id="r_a6328f697b8e588bd563bb75bf8fd3480"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::array&lt; double, 3 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1AerodynamicBody.html#a6328f697b8e588bd563bb75bf8fd3480">v_inflow</a></td></tr>
+<tr class="memdesc:a6328f697b8e588bd563bb75bf8fd3480"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structkynema__fmb_1_1interfaces_1_1components_1_1Inflow.html" title="Wind inflow model for turbine simulations.">Inflow</a> velocity at aerodynamic sections.  <br /></td></tr>
+<tr class="separator:a6328f697b8e588bd563bb75bf8fd3480"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18fb143a77f58fd667489bbc671d1761" id="r_a18fb143a77f58fd667489bbc671d1761"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::array&lt; double, 3 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1AerodynamicBody.html#a18fb143a77f58fd667489bbc671d1761">v_rel</a></td></tr>
+<tr class="memdesc:a18fb143a77f58fd667489bbc671d1761"><td class="mdescLeft">&#160;</td><td class="mdescRight">Relative velocity at aerodynamic sections (v_inflow - v_motion) (output)  <br /></td></tr>
+<tr class="separator:a18fb143a77f58fd667489bbc671d1761"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af49f7f254fd8109c63b0fec86cb169d7" id="r_af49f7f254fd8109c63b0fec86cb169d7"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1AerodynamicBody.html#af49f7f254fd8109c63b0fec86cb169d7">alpha</a></td></tr>
+<tr class="memdesc:af49f7f254fd8109c63b0fec86cb169d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Angle of attack at aerodynamic sections (output)  <br /></td></tr>
+<tr class="separator:af49f7f254fd8109c63b0fec86cb169d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8078103746043dfc08e8dd8b22932a11" id="r_a8078103746043dfc08e8dd8b22932a11"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1AerodynamicBody.html#a8078103746043dfc08e8dd8b22932a11">cn</a></td></tr>
+<tr class="memdesc:a8078103746043dfc08e8dd8b22932a11"><td class="mdescLeft">&#160;</td><td class="mdescRight">Normal force coefficient at aerodynamic sections (perpendicular to airfoil chord) (output)  <br /></td></tr>
+<tr class="separator:a8078103746043dfc08e8dd8b22932a11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f7f53f7886fc8210bc5eeded937d318" id="r_a9f7f53f7886fc8210bc5eeded937d318"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1AerodynamicBody.html#a9f7f53f7886fc8210bc5eeded937d318">ct</a></td></tr>
+<tr class="memdesc:a9f7f53f7886fc8210bc5eeded937d318"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tangent force coefficient at aerodynamic sections (parallel to airfoil chord) (output)  <br /></td></tr>
+<tr class="separator:a9f7f53f7886fc8210bc5eeded937d318"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:accfe888a9c88684a1d016917e8cbaf5c" id="r_accfe888a9c88684a1d016917e8cbaf5c"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1AerodynamicBody.html#accfe888a9c88684a1d016917e8cbaf5c">cm</a></td></tr>
+<tr class="memdesc:accfe888a9c88684a1d016917e8cbaf5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Moment coefficient at aerodynamic sections (output)  <br /></td></tr>
+<tr class="separator:accfe888a9c88684a1d016917e8cbaf5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d63fa453f1edb09a14c1c97d0f9193e" id="r_a7d63fa453f1edb09a14c1c97d0f9193e"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::array&lt; double, 6 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1AerodynamicBody.html#a7d63fa453f1edb09a14c1c97d0f9193e">loads</a></td></tr>
+<tr class="memdesc:a7d63fa453f1edb09a14c1c97d0f9193e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aerodynamic loads (forces and moments) at aerodynamic centers (output)  <br /></td></tr>
+<tr class="separator:a7d63fa453f1edb09a14c1c97d0f9193e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa5b2a8c47373dd6e050c52ae7314866" id="r_aaa5b2a8c47373dd6e050c52ae7314866"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::array&lt; double, 3 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1AerodynamicBody.html#aaa5b2a8c47373dd6e050c52ae7314866">ref_axis_moments</a></td></tr>
+<tr class="memdesc:aaa5b2a8c47373dd6e050c52ae7314866"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total moment about beam reference axis at aerodynamic sections (accounting for AC moment arm and aerodynamic moment) (output)  <br /></td></tr>
+<tr class="separator:aaa5b2a8c47373dd6e050c52ae7314866"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7446ba1ba0cd51334cd5114597815294" id="r_a7446ba1ba0cd51334cd5114597815294"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1AerodynamicBody.html#a7446ba1ba0cd51334cd5114597815294">twist</a></td></tr>
+<tr class="memdesc:a7446ba1ba0cd51334cd5114597815294"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aerodynamic section twist.  <br /></td></tr>
+<tr class="separator:a7446ba1ba0cd51334cd5114597815294"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0219671adb6802ff39601884e6eeaebf" id="r_a0219671adb6802ff39601884e6eeaebf"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1AerodynamicBody.html#a0219671adb6802ff39601884e6eeaebf">chord</a></td></tr>
+<tr class="memdesc:a0219671adb6802ff39601884e6eeaebf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aerodynamic section chord length.  <br /></td></tr>
+<tr class="separator:a0219671adb6802ff39601884e6eeaebf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14dbf245430ef211ba96158210241fc2" id="r_a14dbf245430ef211ba96158210241fc2"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1AerodynamicBody.html#a14dbf245430ef211ba96158210241fc2">delta_s</a></td></tr>
+<tr class="memdesc:a14dbf245430ef211ba96158210241fc2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aerodynamic section width for force/moment calculation.  <br /></td></tr>
+<tr class="separator:a14dbf245430ef211ba96158210241fc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a665c8b6ba12ab216bc55ca45e0c3d410" id="r_a665c8b6ba12ab216bc55ca45e0c3d410"><td class="memItemLeft" align="right" valign="top">std::vector&lt; size_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1AerodynamicBody.html#a665c8b6ba12ab216bc55ca45e0c3d410">polar_size</a></td></tr>
+<tr class="memdesc:a665c8b6ba12ab216bc55ca45e0c3d410"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of points in each aerodynamic polar.  <br /></td></tr>
+<tr class="separator:a665c8b6ba12ab216bc55ca45e0c3d410"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb168f8567497555a0fb26a4ccce422a" id="r_adb168f8567497555a0fb26a4ccce422a"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1AerodynamicBody.html#adb168f8567497555a0fb26a4ccce422a">aoa</a></td></tr>
+<tr class="memdesc:adb168f8567497555a0fb26a4ccce422a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Angle of attack polar at each aerodynamic section.  <br /></td></tr>
+<tr class="separator:adb168f8567497555a0fb26a4ccce422a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab04d16144e15a2eb9a71cff2a1fc4632" id="r_ab04d16144e15a2eb9a71cff2a1fc4632"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1AerodynamicBody.html#ab04d16144e15a2eb9a71cff2a1fc4632">cl_polar</a></td></tr>
+<tr class="memdesc:ab04d16144e15a2eb9a71cff2a1fc4632"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lift coefficient polar at each aerodynamic section.  <br /></td></tr>
+<tr class="separator:ab04d16144e15a2eb9a71cff2a1fc4632"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06df2fa1d1c50749e44732617d3fdc5f" id="r_a06df2fa1d1c50749e44732617d3fdc5f"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1AerodynamicBody.html#a06df2fa1d1c50749e44732617d3fdc5f">cd_polar</a></td></tr>
+<tr class="memdesc:a06df2fa1d1c50749e44732617d3fdc5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Drag coefficient polar at each aerodynamic section.  <br /></td></tr>
+<tr class="separator:a06df2fa1d1c50749e44732617d3fdc5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7472b7da0ad6eaaa81f20a9af7ab872e" id="r_a7472b7da0ad6eaaa81f20a9af7ab872e"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1AerodynamicBody.html#a7472b7da0ad6eaaa81f20a9af7ab872e">cm_polar</a></td></tr>
+<tr class="memdesc:a7472b7da0ad6eaaa81f20a9af7ab872e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Moment coefficient polar at each aerodynamic section.  <br /></td></tr>
+<tr class="separator:a7472b7da0ad6eaaa81f20a9af7ab872e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad45929b37a813fd87244207f62b8b8d2" id="r_ad45929b37a813fd87244207f62b8b8d2"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1AerodynamicBody.html#ad45929b37a813fd87244207f62b8b8d2">jacobian_xi</a></td></tr>
+<tr class="memdesc:ad45929b37a813fd87244207f62b8b8d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Locations of aerodynamic section width boundaries along the beam (used for section width calculation)  <br /></td></tr>
+<tr class="separator:ad45929b37a813fd87244207f62b8b8d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e6830ed8f52d1073c3f1dad453e7246" id="r_a4e6830ed8f52d1073c3f1dad453e7246"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1AerodynamicBody.html#a4e6830ed8f52d1073c3f1dad453e7246">motion_interp</a></td></tr>
+<tr class="memdesc:a4e6830ed8f52d1073c3f1dad453e7246"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flattened matrix to interpolate motion from beam nodes to aerodynamic sections.  <br /></td></tr>
+<tr class="separator:a4e6830ed8f52d1073c3f1dad453e7246"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6de5caefbf76c2913cb1b6c6dc12ddb5" id="r_a6de5caefbf76c2913cb1b6c6dc12ddb5"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1AerodynamicBody.html#a6de5caefbf76c2913cb1b6c6dc12ddb5">shape_deriv_jac</a></td></tr>
+<tr class="memdesc:a6de5caefbf76c2913cb1b6c6dc12ddb5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flattened matrix to interpolate motion derivatives from beam nodes to aerodynamic sections (used for section width calculation)  <br /></td></tr>
+<tr class="separator:a6de5caefbf76c2913cb1b6c6dc12ddb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a2a30e97730bdce499fba3f8301226825" name="a2a30e97730bdce499fba3f8301226825"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a30e97730bdce499fba3f8301226825">&#9670;&#160;</a></span>AerodynamicBody()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">kynema_fmb::interfaces::components::AerodynamicBody::AerodynamicBody </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structkynema__fmb_1_1interfaces_1_1components_1_1AerodynamicBodyInput.html">AerodynamicBodyInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::span&lt; const <a class="el" href="structkynema__fmb_1_1Node.html">Node</a> &gt;&#160;</td>
+          <td class="paramname"><em>nodes</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a9fd003abe2438ef203c468a419e35461" name="a9fd003abe2438ef203c468a419e35461"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9fd003abe2438ef203c468a419e35461">&#9670;&#160;</a></span>AddNodalLoadsToState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename DeviceType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema_fmb::interfaces::components::AerodynamicBody::AddNodalLoadsToState </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structkynema__fmb_1_1interfaces_1_1HostState.html">HostState</a>&lt; DeviceType &gt; &amp;&#160;</td>
+          <td class="paramname"><em>state</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a37ef96dedaf89dbde176a5c13a28a919" name="a37ef96dedaf89dbde176a5c13a28a919"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a37ef96dedaf89dbde176a5c13a28a919">&#9670;&#160;</a></span>CalculateAerodynamicLoads()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema_fmb::interfaces::components::AerodynamicBody::CalculateAerodynamicLoads </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>fluid_density</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8ea62dd08cca3e0a54ab1ea1e5bb3a04" name="a8ea62dd08cca3e0a54ab1ea1e5bb3a04"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ea62dd08cca3e0a54ab1ea1e5bb3a04">&#9670;&#160;</a></span>CalculateMotion()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename DeviceType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema_fmb::interfaces::components::AerodynamicBody::CalculateMotion </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structkynema__fmb_1_1interfaces_1_1HostState.html">HostState</a>&lt; DeviceType &gt; &amp;&#160;</td>
+          <td class="paramname"><em>state</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae85e821e692c1490c1bc4e449d65319a" name="ae85e821e692c1490c1bc4e449d65319a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae85e821e692c1490c1bc4e449d65319a">&#9670;&#160;</a></span>CalculateNodalLoads()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema_fmb::interfaces::components::AerodynamicBody::CalculateNodalLoads </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0d78c09e345c35e22a8d54a794690612" name="a0d78c09e345c35e22a8d54a794690612"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d78c09e345c35e22a8d54a794690612">&#9670;&#160;</a></span>SetAerodynamicLoads()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema_fmb::interfaces::components::AerodynamicBody::SetAerodynamicLoads </td>
+          <td>(</td>
+          <td class="paramtype">std::span&lt; const std::array&lt; double, 6 &gt; &gt;&#160;</td>
+          <td class="paramname"><em>aerodynamic_loads</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abf09e303a9e96685f6cbaa13cc50e24d" name="abf09e303a9e96685f6cbaa13cc50e24d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf09e303a9e96685f6cbaa13cc50e24d">&#9670;&#160;</a></span>SetInflowFromFunction()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema_fmb::interfaces::components::AerodynamicBody::SetInflowFromFunction </td>
+          <td>(</td>
+          <td class="paramtype">const T &amp;&#160;</td>
+          <td class="paramname"><em>inflow_velocity_function</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abdd1bd17dc41935be91af43204cea38b" name="abdd1bd17dc41935be91af43204cea38b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abdd1bd17dc41935be91af43204cea38b">&#9670;&#160;</a></span>SetInflowFromVector()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema_fmb::interfaces::components::AerodynamicBody::SetInflowFromVector </td>
+          <td>(</td>
+          <td class="paramtype">std::span&lt; const std::array&lt; double, 3 &gt; &gt;&#160;</td>
+          <td class="paramname"><em>inflow_velocity</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="af49f7f254fd8109c63b0fec86cb169d7" name="af49f7f254fd8109c63b0fec86cb169d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af49f7f254fd8109c63b0fec86cb169d7">&#9670;&#160;</a></span>alpha</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;double&gt; kynema_fmb::interfaces::components::AerodynamicBody::alpha</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Angle of attack at aerodynamic sections (output) </p>
+
+</div>
+</div>
+<a id="adb168f8567497555a0fb26a4ccce422a" name="adb168f8567497555a0fb26a4ccce422a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb168f8567497555a0fb26a4ccce422a">&#9670;&#160;</a></span>aoa</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::vector&lt;double&gt; &gt; kynema_fmb::interfaces::components::AerodynamicBody::aoa</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Angle of attack polar at each aerodynamic section. </p>
+
+</div>
+</div>
+<a id="a06df2fa1d1c50749e44732617d3fdc5f" name="a06df2fa1d1c50749e44732617d3fdc5f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06df2fa1d1c50749e44732617d3fdc5f">&#9670;&#160;</a></span>cd_polar</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::vector&lt;double&gt; &gt; kynema_fmb::interfaces::components::AerodynamicBody::cd_polar</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Drag coefficient polar at each aerodynamic section. </p>
+
+</div>
+</div>
+<a id="a0219671adb6802ff39601884e6eeaebf" name="a0219671adb6802ff39601884e6eeaebf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0219671adb6802ff39601884e6eeaebf">&#9670;&#160;</a></span>chord</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;double&gt; kynema_fmb::interfaces::components::AerodynamicBody::chord</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Aerodynamic section chord length. </p>
+
+</div>
+</div>
+<a id="ab04d16144e15a2eb9a71cff2a1fc4632" name="ab04d16144e15a2eb9a71cff2a1fc4632"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab04d16144e15a2eb9a71cff2a1fc4632">&#9670;&#160;</a></span>cl_polar</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::vector&lt;double&gt; &gt; kynema_fmb::interfaces::components::AerodynamicBody::cl_polar</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lift coefficient polar at each aerodynamic section. </p>
+
+</div>
+</div>
+<a id="accfe888a9c88684a1d016917e8cbaf5c" name="accfe888a9c88684a1d016917e8cbaf5c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#accfe888a9c88684a1d016917e8cbaf5c">&#9670;&#160;</a></span>cm</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;double&gt; kynema_fmb::interfaces::components::AerodynamicBody::cm</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Moment coefficient at aerodynamic sections (output) </p>
+
+</div>
+</div>
+<a id="a7472b7da0ad6eaaa81f20a9af7ab872e" name="a7472b7da0ad6eaaa81f20a9af7ab872e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7472b7da0ad6eaaa81f20a9af7ab872e">&#9670;&#160;</a></span>cm_polar</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::vector&lt;double&gt; &gt; kynema_fmb::interfaces::components::AerodynamicBody::cm_polar</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Moment coefficient polar at each aerodynamic section. </p>
+
+</div>
+</div>
+<a id="a8078103746043dfc08e8dd8b22932a11" name="a8078103746043dfc08e8dd8b22932a11"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8078103746043dfc08e8dd8b22932a11">&#9670;&#160;</a></span>cn</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;double&gt; kynema_fmb::interfaces::components::AerodynamicBody::cn</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Normal force coefficient at aerodynamic sections (perpendicular to airfoil chord) (output) </p>
+
+</div>
+</div>
+<a id="a2b71850c1c4c7f2a75d7573b0e4c5e7d" name="a2b71850c1c4c7f2a75d7573b0e4c5e7d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b71850c1c4c7f2a75d7573b0e4c5e7d">&#9670;&#160;</a></span>con_force</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::array&lt;double, 3&gt; &gt; kynema_fmb::interfaces::components::AerodynamicBody::con_force</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Vectors from aerodynamic center to reference axis at aerodynamic sections in reference configuration (negative of con_motion) </p>
+
+</div>
+</div>
+<a id="a52e6c7f90d81d867b85127026574942e" name="a52e6c7f90d81d867b85127026574942e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a52e6c7f90d81d867b85127026574942e">&#9670;&#160;</a></span>con_motion</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::array&lt;double, 3&gt; &gt; kynema_fmb::interfaces::components::AerodynamicBody::con_motion</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Vectors from reference axis to aerodynamic center at aerodynamic sections in reference configuration (includes twist) </p>
+
+</div>
+</div>
+<a id="a9f7f53f7886fc8210bc5eeded937d318" name="a9f7f53f7886fc8210bc5eeded937d318"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f7f53f7886fc8210bc5eeded937d318">&#9670;&#160;</a></span>ct</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;double&gt; kynema_fmb::interfaces::components::AerodynamicBody::ct</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Tangent force coefficient at aerodynamic sections (parallel to airfoil chord) (output) </p>
+
+</div>
+</div>
+<a id="a14dbf245430ef211ba96158210241fc2" name="a14dbf245430ef211ba96158210241fc2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14dbf245430ef211ba96158210241fc2">&#9670;&#160;</a></span>delta_s</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;double&gt; kynema_fmb::interfaces::components::AerodynamicBody::delta_s</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Aerodynamic section width for force/moment calculation. </p>
+
+</div>
+</div>
+<a id="a25157393d202f95a17999c63d0c5c190" name="a25157393d202f95a17999c63d0c5c190"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25157393d202f95a17999c63d0c5c190">&#9670;&#160;</a></span>id</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t kynema_fmb::interfaces::components::AerodynamicBody::id</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad45929b37a813fd87244207f62b8b8d2" name="ad45929b37a813fd87244207f62b8b8d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad45929b37a813fd87244207f62b8b8d2">&#9670;&#160;</a></span>jacobian_xi</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;double&gt; kynema_fmb::interfaces::components::AerodynamicBody::jacobian_xi</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Locations of aerodynamic section width boundaries along the beam (used for section width calculation) </p>
+
+</div>
+</div>
+<a id="a7d63fa453f1edb09a14c1c97d0f9193e" name="a7d63fa453f1edb09a14c1c97d0f9193e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d63fa453f1edb09a14c1c97d0f9193e">&#9670;&#160;</a></span>loads</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::array&lt;double, 6&gt; &gt; kynema_fmb::interfaces::components::AerodynamicBody::loads</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Aerodynamic loads (forces and moments) at aerodynamic centers (output) </p>
+
+</div>
+</div>
+<a id="a4e6830ed8f52d1073c3f1dad453e7246" name="a4e6830ed8f52d1073c3f1dad453e7246"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e6830ed8f52d1073c3f1dad453e7246">&#9670;&#160;</a></span>motion_interp</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;double&gt; kynema_fmb::interfaces::components::AerodynamicBody::motion_interp</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Flattened matrix to interpolate motion from beam nodes to aerodynamic sections. </p>
+
+</div>
+</div>
+<a id="aa2b40b6ea8bfc9f9e580acc118b2fe7e" name="aa2b40b6ea8bfc9f9e580acc118b2fe7e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2b40b6ea8bfc9f9e580acc118b2fe7e">&#9670;&#160;</a></span>node_f</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::array&lt;double, 6&gt; &gt; kynema_fmb::interfaces::components::AerodynamicBody::node_f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Aerodynamic forces at the beam nodes with moment arm applied from aerodynamic center to reference axis (output) </p>
+
+</div>
+</div>
+<a id="ad468c270a7d3e5a5c095722dcd4923e2" name="ad468c270a7d3e5a5c095722dcd4923e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad468c270a7d3e5a5c095722dcd4923e2">&#9670;&#160;</a></span>node_ids</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;size_t&gt; kynema_fmb::interfaces::components::AerodynamicBody::node_ids</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>IDs of the beam nodes in this aerodynamic body. </p>
+
+</div>
+</div>
+<a id="a1b1147ad9b396c361c5e6af0b9d73f1f" name="a1b1147ad9b396c361c5e6af0b9d73f1f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1b1147ad9b396c361c5e6af0b9d73f1f">&#9670;&#160;</a></span>node_u</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::array&lt;double, 7&gt; &gt; kynema_fmb::interfaces::components::AerodynamicBody::node_u</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Displacements of the beam nodes (copied from state based on node_ids) </p>
+
+</div>
+</div>
+<a id="a60b81f373973f131b5442537e7a66b92" name="a60b81f373973f131b5442537e7a66b92"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a60b81f373973f131b5442537e7a66b92">&#9670;&#160;</a></span>node_v</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::array&lt;double, 6&gt; &gt; kynema_fmb::interfaces::components::AerodynamicBody::node_v</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Velocities of the beam nodes (copied from state based on node_ids) </p>
+
+</div>
+</div>
+<a id="a665c8b6ba12ab216bc55ca45e0c3d410" name="a665c8b6ba12ab216bc55ca45e0c3d410"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a665c8b6ba12ab216bc55ca45e0c3d410">&#9670;&#160;</a></span>polar_size</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;size_t&gt; kynema_fmb::interfaces::components::AerodynamicBody::polar_size</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Number of points in each aerodynamic polar. </p>
+
+</div>
+</div>
+<a id="a994bd54cb28eebe7638ecf8583e9753e" name="a994bd54cb28eebe7638ecf8583e9753e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a994bd54cb28eebe7638ecf8583e9753e">&#9670;&#160;</a></span>qqr_motion_map</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::array&lt;double, 4&gt; &gt; kynema_fmb::interfaces::components::AerodynamicBody::qqr_motion_map</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Total rotation quaternion of beam reference axis at aerodynamic sections (reference + displacement) </p>
+
+</div>
+</div>
+<a id="aaa5b2a8c47373dd6e050c52ae7314866" name="aaa5b2a8c47373dd6e050c52ae7314866"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa5b2a8c47373dd6e050c52ae7314866">&#9670;&#160;</a></span>ref_axis_moments</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::array&lt;double, 3&gt; &gt; kynema_fmb::interfaces::components::AerodynamicBody::ref_axis_moments</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Total moment about beam reference axis at aerodynamic sections (accounting for AC moment arm and aerodynamic moment) (output) </p>
+
+</div>
+</div>
+<a id="a6de5caefbf76c2913cb1b6c6dc12ddb5" name="a6de5caefbf76c2913cb1b6c6dc12ddb5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6de5caefbf76c2913cb1b6c6dc12ddb5">&#9670;&#160;</a></span>shape_deriv_jac</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;double&gt; kynema_fmb::interfaces::components::AerodynamicBody::shape_deriv_jac</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Flattened matrix to interpolate motion derivatives from beam nodes to aerodynamic sections (used for section width calculation) </p>
+
+</div>
+</div>
+<a id="a7446ba1ba0cd51334cd5114597815294" name="a7446ba1ba0cd51334cd5114597815294"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7446ba1ba0cd51334cd5114597815294">&#9670;&#160;</a></span>twist</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;double&gt; kynema_fmb::interfaces::components::AerodynamicBody::twist</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Aerodynamic section twist. </p>
+
+</div>
+</div>
+<a id="a1796751553f9495ff97991e4e123a5bd" name="a1796751553f9495ff97991e4e123a5bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1796751553f9495ff97991e4e123a5bd">&#9670;&#160;</a></span>u_motion_map</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::array&lt;double, 7&gt; &gt; kynema_fmb::interfaces::components::AerodynamicBody::u_motion_map</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Displacements of beam reference axis at aerodynamic sections. </p>
+
+</div>
+</div>
+<a id="a6328f697b8e588bd563bb75bf8fd3480" name="a6328f697b8e588bd563bb75bf8fd3480"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6328f697b8e588bd563bb75bf8fd3480">&#9670;&#160;</a></span>v_inflow</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::array&lt;double, 3&gt; &gt; kynema_fmb::interfaces::components::AerodynamicBody::v_inflow</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a class="el" href="structkynema__fmb_1_1interfaces_1_1components_1_1Inflow.html" title="Wind inflow model for turbine simulations.">Inflow</a> velocity at aerodynamic sections. </p>
+
+</div>
+</div>
+<a id="a09c192a2fb54c77a919b62a5ae3c1a26" name="a09c192a2fb54c77a919b62a5ae3c1a26"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09c192a2fb54c77a919b62a5ae3c1a26">&#9670;&#160;</a></span>v_motion</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::array&lt;double, 3&gt; &gt; kynema_fmb::interfaces::components::AerodynamicBody::v_motion</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Velocities of aerodynamic centers at aerodynamic sections in global coordinates. </p>
+
+</div>
+</div>
+<a id="ad0964c03a3b6803dd5fd60ee4236adec" name="ad0964c03a3b6803dd5fd60ee4236adec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad0964c03a3b6803dd5fd60ee4236adec">&#9670;&#160;</a></span>v_motion_map</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::array&lt;double, 6&gt; &gt; kynema_fmb::interfaces::components::AerodynamicBody::v_motion_map</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Velocities of beam reference axis at aerodynamic sections. </p>
+
+</div>
+</div>
+<a id="a18fb143a77f58fd667489bbc671d1761" name="a18fb143a77f58fd667489bbc671d1761"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a18fb143a77f58fd667489bbc671d1761">&#9670;&#160;</a></span>v_rel</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::array&lt;double, 3&gt; &gt; kynema_fmb::interfaces::components::AerodynamicBody::v_rel</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Relative velocity at aerodynamic sections (v_inflow - v_motion) (output) </p>
+
+</div>
+</div>
+<a id="abd58398b37b03acf389d7cf7bc7e1cb4" name="abd58398b37b03acf389d7cf7bc7e1cb4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd58398b37b03acf389d7cf7bc7e1cb4">&#9670;&#160;</a></span>x_motion</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::array&lt;double, 3&gt; &gt; kynema_fmb::interfaces::components::AerodynamicBody::x_motion</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Positions of aerodynamic centers at aerodynamic sections in global coordinates. </p>
+
+</div>
+</div>
+<a id="ac7d802b012247f4e1d3d357e88631ba3" name="ac7d802b012247f4e1d3d357e88631ba3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac7d802b012247f4e1d3d357e88631ba3">&#9670;&#160;</a></span>xr_motion_map</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::array&lt;double, 7&gt; &gt; kynema_fmb::interfaces::components::AerodynamicBody::xr_motion_map</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initial position and orientation of beam reference axis at aerodynamic sections. </p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
+<li>/home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/interfaces/components/<a class="el" href="aerodynamics_8hpp_source.html">aerodynamics.hpp</a></li>
+<li>/home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/interfaces/components/<a class="el" href="aerodynamics_8cpp.html">aerodynamics.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023 - Present, MIT License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

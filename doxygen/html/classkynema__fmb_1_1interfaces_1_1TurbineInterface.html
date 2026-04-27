@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kynema API: kynema_fmb::interfaces::TurbineInterface Class Reference &mdash; Kynema 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Kynema
+              <img src="../../_static/oturb_logo_v2.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/user.html">User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../theory/index.html">Theory Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/index.html">Developer Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/index.html">Benchmark Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../publications.html">Kynema-FMB Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../acknowledgement.html">Acknowledgements</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Kynema</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Kynema API: kynema_fmb::interfaces::TurbineInterface Class Reference</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/doxygen/html/classkynema__fmb_1_1interfaces_1_1TurbineInterface.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="turbineinterface-class-reference">
+<h1>TurbineInterface Class Reference<a class="headerlink" href="#turbineinterface-class-reference" title="Permalink to this heading"></a></h1>
+<div class="doxygen-content docutils container">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Kynema API: kynema_fmb::interfaces::TurbineInterface Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Kynema API
+   </div>
+   <div id="projectbrief">A flexible multibody structural dynamics code for wind turbines</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacekynema__fmb.html">kynema_fmb</a></li><li class="navelem"><a class="el" href="namespacekynema__fmb_1_1interfaces.html">interfaces</a></li><li class="navelem"><a class="el" href="classkynema__fmb_1_1interfaces_1_1TurbineInterface.html">TurbineInterface</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#pub-types">Public Types</a> &#124;
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="classkynema__fmb_1_1interfaces_1_1TurbineInterface-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">kynema_fmb::interfaces::TurbineInterface Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Interface for blade simulation that manages state, solver, and components.  
+ <a href="classkynema__fmb_1_1interfaces_1_1TurbineInterface.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="turbine__interface_8hpp_source.html">turbine_interface.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:ad0bec0f7f4ae38452b65c4854c507675" id="r_ad0bec0f7f4ae38452b65c4854c507675"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1TurbineInterface.html#ad0bec0f7f4ae38452b65c4854c507675">DeviceType</a> = Kokkos::Device&lt; Kokkos::DefaultExecutionSpace, Kokkos::DefaultExecutionSpace::memory_space &gt;</td></tr>
+<tr class="separator:ad0bec0f7f4ae38452b65c4854c507675"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:acb9035ee14c967b0dcbf5735252e8009" id="r_acb9035ee14c967b0dcbf5735252e8009"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1TurbineInterface.html#acb9035ee14c967b0dcbf5735252e8009">TurbineInterface</a> (const <a class="el" href="structkynema__fmb_1_1interfaces_1_1components_1_1SolutionInput.html">components::SolutionInput</a> &amp;solution_input, const <a class="el" href="structkynema__fmb_1_1interfaces_1_1components_1_1TurbineInput.html">components::TurbineInput</a> &amp;turbine_input, const <a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1AerodynamicsInput.html">components::AerodynamicsInput</a> &amp;aerodynamics_input={}, const <a class="el" href="structkynema__fmb_1_1interfaces_1_1components_1_1ControllerInput.html">components::ControllerInput</a> &amp;controller_input={}, const <a class="el" href="structkynema__fmb_1_1interfaces_1_1components_1_1OutputsConfig.html">components::OutputsConfig</a> &amp;outputs_config={})</td></tr>
+<tr class="memdesc:acb9035ee14c967b0dcbf5735252e8009"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="classkynema__fmb_1_1interfaces_1_1TurbineInterface.html" title="Interface for blade simulation that manages state, solver, and components.">TurbineInterface</a> from solution and blade inputs.  <br /></td></tr>
+<tr class="separator:acb9035ee14c967b0dcbf5735252e8009"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adcd391e7595e0045fbca43824f56c458" id="r_adcd391e7595e0045fbca43824f56c458"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1TurbineInterface.html#adcd391e7595e0045fbca43824f56c458">TurbineInterface</a> (<a class="el" href="classkynema__fmb_1_1interfaces_1_1TurbineInterface.html">TurbineInterface</a> &amp;other)=delete</td></tr>
+<tr class="separator:adcd391e7595e0045fbca43824f56c458"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51c6e8c1b1cb009bbcdd6931be0b0291" id="r_a51c6e8c1b1cb009bbcdd6931be0b0291"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1TurbineInterface.html#a51c6e8c1b1cb009bbcdd6931be0b0291">TurbineInterface</a> (<a class="el" href="classkynema__fmb_1_1interfaces_1_1TurbineInterface.html">TurbineInterface</a> &amp;&amp;other)=delete</td></tr>
+<tr class="separator:a51c6e8c1b1cb009bbcdd6931be0b0291"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96de01cb3ae118457d2f6c5d6082ce6d" id="r_a96de01cb3ae118457d2f6c5d6082ce6d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema__fmb_1_1interfaces_1_1TurbineInterface.html">TurbineInterface</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1TurbineInterface.html#a96de01cb3ae118457d2f6c5d6082ce6d">operator=</a> (const <a class="el" href="classkynema__fmb_1_1interfaces_1_1TurbineInterface.html">TurbineInterface</a> &amp;)=delete</td></tr>
+<tr class="separator:a96de01cb3ae118457d2f6c5d6082ce6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4dd2f2cc750de38ed4747a7f840894bd" id="r_a4dd2f2cc750de38ed4747a7f840894bd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema__fmb_1_1interfaces_1_1TurbineInterface.html">TurbineInterface</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1TurbineInterface.html#a4dd2f2cc750de38ed4747a7f840894bd">operator=</a> (<a class="el" href="classkynema__fmb_1_1interfaces_1_1TurbineInterface.html">TurbineInterface</a> &amp;&amp;)=delete</td></tr>
+<tr class="separator:a4dd2f2cc750de38ed4747a7f840894bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00b052825a8be2239c3f3bc747612e13" id="r_a00b052825a8be2239c3f3bc747612e13"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1TurbineInterface.html#a00b052825a8be2239c3f3bc747612e13">~TurbineInterface</a> ()=default</td></tr>
+<tr class="separator:a00b052825a8be2239c3f3bc747612e13"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9867875523c7bbc1a18488207583388" id="r_aa9867875523c7bbc1a18488207583388"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1Turbine.html">components::Turbine</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1TurbineInterface.html#aa9867875523c7bbc1a18488207583388">Turbine</a> ()</td></tr>
+<tr class="memdesc:aa9867875523c7bbc1a18488207583388"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a reference to the turbine model.  <br /></td></tr>
+<tr class="separator:aa9867875523c7bbc1a18488207583388"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2f38ce1ff976668d6693518a68eccea" id="r_ae2f38ce1ff976668d6693518a68eccea"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1Aerodynamics.html">components::Aerodynamics</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1TurbineInterface.html#ae2f38ce1ff976668d6693518a68eccea">Aerodynamics</a> ()</td></tr>
+<tr class="memdesc:ae2f38ce1ff976668d6693518a68eccea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a reference to the aerodynamics model.  <br /></td></tr>
+<tr class="separator:ae2f38ce1ff976668d6693518a68eccea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4af69aad5efe57cfda886908af9147b9" id="r_a4af69aad5efe57cfda886908af9147b9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1TurbineInterface.html#a4af69aad5efe57cfda886908af9147b9">UpdateAerodynamicLoads</a> (double fluid_density, const std::function&lt; std::array&lt; double, 3 &gt;(const std::array&lt; double, 3 &gt; &amp;)&gt; &amp;inflow_function)</td></tr>
+<tr class="memdesc:a4af69aad5efe57cfda886908af9147b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the aerodynamic loads to be applied to the structure based on a provided function.  <br /></td></tr>
+<tr class="separator:a4af69aad5efe57cfda886908af9147b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af738f32f1b10747bec13020dbef2304a" id="r_af738f32f1b10747bec13020dbef2304a"><td class="memItemLeft" align="right" valign="top">std::array&lt; double, 3 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1TurbineInterface.html#af738f32f1b10747bec13020dbef2304a">GetHubNodePosition</a> () const</td></tr>
+<tr class="separator:af738f32f1b10747bec13020dbef2304a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9b89f8cabf8db576d858b33c49366a1" id="r_ac9b89f8cabf8db576d858b33c49366a1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1TurbineInterface.html#ac9b89f8cabf8db576d858b33c49366a1">SetHubInflow</a> (const std::array&lt; double, 3 &gt; &amp;inflow)</td></tr>
+<tr class="separator:ac9b89f8cabf8db576d858b33c49366a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca46cae6e6afa8c0636d044641523784" id="r_aca46cae6e6afa8c0636d044641523784"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1TurbineInterface.html#aca46cae6e6afa8c0636d044641523784">ApplyController</a> (double t)</td></tr>
+<tr class="memdesc:aca46cae6e6afa8c0636d044641523784"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update controller inputs from current system state.  <br /></td></tr>
+<tr class="separator:aca46cae6e6afa8c0636d044641523784"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81381f9a2f4981d095c397cb6d387349" id="r_a81381f9a2f4981d095c397cb6d387349"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1TurbineInterface.html#a81381f9a2f4981d095c397cb6d387349">Step</a> ()</td></tr>
+<tr class="memdesc:a81381f9a2f4981d095c397cb6d387349"><td class="mdescLeft">&#160;</td><td class="mdescRight">Steps forward in time.  <br /></td></tr>
+<tr class="separator:a81381f9a2f4981d095c397cb6d387349"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adbbe4d9d6843d7c41e139b568429051d" id="r_adbbe4d9d6843d7c41e139b568429051d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1TurbineInterface.html#adbbe4d9d6843d7c41e139b568429051d">SaveState</a> ()</td></tr>
+<tr class="memdesc:adbbe4d9d6843d7c41e139b568429051d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Saves the current state for potential restoration (in correction step)  <br /></td></tr>
+<tr class="separator:adbbe4d9d6843d7c41e139b568429051d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2686854e6c66517d546d59652ef87ce1" id="r_a2686854e6c66517d546d59652ef87ce1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1TurbineInterface.html#a2686854e6c66517d546d59652ef87ce1">RestoreState</a> ()</td></tr>
+<tr class="memdesc:a2686854e6c66517d546d59652ef87ce1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Restores the previously saved state (in correction step)  <br /></td></tr>
+<tr class="separator:a2686854e6c66517d546d59652ef87ce1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38fabb56fc64b417322e818cf72289ee" id="r_a38fabb56fc64b417322e818cf72289ee"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema__fmb_1_1Model.html">Model</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1TurbineInterface.html#a38fabb56fc64b417322e818cf72289ee">GetModel</a> ()</td></tr>
+<tr class="memdesc:a38fabb56fc64b417322e818cf72289ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a reference of the model owned by this interface.  <br /></td></tr>
+<tr class="separator:a38fabb56fc64b417322e818cf72289ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94b2ea761dabf9874d7e827ac68dfa17" id="r_a94b2ea761dabf9874d7e827ac68dfa17"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1interfaces_1_1HostState.html">HostState</a>&lt; <a class="el" href="classkynema__fmb_1_1interfaces_1_1TurbineInterface.html#ad0bec0f7f4ae38452b65c4854c507675">DeviceType</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1TurbineInterface.html#a94b2ea761dabf9874d7e827ac68dfa17">GetHostState</a> ()</td></tr>
+<tr class="memdesc:a94b2ea761dabf9874d7e827ac68dfa17"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a reference to this interface's host state.  <br /></td></tr>
+<tr class="separator:a94b2ea761dabf9874d7e827ac68dfa17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35c28be09f7837a484a76b9ae1bcac3f" id="r_a35c28be09f7837a484a76b9ae1bcac3f"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1TurbineInterface.html#a35c28be09f7837a484a76b9ae1bcac3f">CalculateAzimuthAngle</a> () const</td></tr>
+<tr class="memdesc:a35c28be09f7837a484a76b9ae1bcac3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates and normalizes azimuth angle from constraint output.  <br /></td></tr>
+<tr class="separator:a35c28be09f7837a484a76b9ae1bcac3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af68e4d0c600186677e970411e3627a3d" id="r_af68e4d0c600186677e970411e3627a3d"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1TurbineInterface.html#af68e4d0c600186677e970411e3627a3d">CalculateRotorSpeed</a> () const</td></tr>
+<tr class="memdesc:af68e4d0c600186677e970411e3627a3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates rotor speed from constraint output.  <br /></td></tr>
+<tr class="separator:af68e4d0c600186677e970411e3627a3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d55b244a0b704a5dc36d629d5932f3c" id="r_a1d55b244a0b704a5dc36d629d5932f3c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1TurbineInterface.html#a1d55b244a0b704a5dc36d629d5932f3c">WriteOutput</a> ()</td></tr>
+<tr class="separator:a1d55b244a0b704a5dc36d629d5932f3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5d021addb54dfd74b9843b9f952471e" id="r_af5d021addb54dfd74b9843b9f952471e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1TurbineInterface.html#af5d021addb54dfd74b9843b9f952471e">OpenOutputFile</a> ()</td></tr>
+<tr class="separator:af5d021addb54dfd74b9843b9f952471e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6ae54819bba550ef73f582d791a123c" id="r_ae6ae54819bba550ef73f582d791a123c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1TurbineInterface.html#ae6ae54819bba550ef73f582d791a123c">CloseOutputFile</a> ()</td></tr>
+<tr class="separator:ae6ae54819bba550ef73f582d791a123c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Interface for blade simulation that manages state, solver, and components. </p>
+<p>This class represents the primary interface for simulating a WT blade, connecting the blade components with the solver and state management. </p>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="ad0bec0f7f4ae38452b65c4854c507675" name="ad0bec0f7f4ae38452b65c4854c507675"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad0bec0f7f4ae38452b65c4854c507675">&#9670;&#160;</a></span>DeviceType</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classkynema__fmb_1_1interfaces_1_1TurbineInterface.html#ad0bec0f7f4ae38452b65c4854c507675">kynema_fmb::interfaces::TurbineInterface::DeviceType</a> =  Kokkos::Device&lt;Kokkos::DefaultExecutionSpace, Kokkos::DefaultExecutionSpace::memory_space&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="acb9035ee14c967b0dcbf5735252e8009" name="acb9035ee14c967b0dcbf5735252e8009"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb9035ee14c967b0dcbf5735252e8009">&#9670;&#160;</a></span>TurbineInterface() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">kynema_fmb::interfaces::TurbineInterface::TurbineInterface </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structkynema__fmb_1_1interfaces_1_1components_1_1SolutionInput.html">components::SolutionInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>solution_input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structkynema__fmb_1_1interfaces_1_1components_1_1TurbineInput.html">components::TurbineInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>turbine_input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1AerodynamicsInput.html">components::AerodynamicsInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>aerodynamics_input</em> = <code>{}</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structkynema__fmb_1_1interfaces_1_1components_1_1ControllerInput.html">components::ControllerInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>controller_input</em> = <code>{}</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structkynema__fmb_1_1interfaces_1_1components_1_1OutputsConfig.html">components::OutputsConfig</a> &amp;&#160;</td>
+          <td class="paramname"><em>outputs_config</em> = <code>{}</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructs a <a class="el" href="classkynema__fmb_1_1interfaces_1_1TurbineInterface.html" title="Interface for blade simulation that manages state, solver, and components.">TurbineInterface</a> from solution and blade inputs. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">solution_input</td><td>Configuration parameters for solver and solution </td></tr>
+    <tr><td class="paramname">turbine_input</td><td>Configuration parameters for the turbine geometry </td></tr>
+    <tr><td class="paramname">aerodynamics_input</td><td>Configuration parameters for the aerodynamic loads </td></tr>
+    <tr><td class="paramname">controller_input</td><td>Configuration parameters for the controller </td></tr>
+    <tr><td class="paramname">outputs_config</td><td>Configuration parameters for the outputs </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="adcd391e7595e0045fbca43824f56c458" name="adcd391e7595e0045fbca43824f56c458"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adcd391e7595e0045fbca43824f56c458">&#9670;&#160;</a></span>TurbineInterface() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">kynema_fmb::interfaces::TurbineInterface::TurbineInterface </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classkynema__fmb_1_1interfaces_1_1TurbineInterface.html">TurbineInterface</a> &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a51c6e8c1b1cb009bbcdd6931be0b0291" name="a51c6e8c1b1cb009bbcdd6931be0b0291"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51c6e8c1b1cb009bbcdd6931be0b0291">&#9670;&#160;</a></span>TurbineInterface() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">kynema_fmb::interfaces::TurbineInterface::TurbineInterface </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classkynema__fmb_1_1interfaces_1_1TurbineInterface.html">TurbineInterface</a> &amp;&amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a00b052825a8be2239c3f3bc747612e13" name="a00b052825a8be2239c3f3bc747612e13"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a00b052825a8be2239c3f3bc747612e13">&#9670;&#160;</a></span>~TurbineInterface()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">kynema_fmb::interfaces::TurbineInterface::~TurbineInterface </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="ae2f38ce1ff976668d6693518a68eccea" name="ae2f38ce1ff976668d6693518a68eccea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2f38ce1ff976668d6693518a68eccea">&#9670;&#160;</a></span>Aerodynamics()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1Aerodynamics.html">components::Aerodynamics</a> &amp; kynema_fmb::interfaces::TurbineInterface::Aerodynamics </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns a reference to the aerodynamics model. </p>
+
+</div>
+</div>
+<a id="aca46cae6e6afa8c0636d044641523784" name="aca46cae6e6afa8c0636d044641523784"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca46cae6e6afa8c0636d044641523784">&#9670;&#160;</a></span>ApplyController()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema_fmb::interfaces::TurbineInterface::ApplyController </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>t</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Update controller inputs from current system state. </p>
+
+</div>
+</div>
+<a id="a35c28be09f7837a484a76b9ae1bcac3f" name="a35c28be09f7837a484a76b9ae1bcac3f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35c28be09f7837a484a76b9ae1bcac3f">&#9670;&#160;</a></span>CalculateAzimuthAngle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double kynema_fmb::interfaces::TurbineInterface::CalculateAzimuthAngle </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calculates and normalizes azimuth angle from constraint output. </p>
+<dl class="section return"><dt>Returns</dt><dd>Azimuth angle in radians, normalized to [0, 2π) </dd></dl>
+
+</div>
+</div>
+<a id="af68e4d0c600186677e970411e3627a3d" name="af68e4d0c600186677e970411e3627a3d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af68e4d0c600186677e970411e3627a3d">&#9670;&#160;</a></span>CalculateRotorSpeed()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double kynema_fmb::interfaces::TurbineInterface::CalculateRotorSpeed </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calculates rotor speed from constraint output. </p>
+<dl class="section return"><dt>Returns</dt><dd>Rotor speed in rad/s </dd></dl>
+
+</div>
+</div>
+<a id="ae6ae54819bba550ef73f582d791a123c" name="ae6ae54819bba550ef73f582d791a123c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6ae54819bba550ef73f582d791a123c">&#9670;&#160;</a></span>CloseOutputFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema_fmb::interfaces::TurbineInterface::CloseOutputFile </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a94b2ea761dabf9874d7e827ac68dfa17" name="a94b2ea761dabf9874d7e827ac68dfa17"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94b2ea761dabf9874d7e827ac68dfa17">&#9670;&#160;</a></span>GetHostState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1interfaces_1_1HostState.html">HostState</a>&lt; <a class="el" href="classkynema__fmb_1_1interfaces_1_1TurbineInterface.html#ad0bec0f7f4ae38452b65c4854c507675">DeviceType</a> &gt; &amp; kynema_fmb::interfaces::TurbineInterface::GetHostState </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Return a reference to this interface's host state. </p>
+
+</div>
+</div>
+<a id="af738f32f1b10747bec13020dbef2304a" name="af738f32f1b10747bec13020dbef2304a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af738f32f1b10747bec13020dbef2304a">&#9670;&#160;</a></span>GetHubNodePosition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::array&lt; double, 3 &gt; kynema_fmb::interfaces::TurbineInterface::GetHubNodePosition </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a38fabb56fc64b417322e818cf72289ee" name="a38fabb56fc64b417322e818cf72289ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a38fabb56fc64b417322e818cf72289ee">&#9670;&#160;</a></span>GetModel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classkynema__fmb_1_1Model.html">Model</a> &amp; kynema_fmb::interfaces::TurbineInterface::GetModel </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Return a reference of the model owned by this interface. </p>
+
+</div>
+</div>
+<a id="af5d021addb54dfd74b9843b9f952471e" name="af5d021addb54dfd74b9843b9f952471e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5d021addb54dfd74b9843b9f952471e">&#9670;&#160;</a></span>OpenOutputFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema_fmb::interfaces::TurbineInterface::OpenOutputFile </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a96de01cb3ae118457d2f6c5d6082ce6d" name="a96de01cb3ae118457d2f6c5d6082ce6d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96de01cb3ae118457d2f6c5d6082ce6d">&#9670;&#160;</a></span>operator=() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classkynema__fmb_1_1interfaces_1_1TurbineInterface.html">TurbineInterface</a> &amp; kynema_fmb::interfaces::TurbineInterface::operator= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classkynema__fmb_1_1interfaces_1_1TurbineInterface.html">TurbineInterface</a> &amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4dd2f2cc750de38ed4747a7f840894bd" name="a4dd2f2cc750de38ed4747a7f840894bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4dd2f2cc750de38ed4747a7f840894bd">&#9670;&#160;</a></span>operator=() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classkynema__fmb_1_1interfaces_1_1TurbineInterface.html">TurbineInterface</a> &amp; kynema_fmb::interfaces::TurbineInterface::operator= </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classkynema__fmb_1_1interfaces_1_1TurbineInterface.html">TurbineInterface</a> &amp;&amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2686854e6c66517d546d59652ef87ce1" name="a2686854e6c66517d546d59652ef87ce1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2686854e6c66517d546d59652ef87ce1">&#9670;&#160;</a></span>RestoreState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema_fmb::interfaces::TurbineInterface::RestoreState </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Restores the previously saved state (in correction step) </p>
+
+</div>
+</div>
+<a id="adbbe4d9d6843d7c41e139b568429051d" name="adbbe4d9d6843d7c41e139b568429051d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adbbe4d9d6843d7c41e139b568429051d">&#9670;&#160;</a></span>SaveState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema_fmb::interfaces::TurbineInterface::SaveState </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Saves the current state for potential restoration (in correction step) </p>
+
+</div>
+</div>
+<a id="ac9b89f8cabf8db576d858b33c49366a1" name="ac9b89f8cabf8db576d858b33c49366a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9b89f8cabf8db576d858b33c49366a1">&#9670;&#160;</a></span>SetHubInflow()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema_fmb::interfaces::TurbineInterface::SetHubInflow </td>
+          <td>(</td>
+          <td class="paramtype">const std::array&lt; double, 3 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>inflow</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a81381f9a2f4981d095c397cb6d387349" name="a81381f9a2f4981d095c397cb6d387349"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81381f9a2f4981d095c397cb6d387349">&#9670;&#160;</a></span>Step()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool kynema_fmb::interfaces::TurbineInterface::Step </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Steps forward in time. </p>
+<dl class="section return"><dt>Returns</dt><dd>true if solver converged, false otherwise </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>This function updates the host state with current node loads, solves the dynamic system, and updates the node motion with the new state. If the solver does not converge, the motion is not updated. </dd></dl>
+
+</div>
+</div>
+<a id="aa9867875523c7bbc1a18488207583388" name="aa9867875523c7bbc1a18488207583388"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9867875523c7bbc1a18488207583388">&#9670;&#160;</a></span>Turbine()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1Turbine.html">components::Turbine</a> &amp; kynema_fmb::interfaces::TurbineInterface::Turbine </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns a reference to the turbine model. </p>
+
+</div>
+</div>
+<a id="a4af69aad5efe57cfda886908af9147b9" name="a4af69aad5efe57cfda886908af9147b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4af69aad5efe57cfda886908af9147b9">&#9670;&#160;</a></span>UpdateAerodynamicLoads()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema_fmb::interfaces::TurbineInterface::UpdateAerodynamicLoads </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>fluid_density</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::function&lt; std::array&lt; double, 3 &gt;(const std::array&lt; double, 3 &gt; &amp;)&gt; &amp;&#160;</td>
+          <td class="paramname"><em>inflow_function</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Updates the aerodynamic loads to be applied to the structure based on a provided function. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fluid_density</td><td>The density of the air (assumed constant) </td></tr>
+    <tr><td class="paramname">inflow_function</td><td>A function that takes in a position and returns the velocity </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a1d55b244a0b704a5dc36d629d5932f3c" name="a1d55b244a0b704a5dc36d629d5932f3c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d55b244a0b704a5dc36d629d5932f3c">&#9670;&#160;</a></span>WriteOutput()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema_fmb::interfaces::TurbineInterface::WriteOutput </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
+<li>/home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/interfaces/turbine/<a class="el" href="turbine__interface_8hpp_source.html">turbine_interface.hpp</a></li>
+<li>/home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/interfaces/turbine/<a class="el" href="turbine__interface_8cpp.html">turbine_interface.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023 - Present, MIT License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

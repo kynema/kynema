@@ -1,0 +1,14 @@
+.. meta::5eadf4c5df647d6fd3625fe057ecb357e6e03d88419941bf5b49ca7a32604f55300c6d310f509838e047672b7974b95389f9f24ec4ed8c291f0afad0fca2eac2
+
+:orphan:
+
+.. title:: Kynema API: kynema_fmb::state::UpdateAlgorithmicAcceleration&lt; DeviceType &gt; Struct Template Reference
+
+UpdateAlgorithmicAcceleration&lt; DeviceType &gt; Struct Template Reference
+===========================================================================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: structkynema__fmb_1_1state_1_1UpdateAlgorithmicAcceleration.html

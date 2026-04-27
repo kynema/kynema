@@ -1,0 +1,14 @@
+.. meta::5dfa1227b54e2a38dc398dcf3a0eac096ed1d9f7e4662e2845f9105cf2392301664978122a0bbb54aa57c7d2a2921f6b769a892ed304c7f771a96a0ebbe2402e
+
+:orphan:
+
+.. title:: Kynema API: kynema_fmb::beams::HollowCircleProperties Struct Reference
+
+HollowCircleProperties Struct Reference
+=======================================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: structkynema__fmb_1_1beams_1_1HollowCircleProperties.html

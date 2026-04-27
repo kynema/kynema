@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kynema API: kynema_fmb::model::MeshConnectivity Class Reference &mdash; Kynema 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Kynema
+              <img src="../../_static/oturb_logo_v2.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/user.html">User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../theory/index.html">Theory Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/index.html">Developer Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/index.html">Benchmark Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../publications.html">Kynema-FMB Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../acknowledgement.html">Acknowledgements</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Kynema</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Kynema API: kynema_fmb::model::MeshConnectivity Class Reference</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/doxygen/html/classkynema__fmb_1_1model_1_1MeshConnectivity.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="meshconnectivity-class-reference">
+<h1>MeshConnectivity Class Reference<a class="headerlink" href="#meshconnectivity-class-reference" title="Permalink to this heading"></a></h1>
+<div class="doxygen-content docutils container">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Kynema API: kynema_fmb::model::MeshConnectivity Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Kynema API
+   </div>
+   <div id="projectbrief">A flexible multibody structural dynamics code for wind turbines</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacekynema__fmb.html">kynema_fmb</a></li><li class="navelem"><a class="el" href="namespacekynema__fmb_1_1model.html">model</a></li><li class="navelem"><a class="el" href="classkynema__fmb_1_1model_1_1MeshConnectivity.html">MeshConnectivity</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="classkynema__fmb_1_1model_1_1MeshConnectivity-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">kynema_fmb::model::MeshConnectivity Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Class to manage element-to-node connectivity information for a mesh.  
+ <a href="classkynema__fmb_1_1model_1_1MeshConnectivity.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="mesh__connectivity_8hpp_source.html">mesh_connectivity.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a7612adc872921225021ec948d4212e8a" id="r_a7612adc872921225021ec948d4212e8a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1model_1_1MeshConnectivity.html#a7612adc872921225021ec948d4212e8a">MeshConnectivity</a> ()=default</td></tr>
+<tr class="separator:a7612adc872921225021ec948d4212e8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a707acd56dc5add468952cf67b13ba0f0" id="r_a707acd56dc5add468952cf67b13ba0f0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1model_1_1MeshConnectivity.html#a707acd56dc5add468952cf67b13ba0f0">AddBeamElementConnectivity</a> (size_t elem_id, std::span&lt; const size_t &gt; node_ids)</td></tr>
+<tr class="memdesc:a707acd56dc5add468952cf67b13ba0f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a beam element's node connectivity.  <br /></td></tr>
+<tr class="separator:a707acd56dc5add468952cf67b13ba0f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5dc31105634dcdf6abeb8d2d68e3ac3" id="r_ad5dc31105634dcdf6abeb8d2d68e3ac3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1model_1_1MeshConnectivity.html#ad5dc31105634dcdf6abeb8d2d68e3ac3">AddMassElementConnectivity</a> (size_t elem_id, size_t node_id)</td></tr>
+<tr class="memdesc:ad5dc31105634dcdf6abeb8d2d68e3ac3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a mass element's node connectivity.  <br /></td></tr>
+<tr class="separator:ad5dc31105634dcdf6abeb8d2d68e3ac3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc57af87d71fad84afce27af4365be15" id="r_afc57af87d71fad84afce27af4365be15"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1model_1_1MeshConnectivity.html#afc57af87d71fad84afce27af4365be15">AddSpringElementConnectivity</a> (size_t elem_id, const std::array&lt; size_t, 2 &gt; &amp;node_ids)</td></tr>
+<tr class="memdesc:afc57af87d71fad84afce27af4365be15"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a spring element's node connectivity.  <br /></td></tr>
+<tr class="separator:afc57af87d71fad84afce27af4365be15"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa75cfe93e4dd5a4b83960b0e09fef405" id="r_aa75cfe93e4dd5a4b83960b0e09fef405"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1model_1_1MeshConnectivity.html#aa75cfe93e4dd5a4b83960b0e09fef405">AddConstraintConnectivity</a> (size_t constraint_id, std::span&lt; const size_t &gt; node_ids)</td></tr>
+<tr class="memdesc:aa75cfe93e4dd5a4b83960b0e09fef405"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a constraint's node connectivity.  <br /></td></tr>
+<tr class="separator:aa75cfe93e4dd5a4b83960b0e09fef405"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59a9a3d795176e69a284ef9510fa8c90" id="r_a59a9a3d795176e69a284ef9510fa8c90"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; size_t &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1model_1_1MeshConnectivity.html#a59a9a3d795176e69a284ef9510fa8c90">GetBeamElementConnectivity</a> (size_t elem_id) const</td></tr>
+<tr class="memdesc:a59a9a3d795176e69a284ef9510fa8c90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get nodes connected to a specific beam element.  <br /></td></tr>
+<tr class="separator:a59a9a3d795176e69a284ef9510fa8c90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac64dfd731452f9003e1abf8b218fb4e6" id="r_ac64dfd731452f9003e1abf8b218fb4e6"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; size_t &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1model_1_1MeshConnectivity.html#ac64dfd731452f9003e1abf8b218fb4e6">GetMassElementConnectivity</a> (size_t elem_id) const</td></tr>
+<tr class="memdesc:ac64dfd731452f9003e1abf8b218fb4e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get nodes connected to a specific mass element.  <br /></td></tr>
+<tr class="separator:ac64dfd731452f9003e1abf8b218fb4e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3115a84856e5967e1295296ffdf97a2f" id="r_a3115a84856e5967e1295296ffdf97a2f"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; size_t &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1model_1_1MeshConnectivity.html#a3115a84856e5967e1295296ffdf97a2f">GetSpringElementConnectivity</a> (size_t elem_id) const</td></tr>
+<tr class="memdesc:a3115a84856e5967e1295296ffdf97a2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get nodes connected to a specific spring element.  <br /></td></tr>
+<tr class="separator:a3115a84856e5967e1295296ffdf97a2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8af766f888107c7494adb0bf0a942bb" id="r_ad8af766f888107c7494adb0bf0a942bb"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; size_t &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1model_1_1MeshConnectivity.html#ad8af766f888107c7494adb0bf0a942bb">GetConstraintConnectivity</a> (size_t constraint_id) const</td></tr>
+<tr class="memdesc:ad8af766f888107c7494adb0bf0a942bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get nodes connected to a specific constraint.  <br /></td></tr>
+<tr class="separator:ad8af766f888107c7494adb0bf0a942bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58c3bea2b65e9fc25bb41f4e5ed8608e" id="r_a58c3bea2b65e9fc25bb41f4e5ed8608e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1model_1_1MeshConnectivity.html#a58c3bea2b65e9fc25bb41f4e5ed8608e">ExportToYAML</a> (std::ostream &amp;file) const</td></tr>
+<tr class="memdesc:a58c3bea2b65e9fc25bb41f4e5ed8608e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Export mesh connectivity inforation to a YAML file.  <br /></td></tr>
+<tr class="separator:a58c3bea2b65e9fc25bb41f4e5ed8608e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23fbc2bae4c6375e7466b9da47b7543b" id="r_a23fbc2bae4c6375e7466b9da47b7543b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1model_1_1MeshConnectivity.html#a23fbc2bae4c6375e7466b9da47b7543b">ExportToYAML</a> (const std::string &amp;filename) const</td></tr>
+<tr class="memdesc:a23fbc2bae4c6375e7466b9da47b7543b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Export mesh connectivity information to a YAML file.  <br /></td></tr>
+<tr class="separator:a23fbc2bae4c6375e7466b9da47b7543b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4dd6ec939c246ea76f68d91934623b15" id="r_a4dd6ec939c246ea76f68d91934623b15"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1model_1_1MeshConnectivity.html#a4dd6ec939c246ea76f68d91934623b15">ImportFromYAML</a> (const YAML::Node &amp;root)</td></tr>
+<tr class="memdesc:a4dd6ec939c246ea76f68d91934623b15"><td class="mdescLeft">&#160;</td><td class="mdescRight">Import mesh connectivity information from a YAML file.  <br /></td></tr>
+<tr class="separator:a4dd6ec939c246ea76f68d91934623b15"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc92d4b3513a9aecda9707da81dd4303" id="r_adc92d4b3513a9aecda9707da81dd4303"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1model_1_1MeshConnectivity.html#adc92d4b3513a9aecda9707da81dd4303">ImportFromYAML</a> (const std::string &amp;filename)</td></tr>
+<tr class="memdesc:adc92d4b3513a9aecda9707da81dd4303"><td class="mdescLeft">&#160;</td><td class="mdescRight">Import mesh connectivity information from a YAML file.  <br /></td></tr>
+<tr class="separator:adc92d4b3513a9aecda9707da81dd4303"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Class to manage element-to-node connectivity information for a mesh. </p>
+<p>This class stores and manages the relationships between elements/constraints and the nodes they connect to, providing YAML import/export functionality. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a7612adc872921225021ec948d4212e8a" name="a7612adc872921225021ec948d4212e8a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7612adc872921225021ec948d4212e8a">&#9670;&#160;</a></span>MeshConnectivity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">kynema_fmb::model::MeshConnectivity::MeshConnectivity </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a707acd56dc5add468952cf67b13ba0f0" name="a707acd56dc5add468952cf67b13ba0f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a707acd56dc5add468952cf67b13ba0f0">&#9670;&#160;</a></span>AddBeamElementConnectivity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema_fmb::model::MeshConnectivity::AddBeamElementConnectivity </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>elem_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::span&lt; const size_t &gt;&#160;</td>
+          <td class="paramname"><em>node_ids</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Adds a beam element's node connectivity. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">elem_id</td><td>The beam element ID </td></tr>
+    <tr><td class="paramname">node_ids</td><td>The vector of node IDs connected to this beam </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aa75cfe93e4dd5a4b83960b0e09fef405" name="aa75cfe93e4dd5a4b83960b0e09fef405"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa75cfe93e4dd5a4b83960b0e09fef405">&#9670;&#160;</a></span>AddConstraintConnectivity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema_fmb::model::MeshConnectivity::AddConstraintConnectivity </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>constraint_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::span&lt; const size_t &gt;&#160;</td>
+          <td class="paramname"><em>node_ids</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Adds a constraint's node connectivity. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">constraint_id</td><td>The constraint ID </td></tr>
+    <tr><td class="paramname">node_ids</td><td>The vector of node IDs connected to this constraint </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad5dc31105634dcdf6abeb8d2d68e3ac3" name="ad5dc31105634dcdf6abeb8d2d68e3ac3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5dc31105634dcdf6abeb8d2d68e3ac3">&#9670;&#160;</a></span>AddMassElementConnectivity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema_fmb::model::MeshConnectivity::AddMassElementConnectivity </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>elem_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>node_id</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Adds a mass element's node connectivity. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">elem_id</td><td>The mass element ID </td></tr>
+    <tr><td class="paramname">node_id</td><td>The node ID connected to this mass </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="afc57af87d71fad84afce27af4365be15" name="afc57af87d71fad84afce27af4365be15"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc57af87d71fad84afce27af4365be15">&#9670;&#160;</a></span>AddSpringElementConnectivity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema_fmb::model::MeshConnectivity::AddSpringElementConnectivity </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>elem_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::array&lt; size_t, 2 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>node_ids</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Adds a spring element's node connectivity. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">elem_id</td><td>The spring element ID </td></tr>
+    <tr><td class="paramname">node_ids</td><td>The array of node IDs connected to this spring </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a23fbc2bae4c6375e7466b9da47b7543b" name="a23fbc2bae4c6375e7466b9da47b7543b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23fbc2bae4c6375e7466b9da47b7543b">&#9670;&#160;</a></span>ExportToYAML() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema_fmb::model::MeshConnectivity::ExportToYAML </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>filename</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Export mesh connectivity information to a YAML file. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filename</td><td>Path to the output YAML file </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a58c3bea2b65e9fc25bb41f4e5ed8608e" name="a58c3bea2b65e9fc25bb41f4e5ed8608e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a58c3bea2b65e9fc25bb41f4e5ed8608e">&#9670;&#160;</a></span>ExportToYAML() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema_fmb::model::MeshConnectivity::ExportToYAML </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>file</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Export mesh connectivity inforation to a YAML file. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">file</td><td>Stream to output YAML file </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a59a9a3d795176e69a284ef9510fa8c90" name="a59a9a3d795176e69a284ef9510fa8c90"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a59a9a3d795176e69a284ef9510fa8c90">&#9670;&#160;</a></span>GetBeamElementConnectivity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt; size_t &gt; &amp; kynema_fmb::model::MeshConnectivity::GetBeamElementConnectivity </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>elem_id</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get nodes connected to a specific beam element. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">elem_id</td><td>The beam element ID </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Vector of node IDs </dd></dl>
+
+</div>
+</div>
+<a id="ad8af766f888107c7494adb0bf0a942bb" name="ad8af766f888107c7494adb0bf0a942bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad8af766f888107c7494adb0bf0a942bb">&#9670;&#160;</a></span>GetConstraintConnectivity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt; size_t &gt; &amp; kynema_fmb::model::MeshConnectivity::GetConstraintConnectivity </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>constraint_id</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get nodes connected to a specific constraint. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">constraint_id</td><td>The constraint ID </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Vector of node IDs </dd></dl>
+
+</div>
+</div>
+<a id="ac64dfd731452f9003e1abf8b218fb4e6" name="ac64dfd731452f9003e1abf8b218fb4e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac64dfd731452f9003e1abf8b218fb4e6">&#9670;&#160;</a></span>GetMassElementConnectivity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt; size_t &gt; &amp; kynema_fmb::model::MeshConnectivity::GetMassElementConnectivity </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>elem_id</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get nodes connected to a specific mass element. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">elem_id</td><td>The mass element ID </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Vector of node IDs </dd></dl>
+
+</div>
+</div>
+<a id="a3115a84856e5967e1295296ffdf97a2f" name="a3115a84856e5967e1295296ffdf97a2f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3115a84856e5967e1295296ffdf97a2f">&#9670;&#160;</a></span>GetSpringElementConnectivity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt; size_t &gt; &amp; kynema_fmb::model::MeshConnectivity::GetSpringElementConnectivity </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>elem_id</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get nodes connected to a specific spring element. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">elem_id</td><td>The spring element ID </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Vector of node IDs </dd></dl>
+
+</div>
+</div>
+<a id="adc92d4b3513a9aecda9707da81dd4303" name="adc92d4b3513a9aecda9707da81dd4303"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc92d4b3513a9aecda9707da81dd4303">&#9670;&#160;</a></span>ImportFromYAML() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema_fmb::model::MeshConnectivity::ImportFromYAML </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>filename</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Import mesh connectivity information from a YAML file. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filename</td><td>Path to the input YAML file </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4dd6ec939c246ea76f68d91934623b15" name="a4dd6ec939c246ea76f68d91934623b15"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4dd6ec939c246ea76f68d91934623b15">&#9670;&#160;</a></span>ImportFromYAML() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema_fmb::model::MeshConnectivity::ImportFromYAML </td>
+          <td>(</td>
+          <td class="paramtype">const YAML::Node &amp;&#160;</td>
+          <td class="paramname"><em>root</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Import mesh connectivity information from a YAML file. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">root</td><td>YAML node with the input YAML file loaded </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li>/home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/model/<a class="el" href="mesh__connectivity_8hpp_source.html">mesh_connectivity.hpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023 - Present, MIT License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

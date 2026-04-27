@@ -1,11 +1,11 @@
-.. meta::708fa265751c05135d27c7b2b7c4788c22b3f96a1df92b41dc487da4f78c5716d1d4d36a02e2614109864519df6f72b06b8cb5bf336eaab61f96e6cffa8a2729
+.. meta::79258f2a5ea37a667e3120db18afdff5f8ff933165d22e8f381480244fce9d6c3258167fbb6b049abf3b5a2ff34d07124e1a69569c4c47e6ccb63f18cc6f93a5
 
 :orphan:
 
-.. title:: Kynema API: /home/runner/work/kynema/kynema/kynema/src/math/gll_quadrature.hpp Source File
+.. title:: Kynema API: /home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/math/gll_quadrature.hpp Source File
 
-/home/runner/work/kynema/kynema/kynema/src/math/gll\_quadrature.hpp Source File
-===============================================================================
+/home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/math/gll\_quadrature.hpp Source File
+===========================================================================================
 
 .. container:: doxygen-content
 

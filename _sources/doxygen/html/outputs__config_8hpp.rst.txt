@@ -1,11 +1,11 @@
-.. meta::b15b462e9a5eed5545719c8d5a90fcba467627cf16c4680586dac1802c273c90b90603e929ebdf201c317c0d0ae1cc7d407926381bc2b240161327e99f241d65
+.. meta::09e68527defcff151cdc54cdf074d7915d7632b9cde75726a5000727b93fb6f8a762617b413881c205ca72b4224fbdea7532889b59dcfcbc544e177935c9b1ea
 
 :orphan:
 
-.. title:: Kynema API: /home/runner/work/kynema/kynema/kynema/src/interfaces/components/outputs_config.hpp File Reference
+.. title:: Kynema API: /home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/interfaces/components/outputs_config.hpp File Reference
 
-/home/runner/work/kynema/kynema/kynema/src/interfaces/components/outputs\_config.hpp File Reference
-===================================================================================================
+/home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/interfaces/components/outputs\_config.hpp File Reference
+===============================================================================================================
 
 .. container:: doxygen-content
 

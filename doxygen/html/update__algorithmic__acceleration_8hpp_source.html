@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kynema API: /home/runner/work/kynema/kynema/kynema/src/state/update_algorithmic_acceleration.hpp Source File &mdash; Kynema 0.0.1 documentation</title>
+  <title>Kynema API: /home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/state/update_algorithmic_acceleration.hpp Source File &mdash; Kynema 0.0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
@@ -54,7 +54,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../theory/index.html">Theory Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../developer/index.html">Developer Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../testing/index.html">Benchmark Testing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../publications.html">Kynema Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../publications.html">Kynema-FMB Publications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../acknowledgement.html">Acknowledgements</a></li>
 </ul>
 
@@ -72,7 +72,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Kynema API: /home/runner/work/kynema/kynema/kynema/src/state/update_algorithmic_acceleration.hpp Source File</li>
+      <li class="breadcrumb-item active">Kynema API: /home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/state/update_algorithmic_acceleration.hpp Source File</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/doxygen/html/update__algorithmic__acceleration_8hpp_source.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -82,8 +82,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="home-runner-work-kynema-kynema-kynema-src-state-update-algorithmic-acceleration-hpp-source-file">
-<h1>/home/runner/work/kynema/kynema/kynema/src/state/update_algorithmic_acceleration.hpp Source File<a class="headerlink" href="#home-runner-work-kynema-kynema-kynema-src-state-update-algorithmic-acceleration-hpp-source-file" title="Permalink to this heading"></a></h1>
+  <div class="section" id="home-runner-work-kynema-fmb-kynema-fmb-kynema-fmb-src-state-update-algorithmic-acceleration-hpp-source-file">
+<h1>/home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/state/update_algorithmic_acceleration.hpp Source File<a class="headerlink" href="#home-runner-work-kynema-fmb-kynema-fmb-kynema-fmb-src-state-update-algorithmic-acceleration-hpp-source-file" title="Permalink to this heading"></a></h1>
 <div class="doxygen-content docutils container">
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
@@ -92,7 +92,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Kynema API: /home/runner/work/kynema/kynema/kynema/src/state/update_algorithmic_acceleration.hpp Source File</title>
+<title>Kynema API: /home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/state/update_algorithmic_acceleration.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -180,35 +180,35 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;Kokkos_Core.hpp&gt;</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacekynema_1_1state.html">kynema::state</a> {</div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacekynema__fmb_1_1state.html">kynema_fmb::state</a> {</div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> DeviceType&gt;</div>
 <div class="foldopen" id="foldopen00012" data-start="{" data-end="};">
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="structkynema_1_1state_1_1UpdateAlgorithmicAcceleration.html">   12</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structkynema_1_1state_1_1UpdateAlgorithmicAcceleration.html">UpdateAlgorithmicAcceleration</a> {</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="structkynema_1_1state_1_1UpdateAlgorithmicAcceleration.html#a26e72f3da0f25be646d5892b60ef031f">   13</a></span>    <span class="keyword">typename</span> Kokkos::View&lt;double* [6], DeviceType&gt; <a class="code hl_variable" href="structkynema_1_1state_1_1UpdateAlgorithmicAcceleration.html#a26e72f3da0f25be646d5892b60ef031f">acceleration</a>;</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="structkynema_1_1state_1_1UpdateAlgorithmicAcceleration.html#a3a0a057e1cea940c229aa20215268d10">   14</a></span>    <span class="keyword">typename</span> Kokkos::View&lt;double* [6], DeviceType&gt;::const_type <a class="code hl_variable" href="structkynema_1_1state_1_1UpdateAlgorithmicAcceleration.html#a3a0a057e1cea940c229aa20215268d10">vd</a>;</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="structkynema_1_1state_1_1UpdateAlgorithmicAcceleration.html#a33b124b0413a837411398700e8238fb7">   15</a></span>    <span class="keywordtype">double</span> <a class="code hl_variable" href="structkynema_1_1state_1_1UpdateAlgorithmicAcceleration.html#a33b124b0413a837411398700e8238fb7">alpha_f</a>;</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="structkynema_1_1state_1_1UpdateAlgorithmicAcceleration.html#ab6e982bf42958e9e4362ef1e20851655">   16</a></span>    <span class="keywordtype">double</span> <a class="code hl_variable" href="structkynema_1_1state_1_1UpdateAlgorithmicAcceleration.html#ab6e982bf42958e9e4362ef1e20851655">alpha_m</a>;</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="structkynema__fmb_1_1state_1_1UpdateAlgorithmicAcceleration.html">   12</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structkynema__fmb_1_1state_1_1UpdateAlgorithmicAcceleration.html">UpdateAlgorithmicAcceleration</a> {</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="structkynema__fmb_1_1state_1_1UpdateAlgorithmicAcceleration.html#acc24fc550b9599b5b023f8250f68bfd1">   13</a></span>    <span class="keyword">typename</span> Kokkos::View&lt;double* [6], DeviceType&gt; <a class="code hl_variable" href="structkynema__fmb_1_1state_1_1UpdateAlgorithmicAcceleration.html#acc24fc550b9599b5b023f8250f68bfd1">acceleration</a>;</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="structkynema__fmb_1_1state_1_1UpdateAlgorithmicAcceleration.html#a82b77bd3ca68f64a980b610fb02799a7">   14</a></span>    <span class="keyword">typename</span> Kokkos::View&lt;double* [6], DeviceType&gt;::const_type <a class="code hl_variable" href="structkynema__fmb_1_1state_1_1UpdateAlgorithmicAcceleration.html#a82b77bd3ca68f64a980b610fb02799a7">vd</a>;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="structkynema__fmb_1_1state_1_1UpdateAlgorithmicAcceleration.html#a348e4624e10973739201400852c48707">   15</a></span>    <span class="keywordtype">double</span> <a class="code hl_variable" href="structkynema__fmb_1_1state_1_1UpdateAlgorithmicAcceleration.html#a348e4624e10973739201400852c48707">alpha_f</a>;</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="structkynema__fmb_1_1state_1_1UpdateAlgorithmicAcceleration.html#a953bef5c7fefd0921dc75b0ff0079d3c">   16</a></span>    <span class="keywordtype">double</span> <a class="code hl_variable" href="structkynema__fmb_1_1state_1_1UpdateAlgorithmicAcceleration.html#a953bef5c7fefd0921dc75b0ff0079d3c">alpha_m</a>;</div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    KOKKOS_FUNCTION</div>
 <div class="foldopen" id="foldopen00019" data-start="{" data-end="}">
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="structkynema_1_1state_1_1UpdateAlgorithmicAcceleration.html#afbe7daa740c4c1b0256a2e15a9637710">   19</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="structkynema_1_1state_1_1UpdateAlgorithmicAcceleration.html#afbe7daa740c4c1b0256a2e15a9637710">operator()</a>(<span class="keywordtype">int</span> node)<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="structkynema__fmb_1_1state_1_1UpdateAlgorithmicAcceleration.html#aeb299c3498fbf307926cf4956109e852">   19</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="structkynema__fmb_1_1state_1_1UpdateAlgorithmicAcceleration.html#aeb299c3498fbf307926cf4956109e852">operator()</a>(<span class="keywordtype">int</span> node)<span class="keyword"> const </span>{</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> component = 0; component &lt; 6; ++component) {</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>            <a class="code hl_variable" href="structkynema_1_1state_1_1UpdateAlgorithmicAcceleration.html#a26e72f3da0f25be646d5892b60ef031f">acceleration</a>(node, component) += (1. - <a class="code hl_variable" href="structkynema_1_1state_1_1UpdateAlgorithmicAcceleration.html#a33b124b0413a837411398700e8238fb7">alpha_f</a>) / (1. - <a class="code hl_variable" href="structkynema_1_1state_1_1UpdateAlgorithmicAcceleration.html#ab6e982bf42958e9e4362ef1e20851655">alpha_m</a>) * <a class="code hl_variable" href="structkynema_1_1state_1_1UpdateAlgorithmicAcceleration.html#a3a0a057e1cea940c229aa20215268d10">vd</a>(node, component);</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>            <a class="code hl_variable" href="structkynema__fmb_1_1state_1_1UpdateAlgorithmicAcceleration.html#acc24fc550b9599b5b023f8250f68bfd1">acceleration</a>(node, component) += (1. - <a class="code hl_variable" href="structkynema__fmb_1_1state_1_1UpdateAlgorithmicAcceleration.html#a348e4624e10973739201400852c48707">alpha_f</a>) / (1. - <a class="code hl_variable" href="structkynema__fmb_1_1state_1_1UpdateAlgorithmicAcceleration.html#a953bef5c7fefd0921dc75b0ff0079d3c">alpha_m</a>) * <a class="code hl_variable" href="structkynema__fmb_1_1state_1_1UpdateAlgorithmicAcceleration.html#a82b77bd3ca68f64a980b610fb02799a7">vd</a>(node, component);</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        }</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    }</div>
 </div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>};</div>
 </div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>}  <span class="comment">// namespace kynema::state</span></div>
-<div class="ttc" id="anamespacekynema_1_1state_html"><div class="ttname"><a href="namespacekynema_1_1state.html">kynema::state</a></div><div class="ttdef"><b>Definition</b> calculate_displacement.hpp:7</div></div>
-<div class="ttc" id="astructkynema_1_1state_1_1UpdateAlgorithmicAcceleration_html"><div class="ttname"><a href="structkynema_1_1state_1_1UpdateAlgorithmicAcceleration.html">kynema::state::UpdateAlgorithmicAcceleration</a></div><div class="ttdoc">A Kernel to update the algorithmic acceleration based on the acceleration and generalized alpha solve...</div><div class="ttdef"><b>Definition</b> update_algorithmic_acceleration.hpp:12</div></div>
-<div class="ttc" id="astructkynema_1_1state_1_1UpdateAlgorithmicAcceleration_html_a26e72f3da0f25be646d5892b60ef031f"><div class="ttname"><a href="structkynema_1_1state_1_1UpdateAlgorithmicAcceleration.html#a26e72f3da0f25be646d5892b60ef031f">kynema::state::UpdateAlgorithmicAcceleration::acceleration</a></div><div class="ttdeci">Kokkos::View&lt; double *[6], DeviceType &gt; acceleration</div><div class="ttdef"><b>Definition</b> update_algorithmic_acceleration.hpp:13</div></div>
-<div class="ttc" id="astructkynema_1_1state_1_1UpdateAlgorithmicAcceleration_html_a33b124b0413a837411398700e8238fb7"><div class="ttname"><a href="structkynema_1_1state_1_1UpdateAlgorithmicAcceleration.html#a33b124b0413a837411398700e8238fb7">kynema::state::UpdateAlgorithmicAcceleration::alpha_f</a></div><div class="ttdeci">double alpha_f</div><div class="ttdef"><b>Definition</b> update_algorithmic_acceleration.hpp:15</div></div>
-<div class="ttc" id="astructkynema_1_1state_1_1UpdateAlgorithmicAcceleration_html_a3a0a057e1cea940c229aa20215268d10"><div class="ttname"><a href="structkynema_1_1state_1_1UpdateAlgorithmicAcceleration.html#a3a0a057e1cea940c229aa20215268d10">kynema::state::UpdateAlgorithmicAcceleration::vd</a></div><div class="ttdeci">Kokkos::View&lt; double *[6], DeviceType &gt;::const_type vd</div><div class="ttdef"><b>Definition</b> update_algorithmic_acceleration.hpp:14</div></div>
-<div class="ttc" id="astructkynema_1_1state_1_1UpdateAlgorithmicAcceleration_html_ab6e982bf42958e9e4362ef1e20851655"><div class="ttname"><a href="structkynema_1_1state_1_1UpdateAlgorithmicAcceleration.html#ab6e982bf42958e9e4362ef1e20851655">kynema::state::UpdateAlgorithmicAcceleration::alpha_m</a></div><div class="ttdeci">double alpha_m</div><div class="ttdef"><b>Definition</b> update_algorithmic_acceleration.hpp:16</div></div>
-<div class="ttc" id="astructkynema_1_1state_1_1UpdateAlgorithmicAcceleration_html_afbe7daa740c4c1b0256a2e15a9637710"><div class="ttname"><a href="structkynema_1_1state_1_1UpdateAlgorithmicAcceleration.html#afbe7daa740c4c1b0256a2e15a9637710">kynema::state::UpdateAlgorithmicAcceleration::operator()</a></div><div class="ttdeci">KOKKOS_FUNCTION void operator()(int node) const</div><div class="ttdef"><b>Definition</b> update_algorithmic_acceleration.hpp:19</div></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>}  <span class="comment">// namespace kynema_fmb::state</span></div>
+<div class="ttc" id="anamespacekynema__fmb_1_1state_html"><div class="ttname"><a href="namespacekynema__fmb_1_1state.html">kynema_fmb::state</a></div><div class="ttdef"><b>Definition</b> calculate_displacement.hpp:7</div></div>
+<div class="ttc" id="astructkynema__fmb_1_1state_1_1UpdateAlgorithmicAcceleration_html"><div class="ttname"><a href="structkynema__fmb_1_1state_1_1UpdateAlgorithmicAcceleration.html">kynema_fmb::state::UpdateAlgorithmicAcceleration</a></div><div class="ttdoc">A Kernel to update the algorithmic acceleration based on the acceleration and generalized alpha solve...</div><div class="ttdef"><b>Definition</b> update_algorithmic_acceleration.hpp:12</div></div>
+<div class="ttc" id="astructkynema__fmb_1_1state_1_1UpdateAlgorithmicAcceleration_html_a348e4624e10973739201400852c48707"><div class="ttname"><a href="structkynema__fmb_1_1state_1_1UpdateAlgorithmicAcceleration.html#a348e4624e10973739201400852c48707">kynema_fmb::state::UpdateAlgorithmicAcceleration::alpha_f</a></div><div class="ttdeci">double alpha_f</div><div class="ttdef"><b>Definition</b> update_algorithmic_acceleration.hpp:15</div></div>
+<div class="ttc" id="astructkynema__fmb_1_1state_1_1UpdateAlgorithmicAcceleration_html_a82b77bd3ca68f64a980b610fb02799a7"><div class="ttname"><a href="structkynema__fmb_1_1state_1_1UpdateAlgorithmicAcceleration.html#a82b77bd3ca68f64a980b610fb02799a7">kynema_fmb::state::UpdateAlgorithmicAcceleration::vd</a></div><div class="ttdeci">Kokkos::View&lt; double *[6], DeviceType &gt;::const_type vd</div><div class="ttdef"><b>Definition</b> update_algorithmic_acceleration.hpp:14</div></div>
+<div class="ttc" id="astructkynema__fmb_1_1state_1_1UpdateAlgorithmicAcceleration_html_a953bef5c7fefd0921dc75b0ff0079d3c"><div class="ttname"><a href="structkynema__fmb_1_1state_1_1UpdateAlgorithmicAcceleration.html#a953bef5c7fefd0921dc75b0ff0079d3c">kynema_fmb::state::UpdateAlgorithmicAcceleration::alpha_m</a></div><div class="ttdeci">double alpha_m</div><div class="ttdef"><b>Definition</b> update_algorithmic_acceleration.hpp:16</div></div>
+<div class="ttc" id="astructkynema__fmb_1_1state_1_1UpdateAlgorithmicAcceleration_html_acc24fc550b9599b5b023f8250f68bfd1"><div class="ttname"><a href="structkynema__fmb_1_1state_1_1UpdateAlgorithmicAcceleration.html#acc24fc550b9599b5b023f8250f68bfd1">kynema_fmb::state::UpdateAlgorithmicAcceleration::acceleration</a></div><div class="ttdeci">Kokkos::View&lt; double *[6], DeviceType &gt; acceleration</div><div class="ttdef"><b>Definition</b> update_algorithmic_acceleration.hpp:13</div></div>
+<div class="ttc" id="astructkynema__fmb_1_1state_1_1UpdateAlgorithmicAcceleration_html_aeb299c3498fbf307926cf4956109e852"><div class="ttname"><a href="structkynema__fmb_1_1state_1_1UpdateAlgorithmicAcceleration.html#aeb299c3498fbf307926cf4956109e852">kynema_fmb::state::UpdateAlgorithmicAcceleration::operator()</a></div><div class="ttdeci">KOKKOS_FUNCTION void operator()(int node) const</div><div class="ttdef"><b>Definition</b> update_algorithmic_acceleration.hpp:19</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -70,7 +70,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../publications.html">Kynema Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../publications.html">Kynema-FMB Publications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../acknowledgement.html">Acknowledgements</a></li>
 </ul>
 
@@ -113,28 +113,28 @@ direction) to simulate a wind loading condition. This load is large enough to
 cause a significant deflection of the tip node (approximately 20% of the blade
 length of ~118 meters), which is important for testing the accuracy of the nonlinear
 response of the geometrically exact beam element.</p>
-<p>The transient response is computed with Kynema’s dynamic solver using a
+<p>The transient response is computed with Kynema-FMB’s dynamic solver using a
 generalized-<span class="math notranslate nohighlight">\(\alpha\)</span> time integrator with numerical damping parameter
 <span class="math notranslate nohighlight">\(\rho_\infty = 0.4\)</span>, a time-step size of <span class="math notranslate nohighlight">\(\Delta t = 0.001\)</span> s, and
 a total simulated time of 10 seconds. BeamDyn is used to provide a benchmark solution
 for the same blade model, loading, and time-integration parameters. The tip
-out-of-plane displacements from Kynema are compared against the BeamDyn
+out-of-plane displacements from Kynema-FMB are compared against the BeamDyn
 benchmark solution in the following figure. The comparison shows good agreement,
-with Kynema results lying within 1% relative difference of the BeamDyn
+with Kynema-FMB results lying within 1% relative difference of the BeamDyn
 displacements over the vast majority of the response history.</p>
 <div class="figure align-center" id="id1">
 <a class="reference internal image-reference" href="../_images/iea15mw_blade_tip_u3_comparison_11nodes_200kN.png"><img alt="../_images/iea15mw_blade_tip_u3_comparison_11nodes_200kN.png" src="../_images/iea15mw_blade_tip_u3_comparison_11nodes_200kN.png" style="width: 80%;" /></a>
 <p class="caption"><span class="caption-number">9 </span><span class="caption-text">Comparison of tip flapwise displacement (<span class="math notranslate nohighlight">\(u_3\)</span>) for the IEA 15 MW
-reference blade between Kynema and BeamDyn for a single LSFE model with
+reference blade between Kynema-FMB and BeamDyn for a single LSFE model with
 <span class="math notranslate nohighlight">\(n = 11\)</span> nodes under a tip load of <span class="math notranslate nohighlight">\(-200\)</span> kN, with a time-step size
 of <span class="math notranslate nohighlight">\(\Delta t = 0.001\)</span> s.</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This benchmark is included as a regression test in the Kynema code base.
+<p>This benchmark is included as a regression test in the Kynema-FMB code base.
 The test is implemented in:</p>
 <blockquote>
-<div><p><a class="reference external" href="https://github.com/kynema/kynema/blob/main/tests/regression_tests/regression/verification/dynamic_IEA15MW_blade_bending.cpp">https://github.com/kynema/kynema/blob/main/tests/regression_tests/regression/verification/dynamic_IEA15MW_blade_bending.cpp</a></p>
+<div><p><a class="reference external" href="https://github.com/kynema/kynema-fmb/blob/main/tests/regression_tests/regression/verification/dynamic_IEA15MW_blade_bending.cpp">https://github.com/kynema/kynema-fmb/blob/main/tests/regression_tests/regression/verification/dynamic_IEA15MW_blade_bending.cpp</a></p>
 </div></blockquote>
 </div>
 </div>

@@ -76,7 +76,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../developer/index.html">Developer Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../testing/index.html">Benchmark Testing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../publications.html">Kynema Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../publications.html">Kynema-FMB Publications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../acknowledgement.html">Acknowledgements</a></li>
 </ul>
 
@@ -109,7 +109,7 @@
              
   <div class="section" id="notes-on-quadrature">
 <span id="sec-quadrature"></span><h1>Notes on quadrature<a class="headerlink" href="#notes-on-quadrature" title="Permalink to this heading"></a></h1>
-<p>In Kynema, we represent beams that can have highly variable properties
+<p>In Kynema-FMB, we represent beams that can have highly variable properties
 along the length and we use a single high-order element for the whole
 beam. Material properties, including the sectional mass matrix
 <span class="math notranslate nohighlight">\(\underline{\underline{M}}^*\)</span>, stiffness matrix
@@ -119,7 +119,7 @@ finite-element beam implementations, <span class="math notranslate nohighlight">
 quadrature is commonly used for evaluating the underlying weak-form
 integrals. While that is often sufficient for uniform or linearly varying
 properties, it can be inadequate for highly variable material properties.
-Kynema provides users the option of Gauss-Legendre (GL) or
+Kynema-FMB provides users the option of Gauss-Legendre (GL) or
 Gauss-Lobatto-Legendre (GLL) quadrature.  GL or GLL quadrature can be
 applied over the whole beam with a user-specified number of points, or in
 a composite fashion between user-defined material points.  In the latter,

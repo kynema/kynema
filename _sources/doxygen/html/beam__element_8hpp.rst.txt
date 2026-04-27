@@ -1,11 +1,11 @@
-.. meta::8bd94c585a907281f1c3ef83b0905718d9ab1223a43e2481eae2ce082e3c3f393aa7940ea64de2a477541c9f1be200dc5168c7f94ce1de60d2c231a305e19859
+.. meta::a73b81a6d45def7ff316612df0209be64ab4f5ecb9c55dcff9b28502cd62d7fb14773a7339ed3dc858d69445e58c666767a33ef14b1f6cd2bc7ef13660b1c7f8
 
 :orphan:
 
-.. title:: Kynema API: /home/runner/work/kynema/kynema/kynema/src/elements/beams/beam_element.hpp File Reference
+.. title:: Kynema API: /home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/elements/beams/beam_element.hpp File Reference
 
-/home/runner/work/kynema/kynema/kynema/src/elements/beams/beam\_element.hpp File Reference
-==========================================================================================
+/home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/elements/beams/beam\_element.hpp File Reference
+======================================================================================================
 
 .. container:: doxygen-content
 

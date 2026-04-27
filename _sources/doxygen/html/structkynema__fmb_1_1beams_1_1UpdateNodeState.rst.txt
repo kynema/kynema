@@ -1,0 +1,14 @@
+.. meta::346ed886246dc677918f0a93277633adcd600ab29ee2206a175f17cd3d7db9775bfc8d4af557528c3314cfb7af5d344b2bb5774a137158754a04ea13fbae26f9
+
+:orphan:
+
+.. title:: Kynema API: kynema_fmb::beams::UpdateNodeState&lt; DeviceType &gt; Struct Template Reference
+
+UpdateNodeState&lt; DeviceType &gt; Struct Template Reference
+=============================================================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: structkynema__fmb_1_1beams_1_1UpdateNodeState.html

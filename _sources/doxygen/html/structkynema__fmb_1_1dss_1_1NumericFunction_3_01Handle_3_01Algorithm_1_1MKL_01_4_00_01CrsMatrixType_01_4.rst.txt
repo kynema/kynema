@@ -1,0 +1,14 @@
+.. meta::fdb1a03b358b7faceb7958c3fb05b9576c269d0a0ed54bbe5e13400fa2c66f351626e6e1082bf0ee5db69d2c688638ffc62cdf630b4367cb4726f79225ee4ba0
+
+:orphan:
+
+.. title:: Kynema API: kynema_fmb::dss::NumericFunction&lt; Handle&lt; Algorithm::MKL &gt;, CrsMatrixType &gt; Struct Template Reference
+
+MKL &gt;, CrsMatrixType &gt; Struct Template Reference
+======================================================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: structkynema__fmb_1_1dss_1_1NumericFunction_3_01Handle_3_01Algorithm_1_1MKL_01_4_00_01CrsMatrixType_01_4.html

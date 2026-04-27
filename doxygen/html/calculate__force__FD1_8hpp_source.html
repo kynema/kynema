@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kynema API: /home/runner/work/kynema/kynema/kynema/src/system/beams/calculate_force_FD1.hpp Source File &mdash; Kynema 0.0.1 documentation</title>
+  <title>Kynema API: /home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/system/beams/calculate_force_FD1.hpp Source File &mdash; Kynema 0.0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
@@ -54,7 +54,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../theory/index.html">Theory Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../developer/index.html">Developer Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../testing/index.html">Benchmark Testing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../publications.html">Kynema Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../publications.html">Kynema-FMB Publications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../acknowledgement.html">Acknowledgements</a></li>
 </ul>
 
@@ -72,7 +72,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Kynema API: /home/runner/work/kynema/kynema/kynema/src/system/beams/calculate_force_FD1.hpp Source File</li>
+      <li class="breadcrumb-item active">Kynema API: /home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/system/beams/calculate_force_FD1.hpp Source File</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/doxygen/html/calculate__force__FD1_8hpp_source.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -82,8 +82,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="home-runner-work-kynema-kynema-kynema-src-system-beams-calculate-force-fd1-hpp-source-file">
-<h1>/home/runner/work/kynema/kynema/kynema/src/system/beams/calculate_force_FD1.hpp Source File<a class="headerlink" href="#home-runner-work-kynema-kynema-kynema-src-system-beams-calculate-force-fd1-hpp-source-file" title="Permalink to this heading"></a></h1>
+  <div class="section" id="home-runner-work-kynema-fmb-kynema-fmb-kynema-fmb-src-system-beams-calculate-force-fd1-hpp-source-file">
+<h1>/home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/system/beams/calculate_force_FD1.hpp Source File<a class="headerlink" href="#home-runner-work-kynema-fmb-kynema-fmb-kynema-fmb-src-system-beams-calculate-force-fd1-hpp-source-file" title="Permalink to this heading"></a></h1>
 <div class="doxygen-content docutils container">
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
@@ -92,7 +92,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Kynema API: /home/runner/work/kynema/kynema/kynema/src/system/beams/calculate_force_FD1.hpp Source File</title>
+<title>Kynema API: /home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/system/beams/calculate_force_FD1.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -181,36 +181,36 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;KokkosBlas.hpp&gt;</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;Kokkos_Core.hpp&gt;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacekynema_1_1beams.html">kynema::beams</a> {</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacekynema__fmb_1_1beams.html">kynema_fmb::beams</a> {</div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> DeviceType&gt;</div>
 <div class="foldopen" id="foldopen00009" data-start="{" data-end="};">
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="structkynema_1_1beams_1_1CalculateForceFD1.html">    9</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structkynema_1_1beams_1_1CalculateForceFD1.html">CalculateForceFD1</a> {</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="structkynema__fmb_1_1beams_1_1CalculateForceFD1.html">    9</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structkynema__fmb_1_1beams_1_1CalculateForceFD1.html">CalculateForceFD1</a> {</div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> ValueType&gt;</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="structkynema_1_1beams_1_1CalculateForceFD1.html#aace89cea74254acedbc1ae9a676e43f6">   11</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateForceFD1.html#aace89cea74254acedbc1ae9a676e43f6">View</a> = Kokkos::View&lt;ValueType, DeviceType&gt;;</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="structkynema__fmb_1_1beams_1_1CalculateForceFD1.html#abfb0f4a14789b2c571ea626eb5e454cb">   11</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="structkynema__fmb_1_1beams_1_1CalculateForceFD1.html#abfb0f4a14789b2c571ea626eb5e454cb">View</a> = Kokkos::View&lt;ValueType, DeviceType&gt;;</div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> ValueType&gt;</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="structkynema_1_1beams_1_1CalculateForceFD1.html#a107d1d3542c1e4cc60065ef9565c6cc9">   13</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateForceFD1.html#a107d1d3542c1e4cc60065ef9565c6cc9">ConstView</a> = <span class="keyword">typename</span> <a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateForceFD1.html#aace89cea74254acedbc1ae9a676e43f6">View&lt;ValueType&gt;::const_type</a>;</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="structkynema__fmb_1_1beams_1_1CalculateForceFD1.html#a2d62a88501ca2963f59fefb0f09e8291">   13</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="structkynema__fmb_1_1beams_1_1CalculateForceFD1.html#a2d62a88501ca2963f59fefb0f09e8291">ConstView</a> = <span class="keyword">typename</span> <a class="code hl_typedef" href="structkynema__fmb_1_1beams_1_1CalculateForceFD1.html#abfb0f4a14789b2c571ea626eb5e454cb">View&lt;ValueType&gt;::const_type</a>;</div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
 <div class="foldopen" id="foldopen00015" data-start="{" data-end="}">
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="structkynema_1_1beams_1_1CalculateForceFD1.html#a47fb9b6c0944e04a7235e1bc04029c30">   15</a></span>    <a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateForceFD1.html#aace89cea74254acedbc1ae9a676e43f6">KOKKOS_FUNCTION</a> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="structkynema_1_1beams_1_1CalculateForceFD1.html#a47fb9b6c0944e04a7235e1bc04029c30">invoke</a>(</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>        <span class="keyword">const</span> <a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateForceFD1.html#a107d1d3542c1e4cc60065ef9565c6cc9">ConstView</a>&lt;<span class="keywordtype">double</span>[6][6]&gt;&amp; <a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateForceFD1.html#aace89cea74254acedbc1ae9a676e43f6">D</a>, <span class="keyword">const</span> <a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateForceFD1.html#a107d1d3542c1e4cc60065ef9565c6cc9">ConstView</a>&lt;<span class="keywordtype">double</span>[6]&gt;&amp; <a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateForceFD1.html#aace89cea74254acedbc1ae9a676e43f6">strain_dot</a>,</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        <span class="keyword">const</span> <a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateForceFD1.html#aace89cea74254acedbc1ae9a676e43f6">View</a>&lt;<span class="keywordtype">double</span>[6]&gt;&amp; <a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateForceFD1.html#aace89cea74254acedbc1ae9a676e43f6">FD1</a></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="structkynema__fmb_1_1beams_1_1CalculateForceFD1.html#a1215cd4423e592b1a9e43881c46695e8">   15</a></span>    <a class="code hl_typedef" href="structkynema__fmb_1_1beams_1_1CalculateForceFD1.html#abfb0f4a14789b2c571ea626eb5e454cb">KOKKOS_FUNCTION</a> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="structkynema__fmb_1_1beams_1_1CalculateForceFD1.html#a1215cd4423e592b1a9e43881c46695e8">invoke</a>(</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>        <span class="keyword">const</span> <a class="code hl_typedef" href="structkynema__fmb_1_1beams_1_1CalculateForceFD1.html#a2d62a88501ca2963f59fefb0f09e8291">ConstView</a>&lt;<span class="keywordtype">double</span>[6][6]&gt;&amp; <a class="code hl_typedef" href="structkynema__fmb_1_1beams_1_1CalculateForceFD1.html#abfb0f4a14789b2c571ea626eb5e454cb">D</a>, <span class="keyword">const</span> <a class="code hl_typedef" href="structkynema__fmb_1_1beams_1_1CalculateForceFD1.html#a2d62a88501ca2963f59fefb0f09e8291">ConstView</a>&lt;<span class="keywordtype">double</span>[6]&gt;&amp; <a class="code hl_typedef" href="structkynema__fmb_1_1beams_1_1CalculateForceFD1.html#abfb0f4a14789b2c571ea626eb5e454cb">strain_dot</a>,</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        <span class="keyword">const</span> <a class="code hl_typedef" href="structkynema__fmb_1_1beams_1_1CalculateForceFD1.html#abfb0f4a14789b2c571ea626eb5e454cb">View</a>&lt;<span class="keywordtype">double</span>[6]&gt;&amp; <a class="code hl_typedef" href="structkynema__fmb_1_1beams_1_1CalculateForceFD1.html#abfb0f4a14789b2c571ea626eb5e454cb">FD1</a></div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    ) {</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        <span class="keyword">using </span><a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateForceFD1.html#aace89cea74254acedbc1ae9a676e43f6">NoTranspose</a> = KokkosBlas::Trans::NoTranspose;</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        <span class="keyword">using </span><a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateForceFD1.html#aace89cea74254acedbc1ae9a676e43f6">Default</a> = KokkosBlas::Algo::Gemv::Default;</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        <span class="keyword">using </span><a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateForceFD1.html#aace89cea74254acedbc1ae9a676e43f6">Gemv</a> = KokkosBlas::SerialGemv&lt;NoTranspose, Default&gt;;</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        Gemv::invoke(1., <a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateForceFD1.html#aace89cea74254acedbc1ae9a676e43f6">D</a>, <a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateForceFD1.html#aace89cea74254acedbc1ae9a676e43f6">strain_dot</a>, 0., <a class="code hl_typedef" href="structkynema_1_1beams_1_1CalculateForceFD1.html#aace89cea74254acedbc1ae9a676e43f6">FD1</a>);</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        <span class="keyword">using </span><a class="code hl_typedef" href="structkynema__fmb_1_1beams_1_1CalculateForceFD1.html#abfb0f4a14789b2c571ea626eb5e454cb">NoTranspose</a> = KokkosBlas::Trans::NoTranspose;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        <span class="keyword">using </span><a class="code hl_typedef" href="structkynema__fmb_1_1beams_1_1CalculateForceFD1.html#abfb0f4a14789b2c571ea626eb5e454cb">Default</a> = KokkosBlas::Algo::Gemv::Default;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        <span class="keyword">using </span><a class="code hl_typedef" href="structkynema__fmb_1_1beams_1_1CalculateForceFD1.html#abfb0f4a14789b2c571ea626eb5e454cb">Gemv</a> = KokkosBlas::SerialGemv&lt;NoTranspose, Default&gt;;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        Gemv::invoke(1., <a class="code hl_typedef" href="structkynema__fmb_1_1beams_1_1CalculateForceFD1.html#abfb0f4a14789b2c571ea626eb5e454cb">D</a>, <a class="code hl_typedef" href="structkynema__fmb_1_1beams_1_1CalculateForceFD1.html#abfb0f4a14789b2c571ea626eb5e454cb">strain_dot</a>, 0., <a class="code hl_typedef" href="structkynema__fmb_1_1beams_1_1CalculateForceFD1.html#abfb0f4a14789b2c571ea626eb5e454cb">FD1</a>);</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    }</div>
 </div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>};</div>
 </div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>}  <span class="comment">// namespace kynema::beams</span></div>
-<div class="ttc" id="anamespacekynema_1_1beams_html"><div class="ttname"><a href="namespacekynema_1_1beams.html">kynema::beams</a></div><div class="ttdef"><b>Definition</b> beam_quadrature.hpp:14</div></div>
-<div class="ttc" id="astructkynema_1_1beams_1_1CalculateForceFD1_html"><div class="ttname"><a href="structkynema_1_1beams_1_1CalculateForceFD1.html">kynema::beams::CalculateForceFD1</a></div><div class="ttdef"><b>Definition</b> calculate_force_FD1.hpp:9</div></div>
-<div class="ttc" id="astructkynema_1_1beams_1_1CalculateForceFD1_html_a107d1d3542c1e4cc60065ef9565c6cc9"><div class="ttname"><a href="structkynema_1_1beams_1_1CalculateForceFD1.html#a107d1d3542c1e4cc60065ef9565c6cc9">kynema::beams::CalculateForceFD1::ConstView</a></div><div class="ttdeci">typename View&lt; ValueType &gt;::const_type ConstView</div><div class="ttdef"><b>Definition</b> calculate_force_FD1.hpp:13</div></div>
-<div class="ttc" id="astructkynema_1_1beams_1_1CalculateForceFD1_html_a47fb9b6c0944e04a7235e1bc04029c30"><div class="ttname"><a href="structkynema_1_1beams_1_1CalculateForceFD1.html#a47fb9b6c0944e04a7235e1bc04029c30">kynema::beams::CalculateForceFD1::invoke</a></div><div class="ttdeci">static KOKKOS_FUNCTION void invoke(const ConstView&lt; double[6][6]&gt; &amp;D, const ConstView&lt; double[6]&gt; &amp;strain_dot, const View&lt; double[6]&gt; &amp;FD1)</div><div class="ttdef"><b>Definition</b> calculate_force_FD1.hpp:15</div></div>
-<div class="ttc" id="astructkynema_1_1beams_1_1CalculateForceFD1_html_aace89cea74254acedbc1ae9a676e43f6"><div class="ttname"><a href="structkynema_1_1beams_1_1CalculateForceFD1.html#aace89cea74254acedbc1ae9a676e43f6">kynema::beams::CalculateForceFD1::View</a></div><div class="ttdeci">Kokkos::View&lt; ValueType, DeviceType &gt; View</div><div class="ttdef"><b>Definition</b> calculate_force_FD1.hpp:11</div></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>}  <span class="comment">// namespace kynema_fmb::beams</span></div>
+<div class="ttc" id="anamespacekynema__fmb_1_1beams_html"><div class="ttname"><a href="namespacekynema__fmb_1_1beams.html">kynema_fmb::beams</a></div><div class="ttdef"><b>Definition</b> beam_quadrature.hpp:14</div></div>
+<div class="ttc" id="astructkynema__fmb_1_1beams_1_1CalculateForceFD1_html"><div class="ttname"><a href="structkynema__fmb_1_1beams_1_1CalculateForceFD1.html">kynema_fmb::beams::CalculateForceFD1</a></div><div class="ttdef"><b>Definition</b> calculate_force_FD1.hpp:9</div></div>
+<div class="ttc" id="astructkynema__fmb_1_1beams_1_1CalculateForceFD1_html_a1215cd4423e592b1a9e43881c46695e8"><div class="ttname"><a href="structkynema__fmb_1_1beams_1_1CalculateForceFD1.html#a1215cd4423e592b1a9e43881c46695e8">kynema_fmb::beams::CalculateForceFD1::invoke</a></div><div class="ttdeci">static KOKKOS_FUNCTION void invoke(const ConstView&lt; double[6][6]&gt; &amp;D, const ConstView&lt; double[6]&gt; &amp;strain_dot, const View&lt; double[6]&gt; &amp;FD1)</div><div class="ttdef"><b>Definition</b> calculate_force_FD1.hpp:15</div></div>
+<div class="ttc" id="astructkynema__fmb_1_1beams_1_1CalculateForceFD1_html_a2d62a88501ca2963f59fefb0f09e8291"><div class="ttname"><a href="structkynema__fmb_1_1beams_1_1CalculateForceFD1.html#a2d62a88501ca2963f59fefb0f09e8291">kynema_fmb::beams::CalculateForceFD1::ConstView</a></div><div class="ttdeci">typename View&lt; ValueType &gt;::const_type ConstView</div><div class="ttdef"><b>Definition</b> calculate_force_FD1.hpp:13</div></div>
+<div class="ttc" id="astructkynema__fmb_1_1beams_1_1CalculateForceFD1_html_abfb0f4a14789b2c571ea626eb5e454cb"><div class="ttname"><a href="structkynema__fmb_1_1beams_1_1CalculateForceFD1.html#abfb0f4a14789b2c571ea626eb5e454cb">kynema_fmb::beams::CalculateForceFD1::View</a></div><div class="ttdeci">Kokkos::View&lt; ValueType, DeviceType &gt; View</div><div class="ttdef"><b>Definition</b> calculate_force_FD1.hpp:11</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

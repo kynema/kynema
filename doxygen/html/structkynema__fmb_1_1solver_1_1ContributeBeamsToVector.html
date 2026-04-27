@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kynema API: kynema_fmb::solver::ContributeBeamsToVector&amp;lt; DeviceType &amp;gt; Struct Template Reference &mdash; Kynema 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Kynema
+              <img src="../../_static/oturb_logo_v2.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/user.html">User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../theory/index.html">Theory Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/index.html">Developer Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/index.html">Benchmark Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../publications.html">Kynema-FMB Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../acknowledgement.html">Acknowledgements</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Kynema</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Kynema API: kynema_fmb::solver::ContributeBeamsToVector&amp;lt; DeviceType &amp;gt; Struct Template Reference</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/doxygen/html/structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="contributebeamstovector-lt-devicetype-gt-struct-template-reference">
+<h1>ContributeBeamsToVector&amp;lt; DeviceType &amp;gt; Struct Template Reference<a class="headerlink" href="#contributebeamstovector-lt-devicetype-gt-struct-template-reference" title="Permalink to this heading"></a></h1>
+<div class="doxygen-content docutils container">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Kynema API: kynema_fmb::solver::ContributeBeamsToVector&lt; DeviceType &gt; Struct Template Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Kynema API
+   </div>
+   <div id="projectbrief">A flexible multibody structural dynamics code for wind turbines</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacekynema__fmb.html">kynema_fmb</a></li><li class="navelem"><a class="el" href="namespacekynema__fmb_1_1solver.html">solver</a></li><li class="navelem"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html">ContributeBeamsToVector</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">kynema_fmb::solver::ContributeBeamsToVector&lt; DeviceType &gt; Struct Template Reference</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>A Kernel which sums the residual contributions computed at each node in a beam into the correct location of the global RHS vector.  
+ <a href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="contribute__beams__to__vector_8hpp_source.html">contribute_beams_to_vector.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:acb4574a956e5f37922e02cabc729b088" id="r_acb4574a956e5f37922e02cabc729b088"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#aaa76d835a3b79683723d1063dbbe9edb">using</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#acb4574a956e5f37922e02cabc729b088">TeamPolicy</a> = Kokkos::TeamPolicy&lt; <a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#aaa76d835a3b79683723d1063dbbe9edb">typename</a> DeviceType::execution_space &gt;</td></tr>
+<tr class="separator:acb4574a956e5f37922e02cabc729b088"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6f7ec5c023d64f7cd56f889f7fa9ac6" id="r_af6f7ec5c023d64f7cd56f889f7fa9ac6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#aaa76d835a3b79683723d1063dbbe9edb">using</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#af6f7ec5c023d64f7cd56f889f7fa9ac6">member_type</a> = <a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#aaa76d835a3b79683723d1063dbbe9edb">typename</a> TeamPolicy::member_type</td></tr>
+<tr class="separator:af6f7ec5c023d64f7cd56f889f7fa9ac6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa76d835a3b79683723d1063dbbe9edb" id="r_aaa76d835a3b79683723d1063dbbe9edb"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#aaa76d835a3b79683723d1063dbbe9edb">typename</a> ValueType &gt; </td></tr>
+<tr class="memitem:aaa76d835a3b79683723d1063dbbe9edb"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#aaa76d835a3b79683723d1063dbbe9edb">using</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#aaa76d835a3b79683723d1063dbbe9edb">View</a> = Kokkos::View&lt; ValueType, DeviceType &gt;</td></tr>
+<tr class="separator:aaa76d835a3b79683723d1063dbbe9edb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c1f0a01455e66e01085f69b704d5d7e" id="r_a8c1f0a01455e66e01085f69b704d5d7e"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#aaa76d835a3b79683723d1063dbbe9edb">typename</a> ValueType &gt; </td></tr>
+<tr class="memitem:a8c1f0a01455e66e01085f69b704d5d7e"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#aaa76d835a3b79683723d1063dbbe9edb">using</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#a8c1f0a01455e66e01085f69b704d5d7e">ConstView</a> = <a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#aaa76d835a3b79683723d1063dbbe9edb">typename</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#aaa76d835a3b79683723d1063dbbe9edb">View</a>&lt; ValueType &gt;<a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#aaa76d835a3b79683723d1063dbbe9edb">::const_type</a></td></tr>
+<tr class="separator:a8c1f0a01455e66e01085f69b704d5d7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f58752ec716c963fe452db3dced6cad" id="r_a9f58752ec716c963fe452db3dced6cad"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#aaa76d835a3b79683723d1063dbbe9edb">typename</a> ValueType &gt; </td></tr>
+<tr class="memitem:a9f58752ec716c963fe452db3dced6cad"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#aaa76d835a3b79683723d1063dbbe9edb">using</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#a9f58752ec716c963fe452db3dced6cad">LeftView</a> = Kokkos::View&lt; ValueType, Kokkos::LayoutLeft, DeviceType &gt;</td></tr>
+<tr class="separator:a9f58752ec716c963fe452db3dced6cad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a2670594c6c1b030284dd82d7c913d2b6" id="r_a2670594c6c1b030284dd82d7c913d2b6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#aaa76d835a3b79683723d1063dbbe9edb">KOKKOS_FUNCTION</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#aaa76d835a3b79683723d1063dbbe9edb">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#a2670594c6c1b030284dd82d7c913d2b6">operator()</a> (<a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#af6f7ec5c023d64f7cd56f889f7fa9ac6">member_type</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#aaa76d835a3b79683723d1063dbbe9edb">member</a>) <a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#aaa76d835a3b79683723d1063dbbe9edb">const</a></td></tr>
+<tr class="separator:a2670594c6c1b030284dd82d7c913d2b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:a39e588e3dbbde1b661a17bd66499afc2" id="r_a39e588e3dbbde1b661a17bd66499afc2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#a8c1f0a01455e66e01085f69b704d5d7e">ConstView</a>&lt; <a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#aaa76d835a3b79683723d1063dbbe9edb">size_t</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#a39e588e3dbbde1b661a17bd66499afc2">num_nodes_per_element</a></td></tr>
+<tr class="separator:a39e588e3dbbde1b661a17bd66499afc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a892bc9e33efe3eecc5565d495bf98442" id="r_a892bc9e33efe3eecc5565d495bf98442"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#a8c1f0a01455e66e01085f69b704d5d7e">ConstView</a>&lt; <a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#aaa76d835a3b79683723d1063dbbe9edb">size_t</a> **[6]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#a892bc9e33efe3eecc5565d495bf98442">element_freedom_table</a></td></tr>
+<tr class="separator:a892bc9e33efe3eecc5565d495bf98442"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8a5ec6ad11c7eedaee8fd5c78669371" id="r_aa8a5ec6ad11c7eedaee8fd5c78669371"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#a8c1f0a01455e66e01085f69b704d5d7e">ConstView</a>&lt; <a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#aaa76d835a3b79683723d1063dbbe9edb">double</a> **[6]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#aa8a5ec6ad11c7eedaee8fd5c78669371">elements</a></td></tr>
+<tr class="separator:aa8a5ec6ad11c7eedaee8fd5c78669371"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a192f360d0f35ec17f765923a40027542" id="r_a192f360d0f35ec17f765923a40027542"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#a9f58752ec716c963fe452db3dced6cad">LeftView</a>&lt; <a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#aaa76d835a3b79683723d1063dbbe9edb">double</a> *[1]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#a192f360d0f35ec17f765923a40027542">vector</a></td></tr>
+<tr class="separator:a192f360d0f35ec17f765923a40027542"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#aaa76d835a3b79683723d1063dbbe9edb">typename</a> DeviceType&gt;<br />
+struct kynema_fmb::solver::ContributeBeamsToVector&lt; DeviceType &gt;</div><p>A Kernel which sums the residual contributions computed at each node in a beam into the correct location of the global RHS vector. </p>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="a8c1f0a01455e66e01085f69b704d5d7e" name="a8c1f0a01455e66e01085f69b704d5d7e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c1f0a01455e66e01085f69b704d5d7e">&#9670;&#160;</a></span>ConstView</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#aaa76d835a3b79683723d1063dbbe9edb">typename</a> DeviceType &gt; </div>
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#aaa76d835a3b79683723d1063dbbe9edb">typename</a> ValueType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#aaa76d835a3b79683723d1063dbbe9edb">using</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html">kynema_fmb::solver::ContributeBeamsToVector</a>&lt; DeviceType &gt;::ConstView =  <a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#aaa76d835a3b79683723d1063dbbe9edb">typename</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#aaa76d835a3b79683723d1063dbbe9edb">View</a>&lt;ValueType&gt;<a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#aaa76d835a3b79683723d1063dbbe9edb">::const_type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9f58752ec716c963fe452db3dced6cad" name="a9f58752ec716c963fe452db3dced6cad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f58752ec716c963fe452db3dced6cad">&#9670;&#160;</a></span>LeftView</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#aaa76d835a3b79683723d1063dbbe9edb">typename</a> DeviceType &gt; </div>
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#aaa76d835a3b79683723d1063dbbe9edb">typename</a> ValueType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#aaa76d835a3b79683723d1063dbbe9edb">using</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html">kynema_fmb::solver::ContributeBeamsToVector</a>&lt; DeviceType &gt;::LeftView =  Kokkos::View&lt;ValueType, Kokkos::LayoutLeft, DeviceType&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af6f7ec5c023d64f7cd56f889f7fa9ac6" name="af6f7ec5c023d64f7cd56f889f7fa9ac6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af6f7ec5c023d64f7cd56f889f7fa9ac6">&#9670;&#160;</a></span>member_type</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#aaa76d835a3b79683723d1063dbbe9edb">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#aaa76d835a3b79683723d1063dbbe9edb">using</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html">kynema_fmb::solver::ContributeBeamsToVector</a>&lt; DeviceType &gt;::member_type =  <a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#aaa76d835a3b79683723d1063dbbe9edb">typename</a> TeamPolicy::member_type</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acb4574a956e5f37922e02cabc729b088" name="acb4574a956e5f37922e02cabc729b088"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb4574a956e5f37922e02cabc729b088">&#9670;&#160;</a></span>TeamPolicy</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#aaa76d835a3b79683723d1063dbbe9edb">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#aaa76d835a3b79683723d1063dbbe9edb">using</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html">kynema_fmb::solver::ContributeBeamsToVector</a>&lt; DeviceType &gt;::TeamPolicy =  Kokkos::TeamPolicy&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#aaa76d835a3b79683723d1063dbbe9edb">typename</a> DeviceType::execution_space&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aaa76d835a3b79683723d1063dbbe9edb" name="aaa76d835a3b79683723d1063dbbe9edb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa76d835a3b79683723d1063dbbe9edb">&#9670;&#160;</a></span>View</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#aaa76d835a3b79683723d1063dbbe9edb">typename</a> DeviceType &gt; </div>
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#aaa76d835a3b79683723d1063dbbe9edb">typename</a> ValueType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#aaa76d835a3b79683723d1063dbbe9edb">using</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html">kynema_fmb::solver::ContributeBeamsToVector</a>&lt; DeviceType &gt;::View =  Kokkos::View&lt;ValueType, DeviceType&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a2670594c6c1b030284dd82d7c913d2b6" name="a2670594c6c1b030284dd82d7c913d2b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2670594c6c1b030284dd82d7c913d2b6">&#9670;&#160;</a></span>operator()()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#aaa76d835a3b79683723d1063dbbe9edb">typename</a> DeviceType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#aaa76d835a3b79683723d1063dbbe9edb">KOKKOS_FUNCTION</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#aaa76d835a3b79683723d1063dbbe9edb">void</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html">kynema_fmb::solver::ContributeBeamsToVector</a>&lt; DeviceType &gt;<a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#aaa76d835a3b79683723d1063dbbe9edb">::operator</a>() </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#af6f7ec5c023d64f7cd56f889f7fa9ac6">member_type</a>&#160;</td>
+          <td class="paramname"><em>member</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a892bc9e33efe3eecc5565d495bf98442" name="a892bc9e33efe3eecc5565d495bf98442"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a892bc9e33efe3eecc5565d495bf98442">&#9670;&#160;</a></span>element_freedom_table</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#aaa76d835a3b79683723d1063dbbe9edb">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#a8c1f0a01455e66e01085f69b704d5d7e">ConstView</a>&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#aaa76d835a3b79683723d1063dbbe9edb">size_t</a>** [6]&gt; <a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html">kynema_fmb::solver::ContributeBeamsToVector</a>&lt; DeviceType &gt;::element_freedom_table</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa8a5ec6ad11c7eedaee8fd5c78669371" name="aa8a5ec6ad11c7eedaee8fd5c78669371"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8a5ec6ad11c7eedaee8fd5c78669371">&#9670;&#160;</a></span>elements</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#aaa76d835a3b79683723d1063dbbe9edb">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#a8c1f0a01455e66e01085f69b704d5d7e">ConstView</a>&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#aaa76d835a3b79683723d1063dbbe9edb">double</a>** [6]&gt; <a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html">kynema_fmb::solver::ContributeBeamsToVector</a>&lt; DeviceType &gt;::elements</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a39e588e3dbbde1b661a17bd66499afc2" name="a39e588e3dbbde1b661a17bd66499afc2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39e588e3dbbde1b661a17bd66499afc2">&#9670;&#160;</a></span>num_nodes_per_element</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#aaa76d835a3b79683723d1063dbbe9edb">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#a8c1f0a01455e66e01085f69b704d5d7e">ConstView</a>&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#aaa76d835a3b79683723d1063dbbe9edb">size_t</a>*&gt; <a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html">kynema_fmb::solver::ContributeBeamsToVector</a>&lt; DeviceType &gt;::num_nodes_per_element</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a192f360d0f35ec17f765923a40027542" name="a192f360d0f35ec17f765923a40027542"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a192f360d0f35ec17f765923a40027542">&#9670;&#160;</a></span>vector</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#aaa76d835a3b79683723d1063dbbe9edb">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#a9f58752ec716c963fe452db3dced6cad">LeftView</a>&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html#aaa76d835a3b79683723d1063dbbe9edb">double</a>* [1]&gt; <a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToVector.html">kynema_fmb::solver::ContributeBeamsToVector</a>&lt; DeviceType &gt;::vector</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
+<li>/home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/solver/<a class="el" href="contribute__beams__to__vector_8hpp_source.html">contribute_beams_to_vector.hpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023 - Present, MIT License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

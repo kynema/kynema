@@ -1,0 +1,14 @@
+.. meta::aca64bd448526693ee94e29e47c0c5b13d1868d5ebf3759c30ef9e4cda64b096dfa77e4041fed8f3fe879540c6867f83d8aa725f987b22e8310c7a6351b825b1
+
+:orphan:
+
+.. title:: Kynema API: kynema_fmb::interfaces::components::ReferenceAxis Struct Reference
+
+ReferenceAxis Struct Reference
+==============================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: structkynema__fmb_1_1interfaces_1_1components_1_1ReferenceAxis.html

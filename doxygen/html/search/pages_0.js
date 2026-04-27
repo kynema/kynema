@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['api_20documentation_0',['Kynema API documentation',['../index.html',1,'']]]
+  ['api_20documentation_0',['Kynema-FMB API documentation',['../index.html',1,'']]]
 ];

@@ -1,11 +1,11 @@
-.. meta::8f4f9372af8264f52e4b832431f1892c9f0ef87ba45eeed52e300e10441cd5125fb4ee0f30bbb838a92964664f18054a389559327dedebd2b16b0c67f07bd35e
+.. meta::49f944bdfc06579d302bff77b3c5d07b7312d81ac0dba94cdfc1af21e450cdbefe93c83ecab4af54ec12d1b4f7bd3b9c01b82d306064394b76cbdb6ffbd83b2a
 
 :orphan:
 
-.. title:: Kynema API: /home/runner/work/kynema/kynema/kynema/src/solver/compute_col_inds.hpp Source File
+.. title:: Kynema API: /home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/solver/compute_col_inds.hpp Source File
 
-/home/runner/work/kynema/kynema/kynema/src/solver/compute\_col\_inds.hpp Source File
-====================================================================================
+/home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/solver/compute\_col\_inds.hpp Source File
+================================================================================================
 
 .. container:: doxygen-content
 

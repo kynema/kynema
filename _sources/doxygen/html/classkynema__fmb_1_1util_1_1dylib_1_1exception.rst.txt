@@ -1,0 +1,14 @@
+.. meta::6ca931defd3a6c9cbab333cf9b519b4569e14a098d57e04065f7003fb71d09d2f4a4253a8f8aa91f0d68f5ead232853dedb2c52231fcb385583f94bb63f81085
+
+:orphan:
+
+.. title:: Kynema API: kynema_fmb::util::dylib::exception Class Reference
+
+exception Class Reference
+=========================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: classkynema__fmb_1_1util_1_1dylib_1_1exception.html

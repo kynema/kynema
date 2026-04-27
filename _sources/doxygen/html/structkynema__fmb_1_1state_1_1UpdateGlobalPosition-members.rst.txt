@@ -1,0 +1,14 @@
+.. meta::e611d67828f35f6552416a9ea1909ac169839a9a8920ffb83900f96874f0781d9d9219fb5950651c1240cefebda91b2d2e2d77e9561188a5e0d68620226ea4e2
+
+:orphan:
+
+.. title:: Kynema API: Member List
+
+Member List
+===========
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: structkynema__fmb_1_1state_1_1UpdateGlobalPosition-members.html

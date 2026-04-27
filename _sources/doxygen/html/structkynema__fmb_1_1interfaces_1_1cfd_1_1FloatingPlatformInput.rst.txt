@@ -1,0 +1,14 @@
+.. meta::c90bf30a596fe27515d3804b5a205044450f1d40fa4cb350cd7913553b0c70fe29b0904bc9d7d0f40a6ccd73b636b712c740c1b1ac472181c1b9d506f06bf59e
+
+:orphan:
+
+.. title:: Kynema API: kynema_fmb::interfaces::cfd::FloatingPlatformInput Struct Reference
+
+FloatingPlatformInput Struct Reference
+======================================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: structkynema__fmb_1_1interfaces_1_1cfd_1_1FloatingPlatformInput.html

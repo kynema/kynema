@@ -1,0 +1,14 @@
+.. meta::fdd8d2479329d0ea13eec5697f43acc08d6568fe6f5901496a331cff391ae9f3404d7566e0f130e086cc478dba0311486961b25f4d6efffbb0213e1c22756932
+
+:orphan:
+
+.. title:: Kynema API: kynema_fmb::masses::RotateSectionMatrix&lt; DeviceType &gt; Struct Template Reference
+
+RotateSectionMatrix&lt; DeviceType &gt; Struct Template Reference
+=================================================================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: structkynema__fmb_1_1masses_1_1RotateSectionMatrix.html

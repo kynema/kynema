@@ -1,0 +1,14 @@
+.. meta::33e6734164680f24478b5219d6dc09c4328d3afba0eb3941b8c18e95f5d0ded2c7fa2d4855894864bc8b86b98d4f09facbc7212c9281fd630e539d0799941d31
+
+:orphan:
+
+.. title:: Kynema API: kynema_fmb::interfaces::NodeData Struct Reference
+
+NodeData Struct Reference
+=========================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: structkynema__fmb_1_1interfaces_1_1NodeData.html

@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kynema API: kynema_fmb::beams::IntegrateResidualVectorElement&amp;lt; DeviceType &amp;gt; Struct Template Reference &mdash; Kynema 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Kynema
+              <img src="../../_static/oturb_logo_v2.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/user.html">User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../theory/index.html">Theory Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/index.html">Developer Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/index.html">Benchmark Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../publications.html">Kynema-FMB Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../acknowledgement.html">Acknowledgements</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Kynema</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Kynema API: kynema_fmb::beams::IntegrateResidualVectorElement&amp;lt; DeviceType &amp;gt; Struct Template Reference</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/doxygen/html/structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="integrateresidualvectorelement-lt-devicetype-gt-struct-template-reference">
+<h1>IntegrateResidualVectorElement&amp;lt; DeviceType &amp;gt; Struct Template Reference<a class="headerlink" href="#integrateresidualvectorelement-lt-devicetype-gt-struct-template-reference" title="Permalink to this heading"></a></h1>
+<div class="doxygen-content docutils container">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Kynema API: kynema_fmb::beams::IntegrateResidualVectorElement&lt; DeviceType &gt; Struct Template Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Kynema API
+   </div>
+   <div id="projectbrief">A flexible multibody structural dynamics code for wind turbines</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacekynema__fmb.html">kynema_fmb</a></li><li class="navelem"><a class="el" href="namespacekynema__fmb_1_1beams.html">beams</a></li><li class="navelem"><a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html">IntegrateResidualVectorElement</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">kynema_fmb::beams::IntegrateResidualVectorElement&lt; DeviceType &gt; Struct Template Reference</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="integrate__residual__vector_8hpp_source.html">integrate_residual_vector.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a9f6180adcafd465ead56be95d553c8da" id="r_a9f6180adcafd465ead56be95d553c8da"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">typename</a> ValueType &gt; </td></tr>
+<tr class="memitem:a9f6180adcafd465ead56be95d553c8da"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">using</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">View</a> = Kokkos::View&lt; ValueType, DeviceType &gt;</td></tr>
+<tr class="separator:a9f6180adcafd465ead56be95d553c8da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a397d95a9bf7e7897a1be4db4934a844e" id="r_a397d95a9bf7e7897a1be4db4934a844e"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">typename</a> ValueType &gt; </td></tr>
+<tr class="memitem:a397d95a9bf7e7897a1be4db4934a844e"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">using</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a397d95a9bf7e7897a1be4db4934a844e">ConstView</a> = <a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">typename</a> <a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">View</a>&lt; ValueType &gt;<a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">::const_type</a></td></tr>
+<tr class="separator:a397d95a9bf7e7897a1be4db4934a844e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae03d153f4be85f92abb5e52adab71727" id="r_ae03d153f4be85f92abb5e52adab71727"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">typename</a> ValueType &gt; </td></tr>
+<tr class="memitem:ae03d153f4be85f92abb5e52adab71727"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">using</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#ae03d153f4be85f92abb5e52adab71727">LeftView</a> = Kokkos::View&lt; ValueType, Kokkos::LayoutLeft, DeviceType &gt;</td></tr>
+<tr class="separator:ae03d153f4be85f92abb5e52adab71727"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36872cb13aa80f4b03774ead26e53784" id="r_a36872cb13aa80f4b03774ead26e53784"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">typename</a> ValueType &gt; </td></tr>
+<tr class="memitem:a36872cb13aa80f4b03774ead26e53784"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">using</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a36872cb13aa80f4b03774ead26e53784">ConstLeftView</a> = <a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">typename</a> <a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#ae03d153f4be85f92abb5e52adab71727">LeftView</a>&lt; ValueType &gt;<a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">::const_type</a></td></tr>
+<tr class="separator:a36872cb13aa80f4b03774ead26e53784"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a0702f08bd8e065d68c61324133995165" id="r_a0702f08bd8e065d68c61324133995165"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">KOKKOS_FUNCTION</a> <a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a0702f08bd8e065d68c61324133995165">operator()</a> (<a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">size_t</a> node) <a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">const</a></td></tr>
+<tr class="separator:a0702f08bd8e065d68c61324133995165"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:a6394f03d43890480a9a5fc03c0ffe50e" id="r_a6394f03d43890480a9a5fc03c0ffe50e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">size_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a6394f03d43890480a9a5fc03c0ffe50e">element</a></td></tr>
+<tr class="separator:a6394f03d43890480a9a5fc03c0ffe50e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a20064c580b0a0783134ea970c71b8c" id="r_a8a20064c580b0a0783134ea970c71b8c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">size_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a8a20064c580b0a0783134ea970c71b8c">num_qps</a></td></tr>
+<tr class="separator:a8a20064c580b0a0783134ea970c71b8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ea96aa23888d8534d1d0cbdd94a0b6f" id="r_a8ea96aa23888d8534d1d0cbdd94a0b6f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a397d95a9bf7e7897a1be4db4934a844e">ConstView</a>&lt; <a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">double</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a8ea96aa23888d8534d1d0cbdd94a0b6f">qp_weight_</a></td></tr>
+<tr class="separator:a8ea96aa23888d8534d1d0cbdd94a0b6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6bc478919ead81ab9bd6a098f7356c1" id="r_ad6bc478919ead81ab9bd6a098f7356c1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a397d95a9bf7e7897a1be4db4934a844e">ConstView</a>&lt; <a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">double</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#ad6bc478919ead81ab9bd6a098f7356c1">qp_jacobian_</a></td></tr>
+<tr class="separator:ad6bc478919ead81ab9bd6a098f7356c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6231c74ccf2b552424d36cbce0f43871" id="r_a6231c74ccf2b552424d36cbce0f43871"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a36872cb13aa80f4b03774ead26e53784">ConstLeftView</a>&lt; <a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">double</a> ** &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a6231c74ccf2b552424d36cbce0f43871">shape_interp_</a></td></tr>
+<tr class="separator:a6231c74ccf2b552424d36cbce0f43871"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f150351f30c2e660c2d3337fe507eb0" id="r_a6f150351f30c2e660c2d3337fe507eb0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a36872cb13aa80f4b03774ead26e53784">ConstLeftView</a>&lt; <a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">double</a> ** &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a6f150351f30c2e660c2d3337fe507eb0">shape_deriv_</a></td></tr>
+<tr class="separator:a6f150351f30c2e660c2d3337fe507eb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c569e4e54ee4112782c0ec15e099f4b" id="r_a8c569e4e54ee4112782c0ec15e099f4b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a397d95a9bf7e7897a1be4db4934a844e">ConstView</a>&lt; <a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">double</a> *[6]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a8c569e4e54ee4112782c0ec15e099f4b">node_FX_</a></td></tr>
+<tr class="separator:a8c569e4e54ee4112782c0ec15e099f4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6f6d4f7daf54c7620d6aa9857ac772d" id="r_ac6f6d4f7daf54c7620d6aa9857ac772d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a397d95a9bf7e7897a1be4db4934a844e">ConstView</a>&lt; <a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">double</a> *[6]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#ac6f6d4f7daf54c7620d6aa9857ac772d">qp_FE1_</a></td></tr>
+<tr class="separator:ac6f6d4f7daf54c7620d6aa9857ac772d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8fe107aea0689b2fef22e0066a4f26b0" id="r_a8fe107aea0689b2fef22e0066a4f26b0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a397d95a9bf7e7897a1be4db4934a844e">ConstView</a>&lt; <a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">double</a> *[6]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a8fe107aea0689b2fef22e0066a4f26b0">qp_FE2_</a></td></tr>
+<tr class="separator:a8fe107aea0689b2fef22e0066a4f26b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8aeff8a03270c36971820f1a6b4ca0c" id="r_af8aeff8a03270c36971820f1a6b4ca0c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a397d95a9bf7e7897a1be4db4934a844e">ConstView</a>&lt; <a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">double</a> *[6]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#af8aeff8a03270c36971820f1a6b4ca0c">qp_FD1_</a></td></tr>
+<tr class="separator:af8aeff8a03270c36971820f1a6b4ca0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8456de1f5d93078193b159d1c8ed1152" id="r_a8456de1f5d93078193b159d1c8ed1152"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a397d95a9bf7e7897a1be4db4934a844e">ConstView</a>&lt; <a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">double</a> *[6]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a8456de1f5d93078193b159d1c8ed1152">qp_FD2_</a></td></tr>
+<tr class="separator:a8456de1f5d93078193b159d1c8ed1152"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab91acd2508b1be6947a3cc3d445a7ed2" id="r_ab91acd2508b1be6947a3cc3d445a7ed2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a397d95a9bf7e7897a1be4db4934a844e">ConstView</a>&lt; <a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">double</a> *[6]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#ab91acd2508b1be6947a3cc3d445a7ed2">qp_Fi_</a></td></tr>
+<tr class="separator:ab91acd2508b1be6947a3cc3d445a7ed2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27387e37e44fb297d60a35d5ff806e9e" id="r_a27387e37e44fb297d60a35d5ff806e9e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a397d95a9bf7e7897a1be4db4934a844e">ConstView</a>&lt; <a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">double</a> *[6]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a27387e37e44fb297d60a35d5ff806e9e">qp_Fe_</a></td></tr>
+<tr class="separator:a27387e37e44fb297d60a35d5ff806e9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8399051f4c26721fa50cf707a6d8903f" id="r_a8399051f4c26721fa50cf707a6d8903f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a397d95a9bf7e7897a1be4db4934a844e">ConstView</a>&lt; <a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">double</a> *[6]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a8399051f4c26721fa50cf707a6d8903f">qp_Fg_</a></td></tr>
+<tr class="separator:a8399051f4c26721fa50cf707a6d8903f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae04b8c327420e4b7a256385d0923e62e" id="r_ae04b8c327420e4b7a256385d0923e62e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">View</a>&lt; <a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">double</a> **[6]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#ae04b8c327420e4b7a256385d0923e62e">residual_vector_terms_</a></td></tr>
+<tr class="separator:ae04b8c327420e4b7a256385d0923e62e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="a36872cb13aa80f4b03774ead26e53784" name="a36872cb13aa80f4b03774ead26e53784"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36872cb13aa80f4b03774ead26e53784">&#9670;&#160;</a></span>ConstLeftView</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">typename</a> DeviceType &gt; </div>
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">typename</a> ValueType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">using</a> <a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html">kynema_fmb::beams::IntegrateResidualVectorElement</a>&lt; DeviceType &gt;::ConstLeftView =  <a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">typename</a> <a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#ae03d153f4be85f92abb5e52adab71727">LeftView</a>&lt;ValueType&gt;<a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">::const_type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a397d95a9bf7e7897a1be4db4934a844e" name="a397d95a9bf7e7897a1be4db4934a844e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a397d95a9bf7e7897a1be4db4934a844e">&#9670;&#160;</a></span>ConstView</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">typename</a> DeviceType &gt; </div>
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">typename</a> ValueType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">using</a> <a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html">kynema_fmb::beams::IntegrateResidualVectorElement</a>&lt; DeviceType &gt;::ConstView =  <a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">typename</a> <a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">View</a>&lt;ValueType&gt;<a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">::const_type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae03d153f4be85f92abb5e52adab71727" name="ae03d153f4be85f92abb5e52adab71727"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae03d153f4be85f92abb5e52adab71727">&#9670;&#160;</a></span>LeftView</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">typename</a> DeviceType &gt; </div>
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">typename</a> ValueType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">using</a> <a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html">kynema_fmb::beams::IntegrateResidualVectorElement</a>&lt; DeviceType &gt;::LeftView =  Kokkos::View&lt;ValueType, Kokkos::LayoutLeft, DeviceType&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9f6180adcafd465ead56be95d553c8da" name="a9f6180adcafd465ead56be95d553c8da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f6180adcafd465ead56be95d553c8da">&#9670;&#160;</a></span>View</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">typename</a> DeviceType &gt; </div>
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">typename</a> ValueType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">using</a> <a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html">kynema_fmb::beams::IntegrateResidualVectorElement</a>&lt; DeviceType &gt;::View =  Kokkos::View&lt;ValueType, DeviceType&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a0702f08bd8e065d68c61324133995165" name="a0702f08bd8e065d68c61324133995165"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0702f08bd8e065d68c61324133995165">&#9670;&#160;</a></span>operator()()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">typename</a> DeviceType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">KOKKOS_FUNCTION</a> <a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">void</a> <a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html">kynema_fmb::beams::IntegrateResidualVectorElement</a>&lt; DeviceType &gt;<a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">::operator</a>() </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">size_t</a>&#160;</td>
+          <td class="paramname"><em>node</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a6394f03d43890480a9a5fc03c0ffe50e" name="a6394f03d43890480a9a5fc03c0ffe50e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6394f03d43890480a9a5fc03c0ffe50e">&#9670;&#160;</a></span>element</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">size_t</a> <a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html">kynema_fmb::beams::IntegrateResidualVectorElement</a>&lt; DeviceType &gt;::element</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8c569e4e54ee4112782c0ec15e099f4b" name="a8c569e4e54ee4112782c0ec15e099f4b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c569e4e54ee4112782c0ec15e099f4b">&#9670;&#160;</a></span>node_FX_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a397d95a9bf7e7897a1be4db4934a844e">ConstView</a>&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">double</a>* [6]&gt; <a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html">kynema_fmb::beams::IntegrateResidualVectorElement</a>&lt; DeviceType &gt;::node_FX_</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8a20064c580b0a0783134ea970c71b8c" name="a8a20064c580b0a0783134ea970c71b8c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a20064c580b0a0783134ea970c71b8c">&#9670;&#160;</a></span>num_qps</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">size_t</a> <a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html">kynema_fmb::beams::IntegrateResidualVectorElement</a>&lt; DeviceType &gt;::num_qps</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af8aeff8a03270c36971820f1a6b4ca0c" name="af8aeff8a03270c36971820f1a6b4ca0c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8aeff8a03270c36971820f1a6b4ca0c">&#9670;&#160;</a></span>qp_FD1_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a397d95a9bf7e7897a1be4db4934a844e">ConstView</a>&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">double</a>* [6]&gt; <a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html">kynema_fmb::beams::IntegrateResidualVectorElement</a>&lt; DeviceType &gt;::qp_FD1_</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8456de1f5d93078193b159d1c8ed1152" name="a8456de1f5d93078193b159d1c8ed1152"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8456de1f5d93078193b159d1c8ed1152">&#9670;&#160;</a></span>qp_FD2_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a397d95a9bf7e7897a1be4db4934a844e">ConstView</a>&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">double</a>* [6]&gt; <a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html">kynema_fmb::beams::IntegrateResidualVectorElement</a>&lt; DeviceType &gt;::qp_FD2_</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac6f6d4f7daf54c7620d6aa9857ac772d" name="ac6f6d4f7daf54c7620d6aa9857ac772d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6f6d4f7daf54c7620d6aa9857ac772d">&#9670;&#160;</a></span>qp_FE1_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a397d95a9bf7e7897a1be4db4934a844e">ConstView</a>&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">double</a>* [6]&gt; <a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html">kynema_fmb::beams::IntegrateResidualVectorElement</a>&lt; DeviceType &gt;::qp_FE1_</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8fe107aea0689b2fef22e0066a4f26b0" name="a8fe107aea0689b2fef22e0066a4f26b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8fe107aea0689b2fef22e0066a4f26b0">&#9670;&#160;</a></span>qp_FE2_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a397d95a9bf7e7897a1be4db4934a844e">ConstView</a>&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">double</a>* [6]&gt; <a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html">kynema_fmb::beams::IntegrateResidualVectorElement</a>&lt; DeviceType &gt;::qp_FE2_</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a27387e37e44fb297d60a35d5ff806e9e" name="a27387e37e44fb297d60a35d5ff806e9e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27387e37e44fb297d60a35d5ff806e9e">&#9670;&#160;</a></span>qp_Fe_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a397d95a9bf7e7897a1be4db4934a844e">ConstView</a>&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">double</a>* [6]&gt; <a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html">kynema_fmb::beams::IntegrateResidualVectorElement</a>&lt; DeviceType &gt;::qp_Fe_</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8399051f4c26721fa50cf707a6d8903f" name="a8399051f4c26721fa50cf707a6d8903f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8399051f4c26721fa50cf707a6d8903f">&#9670;&#160;</a></span>qp_Fg_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a397d95a9bf7e7897a1be4db4934a844e">ConstView</a>&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">double</a>* [6]&gt; <a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html">kynema_fmb::beams::IntegrateResidualVectorElement</a>&lt; DeviceType &gt;::qp_Fg_</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab91acd2508b1be6947a3cc3d445a7ed2" name="ab91acd2508b1be6947a3cc3d445a7ed2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab91acd2508b1be6947a3cc3d445a7ed2">&#9670;&#160;</a></span>qp_Fi_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a397d95a9bf7e7897a1be4db4934a844e">ConstView</a>&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">double</a>* [6]&gt; <a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html">kynema_fmb::beams::IntegrateResidualVectorElement</a>&lt; DeviceType &gt;::qp_Fi_</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad6bc478919ead81ab9bd6a098f7356c1" name="ad6bc478919ead81ab9bd6a098f7356c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6bc478919ead81ab9bd6a098f7356c1">&#9670;&#160;</a></span>qp_jacobian_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a397d95a9bf7e7897a1be4db4934a844e">ConstView</a>&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">double</a>*&gt; <a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html">kynema_fmb::beams::IntegrateResidualVectorElement</a>&lt; DeviceType &gt;::qp_jacobian_</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8ea96aa23888d8534d1d0cbdd94a0b6f" name="a8ea96aa23888d8534d1d0cbdd94a0b6f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ea96aa23888d8534d1d0cbdd94a0b6f">&#9670;&#160;</a></span>qp_weight_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a397d95a9bf7e7897a1be4db4934a844e">ConstView</a>&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">double</a>*&gt; <a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html">kynema_fmb::beams::IntegrateResidualVectorElement</a>&lt; DeviceType &gt;::qp_weight_</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae04b8c327420e4b7a256385d0923e62e" name="ae04b8c327420e4b7a256385d0923e62e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae04b8c327420e4b7a256385d0923e62e">&#9670;&#160;</a></span>residual_vector_terms_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">View</a>&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">double</a>** [6]&gt; <a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html">kynema_fmb::beams::IntegrateResidualVectorElement</a>&lt; DeviceType &gt;::residual_vector_terms_</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6f150351f30c2e660c2d3337fe507eb0" name="a6f150351f30c2e660c2d3337fe507eb0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f150351f30c2e660c2d3337fe507eb0">&#9670;&#160;</a></span>shape_deriv_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a36872cb13aa80f4b03774ead26e53784">ConstLeftView</a>&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">double</a>**&gt; <a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html">kynema_fmb::beams::IntegrateResidualVectorElement</a>&lt; DeviceType &gt;::shape_deriv_</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6231c74ccf2b552424d36cbce0f43871" name="a6231c74ccf2b552424d36cbce0f43871"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6231c74ccf2b552424d36cbce0f43871">&#9670;&#160;</a></span>shape_interp_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a36872cb13aa80f4b03774ead26e53784">ConstLeftView</a>&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html#a9f6180adcafd465ead56be95d553c8da">double</a>**&gt; <a class="el" href="structkynema__fmb_1_1beams_1_1IntegrateResidualVectorElement.html">kynema_fmb::beams::IntegrateResidualVectorElement</a>&lt; DeviceType &gt;::shape_interp_</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
+<li>/home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/system/beams/<a class="el" href="integrate__residual__vector_8hpp_source.html">integrate_residual_vector.hpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023 - Present, MIT License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

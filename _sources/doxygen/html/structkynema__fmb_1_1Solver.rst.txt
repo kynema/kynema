@@ -1,0 +1,14 @@
+.. meta::276b1835d948167e20a9a4b2a26761b4a812b0d2ead602d0d0e2d4e780bb7f60320323b675bb91d1d8b2da4cd3eb793ca5eaf5caec6daba903938384827bc4f8
+
+:orphan:
+
+.. title:: Kynema API: kynema_fmb::Solver&lt; DeviceType &gt; Struct Template Reference
+
+Solver&lt; DeviceType &gt; Struct Template Reference
+====================================================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: structkynema__fmb_1_1Solver.html

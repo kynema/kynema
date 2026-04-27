@@ -1,0 +1,14 @@
+.. meta::439d26004011ad50d4a8363f8d6be594572bc8054494825f00632fff34c4f7f1da7f66a35ee3a2a3814e20a3cc35962e05c7bb04341a58ebcdee4332dcdce0f6
+
+:orphan:
+
+.. title:: Kynema API: kynema_fmb::state::CalculateDisplacement&lt; DeviceType &gt; Struct Template Reference
+
+CalculateDisplacement&lt; DeviceType &gt; Struct Template Reference
+===================================================================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: structkynema__fmb_1_1state_1_1CalculateDisplacement.html

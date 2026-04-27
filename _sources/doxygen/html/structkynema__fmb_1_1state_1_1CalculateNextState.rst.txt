@@ -1,0 +1,14 @@
+.. meta::c3b74bd02c01f000fd9b57bbfd6ee3f26e9c5eaab528bde77566cfcb9632d4b22718c10c780757f1345c5ccf1609b901cdab603a53b3601f70682347e7e61051
+
+:orphan:
+
+.. title:: Kynema API: kynema_fmb::state::CalculateNextState&lt; DeviceType &gt; Struct Template Reference
+
+CalculateNextState&lt; DeviceType &gt; Struct Template Reference
+================================================================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: structkynema__fmb_1_1state_1_1CalculateNextState.html

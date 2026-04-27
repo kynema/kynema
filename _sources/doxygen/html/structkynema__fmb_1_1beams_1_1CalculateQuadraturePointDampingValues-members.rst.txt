@@ -1,0 +1,14 @@
+.. meta::a2044f71c87064dc9a850153567422d6c3a195f827222ec7565805956c273a8485f739cada37b7c0c26727194a7e06bfb986f51f3e5829eb672747eb139433bb
+
+:orphan:
+
+.. title:: Kynema API: Member List
+
+Member List
+===========
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: structkynema__fmb_1_1beams_1_1CalculateQuadraturePointDampingValues-members.html

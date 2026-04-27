@@ -1,11 +1,11 @@
-.. meta::0d1469bc07bad196ae9c7912f54465b82d769da3bcf846c7fc052f927c1f3ff9d0d8d55480db30a3524b37c1767d4857deb0a341473bca03b308f4347ea32d7e
+.. meta::3926c8434ba8d8c1ab915ba77003ca356c5c9d0bd155e37fca6a58bfd76af927e075bd762dbdb2212f177a37c125fc65e9e2259bdca522a101d03aa7fd6791ed
 
 :orphan:
 
-.. title:: Kynema API: /home/runner/work/kynema/kynema/kynema/src/elements/beams/hollow_circle_properties.hpp Source File
+.. title:: Kynema API: /home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/elements/beams/hollow_circle_properties.hpp Source File
 
-/home/runner/work/kynema/kynema/kynema/src/elements/beams/hollow\_circle\_properties.hpp Source File
-====================================================================================================
+/home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/elements/beams/hollow\_circle\_properties.hpp Source File
+================================================================================================================
 
 .. container:: doxygen-content
 

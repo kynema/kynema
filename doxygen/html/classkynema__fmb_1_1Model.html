@@ -1,0 +1,2165 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kynema API: kynema_fmb::Model Class Reference &mdash; Kynema 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Kynema
+              <img src="../../_static/oturb_logo_v2.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/user.html">User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../theory/index.html">Theory Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/index.html">Developer Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/index.html">Benchmark Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../publications.html">Kynema-FMB Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../acknowledgement.html">Acknowledgements</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Kynema</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Kynema API: kynema_fmb::Model Class Reference</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/doxygen/html/classkynema__fmb_1_1Model.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="model-class-reference">
+<h1>Model Class Reference<a class="headerlink" href="#model-class-reference" title="Permalink to this heading"></a></h1>
+<div class="doxygen-content docutils container">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Kynema API: kynema_fmb::Model Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Kynema API
+   </div>
+   <div id="projectbrief">A flexible multibody structural dynamics code for wind turbines</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacekynema__fmb.html">kynema_fmb</a></li><li class="navelem"><a class="el" href="classkynema__fmb_1_1Model.html">Model</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
+<a href="classkynema__fmb_1_1Model-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">kynema_fmb::Model Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Struct to define the connectivity structure of elements, nodes, and constraints defining an Kynema problem.  
+ <a href="classkynema__fmb_1_1Model.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="model_8hpp_source.html">model.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a9b66a77051631e76a7df55ecbe3bd553" id="r_a9b66a77051631e76a7df55ecbe3bd553"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1Model.html#a9b66a77051631e76a7df55ecbe3bd553">Model</a> ()=default</td></tr>
+<tr class="memdesc:a9b66a77051631e76a7df55ecbe3bd553"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor.  <br /></td></tr>
+<tr class="separator:a9b66a77051631e76a7df55ecbe3bd553"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70e485d9cca27914e7e5819fe559fbdd" id="r_a70e485d9cca27914e7e5819fe559fbdd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1Model.html#a70e485d9cca27914e7e5819fe559fbdd">Model</a> (std::array&lt; double, 3 &gt; gravity)</td></tr>
+<tr class="memdesc:a70e485d9cca27914e7e5819fe559fbdd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor with gravity specified.  <br /></td></tr>
+<tr class="separator:a70e485d9cca27914e7e5819fe559fbdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c7f30f5f80203f9489c7071fca33888" id="r_a4c7f30f5f80203f9489c7071fca33888"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1Model.html#a4c7f30f5f80203f9489c7071fca33888">SetGravity</a> (double x, double y, double z)</td></tr>
+<tr class="memdesc:a4c7f30f5f80203f9489c7071fca33888"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the gravity components for the model.  <br /></td></tr>
+<tr class="separator:a4c7f30f5f80203f9489c7071fca33888"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a467b058882bf55325dc3359a34795904" id="r_a467b058882bf55325dc3359a34795904"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema__fmb_1_1NodeBuilder.html">NodeBuilder</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1Model.html#a467b058882bf55325dc3359a34795904">AddNode</a> ()</td></tr>
+<tr class="memdesc:a467b058882bf55325dc3359a34795904"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a node to the model.  <br /></td></tr>
+<tr class="separator:a467b058882bf55325dc3359a34795904"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a455f2fe537f08b3ac29911765860db28" id="r_a455f2fe537f08b3ac29911765860db28"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structkynema__fmb_1_1Node.html">Node</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1Model.html#a455f2fe537f08b3ac29911765860db28">GetNode</a> (size_t id) const</td></tr>
+<tr class="memdesc:a455f2fe537f08b3ac29911765860db28"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a node by ID.  <br /></td></tr>
+<tr class="separator:a455f2fe537f08b3ac29911765860db28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae342d01f225bc8d734be446e4aec9643" id="r_ae342d01f225bc8d734be446e4aec9643"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1Node.html">Node</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1Model.html#ae342d01f225bc8d734be446e4aec9643">GetNode</a> (size_t id)</td></tr>
+<tr class="memdesc:ae342d01f225bc8d734be446e4aec9643"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a node by ID.  <br /></td></tr>
+<tr class="separator:ae342d01f225bc8d734be446e4aec9643"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a608f9ce90bdeb4120acc7b61e8c4d26c" id="r_a608f9ce90bdeb4120acc7b61e8c4d26c"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1Model.html#a608f9ce90bdeb4120acc7b61e8c4d26c">NumNodes</a> () const</td></tr>
+<tr class="memdesc:a608f9ce90bdeb4120acc7b61e8c4d26c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the number of nodes present in the model.  <br /></td></tr>
+<tr class="separator:a608f9ce90bdeb4120acc7b61e8c4d26c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d81ac071cc5f986ccf1b297ec7e43e8" id="r_a7d81ac071cc5f986ccf1b297ec7e43e8"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; <a class="el" href="structkynema__fmb_1_1Node.html">Node</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1Model.html#a7d81ac071cc5f986ccf1b297ec7e43e8">GetNodes</a> () const</td></tr>
+<tr class="memdesc:a7d81ac071cc5f986ccf1b297ec7e43e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns constant reference to nodes vector.  <br /></td></tr>
+<tr class="separator:a7d81ac071cc5f986ccf1b297ec7e43e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a337f37d0184d1a9b3e1b40ff46cc1e90" id="r_a337f37d0184d1a9b3e1b40ff46cc1e90"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1Model.html#a337f37d0184d1a9b3e1b40ff46cc1e90">AddBeamElement</a> (std::span&lt; const size_t &gt; node_ids, std::span&lt; const <a class="el" href="structkynema__fmb_1_1BeamSection.html">BeamSection</a> &gt; sections, std::span&lt; const std::array&lt; double, 2 &gt; &gt; quadrature, const std::array&lt; double, 6 &gt; &amp;mu={0., 0., 0., 0., 0., 0.})</td></tr>
+<tr class="memdesc:a337f37d0184d1a9b3e1b40ff46cc1e90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a beam element to the model.  <br /></td></tr>
+<tr class="separator:a337f37d0184d1a9b3e1b40ff46cc1e90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1600b0582f3484d0948355e36c72f180" id="r_a1600b0582f3484d0948355e36c72f180"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structkynema__fmb_1_1BeamElement.html">BeamElement</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1Model.html#a1600b0582f3484d0948355e36c72f180">GetBeamElement</a> (size_t id) const</td></tr>
+<tr class="memdesc:a1600b0582f3484d0948355e36c72f180"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a beam element by ID.  <br /></td></tr>
+<tr class="separator:a1600b0582f3484d0948355e36c72f180"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82af2717843f60745064d1c07ed68c26" id="r_a82af2717843f60745064d1c07ed68c26"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1BeamElement.html">BeamElement</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1Model.html#a82af2717843f60745064d1c07ed68c26">GetBeamElement</a> (size_t id)</td></tr>
+<tr class="memdesc:a82af2717843f60745064d1c07ed68c26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a beam element by ID.  <br /></td></tr>
+<tr class="separator:a82af2717843f60745064d1c07ed68c26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6728b7127a0455f3e484d998e3497bf7" id="r_a6728b7127a0455f3e484d998e3497bf7"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; <a class="el" href="structkynema__fmb_1_1BeamElement.html">BeamElement</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1Model.html#a6728b7127a0455f3e484d998e3497bf7">GetBeamElements</a> () const</td></tr>
+<tr class="memdesc:a6728b7127a0455f3e484d998e3497bf7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a reference to the beam elements present in the model.  <br /></td></tr>
+<tr class="separator:a6728b7127a0455f3e484d998e3497bf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7a379aa2e981ae465e4ef284f98b4fc" id="r_ae7a379aa2e981ae465e4ef284f98b4fc"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1Model.html#ae7a379aa2e981ae465e4ef284f98b4fc">NumBeamElements</a> () const</td></tr>
+<tr class="memdesc:ae7a379aa2e981ae465e4ef284f98b4fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the number of beam elements present in the model.  <br /></td></tr>
+<tr class="separator:ae7a379aa2e981ae465e4ef284f98b4fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0acf839b2c2be5cc21945bb7319bcb59" id="r_a0acf839b2c2be5cc21945bb7319bcb59"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1BeamsInput.html">BeamsInput</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1Model.html#a0acf839b2c2be5cc21945bb7319bcb59">CreateBeamsInput</a> () const</td></tr>
+<tr class="memdesc:a0acf839b2c2be5cc21945bb7319bcb59"><td class="mdescLeft">&#160;</td><td class="mdescRight">Createsa <a class="el" href="structkynema__fmb_1_1Beams.html" title="Contains the field variables needed to compute the per-element contributions to the residual vector a...">Beams</a> input file based on the beam elements in the model.  <br /></td></tr>
+<tr class="separator:a0acf839b2c2be5cc21945bb7319bcb59"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a459491c077960ec4d2dc69609abe193e" id="r_a459491c077960ec4d2dc69609abe193e"><td class="memTemplParams" colspan="2">template&lt;typename DeviceType &gt; </td></tr>
+<tr class="memitem:a459491c077960ec4d2dc69609abe193e"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1Beams.html">Beams</a>&lt; DeviceType &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1Model.html#a459491c077960ec4d2dc69609abe193e">CreateBeams</a> () const</td></tr>
+<tr class="memdesc:a459491c077960ec4d2dc69609abe193e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Createsa <a class="el" href="structkynema__fmb_1_1Beams.html" title="Contains the field variables needed to compute the per-element contributions to the residual vector a...">Beams</a> structure based on the beam elements in the model.  <br /></td></tr>
+<tr class="separator:a459491c077960ec4d2dc69609abe193e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0daac904165189836c31bf1dec061bc" id="r_ac0daac904165189836c31bf1dec061bc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1Model.html#ac0daac904165189836c31bf1dec061bc">TranslateBeam</a> (size_t beam_elem_id, std::span&lt; const double, 3 &gt; displacement)</td></tr>
+<tr class="memdesc:ac0daac904165189836c31bf1dec061bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Translate all beam nodes by given displacement.  <br /></td></tr>
+<tr class="separator:ac0daac904165189836c31bf1dec061bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac35cf3ddb4d848d103119f572ed7dbe0" id="r_ac35cf3ddb4d848d103119f572ed7dbe0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1Model.html#ac35cf3ddb4d848d103119f572ed7dbe0">RotateBeamAboutPoint</a> (size_t beam_elem_id, std::span&lt; const double, 4 &gt; displacement_quaternion, std::span&lt; const double, 3 &gt; point)</td></tr>
+<tr class="memdesc:ac35cf3ddb4d848d103119f572ed7dbe0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rotate all beam nodes by given quaternion about a given point.  <br /></td></tr>
+<tr class="separator:ac35cf3ddb4d848d103119f572ed7dbe0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff1e22a4523de61af4dddb5076b51cec" id="r_aff1e22a4523de61af4dddb5076b51cec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1Model.html#aff1e22a4523de61af4dddb5076b51cec">SetBeamVelocityAboutPoint</a> (size_t beam_elem_id, std::span&lt; const double, 6 &gt; velocity, std::span&lt; const double, 3 &gt; point)</td></tr>
+<tr class="memdesc:aff1e22a4523de61af4dddb5076b51cec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the translational and rotational velocity of the beam about a given point.  <br /></td></tr>
+<tr class="separator:aff1e22a4523de61af4dddb5076b51cec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af50f3305688cc7dd9cd5702fe2ae85f4" id="r_af50f3305688cc7dd9cd5702fe2ae85f4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1Model.html#af50f3305688cc7dd9cd5702fe2ae85f4">SetBeamAccelerationAboutPoint</a> (size_t beam_elem_id, std::span&lt; const double, 6 &gt; acceleration, std::span&lt; const double, 3 &gt; omega, std::span&lt; const double, 3 &gt; point)</td></tr>
+<tr class="memdesc:af50f3305688cc7dd9cd5702fe2ae85f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the acceleration of the beam about a given point.  <br /></td></tr>
+<tr class="separator:af50f3305688cc7dd9cd5702fe2ae85f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76cd620ba42b25a3c6e505bfa3e8c28a" id="r_a76cd620ba42b25a3c6e505bfa3e8c28a"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1Model.html#a76cd620ba42b25a3c6e505bfa3e8c28a">AddMassElement</a> (const size_t node_id, const std::array&lt; std::array&lt; double, 6 &gt;, 6 &gt; &amp;mass)</td></tr>
+<tr class="memdesc:a76cd620ba42b25a3c6e505bfa3e8c28a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a mass element to the model.  <br /></td></tr>
+<tr class="separator:a76cd620ba42b25a3c6e505bfa3e8c28a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d5a61335b3af18d24710ebf169a4503" id="r_a4d5a61335b3af18d24710ebf169a4503"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structkynema__fmb_1_1MassElement.html">MassElement</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1Model.html#a4d5a61335b3af18d24710ebf169a4503">GetMassElement</a> (size_t id) const</td></tr>
+<tr class="memdesc:a4d5a61335b3af18d24710ebf169a4503"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a mass element by ID.  <br /></td></tr>
+<tr class="separator:a4d5a61335b3af18d24710ebf169a4503"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9da7eb5721fb8e4eb9b7259c67805aa" id="r_af9da7eb5721fb8e4eb9b7259c67805aa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1MassElement.html">MassElement</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1Model.html#af9da7eb5721fb8e4eb9b7259c67805aa">GetMassElement</a> (size_t id)</td></tr>
+<tr class="memdesc:af9da7eb5721fb8e4eb9b7259c67805aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a mass element by ID.  <br /></td></tr>
+<tr class="separator:af9da7eb5721fb8e4eb9b7259c67805aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c8c87c0c4d43a20844a10102b91424d" id="r_a7c8c87c0c4d43a20844a10102b91424d"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; <a class="el" href="structkynema__fmb_1_1MassElement.html">MassElement</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1Model.html#a7c8c87c0c4d43a20844a10102b91424d">GetMassElements</a> () const</td></tr>
+<tr class="memdesc:a7c8c87c0c4d43a20844a10102b91424d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a reference to the mass elements present in the model.  <br /></td></tr>
+<tr class="separator:a7c8c87c0c4d43a20844a10102b91424d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a447c7b400a2ea68428a4697d6e1654aa" id="r_a447c7b400a2ea68428a4697d6e1654aa"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1Model.html#a447c7b400a2ea68428a4697d6e1654aa">NumMassElements</a> () const</td></tr>
+<tr class="memdesc:a447c7b400a2ea68428a4697d6e1654aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the number of mass elements present in the model.  <br /></td></tr>
+<tr class="separator:a447c7b400a2ea68428a4697d6e1654aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a93557564d811e3fffcb4265e003e37a0" id="r_a93557564d811e3fffcb4265e003e37a0"><td class="memTemplParams" colspan="2">template&lt;typename DeviceType &gt; </td></tr>
+<tr class="memitem:a93557564d811e3fffcb4265e003e37a0"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1Masses.html">Masses</a>&lt; DeviceType &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1Model.html#a93557564d811e3fffcb4265e003e37a0">CreateMasses</a> () const</td></tr>
+<tr class="memdesc:a93557564d811e3fffcb4265e003e37a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a a masses struct based on the mass elements present in the model.  <br /></td></tr>
+<tr class="separator:a93557564d811e3fffcb4265e003e37a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab075fcd8e069cbdf763eebf0dbac8633" id="r_ab075fcd8e069cbdf763eebf0dbac8633"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1Model.html#ab075fcd8e069cbdf763eebf0dbac8633">AddSpringElement</a> (const size_t node1_id, const size_t node2_id, const double stiffness, const double undeformed_length)</td></tr>
+<tr class="memdesc:ab075fcd8e069cbdf763eebf0dbac8633"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a spring element to the model.  <br /></td></tr>
+<tr class="separator:ab075fcd8e069cbdf763eebf0dbac8633"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae4e688be39205a2f9b9a166cbc4aa6c" id="r_aae4e688be39205a2f9b9a166cbc4aa6c"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structkynema__fmb_1_1SpringElement.html">SpringElement</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1Model.html#aae4e688be39205a2f9b9a166cbc4aa6c">GetSpringElement</a> (size_t id) const</td></tr>
+<tr class="memdesc:aae4e688be39205a2f9b9a166cbc4aa6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a spring element by ID.  <br /></td></tr>
+<tr class="separator:aae4e688be39205a2f9b9a166cbc4aa6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95dc19cd188e5dc97fc61420534af063" id="r_a95dc19cd188e5dc97fc61420534af063"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1SpringElement.html">SpringElement</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1Model.html#a95dc19cd188e5dc97fc61420534af063">GetSpringElement</a> (size_t id)</td></tr>
+<tr class="memdesc:a95dc19cd188e5dc97fc61420534af063"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a spring element by ID.  <br /></td></tr>
+<tr class="separator:a95dc19cd188e5dc97fc61420534af063"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7eb90d2bcf269bc2284108308f540d8a" id="r_a7eb90d2bcf269bc2284108308f540d8a"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1Model.html#a7eb90d2bcf269bc2284108308f540d8a">NumSpringElements</a> () const</td></tr>
+<tr class="memdesc:a7eb90d2bcf269bc2284108308f540d8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the number of spring elements present in the model.  <br /></td></tr>
+<tr class="separator:a7eb90d2bcf269bc2284108308f540d8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f8db9a13d0abf4306687e149123a4ef" id="r_a9f8db9a13d0abf4306687e149123a4ef"><td class="memTemplParams" colspan="2">template&lt;typename DeviceType &gt; </td></tr>
+<tr class="memitem:a9f8db9a13d0abf4306687e149123a4ef"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1Springs.html">Springs</a>&lt; DeviceType &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1Model.html#a9f8db9a13d0abf4306687e149123a4ef">CreateSprings</a> () const</td></tr>
+<tr class="memdesc:a9f8db9a13d0abf4306687e149123a4ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a <a class="el" href="structkynema__fmb_1_1Springs.html" title="Contains field variables for spring elements to compute per-element contributions to the residual vec...">Springs</a> struct based on the spring elements in the model.  <br /></td></tr>
+<tr class="separator:a9f8db9a13d0abf4306687e149123a4ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a932ec34a0774ed477c6f32fcacd0c109" id="r_a932ec34a0774ed477c6f32fcacd0c109"><td class="memTemplParams" colspan="2">template&lt;typename DeviceType &gt; </td></tr>
+<tr class="memitem:a932ec34a0774ed477c6f32fcacd0c109"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1Elements.html">Elements</a>&lt; DeviceType &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1Model.html#a932ec34a0774ed477c6f32fcacd0c109">CreateElements</a> () const</td></tr>
+<tr class="memdesc:a932ec34a0774ed477c6f32fcacd0c109"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an <a class="el" href="structkynema__fmb_1_1Elements.html" title="A container providing handle to all structural elements present in the model.">Elements</a> struct with <a class="el" href="structkynema__fmb_1_1Beams.html" title="Contains the field variables needed to compute the per-element contributions to the residual vector a...">Beams</a>, <a class="el" href="structkynema__fmb_1_1Masses.html" title="Contains field variables for mass elements (aka, rigid bodies) to compute per-element contributions t...">Masses</a>, and <a class="el" href="structkynema__fmb_1_1Springs.html" title="Contains field variables for spring elements to compute per-element contributions to the residual vec...">Springs</a>.  <br /></td></tr>
+<tr class="separator:a932ec34a0774ed477c6f32fcacd0c109"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace6953317eaf2e667a8d55fc17660960" id="r_ace6953317eaf2e667a8d55fc17660960"><td class="memTemplParams" colspan="2">template&lt;typename DeviceType &gt; </td></tr>
+<tr class="memitem:ace6953317eaf2e667a8d55fc17660960"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1State.html">State</a>&lt; DeviceType &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1Model.html#ace6953317eaf2e667a8d55fc17660960">CreateState</a> () const</td></tr>
+<tr class="memdesc:ace6953317eaf2e667a8d55fc17660960"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an <a class="el" href="structkynema__fmb_1_1State.html" title="Container for storing the complete system state of the simulation at a given time increment.">State</a> struct based on the nodes in this model.  <br /></td></tr>
+<tr class="separator:ace6953317eaf2e667a8d55fc17660960"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80ad6e5e836d9088cfd70d3879e2d04a" id="r_a80ad6e5e836d9088cfd70d3879e2d04a"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1Model.html#a80ad6e5e836d9088cfd70d3879e2d04a">AddFixedBC</a> (const size_t node_id)</td></tr>
+<tr class="memdesc:a80ad6e5e836d9088cfd70d3879e2d04a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a fixed boundary condition constraint to the model and returns the ID.  <br /></td></tr>
+<tr class="separator:a80ad6e5e836d9088cfd70d3879e2d04a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b21fa036c5dabc7181e3e74b9912873" id="r_a8b21fa036c5dabc7181e3e74b9912873"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1Model.html#a8b21fa036c5dabc7181e3e74b9912873">AddPrescribedBC</a> (const size_t node_id, const std::array&lt; double, 7 &gt; &amp;initial_displacement={0., 0., 0., 1., 0., 0., 0.})</td></tr>
+<tr class="memdesc:a8b21fa036c5dabc7181e3e74b9912873"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a prescribed boundary condition constraint to the model and returns the ID.  <br /></td></tr>
+<tr class="separator:a8b21fa036c5dabc7181e3e74b9912873"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8352bcaa9e26315842e4f50054a9840a" id="r_a8352bcaa9e26315842e4f50054a9840a"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1Model.html#a8352bcaa9e26315842e4f50054a9840a">AddRigidJointConstraint</a> (std::span&lt; const size_t, 2 &gt; node_ids)</td></tr>
+<tr class="memdesc:a8352bcaa9e26315842e4f50054a9840a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a rigid constraint to the model and returns the ID.  <br /></td></tr>
+<tr class="separator:a8352bcaa9e26315842e4f50054a9840a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30f6944391ecc5bce0c6f83ac252ddd7" id="r_a30f6944391ecc5bce0c6f83ac252ddd7"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1Model.html#a30f6944391ecc5bce0c6f83ac252ddd7">AddRevoluteJointConstraint</a> (std::span&lt; const size_t, 2 &gt; node_ids, std::span&lt; const double, 3 &gt; axis, double *torque)</td></tr>
+<tr class="memdesc:a30f6944391ecc5bce0c6f83ac252ddd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a revolute/hinge constraint to the model and returns the ID.  <br /></td></tr>
+<tr class="separator:a30f6944391ecc5bce0c6f83ac252ddd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afaebe387f190a52fa04c9337f83b0ca1" id="r_afaebe387f190a52fa04c9337f83b0ca1"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1Model.html#afaebe387f190a52fa04c9337f83b0ca1">AddRotationControl</a> (std::span&lt; const size_t, 2 &gt; node_ids, std::span&lt; const double, 3 &gt; axis, double *control)</td></tr>
+<tr class="memdesc:afaebe387f190a52fa04c9337f83b0ca1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a rotation control constraint to the model and returns the ID.  <br /></td></tr>
+<tr class="separator:afaebe387f190a52fa04c9337f83b0ca1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6265efadda5c324313fd8f35891dde82" id="r_a6265efadda5c324313fd8f35891dde82"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1Model.html#a6265efadda5c324313fd8f35891dde82">AddFixedBC3DOFs</a> (const size_t node_id)</td></tr>
+<tr class="memdesc:a6265efadda5c324313fd8f35891dde82"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a fixed boundary condition constraint (6DOFs to 3DOFs) to the model and returns the ID.  <br /></td></tr>
+<tr class="separator:a6265efadda5c324313fd8f35891dde82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1149a38ef6ff67ced9163ccf9cbce0eb" id="r_a1149a38ef6ff67ced9163ccf9cbce0eb"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1Model.html#a1149a38ef6ff67ced9163ccf9cbce0eb">AddPrescribedBC3DOFs</a> (const size_t node_id)</td></tr>
+<tr class="memdesc:a1149a38ef6ff67ced9163ccf9cbce0eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a prescribed boundary condition constraint (6DOFs to 3DOFs) to the model and returns the ID.  <br /></td></tr>
+<tr class="separator:a1149a38ef6ff67ced9163ccf9cbce0eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87ad61ff693121d171939c3fc034e1ec" id="r_a87ad61ff693121d171939c3fc034e1ec"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1Model.html#a87ad61ff693121d171939c3fc034e1ec">AddRigidJoint6DOFsTo3DOFs</a> (std::span&lt; const size_t, 2 &gt; node_ids)</td></tr>
+<tr class="memdesc:a87ad61ff693121d171939c3fc034e1ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a rigid joint constraint (6DOFs to 3DOFs) to the model and returns the ID.  <br /></td></tr>
+<tr class="separator:a87ad61ff693121d171939c3fc034e1ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae076df35ac2e300017f9d2eecabb0c52" id="r_ae076df35ac2e300017f9d2eecabb0c52"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1Model.html#ae076df35ac2e300017f9d2eecabb0c52">NumConstraints</a> () const</td></tr>
+<tr class="memdesc:ae076df35ac2e300017f9d2eecabb0c52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the number of constraints present in the model.  <br /></td></tr>
+<tr class="separator:ae076df35ac2e300017f9d2eecabb0c52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2eca39aecd60e37d61357edc736bc689" id="r_a2eca39aecd60e37d61357edc736bc689"><td class="memTemplParams" colspan="2">template&lt;typename DeviceType &gt; </td></tr>
+<tr class="memitem:a2eca39aecd60e37d61357edc736bc689"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1Constraints.html">Constraints</a>&lt; DeviceType &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1Model.html#a2eca39aecd60e37d61357edc736bc689">CreateConstraints</a> () const</td></tr>
+<tr class="memdesc:a2eca39aecd60e37d61357edc736bc689"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a <a class="el" href="structkynema__fmb_1_1Constraints.html" title="Container class for managing multiple constraints in a simulation.">Constraints</a> object initialized from the model constraints.  <br /></td></tr>
+<tr class="separator:a2eca39aecd60e37d61357edc736bc689"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f1ad3d5722ce0d8edd9d55aa6242016" id="r_a4f1ad3d5722ce0d8edd9d55aa6242016"><td class="memTemplParams" colspan="2">template&lt;typename DeviceType  = Kokkos::Device&lt;            Kokkos::DefaultExecutionSpace, Kokkos::DefaultExecutionSpace::memory_space&gt;&gt; </td></tr>
+<tr class="memitem:a4f1ad3d5722ce0d8edd9d55aa6242016"><td class="memTemplItemLeft" align="right" valign="top">std::tuple&lt; <a class="el" href="structkynema__fmb_1_1State.html">State</a>&lt; DeviceType &gt;, <a class="el" href="structkynema__fmb_1_1Elements.html">Elements</a>&lt; DeviceType &gt;, <a class="el" href="structkynema__fmb_1_1Constraints.html">Constraints</a>&lt; DeviceType &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1Model.html#a4f1ad3d5722ce0d8edd9d55aa6242016">CreateSystem</a> () const</td></tr>
+<tr class="memdesc:a4f1ad3d5722ce0d8edd9d55aa6242016"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a <a class="el" href="structkynema__fmb_1_1State.html" title="Container for storing the complete system state of the simulation at a given time increment.">State</a>, <a class="el" href="structkynema__fmb_1_1Elements.html" title="A container providing handle to all structural elements present in the model.">Elements</a>, and <a class="el" href="structkynema__fmb_1_1Constraints.html" title="Container class for managing multiple constraints in a simulation.">Constraints</a> object initialized from the model.  <br /></td></tr>
+<tr class="separator:a4f1ad3d5722ce0d8edd9d55aa6242016"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a469fca1c557eeb75c42cc782ec46c572" id="r_a469fca1c557eeb75c42cc782ec46c572"><td class="memTemplParams" colspan="2">template&lt;typename DeviceType  = Kokkos::Device&lt;            Kokkos::DefaultExecutionSpace, Kokkos::DefaultExecutionSpace::memory_space&gt;&gt; </td></tr>
+<tr class="memitem:a469fca1c557eeb75c42cc782ec46c572"><td class="memTemplItemLeft" align="right" valign="top">std::tuple&lt; <a class="el" href="structkynema__fmb_1_1State.html">State</a>&lt; DeviceType &gt;, <a class="el" href="structkynema__fmb_1_1Elements.html">Elements</a>&lt; DeviceType &gt;, <a class="el" href="structkynema__fmb_1_1Constraints.html">Constraints</a>&lt; DeviceType &gt;, <a class="el" href="structkynema__fmb_1_1Solver.html">Solver</a>&lt; DeviceType &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1Model.html#a469fca1c557eeb75c42cc782ec46c572">CreateSystemWithSolver</a> () const</td></tr>
+<tr class="memdesc:a469fca1c557eeb75c42cc782ec46c572"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a <a class="el" href="structkynema__fmb_1_1State.html" title="Container for storing the complete system state of the simulation at a given time increment.">State</a>, <a class="el" href="structkynema__fmb_1_1Elements.html" title="A container providing handle to all structural elements present in the model.">Elements</a>, <a class="el" href="structkynema__fmb_1_1Constraints.html" title="Container class for managing multiple constraints in a simulation.">Constraints</a>, and <a class="el" href="structkynema__fmb_1_1Solver.html" title="This object manages the assembly and solution of linear system arising from the generalized-alpha bas...">Solver</a> object initialized from the model.  <br /></td></tr>
+<tr class="separator:a469fca1c557eeb75c42cc782ec46c572"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69e191bcbe2ccea675ef22d870e30a26" id="r_a69e191bcbe2ccea675ef22d870e30a26"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classkynema__fmb_1_1model_1_1MeshConnectivity.html">model::MeshConnectivity</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1Model.html#a69e191bcbe2ccea675ef22d870e30a26">GetMeshConnectivity</a> () const</td></tr>
+<tr class="memdesc:a69e191bcbe2ccea675ef22d870e30a26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the mesh connectivity.  <br /></td></tr>
+<tr class="separator:a69e191bcbe2ccea675ef22d870e30a26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae31b9f87b0cb4930fa7ba9e736084b73" id="r_ae31b9f87b0cb4930fa7ba9e736084b73"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema__fmb_1_1model_1_1MeshConnectivity.html">model::MeshConnectivity</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1Model.html#ae31b9f87b0cb4930fa7ba9e736084b73">GetMeshConnectivity</a> ()</td></tr>
+<tr class="memdesc:ae31b9f87b0cb4930fa7ba9e736084b73"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the mesh connectivity.  <br /></td></tr>
+<tr class="separator:ae31b9f87b0cb4930fa7ba9e736084b73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e96877fa03f92289a84367151b68c28" id="r_a7e96877fa03f92289a84367151b68c28"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1Model.html#a7e96877fa03f92289a84367151b68c28">ExportMeshConnectivityToYAML</a> (const std::string &amp;filename=&quot;mesh_connectivity.yaml&quot;) const</td></tr>
+<tr class="memdesc:a7e96877fa03f92289a84367151b68c28"><td class="mdescLeft">&#160;</td><td class="mdescRight">Export mesh connectivity to a YAML file.  <br /></td></tr>
+<tr class="separator:a7e96877fa03f92289a84367151b68c28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:a562309376a63a6eaf7275af909f3d6fb" id="r_a562309376a63a6eaf7275af909f3d6fb"><td class="memItemLeft" align="right" valign="top">static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1Model.html#a562309376a63a6eaf7275af909f3d6fb">InvalidNodeID</a> {0U}</td></tr>
+<tr class="memdesc:a562309376a63a6eaf7275af909f3d6fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents an invalid node in constraints that only uses the target node.  <br /></td></tr>
+<tr class="separator:a562309376a63a6eaf7275af909f3d6fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Struct to define the connectivity structure of elements, nodes, and constraints defining an Kynema problem. </p>
+<p>A model is a collection of nodes, elements, and constraints that define the geometry and relationships between components in an Kynema problem. <a class="el" href="classkynema__fmb_1_1Model.html" title="Struct to define the connectivity structure of elements, nodes, and constraints defining an Kynema pr...">Model</a> also provides methods to consistantly manipulate the nodes associated with a given element (for example, rotating all nodes in a beam) to ease the process of defining problems. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a9b66a77051631e76a7df55ecbe3bd553" name="a9b66a77051631e76a7df55ecbe3bd553"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b66a77051631e76a7df55ecbe3bd553">&#9670;&#160;</a></span>Model() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">kynema_fmb::Model::Model </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Default constructor. </p>
+
+</div>
+</div>
+<a id="a70e485d9cca27914e7e5819fe559fbdd" name="a70e485d9cca27914e7e5819fe559fbdd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a70e485d9cca27914e7e5819fe559fbdd">&#9670;&#160;</a></span>Model() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">kynema_fmb::Model::Model </td>
+          <td>(</td>
+          <td class="paramtype">std::array&lt; double, 3 &gt;&#160;</td>
+          <td class="paramname"><em>gravity</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructor with gravity specified. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">gravity</td><td>The gravity vector that will be applied during the simulation </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a337f37d0184d1a9b3e1b40ff46cc1e90" name="a337f37d0184d1a9b3e1b40ff46cc1e90"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a337f37d0184d1a9b3e1b40ff46cc1e90">&#9670;&#160;</a></span>AddBeamElement()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t kynema_fmb::Model::AddBeamElement </td>
+          <td>(</td>
+          <td class="paramtype">std::span&lt; const size_t &gt;&#160;</td>
+          <td class="paramname"><em>node_ids</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::span&lt; const <a class="el" href="structkynema__fmb_1_1BeamSection.html">BeamSection</a> &gt;&#160;</td>
+          <td class="paramname"><em>sections</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::span&lt; const std::array&lt; double, 2 &gt; &gt;&#160;</td>
+          <td class="paramname"><em>quadrature</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::array&lt; double, 6 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>mu</em> = <code>{0.,&#160;0.,&#160;0.,&#160;0.,&#160;0.,&#160;0.}</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Adds a beam element to the model. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node_ids</td><td>A list of the node IDs to be contained in the beam </td></tr>
+    <tr><td class="paramname">sections</td><td>The physical properties defined at each quadrature point </td></tr>
+    <tr><td class="paramname">quadrature</td><td>The quadrature point locations and weights </td></tr>
+    <tr><td class="paramname">mu</td><td>Stiffness-proportional damping coefficients</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the index of the newly added beam </dd></dl>
+
+</div>
+</div>
+<a id="a80ad6e5e836d9088cfd70d3879e2d04a" name="a80ad6e5e836d9088cfd70d3879e2d04a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a80ad6e5e836d9088cfd70d3879e2d04a">&#9670;&#160;</a></span>AddFixedBC()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t kynema_fmb::Model::AddFixedBC </td>
+          <td>(</td>
+          <td class="paramtype">const size_t&#160;</td>
+          <td class="paramname"><em>node_id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Adds a fixed boundary condition constraint to the model and returns the ID. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node_id</td><td>the ID of the node where the constraint is to be added </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The ID of the created constraint </dd></dl>
+
+</div>
+</div>
+<a id="a6265efadda5c324313fd8f35891dde82" name="a6265efadda5c324313fd8f35891dde82"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6265efadda5c324313fd8f35891dde82">&#9670;&#160;</a></span>AddFixedBC3DOFs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t kynema_fmb::Model::AddFixedBC3DOFs </td>
+          <td>(</td>
+          <td class="paramtype">const size_t&#160;</td>
+          <td class="paramname"><em>node_id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Adds a fixed boundary condition constraint (6DOFs to 3DOFs) to the model and returns the ID. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node_id</td><td>The node ID where the constraint will be applied </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the ID of the created constraint </dd></dl>
+
+</div>
+</div>
+<a id="a76cd620ba42b25a3c6e505bfa3e8c28a" name="a76cd620ba42b25a3c6e505bfa3e8c28a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76cd620ba42b25a3c6e505bfa3e8c28a">&#9670;&#160;</a></span>AddMassElement()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t kynema_fmb::Model::AddMassElement </td>
+          <td>(</td>
+          <td class="paramtype">const size_t&#160;</td>
+          <td class="paramname"><em>node_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::array&lt; std::array&lt; double, 6 &gt;, 6 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>mass</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Adds a mass element to the model. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node_id</td><td>ID of the node where the mass element will be placed </td></tr>
+    <tr><td class="paramname">mass</td><td>The inertia matrix of the element</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The index of the newly added element </dd></dl>
+
+</div>
+</div>
+<a id="a467b058882bf55325dc3359a34795904" name="a467b058882bf55325dc3359a34795904"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a467b058882bf55325dc3359a34795904">&#9670;&#160;</a></span>AddNode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classkynema__fmb_1_1NodeBuilder.html">NodeBuilder</a> kynema_fmb::Model::AddNode </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Adds a node to the model. </p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classkynema__fmb_1_1NodeBuilder.html" title="Builder class for constructing and configuring Node objects.">NodeBuilder</a> object wrapping the newly added node </dd></dl>
+
+</div>
+</div>
+<a id="a8b21fa036c5dabc7181e3e74b9912873" name="a8b21fa036c5dabc7181e3e74b9912873"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b21fa036c5dabc7181e3e74b9912873">&#9670;&#160;</a></span>AddPrescribedBC()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t kynema_fmb::Model::AddPrescribedBC </td>
+          <td>(</td>
+          <td class="paramtype">const size_t&#160;</td>
+          <td class="paramname"><em>node_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::array&lt; double, 7 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>initial_displacement</em> = <code>{0.,&#160;0.,&#160;0.,&#160;1.,&#160;0.,&#160;0.,&#160;0.}</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Adds a prescribed boundary condition constraint to the model and returns the ID. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node_id</td><td>the ID of the node where the constraint is to be added </td></tr>
+    <tr><td class="paramname">initial_displacement</td><td>The displacement of the node to be forced on the node </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the ID of the created constraint </dd></dl>
+
+</div>
+</div>
+<a id="a1149a38ef6ff67ced9163ccf9cbce0eb" name="a1149a38ef6ff67ced9163ccf9cbce0eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1149a38ef6ff67ced9163ccf9cbce0eb">&#9670;&#160;</a></span>AddPrescribedBC3DOFs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t kynema_fmb::Model::AddPrescribedBC3DOFs </td>
+          <td>(</td>
+          <td class="paramtype">const size_t&#160;</td>
+          <td class="paramname"><em>node_id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Adds a prescribed boundary condition constraint (6DOFs to 3DOFs) to the model and returns the ID. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node_id</td><td>The node ID where the constraint will be applied </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the ID of the created constraint </dd></dl>
+
+</div>
+</div>
+<a id="a30f6944391ecc5bce0c6f83ac252ddd7" name="a30f6944391ecc5bce0c6f83ac252ddd7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30f6944391ecc5bce0c6f83ac252ddd7">&#9670;&#160;</a></span>AddRevoluteJointConstraint()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t kynema_fmb::Model::AddRevoluteJointConstraint </td>
+          <td>(</td>
+          <td class="paramtype">std::span&lt; const size_t, 2 &gt;&#160;</td>
+          <td class="paramname"><em>node_ids</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::span&lt; const double, 3 &gt;&#160;</td>
+          <td class="paramname"><em>axis</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>torque</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Adds a revolute/hinge constraint to the model and returns the ID. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node_ids</td><td>the IDs of the two nodes to be linked by the constraint </td></tr>
+    <tr><td class="paramname">axis</td><td>The axis about which the torque force will be applied </td></tr>
+    <tr><td class="paramname">torque</td><td>A pointer to the location in memory where the torque will be set </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the ID of the created constraint </dd></dl>
+
+</div>
+</div>
+<a id="a87ad61ff693121d171939c3fc034e1ec" name="a87ad61ff693121d171939c3fc034e1ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a87ad61ff693121d171939c3fc034e1ec">&#9670;&#160;</a></span>AddRigidJoint6DOFsTo3DOFs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t kynema_fmb::Model::AddRigidJoint6DOFsTo3DOFs </td>
+          <td>(</td>
+          <td class="paramtype">std::span&lt; const size_t, 2 &gt;&#160;</td>
+          <td class="paramname"><em>node_ids</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Adds a rigid joint constraint (6DOFs to 3DOFs) to the model and returns the ID. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node_ids</td><td>the IDs of the nodes which will be joined by the constraint </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the ID of the created constraint </dd></dl>
+
+</div>
+</div>
+<a id="a8352bcaa9e26315842e4f50054a9840a" name="a8352bcaa9e26315842e4f50054a9840a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8352bcaa9e26315842e4f50054a9840a">&#9670;&#160;</a></span>AddRigidJointConstraint()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t kynema_fmb::Model::AddRigidJointConstraint </td>
+          <td>(</td>
+          <td class="paramtype">std::span&lt; const size_t, 2 &gt;&#160;</td>
+          <td class="paramname"><em>node_ids</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Adds a rigid constraint to the model and returns the ID. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node_ids</td><td>The IDs of the two nodes to be linked by the constraint </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The ID of the created constraint </dd></dl>
+
+</div>
+</div>
+<a id="afaebe387f190a52fa04c9337f83b0ca1" name="afaebe387f190a52fa04c9337f83b0ca1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afaebe387f190a52fa04c9337f83b0ca1">&#9670;&#160;</a></span>AddRotationControl()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t kynema_fmb::Model::AddRotationControl </td>
+          <td>(</td>
+          <td class="paramtype">std::span&lt; const size_t, 2 &gt;&#160;</td>
+          <td class="paramname"><em>node_ids</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::span&lt; const double, 3 &gt;&#160;</td>
+          <td class="paramname"><em>axis</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>control</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Adds a rotation control constraint to the model and returns the ID. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node_ids</td><td>the IDs of the two nodes to be linked by the constraint </td></tr>
+    <tr><td class="paramname">axis</td><td>The axis about which the torque force will be applied </td></tr>
+    <tr><td class="paramname">control</td><td>A pointer to the location in memory where the control rotation will be set </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the ID of the created constraint </dd></dl>
+
+</div>
+</div>
+<a id="ab075fcd8e069cbdf763eebf0dbac8633" name="ab075fcd8e069cbdf763eebf0dbac8633"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab075fcd8e069cbdf763eebf0dbac8633">&#9670;&#160;</a></span>AddSpringElement()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t kynema_fmb::Model::AddSpringElement </td>
+          <td>(</td>
+          <td class="paramtype">const size_t&#160;</td>
+          <td class="paramname"><em>node1_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const size_t&#160;</td>
+          <td class="paramname"><em>node2_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double&#160;</td>
+          <td class="paramname"><em>stiffness</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double&#160;</td>
+          <td class="paramname"><em>undeformed_length</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Adds a spring element to the model. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node1_id</td><td>ID of the node at one end of the spring </td></tr>
+    <tr><td class="paramname">node2_id</td><td>ID of the node at the other end of the spring </td></tr>
+    <tr><td class="paramname">stiffness</td><td>Stiffness of the spring </td></tr>
+    <tr><td class="paramname">undeformed_length</td><td>Length of the spring at which the spring force is zero</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the index of the newly added spring </dd></dl>
+
+</div>
+</div>
+<a id="a459491c077960ec4d2dc69609abe193e" name="a459491c077960ec4d2dc69609abe193e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a459491c077960ec4d2dc69609abe193e">&#9670;&#160;</a></span>CreateBeams()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename DeviceType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1Beams.html">Beams</a>&lt; DeviceType &gt; kynema_fmb::Model::CreateBeams </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Createsa <a class="el" href="structkynema__fmb_1_1Beams.html" title="Contains the field variables needed to compute the per-element contributions to the residual vector a...">Beams</a> structure based on the beam elements in the model. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">A</td><td>Kokkos Device where the <a class="el" href="structkynema__fmb_1_1Beams.html" title="Contains the field variables needed to compute the per-element contributions to the residual vector a...">Beams</a> struct will exist</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>An initialized <a class="el" href="structkynema__fmb_1_1Beams.html" title="Contains the field variables needed to compute the per-element contributions to the residual vector a...">Beams</a> struct </dd></dl>
+
+</div>
+</div>
+<a id="a0acf839b2c2be5cc21945bb7319bcb59" name="a0acf839b2c2be5cc21945bb7319bcb59"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0acf839b2c2be5cc21945bb7319bcb59">&#9670;&#160;</a></span>CreateBeamsInput()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1BeamsInput.html">BeamsInput</a> kynema_fmb::Model::CreateBeamsInput </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Createsa <a class="el" href="structkynema__fmb_1_1Beams.html" title="Contains the field variables needed to compute the per-element contributions to the residual vector a...">Beams</a> input file based on the beam elements in the model. </p>
+<dl class="section return"><dt>Returns</dt><dd>An initialized <a class="el" href="structkynema__fmb_1_1BeamsInput.html" title="Represents the input data for creating flexible beams.">BeamsInput</a> struct </dd></dl>
+
+</div>
+</div>
+<a id="a2eca39aecd60e37d61357edc736bc689" name="a2eca39aecd60e37d61357edc736bc689"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2eca39aecd60e37d61357edc736bc689">&#9670;&#160;</a></span>CreateConstraints()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename DeviceType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1Constraints.html">Constraints</a>&lt; DeviceType &gt; kynema_fmb::Model::CreateConstraints </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns a <a class="el" href="structkynema__fmb_1_1Constraints.html" title="Container class for managing multiple constraints in a simulation.">Constraints</a> object initialized from the model constraints. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">DeviceType</td><td>the Kokkos Device where the created constraints will reside </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The constructed <a class="el" href="structkynema__fmb_1_1Constraints.html" title="Container class for managing multiple constraints in a simulation.">Constraints</a> object </dd></dl>
+
+</div>
+</div>
+<a id="a932ec34a0774ed477c6f32fcacd0c109" name="a932ec34a0774ed477c6f32fcacd0c109"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a932ec34a0774ed477c6f32fcacd0c109">&#9670;&#160;</a></span>CreateElements()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename DeviceType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1Elements.html">Elements</a>&lt; DeviceType &gt; kynema_fmb::Model::CreateElements </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Creates an <a class="el" href="structkynema__fmb_1_1Elements.html" title="A container providing handle to all structural elements present in the model.">Elements</a> struct with <a class="el" href="structkynema__fmb_1_1Beams.html" title="Contains the field variables needed to compute the per-element contributions to the residual vector a...">Beams</a>, <a class="el" href="structkynema__fmb_1_1Masses.html" title="Contains field variables for mass elements (aka, rigid bodies) to compute per-element contributions t...">Masses</a>, and <a class="el" href="structkynema__fmb_1_1Springs.html" title="Contains field variables for spring elements to compute per-element contributions to the residual vec...">Springs</a>. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">DeviceType</td><td>a Kokkos device where the <a class="el" href="structkynema__fmb_1_1Elements.html" title="A container providing handle to all structural elements present in the model.">Elements</a> object will reside</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>an initialized <a class="el" href="structkynema__fmb_1_1Elements.html" title="A container providing handle to all structural elements present in the model.">Elements</a> object </dd></dl>
+
+</div>
+</div>
+<a id="a93557564d811e3fffcb4265e003e37a0" name="a93557564d811e3fffcb4265e003e37a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93557564d811e3fffcb4265e003e37a0">&#9670;&#160;</a></span>CreateMasses()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename DeviceType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1Masses.html">Masses</a>&lt; DeviceType &gt; kynema_fmb::Model::CreateMasses </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Create a a masses struct based on the mass elements present in the model. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">DeviceType</td><td>A Kokkos device where the <a class="el" href="structkynema__fmb_1_1Masses.html" title="Contains field variables for mass elements (aka, rigid bodies) to compute per-element contributions t...">Masses</a> object will reside</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>an initialized <a class="el" href="structkynema__fmb_1_1Masses.html" title="Contains field variables for mass elements (aka, rigid bodies) to compute per-element contributions t...">Masses</a> object </dd></dl>
+
+</div>
+</div>
+<a id="a9f8db9a13d0abf4306687e149123a4ef" name="a9f8db9a13d0abf4306687e149123a4ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f8db9a13d0abf4306687e149123a4ef">&#9670;&#160;</a></span>CreateSprings()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename DeviceType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1Springs.html">Springs</a>&lt; DeviceType &gt; kynema_fmb::Model::CreateSprings </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Creates a <a class="el" href="structkynema__fmb_1_1Springs.html" title="Contains field variables for spring elements to compute per-element contributions to the residual vec...">Springs</a> struct based on the spring elements in the model. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">DeviceType</td><td>a Kokkos device where the <a class="el" href="structkynema__fmb_1_1Springs.html" title="Contains field variables for spring elements to compute per-element contributions to the residual vec...">Springs</a> object will reside</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>An initialized <a class="el" href="structkynema__fmb_1_1Springs.html" title="Contains field variables for spring elements to compute per-element contributions to the residual vec...">Springs</a> object </dd></dl>
+
+</div>
+</div>
+<a id="ace6953317eaf2e667a8d55fc17660960" name="ace6953317eaf2e667a8d55fc17660960"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace6953317eaf2e667a8d55fc17660960">&#9670;&#160;</a></span>CreateState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename DeviceType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1State.html">State</a>&lt; DeviceType &gt; kynema_fmb::Model::CreateState </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Creates an <a class="el" href="structkynema__fmb_1_1State.html" title="Container for storing the complete system state of the simulation at a given time increment.">State</a> struct based on the nodes in this model. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">DeviceType</td><td>a Kokkos device where the <a class="el" href="structkynema__fmb_1_1State.html" title="Container for storing the complete system state of the simulation at a given time increment.">State</a> object will reside</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>an initialized <a class="el" href="structkynema__fmb_1_1State.html" title="Container for storing the complete system state of the simulation at a given time increment.">State</a> object </dd></dl>
+
+</div>
+</div>
+<a id="a4f1ad3d5722ce0d8edd9d55aa6242016" name="a4f1ad3d5722ce0d8edd9d55aa6242016"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f1ad3d5722ce0d8edd9d55aa6242016">&#9670;&#160;</a></span>CreateSystem()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename DeviceType  = Kokkos::Device&lt;            Kokkos::DefaultExecutionSpace, Kokkos::DefaultExecutionSpace::memory_space&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::tuple&lt; <a class="el" href="structkynema__fmb_1_1State.html">State</a>&lt; DeviceType &gt;, <a class="el" href="structkynema__fmb_1_1Elements.html">Elements</a>&lt; DeviceType &gt;, <a class="el" href="structkynema__fmb_1_1Constraints.html">Constraints</a>&lt; DeviceType &gt; &gt; kynema_fmb::Model::CreateSystem </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns a <a class="el" href="structkynema__fmb_1_1State.html" title="Container for storing the complete system state of the simulation at a given time increment.">State</a>, <a class="el" href="structkynema__fmb_1_1Elements.html" title="A container providing handle to all structural elements present in the model.">Elements</a>, and <a class="el" href="structkynema__fmb_1_1Constraints.html" title="Container class for managing multiple constraints in a simulation.">Constraints</a> object initialized from the model. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">DeviceType</td><td>The Kokkos Device where the created objects will reside </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Constructed <a class="el" href="structkynema__fmb_1_1State.html" title="Container for storing the complete system state of the simulation at a given time increment.">State</a>, <a class="el" href="structkynema__fmb_1_1Elements.html" title="A container providing handle to all structural elements present in the model.">Elements</a>, and <a class="el" href="structkynema__fmb_1_1Constraints.html" title="Container class for managing multiple constraints in a simulation.">Constraints</a> objects </dd></dl>
+
+</div>
+</div>
+<a id="a469fca1c557eeb75c42cc782ec46c572" name="a469fca1c557eeb75c42cc782ec46c572"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a469fca1c557eeb75c42cc782ec46c572">&#9670;&#160;</a></span>CreateSystemWithSolver()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename DeviceType  = Kokkos::Device&lt;            Kokkos::DefaultExecutionSpace, Kokkos::DefaultExecutionSpace::memory_space&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::tuple&lt; <a class="el" href="structkynema__fmb_1_1State.html">State</a>&lt; DeviceType &gt;, <a class="el" href="structkynema__fmb_1_1Elements.html">Elements</a>&lt; DeviceType &gt;, <a class="el" href="structkynema__fmb_1_1Constraints.html">Constraints</a>&lt; DeviceType &gt;, <a class="el" href="structkynema__fmb_1_1Solver.html">Solver</a>&lt; DeviceType &gt; &gt; kynema_fmb::Model::CreateSystemWithSolver </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns a <a class="el" href="structkynema__fmb_1_1State.html" title="Container for storing the complete system state of the simulation at a given time increment.">State</a>, <a class="el" href="structkynema__fmb_1_1Elements.html" title="A container providing handle to all structural elements present in the model.">Elements</a>, <a class="el" href="structkynema__fmb_1_1Constraints.html" title="Container class for managing multiple constraints in a simulation.">Constraints</a>, and <a class="el" href="structkynema__fmb_1_1Solver.html" title="This object manages the assembly and solution of linear system arising from the generalized-alpha bas...">Solver</a> object initialized from the model. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">DeviceType</td><td>The Kokkos Device where the created objects will reside </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Constructed <a class="el" href="structkynema__fmb_1_1State.html" title="Container for storing the complete system state of the simulation at a given time increment.">State</a>, <a class="el" href="structkynema__fmb_1_1Elements.html" title="A container providing handle to all structural elements present in the model.">Elements</a>, <a class="el" href="structkynema__fmb_1_1Constraints.html" title="Container class for managing multiple constraints in a simulation.">Constraints</a>, and <a class="el" href="structkynema__fmb_1_1Solver.html" title="This object manages the assembly and solution of linear system arising from the generalized-alpha bas...">Solver</a> objects </dd></dl>
+
+</div>
+</div>
+<a id="a7e96877fa03f92289a84367151b68c28" name="a7e96877fa03f92289a84367151b68c28"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e96877fa03f92289a84367151b68c28">&#9670;&#160;</a></span>ExportMeshConnectivityToYAML()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema_fmb::Model::ExportMeshConnectivityToYAML </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>filename</em> = <code>&quot;mesh_connectivity.yaml&quot;</code></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Export mesh connectivity to a YAML file. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filename</td><td>The name of the file to which to write the connectivity </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a82af2717843f60745064d1c07ed68c26" name="a82af2717843f60745064d1c07ed68c26"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82af2717843f60745064d1c07ed68c26">&#9670;&#160;</a></span>GetBeamElement() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1BeamElement.html">BeamElement</a> &amp; kynema_fmb::Model::GetBeamElement </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns a beam element by ID. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>The index of the beam element</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The beam element itself </dd></dl>
+
+</div>
+</div>
+<a id="a1600b0582f3484d0948355e36c72f180" name="a1600b0582f3484d0948355e36c72f180"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1600b0582f3484d0948355e36c72f180">&#9670;&#160;</a></span>GetBeamElement() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structkynema__fmb_1_1BeamElement.html">BeamElement</a> &amp; kynema_fmb::Model::GetBeamElement </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns a beam element by ID. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>The index of the beam element</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The beam element itself </dd></dl>
+
+</div>
+</div>
+<a id="a6728b7127a0455f3e484d998e3497bf7" name="a6728b7127a0455f3e484d998e3497bf7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6728b7127a0455f3e484d998e3497bf7">&#9670;&#160;</a></span>GetBeamElements()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt; <a class="el" href="structkynema__fmb_1_1BeamElement.html">BeamElement</a> &gt; &amp; kynema_fmb::Model::GetBeamElements </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns a reference to the beam elements present in the model. </p>
+<dl class="section return"><dt>Returns</dt><dd>a reference to the vector containing the beam elements </dd></dl>
+
+</div>
+</div>
+<a id="af9da7eb5721fb8e4eb9b7259c67805aa" name="af9da7eb5721fb8e4eb9b7259c67805aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9da7eb5721fb8e4eb9b7259c67805aa">&#9670;&#160;</a></span>GetMassElement() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1MassElement.html">MassElement</a> &amp; kynema_fmb::Model::GetMassElement </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns a mass element by ID. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>ID of desired mass element</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The Mass element </dd></dl>
+
+</div>
+</div>
+<a id="a4d5a61335b3af18d24710ebf169a4503" name="a4d5a61335b3af18d24710ebf169a4503"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d5a61335b3af18d24710ebf169a4503">&#9670;&#160;</a></span>GetMassElement() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structkynema__fmb_1_1MassElement.html">MassElement</a> &amp; kynema_fmb::Model::GetMassElement </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns a mass element by ID. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>ID of desired mass element</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The Mass element </dd></dl>
+
+</div>
+</div>
+<a id="a7c8c87c0c4d43a20844a10102b91424d" name="a7c8c87c0c4d43a20844a10102b91424d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c8c87c0c4d43a20844a10102b91424d">&#9670;&#160;</a></span>GetMassElements()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt; <a class="el" href="structkynema__fmb_1_1MassElement.html">MassElement</a> &gt; &amp; kynema_fmb::Model::GetMassElements </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns a reference to the mass elements present in the model. </p>
+<dl class="section return"><dt>Returns</dt><dd>A reference to the vector containing the mass elements </dd></dl>
+
+</div>
+</div>
+<a id="ae31b9f87b0cb4930fa7ba9e736084b73" name="ae31b9f87b0cb4930fa7ba9e736084b73"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae31b9f87b0cb4930fa7ba9e736084b73">&#9670;&#160;</a></span>GetMeshConnectivity() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classkynema__fmb_1_1model_1_1MeshConnectivity.html">model::MeshConnectivity</a> &amp; kynema_fmb::Model::GetMeshConnectivity </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the mesh connectivity. </p>
+<dl class="section return"><dt>Returns</dt><dd>A reference to this <a class="el" href="classkynema__fmb_1_1Model.html" title="Struct to define the connectivity structure of elements, nodes, and constraints defining an Kynema pr...">Model</a>'s MeshConnectivity model </dd></dl>
+
+</div>
+</div>
+<a id="a69e191bcbe2ccea675ef22d870e30a26" name="a69e191bcbe2ccea675ef22d870e30a26"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a69e191bcbe2ccea675ef22d870e30a26">&#9670;&#160;</a></span>GetMeshConnectivity() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classkynema__fmb_1_1model_1_1MeshConnectivity.html">model::MeshConnectivity</a> &amp; kynema_fmb::Model::GetMeshConnectivity </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the mesh connectivity. </p>
+<dl class="section return"><dt>Returns</dt><dd>A reference to this <a class="el" href="classkynema__fmb_1_1Model.html" title="Struct to define the connectivity structure of elements, nodes, and constraints defining an Kynema pr...">Model</a>'s MeshConnectivity model </dd></dl>
+
+</div>
+</div>
+<a id="ae342d01f225bc8d734be446e4aec9643" name="ae342d01f225bc8d734be446e4aec9643"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae342d01f225bc8d734be446e4aec9643">&#9670;&#160;</a></span>GetNode() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1Node.html">Node</a> &amp; kynema_fmb::Model::GetNode </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns a node by ID. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>Index number of node </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The desired node </dd></dl>
+
+</div>
+</div>
+<a id="a455f2fe537f08b3ac29911765860db28" name="a455f2fe537f08b3ac29911765860db28"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a455f2fe537f08b3ac29911765860db28">&#9670;&#160;</a></span>GetNode() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structkynema__fmb_1_1Node.html">Node</a> &amp; kynema_fmb::Model::GetNode </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns a node by ID. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>Index number of node </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The desired node </dd></dl>
+
+</div>
+</div>
+<a id="a7d81ac071cc5f986ccf1b297ec7e43e8" name="a7d81ac071cc5f986ccf1b297ec7e43e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d81ac071cc5f986ccf1b297ec7e43e8">&#9670;&#160;</a></span>GetNodes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt; <a class="el" href="structkynema__fmb_1_1Node.html">Node</a> &gt; &amp; kynema_fmb::Model::GetNodes </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns constant reference to nodes vector. </p>
+<dl class="section return"><dt>Returns</dt><dd>A reference to the vector containing all of the nodes in the model </dd></dl>
+
+</div>
+</div>
+<a id="a95dc19cd188e5dc97fc61420534af063" name="a95dc19cd188e5dc97fc61420534af063"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a95dc19cd188e5dc97fc61420534af063">&#9670;&#160;</a></span>GetSpringElement() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1SpringElement.html">SpringElement</a> &amp; kynema_fmb::Model::GetSpringElement </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns a spring element by ID. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>The ID of the spring</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The requested spring element </dd></dl>
+
+</div>
+</div>
+<a id="aae4e688be39205a2f9b9a166cbc4aa6c" name="aae4e688be39205a2f9b9a166cbc4aa6c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae4e688be39205a2f9b9a166cbc4aa6c">&#9670;&#160;</a></span>GetSpringElement() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structkynema__fmb_1_1SpringElement.html">SpringElement</a> &amp; kynema_fmb::Model::GetSpringElement </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns a spring element by ID. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>The ID of the spring</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The requested spring element </dd></dl>
+
+</div>
+</div>
+<a id="ae7a379aa2e981ae465e4ef284f98b4fc" name="ae7a379aa2e981ae465e4ef284f98b4fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7a379aa2e981ae465e4ef284f98b4fc">&#9670;&#160;</a></span>NumBeamElements()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t kynema_fmb::Model::NumBeamElements </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the number of beam elements present in the model. </p>
+<dl class="section return"><dt>Returns</dt><dd>the number of beam elements </dd></dl>
+
+</div>
+</div>
+<a id="ae076df35ac2e300017f9d2eecabb0c52" name="ae076df35ac2e300017f9d2eecabb0c52"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae076df35ac2e300017f9d2eecabb0c52">&#9670;&#160;</a></span>NumConstraints()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t kynema_fmb::Model::NumConstraints </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the number of constraints present in the model. </p>
+<dl class="section return"><dt>Returns</dt><dd>the number of constraints </dd></dl>
+
+</div>
+</div>
+<a id="a447c7b400a2ea68428a4697d6e1654aa" name="a447c7b400a2ea68428a4697d6e1654aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a447c7b400a2ea68428a4697d6e1654aa">&#9670;&#160;</a></span>NumMassElements()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t kynema_fmb::Model::NumMassElements </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the number of mass elements present in the model. </p>
+<dl class="section return"><dt>Returns</dt><dd>The number of mass elements </dd></dl>
+
+</div>
+</div>
+<a id="a608f9ce90bdeb4120acc7b61e8c4d26c" name="a608f9ce90bdeb4120acc7b61e8c4d26c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a608f9ce90bdeb4120acc7b61e8c4d26c">&#9670;&#160;</a></span>NumNodes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t kynema_fmb::Model::NumNodes </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the number of nodes present in the model. </p>
+<dl class="section return"><dt>Returns</dt><dd>The number of nodes </dd></dl>
+
+</div>
+</div>
+<a id="a7eb90d2bcf269bc2284108308f540d8a" name="a7eb90d2bcf269bc2284108308f540d8a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7eb90d2bcf269bc2284108308f540d8a">&#9670;&#160;</a></span>NumSpringElements()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t kynema_fmb::Model::NumSpringElements </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the number of spring elements present in the model. </p>
+<dl class="section return"><dt>Returns</dt><dd>the number of springs in the model </dd></dl>
+
+</div>
+</div>
+<a id="ac35cf3ddb4d848d103119f572ed7dbe0" name="ac35cf3ddb4d848d103119f572ed7dbe0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac35cf3ddb4d848d103119f572ed7dbe0">&#9670;&#160;</a></span>RotateBeamAboutPoint()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema_fmb::Model::RotateBeamAboutPoint </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>beam_elem_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::span&lt; const double, 4 &gt;&#160;</td>
+          <td class="paramname"><em>displacement_quaternion</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::span&lt; const double, 3 &gt;&#160;</td>
+          <td class="paramname"><em>point</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Rotate all beam nodes by given quaternion about a given point. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">beam_elem_id</td><td>The index of the beam to be rotated </td></tr>
+    <tr><td class="paramname">displacement_quaternion</td><td>The displacement quaternion </td></tr>
+    <tr><td class="paramname">point</td><td>The point around which the beam will be rotated </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af50f3305688cc7dd9cd5702fe2ae85f4" name="af50f3305688cc7dd9cd5702fe2ae85f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af50f3305688cc7dd9cd5702fe2ae85f4">&#9670;&#160;</a></span>SetBeamAccelerationAboutPoint()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema_fmb::Model::SetBeamAccelerationAboutPoint </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>beam_elem_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::span&lt; const double, 6 &gt;&#160;</td>
+          <td class="paramname"><em>acceleration</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::span&lt; const double, 3 &gt;&#160;</td>
+          <td class="paramname"><em>omega</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::span&lt; const double, 3 &gt;&#160;</td>
+          <td class="paramname"><em>point</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set the acceleration of the beam about a given point. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">beam_elem_id</td><td>The index of the beam </td></tr>
+    <tr><td class="paramname">acceleration</td><td>The acceleration of the beam </td></tr>
+    <tr><td class="paramname">omega</td><td>The rotational acceleration of the beam </td></tr>
+    <tr><td class="paramname">point</td><td>The point about which the rotational velocity is based </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aff1e22a4523de61af4dddb5076b51cec" name="aff1e22a4523de61af4dddb5076b51cec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff1e22a4523de61af4dddb5076b51cec">&#9670;&#160;</a></span>SetBeamVelocityAboutPoint()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema_fmb::Model::SetBeamVelocityAboutPoint </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>beam_elem_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::span&lt; const double, 6 &gt;&#160;</td>
+          <td class="paramname"><em>velocity</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::span&lt; const double, 3 &gt;&#160;</td>
+          <td class="paramname"><em>point</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set the translational and rotational velocity of the beam about a given point. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">beam_elem_id</td><td>The index of the beam </td></tr>
+    <tr><td class="paramname">velocity</td><td>The velocity of the beam </td></tr>
+    <tr><td class="paramname">point</td><td>The point about which the rotational velocity is based </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4c7f30f5f80203f9489c7071fca33888" name="a4c7f30f5f80203f9489c7071fca33888"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c7f30f5f80203f9489c7071fca33888">&#9670;&#160;</a></span>SetGravity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema_fmb::Model::SetGravity </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>z</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets the gravity components for the model. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>X gravity component </td></tr>
+    <tr><td class="paramname">y</td><td>Y gravity component </td></tr>
+    <tr><td class="paramname">z</td><td>Z gravity component </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ac0daac904165189836c31bf1dec061bc" name="ac0daac904165189836c31bf1dec061bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0daac904165189836c31bf1dec061bc">&#9670;&#160;</a></span>TranslateBeam()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema_fmb::Model::TranslateBeam </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>beam_elem_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::span&lt; const double, 3 &gt;&#160;</td>
+          <td class="paramname"><em>displacement</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Translate all beam nodes by given displacement. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">beam_elem_id</td><td>The index of the beam to be translated </td></tr>
+    <tr><td class="paramname">displacement</td><td>The displacement vector </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a562309376a63a6eaf7275af909f3d6fb" name="a562309376a63a6eaf7275af909f3d6fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a562309376a63a6eaf7275af909f3d6fb">&#9670;&#160;</a></span>InvalidNodeID</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr size_t kynema_fmb::Model::InvalidNodeID {0U}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Represents an invalid node in constraints that only uses the target node. </p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li>/home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/model/<a class="el" href="model_8hpp_source.html">model.hpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023 - Present, MIT License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

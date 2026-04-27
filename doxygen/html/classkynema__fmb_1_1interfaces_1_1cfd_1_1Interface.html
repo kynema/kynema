@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kynema API: kynema_fmb::interfaces::cfd::Interface Class Reference &mdash; Kynema 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Kynema
+              <img src="../../_static/oturb_logo_v2.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/user.html">User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../theory/index.html">Theory Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/index.html">Developer Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/index.html">Benchmark Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../publications.html">Kynema-FMB Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../acknowledgement.html">Acknowledgements</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Kynema</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Kynema API: kynema_fmb::interfaces::cfd::Interface Class Reference</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/doxygen/html/classkynema__fmb_1_1interfaces_1_1cfd_1_1Interface.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="interface-class-reference">
+<h1>Interface Class Reference<a class="headerlink" href="#interface-class-reference" title="Permalink to this heading"></a></h1>
+<div class="doxygen-content docutils container">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Kynema API: kynema_fmb::interfaces::cfd::Interface Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Kynema API
+   </div>
+   <div id="projectbrief">A flexible multibody structural dynamics code for wind turbines</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacekynema__fmb.html">kynema_fmb</a></li><li class="navelem"><a class="el" href="namespacekynema__fmb_1_1interfaces.html">interfaces</a></li><li class="navelem"><a class="el" href="namespacekynema__fmb_1_1interfaces_1_1cfd.html">cfd</a></li><li class="navelem"><a class="el" href="classkynema__fmb_1_1interfaces_1_1cfd_1_1Interface.html">Interface</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="classkynema__fmb_1_1interfaces_1_1cfd_1_1Interface-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">kynema_fmb::interfaces::cfd::Interface Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>The main interface for controlling the CFD problem.  
+ <a href="classkynema__fmb_1_1interfaces_1_1cfd_1_1Interface.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="interface_8hpp_source.html">interface.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:af9ba2fa7a00639b6b12b364fe3fc6dcc" id="r_af9ba2fa7a00639b6b12b364fe3fc6dcc"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1cfd_1_1Interface.html#af9ba2fa7a00639b6b12b364fe3fc6dcc">DeviceType</a> = Kokkos::Device&lt; Kokkos::DefaultExecutionSpace, Kokkos::DefaultExecutionSpace::memory_space &gt;</td></tr>
+<tr class="separator:af9ba2fa7a00639b6b12b364fe3fc6dcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a8c2f38f0a0bfe98eb50f9dfa4349858e" id="r_a8c2f38f0a0bfe98eb50f9dfa4349858e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1cfd_1_1Interface.html#a8c2f38f0a0bfe98eb50f9dfa4349858e">Interface</a> (const <a class="el" href="structkynema__fmb_1_1interfaces_1_1cfd_1_1InterfaceInput.html">InterfaceInput</a> &amp;input)</td></tr>
+<tr class="memdesc:a8c2f38f0a0bfe98eb50f9dfa4349858e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create an <a class="el" href="classkynema__fmb_1_1interfaces_1_1cfd_1_1Interface.html" title="The main interface for controlling the CFD problem.">Interface</a> from an <a class="el" href="structkynema__fmb_1_1interfaces_1_1cfd_1_1InterfaceInput.html" title="An object describing the configuration of the interface.">InterfaceInput</a> configuration object.  <br /></td></tr>
+<tr class="separator:a8c2f38f0a0bfe98eb50f9dfa4349858e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e5d59b503ed4adcb0fc9fd9fa5b5b46" id="r_a1e5d59b503ed4adcb0fc9fd9fa5b5b46"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1cfd_1_1Interface.html#a1e5d59b503ed4adcb0fc9fd9fa5b5b46">Step</a> ()</td></tr>
+<tr class="memdesc:a1e5d59b503ed4adcb0fc9fd9fa5b5b46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Step forward in time one time step.  <br /></td></tr>
+<tr class="separator:a1e5d59b503ed4adcb0fc9fd9fa5b5b46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad51aa40071c5518739d0e2811c086927" id="r_ad51aa40071c5518739d0e2811c086927"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1cfd_1_1Interface.html#ad51aa40071c5518739d0e2811c086927">SaveState</a> ()</td></tr>
+<tr class="memdesc:ad51aa40071c5518739d0e2811c086927"><td class="mdescLeft">&#160;</td><td class="mdescRight">Save state for correction step.  <br /></td></tr>
+<tr class="separator:ad51aa40071c5518739d0e2811c086927"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2bafbd240047fdc451cc4c3a606f4b5c" id="r_a2bafbd240047fdc451cc4c3a606f4b5c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1cfd_1_1Interface.html#a2bafbd240047fdc451cc4c3a606f4b5c">RestoreState</a> ()</td></tr>
+<tr class="memdesc:a2bafbd240047fdc451cc4c3a606f4b5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Restore state for correction step.  <br /></td></tr>
+<tr class="separator:a2bafbd240047fdc451cc4c3a606f4b5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d3b294632b472ace21cd35317d6dccf" id="r_a9d3b294632b472ace21cd35317d6dccf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1cfd_1_1Interface.html#a9d3b294632b472ace21cd35317d6dccf">WriteRestart</a> (const std::filesystem::path &amp;filename) const</td></tr>
+<tr class="memdesc:a9d3b294632b472ace21cd35317d6dccf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write restart file.  <br /></td></tr>
+<tr class="separator:a9d3b294632b472ace21cd35317d6dccf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a886397a053d539a25faf7e51d073072f" id="r_a886397a053d539a25faf7e51d073072f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1cfd_1_1Interface.html#a886397a053d539a25faf7e51d073072f">ReadRestart</a> (const std::filesystem::path &amp;filename)</td></tr>
+<tr class="memdesc:a886397a053d539a25faf7e51d073072f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read restart file.  <br /></td></tr>
+<tr class="separator:a886397a053d539a25faf7e51d073072f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2a95408a091403d948ac5e6d127e8f2" id="r_ad2a95408a091403d948ac5e6d127e8f2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1cfd_1_1Interface.html#ad2a95408a091403d948ac5e6d127e8f2">WriteOutputs</a> () const</td></tr>
+<tr class="memdesc:ad2a95408a091403d948ac5e6d127e8f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write current state to output file if configured.  <br /></td></tr>
+<tr class="separator:ad2a95408a091403d948ac5e6d127e8f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:aa412758e73c5bfde5821dc06e1b0566e" id="r_aa412758e73c5bfde5821dc06e1b0566e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema__fmb_1_1Model.html">Model</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1cfd_1_1Interface.html#aa412758e73c5bfde5821dc06e1b0566e">model</a></td></tr>
+<tr class="memdesc:aa412758e73c5bfde5821dc06e1b0566e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Kynema class used for model construction.  <br /></td></tr>
+<tr class="separator:aa412758e73c5bfde5821dc06e1b0566e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04505be283d3ae2a17020d61a32e5549" id="r_a04505be283d3ae2a17020d61a32e5549"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1interfaces_1_1cfd_1_1Turbine.html">Turbine</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1cfd_1_1Interface.html#a04505be283d3ae2a17020d61a32e5549">turbine</a></td></tr>
+<tr class="memdesc:a04505be283d3ae2a17020d61a32e5549"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structkynema__fmb_1_1interfaces_1_1cfd_1_1Turbine.html" title="The top level structure defining the CFD problem.">Turbine</a> model input/output data.  <br /></td></tr>
+<tr class="separator:a04505be283d3ae2a17020d61a32e5549"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79abb9414a1f1497701dfb7bf0f6956a" id="r_a79abb9414a1f1497701dfb7bf0f6956a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1State.html">State</a>&lt; <a class="el" href="classkynema__fmb_1_1interfaces_1_1cfd_1_1Interface.html#af9ba2fa7a00639b6b12b364fe3fc6dcc">DeviceType</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1cfd_1_1Interface.html#a79abb9414a1f1497701dfb7bf0f6956a">state</a></td></tr>
+<tr class="memdesc:a79abb9414a1f1497701dfb7bf0f6956a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Kynema class for storing system state.  <br /></td></tr>
+<tr class="separator:a79abb9414a1f1497701dfb7bf0f6956a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46ad820dc1dd91003d39171aa2f999ca" id="r_a46ad820dc1dd91003d39171aa2f999ca"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1Elements.html">Elements</a>&lt; <a class="el" href="classkynema__fmb_1_1interfaces_1_1cfd_1_1Interface.html#af9ba2fa7a00639b6b12b364fe3fc6dcc">DeviceType</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1cfd_1_1Interface.html#a46ad820dc1dd91003d39171aa2f999ca">elements</a></td></tr>
+<tr class="memdesc:a46ad820dc1dd91003d39171aa2f999ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Kynema class for model elements (beams, masses, springs)  <br /></td></tr>
+<tr class="separator:a46ad820dc1dd91003d39171aa2f999ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35361e5614573f536a2cfb49bb239e63" id="r_a35361e5614573f536a2cfb49bb239e63"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1Constraints.html">Constraints</a>&lt; <a class="el" href="classkynema__fmb_1_1interfaces_1_1cfd_1_1Interface.html#af9ba2fa7a00639b6b12b364fe3fc6dcc">DeviceType</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1cfd_1_1Interface.html#a35361e5614573f536a2cfb49bb239e63">constraints</a></td></tr>
+<tr class="memdesc:a35361e5614573f536a2cfb49bb239e63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Kynema class for constraints tying elements together.  <br /></td></tr>
+<tr class="separator:a35361e5614573f536a2cfb49bb239e63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:affd9f3a9e963da5696badd896f125a9e" id="r_affd9f3a9e963da5696badd896f125a9e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1StepParameters.html">StepParameters</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1cfd_1_1Interface.html#affd9f3a9e963da5696badd896f125a9e">parameters</a></td></tr>
+<tr class="memdesc:affd9f3a9e963da5696badd896f125a9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Kynema class containing solution parameters.  <br /></td></tr>
+<tr class="separator:affd9f3a9e963da5696badd896f125a9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75e5a67673ec9ac32443ca7411ca1c77" id="r_a75e5a67673ec9ac32443ca7411ca1c77"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1Solver.html">Solver</a>&lt; <a class="el" href="classkynema__fmb_1_1interfaces_1_1cfd_1_1Interface.html#af9ba2fa7a00639b6b12b364fe3fc6dcc">DeviceType</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1cfd_1_1Interface.html#a75e5a67673ec9ac32443ca7411ca1c77">solver</a></td></tr>
+<tr class="memdesc:a75e5a67673ec9ac32443ca7411ca1c77"><td class="mdescLeft">&#160;</td><td class="mdescRight">Kynema class for solving the dynamic system.  <br /></td></tr>
+<tr class="separator:a75e5a67673ec9ac32443ca7411ca1c77"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56d7e04dd6636b104070735dca462e07" id="r_a56d7e04dd6636b104070735dca462e07"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1State.html">State</a>&lt; <a class="el" href="classkynema__fmb_1_1interfaces_1_1cfd_1_1Interface.html#af9ba2fa7a00639b6b12b364fe3fc6dcc">DeviceType</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1cfd_1_1Interface.html#a56d7e04dd6636b104070735dca462e07">state_save</a></td></tr>
+<tr class="memdesc:a56d7e04dd6636b104070735dca462e07"><td class="mdescLeft">&#160;</td><td class="mdescRight">Kynema class state class for temporarily saving state.  <br /></td></tr>
+<tr class="separator:a56d7e04dd6636b104070735dca462e07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1b52c4c984f144f3029ce6687a3691b" id="r_ac1b52c4c984f144f3029ce6687a3691b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1interfaces_1_1HostState.html">kynema_fmb::interfaces::HostState</a>&lt; <a class="el" href="classkynema__fmb_1_1interfaces_1_1cfd_1_1Interface.html#af9ba2fa7a00639b6b12b364fe3fc6dcc">DeviceType</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1cfd_1_1Interface.html#ac1b52c4c984f144f3029ce6687a3691b">host_state</a></td></tr>
+<tr class="memdesc:ac1b52c4c984f144f3029ce6687a3691b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Host local copy of <a class="el" href="structkynema__fmb_1_1State.html" title="Container for storing the complete system state of the simulation at a given time increment.">State</a>.  <br /></td></tr>
+<tr class="separator:ac1b52c4c984f144f3029ce6687a3691b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b5a5adc16904a2b15e9c372562eb637" id="r_a6b5a5adc16904a2b15e9c372562eb637"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1cfd_1_1Interface.html#a6b5a5adc16904a2b15e9c372562eb637">current_timestep_</a> {0}</td></tr>
+<tr class="memdesc:a6b5a5adc16904a2b15e9c372562eb637"><td class="mdescLeft">&#160;</td><td class="mdescRight">Current timestep index.  <br /></td></tr>
+<tr class="separator:a6b5a5adc16904a2b15e9c372562eb637"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a311f2dfa0081c2febce298d674ea0a7e" id="r_a311f2dfa0081c2febce298d674ea0a7e"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classkynema__fmb_1_1interfaces_1_1Outputs.html">interfaces::Outputs</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1cfd_1_1Interface.html#a311f2dfa0081c2febce298d674ea0a7e">outputs_</a></td></tr>
+<tr class="memdesc:a311f2dfa0081c2febce298d674ea0a7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Optional NetCDF output writer.  <br /></td></tr>
+<tr class="separator:a311f2dfa0081c2febce298d674ea0a7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>The main interface for controlling the CFD problem. </p>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="af9ba2fa7a00639b6b12b364fe3fc6dcc" name="af9ba2fa7a00639b6b12b364fe3fc6dcc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9ba2fa7a00639b6b12b364fe3fc6dcc">&#9670;&#160;</a></span>DeviceType</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classkynema__fmb_1_1interfaces_1_1cfd_1_1Interface.html#af9ba2fa7a00639b6b12b364fe3fc6dcc">kynema_fmb::interfaces::cfd::Interface::DeviceType</a> =  Kokkos::Device&lt;Kokkos::DefaultExecutionSpace, Kokkos::DefaultExecutionSpace::memory_space&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a8c2f38f0a0bfe98eb50f9dfa4349858e" name="a8c2f38f0a0bfe98eb50f9dfa4349858e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c2f38f0a0bfe98eb50f9dfa4349858e">&#9670;&#160;</a></span>Interface()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">kynema_fmb::interfaces::cfd::Interface::Interface </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structkynema__fmb_1_1interfaces_1_1cfd_1_1InterfaceInput.html">InterfaceInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Create an <a class="el" href="classkynema__fmb_1_1interfaces_1_1cfd_1_1Interface.html" title="The main interface for controlling the CFD problem.">Interface</a> from an <a class="el" href="structkynema__fmb_1_1interfaces_1_1cfd_1_1InterfaceInput.html" title="An object describing the configuration of the interface.">InterfaceInput</a> configuration object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">input</td><td>The input configuration object </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a886397a053d539a25faf7e51d073072f" name="a886397a053d539a25faf7e51d073072f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a886397a053d539a25faf7e51d073072f">&#9670;&#160;</a></span>ReadRestart()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema_fmb::interfaces::cfd::Interface::ReadRestart </td>
+          <td>(</td>
+          <td class="paramtype">const std::filesystem::path &amp;&#160;</td>
+          <td class="paramname"><em>filename</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Read restart file. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filename</td><td>The name of the restart file </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a2bafbd240047fdc451cc4c3a606f4b5c" name="a2bafbd240047fdc451cc4c3a606f4b5c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2bafbd240047fdc451cc4c3a606f4b5c">&#9670;&#160;</a></span>RestoreState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema_fmb::interfaces::cfd::Interface::RestoreState </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Restore state for correction step. </p>
+
+</div>
+</div>
+<a id="ad51aa40071c5518739d0e2811c086927" name="ad51aa40071c5518739d0e2811c086927"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad51aa40071c5518739d0e2811c086927">&#9670;&#160;</a></span>SaveState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema_fmb::interfaces::cfd::Interface::SaveState </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Save state for correction step. </p>
+
+</div>
+</div>
+<a id="a1e5d59b503ed4adcb0fc9fd9fa5b5b46" name="a1e5d59b503ed4adcb0fc9fd9fa5b5b46"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e5d59b503ed4adcb0fc9fd9fa5b5b46">&#9670;&#160;</a></span>Step()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool kynema_fmb::interfaces::cfd::Interface::Step </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Step forward in time one time step. </p>
+
+</div>
+</div>
+<a id="ad2a95408a091403d948ac5e6d127e8f2" name="ad2a95408a091403d948ac5e6d127e8f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2a95408a091403d948ac5e6d127e8f2">&#9670;&#160;</a></span>WriteOutputs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema_fmb::interfaces::cfd::Interface::WriteOutputs </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Write current state to output file if configured. </p>
+
+</div>
+</div>
+<a id="a9d3b294632b472ace21cd35317d6dccf" name="a9d3b294632b472ace21cd35317d6dccf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d3b294632b472ace21cd35317d6dccf">&#9670;&#160;</a></span>WriteRestart()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema_fmb::interfaces::cfd::Interface::WriteRestart </td>
+          <td>(</td>
+          <td class="paramtype">const std::filesystem::path &amp;&#160;</td>
+          <td class="paramname"><em>filename</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Write restart file. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filename</td><td>The name of the restart file </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a35361e5614573f536a2cfb49bb239e63" name="a35361e5614573f536a2cfb49bb239e63"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35361e5614573f536a2cfb49bb239e63">&#9670;&#160;</a></span>constraints</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1Constraints.html">Constraints</a>&lt;<a class="el" href="classkynema__fmb_1_1interfaces_1_1cfd_1_1Interface.html#af9ba2fa7a00639b6b12b364fe3fc6dcc">DeviceType</a>&gt; kynema_fmb::interfaces::cfd::Interface::constraints</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Kynema class for constraints tying elements together. </p>
+
+</div>
+</div>
+<a id="a6b5a5adc16904a2b15e9c372562eb637" name="a6b5a5adc16904a2b15e9c372562eb637"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b5a5adc16904a2b15e9c372562eb637">&#9670;&#160;</a></span>current_timestep_</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t kynema_fmb::interfaces::cfd::Interface::current_timestep_ {0}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Current timestep index. </p>
+
+</div>
+</div>
+<a id="a46ad820dc1dd91003d39171aa2f999ca" name="a46ad820dc1dd91003d39171aa2f999ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a46ad820dc1dd91003d39171aa2f999ca">&#9670;&#160;</a></span>elements</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1Elements.html">Elements</a>&lt;<a class="el" href="classkynema__fmb_1_1interfaces_1_1cfd_1_1Interface.html#af9ba2fa7a00639b6b12b364fe3fc6dcc">DeviceType</a>&gt; kynema_fmb::interfaces::cfd::Interface::elements</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Kynema class for model elements (beams, masses, springs) </p>
+
+</div>
+</div>
+<a id="ac1b52c4c984f144f3029ce6687a3691b" name="ac1b52c4c984f144f3029ce6687a3691b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1b52c4c984f144f3029ce6687a3691b">&#9670;&#160;</a></span>host_state</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1interfaces_1_1HostState.html">kynema_fmb::interfaces::HostState</a>&lt;<a class="el" href="classkynema__fmb_1_1interfaces_1_1cfd_1_1Interface.html#af9ba2fa7a00639b6b12b364fe3fc6dcc">DeviceType</a>&gt; kynema_fmb::interfaces::cfd::Interface::host_state</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Host local copy of <a class="el" href="structkynema__fmb_1_1State.html" title="Container for storing the complete system state of the simulation at a given time increment.">State</a>. </p>
+
+</div>
+</div>
+<a id="aa412758e73c5bfde5821dc06e1b0566e" name="aa412758e73c5bfde5821dc06e1b0566e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa412758e73c5bfde5821dc06e1b0566e">&#9670;&#160;</a></span>model</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classkynema__fmb_1_1Model.html">Model</a> kynema_fmb::interfaces::cfd::Interface::model</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Kynema class used for model construction. </p>
+
+</div>
+</div>
+<a id="a311f2dfa0081c2febce298d674ea0a7e" name="a311f2dfa0081c2febce298d674ea0a7e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a311f2dfa0081c2febce298d674ea0a7e">&#9670;&#160;</a></span>outputs_</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt;<a class="el" href="classkynema__fmb_1_1interfaces_1_1Outputs.html">interfaces::Outputs</a>&gt; kynema_fmb::interfaces::cfd::Interface::outputs_</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Optional NetCDF output writer. </p>
+
+</div>
+</div>
+<a id="affd9f3a9e963da5696badd896f125a9e" name="affd9f3a9e963da5696badd896f125a9e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#affd9f3a9e963da5696badd896f125a9e">&#9670;&#160;</a></span>parameters</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1StepParameters.html">StepParameters</a> kynema_fmb::interfaces::cfd::Interface::parameters</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Kynema class containing solution parameters. </p>
+
+</div>
+</div>
+<a id="a75e5a67673ec9ac32443ca7411ca1c77" name="a75e5a67673ec9ac32443ca7411ca1c77"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75e5a67673ec9ac32443ca7411ca1c77">&#9670;&#160;</a></span>solver</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1Solver.html">Solver</a>&lt;<a class="el" href="classkynema__fmb_1_1interfaces_1_1cfd_1_1Interface.html#af9ba2fa7a00639b6b12b364fe3fc6dcc">DeviceType</a>&gt; kynema_fmb::interfaces::cfd::Interface::solver</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Kynema class for solving the dynamic system. </p>
+
+</div>
+</div>
+<a id="a79abb9414a1f1497701dfb7bf0f6956a" name="a79abb9414a1f1497701dfb7bf0f6956a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a79abb9414a1f1497701dfb7bf0f6956a">&#9670;&#160;</a></span>state</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1State.html">State</a>&lt;<a class="el" href="classkynema__fmb_1_1interfaces_1_1cfd_1_1Interface.html#af9ba2fa7a00639b6b12b364fe3fc6dcc">DeviceType</a>&gt; kynema_fmb::interfaces::cfd::Interface::state</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Kynema class for storing system state. </p>
+
+</div>
+</div>
+<a id="a56d7e04dd6636b104070735dca462e07" name="a56d7e04dd6636b104070735dca462e07"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56d7e04dd6636b104070735dca462e07">&#9670;&#160;</a></span>state_save</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1State.html">State</a>&lt;<a class="el" href="classkynema__fmb_1_1interfaces_1_1cfd_1_1Interface.html#af9ba2fa7a00639b6b12b364fe3fc6dcc">DeviceType</a>&gt; kynema_fmb::interfaces::cfd::Interface::state_save</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Kynema class state class for temporarily saving state. </p>
+
+</div>
+</div>
+<a id="a04505be283d3ae2a17020d61a32e5549" name="a04505be283d3ae2a17020d61a32e5549"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04505be283d3ae2a17020d61a32e5549">&#9670;&#160;</a></span>turbine</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1interfaces_1_1cfd_1_1Turbine.html">Turbine</a> kynema_fmb::interfaces::cfd::Interface::turbine</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a class="el" href="structkynema__fmb_1_1interfaces_1_1cfd_1_1Turbine.html" title="The top level structure defining the CFD problem.">Turbine</a> model input/output data. </p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
+<li>/home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/interfaces/cfd/<a class="el" href="interface_8hpp_source.html">interface.hpp</a></li>
+<li>/home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/interfaces/cfd/<a class="el" href="interface_8cpp.html">interface.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023 - Present, MIT License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

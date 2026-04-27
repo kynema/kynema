@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kynema API: kynema_fmb::beams::InterpolateToQuadraturePoints&amp;lt; DeviceType &amp;gt; Struct Template Reference &mdash; Kynema 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Kynema
+              <img src="../../_static/oturb_logo_v2.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/user.html">User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../theory/index.html">Theory Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/index.html">Developer Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/index.html">Benchmark Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../publications.html">Kynema-FMB Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../acknowledgement.html">Acknowledgements</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Kynema</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Kynema API: kynema_fmb::beams::InterpolateToQuadraturePoints&amp;lt; DeviceType &amp;gt; Struct Template Reference</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/doxygen/html/structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="interpolatetoquadraturepoints-lt-devicetype-gt-struct-template-reference">
+<h1>InterpolateToQuadraturePoints&amp;lt; DeviceType &amp;gt; Struct Template Reference<a class="headerlink" href="#interpolatetoquadraturepoints-lt-devicetype-gt-struct-template-reference" title="Permalink to this heading"></a></h1>
+<div class="doxygen-content docutils container">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Kynema API: kynema_fmb::beams::InterpolateToQuadraturePoints&lt; DeviceType &gt; Struct Template Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Kynema API
+   </div>
+   <div id="projectbrief">A flexible multibody structural dynamics code for wind turbines</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacekynema__fmb.html">kynema_fmb</a></li><li class="navelem"><a class="el" href="namespacekynema__fmb_1_1beams.html">beams</a></li><li class="navelem"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html">InterpolateToQuadraturePoints</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">kynema_fmb::beams::InterpolateToQuadraturePoints&lt; DeviceType &gt; Struct Template Reference</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Interpolates various quantities from nodes to quadrature points for beam elements.  
+ <a href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="interpolate__to__quadrature__points_8hpp_source.html">interpolate_to_quadrature_points.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:ace3f7a1016319b9f83e5ff97f33d2120" id="r_ace3f7a1016319b9f83e5ff97f33d2120"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">using</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#ace3f7a1016319b9f83e5ff97f33d2120">TeamPolicy</a> = Kokkos::TeamPolicy&lt; <a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">typename</a> DeviceType::execution_space &gt;</td></tr>
+<tr class="separator:ace3f7a1016319b9f83e5ff97f33d2120"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1ddbc3b51f554a26da2bf9c49947f3b" id="r_ae1ddbc3b51f554a26da2bf9c49947f3b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">using</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#ae1ddbc3b51f554a26da2bf9c49947f3b">member_type</a> = <a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">typename</a> TeamPolicy::member_type</td></tr>
+<tr class="separator:ae1ddbc3b51f554a26da2bf9c49947f3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81c45779efb462ce4c44623d369f0495" id="r_a81c45779efb462ce4c44623d369f0495"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">typename</a> ValueType &gt; </td></tr>
+<tr class="memitem:a81c45779efb462ce4c44623d369f0495"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">using</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">View</a> = Kokkos::View&lt; ValueType, DeviceType &gt;</td></tr>
+<tr class="separator:a81c45779efb462ce4c44623d369f0495"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7bfcdd5d590178621257233e5aff739" id="r_aa7bfcdd5d590178621257233e5aff739"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">typename</a> ValueType &gt; </td></tr>
+<tr class="memitem:aa7bfcdd5d590178621257233e5aff739"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">using</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#aa7bfcdd5d590178621257233e5aff739">ConstView</a> = <a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">typename</a> <a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">View</a>&lt; ValueType &gt;<a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">::const_type</a></td></tr>
+<tr class="separator:aa7bfcdd5d590178621257233e5aff739"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:ab4ee82dc868abb2114533ff0d6a4e089" id="r_ab4ee82dc868abb2114533ff0d6a4e089"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">KOKKOS_FUNCTION</a> <a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#ab4ee82dc868abb2114533ff0d6a4e089">operator()</a> (<a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#ae1ddbc3b51f554a26da2bf9c49947f3b">member_type</a> <a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">member</a>) <a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">const</a></td></tr>
+<tr class="separator:ab4ee82dc868abb2114533ff0d6a4e089"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:aa3a602292f89e3e909e8f3ba97456168" id="r_aa3a602292f89e3e909e8f3ba97456168"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#aa7bfcdd5d590178621257233e5aff739">ConstView</a>&lt; <a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">size_t</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#aa3a602292f89e3e909e8f3ba97456168">num_nodes_per_element</a></td></tr>
+<tr class="separator:aa3a602292f89e3e909e8f3ba97456168"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c2e59ab7c952a17b4c92d6af8d08583" id="r_a0c2e59ab7c952a17b4c92d6af8d08583"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#aa7bfcdd5d590178621257233e5aff739">ConstView</a>&lt; <a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">size_t</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a0c2e59ab7c952a17b4c92d6af8d08583">num_qps_per_element</a></td></tr>
+<tr class="separator:a0c2e59ab7c952a17b4c92d6af8d08583"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09dc946ddf8eab87697844c6b9fcf586" id="r_a09dc946ddf8eab87697844c6b9fcf586"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#aa7bfcdd5d590178621257233e5aff739">ConstView</a>&lt; <a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">double</a> *** &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a09dc946ddf8eab87697844c6b9fcf586">shape_interp</a></td></tr>
+<tr class="separator:a09dc946ddf8eab87697844c6b9fcf586"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c45df985f8c7d28a35d1e5e862caf5d" id="r_a2c45df985f8c7d28a35d1e5e862caf5d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#aa7bfcdd5d590178621257233e5aff739">ConstView</a>&lt; <a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">double</a> *** &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a2c45df985f8c7d28a35d1e5e862caf5d">shape_deriv</a></td></tr>
+<tr class="separator:a2c45df985f8c7d28a35d1e5e862caf5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aadd67c16eace277f6efd28dfb8820549" id="r_aadd67c16eace277f6efd28dfb8820549"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#aa7bfcdd5d590178621257233e5aff739">ConstView</a>&lt; <a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">double</a> ** &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#aadd67c16eace277f6efd28dfb8820549">qp_jacobian</a></td></tr>
+<tr class="separator:aadd67c16eace277f6efd28dfb8820549"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f8d741c3a4abc28a7e827354cd73ac4" id="r_a5f8d741c3a4abc28a7e827354cd73ac4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#aa7bfcdd5d590178621257233e5aff739">ConstView</a>&lt; <a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">double</a> **[7]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a5f8d741c3a4abc28a7e827354cd73ac4">node_u</a></td></tr>
+<tr class="separator:a5f8d741c3a4abc28a7e827354cd73ac4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adffe3a3ffe170a132af78582c3d2af0e" id="r_adffe3a3ffe170a132af78582c3d2af0e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#aa7bfcdd5d590178621257233e5aff739">ConstView</a>&lt; <a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">double</a> **[6]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#adffe3a3ffe170a132af78582c3d2af0e">node_u_dot</a></td></tr>
+<tr class="separator:adffe3a3ffe170a132af78582c3d2af0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7080045d2f6f0510f24116963f43693a" id="r_a7080045d2f6f0510f24116963f43693a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#aa7bfcdd5d590178621257233e5aff739">ConstView</a>&lt; <a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">double</a> **[6]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a7080045d2f6f0510f24116963f43693a">node_u_ddot</a></td></tr>
+<tr class="separator:a7080045d2f6f0510f24116963f43693a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac9362e552a34333259821a98e37fd81" id="r_aac9362e552a34333259821a98e37fd81"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#aa7bfcdd5d590178621257233e5aff739">ConstView</a>&lt; <a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">double</a> **[3]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#aac9362e552a34333259821a98e37fd81">qp_x0</a></td></tr>
+<tr class="separator:aac9362e552a34333259821a98e37fd81"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac58f10975ff258e126d22bd1f42daf36" id="r_ac58f10975ff258e126d22bd1f42daf36"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#aa7bfcdd5d590178621257233e5aff739">ConstView</a>&lt; <a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">double</a> **[4]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#ac58f10975ff258e126d22bd1f42daf36">qp_r0</a></td></tr>
+<tr class="separator:ac58f10975ff258e126d22bd1f42daf36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a536929965f49ad869fd23fe15649f7ca" id="r_a536929965f49ad869fd23fe15649f7ca"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">View</a>&lt; <a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">double</a> **[3]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a536929965f49ad869fd23fe15649f7ca">qp_u</a></td></tr>
+<tr class="separator:a536929965f49ad869fd23fe15649f7ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1fedfce85f371e3a132131f6fdb53596" id="r_a1fedfce85f371e3a132131f6fdb53596"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">View</a>&lt; <a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">double</a> **[3]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a1fedfce85f371e3a132131f6fdb53596">qp_uprime</a></td></tr>
+<tr class="separator:a1fedfce85f371e3a132131f6fdb53596"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a521af0f35bba3939db4260260fc90dfc" id="r_a521af0f35bba3939db4260260fc90dfc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">View</a>&lt; <a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">double</a> **[4]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a521af0f35bba3939db4260260fc90dfc">qp_r</a></td></tr>
+<tr class="separator:a521af0f35bba3939db4260260fc90dfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9c9ca7e73af9c0b7b6a58d06d1fe5a6" id="r_aa9c9ca7e73af9c0b7b6a58d06d1fe5a6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">View</a>&lt; <a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">double</a> **[4]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#aa9c9ca7e73af9c0b7b6a58d06d1fe5a6">qp_rprime</a></td></tr>
+<tr class="separator:aa9c9ca7e73af9c0b7b6a58d06d1fe5a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42222beb3f855c81415a677ae21a7eea" id="r_a42222beb3f855c81415a677ae21a7eea"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">View</a>&lt; <a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">double</a> **[3]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a42222beb3f855c81415a677ae21a7eea">qp_u_dot</a></td></tr>
+<tr class="separator:a42222beb3f855c81415a677ae21a7eea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e66e4711b2bc2500f3c7892db8348de" id="r_a8e66e4711b2bc2500f3c7892db8348de"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">View</a>&lt; <a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">double</a> **[3]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a8e66e4711b2bc2500f3c7892db8348de">qp_omega</a></td></tr>
+<tr class="separator:a8e66e4711b2bc2500f3c7892db8348de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9e0999e80d269a03f1dd46f17bd9a03" id="r_af9e0999e80d269a03f1dd46f17bd9a03"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">View</a>&lt; <a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">double</a> **[3]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#af9e0999e80d269a03f1dd46f17bd9a03">qp_u_ddot</a></td></tr>
+<tr class="separator:af9e0999e80d269a03f1dd46f17bd9a03"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82eb489d6e2fa16f40b3c8e2c6609868" id="r_a82eb489d6e2fa16f40b3c8e2c6609868"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">View</a>&lt; <a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">double</a> **[3]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a82eb489d6e2fa16f40b3c8e2c6609868">qp_omega_dot</a></td></tr>
+<tr class="separator:a82eb489d6e2fa16f40b3c8e2c6609868"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96c587f7d4dcc09af02ae6c47511e018" id="r_a96c587f7d4dcc09af02ae6c47511e018"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">View</a>&lt; <a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">double</a> **[7]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a96c587f7d4dcc09af02ae6c47511e018">qp_x</a></td></tr>
+<tr class="separator:a96c587f7d4dcc09af02ae6c47511e018"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">typename</a> DeviceType&gt;<br />
+struct kynema_fmb::beams::InterpolateToQuadraturePoints&lt; DeviceType &gt;</div><p>Interpolates various quantities from nodes to quadrature points for beam elements. </p>
+<p>This functor handles the interpolation of multiple quantities from nodal points to quadrature points (QPs) for beam elements, including:</p><ul>
+<li>Displacements (u) and their derivatives</li>
+<li>Rotations (r) and their derivatives</li>
+<li>Velocities (u_dot) and angular velocities (omega)</li>
+<li>Accelerations (u_ddot) and angular accelerations (omega_dot)</li>
+<li>Final positions (x) of quadrature points </li>
+</ul>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="aa7bfcdd5d590178621257233e5aff739" name="aa7bfcdd5d590178621257233e5aff739"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7bfcdd5d590178621257233e5aff739">&#9670;&#160;</a></span>ConstView</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">typename</a> DeviceType &gt; </div>
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">typename</a> ValueType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">using</a> <a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html">kynema_fmb::beams::InterpolateToQuadraturePoints</a>&lt; DeviceType &gt;::ConstView =  <a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">typename</a> <a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">View</a>&lt;ValueType&gt;<a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">::const_type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae1ddbc3b51f554a26da2bf9c49947f3b" name="ae1ddbc3b51f554a26da2bf9c49947f3b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1ddbc3b51f554a26da2bf9c49947f3b">&#9670;&#160;</a></span>member_type</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">using</a> <a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html">kynema_fmb::beams::InterpolateToQuadraturePoints</a>&lt; DeviceType &gt;::member_type =  <a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">typename</a> TeamPolicy::member_type</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ace3f7a1016319b9f83e5ff97f33d2120" name="ace3f7a1016319b9f83e5ff97f33d2120"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace3f7a1016319b9f83e5ff97f33d2120">&#9670;&#160;</a></span>TeamPolicy</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">using</a> <a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html">kynema_fmb::beams::InterpolateToQuadraturePoints</a>&lt; DeviceType &gt;::TeamPolicy =  Kokkos::TeamPolicy&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">typename</a> DeviceType::execution_space&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a81c45779efb462ce4c44623d369f0495" name="a81c45779efb462ce4c44623d369f0495"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81c45779efb462ce4c44623d369f0495">&#9670;&#160;</a></span>View</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">typename</a> DeviceType &gt; </div>
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">typename</a> ValueType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">using</a> <a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html">kynema_fmb::beams::InterpolateToQuadraturePoints</a>&lt; DeviceType &gt;::View =  Kokkos::View&lt;ValueType, DeviceType&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="ab4ee82dc868abb2114533ff0d6a4e089" name="ab4ee82dc868abb2114533ff0d6a4e089"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab4ee82dc868abb2114533ff0d6a4e089">&#9670;&#160;</a></span>operator()()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">typename</a> DeviceType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">KOKKOS_FUNCTION</a> <a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">void</a> <a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html">kynema_fmb::beams::InterpolateToQuadraturePoints</a>&lt; DeviceType &gt;<a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">::operator</a>() </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#ae1ddbc3b51f554a26da2bf9c49947f3b">member_type</a>&#160;</td>
+          <td class="paramname"><em>member</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a5f8d741c3a4abc28a7e827354cd73ac4" name="a5f8d741c3a4abc28a7e827354cd73ac4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f8d741c3a4abc28a7e827354cd73ac4">&#9670;&#160;</a></span>node_u</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#aa7bfcdd5d590178621257233e5aff739">ConstView</a>&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">double</a>** [7]&gt; <a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html">kynema_fmb::beams::InterpolateToQuadraturePoints</a>&lt; DeviceType &gt;::node_u</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7080045d2f6f0510f24116963f43693a" name="a7080045d2f6f0510f24116963f43693a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7080045d2f6f0510f24116963f43693a">&#9670;&#160;</a></span>node_u_ddot</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#aa7bfcdd5d590178621257233e5aff739">ConstView</a>&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">double</a>** [6]&gt; <a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html">kynema_fmb::beams::InterpolateToQuadraturePoints</a>&lt; DeviceType &gt;::node_u_ddot</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adffe3a3ffe170a132af78582c3d2af0e" name="adffe3a3ffe170a132af78582c3d2af0e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adffe3a3ffe170a132af78582c3d2af0e">&#9670;&#160;</a></span>node_u_dot</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#aa7bfcdd5d590178621257233e5aff739">ConstView</a>&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">double</a>** [6]&gt; <a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html">kynema_fmb::beams::InterpolateToQuadraturePoints</a>&lt; DeviceType &gt;::node_u_dot</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa3a602292f89e3e909e8f3ba97456168" name="aa3a602292f89e3e909e8f3ba97456168"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa3a602292f89e3e909e8f3ba97456168">&#9670;&#160;</a></span>num_nodes_per_element</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#aa7bfcdd5d590178621257233e5aff739">ConstView</a>&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">size_t</a>*&gt; <a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html">kynema_fmb::beams::InterpolateToQuadraturePoints</a>&lt; DeviceType &gt;::num_nodes_per_element</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0c2e59ab7c952a17b4c92d6af8d08583" name="a0c2e59ab7c952a17b4c92d6af8d08583"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c2e59ab7c952a17b4c92d6af8d08583">&#9670;&#160;</a></span>num_qps_per_element</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#aa7bfcdd5d590178621257233e5aff739">ConstView</a>&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">size_t</a>*&gt; <a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html">kynema_fmb::beams::InterpolateToQuadraturePoints</a>&lt; DeviceType &gt;::num_qps_per_element</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aadd67c16eace277f6efd28dfb8820549" name="aadd67c16eace277f6efd28dfb8820549"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aadd67c16eace277f6efd28dfb8820549">&#9670;&#160;</a></span>qp_jacobian</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#aa7bfcdd5d590178621257233e5aff739">ConstView</a>&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">double</a>**&gt; <a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html">kynema_fmb::beams::InterpolateToQuadraturePoints</a>&lt; DeviceType &gt;::qp_jacobian</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8e66e4711b2bc2500f3c7892db8348de" name="a8e66e4711b2bc2500f3c7892db8348de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e66e4711b2bc2500f3c7892db8348de">&#9670;&#160;</a></span>qp_omega</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">View</a>&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">double</a>** [3]&gt; <a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html">kynema_fmb::beams::InterpolateToQuadraturePoints</a>&lt; DeviceType &gt;::qp_omega</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a82eb489d6e2fa16f40b3c8e2c6609868" name="a82eb489d6e2fa16f40b3c8e2c6609868"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82eb489d6e2fa16f40b3c8e2c6609868">&#9670;&#160;</a></span>qp_omega_dot</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">View</a>&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">double</a>** [3]&gt; <a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html">kynema_fmb::beams::InterpolateToQuadraturePoints</a>&lt; DeviceType &gt;::qp_omega_dot</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a521af0f35bba3939db4260260fc90dfc" name="a521af0f35bba3939db4260260fc90dfc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a521af0f35bba3939db4260260fc90dfc">&#9670;&#160;</a></span>qp_r</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">View</a>&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">double</a>** [4]&gt; <a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html">kynema_fmb::beams::InterpolateToQuadraturePoints</a>&lt; DeviceType &gt;::qp_r</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac58f10975ff258e126d22bd1f42daf36" name="ac58f10975ff258e126d22bd1f42daf36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac58f10975ff258e126d22bd1f42daf36">&#9670;&#160;</a></span>qp_r0</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#aa7bfcdd5d590178621257233e5aff739">ConstView</a>&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">double</a>** [4]&gt; <a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html">kynema_fmb::beams::InterpolateToQuadraturePoints</a>&lt; DeviceType &gt;::qp_r0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa9c9ca7e73af9c0b7b6a58d06d1fe5a6" name="aa9c9ca7e73af9c0b7b6a58d06d1fe5a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9c9ca7e73af9c0b7b6a58d06d1fe5a6">&#9670;&#160;</a></span>qp_rprime</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">View</a>&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">double</a>** [4]&gt; <a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html">kynema_fmb::beams::InterpolateToQuadraturePoints</a>&lt; DeviceType &gt;::qp_rprime</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a536929965f49ad869fd23fe15649f7ca" name="a536929965f49ad869fd23fe15649f7ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a536929965f49ad869fd23fe15649f7ca">&#9670;&#160;</a></span>qp_u</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">View</a>&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">double</a>** [3]&gt; <a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html">kynema_fmb::beams::InterpolateToQuadraturePoints</a>&lt; DeviceType &gt;::qp_u</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af9e0999e80d269a03f1dd46f17bd9a03" name="af9e0999e80d269a03f1dd46f17bd9a03"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9e0999e80d269a03f1dd46f17bd9a03">&#9670;&#160;</a></span>qp_u_ddot</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">View</a>&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">double</a>** [3]&gt; <a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html">kynema_fmb::beams::InterpolateToQuadraturePoints</a>&lt; DeviceType &gt;::qp_u_ddot</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a42222beb3f855c81415a677ae21a7eea" name="a42222beb3f855c81415a677ae21a7eea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42222beb3f855c81415a677ae21a7eea">&#9670;&#160;</a></span>qp_u_dot</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">View</a>&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">double</a>** [3]&gt; <a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html">kynema_fmb::beams::InterpolateToQuadraturePoints</a>&lt; DeviceType &gt;::qp_u_dot</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1fedfce85f371e3a132131f6fdb53596" name="a1fedfce85f371e3a132131f6fdb53596"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1fedfce85f371e3a132131f6fdb53596">&#9670;&#160;</a></span>qp_uprime</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">View</a>&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">double</a>** [3]&gt; <a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html">kynema_fmb::beams::InterpolateToQuadraturePoints</a>&lt; DeviceType &gt;::qp_uprime</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a96c587f7d4dcc09af02ae6c47511e018" name="a96c587f7d4dcc09af02ae6c47511e018"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96c587f7d4dcc09af02ae6c47511e018">&#9670;&#160;</a></span>qp_x</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">View</a>&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">double</a>** [7]&gt; <a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html">kynema_fmb::beams::InterpolateToQuadraturePoints</a>&lt; DeviceType &gt;::qp_x</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aac9362e552a34333259821a98e37fd81" name="aac9362e552a34333259821a98e37fd81"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac9362e552a34333259821a98e37fd81">&#9670;&#160;</a></span>qp_x0</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#aa7bfcdd5d590178621257233e5aff739">ConstView</a>&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">double</a>** [3]&gt; <a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html">kynema_fmb::beams::InterpolateToQuadraturePoints</a>&lt; DeviceType &gt;::qp_x0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2c45df985f8c7d28a35d1e5e862caf5d" name="a2c45df985f8c7d28a35d1e5e862caf5d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c45df985f8c7d28a35d1e5e862caf5d">&#9670;&#160;</a></span>shape_deriv</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#aa7bfcdd5d590178621257233e5aff739">ConstView</a>&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">double</a>***&gt; <a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html">kynema_fmb::beams::InterpolateToQuadraturePoints</a>&lt; DeviceType &gt;::shape_deriv</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a09dc946ddf8eab87697844c6b9fcf586" name="a09dc946ddf8eab87697844c6b9fcf586"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09dc946ddf8eab87697844c6b9fcf586">&#9670;&#160;</a></span>shape_interp</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#aa7bfcdd5d590178621257233e5aff739">ConstView</a>&lt;<a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html#a81c45779efb462ce4c44623d369f0495">double</a>***&gt; <a class="el" href="structkynema__fmb_1_1beams_1_1InterpolateToQuadraturePoints.html">kynema_fmb::beams::InterpolateToQuadraturePoints</a>&lt; DeviceType &gt;::shape_interp</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
+<li>/home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/elements/beams/<a class="el" href="interpolate__to__quadrature__points_8hpp_source.html">interpolate_to_quadrature_points.hpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023 - Present, MIT License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

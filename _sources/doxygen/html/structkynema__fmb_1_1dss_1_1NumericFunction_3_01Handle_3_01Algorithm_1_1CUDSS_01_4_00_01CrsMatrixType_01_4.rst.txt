@@ -1,0 +1,14 @@
+.. meta::523e07f7799ef69b7743c04f4b1773ceb9348285fb07e4a19589590ca98b927e963ab52c5ab6c824cf5ffd65bd0bff094f7e31a870b9bbad0e9d74e21cdc85a1
+
+:orphan:
+
+.. title:: Kynema API: kynema_fmb::dss::NumericFunction&lt; Handle&lt; Algorithm::CUDSS &gt;, CrsMatrixType &gt; Struct Template Reference
+
+CUDSS &gt;, CrsMatrixType &gt; Struct Template Reference
+========================================================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: structkynema__fmb_1_1dss_1_1NumericFunction_3_01Handle_3_01Algorithm_1_1CUDSS_01_4_00_01CrsMatrixType_01_4.html

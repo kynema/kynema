@@ -1,0 +1,14 @@
+.. meta::6c07eb39fa68d89393d70cd166bb783a4b5481be4bc0e99fb531747c0a01db14e61bffa638e95646e3bc198ec7555951ba8d7e0e3c70c5ce827e4c59b1e0dfb3
+
+:orphan:
+
+.. title:: Kynema API: kynema_fmb::interfaces::components::AerodynamicSection Struct Reference
+
+AerodynamicSection Struct Reference
+===================================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: structkynema__fmb_1_1interfaces_1_1components_1_1AerodynamicSection.html

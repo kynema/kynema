@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kynema API: /home/runner/work/kynema/kynema/kynema/src/elements/beams/interpolation_operations.hpp Source File &mdash; Kynema 0.0.1 documentation</title>
+  <title>Kynema API: /home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/elements/beams/interpolation_operations.hpp Source File &mdash; Kynema 0.0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
@@ -54,7 +54,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../theory/index.html">Theory Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../developer/index.html">Developer Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../testing/index.html">Benchmark Testing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../publications.html">Kynema Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../publications.html">Kynema-FMB Publications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../acknowledgement.html">Acknowledgements</a></li>
 </ul>
 
@@ -72,7 +72,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Kynema API: /home/runner/work/kynema/kynema/kynema/src/elements/beams/interpolation_operations.hpp Source File</li>
+      <li class="breadcrumb-item active">Kynema API: /home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/elements/beams/interpolation_operations.hpp Source File</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/doxygen/html/interpolation__operations_8hpp_source.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -82,8 +82,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="home-runner-work-kynema-kynema-kynema-src-elements-beams-interpolation-operations-hpp-source-file">
-<h1>/home/runner/work/kynema/kynema/kynema/src/elements/beams/interpolation_operations.hpp Source File<a class="headerlink" href="#home-runner-work-kynema-kynema-kynema-src-elements-beams-interpolation-operations-hpp-source-file" title="Permalink to this heading"></a></h1>
+  <div class="section" id="home-runner-work-kynema-fmb-kynema-fmb-kynema-fmb-src-elements-beams-interpolation-operations-hpp-source-file">
+<h1>/home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/elements/beams/interpolation_operations.hpp Source File<a class="headerlink" href="#home-runner-work-kynema-fmb-kynema-fmb-kynema-fmb-src-elements-beams-interpolation-operations-hpp-source-file" title="Permalink to this heading"></a></h1>
 <div class="doxygen-content docutils container">
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
@@ -92,7 +92,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Kynema API: /home/runner/work/kynema/kynema/kynema/src/elements/beams/interpolation_operations.hpp Source File</title>
+<title>Kynema API: /home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/elements/beams/interpolation_operations.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -180,11 +180,11 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;Kokkos_Core.hpp&gt;</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacekynema_1_1beams.html">kynema::beams</a> {</div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacekynema__fmb_1_1beams.html">kynema_fmb::beams</a> {</div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> shape_matrix_type, <span class="keyword">typename</span> node_type, <span class="keyword">typename</span> qp_type&gt;</div>
 <div class="foldopen" id="foldopen00008" data-start="{" data-end="}">
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="namespacekynema_1_1beams.html#a73d9b0b16291cc9a0ad431ff60ccf71d">    8</a></span>KOKKOS_INLINE_FUNCTION <span class="keywordtype">void</span> <a class="code hl_function" href="namespacekynema_1_1beams.html#a73d9b0b16291cc9a0ad431ff60ccf71d">InterpVector3</a>(</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="namespacekynema__fmb_1_1beams.html#a4e802d1247c955b3ab31d97939699b42">    8</a></span>KOKKOS_INLINE_FUNCTION <span class="keywordtype">void</span> <a class="code hl_function" href="namespacekynema__fmb_1_1beams.html#a4e802d1247c955b3ab31d97939699b42">InterpVector3</a>(</div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    <span class="keyword">const</span> shape_matrix_type&amp; shape_matrix, <span class="keyword">const</span> node_type&amp; node_v, <span class="keyword">const</span> qp_type&amp; qp_v</div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>) {</div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> qp = 0; qp &lt; qp_v.extent_int(0); ++qp) {</div>
@@ -204,7 +204,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> shape_matrix_type, <span class="keyword">typename</span> node_type, <span class="keyword">typename</span> qp_type&gt;</div>
 <div class="foldopen" id="foldopen00026" data-start="{" data-end="}">
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="namespacekynema_1_1beams.html#a155e8907566155899afce4fad9454659">   26</a></span>KOKKOS_INLINE_FUNCTION <span class="keywordtype">void</span> <a class="code hl_function" href="namespacekynema_1_1beams.html#a155e8907566155899afce4fad9454659">InterpVector4</a>(</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="namespacekynema__fmb_1_1beams.html#ac0a242d0c397602e8431b808bb9a76a9">   26</a></span>KOKKOS_INLINE_FUNCTION <span class="keywordtype">void</span> <a class="code hl_function" href="namespacekynema__fmb_1_1beams.html#ac0a242d0c397602e8431b808bb9a76a9">InterpVector4</a>(</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keyword">const</span> shape_matrix_type&amp; shape_matrix, <span class="keyword">const</span> node_type&amp; node_v, <span class="keyword">const</span> qp_type&amp; qp_v</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>) {</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> qp = 0; qp &lt; qp_v.extent_int(0); ++qp) {</div>
@@ -224,10 +224,10 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> shape_matrix_type, <span class="keyword">typename</span> node_type, <span class="keyword">typename</span> qp_type&gt;</div>
 <div class="foldopen" id="foldopen00044" data-start="{" data-end="}">
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="namespacekynema_1_1beams.html#a3cfc62b15399ac0dbc7b2392580d2a42">   44</a></span>KOKKOS_INLINE_FUNCTION <span class="keywordtype">void</span> <a class="code hl_function" href="namespacekynema_1_1beams.html#a3cfc62b15399ac0dbc7b2392580d2a42">InterpQuaternion</a>(</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="namespacekynema__fmb_1_1beams.html#a96908f02a12d7f358bb3e062ab6d54a9">   44</a></span>KOKKOS_INLINE_FUNCTION <span class="keywordtype">void</span> <a class="code hl_function" href="namespacekynema__fmb_1_1beams.html#a96908f02a12d7f358bb3e062ab6d54a9">InterpQuaternion</a>(</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keyword">const</span> shape_matrix_type&amp; shape_matrix, <span class="keyword">const</span> node_type&amp; node_v, <span class="keyword">const</span> qp_type&amp; qp_v</div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>) {</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <a class="code hl_function" href="namespacekynema_1_1beams.html#a155e8907566155899afce4fad9454659">InterpVector4</a>(shape_matrix, node_v, qp_v);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <a class="code hl_function" href="namespacekynema__fmb_1_1beams.html#ac0a242d0c397602e8431b808bb9a76a9">InterpVector4</a>(shape_matrix, node_v, qp_v);</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keyword">auto</span> length_zero_result = Kokkos::Array&lt;double, 4&gt;{1., 0., 0., 0.};</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> qp = 0; qp &lt; qp_v.extent_int(0); ++qp) {</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        <span class="keyword">auto</span> length = Kokkos::sqrt(</div>
@@ -249,11 +249,11 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> shape_matrix_type, <span class="keyword">typename</span> jacobian_type, <span class="keyword">typename</span> node_type, <span class="keyword">typename</span> qp_type&gt;</div>
 <div class="foldopen" id="foldopen00067" data-start="{" data-end="}">
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="namespacekynema_1_1beams.html#a00ab14be798ce780c6d77073d978116e">   67</a></span>KOKKOS_INLINE_FUNCTION <span class="keywordtype">void</span> <a class="code hl_function" href="namespacekynema_1_1beams.html#a00ab14be798ce780c6d77073d978116e">InterpVector3Deriv</a>(</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="namespacekynema__fmb_1_1beams.html#ac6f53fcf5cd5e9c003ff70a4f7d5c1a8">   67</a></span>KOKKOS_INLINE_FUNCTION <span class="keywordtype">void</span> <a class="code hl_function" href="namespacekynema__fmb_1_1beams.html#ac6f53fcf5cd5e9c003ff70a4f7d5c1a8">InterpVector3Deriv</a>(</div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="keyword">const</span> shape_matrix_type&amp; shape_matrix_deriv, <span class="keyword">const</span> jacobian_type&amp; jacobian,</div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="keyword">const</span> node_type&amp; node_v, <span class="keyword">const</span> qp_type&amp; qp_v</div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>) {</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <a class="code hl_function" href="namespacekynema_1_1beams.html#a73d9b0b16291cc9a0ad431ff60ccf71d">InterpVector3</a>(shape_matrix_deriv, node_v, qp_v);</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <a class="code hl_function" href="namespacekynema__fmb_1_1beams.html#a4e802d1247c955b3ab31d97939699b42">InterpVector3</a>(shape_matrix_deriv, node_v, qp_v);</div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> qp = 0; qp &lt; qp_v.extent_int(0); ++qp) {</div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        <span class="keyword">const</span> <span class="keyword">auto</span> jac = jacobian(qp);</div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> component = 0; component &lt; qp_v.extent_int(1); ++component) {</div>
@@ -265,11 +265,11 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> shape_matrix_type, <span class="keyword">typename</span> jacobian_type, <span class="keyword">typename</span> node_type, <span class="keyword">typename</span> qp_type&gt;</div>
 <div class="foldopen" id="foldopen00081" data-start="{" data-end="}">
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="namespacekynema_1_1beams.html#a508a1f3af5d1cb7536465eb05cc4cd01">   81</a></span>KOKKOS_INLINE_FUNCTION <span class="keywordtype">void</span> <a class="code hl_function" href="namespacekynema_1_1beams.html#a508a1f3af5d1cb7536465eb05cc4cd01">InterpVector4Deriv</a>(</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="namespacekynema__fmb_1_1beams.html#a44f48c0b8905d2706fa4d53ad2b8d77c">   81</a></span>KOKKOS_INLINE_FUNCTION <span class="keywordtype">void</span> <a class="code hl_function" href="namespacekynema__fmb_1_1beams.html#a44f48c0b8905d2706fa4d53ad2b8d77c">InterpVector4Deriv</a>(</div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="keyword">const</span> shape_matrix_type&amp; shape_matrix_deriv, <span class="keyword">const</span> jacobian_type&amp; jacobian,</div>
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <span class="keyword">const</span> node_type&amp; node_v, <span class="keyword">const</span> qp_type&amp; qp_v</div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>) {</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <a class="code hl_function" href="namespacekynema_1_1beams.html#a155e8907566155899afce4fad9454659">InterpVector4</a>(shape_matrix_deriv, node_v, qp_v);</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <a class="code hl_function" href="namespacekynema__fmb_1_1beams.html#ac0a242d0c397602e8431b808bb9a76a9">InterpVector4</a>(shape_matrix_deriv, node_v, qp_v);</div>
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> qp = 0; qp &lt; qp_v.extent_int(0); ++qp) {</div>
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        <span class="keyword">const</span> <span class="keyword">auto</span> jac = jacobian(qp);</div>
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> component = 0; component &lt; qp_v.extent_int(1); ++component) {</div>
@@ -279,13 +279,13 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>}</div>
 </div>
 <div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>}  <span class="comment">// namespace kynema::beams</span></div>
-<div class="ttc" id="anamespacekynema_1_1beams_html"><div class="ttname"><a href="namespacekynema_1_1beams.html">kynema::beams</a></div><div class="ttdef"><b>Definition</b> beam_quadrature.hpp:14</div></div>
-<div class="ttc" id="anamespacekynema_1_1beams_html_a00ab14be798ce780c6d77073d978116e"><div class="ttname"><a href="namespacekynema_1_1beams.html#a00ab14be798ce780c6d77073d978116e">kynema::beams::InterpVector3Deriv</a></div><div class="ttdeci">KOKKOS_INLINE_FUNCTION void InterpVector3Deriv(const shape_matrix_type &amp;shape_matrix_deriv, const jacobian_type &amp;jacobian, const node_type &amp;node_v, const qp_type &amp;qp_v)</div><div class="ttdef"><b>Definition</b> interpolation_operations.hpp:67</div></div>
-<div class="ttc" id="anamespacekynema_1_1beams_html_a155e8907566155899afce4fad9454659"><div class="ttname"><a href="namespacekynema_1_1beams.html#a155e8907566155899afce4fad9454659">kynema::beams::InterpVector4</a></div><div class="ttdeci">KOKKOS_INLINE_FUNCTION void InterpVector4(const shape_matrix_type &amp;shape_matrix, const node_type &amp;node_v, const qp_type &amp;qp_v)</div><div class="ttdef"><b>Definition</b> interpolation_operations.hpp:26</div></div>
-<div class="ttc" id="anamespacekynema_1_1beams_html_a3cfc62b15399ac0dbc7b2392580d2a42"><div class="ttname"><a href="namespacekynema_1_1beams.html#a3cfc62b15399ac0dbc7b2392580d2a42">kynema::beams::InterpQuaternion</a></div><div class="ttdeci">KOKKOS_INLINE_FUNCTION void InterpQuaternion(const shape_matrix_type &amp;shape_matrix, const node_type &amp;node_v, const qp_type &amp;qp_v)</div><div class="ttdef"><b>Definition</b> interpolation_operations.hpp:44</div></div>
-<div class="ttc" id="anamespacekynema_1_1beams_html_a508a1f3af5d1cb7536465eb05cc4cd01"><div class="ttname"><a href="namespacekynema_1_1beams.html#a508a1f3af5d1cb7536465eb05cc4cd01">kynema::beams::InterpVector4Deriv</a></div><div class="ttdeci">KOKKOS_INLINE_FUNCTION void InterpVector4Deriv(const shape_matrix_type &amp;shape_matrix_deriv, const jacobian_type &amp;jacobian, const node_type &amp;node_v, const qp_type &amp;qp_v)</div><div class="ttdef"><b>Definition</b> interpolation_operations.hpp:81</div></div>
-<div class="ttc" id="anamespacekynema_1_1beams_html_a73d9b0b16291cc9a0ad431ff60ccf71d"><div class="ttname"><a href="namespacekynema_1_1beams.html#a73d9b0b16291cc9a0ad431ff60ccf71d">kynema::beams::InterpVector3</a></div><div class="ttdeci">KOKKOS_INLINE_FUNCTION void InterpVector3(const shape_matrix_type &amp;shape_matrix, const node_type &amp;node_v, const qp_type &amp;qp_v)</div><div class="ttdef"><b>Definition</b> interpolation_operations.hpp:8</div></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>}  <span class="comment">// namespace kynema_fmb::beams</span></div>
+<div class="ttc" id="anamespacekynema__fmb_1_1beams_html"><div class="ttname"><a href="namespacekynema__fmb_1_1beams.html">kynema_fmb::beams</a></div><div class="ttdef"><b>Definition</b> beam_quadrature.hpp:14</div></div>
+<div class="ttc" id="anamespacekynema__fmb_1_1beams_html_a44f48c0b8905d2706fa4d53ad2b8d77c"><div class="ttname"><a href="namespacekynema__fmb_1_1beams.html#a44f48c0b8905d2706fa4d53ad2b8d77c">kynema_fmb::beams::InterpVector4Deriv</a></div><div class="ttdeci">KOKKOS_INLINE_FUNCTION void InterpVector4Deriv(const shape_matrix_type &amp;shape_matrix_deriv, const jacobian_type &amp;jacobian, const node_type &amp;node_v, const qp_type &amp;qp_v)</div><div class="ttdef"><b>Definition</b> interpolation_operations.hpp:81</div></div>
+<div class="ttc" id="anamespacekynema__fmb_1_1beams_html_a4e802d1247c955b3ab31d97939699b42"><div class="ttname"><a href="namespacekynema__fmb_1_1beams.html#a4e802d1247c955b3ab31d97939699b42">kynema_fmb::beams::InterpVector3</a></div><div class="ttdeci">KOKKOS_INLINE_FUNCTION void InterpVector3(const shape_matrix_type &amp;shape_matrix, const node_type &amp;node_v, const qp_type &amp;qp_v)</div><div class="ttdef"><b>Definition</b> interpolation_operations.hpp:8</div></div>
+<div class="ttc" id="anamespacekynema__fmb_1_1beams_html_a96908f02a12d7f358bb3e062ab6d54a9"><div class="ttname"><a href="namespacekynema__fmb_1_1beams.html#a96908f02a12d7f358bb3e062ab6d54a9">kynema_fmb::beams::InterpQuaternion</a></div><div class="ttdeci">KOKKOS_INLINE_FUNCTION void InterpQuaternion(const shape_matrix_type &amp;shape_matrix, const node_type &amp;node_v, const qp_type &amp;qp_v)</div><div class="ttdef"><b>Definition</b> interpolation_operations.hpp:44</div></div>
+<div class="ttc" id="anamespacekynema__fmb_1_1beams_html_ac0a242d0c397602e8431b808bb9a76a9"><div class="ttname"><a href="namespacekynema__fmb_1_1beams.html#ac0a242d0c397602e8431b808bb9a76a9">kynema_fmb::beams::InterpVector4</a></div><div class="ttdeci">KOKKOS_INLINE_FUNCTION void InterpVector4(const shape_matrix_type &amp;shape_matrix, const node_type &amp;node_v, const qp_type &amp;qp_v)</div><div class="ttdef"><b>Definition</b> interpolation_operations.hpp:26</div></div>
+<div class="ttc" id="anamespacekynema__fmb_1_1beams_html_ac6f53fcf5cd5e9c003ff70a4f7d5c1a8"><div class="ttname"><a href="namespacekynema__fmb_1_1beams.html#ac6f53fcf5cd5e9c003ff70a4f7d5c1a8">kynema_fmb::beams::InterpVector3Deriv</a></div><div class="ttdeci">KOKKOS_INLINE_FUNCTION void InterpVector3Deriv(const shape_matrix_type &amp;shape_matrix_deriv, const jacobian_type &amp;jacobian, const node_type &amp;node_v, const qp_type &amp;qp_v)</div><div class="ttdef"><b>Definition</b> interpolation_operations.hpp:67</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

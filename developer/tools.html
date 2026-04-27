@@ -56,7 +56,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../theory/index.html">Theory Manual</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Developer Documentation</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="overview.html">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dev_plan.html">Kynema Development Plan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_plan.html">Kynema-FMB Development Plan</a></li>
 <li class="toctree-l2"><a class="reference internal" href="documentation.html">Documentation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../doxygen/html/index.html">Kynema API</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Developer Tools</a><ul>
@@ -68,7 +68,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../testing/index.html">Benchmark Testing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../publications.html">Kynema Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../publications.html">Kynema-FMB Publications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../acknowledgement.html">Acknowledgements</a></li>
 </ul>
 
@@ -100,7 +100,7 @@
   <div class="section" id="developer-tools">
 <h1>Developer Tools<a class="headerlink" href="#developer-tools" title="Permalink to this heading"></a></h1>
 <p>This page describes static and dynamic analysis tools used in the development
-of Kynema. These tools are run and must pass as part of the CI process,
+of Kynema-FMB. These tools are run and must pass as part of the CI process,
 so it will likely become important for integration into a developer’s process.</p>
 <div class="section" id="clang-format">
 <h2>clang-format<a class="headerlink" href="#clang-format" title="Permalink to this heading"></a></h2>
@@ -117,14 +117,14 @@ settings in the configuration file.</p>
 tool which enforces a variety of rules on the code in order to avoid common
 bugs.</p>
 <p>ClangTidy is configure by the <code class="docutils literal notranslate"><span class="pre">.clang-tidy</span></code> file at the top of the repository.
-To run it, configure Kynema with the <code class="docutils literal notranslate"><span class="pre">Kynema_ENABLE_CLANG_TIDY</span></code> option.</p>
+To run it, configure Kynema-FMB with the <code class="docutils literal notranslate"><span class="pre">KYNEMA_FMB_ENABLE_CLANG_TIDY</span></code> option.</p>
 </div>
 <div class="section" id="cppcheck">
 <h2>Cppcheck<a class="headerlink" href="#cppcheck" title="Permalink to this heading"></a></h2>
 <p><a class="reference external" href="https://cppcheck.sourceforge.io/">Cppcehck</a> is yet another linting tools
 which detects undefined behavior and dangerous constructs with very few
 false positives.</p>
-<p>To run Cppcheck, configure Kynema with the <code class="docutils literal notranslate"><span class="pre">Kynema_ENABLE_CPPCHECK</span></code> option.</p>
+<p>To run Cppcheck, configure Kynema-FMB with the <code class="docutils literal notranslate"><span class="pre">KYNEMA_FMB_ENABLE_CPPCHECK</span></code> option.</p>
 </div>
 </div>
 

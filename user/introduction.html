@@ -60,7 +60,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="compiling.html">Compiling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="linking.html">Linking To Kynema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linking.html">Linking To Kynema-FMB</a></li>
 <li class="toctree-l2"><a class="reference internal" href="vtk_visualization.html">VTK Visualization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="floating_platform.html">Example: Rigid body with three springs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="turbine.html">Example: IEA15MW Turbine</a></li>
@@ -72,7 +72,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../theory/index.html">Theory Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../developer/index.html">Developer Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../testing/index.html">Benchmark Testing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../publications.html">Kynema Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../publications.html">Kynema-FMB Publications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../acknowledgement.html">Acknowledgements</a></li>
 </ul>
 
@@ -103,33 +103,33 @@
              
   <div class="section" id="introduction">
 <h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading"></a></h1>
-<p>Kynema is a speed-oriented, performance portable library for solving structural dynamics problems.</p>
+<p>Kynema-FMB is a speed-oriented, performance portable library for solving structural dynamics problems.</p>
 <div class="section" id="code-structure">
 <h2>Code Structure<a class="headerlink" href="#code-structure" title="Permalink to this heading"></a></h2>
-<p>Kynema provides three element types: high-order beam finite elements, mass elements, and geometrically nonlinear spring elements.
+<p>Kynema-FMB provides three element types: high-order beam finite elements, mass elements, and geometrically nonlinear spring elements.
 When combined with constraints, these elements can be used to describe any number of structural dynamics configurations.
-Kynema’s “low level” API is based around the Model class, where the user will manually specify each node and constraint and element memberships.
+Kynema-FMB’s “low level” API is based around the Model class, where the user will manually specify each node and constraint and element memberships.
 Additionally, using the low level API gives the user full flexibility in controlling the time stepping proceedure and copying memory to/from device.
 For more details on the low level API, see the Heavy Top, Spring-Mass, and Three Blade example problems.</p>
-<p>Kynema also provides a number of “high level” APIs for defining and driving specific problem configurations that are in high demand by our users.
+<p>Kynema-FMB also provides a number of “high level” APIs for defining and driving specific problem configurations that are in high demand by our users.
 This approach allows users to avoid much of the tedious book keeping needed to specify and drive these common problems.
 For more details on the currently provided low level APIs, see the Rigid Body with Three Springs example and the IEA15MW Turbine example.</p>
 </div>
 <div class="section" id="kokkos-and-kokkos-kernels">
 <h2>Kokkos and Kokkos Kernels<a class="headerlink" href="#kokkos-and-kokkos-kernels" title="Permalink to this heading"></a></h2>
-<p>Kynema is built on top of the Kokkos ecosystem, which allows a single code base to target serial CPU, multi-threaded CPU, and GPU platforms from NVIDIA, AMD, and Intel.</p>
+<p>Kynema-FMB is built on top of the Kokkos ecosystem, which allows a single code base to target serial CPU, multi-threaded CPU, and GPU platforms from NVIDIA, AMD, and Intel.</p>
 <p>Kokkos provides the basic building blocks for expressing algorithms in a performance portable way.
 Kokkos’ Views wrap the details of memory allocation across platforms and abstract memory access patterns for optimal caching/coalescing behavior on CPU/GPU platforms.
 Additionally, Kokkos’ parallel_for construct abstracts the details of kernel launching on different platforms, allowing a single piece of code to represent a simple for loop (when configured for serial execution), an OpenMP accelerated for loop with thread local variables (when configured for OpenMP execution) or a Cuda/HIP kernel launch with tuned grid sizing and shared memory usaged.
 Furthermore, Kokkos allows us to express heirarchical parallelism, which is essential for extracting maximum performance on GPU devices when working with high order elements.
 Finally, Kokkos provides a SIMD interface, which allows us to manually specify outer-loop SIMD parallelism in key algorithms.</p>
 <p>Kokkos Kernels is a library built on top of Kokkos which provides performance-portable BLAS algorithms.
-Kynema primarily uses Kokkos Kernels’ batched algorithms to perform optimized matrix math in its system assembly algorithms.
-Kokkos Kernels also provides a sparse matrix library, which is used for manipulating Kynema’s sparse system matrix.</p>
+Kynema-FMB primarily uses Kokkos Kernels’ batched algorithms to perform optimized matrix math in its system assembly algorithms.
+Kokkos Kernels also provides a sparse matrix library, which is used for manipulating Kynema-FMB’s sparse system matrix.</p>
 </div>
 <div class="section" id="linear-solvers">
 <h2>Linear Solvers<a class="headerlink" href="#linear-solvers" title="Permalink to this heading"></a></h2>
-<p>Much of Kynema’s performance is derived from its use of highly optimized sparse direct solvers.
+<p>Much of Kynema-FMB’s performance is derived from its use of highly optimized sparse direct solvers.
 When solving the system matrix that is assembled as part of our time stepping processs, sparse direct solvers combine the robustness of traditional LU factorization with the efficiency of a sparse matrix representation.
 The actual peformance of these algorithms is highly dependent on the fill-in of the matrix’s sparsity pattern, the built-in reordering algorithm, and the details of the exact solution proceedure.</p>
 <p>On CPU, we provide many choices for solvers, since different solvers have their own performance properties for different sparse matrix structures.

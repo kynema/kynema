@@ -1,0 +1,14 @@
+.. meta::b51e8fc253ec098b428f9a04304652d0ad0c9d73abc59251f182de0a868dd8e320b456ea2e4c902556d4437dbd4a65b51bcecfa860cdcd7fe56f8aca601edad2
+
+:orphan:
+
+.. title:: Kynema API: kynema_fmb::interfaces::cfd::InterfaceInput Struct Reference
+
+InterfaceInput Struct Reference
+===============================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: structkynema__fmb_1_1interfaces_1_1cfd_1_1InterfaceInput.html

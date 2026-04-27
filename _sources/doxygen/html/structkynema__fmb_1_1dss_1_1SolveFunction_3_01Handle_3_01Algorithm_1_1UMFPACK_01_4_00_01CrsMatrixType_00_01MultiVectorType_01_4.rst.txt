@@ -1,0 +1,14 @@
+.. meta::b6d6a0bcf5ba2c7837fa0b10e7ea290dc6867a0c4f3140dd8d02d594da862ef2c6592b77f3a8f685698d7111683ee50b36363b73ec3bf93cd61be2b217782545
+
+:orphan:
+
+.. title:: Kynema API: kynema_fmb::dss::SolveFunction&lt; Handle&lt; Algorithm::UMFPACK &gt;, CrsMatrixType, MultiVectorType &gt; Struct Template Reference
+
+UMFPACK &gt;, CrsMatrixType, MultiVectorType &gt; Struct Template Reference
+===========================================================================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: structkynema__fmb_1_1dss_1_1SolveFunction_3_01Handle_3_01Algorithm_1_1UMFPACK_01_4_00_01CrsMatrixType_00_01MultiVectorType_01_4.html

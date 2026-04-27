@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kynema API: kynema_fmb::NodeBuilder Class Reference &mdash; Kynema 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Kynema
+              <img src="../../_static/oturb_logo_v2.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/user.html">User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../theory/index.html">Theory Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/index.html">Developer Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/index.html">Benchmark Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../publications.html">Kynema-FMB Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../acknowledgement.html">Acknowledgements</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Kynema</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Kynema API: kynema_fmb::NodeBuilder Class Reference</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/doxygen/html/classkynema__fmb_1_1NodeBuilder.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="nodebuilder-class-reference">
+<h1>NodeBuilder Class Reference<a class="headerlink" href="#nodebuilder-class-reference" title="Permalink to this heading"></a></h1>
+<div class="doxygen-content docutils container">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Kynema API: kynema_fmb::NodeBuilder Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Kynema API
+   </div>
+   <div id="projectbrief">A flexible multibody structural dynamics code for wind turbines</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacekynema__fmb.html">kynema_fmb</a></li><li class="navelem"><a class="el" href="classkynema__fmb_1_1NodeBuilder.html">NodeBuilder</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="classkynema__fmb_1_1NodeBuilder-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">kynema_fmb::NodeBuilder Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Builder class for constructing and configuring <a class="el" href="structkynema__fmb_1_1Node.html" title="Represents a node in the finite element model.">Node</a> objects.  
+ <a href="classkynema__fmb_1_1NodeBuilder.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="node_8hpp_source.html">node.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a8985b6a08d8a0abbc487c6ff181e796f" id="r_a8985b6a08d8a0abbc487c6ff181e796f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1NodeBuilder.html#a8985b6a08d8a0abbc487c6ff181e796f">NodeBuilder</a> (<a class="el" href="structkynema__fmb_1_1Node.html">Node</a> &amp;n)</td></tr>
+<tr class="separator:a8985b6a08d8a0abbc487c6ff181e796f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a037df48d9c77d0ce19be8373853d1481" id="r_a037df48d9c77d0ce19be8373853d1481"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1NodeBuilder.html#a037df48d9c77d0ce19be8373853d1481">~NodeBuilder</a> ()=default</td></tr>
+<tr class="separator:a037df48d9c77d0ce19be8373853d1481"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc43d518c72dadf63121e0a342c3da52" id="r_adc43d518c72dadf63121e0a342c3da52"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1NodeBuilder.html#adc43d518c72dadf63121e0a342c3da52">NodeBuilder</a> (const <a class="el" href="classkynema__fmb_1_1NodeBuilder.html">NodeBuilder</a> &amp;)=delete</td></tr>
+<tr class="separator:adc43d518c72dadf63121e0a342c3da52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a875233ea5d932a58ac2d54ebe16bfc91" id="r_a875233ea5d932a58ac2d54ebe16bfc91"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1NodeBuilder.html#a875233ea5d932a58ac2d54ebe16bfc91">NodeBuilder</a> (<a class="el" href="classkynema__fmb_1_1NodeBuilder.html">NodeBuilder</a> &amp;&amp;)=delete</td></tr>
+<tr class="separator:a875233ea5d932a58ac2d54ebe16bfc91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a7d84a31d5d7c9a571c3b8db539eba4" id="r_a1a7d84a31d5d7c9a571c3b8db539eba4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema__fmb_1_1NodeBuilder.html">NodeBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1NodeBuilder.html#a1a7d84a31d5d7c9a571c3b8db539eba4">operator=</a> (const <a class="el" href="classkynema__fmb_1_1NodeBuilder.html">NodeBuilder</a> &amp;)=delete</td></tr>
+<tr class="separator:a1a7d84a31d5d7c9a571c3b8db539eba4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e2ef8a09a8575afef376ed7f4d587e5" id="r_a2e2ef8a09a8575afef376ed7f4d587e5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema__fmb_1_1NodeBuilder.html">NodeBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1NodeBuilder.html#a2e2ef8a09a8575afef376ed7f4d587e5">operator=</a> (<a class="el" href="classkynema__fmb_1_1NodeBuilder.html">NodeBuilder</a> &amp;&amp;)=delete</td></tr>
+<tr class="separator:a2e2ef8a09a8575afef376ed7f4d587e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e73fa2751399b6eb005ea5842b06fa8" id="r_a1e73fa2751399b6eb005ea5842b06fa8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema__fmb_1_1NodeBuilder.html">NodeBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1NodeBuilder.html#a1e73fa2751399b6eb005ea5842b06fa8">SetPosition</a> (std::span&lt; const double, 7 &gt; p)</td></tr>
+<tr class="separator:a1e73fa2751399b6eb005ea5842b06fa8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0038fd270e703d4b9a747ba830b8ae1e" id="r_a0038fd270e703d4b9a747ba830b8ae1e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema__fmb_1_1NodeBuilder.html">NodeBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1NodeBuilder.html#a0038fd270e703d4b9a747ba830b8ae1e">SetPosition</a> (double x, double y, double z, double w, double i, double j, double k)</td></tr>
+<tr class="separator:a0038fd270e703d4b9a747ba830b8ae1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57855ca8a750e2daa21d3ec63ec723b9" id="r_a57855ca8a750e2daa21d3ec63ec723b9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema__fmb_1_1NodeBuilder.html">NodeBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1NodeBuilder.html#a57855ca8a750e2daa21d3ec63ec723b9">SetDisplacement</a> (std::span&lt; const double, 7 &gt; p)</td></tr>
+<tr class="separator:a57855ca8a750e2daa21d3ec63ec723b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a453c521ddd455eaa82321eba4151afb3" id="r_a453c521ddd455eaa82321eba4151afb3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema__fmb_1_1NodeBuilder.html">NodeBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1NodeBuilder.html#a453c521ddd455eaa82321eba4151afb3">SetDisplacement</a> (double x, double y, double z, double w, double i, double j, double k)</td></tr>
+<tr class="separator:a453c521ddd455eaa82321eba4151afb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5e3ec450418cc66b91bc95e2744df0c" id="r_ae5e3ec450418cc66b91bc95e2744df0c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema__fmb_1_1NodeBuilder.html">NodeBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1NodeBuilder.html#ae5e3ec450418cc66b91bc95e2744df0c">SetVelocity</a> (double x, double y, double z, double rx, double ry, double rz)</td></tr>
+<tr class="separator:ae5e3ec450418cc66b91bc95e2744df0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ca07e3c7b17722fa929196844a960b9" id="r_a7ca07e3c7b17722fa929196844a960b9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema__fmb_1_1NodeBuilder.html">NodeBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1NodeBuilder.html#a7ca07e3c7b17722fa929196844a960b9">SetVelocity</a> (std::span&lt; const double, 6 &gt; v)</td></tr>
+<tr class="separator:a7ca07e3c7b17722fa929196844a960b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c8fae9eb55cb30a48f2a3dab58eea99" id="r_a6c8fae9eb55cb30a48f2a3dab58eea99"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema__fmb_1_1NodeBuilder.html">NodeBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1NodeBuilder.html#a6c8fae9eb55cb30a48f2a3dab58eea99">SetAcceleration</a> (double x, double y, double z, double rx, double ry, double rz)</td></tr>
+<tr class="separator:a6c8fae9eb55cb30a48f2a3dab58eea99"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f7fed70899eff66b4119307a4e89596" id="r_a7f7fed70899eff66b4119307a4e89596"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema__fmb_1_1NodeBuilder.html">NodeBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1NodeBuilder.html#a7f7fed70899eff66b4119307a4e89596">SetAcceleration</a> (std::span&lt; const double, 6 &gt; v)</td></tr>
+<tr class="separator:a7f7fed70899eff66b4119307a4e89596"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3bd5029b1078c9ec6676ed450fbb37b5" id="r_a3bd5029b1078c9ec6676ed450fbb37b5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema__fmb_1_1NodeBuilder.html">NodeBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1NodeBuilder.html#a3bd5029b1078c9ec6676ed450fbb37b5">SetElemLocation</a> (double location)</td></tr>
+<tr class="separator:a3bd5029b1078c9ec6676ed450fbb37b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0567e0aeacd24992941f793e77fbb9b" id="r_ab0567e0aeacd24992941f793e77fbb9b"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1NodeBuilder.html#ab0567e0aeacd24992941f793e77fbb9b">Build</a> () const</td></tr>
+<tr class="memdesc:ab0567e0aeacd24992941f793e77fbb9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Build finalizes construction of node and returns the node's ID.  <br /></td></tr>
+<tr class="separator:ab0567e0aeacd24992941f793e77fbb9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Builder class for constructing and configuring <a class="el" href="structkynema__fmb_1_1Node.html" title="Represents a node in the finite element model.">Node</a> objects. </p>
+<p><a class="el" href="classkynema__fmb_1_1NodeBuilder.html" title="Builder class for constructing and configuring Node objects.">NodeBuilder</a> implements the builder pattern to provide a fluent interface for setting node properties. It allows for method chaining to configure multiple node properties in a single expression, making node creation more readable and maintainable.</p>
+<p>The builder operates on a reference to an existing <a class="el" href="structkynema__fmb_1_1Node.html" title="Represents a node in the finite element model.">Node</a> object and provides methods to set:</p><ul>
+<li>Position (initial position and orientation)</li>
+<li>Displacement (from initial position)</li>
+<li>Velocity (translational and rotational)</li>
+<li>Acceleration (translational and rotational)</li>
+<li>Element location (parametric position within an element)</li>
+</ul>
+<dl class="section note"><dt>Note</dt><dd>The builder holds a reference to the node being constructed and is not copyable or movable to prevent accidental misuse. All setter methods return a reference to the builder to enable method chaining. </dd></dl>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a8985b6a08d8a0abbc487c6ff181e796f" name="a8985b6a08d8a0abbc487c6ff181e796f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8985b6a08d8a0abbc487c6ff181e796f">&#9670;&#160;</a></span>NodeBuilder() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">kynema_fmb::NodeBuilder::NodeBuilder </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structkynema__fmb_1_1Node.html">Node</a> &amp;&#160;</td>
+          <td class="paramname"><em>n</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a037df48d9c77d0ce19be8373853d1481" name="a037df48d9c77d0ce19be8373853d1481"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a037df48d9c77d0ce19be8373853d1481">&#9670;&#160;</a></span>~NodeBuilder()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">kynema_fmb::NodeBuilder::~NodeBuilder </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adc43d518c72dadf63121e0a342c3da52" name="adc43d518c72dadf63121e0a342c3da52"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc43d518c72dadf63121e0a342c3da52">&#9670;&#160;</a></span>NodeBuilder() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">kynema_fmb::NodeBuilder::NodeBuilder </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classkynema__fmb_1_1NodeBuilder.html">NodeBuilder</a> &amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a875233ea5d932a58ac2d54ebe16bfc91" name="a875233ea5d932a58ac2d54ebe16bfc91"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a875233ea5d932a58ac2d54ebe16bfc91">&#9670;&#160;</a></span>NodeBuilder() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">kynema_fmb::NodeBuilder::NodeBuilder </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classkynema__fmb_1_1NodeBuilder.html">NodeBuilder</a> &amp;&amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="ab0567e0aeacd24992941f793e77fbb9b" name="ab0567e0aeacd24992941f793e77fbb9b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0567e0aeacd24992941f793e77fbb9b">&#9670;&#160;</a></span>Build()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t kynema_fmb::NodeBuilder::Build </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Build finalizes construction of node and returns the node's ID. </p>
+
+</div>
+</div>
+<a id="a1a7d84a31d5d7c9a571c3b8db539eba4" name="a1a7d84a31d5d7c9a571c3b8db539eba4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a7d84a31d5d7c9a571c3b8db539eba4">&#9670;&#160;</a></span>operator=() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classkynema__fmb_1_1NodeBuilder.html">NodeBuilder</a> &amp; kynema_fmb::NodeBuilder::operator= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classkynema__fmb_1_1NodeBuilder.html">NodeBuilder</a> &amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2e2ef8a09a8575afef376ed7f4d587e5" name="a2e2ef8a09a8575afef376ed7f4d587e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e2ef8a09a8575afef376ed7f4d587e5">&#9670;&#160;</a></span>operator=() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classkynema__fmb_1_1NodeBuilder.html">NodeBuilder</a> &amp; kynema_fmb::NodeBuilder::operator= </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classkynema__fmb_1_1NodeBuilder.html">NodeBuilder</a> &amp;&amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6c8fae9eb55cb30a48f2a3dab58eea99" name="a6c8fae9eb55cb30a48f2a3dab58eea99"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c8fae9eb55cb30a48f2a3dab58eea99">&#9670;&#160;</a></span>SetAcceleration() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classkynema__fmb_1_1NodeBuilder.html">NodeBuilder</a> &amp; kynema_fmb::NodeBuilder::SetAcceleration </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>z</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>rx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>ry</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>rz</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7f7fed70899eff66b4119307a4e89596" name="a7f7fed70899eff66b4119307a4e89596"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f7fed70899eff66b4119307a4e89596">&#9670;&#160;</a></span>SetAcceleration() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classkynema__fmb_1_1NodeBuilder.html">NodeBuilder</a> &amp; kynema_fmb::NodeBuilder::SetAcceleration </td>
+          <td>(</td>
+          <td class="paramtype">std::span&lt; const double, 6 &gt;&#160;</td>
+          <td class="paramname"><em>v</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a453c521ddd455eaa82321eba4151afb3" name="a453c521ddd455eaa82321eba4151afb3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a453c521ddd455eaa82321eba4151afb3">&#9670;&#160;</a></span>SetDisplacement() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classkynema__fmb_1_1NodeBuilder.html">NodeBuilder</a> &amp; kynema_fmb::NodeBuilder::SetDisplacement </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>z</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>w</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>j</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>k</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a57855ca8a750e2daa21d3ec63ec723b9" name="a57855ca8a750e2daa21d3ec63ec723b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57855ca8a750e2daa21d3ec63ec723b9">&#9670;&#160;</a></span>SetDisplacement() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classkynema__fmb_1_1NodeBuilder.html">NodeBuilder</a> &amp; kynema_fmb::NodeBuilder::SetDisplacement </td>
+          <td>(</td>
+          <td class="paramtype">std::span&lt; const double, 7 &gt;&#160;</td>
+          <td class="paramname"><em>p</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3bd5029b1078c9ec6676ed450fbb37b5" name="a3bd5029b1078c9ec6676ed450fbb37b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3bd5029b1078c9ec6676ed450fbb37b5">&#9670;&#160;</a></span>SetElemLocation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classkynema__fmb_1_1NodeBuilder.html">NodeBuilder</a> &amp; kynema_fmb::NodeBuilder::SetElemLocation </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>location</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0038fd270e703d4b9a747ba830b8ae1e" name="a0038fd270e703d4b9a747ba830b8ae1e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0038fd270e703d4b9a747ba830b8ae1e">&#9670;&#160;</a></span>SetPosition() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classkynema__fmb_1_1NodeBuilder.html">NodeBuilder</a> &amp; kynema_fmb::NodeBuilder::SetPosition </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>z</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>w</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>j</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>k</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1e73fa2751399b6eb005ea5842b06fa8" name="a1e73fa2751399b6eb005ea5842b06fa8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e73fa2751399b6eb005ea5842b06fa8">&#9670;&#160;</a></span>SetPosition() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classkynema__fmb_1_1NodeBuilder.html">NodeBuilder</a> &amp; kynema_fmb::NodeBuilder::SetPosition </td>
+          <td>(</td>
+          <td class="paramtype">std::span&lt; const double, 7 &gt;&#160;</td>
+          <td class="paramname"><em>p</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae5e3ec450418cc66b91bc95e2744df0c" name="ae5e3ec450418cc66b91bc95e2744df0c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5e3ec450418cc66b91bc95e2744df0c">&#9670;&#160;</a></span>SetVelocity() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classkynema__fmb_1_1NodeBuilder.html">NodeBuilder</a> &amp; kynema_fmb::NodeBuilder::SetVelocity </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>z</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>rx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>ry</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>rz</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7ca07e3c7b17722fa929196844a960b9" name="a7ca07e3c7b17722fa929196844a960b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ca07e3c7b17722fa929196844a960b9">&#9670;&#160;</a></span>SetVelocity() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classkynema__fmb_1_1NodeBuilder.html">NodeBuilder</a> &amp; kynema_fmb::NodeBuilder::SetVelocity </td>
+          <td>(</td>
+          <td class="paramtype">std::span&lt; const double, 6 &gt;&#160;</td>
+          <td class="paramname"><em>v</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li>/home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/model/<a class="el" href="node_8hpp_source.html">node.hpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023 - Present, MIT License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

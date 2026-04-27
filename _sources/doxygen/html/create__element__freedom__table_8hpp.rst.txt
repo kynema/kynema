@@ -1,11 +1,11 @@
-.. meta::57ea6a06f2bbe0a79b63bd3856da99d57474f4948ab67f87ae3b5c0089d073463d36b1c9503839449fe3f33168ff872b609ac48fe75485aee67d8af6853dba3d
+.. meta::4e6b0232e18577a06dc8f5d0866f92b50e179d4293cbadb1c8f312c5d374ebc1cd81af571489b8b70ab5ff3e99c3b4c3cbb333b762bc7d7c346a7617cbdb943f
 
 :orphan:
 
-.. title:: Kynema API: /home/runner/work/kynema/kynema/kynema/src/dof_management/create_element_freedom_table.hpp File Reference
+.. title:: Kynema API: /home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/dof_management/create_element_freedom_table.hpp File Reference
 
-/home/runner/work/kynema/kynema/kynema/src/dof\_management/create\_element\_freedom\_table.hpp File Reference
-=============================================================================================================
+/home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/dof\_management/create\_element\_freedom\_table.hpp File Reference
+=========================================================================================================================
 
 .. container:: doxygen-content
 

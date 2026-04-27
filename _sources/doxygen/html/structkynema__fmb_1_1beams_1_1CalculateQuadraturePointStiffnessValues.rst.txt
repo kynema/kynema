@@ -1,0 +1,14 @@
+.. meta::e6a6792e05d28c38f96c083359e3e5e869990727597ac323f9e6e71c1cc8e55aacf0b47617cad851f5e759c5c2d9e11b4cd6f23f74620338fb0cd87af7ff7d02
+
+:orphan:
+
+.. title:: Kynema API: kynema_fmb::beams::CalculateQuadraturePointStiffnessValues&lt; DeviceType &gt; Struct Template Reference
+
+CalculateQuadraturePointStiffnessValues&lt; DeviceType &gt; Struct Template Reference
+=====================================================================================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: structkynema__fmb_1_1beams_1_1CalculateQuadraturePointStiffnessValues.html

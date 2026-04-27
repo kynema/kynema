@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kynema API: kynema_fmb::util::ControllerIO Struct Reference &mdash; Kynema 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Kynema
+              <img src="../../_static/oturb_logo_v2.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/user.html">User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../theory/index.html">Theory Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/index.html">Developer Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/index.html">Benchmark Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../publications.html">Kynema-FMB Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../acknowledgement.html">Acknowledgements</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Kynema</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Kynema API: kynema_fmb::util::ControllerIO Struct Reference</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/doxygen/html/structkynema__fmb_1_1util_1_1ControllerIO.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="controllerio-struct-reference">
+<h1>ControllerIO Struct Reference<a class="headerlink" href="#controllerio-struct-reference" title="Permalink to this heading"></a></h1>
+<div class="doxygen-content docutils container">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Kynema API: kynema_fmb::util::ControllerIO Struct Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Kynema API
+   </div>
+   <div id="projectbrief">A flexible multibody structural dynamics code for wind turbines</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacekynema__fmb.html">kynema_fmb</a></li><li class="navelem"><a class="el" href="namespacekynema__fmb_1_1util.html">util</a></li><li class="navelem"><a class="el" href="structkynema__fmb_1_1util_1_1ControllerIO.html">ControllerIO</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="structkynema__fmb_1_1util_1_1ControllerIO-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">kynema_fmb::util::ControllerIO Struct Reference</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="controller__io_8hpp_source.html">controller_io.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a3e85359e808189f7e8dbb9fd73225659" id="r_a3e85359e808189f7e8dbb9fd73225659"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1ControllerIO.html#a3e85359e808189f7e8dbb9fd73225659">CopyToSwapArray</a> (std::array&lt; float, <a class="el" href="namespacekynema__fmb_1_1util.html#a2bd94d533fd8fa398110da7d01a33fb0">kSwapArraySize</a> &gt; &amp;swap_array) const</td></tr>
+<tr class="separator:a3e85359e808189f7e8dbb9fd73225659"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a404cbd75709d3ac2d6aed11052f5ed12" id="r_a404cbd75709d3ac2d6aed11052f5ed12"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1ControllerIO.html#a404cbd75709d3ac2d6aed11052f5ed12">CopyFromSwapArray</a> (const std::array&lt; float, <a class="el" href="namespacekynema__fmb_1_1util.html#a2bd94d533fd8fa398110da7d01a33fb0">kSwapArraySize</a> &gt; &amp;swap_array)</td></tr>
+<tr class="separator:a404cbd75709d3ac2d6aed11052f5ed12"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:a56bbc13e2a6201f3fbea936e4e9cc62f" id="r_a56bbc13e2a6201f3fbea936e4e9cc62f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1ControllerIO.html#a56bbc13e2a6201f3fbea936e4e9cc62f">status</a> = 0</td></tr>
+<tr class="separator:a56bbc13e2a6201f3fbea936e4e9cc62f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaca8dfe839efedd4d3dfe2e2c6045836" id="r_aaca8dfe839efedd4d3dfe2e2c6045836"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1ControllerIO.html#aaca8dfe839efedd4d3dfe2e2c6045836">time</a> = 0.</td></tr>
+<tr class="separator:aaca8dfe839efedd4d3dfe2e2c6045836"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18d2d9b7e815cbb7503d81a532bd03bd" id="r_a18d2d9b7e815cbb7503d81a532bd03bd"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1ControllerIO.html#a18d2d9b7e815cbb7503d81a532bd03bd">dt</a> = 0.</td></tr>
+<tr class="separator:a18d2d9b7e815cbb7503d81a532bd03bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa24b6e97ded28e7c6bffa412d6dfada" id="r_aaa24b6e97ded28e7c6bffa412d6dfada"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1ControllerIO.html#aaa24b6e97ded28e7c6bffa412d6dfada">pitch_blade1_actual</a> = 0.</td></tr>
+<tr class="separator:aaa24b6e97ded28e7c6bffa412d6dfada"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abee49c8f2d429b880407dc710b5bdc66" id="r_abee49c8f2d429b880407dc710b5bdc66"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1ControllerIO.html#abee49c8f2d429b880407dc710b5bdc66">pitch_actuator_type_req</a> = 0.</td></tr>
+<tr class="separator:abee49c8f2d429b880407dc710b5bdc66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3bee169de11e096c7a6ed0868d03130e" id="r_a3bee169de11e096c7a6ed0868d03130e"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1ControllerIO.html#a3bee169de11e096c7a6ed0868d03130e">generator_power_actual</a> = 0.</td></tr>
+<tr class="separator:a3bee169de11e096c7a6ed0868d03130e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1c1357979296136940743b41b8c2cbf" id="r_ad1c1357979296136940743b41b8c2cbf"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1ControllerIO.html#ad1c1357979296136940743b41b8c2cbf">generator_speed_actual</a> = 0.</td></tr>
+<tr class="separator:ad1c1357979296136940743b41b8c2cbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d8ea18905b8e5cfeac9ce27082b9ec8" id="r_a8d8ea18905b8e5cfeac9ce27082b9ec8"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1ControllerIO.html#a8d8ea18905b8e5cfeac9ce27082b9ec8">rotor_speed_actual</a> = 0.</td></tr>
+<tr class="separator:a8d8ea18905b8e5cfeac9ce27082b9ec8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52480982dc64713af3af5b016458808d" id="r_a52480982dc64713af3af5b016458808d"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1ControllerIO.html#a52480982dc64713af3af5b016458808d">generator_torque_actual</a> = 0.</td></tr>
+<tr class="separator:a52480982dc64713af3af5b016458808d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abbdc718efae6264bc46718cab27c51aa" id="r_abbdc718efae6264bc46718cab27c51aa"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1ControllerIO.html#abbdc718efae6264bc46718cab27c51aa">yaw_error_actual</a> = 0.</td></tr>
+<tr class="separator:abbdc718efae6264bc46718cab27c51aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83a11a1a8c6e70e8ec02263054865195" id="r_a83a11a1a8c6e70e8ec02263054865195"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1ControllerIO.html#a83a11a1a8c6e70e8ec02263054865195">horizontal_wind_speed</a> = 0.</td></tr>
+<tr class="separator:a83a11a1a8c6e70e8ec02263054865195"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b2c823d7cc36d4fcaf1bef7d6f78fe2" id="r_a5b2c823d7cc36d4fcaf1bef7d6f78fe2"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1ControllerIO.html#a5b2c823d7cc36d4fcaf1bef7d6f78fe2">pitch_control_type</a> = 0.</td></tr>
+<tr class="separator:a5b2c823d7cc36d4fcaf1bef7d6f78fe2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aabf8cd6a9b3135a1b57190758ca1edd7" id="r_aabf8cd6a9b3135a1b57190758ca1edd7"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1ControllerIO.html#aabf8cd6a9b3135a1b57190758ca1edd7">out_of_plane_root_bending_moment_blade1</a></td></tr>
+<tr class="separator:aabf8cd6a9b3135a1b57190758ca1edd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e4a22afa232b6749519147f0f9e08b1" id="r_a9e4a22afa232b6749519147f0f9e08b1"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1ControllerIO.html#a9e4a22afa232b6749519147f0f9e08b1">out_of_plane_root_bending_moment_blade2</a></td></tr>
+<tr class="separator:a9e4a22afa232b6749519147f0f9e08b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb1ed41ce81a3247589bfea0de1eb193" id="r_afb1ed41ce81a3247589bfea0de1eb193"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1ControllerIO.html#afb1ed41ce81a3247589bfea0de1eb193">out_of_plane_root_bending_moment_blade3</a></td></tr>
+<tr class="separator:afb1ed41ce81a3247589bfea0de1eb193"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd0b5ec7c616b6f4458e26b758fad1c1" id="r_acd0b5ec7c616b6f4458e26b758fad1c1"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1ControllerIO.html#acd0b5ec7c616b6f4458e26b758fad1c1">pitch_blade2_actual</a> = 0.</td></tr>
+<tr class="separator:acd0b5ec7c616b6f4458e26b758fad1c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00ffd10d8ae04596eedc5ef7f0d05cbe" id="r_a00ffd10d8ae04596eedc5ef7f0d05cbe"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1ControllerIO.html#a00ffd10d8ae04596eedc5ef7f0d05cbe">pitch_blade3_actual</a> = 0.</td></tr>
+<tr class="separator:a00ffd10d8ae04596eedc5ef7f0d05cbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09710f60996ce87ee44d8899ccd61b2a" id="r_a09710f60996ce87ee44d8899ccd61b2a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1ControllerIO.html#a09710f60996ce87ee44d8899ccd61b2a">generator_contactor_status</a> = 0</td></tr>
+<tr class="separator:a09710f60996ce87ee44d8899ccd61b2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c3af8051396ce6dfc6b79d464377898" id="r_a8c3af8051396ce6dfc6b79d464377898"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1ControllerIO.html#a8c3af8051396ce6dfc6b79d464377898">shaft_brake_status</a> = 0</td></tr>
+<tr class="separator:a8c3af8051396ce6dfc6b79d464377898"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a683d6db556a2c01e76d779b87e1e2205" id="r_a683d6db556a2c01e76d779b87e1e2205"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1ControllerIO.html#a683d6db556a2c01e76d779b87e1e2205">yaw_angle_actual</a> = 0</td></tr>
+<tr class="separator:a683d6db556a2c01e76d779b87e1e2205"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0232b9d1514e7371e7bc2967252fdca1" id="r_a0232b9d1514e7371e7bc2967252fdca1"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1ControllerIO.html#a0232b9d1514e7371e7bc2967252fdca1">yaw_actuator_torque_command</a> = 0.</td></tr>
+<tr class="separator:a0232b9d1514e7371e7bc2967252fdca1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72b34b640c269ccf5535fa12500bf291" id="r_a72b34b640c269ccf5535fa12500bf291"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1ControllerIO.html#a72b34b640c269ccf5535fa12500bf291">pitch_blade1_command</a> = 0.</td></tr>
+<tr class="separator:a72b34b640c269ccf5535fa12500bf291"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3d22e920bb06765be49ca74a3392789" id="r_ae3d22e920bb06765be49ca74a3392789"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1ControllerIO.html#ae3d22e920bb06765be49ca74a3392789">pitch_blade2_command</a> = 0.</td></tr>
+<tr class="separator:ae3d22e920bb06765be49ca74a3392789"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acea2c464fc0a6ba437bb6f3e901f29ce" id="r_acea2c464fc0a6ba437bb6f3e901f29ce"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1ControllerIO.html#acea2c464fc0a6ba437bb6f3e901f29ce">pitch_blade3_command</a> = 0.</td></tr>
+<tr class="separator:acea2c464fc0a6ba437bb6f3e901f29ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ab16be8b169201c5bceec38f136abb7" id="r_a7ab16be8b169201c5bceec38f136abb7"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1ControllerIO.html#a7ab16be8b169201c5bceec38f136abb7">pitch_collective_command</a> = 0.</td></tr>
+<tr class="separator:a7ab16be8b169201c5bceec38f136abb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0b89e6bc0924bc20ff2127cbc95df45" id="r_ad0b89e6bc0924bc20ff2127cbc95df45"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1ControllerIO.html#ad0b89e6bc0924bc20ff2127cbc95df45">pitch_rate_command</a> = 0.</td></tr>
+<tr class="separator:ad0b89e6bc0924bc20ff2127cbc95df45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd291692dbe10314293169aeda4980f2" id="r_abd291692dbe10314293169aeda4980f2"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1ControllerIO.html#abd291692dbe10314293169aeda4980f2">generator_torque_command</a> = 0.</td></tr>
+<tr class="separator:abd291692dbe10314293169aeda4980f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e20c325e709ccba65b09a08c5b9c361" id="r_a0e20c325e709ccba65b09a08c5b9c361"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1ControllerIO.html#a0e20c325e709ccba65b09a08c5b9c361">nacelle_yaw_rate_command</a> = 0.</td></tr>
+<tr class="separator:a0e20c325e709ccba65b09a08c5b9c361"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e5a0e1db701acc57878523ca593f827" id="r_a4e5a0e1db701acc57878523ca593f827"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1ControllerIO.html#a4e5a0e1db701acc57878523ca593f827">message_array_size</a> = 0U</td></tr>
+<tr class="separator:a4e5a0e1db701acc57878523ca593f827"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73c62f80fe0a0876cafad1499fa5fb39" id="r_a73c62f80fe0a0876cafad1499fa5fb39"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1ControllerIO.html#a73c62f80fe0a0876cafad1499fa5fb39">infile_array_size</a> = 0U</td></tr>
+<tr class="separator:a73c62f80fe0a0876cafad1499fa5fb39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb55bfb3c7ce42476773cc662d73c9a0" id="r_acb55bfb3c7ce42476773cc662d73c9a0"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1ControllerIO.html#acb55bfb3c7ce42476773cc662d73c9a0">outname_array_size</a> = 0U</td></tr>
+<tr class="separator:acb55bfb3c7ce42476773cc662d73c9a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:addc39cee46f7811ea11c6adb812734fe" id="r_addc39cee46f7811ea11c6adb812734fe"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1ControllerIO.html#addc39cee46f7811ea11c6adb812734fe">tower_top_fore_aft_accel</a> = 0.</td></tr>
+<tr class="separator:addc39cee46f7811ea11c6adb812734fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe7032ca10874f5a131a242206fa04c3" id="r_afe7032ca10874f5a131a242206fa04c3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1ControllerIO.html#afe7032ca10874f5a131a242206fa04c3">pitch_override</a> = 0</td></tr>
+<tr class="separator:afe7032ca10874f5a131a242206fa04c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b35abb243785c500439a13b21224a50" id="r_a8b35abb243785c500439a13b21224a50"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1ControllerIO.html#a8b35abb243785c500439a13b21224a50">torque_override</a> = 0</td></tr>
+<tr class="separator:a8b35abb243785c500439a13b21224a50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8521ce6cbb1a311b4c54389774f9cad5" id="r_a8521ce6cbb1a311b4c54389774f9cad5"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1ControllerIO.html#a8521ce6cbb1a311b4c54389774f9cad5">azimuth_angle</a> = 0.</td></tr>
+<tr class="separator:a8521ce6cbb1a311b4c54389774f9cad5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4ddac757db95fdf819b2f5e206c35b4" id="r_ae4ddac757db95fdf819b2f5e206c35b4"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1ControllerIO.html#ae4ddac757db95fdf819b2f5e206c35b4">n_blades</a> = 0U</td></tr>
+<tr class="separator:ae4ddac757db95fdf819b2f5e206c35b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7bcba4d3cf5012dc714da793a755527" id="r_af7bcba4d3cf5012dc714da793a755527"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1ControllerIO.html#af7bcba4d3cf5012dc714da793a755527">n_log_variables</a> = 0U</td></tr>
+<tr class="separator:af7bcba4d3cf5012dc714da793a755527"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83f33bfa26496fe7245938f23f4c4058" id="r_a83f33bfa26496fe7245938f23f4c4058"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1ControllerIO.html#a83f33bfa26496fe7245938f23f4c4058">generator_startup_resistance</a> = 0.</td></tr>
+<tr class="separator:a83f33bfa26496fe7245938f23f4c4058"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b0d227312b9dadea4792956783ab8f7" id="r_a4b0d227312b9dadea4792956783ab8f7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1ControllerIO.html#a4b0d227312b9dadea4792956783ab8f7">loads_request</a> = 0</td></tr>
+<tr class="separator:a4b0d227312b9dadea4792956783ab8f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d60311488c1716a4492eb296716c04e" id="r_a5d60311488c1716a4492eb296716c04e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1ControllerIO.html#a5d60311488c1716a4492eb296716c04e">variable_slip_status</a> = 0</td></tr>
+<tr class="separator:a5d60311488c1716a4492eb296716c04e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88882fad9c73a6cb835b65062f3f8f18" id="r_a88882fad9c73a6cb835b65062f3f8f18"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1ControllerIO.html#a88882fad9c73a6cb835b65062f3f8f18">variable_slip_demand</a> = 0</td></tr>
+<tr class="separator:a88882fad9c73a6cb835b65062f3f8f18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9cae1edb8b101cd46248984a60ee82b6" id="r_a9cae1edb8b101cd46248984a60ee82b6"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1ControllerIO.html#a9cae1edb8b101cd46248984a60ee82b6">nacelle_nodding_accel</a> = 0.</td></tr>
+<tr class="separator:a9cae1edb8b101cd46248984a60ee82b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Structure defining the swap layout (See Appendix A of Bladed User's Guide) Ref: <a href="https://openfast.readthedocs.io/en/main/source/user/servodyn/ExtendedBladedInterface.html">https://openfast.readthedocs.io/en/main/source/user/servodyn/ExtendedBladedInterface.html</a> </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a404cbd75709d3ac2d6aed11052f5ed12" name="a404cbd75709d3ac2d6aed11052f5ed12"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a404cbd75709d3ac2d6aed11052f5ed12">&#9670;&#160;</a></span>CopyFromSwapArray()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema_fmb::util::ControllerIO::CopyFromSwapArray </td>
+          <td>(</td>
+          <td class="paramtype">const std::array&lt; float, <a class="el" href="namespacekynema__fmb_1_1util.html#a2bd94d533fd8fa398110da7d01a33fb0">kSwapArraySize</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>swap_array</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3e85359e808189f7e8dbb9fd73225659" name="a3e85359e808189f7e8dbb9fd73225659"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e85359e808189f7e8dbb9fd73225659">&#9670;&#160;</a></span>CopyToSwapArray()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema_fmb::util::ControllerIO::CopyToSwapArray </td>
+          <td>(</td>
+          <td class="paramtype">std::array&lt; float, <a class="el" href="namespacekynema__fmb_1_1util.html#a2bd94d533fd8fa398110da7d01a33fb0">kSwapArraySize</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>swap_array</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a8521ce6cbb1a311b4c54389774f9cad5" name="a8521ce6cbb1a311b4c54389774f9cad5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8521ce6cbb1a311b4c54389774f9cad5">&#9670;&#160;</a></span>azimuth_angle</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double kynema_fmb::util::ControllerIO::azimuth_angle = 0.</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a18d2d9b7e815cbb7503d81a532bd03bd" name="a18d2d9b7e815cbb7503d81a532bd03bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a18d2d9b7e815cbb7503d81a532bd03bd">&#9670;&#160;</a></span>dt</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double kynema_fmb::util::ControllerIO::dt = 0.</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a09710f60996ce87ee44d8899ccd61b2a" name="a09710f60996ce87ee44d8899ccd61b2a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09710f60996ce87ee44d8899ccd61b2a">&#9670;&#160;</a></span>generator_contactor_status</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int kynema_fmb::util::ControllerIO::generator_contactor_status = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3bee169de11e096c7a6ed0868d03130e" name="a3bee169de11e096c7a6ed0868d03130e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3bee169de11e096c7a6ed0868d03130e">&#9670;&#160;</a></span>generator_power_actual</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double kynema_fmb::util::ControllerIO::generator_power_actual = 0.</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad1c1357979296136940743b41b8c2cbf" name="ad1c1357979296136940743b41b8c2cbf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1c1357979296136940743b41b8c2cbf">&#9670;&#160;</a></span>generator_speed_actual</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double kynema_fmb::util::ControllerIO::generator_speed_actual = 0.</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a83f33bfa26496fe7245938f23f4c4058" name="a83f33bfa26496fe7245938f23f4c4058"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83f33bfa26496fe7245938f23f4c4058">&#9670;&#160;</a></span>generator_startup_resistance</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double kynema_fmb::util::ControllerIO::generator_startup_resistance = 0.</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a52480982dc64713af3af5b016458808d" name="a52480982dc64713af3af5b016458808d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a52480982dc64713af3af5b016458808d">&#9670;&#160;</a></span>generator_torque_actual</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double kynema_fmb::util::ControllerIO::generator_torque_actual = 0.</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abd291692dbe10314293169aeda4980f2" name="abd291692dbe10314293169aeda4980f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd291692dbe10314293169aeda4980f2">&#9670;&#160;</a></span>generator_torque_command</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double kynema_fmb::util::ControllerIO::generator_torque_command = 0.</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a83a11a1a8c6e70e8ec02263054865195" name="a83a11a1a8c6e70e8ec02263054865195"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83a11a1a8c6e70e8ec02263054865195">&#9670;&#160;</a></span>horizontal_wind_speed</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double kynema_fmb::util::ControllerIO::horizontal_wind_speed = 0.</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a73c62f80fe0a0876cafad1499fa5fb39" name="a73c62f80fe0a0876cafad1499fa5fb39"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a73c62f80fe0a0876cafad1499fa5fb39">&#9670;&#160;</a></span>infile_array_size</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t kynema_fmb::util::ControllerIO::infile_array_size = 0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4b0d227312b9dadea4792956783ab8f7" name="a4b0d227312b9dadea4792956783ab8f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b0d227312b9dadea4792956783ab8f7">&#9670;&#160;</a></span>loads_request</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int kynema_fmb::util::ControllerIO::loads_request = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4e5a0e1db701acc57878523ca593f827" name="a4e5a0e1db701acc57878523ca593f827"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e5a0e1db701acc57878523ca593f827">&#9670;&#160;</a></span>message_array_size</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t kynema_fmb::util::ControllerIO::message_array_size = 0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae4ddac757db95fdf819b2f5e206c35b4" name="ae4ddac757db95fdf819b2f5e206c35b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4ddac757db95fdf819b2f5e206c35b4">&#9670;&#160;</a></span>n_blades</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t kynema_fmb::util::ControllerIO::n_blades = 0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af7bcba4d3cf5012dc714da793a755527" name="af7bcba4d3cf5012dc714da793a755527"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7bcba4d3cf5012dc714da793a755527">&#9670;&#160;</a></span>n_log_variables</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t kynema_fmb::util::ControllerIO::n_log_variables = 0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9cae1edb8b101cd46248984a60ee82b6" name="a9cae1edb8b101cd46248984a60ee82b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9cae1edb8b101cd46248984a60ee82b6">&#9670;&#160;</a></span>nacelle_nodding_accel</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double kynema_fmb::util::ControllerIO::nacelle_nodding_accel = 0.</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0e20c325e709ccba65b09a08c5b9c361" name="a0e20c325e709ccba65b09a08c5b9c361"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e20c325e709ccba65b09a08c5b9c361">&#9670;&#160;</a></span>nacelle_yaw_rate_command</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double kynema_fmb::util::ControllerIO::nacelle_yaw_rate_command = 0.</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aabf8cd6a9b3135a1b57190758ca1edd7" name="aabf8cd6a9b3135a1b57190758ca1edd7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aabf8cd6a9b3135a1b57190758ca1edd7">&#9670;&#160;</a></span>out_of_plane_root_bending_moment_blade1</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double kynema_fmb::util::ControllerIO::out_of_plane_root_bending_moment_blade1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">        0.</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a9e4a22afa232b6749519147f0f9e08b1" name="a9e4a22afa232b6749519147f0f9e08b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e4a22afa232b6749519147f0f9e08b1">&#9670;&#160;</a></span>out_of_plane_root_bending_moment_blade2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double kynema_fmb::util::ControllerIO::out_of_plane_root_bending_moment_blade2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">        0.</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="afb1ed41ce81a3247589bfea0de1eb193" name="afb1ed41ce81a3247589bfea0de1eb193"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb1ed41ce81a3247589bfea0de1eb193">&#9670;&#160;</a></span>out_of_plane_root_bending_moment_blade3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double kynema_fmb::util::ControllerIO::out_of_plane_root_bending_moment_blade3</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">        0.</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="acb55bfb3c7ce42476773cc662d73c9a0" name="acb55bfb3c7ce42476773cc662d73c9a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb55bfb3c7ce42476773cc662d73c9a0">&#9670;&#160;</a></span>outname_array_size</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t kynema_fmb::util::ControllerIO::outname_array_size = 0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abee49c8f2d429b880407dc710b5bdc66" name="abee49c8f2d429b880407dc710b5bdc66"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abee49c8f2d429b880407dc710b5bdc66">&#9670;&#160;</a></span>pitch_actuator_type_req</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double kynema_fmb::util::ControllerIO::pitch_actuator_type_req = 0.</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aaa24b6e97ded28e7c6bffa412d6dfada" name="aaa24b6e97ded28e7c6bffa412d6dfada"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa24b6e97ded28e7c6bffa412d6dfada">&#9670;&#160;</a></span>pitch_blade1_actual</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double kynema_fmb::util::ControllerIO::pitch_blade1_actual = 0.</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a72b34b640c269ccf5535fa12500bf291" name="a72b34b640c269ccf5535fa12500bf291"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72b34b640c269ccf5535fa12500bf291">&#9670;&#160;</a></span>pitch_blade1_command</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double kynema_fmb::util::ControllerIO::pitch_blade1_command = 0.</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acd0b5ec7c616b6f4458e26b758fad1c1" name="acd0b5ec7c616b6f4458e26b758fad1c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd0b5ec7c616b6f4458e26b758fad1c1">&#9670;&#160;</a></span>pitch_blade2_actual</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double kynema_fmb::util::ControllerIO::pitch_blade2_actual = 0.</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae3d22e920bb06765be49ca74a3392789" name="ae3d22e920bb06765be49ca74a3392789"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3d22e920bb06765be49ca74a3392789">&#9670;&#160;</a></span>pitch_blade2_command</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double kynema_fmb::util::ControllerIO::pitch_blade2_command = 0.</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a00ffd10d8ae04596eedc5ef7f0d05cbe" name="a00ffd10d8ae04596eedc5ef7f0d05cbe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a00ffd10d8ae04596eedc5ef7f0d05cbe">&#9670;&#160;</a></span>pitch_blade3_actual</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double kynema_fmb::util::ControllerIO::pitch_blade3_actual = 0.</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acea2c464fc0a6ba437bb6f3e901f29ce" name="acea2c464fc0a6ba437bb6f3e901f29ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acea2c464fc0a6ba437bb6f3e901f29ce">&#9670;&#160;</a></span>pitch_blade3_command</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double kynema_fmb::util::ControllerIO::pitch_blade3_command = 0.</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7ab16be8b169201c5bceec38f136abb7" name="a7ab16be8b169201c5bceec38f136abb7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ab16be8b169201c5bceec38f136abb7">&#9670;&#160;</a></span>pitch_collective_command</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double kynema_fmb::util::ControllerIO::pitch_collective_command = 0.</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5b2c823d7cc36d4fcaf1bef7d6f78fe2" name="a5b2c823d7cc36d4fcaf1bef7d6f78fe2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b2c823d7cc36d4fcaf1bef7d6f78fe2">&#9670;&#160;</a></span>pitch_control_type</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double kynema_fmb::util::ControllerIO::pitch_control_type = 0.</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afe7032ca10874f5a131a242206fa04c3" name="afe7032ca10874f5a131a242206fa04c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe7032ca10874f5a131a242206fa04c3">&#9670;&#160;</a></span>pitch_override</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int kynema_fmb::util::ControllerIO::pitch_override = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad0b89e6bc0924bc20ff2127cbc95df45" name="ad0b89e6bc0924bc20ff2127cbc95df45"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad0b89e6bc0924bc20ff2127cbc95df45">&#9670;&#160;</a></span>pitch_rate_command</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double kynema_fmb::util::ControllerIO::pitch_rate_command = 0.</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8d8ea18905b8e5cfeac9ce27082b9ec8" name="a8d8ea18905b8e5cfeac9ce27082b9ec8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d8ea18905b8e5cfeac9ce27082b9ec8">&#9670;&#160;</a></span>rotor_speed_actual</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double kynema_fmb::util::ControllerIO::rotor_speed_actual = 0.</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8c3af8051396ce6dfc6b79d464377898" name="a8c3af8051396ce6dfc6b79d464377898"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c3af8051396ce6dfc6b79d464377898">&#9670;&#160;</a></span>shaft_brake_status</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int kynema_fmb::util::ControllerIO::shaft_brake_status = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a56bbc13e2a6201f3fbea936e4e9cc62f" name="a56bbc13e2a6201f3fbea936e4e9cc62f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56bbc13e2a6201f3fbea936e4e9cc62f">&#9670;&#160;</a></span>status</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int kynema_fmb::util::ControllerIO::status = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aaca8dfe839efedd4d3dfe2e2c6045836" name="aaca8dfe839efedd4d3dfe2e2c6045836"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaca8dfe839efedd4d3dfe2e2c6045836">&#9670;&#160;</a></span>time</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double kynema_fmb::util::ControllerIO::time = 0.</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8b35abb243785c500439a13b21224a50" name="a8b35abb243785c500439a13b21224a50"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b35abb243785c500439a13b21224a50">&#9670;&#160;</a></span>torque_override</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int kynema_fmb::util::ControllerIO::torque_override = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="addc39cee46f7811ea11c6adb812734fe" name="addc39cee46f7811ea11c6adb812734fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#addc39cee46f7811ea11c6adb812734fe">&#9670;&#160;</a></span>tower_top_fore_aft_accel</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double kynema_fmb::util::ControllerIO::tower_top_fore_aft_accel = 0.</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a88882fad9c73a6cb835b65062f3f8f18" name="a88882fad9c73a6cb835b65062f3f8f18"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88882fad9c73a6cb835b65062f3f8f18">&#9670;&#160;</a></span>variable_slip_demand</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int kynema_fmb::util::ControllerIO::variable_slip_demand = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5d60311488c1716a4492eb296716c04e" name="a5d60311488c1716a4492eb296716c04e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d60311488c1716a4492eb296716c04e">&#9670;&#160;</a></span>variable_slip_status</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int kynema_fmb::util::ControllerIO::variable_slip_status = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0232b9d1514e7371e7bc2967252fdca1" name="a0232b9d1514e7371e7bc2967252fdca1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0232b9d1514e7371e7bc2967252fdca1">&#9670;&#160;</a></span>yaw_actuator_torque_command</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double kynema_fmb::util::ControllerIO::yaw_actuator_torque_command = 0.</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a683d6db556a2c01e76d779b87e1e2205" name="a683d6db556a2c01e76d779b87e1e2205"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a683d6db556a2c01e76d779b87e1e2205">&#9670;&#160;</a></span>yaw_angle_actual</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double kynema_fmb::util::ControllerIO::yaw_angle_actual = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abbdc718efae6264bc46718cab27c51aa" name="abbdc718efae6264bc46718cab27c51aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abbdc718efae6264bc46718cab27c51aa">&#9670;&#160;</a></span>yaw_error_actual</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double kynema_fmb::util::ControllerIO::yaw_error_actual = 0.</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
+<li>/home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/utilities/controllers/<a class="el" href="controller__io_8hpp_source.html">controller_io.hpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023 - Present, MIT License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

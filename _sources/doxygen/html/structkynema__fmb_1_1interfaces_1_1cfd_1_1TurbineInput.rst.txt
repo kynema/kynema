@@ -1,0 +1,14 @@
+.. meta::e648107db621a72791b219118522874043b2a0123496f7c5bb8013b94a8c740b348416214b00d127d76b6ff3cdd65ab1406ef477b3ed1fa7c9a161b59ff62620
+
+:orphan:
+
+.. title:: Kynema API: kynema_fmb::interfaces::cfd::TurbineInput Struct Reference
+
+TurbineInput Struct Reference
+=============================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: structkynema__fmb_1_1interfaces_1_1cfd_1_1TurbineInput.html

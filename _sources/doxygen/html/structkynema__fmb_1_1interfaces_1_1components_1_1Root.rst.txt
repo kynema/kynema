@@ -1,0 +1,14 @@
+.. meta::bf1f38419f7ec11394f1db54ca4cd5f2b431872d2aba5b686654b4ecc51933209da2a8f598af7f4feee4f2e419452a6133a66051b674076309e0fd52b8a37f7b
+
+:orphan:
+
+.. title:: Kynema API: kynema_fmb::interfaces::components::Root Struct Reference
+
+Root Struct Reference
+=====================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: structkynema__fmb_1_1interfaces_1_1components_1_1Root.html

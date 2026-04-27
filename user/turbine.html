@@ -55,7 +55,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="user.html">User Manual</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="compiling.html">Compiling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="linking.html">Linking To Kynema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linking.html">Linking To Kynema-FMB</a></li>
 <li class="toctree-l2"><a class="reference internal" href="vtk_visualization.html">VTK Visualization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="floating_platform.html">Example: Rigid body with three springs</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Example: IEA15MW Turbine</a></li>
@@ -67,7 +67,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../theory/index.html">Theory Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../developer/index.html">Developer Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../testing/index.html">Benchmark Testing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../publications.html">Kynema Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../publications.html">Kynema-FMB Publications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../acknowledgement.html">Acknowledgements</a></li>
 </ul>
 
@@ -98,7 +98,7 @@
              
   <div class="section" id="example-iea15mw-turbine">
 <h1>Example: IEA15MW Turbine<a class="headerlink" href="#example-iea15mw-turbine" title="Permalink to this heading"></a></h1>
-<p>This example will walkthrough how to simulate a wind turbine using Kynema’s high level API.
+<p>This example will walkthrough how to simulate a wind turbine using Kynema-FMB’s high level API.
 For the most up to date working version of this code, look in <code class="docutils literal notranslate"><span class="pre">tests/documentation_tests/iea15mw_turbine</span></code>.</p>
 <p>As with any C++ program, start with the includes.
 We will need to include <code class="docutils literal notranslate"><span class="pre">Kokkos_Core.hpp</span></code> to initialize and finalize Kokkos at the beginning of the application.
@@ -138,13 +138,13 @@ In general, these will be read fom an input file, but we just define them inline
 </pre></div>
 </div>
 <p>Next, we create the turbine interface builder.
-This is a factory class which will aid us in setting up all of the structures Kynema needs for its simulation.</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">builder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kynema</span><span class="o">::</span><span class="n">interfaces</span><span class="o">::</span><span class="n">TurbineInterfaceBuilder</span><span class="p">{};</span>
+This is a factory class which will aid us in setting up all of the structures Kynema-FMB needs for its simulation.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">builder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kynema_fmb</span><span class="o">::</span><span class="n">interfaces</span><span class="o">::</span><span class="n">TurbineInterfaceBuilder</span><span class="p">{};</span>
 </pre></div>
 </div>
 <p>The builder has several groupings of options that we will use to set up our problem.
 The <code class="docutils literal notranslate"><span class="pre">.Solution()</span></code> function provides options related to controling the solver, such as the time step, numerical damping, and convergence criteria.
-You can also optionally set an output file in which Kynema will write its solution data each iteration.
+You can also optionally set an output file in which Kynema-FMB will write its solution data each iteration.
 If this file is not set, no output will be performed.</p>
 <p>When using the builder, you can string together setter function calls as seen here, or you can call each of them individually.
 The setters are very light weight and will only start constructing the major data structures when .Build() is called on builder.</p>
@@ -184,7 +184,7 @@ Feel free to write your own .yaml parser, use any other file format, or otherwis
 <span class="w">    </span><span class="p">.</span><span class="n">SetTowerTopToRotorApex</span><span class="p">(</span><span class="n">wio_nacelle</span><span class="p">[</span><span class="s">&quot;drivetrain&quot;</span><span class="p">][</span><span class="s">&quot;distance_tt_hub&quot;</span><span class="p">].</span><span class="n">as</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">());</span>
 </pre></div>
 </div>
-<p>Each blade is added in reference coordinates and then rotated onto the rotor automatically by Kynema.
+<p>Each blade is added in reference coordinates and then rotated onto the rotor automatically by Kynema-FMB.
 The blades of a turbine are assumed to be equally spaced around the rotor - for example, a turbine with three blades will have one blade every 120 degrees about the X-axis, with the first blade starting along the global Z-axis.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0U</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n_blades</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="p">...</span>
@@ -197,7 +197,7 @@ Blades can be added in any order or edited at any time before final assembly by 
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">blade_builder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">turbine_builder</span><span class="p">.</span><span class="n">Blade</span><span class="p">(</span><span class="n">j</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>Kynema’s Turbine model assumes one, high order, element per blade.
+<p>Kynema-FMB’s Turbine model assumes one, high order, element per blade.
 In this case, eleven blade node are used, which we have seen to give accurate results for the IEA15MW blades.</p>
 <p>The grid points specified in the input will define the number and location of the quadrature points used for assembling the system matrix.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">blade_builder</span><span class="p">.</span><span class="n">SetElementOrder</span><span class="p">(</span><span class="n">n_blade_nodes</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">).</span><span class="n">PrescribedRootMotion</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span>
@@ -213,7 +213,7 @@ Note that Wind-IO uses the Z-axis as its reference axis, but your application ma
 <span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0U</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">axis_grid</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">blade_builder</span><span class="p">.</span><span class="n">AddRefAxisPoint</span><span class="p">(</span>
 <span class="w">        </span><span class="n">axis_grid</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="p">{</span><span class="n">x_values</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">y_values</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">z_values</span><span class="p">[</span><span class="n">i</span><span class="p">]},</span>
-<span class="w">        </span><span class="n">kynema</span><span class="o">::</span><span class="n">interfaces</span><span class="o">::</span><span class="n">components</span><span class="o">::</span><span class="n">ReferenceAxisOrientation</span><span class="o">::</span><span class="n">Z</span>
+<span class="w">        </span><span class="n">kynema_fmb</span><span class="o">::</span><span class="n">interfaces</span><span class="o">::</span><span class="n">components</span><span class="o">::</span><span class="n">ReferenceAxisOrientation</span><span class="o">::</span><span class="n">Z</span>
 <span class="w">    </span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
@@ -256,7 +256,7 @@ The WindIO file provides them as their tensor components, so we decompress that 
 <span class="w">            </span><span class="p">{</span><span class="n">k</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span><span class="w"> </span><span class="n">k</span><span class="p">[</span><span class="mi">9</span><span class="p">],</span><span class="w"> </span><span class="n">k</span><span class="p">[</span><span class="mi">13</span><span class="p">],</span><span class="w"> </span><span class="n">k</span><span class="p">[</span><span class="mi">16</span><span class="p">],</span><span class="w"> </span><span class="n">k</span><span class="p">[</span><span class="mi">18</span><span class="p">],</span><span class="w"> </span><span class="n">k</span><span class="p">[</span><span class="mi">19</span><span class="p">]},</span>
 <span class="w">            </span><span class="p">{</span><span class="n">k</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span><span class="w"> </span><span class="n">k</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span><span class="w"> </span><span class="n">k</span><span class="p">[</span><span class="mi">14</span><span class="p">],</span><span class="w"> </span><span class="n">k</span><span class="p">[</span><span class="mi">17</span><span class="p">],</span><span class="w"> </span><span class="n">k</span><span class="p">[</span><span class="mi">19</span><span class="p">],</span><span class="w"> </span><span class="n">k</span><span class="p">[</span><span class="mi">20</span><span class="p">]},</span>
 <span class="w">        </span><span class="p">}},</span>
-<span class="w">        </span><span class="n">kynema</span><span class="o">::</span><span class="n">interfaces</span><span class="o">::</span><span class="n">components</span><span class="o">::</span><span class="n">ReferenceAxisOrientation</span><span class="o">::</span><span class="n">Z</span>
+<span class="w">        </span><span class="n">kynema_fmb</span><span class="o">::</span><span class="n">interfaces</span><span class="o">::</span><span class="n">components</span><span class="o">::</span><span class="n">ReferenceAxisOrientation</span><span class="o">::</span><span class="n">Z</span>
 <span class="w">    </span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
@@ -273,7 +273,7 @@ This acts much like the Blade builder class, but there is only one Tower.</p>
 <span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0U</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">axis_grid</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">     </span><span class="n">tower_builder</span><span class="p">.</span><span class="n">AddRefAxisPoint</span><span class="p">(</span>
 <span class="w">         </span><span class="n">axis_grid</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="p">{</span><span class="n">x_values</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">y_values</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">z_values</span><span class="p">[</span><span class="n">i</span><span class="p">]},</span>
-<span class="w">         </span><span class="n">kynema</span><span class="o">::</span><span class="n">interfaces</span><span class="o">::</span><span class="n">components</span><span class="o">::</span><span class="n">ReferenceAxisOrientation</span><span class="o">::</span><span class="n">Z</span>
+<span class="w">         </span><span class="n">kynema_fmb</span><span class="o">::</span><span class="n">interfaces</span><span class="o">::</span><span class="n">components</span><span class="o">::</span><span class="n">ReferenceAxisOrientation</span><span class="o">::</span><span class="n">Z</span>
 <span class="w">     </span><span class="p">);</span>
 <span class="w"> </span><span class="p">}</span>
 <span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">tower_base_position</span><span class="w"> </span><span class="o">=</span>
@@ -294,7 +294,7 @@ This acts much like the Blade builder class, but there is only one Tower.</p>
 <span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">t_diameter_values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t_diameter</span><span class="p">[</span><span class="s">&quot;values&quot;</span><span class="p">].</span><span class="n">as</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;&gt;</span><span class="p">();</span>
 <span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">t_wall_thickness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t_layer</span><span class="p">[</span><span class="s">&quot;thickness&quot;</span><span class="p">][</span><span class="s">&quot;values&quot;</span><span class="p">].</span><span class="n">as</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;&gt;</span><span class="p">();</span>
 <span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0U</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">t_diameter_grid</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">     </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">section</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kynema</span><span class="o">::</span><span class="n">beams</span><span class="o">::</span><span class="n">GenerateHollowCircleSection</span><span class="p">(</span>
+<span class="w">     </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">section</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kynema_fmb</span><span class="o">::</span><span class="n">beams</span><span class="o">::</span><span class="n">GenerateHollowCircleSection</span><span class="p">(</span>
 <span class="w">         </span><span class="n">t_diameter_grid</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">t_material</span><span class="p">[</span><span class="s">&quot;E&quot;</span><span class="p">].</span><span class="n">as</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(),</span><span class="w"> </span><span class="n">t_material</span><span class="p">[</span><span class="s">&quot;G&quot;</span><span class="p">].</span><span class="n">as</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(),</span>
 <span class="w">         </span><span class="n">t_material</span><span class="p">[</span><span class="s">&quot;rho&quot;</span><span class="p">].</span><span class="n">as</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(),</span><span class="w"> </span><span class="n">t_diameter_values</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">t_wall_thickness</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
 <span class="w">         </span><span class="n">t_material</span><span class="p">[</span><span class="s">&quot;nu&quot;</span><span class="p">].</span><span class="n">as</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">()</span>
@@ -303,7 +303,7 @@ This acts much like the Blade builder class, but there is only one Tower.</p>
 <span class="w">     </span><span class="c1">// Add section</span>
 <span class="w">     </span><span class="n">tower_builder</span><span class="p">.</span><span class="n">AddSection</span><span class="p">(</span>
 <span class="w">         </span><span class="n">t_diameter_grid</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">section</span><span class="p">.</span><span class="n">M_star</span><span class="p">,</span><span class="w"> </span><span class="n">section</span><span class="p">.</span><span class="n">C_star</span><span class="p">,</span>
-<span class="w">         </span><span class="n">kynema</span><span class="o">::</span><span class="n">interfaces</span><span class="o">::</span><span class="n">components</span><span class="o">::</span><span class="n">ReferenceAxisOrientation</span><span class="o">::</span><span class="n">Z</span>
+<span class="w">         </span><span class="n">kynema_fmb</span><span class="o">::</span><span class="n">interfaces</span><span class="o">::</span><span class="n">components</span><span class="o">::</span><span class="n">ReferenceAxisOrientation</span><span class="o">::</span><span class="n">Z</span>
 <span class="w">     </span><span class="p">);</span>
 <span class="w"> </span><span class="p">}</span>
 </pre></div>
@@ -367,13 +367,13 @@ Control commands and loads can be changed freely throughout the simulation, eith
 </pre></div>
 </div>
 <p>Finally, we call the <code class="docutils literal notranslate"><span class="pre">Step()</span></code> function on the turbine interface, which actually performs the action of advancing the solution in time.
-This function returns a boolean stating if Kynema’s solver converged or not, which can be checked for error handling.</p>
+This function returns a boolean stating if Kynema-FMB’s solver converged or not, which can be checked for error handling.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span><span class="n">maybe_unused</span><span class="p">]]</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">converged</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">interface</span><span class="p">.</span><span class="n">Step</span><span class="p">();</span>
 <span class="n">assert</span><span class="p">(</span><span class="n">converged</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>And that’s it, the simulation will advance to the total solution time.
-Kynema will have written out the solution at each time step in NetCDF format.
+Kynema-FMB will have written out the solution at each time step in NetCDF format.
 At any time, the solution can be accessed by looking at the <code class="docutils literal notranslate"><span class="pre">interface.Turbine()</span></code> object.
 For example, the position and orientation quaternion can be accessed by calling <code class="docutils literal notranslate"><span class="pre">interface.Turbine().tower.nodes.back()</span></code>.</p>
 </div>

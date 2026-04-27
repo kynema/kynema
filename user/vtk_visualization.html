@@ -26,7 +26,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Example: Rigid body with three springs" href="floating_platform.html" />
-    <link rel="prev" title="Linking To Kynema" href="linking.html" /> 
+    <link rel="prev" title="Linking To Kynema-FMB" href="linking.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -56,7 +56,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="user.html">User Manual</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="compiling.html">Compiling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="linking.html">Linking To Kynema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linking.html">Linking To Kynema-FMB</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">VTK Visualization</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
@@ -95,7 +95,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../theory/index.html">Theory Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../developer/index.html">Developer Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../testing/index.html">Benchmark Testing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../publications.html">Kynema Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../publications.html">Kynema-FMB Publications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../acknowledgement.html">Acknowledgements</a></li>
 </ul>
 
@@ -126,7 +126,7 @@
              
   <div class="section" id="vtk-visualization">
 <h1>VTK Visualization<a class="headerlink" href="#vtk-visualization" title="Permalink to this heading"></a></h1>
-<p>This guide demonstrates how to generate VTK visualization files from Kynema simulation
+<p>This guide demonstrates how to generate VTK visualization files from Kynema-FMB simulation
 outputs using the <code class="docutils literal notranslate"><span class="pre">generate_vtk_output.py</span></code> script. VTK (Visualization Toolkit) files can be opened
 in visualization software such as <a class="reference external" href="https://www.paraview.org/">ParaView</a>,
 <a class="reference external" href="https://visit-dav.github.io/visit-website/">VisIt</a>, or other VTK-compatible viewers to create plots,
@@ -144,10 +144,10 @@ version of this script, see <code class="docutils literal notranslate"><span cla
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>usage: generate_vtk_output.py [-h] [--output_dir OUTPUT_DIR] [--start-timestep START_TIMESTEP] [--end-timestep END_TIMESTEP]
                               netcdf_file connectivity_file
 
-Generate VTK files from Kynema NetCDF output
+Generate VTK files from Kynema-FMB NetCDF output
 
 positional arguments:
-  netcdf_file           Path to Kynema NetCDF output file e.g. blade_interface.nc
+  netcdf_file           Path to Kynema-FMB NetCDF output file e.g. blade_interface.nc
   connectivity_file     Path to mesh connectivity YAML file e.g. mesh_connectivity.yaml
 
 options:
@@ -163,7 +163,7 @@ options:
 </div>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a></h2>
-<p>The <code class="docutils literal notranslate"><span class="pre">generate_vtk_output.py</span></code> script is a post-processing tool that converts Kynema simulation
+<p>The <code class="docutils literal notranslate"><span class="pre">generate_vtk_output.py</span></code> script is a post-processing tool that converts Kynema-FMB simulation
 outputs into VTK (Visualization Toolkit) format for visualization and subsequent analysis. The script
 performs the following operations.</p>
 <ol class="arabic simple">
@@ -173,7 +173,7 @@ information from YAML files, then converts this data into VTK’s unstructured g
 collection of points and heterogeneous cells (each with a VTK cell type and point connectivity)
 without requiring a regular lattice structure. This makes it well-suited for flexible multibody
 systems where elements may have varying connectivity patterns and types.</p></li>
-<li><p><strong>Element Visualization</strong>: Creates appropriate VTK representations for different Kynema elements:</p>
+<li><p><strong>Element Visualization</strong>: Creates appropriate VTK representations for different Kynema-FMB elements:</p>
 <ul class="simple">
 <li><p><strong>Beam elements</strong>: Represented as polyline cells connecting multiple nodes</p></li>
 <li><p><strong>Mass elements</strong>: Represented as vertex cells at single nodes</p></li>
@@ -200,7 +200,7 @@ animation and analysis in ParaView.</p></li>
 <p>Before using the VTK visualization script, you’ll need the following Python packages installed in your environment.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">numpy</span></code>: For numerical operations</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">netCDF4</span></code>: For reading Kynema NetCDF output files</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">netCDF4</span></code>: For reading Kynema-FMB NetCDF output files</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">vtk</span></code>: For creating VTK visualization files</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">PyYAML</span></code>: For reading yaml-based mesh connectivity files</p></li>
 </ul>
@@ -216,12 +216,12 @@ animation and analysis in ParaView.</p></li>
 <div class="section" id="required-input-files">
 <h2>Required Input Files<a class="headerlink" href="#required-input-files" title="Permalink to this heading"></a></h2>
 <p>The VTK visualization script requires two input files, which are generated automatically when running
-simulations via Kynema APIs found in <code class="docutils literal notranslate"><span class="pre">src/interfaces</span></code>.</p>
+simulations via Kynema-FMB APIs found in <code class="docutils literal notranslate"><span class="pre">src/interfaces</span></code>.</p>
 <ol class="arabic simple">
-<li><p><strong>NetCDF Output File</strong>: The primary output file generated by Kynema during simulation.
+<li><p><strong>NetCDF Output File</strong>: The primary output file generated by Kynema-FMB during simulation.
 It contains time-series data for all nodes including position, velocity, acceleration, forces,
 and moments. This file is generated automatically when running simulations via the high-level
-Kynema APIs provided in <code class="docutils literal notranslate"><span class="pre">src/interfaces</span></code>. File naming follows this pattern:</p>
+Kynema-FMB APIs provided in <code class="docutils literal notranslate"><span class="pre">src/interfaces</span></code>. File naming follows this pattern:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">TurbineInterface</span></code> API generates <code class="docutils literal notranslate"><span class="pre">turbine_interface.nc</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">CFDInterface</span></code> API generates <code class="docutils literal notranslate"><span class="pre">cfd_interface.nc</span></code></p></li>
@@ -255,7 +255,7 @@ configuration is set. For example, in test cases, verify that <code class="docut
 </div>
 <p><strong>Required Arguments</strong></p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">netcdf_file</span></code>: Path to Kynema NetCDF output file (e.g., <code class="docutils literal notranslate"><span class="pre">turbine_interface.nc</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">netcdf_file</span></code>: Path to Kynema-FMB NetCDF output file (e.g., <code class="docutils literal notranslate"><span class="pre">turbine_interface.nc</span></code>)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">connectivity_file</span></code>: Path to mesh connectivity YAML file (e.g., <code class="docutils literal notranslate"><span class="pre">mesh_connectivity.yaml</span></code>)</p></li>
 </ul>
 <p><strong>Optional Arguments</strong></p>
@@ -344,7 +344,7 @@ and <a class="reference external" href="https://www.paraview.org/tutorials/">Par
 <div class="section" id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading"></a></h2>
 <p>This section showcases some examples of the types of visualizations and animations that can be
-generated by the VTK script by leveraging the Kynema interfaces/APIs via the regression
+generated by the VTK script by leveraging the Kynema-FMB interfaces/APIs via the regression
 tests.</p>
 <div class="section" id="static-curled-beam-visualization">
 <h3>Static Curled Beam Visualization<a class="headerlink" href="#static-curled-beam-visualization" title="Permalink to this heading"></a></h3>
@@ -472,7 +472,7 @@ turbine structure from a WindIO YAML file with the following initial conditions 
 <p>This is a flexible multibody dynamics simulation of the IEA‑15‑240‑RWT wind turbine under an
 unrealistically aggressive start-up with prescribed blade pitch and yaw.
 The turbine is under gravity loading, but there are no aerodynamic forces. The simulation was
-created to demonstrate the robustness of the Kynema model, even under fast, large nonlinear
+created to demonstrate the robustness of the Kynema-FMB model, even under fast, large nonlinear
 deflections.</p>
 </div>
 <p>This is a turbine start-up simulation i.e. the turbine is started from rest with the applied
@@ -489,7 +489,7 @@ response during the simulation duration.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="linking.html" class="btn btn-neutral float-left" title="Linking To Kynema" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="linking.html" class="btn btn-neutral float-left" title="Linking To Kynema-FMB" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="floating_platform.html" class="btn btn-neutral float-right" title="Example: Rigid body with three springs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

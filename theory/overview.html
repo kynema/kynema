@@ -65,7 +65,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../developer/index.html">Developer Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../testing/index.html">Benchmark Testing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../publications.html">Kynema Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../publications.html">Kynema-FMB Publications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../acknowledgement.html">Acknowledgements</a></li>
 </ul>
 
@@ -96,7 +96,7 @@
              
   <div class="section" id="formulation-overview">
 <span id="sec-overview"></span><h1>Formulation overview<a class="headerlink" href="#formulation-overview" title="Permalink to this heading"></a></h1>
-<p>Kynema was designed to solve flexible multibody problems that have
+<p>Kynema-FMB was designed to solve flexible multibody problems that have
 been discretized into a collection of <span class="math notranslate nohighlight">\(k_n\)</span> nodes representing
 massless points, rigid bodies, and flexible-beam nodes, where each node
 has three translational degrees of freedom (DOFs) and three DOFs
@@ -144,7 +144,7 @@ A_{13}-A_{31} \\
 A_{21}-A_{12}
 \end{bmatrix}
 \end{aligned}\end{split}\]</div>
-<p>Note that in Kynema, degrees of freedom are defined in the inertial
+<p>Note that in Kynema-FMB, degrees of freedom are defined in the inertial
 coordinate system.</p>
 <p>For a discretized flexible multibody system with <span class="math notranslate nohighlight">\(k_n\)</span> nodes, the
 generalized displacement is organized as</p>
@@ -175,7 +175,7 @@ generalized displacement is organized as</p>
 <span class="math notranslate nohighlight">\(\underline{q} \in \left[\underline{\underline{R}}^3 \times \mathrm{SO(3)} \right]^{k_n}\)</span>,
 <span class="math notranslate nohighlight">\(\underline{v} \in \mathbb{R}^k\)</span>, <span class="math notranslate nohighlight">\(k=6k_n\)</span>.</p>
 <p>For a discretized flexible multibody system with <span class="math notranslate nohighlight">\(k\)</span> degrees of
-freedom and <span class="math notranslate nohighlight">\(m\)</span> kinematic constraints, Kynema is restricted
+freedom and <span class="math notranslate nohighlight">\(m\)</span> kinematic constraints, Kynema-FMB is restricted
 to problems where the governing equations of motion and the constraint
 equations form a residual vector
 <span class="math notranslate nohighlight">\(\underline{r}\in \mathbb{R}^{k+m}\)</span> where</p>
@@ -187,7 +187,7 @@ is the <em>unconstrained</em>-equations-of-motion residual,
 is the constraint-gradient matrix associated with the constraints
 <span class="math notranslate nohighlight">\(\underline{\Phi}(\underline{q},t)\in \mathbb{R}^m\)</span>, and
 <span class="math notranslate nohighlight">\(\underline{\lambda}\in \mathbb{R}^m\)</span> are the Lagrange multipliers
-associated with the constraints. Kynema is restricted to problems
+associated with the constraints. Kynema-FMB is restricted to problems
 for which the unconstrained-equations-of-motion residual can be written
 in the form</p>
 <div class="math notranslate nohighlight" id="equation-residual1">
@@ -236,7 +236,7 @@ are the virtual displacement and virtual rotation, respectively, in
 inertial coordinates associated with node <span class="math notranslate nohighlight">\(i\)</span>.</p>
 <p>In the following, we describe the time-integration algorithm for index-3
 differential-algebraic-equation (DAE-3) systems, which is the backbone
-of the Kynema framework. We then discuss the governing equations
+of the Kynema-FMB framework. We then discuss the governing equations
 for a single rigid body, and then the theory and numerical
 discretization for flexible beams and practical consideration in
 modeling wind turbine blades. The full constrained system for a

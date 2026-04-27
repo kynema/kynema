@@ -1,0 +1,14 @@
+.. meta::913b08a391d6c6a5a2df5b7969afd1c164f4fe6977ac2150cc96dc54434ff9e44d904b33a1837c71d6c239059f7eb58b898e7217a25abba0e738144ff42cba49
+
+:orphan:
+
+.. title:: Kynema API: kynema_fmb::MassesInput Struct Reference
+
+MassesInput Struct Reference
+============================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: structkynema__fmb_1_1MassesInput.html

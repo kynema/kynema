@@ -25,7 +25,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Kynema API" href="../doxygen/html/index.html" />
-    <link rel="prev" title="Kynema Development Plan" href="dev_plan.html" /> 
+    <link rel="prev" title="Kynema-FMB Development Plan" href="dev_plan.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -56,7 +56,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../theory/index.html">Theory Manual</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Developer Documentation</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="overview.html">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dev_plan.html">Kynema Development Plan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_plan.html">Kynema-FMB Development Plan</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Documentation</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#manual">Manual</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#writing-documentation">Writing documentation</a></li>
@@ -78,7 +78,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../testing/index.html">Benchmark Testing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../publications.html">Kynema Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../publications.html">Kynema-FMB Publications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../acknowledgement.html">Acknowledgements</a></li>
 </ul>
 
@@ -109,7 +109,7 @@
              
   <div class="section" id="documentation">
 <span id="dev-documenting"></span><h1>Documentation<a class="headerlink" href="#documentation" title="Permalink to this heading"></a></h1>
-<p>Kynema comes with two different types of documentation:</p>
+<p>Kynema-FMB comes with two different types of documentation:</p>
 <ul class="simple">
 <li><p>The manual, i.e., the document you are reading now, that is
 written using <a class="reference external" href="https://www.sphinx-doc.org/en/master/index.html">Sphinx</a>, and</p></li>
@@ -118,12 +118,12 @@ processed automatically by <a class="reference external" href="http://www.doxyge
 </ul>
 <div class="section" id="manual">
 <h2>Manual<a class="headerlink" href="#manual" title="Permalink to this heading"></a></h2>
-<p>The Kynema manual is written using a special format called
+<p>The Kynema-FMB manual is written using a special format called
 ReStructured Text (ReST) and is converted into HTML and PDF formats
 using a python package Sphinx. Since the manuals are written in simple
 text files, they can be version controlled alongside the source
 code. Documentation is automatically generated with new updates to the
-GitHub repository and deployed at <a class="reference external" href="https://kynema.github.io/kynema">Kynema documentation site</a>.</p>
+GitHub repository and deployed at <a class="reference external" href="https://kynema.github.io/kynema-fmb">Kynema-FMB documentation site</a>.</p>
 <div class="section" id="writing-documentation">
 <h3>Writing documentation<a class="headerlink" href="#writing-documentation" title="Permalink to this heading"></a></h3>
 <p>As mentioned previously, documentation is written using a special text format
@@ -139,7 +139,7 @@ code documentation as well as inheritance diagrams. The
 documentation for the latest snapshot of
 the codebase can be browsed in this manual. The <a class="reference external" href="http://www.doxygen.nl/manual/index.html">Doxygen manual</a> provides an overview of
 the syntax that must be used. Please follow the Doxygen style of
-commenting code when commenting Kynema sources.</p>
+commenting code when commenting Kynema-FMB sources.</p>
 <p>When commenting code, try to use self-documenting code, i.e., descriptive names
 for variables and functions that eliminate the need to describe what is going on
 in comments. In general, comments should address <em>why</em> something is being coded
@@ -151,7 +151,7 @@ to rely on comments to follow the code structure.</p>
 <h2>Building documentation<a class="headerlink" href="#building-documentation" title="Permalink to this heading"></a></h2>
 <div class="section" id="documentation-dependencies">
 <h3>Documentation Dependencies<a class="headerlink" href="#documentation-dependencies" title="Permalink to this heading"></a></h3>
-<p>To generate the Kynema documentation locally, several dependencies are required:</p>
+<p>To generate the Kynema-FMB documentation locally, several dependencies are required:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">doxygen</span></code> - For generating source code documentation</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">graphviz</span></code> - For creating inheritance diagrams</p></li>
@@ -184,7 +184,7 @@ to rely on comments to follow the code structure.</p>
 <div class="section" id="id1">
 <h3>Building Documentation<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
 <p>To build the documentation:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>build<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>cmake<span class="w"> </span>-DKynema_ENABLE_DOCUMENTATION:BOOL<span class="o">=</span>ON<span class="w"> </span>..<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>cmake<span class="w"> </span>--build<span class="w"> </span>.<span class="w"> </span>-t<span class="w"> </span>docs
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>build<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>cmake<span class="w"> </span>-DKYNEMA_FMB_ENABLE_DOCUMENTATION:BOOL<span class="o">=</span>ON<span class="w"> </span>..<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>cmake<span class="w"> </span>--build<span class="w"> </span>.<span class="w"> </span>-t<span class="w"> </span>docs
 </pre></div>
 </div>
 <div class="admonition note">
@@ -204,7 +204,7 @@ see the <a class="reference external" href="https://www.sphinx-doc.org/en/master
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="dev_plan.html" class="btn btn-neutral float-left" title="Kynema Development Plan" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="dev_plan.html" class="btn btn-neutral float-left" title="Kynema-FMB Development Plan" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="../doxygen/html/index.html" class="btn btn-neutral float-right" title="Kynema API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

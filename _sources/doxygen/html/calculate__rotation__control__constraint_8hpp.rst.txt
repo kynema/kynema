@@ -1,11 +1,11 @@
-.. meta::c136de7b8b298a5d95fca2fc4664f5f1301007945654f67ddcece58c2275e9329146085890a6008de7e21d249e644a5eaf6392381084502bfab9e8d8f36f9a36
+.. meta::510a34d96049e0bd2dc324a9c08cbbe9d1dd1c48da2cfb04ed41f3542c623bb78b9057b8c302f9f1f19f440dcde53085745d3dc697620b929ed4bac0a743de21
 
 :orphan:
 
-.. title:: Kynema API: /home/runner/work/kynema/kynema/kynema/src/constraints/calculate_rotation_control_constraint.hpp File Reference
+.. title:: Kynema API: /home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/constraints/calculate_rotation_control_constraint.hpp File Reference
 
-/home/runner/work/kynema/kynema/kynema/src/constraints/calculate\_rotation\_control\_constraint.hpp File Reference
-==================================================================================================================
+/home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/constraints/calculate\_rotation\_control\_constraint.hpp File Reference
+==============================================================================================================================
 
 .. container:: doxygen-content
 

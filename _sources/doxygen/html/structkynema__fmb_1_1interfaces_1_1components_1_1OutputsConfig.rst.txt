@@ -1,0 +1,14 @@
+.. meta::f97dd0896bd2bc802c1d9292345a30b4af69c5155f812d665cced228d21a2b07bc7998264dae25de3f8661d9efcdfd83e578d83fdd3d4d592755a8eead7dbac8
+
+:orphan:
+
+.. title:: Kynema API: kynema_fmb::interfaces::components::OutputsConfig Struct Reference
+
+OutputsConfig Struct Reference
+==============================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: structkynema__fmb_1_1interfaces_1_1components_1_1OutputsConfig.html

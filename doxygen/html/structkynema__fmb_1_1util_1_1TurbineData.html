@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kynema API: kynema_fmb::util::TurbineData Struct Reference &mdash; Kynema 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Kynema
+              <img src="../../_static/oturb_logo_v2.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/user.html">User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../theory/index.html">Theory Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/index.html">Developer Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/index.html">Benchmark Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../publications.html">Kynema-FMB Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../acknowledgement.html">Acknowledgements</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Kynema</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Kynema API: kynema_fmb::util::TurbineData Struct Reference</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/doxygen/html/structkynema__fmb_1_1util_1_1TurbineData.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="turbinedata-struct-reference">
+<h1>TurbineData Struct Reference<a class="headerlink" href="#turbinedata-struct-reference" title="Permalink to this heading"></a></h1>
+<div class="doxygen-content docutils container">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Kynema API: kynema_fmb::util::TurbineData Struct Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Kynema API
+   </div>
+   <div id="projectbrief">A flexible multibody structural dynamics code for wind turbines</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacekynema__fmb.html">kynema_fmb</a></li><li class="navelem"><a class="el" href="namespacekynema__fmb_1_1util.html">util</a></li><li class="navelem"><a class="el" href="structkynema__fmb_1_1util_1_1TurbineData.html">TurbineData</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="structkynema__fmb_1_1util_1_1TurbineData-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">kynema_fmb::util::TurbineData Struct Reference</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Struct to hold and manage turbine-specific data.  
+ <a href="structkynema__fmb_1_1util_1_1TurbineData.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="aerodyn__inflow_8hpp_source.html">aerodyn_inflow.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a9ce57195c0b9bea152cdbcd684eba4c3" id="r_a9ce57195c0b9bea152cdbcd684eba4c3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1TurbineData.html#a9ce57195c0b9bea152cdbcd684eba4c3">TurbineData</a> (const <a class="el" href="structkynema__fmb_1_1util_1_1TurbineConfig.html">TurbineConfig</a> &amp;tc)</td></tr>
+<tr class="memdesc:a9ce57195c0b9bea152cdbcd684eba4c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for <a class="el" href="structkynema__fmb_1_1util_1_1TurbineData.html" title="Struct to hold and manage turbine-specific data.">TurbineData</a> based on a <a class="el" href="structkynema__fmb_1_1util_1_1TurbineConfig.html" title="Configuration for the initial state of a turbine.">TurbineConfig</a> object.  <br /></td></tr>
+<tr class="separator:a9ce57195c0b9bea152cdbcd684eba4c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a329a2e7aa44d623001c1f1f2acab0756" id="r_a329a2e7aa44d623001c1f1f2acab0756"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1TurbineData.html#a329a2e7aa44d623001c1f1f2acab0756">Validate</a> () const</td></tr>
+<tr class="separator:a329a2e7aa44d623001c1f1f2acab0756"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aacd1ca51a8447645a8f1742ef6d865c7" id="r_aacd1ca51a8447645a8f1742ef6d865c7"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1TurbineData.html#aacd1ca51a8447645a8f1742ef6d865c7">NumberOfBlades</a> () const</td></tr>
+<tr class="memdesc:aacd1ca51a8447645a8f1742ef6d865c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the number of blades as size_t.  <br /></td></tr>
+<tr class="separator:aacd1ca51a8447645a8f1742ef6d865c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a16bffb82d0221d8c82dd74464cddfc" id="r_a1a16bffb82d0221d8c82dd74464cddfc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1TurbineData.html#a1a16bffb82d0221d8c82dd74464cddfc">SetBladeNodeMotion</a> (size_t blade_number, size_t node_number, const std::array&lt; double, 7 &gt; &amp;position, const std::array&lt; double, 6 &gt; &amp;velocity, const std::array&lt; double, 6 &gt; &amp;acceleration)</td></tr>
+<tr class="memdesc:a1a16bffb82d0221d8c82dd74464cddfc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the blade node values based on blade number and node number.  <br /></td></tr>
+<tr class="separator:a1a16bffb82d0221d8c82dd74464cddfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff5cfc88cf3439a95cf41d893d2e70c6" id="r_aff5cfc88cf3439a95cf41d893d2e70c6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1TurbineData.html#aff5cfc88cf3439a95cf41d893d2e70c6">SetBladeRootMotion</a> (size_t blade_number, const std::array&lt; double, 7 &gt; &amp;position, const std::array&lt; double, 6 &gt; &amp;velocity, const std::array&lt; double, 6 &gt; &amp;acceleration)</td></tr>
+<tr class="memdesc:aff5cfc88cf3439a95cf41d893d2e70c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the blade root values based on blade number.  <br /></td></tr>
+<tr class="separator:aff5cfc88cf3439a95cf41d893d2e70c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae784b5cf728bafaf6814ec4e1e72cce5" id="r_ae784b5cf728bafaf6814ec4e1e72cce5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1TurbineData.html#ae784b5cf728bafaf6814ec4e1e72cce5">SetHubMotion</a> (const std::array&lt; double, 7 &gt; &amp;position, const std::array&lt; double, 6 &gt; &amp;velocity, const std::array&lt; double, 6 &gt; &amp;acceleration)</td></tr>
+<tr class="memdesc:ae784b5cf728bafaf6814ec4e1e72cce5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the hub motion values.  <br /></td></tr>
+<tr class="separator:ae784b5cf728bafaf6814ec4e1e72cce5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d2e5174fe6aa734307471d7f358b394" id="r_a6d2e5174fe6aa734307471d7f358b394"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1TurbineData.html#a6d2e5174fe6aa734307471d7f358b394">SetNacelleMotion</a> (const std::array&lt; double, 7 &gt; &amp;position, const std::array&lt; double, 6 &gt; &amp;velocity, const std::array&lt; double, 6 &gt; &amp;acceleration)</td></tr>
+<tr class="memdesc:a6d2e5174fe6aa734307471d7f358b394"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the nacelle motion values.  <br /></td></tr>
+<tr class="separator:a6d2e5174fe6aa734307471d7f358b394"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0bef64e0c9d44750f6fa1713ac00cc4d" id="r_a0bef64e0c9d44750f6fa1713ac00cc4d"><td class="memItemLeft" align="right" valign="top">std::array&lt; double, 6 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1TurbineData.html#a0bef64e0c9d44750f6fa1713ac00cc4d">GetBladeNodeLoad</a> (size_t blade_number, size_t node_number) const</td></tr>
+<tr class="memdesc:a0bef64e0c9d44750f6fa1713ac00cc4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the blade node loads based on blade number and node number.  <br /></td></tr>
+<tr class="separator:a0bef64e0c9d44750f6fa1713ac00cc4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:a4f95c1eb1b3f8e9a787eeee604ca0684" id="r_a4f95c1eb1b3f8e9a787eeee604ca0684"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1TurbineData.html#a4f95c1eb1b3f8e9a787eeee604ca0684">n_blades</a></td></tr>
+<tr class="separator:a4f95c1eb1b3f8e9a787eeee604ca0684"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a93892dfdfe3afbe50b5a71fccde6f572" id="r_a93892dfdfe3afbe50b5a71fccde6f572"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1util_1_1MeshData.html">MeshData</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1TurbineData.html#a93892dfdfe3afbe50b5a71fccde6f572">hub</a></td></tr>
+<tr class="separator:a93892dfdfe3afbe50b5a71fccde6f572"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6adb5fe0582dde89e68df3ea09ccb35a" id="r_a6adb5fe0582dde89e68df3ea09ccb35a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1util_1_1MeshData.html">MeshData</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1TurbineData.html#a6adb5fe0582dde89e68df3ea09ccb35a">nacelle</a></td></tr>
+<tr class="separator:a6adb5fe0582dde89e68df3ea09ccb35a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a0358dbeca6c031481c0f59bc06e4eb" id="r_a7a0358dbeca6c031481c0f59bc06e4eb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1util_1_1MeshData.html">MeshData</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1TurbineData.html#a7a0358dbeca6c031481c0f59bc06e4eb">blade_roots</a></td></tr>
+<tr class="separator:a7a0358dbeca6c031481c0f59bc06e4eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4b0e846b2576040feac5af4f839dd4a" id="r_ac4b0e846b2576040feac5af4f839dd4a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1util_1_1MeshData.html">MeshData</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1TurbineData.html#ac4b0e846b2576040feac5af4f839dd4a">blade_nodes</a></td></tr>
+<tr class="separator:ac4b0e846b2576040feac5af4f839dd4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2486a93905dbb7fe1bc108ce79a75c1b" id="r_a2486a93905dbb7fe1bc108ce79a75c1b"><td class="memItemLeft" align="right" valign="top">std::array&lt; float, 3 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1TurbineData.html#a2486a93905dbb7fe1bc108ce79a75c1b">hh_vel</a></td></tr>
+<tr class="separator:a2486a93905dbb7fe1bc108ce79a75c1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25c1c26046215765fc56c211ee54c31a" id="r_a25c1c26046215765fc56c211ee54c31a"><td class="memItemLeft" align="right" valign="top">std::vector&lt; int32_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1TurbineData.html#a25c1c26046215765fc56c211ee54c31a">blade_nodes_to_blade_num_mapping</a></td></tr>
+<tr class="memdesc:a25c1c26046215765fc56c211ee54c31a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mapping of blade nodes to blade numbers (1D array)  <br /></td></tr>
+<tr class="separator:a25c1c26046215765fc56c211ee54c31a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abde7871aae417218a2895f0a7fc3d19e" id="r_abde7871aae417218a2895f0a7fc3d19e"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector&lt; size_t &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1TurbineData.html#abde7871aae417218a2895f0a7fc3d19e">node_indices_by_blade</a></td></tr>
+<tr class="memdesc:abde7871aae417218a2895f0a7fc3d19e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unique indices of nodes for each blade (2D array)  <br /></td></tr>
+<tr class="separator:abde7871aae417218a2895f0a7fc3d19e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Struct to hold and manage turbine-specific data. </p>
+<p>This struct contains data for a single turbine, including the number of blades, mesh data for various components (hub, nacelle, blade roots, blade nodes), and blade node mappings. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a9ce57195c0b9bea152cdbcd684eba4c3" name="a9ce57195c0b9bea152cdbcd684eba4c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ce57195c0b9bea152cdbcd684eba4c3">&#9670;&#160;</a></span>TurbineData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">kynema_fmb::util::TurbineData::TurbineData </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structkynema__fmb_1_1util_1_1TurbineConfig.html">TurbineConfig</a> &amp;&#160;</td>
+          <td class="paramname"><em>tc</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructor for <a class="el" href="structkynema__fmb_1_1util_1_1TurbineData.html" title="Struct to hold and manage turbine-specific data.">TurbineData</a> based on a <a class="el" href="structkynema__fmb_1_1util_1_1TurbineConfig.html" title="Configuration for the initial state of a turbine.">TurbineConfig</a> object. </p>
+<p>This constructor initializes the turbine data in AeroDyn/InflowWind compatible format based on the provided <a class="el" href="structkynema__fmb_1_1util_1_1TurbineConfig.html" title="Configuration for the initial state of a turbine.">TurbineConfig</a> object in 7x1 arrays i.e. Kynema format.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tc</td><td>The <a class="el" href="structkynema__fmb_1_1util_1_1TurbineConfig.html" title="Configuration for the initial state of a turbine.">TurbineConfig</a> object containing the initial state of the turbine </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a0bef64e0c9d44750f6fa1713ac00cc4d" name="a0bef64e0c9d44750f6fa1713ac00cc4d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0bef64e0c9d44750f6fa1713ac00cc4d">&#9670;&#160;</a></span>GetBladeNodeLoad()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::array&lt; double, 6 &gt; kynema_fmb::util::TurbineData::GetBladeNodeLoad </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>blade_number</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>node_number</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the blade node loads based on blade number and node number. </p>
+<p>This method returns the blade node loads based on the provided blade number and node number. It simplifies the process by abstracting away the indexing logic.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">blade_number</td><td>The number of the blade to update. </td></tr>
+    <tr><td class="paramname">node_number</td><td>The number of the node to update within the specified blade. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aacd1ca51a8447645a8f1742ef6d865c7" name="aacd1ca51a8447645a8f1742ef6d865c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aacd1ca51a8447645a8f1742ef6d865c7">&#9670;&#160;</a></span>NumberOfBlades()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t kynema_fmb::util::TurbineData::NumberOfBlades </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the number of blades as size_t. </p>
+
+</div>
+</div>
+<a id="a1a16bffb82d0221d8c82dd74464cddfc" name="a1a16bffb82d0221d8c82dd74464cddfc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a16bffb82d0221d8c82dd74464cddfc">&#9670;&#160;</a></span>SetBladeNodeMotion()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema_fmb::util::TurbineData::SetBladeNodeMotion </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>blade_number</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>node_number</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::array&lt; double, 7 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>position</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::array&lt; double, 6 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>velocity</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::array&lt; double, 6 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>acceleration</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets the blade node values based on blade number and node number. </p>
+<p>This method updates the blade node values in the mesh based on the provided blade number and node number. It simplifies the process of updating blade node values by abstracting away the indexing logic.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">blade_number</td><td>The number of the blade to update. </td></tr>
+    <tr><td class="paramname">node_number</td><td>The number of the node to update within the specified blade. </td></tr>
+    <tr><td class="paramname">position</td><td>The new position of the node [x, y, z, qw, qx, qy, qz] </td></tr>
+    <tr><td class="paramname">velocity</td><td>The new velocity of the node [u, v, w, p, q, r] </td></tr>
+    <tr><td class="paramname">acceleration</td><td>The new acceleration of the node [u_dot, v_dot, w_dot, p_dot, q_dot, r_dot] </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aff5cfc88cf3439a95cf41d893d2e70c6" name="aff5cfc88cf3439a95cf41d893d2e70c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff5cfc88cf3439a95cf41d893d2e70c6">&#9670;&#160;</a></span>SetBladeRootMotion()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema_fmb::util::TurbineData::SetBladeRootMotion </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>blade_number</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::array&lt; double, 7 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>position</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::array&lt; double, 6 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>velocity</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::array&lt; double, 6 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>acceleration</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets the blade root values based on blade number. </p>
+<p>This method updates the blade root values in the mesh based on the provided blade number and node number. It handles orientation conversion so Z is along blade axis.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">blade_number</td><td>The number of the blade to update. </td></tr>
+    <tr><td class="paramname">position</td><td>The new position of the node [x, y, z, qw, qx, qy, qz] </td></tr>
+    <tr><td class="paramname">velocity</td><td>The new velocity of the node [u, v, w, p, q, r] </td></tr>
+    <tr><td class="paramname">acceleration</td><td>The new acceleration of the node [u_dot, v_dot, w_dot, p_dot, q_dot, r_dot] </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae784b5cf728bafaf6814ec4e1e72cce5" name="ae784b5cf728bafaf6814ec4e1e72cce5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae784b5cf728bafaf6814ec4e1e72cce5">&#9670;&#160;</a></span>SetHubMotion()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema_fmb::util::TurbineData::SetHubMotion </td>
+          <td>(</td>
+          <td class="paramtype">const std::array&lt; double, 7 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>position</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::array&lt; double, 6 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>velocity</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::array&lt; double, 6 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>acceleration</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets the hub motion values. </p>
+<p>This method updates the hub motion values.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">position</td><td>The new position of the node [x, y, z, qw, qx, qy, qz] </td></tr>
+    <tr><td class="paramname">velocity</td><td>The new velocity of the node [u, v, w, p, q, r] </td></tr>
+    <tr><td class="paramname">acceleration</td><td>The new acceleration of the node [u_dot, v_dot, w_dot, p_dot, q_dot, r_dot] </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a6d2e5174fe6aa734307471d7f358b394" name="a6d2e5174fe6aa734307471d7f358b394"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d2e5174fe6aa734307471d7f358b394">&#9670;&#160;</a></span>SetNacelleMotion()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema_fmb::util::TurbineData::SetNacelleMotion </td>
+          <td>(</td>
+          <td class="paramtype">const std::array&lt; double, 7 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>position</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::array&lt; double, 6 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>velocity</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::array&lt; double, 6 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>acceleration</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets the nacelle motion values. </p>
+<p>This method sets the nacelle motion values.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">position</td><td>The new position of the node [x, y, z, qw, qx, qy, qz] </td></tr>
+    <tr><td class="paramname">velocity</td><td>The new velocity of the node [u, v, w, p, q, r] </td></tr>
+    <tr><td class="paramname">acceleration</td><td>The new acceleration of the node [u_dot, v_dot, w_dot, p_dot, q_dot, r_dot] </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a329a2e7aa44d623001c1f1f2acab0756" name="a329a2e7aa44d623001c1f1f2acab0756"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a329a2e7aa44d623001c1f1f2acab0756">&#9670;&#160;</a></span>Validate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema_fmb::util::TurbineData::Validate </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="ac4b0e846b2576040feac5af4f839dd4a" name="ac4b0e846b2576040feac5af4f839dd4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac4b0e846b2576040feac5af4f839dd4a">&#9670;&#160;</a></span>blade_nodes</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1util_1_1MeshData.html">MeshData</a> kynema_fmb::util::TurbineData::blade_nodes</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a25c1c26046215765fc56c211ee54c31a" name="a25c1c26046215765fc56c211ee54c31a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25c1c26046215765fc56c211ee54c31a">&#9670;&#160;</a></span>blade_nodes_to_blade_num_mapping</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;int32_t&gt; kynema_fmb::util::TurbineData::blade_nodes_to_blade_num_mapping</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Mapping of blade nodes to blade numbers (1D array) </p>
+<p>This vector stores the blade number (1-based index) for each blade node. It allows quick lookup of which blade a particular node belongs to. The size of this vector is equal to the total number of blade nodes across all blades. </p>
+
+</div>
+</div>
+<a id="a7a0358dbeca6c031481c0f59bc06e4eb" name="a7a0358dbeca6c031481c0f59bc06e4eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a0358dbeca6c031481c0f59bc06e4eb">&#9670;&#160;</a></span>blade_roots</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1util_1_1MeshData.html">MeshData</a> kynema_fmb::util::TurbineData::blade_roots</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2486a93905dbb7fe1bc108ce79a75c1b" name="a2486a93905dbb7fe1bc108ce79a75c1b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2486a93905dbb7fe1bc108ce79a75c1b">&#9670;&#160;</a></span>hh_vel</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::array&lt;float, 3&gt; kynema_fmb::util::TurbineData::hh_vel</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a93892dfdfe3afbe50b5a71fccde6f572" name="a93892dfdfe3afbe50b5a71fccde6f572"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93892dfdfe3afbe50b5a71fccde6f572">&#9670;&#160;</a></span>hub</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1util_1_1MeshData.html">MeshData</a> kynema_fmb::util::TurbineData::hub</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4f95c1eb1b3f8e9a787eeee604ca0684" name="a4f95c1eb1b3f8e9a787eeee604ca0684"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f95c1eb1b3f8e9a787eeee604ca0684">&#9670;&#160;</a></span>n_blades</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t kynema_fmb::util::TurbineData::n_blades</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6adb5fe0582dde89e68df3ea09ccb35a" name="a6adb5fe0582dde89e68df3ea09ccb35a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6adb5fe0582dde89e68df3ea09ccb35a">&#9670;&#160;</a></span>nacelle</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1util_1_1MeshData.html">MeshData</a> kynema_fmb::util::TurbineData::nacelle</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abde7871aae417218a2895f0a7fc3d19e" name="abde7871aae417218a2895f0a7fc3d19e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abde7871aae417218a2895f0a7fc3d19e">&#9670;&#160;</a></span>node_indices_by_blade</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::vector&lt;size_t&gt; &gt; kynema_fmb::util::TurbineData::node_indices_by_blade</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Unique indices of nodes for each blade (2D array) </p>
+<p>This is a vector of vectors where each inner vector contains the unique indices of nodes belonging to a specific blade. The outer vector's size is equal to the number of blades, and each inner vector's size is equal to the number of nodes on that blade. This structure allows quick access to all nodes of a particular blade. </p>
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
+<li>/home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/utilities/aerodynamics/<a class="el" href="aerodyn__inflow_8hpp_source.html">aerodyn_inflow.hpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023 - Present, MIT License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

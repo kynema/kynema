@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kynema API: kynema_fmb::solver::ComputeConstraintsColInds&amp;lt; RowPtrType, IndicesType &amp;gt; Struct Template Reference &mdash; Kynema 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Kynema
+              <img src="../../_static/oturb_logo_v2.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/user.html">User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../theory/index.html">Theory Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/index.html">Developer Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/index.html">Benchmark Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../publications.html">Kynema-FMB Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../acknowledgement.html">Acknowledgements</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Kynema</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Kynema API: kynema_fmb::solver::ComputeConstraintsColInds&amp;lt; RowPtrType, IndicesType &amp;gt; Struct Template Reference</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/doxygen/html/structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="computeconstraintscolinds-lt-rowptrtype-indicestype-gt-struct-template-reference">
+<h1>ComputeConstraintsColInds&amp;lt; RowPtrType, IndicesType &amp;gt; Struct Template Reference<a class="headerlink" href="#computeconstraintscolinds-lt-rowptrtype-indicestype-gt-struct-template-reference" title="Permalink to this heading"></a></h1>
+<div class="doxygen-content docutils container">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Kynema API: kynema_fmb::solver::ComputeConstraintsColInds&lt; RowPtrType, IndicesType &gt; Struct Template Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Kynema API
+   </div>
+   <div id="projectbrief">A flexible multibody structural dynamics code for wind turbines</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacekynema__fmb.html">kynema_fmb</a></li><li class="navelem"><a class="el" href="namespacekynema__fmb_1_1solver.html">solver</a></li><li class="navelem"><a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html">ComputeConstraintsColInds</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">kynema_fmb::solver::ComputeConstraintsColInds&lt; RowPtrType, IndicesType &gt; Struct Template Reference</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>A Kernel for computing the system constraints' contribution to the column indicies for the CRS matrix to be solved at each nonlinear iteration.  
+ <a href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="compute__constraints__col__inds_8hpp_source.html">compute_constraints_col_inds.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:aaee7d5640ce12055662af5d6f0cbdee4" id="r_aaee7d5640ce12055662af5d6f0cbdee4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">using</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aaee7d5640ce12055662af5d6f0cbdee4">RowPtrValueType</a> = <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">typename</a> RowPtrType::value_type</td></tr>
+<tr class="separator:aaee7d5640ce12055662af5d6f0cbdee4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26ccecba01f30ffb5d90d0a1e0ab5fcd" id="r_a26ccecba01f30ffb5d90d0a1e0ab5fcd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">using</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#a26ccecba01f30ffb5d90d0a1e0ab5fcd">IndicesValueType</a> = <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">typename</a> IndicesType::value_type</td></tr>
+<tr class="separator:a26ccecba01f30ffb5d90d0a1e0ab5fcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1d9534a7a50fa1cc36464cea651bfb7" id="r_aa1d9534a7a50fa1cc36464cea651bfb7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">using</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa1d9534a7a50fa1cc36464cea651bfb7">DeviceType</a> = <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">typename</a> RowPtrType::device_type</td></tr>
+<tr class="separator:aa1d9534a7a50fa1cc36464cea651bfb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa580683a88afdb8c364ddea7ef1aac28" id="r_aa580683a88afdb8c364ddea7ef1aac28"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">typename</a> ValueType &gt; </td></tr>
+<tr class="memitem:aa580683a88afdb8c364ddea7ef1aac28"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">using</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">View</a> = Kokkos::View&lt; ValueType, <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa1d9534a7a50fa1cc36464cea651bfb7">DeviceType</a> &gt;</td></tr>
+<tr class="separator:aa580683a88afdb8c364ddea7ef1aac28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac30022cc4a0bbdcb9919ec6327e2a036" id="r_ac30022cc4a0bbdcb9919ec6327e2a036"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">typename</a> ValueType &gt; </td></tr>
+<tr class="memitem:ac30022cc4a0bbdcb9919ec6327e2a036"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">using</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#ac30022cc4a0bbdcb9919ec6327e2a036">ConstView</a> = <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">typename</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">View</a>&lt; ValueType &gt;<a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">::const_type</a></td></tr>
+<tr class="separator:ac30022cc4a0bbdcb9919ec6327e2a036"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a12ceb7bdef115e5f8a52a0353a5e1567" id="r_a12ceb7bdef115e5f8a52a0353a5e1567"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">KOKKOS_FUNCTION</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aaee7d5640ce12055662af5d6f0cbdee4">RowPtrValueType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#a12ceb7bdef115e5f8a52a0353a5e1567">CalculateTargetInds</a> (<a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">size_t</a> constraint, <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aaee7d5640ce12055662af5d6f0cbdee4">RowPtrValueType</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">dof_index</a>) <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">const</a></td></tr>
+<tr class="separator:a12ceb7bdef115e5f8a52a0353a5e1567"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6e3919b15697235b081651dffdb13d1" id="r_af6e3919b15697235b081651dffdb13d1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">KOKKOS_FUNCTION</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aaee7d5640ce12055662af5d6f0cbdee4">RowPtrValueType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#af6e3919b15697235b081651dffdb13d1">CalculateBaseInds</a> (<a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">size_t</a> constraint, <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aaee7d5640ce12055662af5d6f0cbdee4">RowPtrValueType</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">dof_index</a>) <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">const</a></td></tr>
+<tr class="separator:af6e3919b15697235b081651dffdb13d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d53ea1993298e9107673ab3fa10b54d" id="r_a6d53ea1993298e9107673ab3fa10b54d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">KOKKOS_FUNCTION</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#a6d53ea1993298e9107673ab3fa10b54d">operator()</a> (<a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">size_t</a> constraint) <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">const</a></td></tr>
+<tr class="separator:a6d53ea1993298e9107673ab3fa10b54d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:a75aef2ea794dcbe6724415c2aaa4e035" id="r_a75aef2ea794dcbe6724415c2aaa4e035"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">size_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#a75aef2ea794dcbe6724415c2aaa4e035">num_system_dofs</a> {}</td></tr>
+<tr class="separator:a75aef2ea794dcbe6724415c2aaa4e035"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a747345e692d1fcfed1314f8c772761c9" id="r_a747345e692d1fcfed1314f8c772761c9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#ac30022cc4a0bbdcb9919ec6327e2a036">ConstView</a>&lt; <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">size_t</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#a747345e692d1fcfed1314f8c772761c9">base_active_dofs</a></td></tr>
+<tr class="separator:a747345e692d1fcfed1314f8c772761c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeaf1adbd732fc4190f0f1c01b2e2577e" id="r_aeaf1adbd732fc4190f0f1c01b2e2577e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#ac30022cc4a0bbdcb9919ec6327e2a036">ConstView</a>&lt; <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">size_t</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aeaf1adbd732fc4190f0f1c01b2e2577e">target_active_dofs</a></td></tr>
+<tr class="separator:aeaf1adbd732fc4190f0f1c01b2e2577e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31e792f9218554e3bd4ae47e39785652" id="r_a31e792f9218554e3bd4ae47e39785652"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#ac30022cc4a0bbdcb9919ec6327e2a036">ConstView</a>&lt; <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">size_t</a> *[6]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#a31e792f9218554e3bd4ae47e39785652">base_node_freedom_table</a></td></tr>
+<tr class="separator:a31e792f9218554e3bd4ae47e39785652"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6c41595c03750181413b7351b9d86ca" id="r_ac6c41595c03750181413b7351b9d86ca"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#ac30022cc4a0bbdcb9919ec6327e2a036">ConstView</a>&lt; <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">size_t</a> *[6]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#ac6c41595c03750181413b7351b9d86ca">target_node_freedom_table</a></td></tr>
+<tr class="separator:ac6c41595c03750181413b7351b9d86ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34a0cee756ab37b61ad5a3ac991d5f61" id="r_a34a0cee756ab37b61ad5a3ac991d5f61"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#ac30022cc4a0bbdcb9919ec6327e2a036">ConstView</a>&lt; Kokkos::pair&lt; <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">size_t</a>, <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">size_t</a> &gt; * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#a34a0cee756ab37b61ad5a3ac991d5f61">row_range</a></td></tr>
+<tr class="separator:a34a0cee756ab37b61ad5a3ac991d5f61"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6e2060469746a3d6cc88d0db22ac122" id="r_ab6e2060469746a3d6cc88d0db22ac122"><td class="memItemLeft" align="right" valign="top">RowPtrType::const_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#ab6e2060469746a3d6cc88d0db22ac122">row_ptrs</a></td></tr>
+<tr class="separator:ab6e2060469746a3d6cc88d0db22ac122"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9d54ba621cf69aebfd30367b8c3d17a" id="r_ad9d54ba621cf69aebfd30367b8c3d17a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">IndicesType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#ad9d54ba621cf69aebfd30367b8c3d17a">col_inds</a></td></tr>
+<tr class="separator:ad9d54ba621cf69aebfd30367b8c3d17a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">typename</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">RowPtrType</a>, <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">typename</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">IndicesType</a>&gt;<br />
+struct kynema_fmb::solver::ComputeConstraintsColInds&lt; RowPtrType, IndicesType &gt;</div><p>A Kernel for computing the system constraints' contribution to the column indicies for the CRS matrix to be solved at each nonlinear iteration. </p>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="ac30022cc4a0bbdcb9919ec6327e2a036" name="ac30022cc4a0bbdcb9919ec6327e2a036"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac30022cc4a0bbdcb9919ec6327e2a036">&#9670;&#160;</a></span>ConstView</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">typename</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">RowPtrType</a> , <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">typename</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">IndicesType</a> &gt; </div>
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">typename</a> ValueType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">using</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html">kynema_fmb::solver::ComputeConstraintsColInds</a>&lt; <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">RowPtrType</a>, <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">IndicesType</a> &gt;::ConstView =  <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">typename</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">View</a>&lt;ValueType&gt;<a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">::const_type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa1d9534a7a50fa1cc36464cea651bfb7" name="aa1d9534a7a50fa1cc36464cea651bfb7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1d9534a7a50fa1cc36464cea651bfb7">&#9670;&#160;</a></span>DeviceType</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">typename</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">RowPtrType</a> , <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">typename</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">IndicesType</a> &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">using</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html">kynema_fmb::solver::ComputeConstraintsColInds</a>&lt; <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">RowPtrType</a>, <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">IndicesType</a> &gt;::DeviceType =  <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">typename</a> RowPtrType::device_type</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a26ccecba01f30ffb5d90d0a1e0ab5fcd" name="a26ccecba01f30ffb5d90d0a1e0ab5fcd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26ccecba01f30ffb5d90d0a1e0ab5fcd">&#9670;&#160;</a></span>IndicesValueType</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">typename</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">RowPtrType</a> , <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">typename</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">IndicesType</a> &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">using</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html">kynema_fmb::solver::ComputeConstraintsColInds</a>&lt; <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">RowPtrType</a>, <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">IndicesType</a> &gt;::IndicesValueType =  <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">typename</a> IndicesType::value_type</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aaee7d5640ce12055662af5d6f0cbdee4" name="aaee7d5640ce12055662af5d6f0cbdee4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaee7d5640ce12055662af5d6f0cbdee4">&#9670;&#160;</a></span>RowPtrValueType</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">typename</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">RowPtrType</a> , <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">typename</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">IndicesType</a> &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">using</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html">kynema_fmb::solver::ComputeConstraintsColInds</a>&lt; <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">RowPtrType</a>, <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">IndicesType</a> &gt;::RowPtrValueType =  <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">typename</a> RowPtrType::value_type</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa580683a88afdb8c364ddea7ef1aac28" name="aa580683a88afdb8c364ddea7ef1aac28"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa580683a88afdb8c364ddea7ef1aac28">&#9670;&#160;</a></span>View</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">typename</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">RowPtrType</a> , <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">typename</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">IndicesType</a> &gt; </div>
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">typename</a> ValueType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">using</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html">kynema_fmb::solver::ComputeConstraintsColInds</a>&lt; <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">RowPtrType</a>, <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">IndicesType</a> &gt;::View =  Kokkos::View&lt;ValueType, <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa1d9534a7a50fa1cc36464cea651bfb7">DeviceType</a>&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="af6e3919b15697235b081651dffdb13d1" name="af6e3919b15697235b081651dffdb13d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af6e3919b15697235b081651dffdb13d1">&#9670;&#160;</a></span>CalculateBaseInds()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">typename</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">RowPtrType</a> , <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">typename</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">IndicesType</a> &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">KOKKOS_FUNCTION</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aaee7d5640ce12055662af5d6f0cbdee4">RowPtrValueType</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html">kynema_fmb::solver::ComputeConstraintsColInds</a>&lt; <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">RowPtrType</a>, <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">IndicesType</a> &gt;::CalculateBaseInds </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">size_t</a>&#160;</td>
+          <td class="paramname"><em>constraint</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aaee7d5640ce12055662af5d6f0cbdee4">RowPtrValueType</a>&#160;</td>
+          <td class="paramname"><em>dof_index</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a12ceb7bdef115e5f8a52a0353a5e1567" name="a12ceb7bdef115e5f8a52a0353a5e1567"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12ceb7bdef115e5f8a52a0353a5e1567">&#9670;&#160;</a></span>CalculateTargetInds()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">typename</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">RowPtrType</a> , <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">typename</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">IndicesType</a> &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">KOKKOS_FUNCTION</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aaee7d5640ce12055662af5d6f0cbdee4">RowPtrValueType</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html">kynema_fmb::solver::ComputeConstraintsColInds</a>&lt; <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">RowPtrType</a>, <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">IndicesType</a> &gt;::CalculateTargetInds </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">size_t</a>&#160;</td>
+          <td class="paramname"><em>constraint</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aaee7d5640ce12055662af5d6f0cbdee4">RowPtrValueType</a>&#160;</td>
+          <td class="paramname"><em>dof_index</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6d53ea1993298e9107673ab3fa10b54d" name="a6d53ea1993298e9107673ab3fa10b54d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d53ea1993298e9107673ab3fa10b54d">&#9670;&#160;</a></span>operator()()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">typename</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">RowPtrType</a> , <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">typename</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">IndicesType</a> &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">KOKKOS_FUNCTION</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">void</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html">kynema_fmb::solver::ComputeConstraintsColInds</a>&lt; <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">RowPtrType</a>, <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">IndicesType</a> &gt;<a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">::operator</a>() </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">size_t</a>&#160;</td>
+          <td class="paramname"><em>constraint</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a747345e692d1fcfed1314f8c772761c9" name="a747345e692d1fcfed1314f8c772761c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a747345e692d1fcfed1314f8c772761c9">&#9670;&#160;</a></span>base_active_dofs</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">typename</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">RowPtrType</a> , <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">typename</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">IndicesType</a> &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#ac30022cc4a0bbdcb9919ec6327e2a036">ConstView</a>&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">size_t</a>*&gt; <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html">kynema_fmb::solver::ComputeConstraintsColInds</a>&lt; <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">RowPtrType</a>, <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">IndicesType</a> &gt;::base_active_dofs</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a31e792f9218554e3bd4ae47e39785652" name="a31e792f9218554e3bd4ae47e39785652"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31e792f9218554e3bd4ae47e39785652">&#9670;&#160;</a></span>base_node_freedom_table</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">typename</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">RowPtrType</a> , <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">typename</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">IndicesType</a> &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#ac30022cc4a0bbdcb9919ec6327e2a036">ConstView</a>&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">size_t</a>* [6]&gt; <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html">kynema_fmb::solver::ComputeConstraintsColInds</a>&lt; <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">RowPtrType</a>, <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">IndicesType</a> &gt;::base_node_freedom_table</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad9d54ba621cf69aebfd30367b8c3d17a" name="ad9d54ba621cf69aebfd30367b8c3d17a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9d54ba621cf69aebfd30367b8c3d17a">&#9670;&#160;</a></span>col_inds</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">typename</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">RowPtrType</a> , <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">typename</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">IndicesType</a> &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">IndicesType</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html">kynema_fmb::solver::ComputeConstraintsColInds</a>&lt; <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">RowPtrType</a>, <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">IndicesType</a> &gt;::col_inds</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a75aef2ea794dcbe6724415c2aaa4e035" name="a75aef2ea794dcbe6724415c2aaa4e035"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75aef2ea794dcbe6724415c2aaa4e035">&#9670;&#160;</a></span>num_system_dofs</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">typename</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">RowPtrType</a> , <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">typename</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">IndicesType</a> &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">size_t</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html">kynema_fmb::solver::ComputeConstraintsColInds</a>&lt; <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">RowPtrType</a>, <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">IndicesType</a> &gt;::num_system_dofs {}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab6e2060469746a3d6cc88d0db22ac122" name="ab6e2060469746a3d6cc88d0db22ac122"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6e2060469746a3d6cc88d0db22ac122">&#9670;&#160;</a></span>row_ptrs</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">typename</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">RowPtrType</a> , <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">typename</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">IndicesType</a> &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">RowPtrType::const_type <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html">kynema_fmb::solver::ComputeConstraintsColInds</a>&lt; <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">RowPtrType</a>, <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">IndicesType</a> &gt;::row_ptrs</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a34a0cee756ab37b61ad5a3ac991d5f61" name="a34a0cee756ab37b61ad5a3ac991d5f61"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34a0cee756ab37b61ad5a3ac991d5f61">&#9670;&#160;</a></span>row_range</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">typename</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">RowPtrType</a> , <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">typename</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">IndicesType</a> &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#ac30022cc4a0bbdcb9919ec6327e2a036">ConstView</a>&lt;Kokkos::pair&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">size_t</a>, <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">size_t</a>&gt;*&gt; <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html">kynema_fmb::solver::ComputeConstraintsColInds</a>&lt; <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">RowPtrType</a>, <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">IndicesType</a> &gt;::row_range</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aeaf1adbd732fc4190f0f1c01b2e2577e" name="aeaf1adbd732fc4190f0f1c01b2e2577e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeaf1adbd732fc4190f0f1c01b2e2577e">&#9670;&#160;</a></span>target_active_dofs</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">typename</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">RowPtrType</a> , <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">typename</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">IndicesType</a> &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#ac30022cc4a0bbdcb9919ec6327e2a036">ConstView</a>&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">size_t</a>*&gt; <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html">kynema_fmb::solver::ComputeConstraintsColInds</a>&lt; <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">RowPtrType</a>, <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">IndicesType</a> &gt;::target_active_dofs</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac6c41595c03750181413b7351b9d86ca" name="ac6c41595c03750181413b7351b9d86ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6c41595c03750181413b7351b9d86ca">&#9670;&#160;</a></span>target_node_freedom_table</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">typename</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">RowPtrType</a> , <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">typename</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">IndicesType</a> &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#ac30022cc4a0bbdcb9919ec6327e2a036">ConstView</a>&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">size_t</a>* [6]&gt; <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html">kynema_fmb::solver::ComputeConstraintsColInds</a>&lt; <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">RowPtrType</a>, <a class="el" href="structkynema__fmb_1_1solver_1_1ComputeConstraintsColInds.html#aa580683a88afdb8c364ddea7ef1aac28">IndicesType</a> &gt;::target_node_freedom_table</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
+<li>/home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/solver/<a class="el" href="compute__constraints__col__inds_8hpp_source.html">compute_constraints_col_inds.hpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023 - Present, MIT License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

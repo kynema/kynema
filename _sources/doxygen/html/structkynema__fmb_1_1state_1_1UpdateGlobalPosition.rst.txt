@@ -1,0 +1,14 @@
+.. meta::bcdb0abd18e7b721bb1a682b89821b3dba01743918474f8655069de8d1b40d9fd73d3d48bfb78936e991c2a63ffe0a92b8d5a1d5537187720476d179cc517724
+
+:orphan:
+
+.. title:: Kynema API: kynema_fmb::state::UpdateGlobalPosition&lt; DeviceType &gt; Struct Template Reference
+
+UpdateGlobalPosition&lt; DeviceType &gt; Struct Template Reference
+==================================================================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: structkynema__fmb_1_1state_1_1UpdateGlobalPosition.html

@@ -1,0 +1,14 @@
+.. meta::3c6a5e3a2fd2bae72a545a2f0c1adb24e2d5122cd13f6713f1384d6d45a9abf22c12faf4e639035729e3cb9aa740f5b9713ab090d5a0d97056ae41d329190a7f
+
+:orphan:
+
+.. title:: Kynema API: kynema_fmb::util::TurbineConfig::BladeInitialState Struct Reference
+
+BladeInitialState Struct Reference
+==================================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: structkynema__fmb_1_1util_1_1TurbineConfig_1_1BladeInitialState.html

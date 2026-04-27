@@ -1,0 +1,14 @@
+.. meta::0a5c7068a26cb78c2798a7c64d5c94eba71f36cc324c8f2f8db1338541eba357e4bcca9a7722d9ba3a36abf207cfee15304bd8b2680dcbee6a012d8b036df6e8
+
+:orphan:
+
+.. title:: Kynema API: kynema_fmb::beams::IntegrateInertiaMatrixElement&lt; DeviceType &gt; Struct Template Reference
+
+IntegrateInertiaMatrixElement&lt; DeviceType &gt; Struct Template Reference
+===========================================================================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: structkynema__fmb_1_1beams_1_1IntegrateInertiaMatrixElement.html

@@ -1,0 +1,14 @@
+.. meta::55104fffacb34dbcf77ac2f82d3edf80a518c8d5354c0967927dd73cdcb8fb0094cfb112c0e79bc21fdfbee37716377947280fec4e8d2ccb3550a73722f43c42
+
+:orphan:
+
+.. title:: Kynema API: kynema_fmb::dss::NumericFunction&lt; DSHandleType, CrsMatrixType &gt; Struct Template Reference
+
+NumericFunction&lt; DSHandleType, CrsMatrixType &gt; Struct Template Reference
+==============================================================================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: structkynema__fmb_1_1dss_1_1NumericFunction.html

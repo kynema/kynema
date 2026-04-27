@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kynema API: kynema_fmb::interfaces::components::BeamBuilder Class Reference &mdash; Kynema 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Kynema
+              <img src="../../_static/oturb_logo_v2.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/user.html">User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../theory/index.html">Theory Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/index.html">Developer Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/index.html">Benchmark Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../publications.html">Kynema-FMB Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../acknowledgement.html">Acknowledgements</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Kynema</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Kynema API: kynema_fmb::interfaces::components::BeamBuilder Class Reference</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/doxygen/html/classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="beambuilder-class-reference">
+<h1>BeamBuilder Class Reference<a class="headerlink" href="#beambuilder-class-reference" title="Permalink to this heading"></a></h1>
+<div class="doxygen-content docutils container">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Kynema API: kynema_fmb::interfaces::components::BeamBuilder Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Kynema API
+   </div>
+   <div id="projectbrief">A flexible multibody structural dynamics code for wind turbines</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacekynema__fmb.html">kynema_fmb</a></li><li class="navelem"><a class="el" href="namespacekynema__fmb_1_1interfaces.html">interfaces</a></li><li class="navelem"><a class="el" href="namespacekynema__fmb_1_1interfaces_1_1components.html">components</a></li><li class="navelem"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.html">BeamBuilder</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">kynema_fmb::interfaces::components::BeamBuilder Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Builder class for creating Blade objects.  
+ <a href="classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="beam__builder_8hpp_source.html">beam_builder.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a4154d3956f95853f67905235a0d5b949" id="r_a4154d3956f95853f67905235a0d5b949"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.html">BeamBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.html#a4154d3956f95853f67905235a0d5b949">SetElementOrder</a> (size_t element_order)</td></tr>
+<tr class="memdesc:a4154d3956f95853f67905235a0d5b949"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the prder of the beam elements.  <br /></td></tr>
+<tr class="separator:a4154d3956f95853f67905235a0d5b949"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac62fd8223d19e57d5f8fe44d50c584ad" id="r_ac62fd8223d19e57d5f8fe44d50c584ad"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.html">BeamBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.html#ac62fd8223d19e57d5f8fe44d50c584ad">SetQuadratureRule</a> (<a class="el" href="structkynema__fmb_1_1interfaces_1_1components_1_1BeamInput.html#ac9dd99b5449b91d442e7aef42375a062">BeamInput::QuadratureRule</a> rule)</td></tr>
+<tr class="memdesc:ac62fd8223d19e57d5f8fe44d50c584ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the Quadrature rule to use for this beam.  <br /></td></tr>
+<tr class="separator:ac62fd8223d19e57d5f8fe44d50c584ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac750d015d2e4e5da32f5c13da84cb06d" id="r_ac750d015d2e4e5da32f5c13da84cb06d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.html">BeamBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.html#ac750d015d2e4e5da32f5c13da84cb06d">SetQuadratureStyle</a> (<a class="el" href="structkynema__fmb_1_1interfaces_1_1components_1_1BeamInput.html#ae1acddc15026ecc9ec1f344a1c28f1b8">BeamInput::QuadratureStyle</a> style)</td></tr>
+<tr class="memdesc:ac750d015d2e4e5da32f5c13da84cb06d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the Quadrature style to use for this beam.  <br /></td></tr>
+<tr class="separator:ac750d015d2e4e5da32f5c13da84cb06d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab65ca1169997001334625f2b8c2c3e8a" id="r_ab65ca1169997001334625f2b8c2c3e8a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.html">BeamBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.html#ab65ca1169997001334625f2b8c2c3e8a">SetSectionRefinement</a> (size_t section_refinement)</td></tr>
+<tr class="memdesc:ab65ca1169997001334625f2b8c2c3e8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the number of section refinements to perform.  <br /></td></tr>
+<tr class="separator:ab65ca1169997001334625f2b8c2c3e8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3308431e8b6586c3930680d9df37e0c7" id="r_a3308431e8b6586c3930680d9df37e0c7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.html">BeamBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.html#a3308431e8b6586c3930680d9df37e0c7">ClearReferenceAxisPoints</a> ()</td></tr>
+<tr class="memdesc:a3308431e8b6586c3930680d9df37e0c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes all currently set reference axis points.  <br /></td></tr>
+<tr class="separator:a3308431e8b6586c3930680d9df37e0c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9bb0391f60d6b8c3f8dea6e1ca77b15" id="r_ab9bb0391f60d6b8c3f8dea6e1ca77b15"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.html">BeamBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.html#ab9bb0391f60d6b8c3f8dea6e1ca77b15">SetDampingProperties</a> (const std::array&lt; double, 6 &gt; &amp;mu)</td></tr>
+<tr class="memdesc:ab9bb0391f60d6b8c3f8dea6e1ca77b15"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the stiffness-proportional damping coefficients.  <br /></td></tr>
+<tr class="separator:ab9bb0391f60d6b8c3f8dea6e1ca77b15"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d29c9b32b15b8c772e2dba4d1db8fe2" id="r_a3d29c9b32b15b8c772e2dba4d1db8fe2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.html">BeamBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.html#a3d29c9b32b15b8c772e2dba4d1db8fe2">AddRefAxisPoint</a> (double grid_location, const std::array&lt; double, 3 &gt; &amp;coordinates, <a class="el" href="namespacekynema__fmb_1_1interfaces_1_1components.html#a97d48dddb9abe041dea717433562ee81">ReferenceAxisOrientation</a> ref_axis)</td></tr>
+<tr class="memdesc:a3d29c9b32b15b8c772e2dba4d1db8fe2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a reference axis point with specified orientation.  <br /></td></tr>
+<tr class="separator:a3d29c9b32b15b8c772e2dba4d1db8fe2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a322c40aee285acb307e98166447ac4e1" id="r_a322c40aee285acb307e98166447ac4e1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.html">BeamBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.html#a322c40aee285acb307e98166447ac4e1">AddRefAxisTwist</a> (double grid_location, double twist)</td></tr>
+<tr class="memdesc:a322c40aee285acb307e98166447ac4e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a twist about the reference axis at a certain point.  <br /></td></tr>
+<tr class="separator:a322c40aee285acb307e98166447ac4e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8733bcb4f40301fbcb2f38f7bf7f9ba" id="r_aa8733bcb4f40301fbcb2f38f7bf7f9ba"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.html">BeamBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.html#aa8733bcb4f40301fbcb2f38f7bf7f9ba">PrescribedRootMotion</a> (bool enable)</td></tr>
+<tr class="memdesc:aa8733bcb4f40301fbcb2f38f7bf7f9ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">sets if this beam will have prescribed root motion or not  <br /></td></tr>
+<tr class="separator:aa8733bcb4f40301fbcb2f38f7bf7f9ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac67528ea633bfebc877e9b24b5846b1e" id="r_ac67528ea633bfebc877e9b24b5846b1e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.html">BeamBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.html#ac67528ea633bfebc877e9b24b5846b1e">SetRootPosition</a> (const std::array&lt; double, 7 &gt; &amp;p)</td></tr>
+<tr class="memdesc:ac67528ea633bfebc877e9b24b5846b1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the position of this beam's root node.  <br /></td></tr>
+<tr class="separator:ac67528ea633bfebc877e9b24b5846b1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d3a7ab4e39e995a68dd360147d1c31a" id="r_a1d3a7ab4e39e995a68dd360147d1c31a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.html">BeamBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.html#a1d3a7ab4e39e995a68dd360147d1c31a">SetRootVelocity</a> (const std::array&lt; double, 6 &gt; &amp;v)</td></tr>
+<tr class="memdesc:a1d3a7ab4e39e995a68dd360147d1c31a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the velocity of this beam's root node.  <br /></td></tr>
+<tr class="separator:a1d3a7ab4e39e995a68dd360147d1c31a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b073fd39c8af190a9bf995e5a69672a" id="r_a5b073fd39c8af190a9bf995e5a69672a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.html">BeamBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.html#a5b073fd39c8af190a9bf995e5a69672a">SetRootAcceleration</a> (const std::array&lt; double, 6 &gt; &amp;a)</td></tr>
+<tr class="memdesc:a5b073fd39c8af190a9bf995e5a69672a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the acceleration of this beam's root node.  <br /></td></tr>
+<tr class="separator:a5b073fd39c8af190a9bf995e5a69672a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b3825a12aa655cc3f1d47c69136f6f9" id="r_a5b3825a12aa655cc3f1d47c69136f6f9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.html">BeamBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.html#a5b3825a12aa655cc3f1d47c69136f6f9">ClearSections</a> ()</td></tr>
+<tr class="memdesc:a5b3825a12aa655cc3f1d47c69136f6f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes all sections that have been added to the <a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.html" title="Builder class for creating Blade objects.">BeamBuilder</a>.  <br /></td></tr>
+<tr class="separator:a5b3825a12aa655cc3f1d47c69136f6f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9a2bc981b925aef842cf93739a3704d" id="r_af9a2bc981b925aef842cf93739a3704d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.html">BeamBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.html#af9a2bc981b925aef842cf93739a3704d">AddSection</a> (double grid_location, const std::array&lt; std::array&lt; double, 6 &gt;, 6 &gt; &amp;mass_matrix, const std::array&lt; std::array&lt; double, 6 &gt;, 6 &gt; &amp;stiffness_matrix, <a class="el" href="namespacekynema__fmb_1_1interfaces_1_1components.html#a97d48dddb9abe041dea717433562ee81">ReferenceAxisOrientation</a> ref_axis)</td></tr>
+<tr class="memdesc:af9a2bc981b925aef842cf93739a3704d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds sectional location, mass matrix, and stiffness matrix. Can handle reference axis along X or Z.  <br /></td></tr>
+<tr class="separator:af9a2bc981b925aef842cf93739a3704d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a746518b7915bcafb42dc685a65123f09" id="r_a746518b7915bcafb42dc685a65123f09"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structkynema__fmb_1_1interfaces_1_1components_1_1BeamInput.html">BeamInput</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.html#a746518b7915bcafb42dc685a65123f09">Input</a> () const</td></tr>
+<tr class="memdesc:a746518b7915bcafb42dc685a65123f09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current blade input configuration.  <br /></td></tr>
+<tr class="separator:a746518b7915bcafb42dc685a65123f09"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52d7b27c5d065208d224e1415b2f679b" id="r_a52d7b27c5d065208d224e1415b2f679b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1Beam.html">Beam</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.html#a52d7b27c5d065208d224e1415b2f679b">Build</a> (<a class="el" href="classkynema__fmb_1_1Model.html">Model</a> &amp;model) const</td></tr>
+<tr class="memdesc:a52d7b27c5d065208d224e1415b2f679b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Build a Blade object from the current configuration.  <br /></td></tr>
+<tr class="separator:a52d7b27c5d065208d224e1415b2f679b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Builder class for creating Blade objects. </p>
+<p>Each of the methods for setting options returns a reference to this <a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.html" title="Builder class for creating Blade objects.">BeamBuilder</a> object to allow chaining calls together in a single statement. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a3d29c9b32b15b8c772e2dba4d1db8fe2" name="a3d29c9b32b15b8c772e2dba4d1db8fe2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d29c9b32b15b8c772e2dba4d1db8fe2">&#9670;&#160;</a></span>AddRefAxisPoint()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.html">BeamBuilder</a> &amp; kynema_fmb::interfaces::components::BeamBuilder::AddRefAxisPoint </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>grid_location</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::array&lt; double, 3 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>coordinates</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacekynema__fmb_1_1interfaces_1_1components.html#a97d48dddb9abe041dea717433562ee81">ReferenceAxisOrientation</a>&#160;</td>
+          <td class="paramname"><em>ref_axis</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Adds a reference axis point with specified orientation. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">grid_location</td><td>Location [0,1] along the blade </td></tr>
+    <tr><td class="paramname">coordinates</td><td>Coordinates (x,y,z) of the reference axis point </td></tr>
+    <tr><td class="paramname">ref_axis</td><td>Reference axis orientation ('X' or 'Z') </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Reference to this builder for method chaining </dd></dl>
+
+</div>
+</div>
+<a id="a322c40aee285acb307e98166447ac4e1" name="a322c40aee285acb307e98166447ac4e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a322c40aee285acb307e98166447ac4e1">&#9670;&#160;</a></span>AddRefAxisTwist()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.html">BeamBuilder</a> &amp; kynema_fmb::interfaces::components::BeamBuilder::AddRefAxisTwist </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>grid_location</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>twist</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Adds a twist about the reference axis at a certain point. </p>
+<p>This value will be linearly interpolated to the required locations along the actual beam element</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">grid_location</td><td>The location where the twist is specified </td></tr>
+    <tr><td class="paramname">twist</td><td>The twist about the reference axis in radians </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A reference to this <a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.html" title="Builder class for creating Blade objects.">BeamBuilder</a> </dd></dl>
+
+</div>
+</div>
+<a id="af9a2bc981b925aef842cf93739a3704d" name="af9a2bc981b925aef842cf93739a3704d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9a2bc981b925aef842cf93739a3704d">&#9670;&#160;</a></span>AddSection()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.html">BeamBuilder</a> &amp; kynema_fmb::interfaces::components::BeamBuilder::AddSection </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>grid_location</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::array&lt; std::array&lt; double, 6 &gt;, 6 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>mass_matrix</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::array&lt; std::array&lt; double, 6 &gt;, 6 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>stiffness_matrix</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacekynema__fmb_1_1interfaces_1_1components.html#a97d48dddb9abe041dea717433562ee81">ReferenceAxisOrientation</a>&#160;</td>
+          <td class="paramname"><em>ref_axis</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Adds sectional location, mass matrix, and stiffness matrix. Can handle reference axis along X or Z. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">grid_location</td><td>section location [0,1] along blade </td></tr>
+    <tr><td class="paramname">mass_matrix</td><td>sectional mass matrix </td></tr>
+    <tr><td class="paramname">stiffness_matrix</td><td>sectional stiffness matrix </td></tr>
+    <tr><td class="paramname">ref_axis</td><td>Reference axis ('X' or 'Z') </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Reference to this builder for method chaining </dd></dl>
+
+</div>
+</div>
+<a id="a52d7b27c5d065208d224e1415b2f679b" name="a52d7b27c5d065208d224e1415b2f679b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a52d7b27c5d065208d224e1415b2f679b">&#9670;&#160;</a></span>Build()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1Beam.html">Beam</a> kynema_fmb::interfaces::components::BeamBuilder::Build </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classkynema__fmb_1_1Model.html">Model</a> &amp;&#160;</td>
+          <td class="paramname"><em>model</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Build a Blade object from the current configuration. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">model</td><td>The model to associate with this blade </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A new Blade object </dd></dl>
+
+</div>
+</div>
+<a id="a3308431e8b6586c3930680d9df37e0c7" name="a3308431e8b6586c3930680d9df37e0c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3308431e8b6586c3930680d9df37e0c7">&#9670;&#160;</a></span>ClearReferenceAxisPoints()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.html">BeamBuilder</a> &amp; kynema_fmb::interfaces::components::BeamBuilder::ClearReferenceAxisPoints </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Deletes all currently set reference axis points. </p>
+<dl class="section return"><dt>Returns</dt><dd>A reference to this <a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.html" title="Builder class for creating Blade objects.">BeamBuilder</a> </dd></dl>
+
+</div>
+</div>
+<a id="a5b3825a12aa655cc3f1d47c69136f6f9" name="a5b3825a12aa655cc3f1d47c69136f6f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b3825a12aa655cc3f1d47c69136f6f9">&#9670;&#160;</a></span>ClearSections()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.html">BeamBuilder</a> &amp; kynema_fmb::interfaces::components::BeamBuilder::ClearSections </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Deletes all sections that have been added to the <a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.html" title="Builder class for creating Blade objects.">BeamBuilder</a>. </p>
+<dl class="section return"><dt>Returns</dt><dd>A reference to this <a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.html" title="Builder class for creating Blade objects.">BeamBuilder</a> </dd></dl>
+
+</div>
+</div>
+<a id="a746518b7915bcafb42dc685a65123f09" name="a746518b7915bcafb42dc685a65123f09"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a746518b7915bcafb42dc685a65123f09">&#9670;&#160;</a></span>Input()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structkynema__fmb_1_1interfaces_1_1components_1_1BeamInput.html">BeamInput</a> &amp; kynema_fmb::interfaces::components::BeamBuilder::Input </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the current blade input configuration. </p>
+<dl class="section return"><dt>Returns</dt><dd>Reference to the current blade input </dd></dl>
+
+</div>
+</div>
+<a id="aa8733bcb4f40301fbcb2f38f7bf7f9ba" name="aa8733bcb4f40301fbcb2f38f7bf7f9ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8733bcb4f40301fbcb2f38f7bf7f9ba">&#9670;&#160;</a></span>PrescribedRootMotion()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.html">BeamBuilder</a> &amp; kynema_fmb::interfaces::components::BeamBuilder::PrescribedRootMotion </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>enable</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>sets if this beam will have prescribed root motion or not </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">enable</td><td>If prescribed root motion is enabled </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A reference to this <a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.html" title="Builder class for creating Blade objects.">BeamBuilder</a> </dd></dl>
+
+</div>
+</div>
+<a id="ab9bb0391f60d6b8c3f8dea6e1ca77b15" name="ab9bb0391f60d6b8c3f8dea6e1ca77b15"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9bb0391f60d6b8c3f8dea6e1ca77b15">&#9670;&#160;</a></span>SetDampingProperties()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.html">BeamBuilder</a> &amp; kynema_fmb::interfaces::components::BeamBuilder::SetDampingProperties </td>
+          <td>(</td>
+          <td class="paramtype">const std::array&lt; double, 6 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>mu</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the stiffness-proportional damping coefficients. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mu</td><td>Stiffness-proportional damping coefficients </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A reference to this <a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.html" title="Builder class for creating Blade objects.">BeamBuilder</a> </dd></dl>
+
+</div>
+</div>
+<a id="a4154d3956f95853f67905235a0d5b949" name="a4154d3956f95853f67905235a0d5b949"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4154d3956f95853f67905235a0d5b949">&#9670;&#160;</a></span>SetElementOrder()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.html">BeamBuilder</a> &amp; kynema_fmb::interfaces::components::BeamBuilder::SetElementOrder </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>element_order</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the prder of the beam elements. </p>
+<dl class="section return"><dt>Returns</dt><dd>A reference to this <a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.html" title="Builder class for creating Blade objects.">BeamBuilder</a> </dd></dl>
+
+</div>
+</div>
+<a id="ac62fd8223d19e57d5f8fe44d50c584ad" name="ac62fd8223d19e57d5f8fe44d50c584ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac62fd8223d19e57d5f8fe44d50c584ad">&#9670;&#160;</a></span>SetQuadratureRule()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.html">BeamBuilder</a> &amp; kynema_fmb::interfaces::components::BeamBuilder::SetQuadratureRule </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structkynema__fmb_1_1interfaces_1_1components_1_1BeamInput.html#ac9dd99b5449b91d442e7aef42375a062">BeamInput::QuadratureRule</a>&#160;</td>
+          <td class="paramname"><em>rule</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the Quadrature rule to use for this beam. </p>
+<p>There are currently two supported Quadrature rules: Gauss Lobatto (default) and Gauss Legendre.</p>
+<dl class="section return"><dt>Returns</dt><dd>A reference to this <a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.html" title="Builder class for creating Blade objects.">BeamBuilder</a> </dd></dl>
+
+</div>
+</div>
+<a id="ac750d015d2e4e5da32f5c13da84cb06d" name="ac750d015d2e4e5da32f5c13da84cb06d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac750d015d2e4e5da32f5c13da84cb06d">&#9670;&#160;</a></span>SetQuadratureStyle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.html">BeamBuilder</a> &amp; kynema_fmb::interfaces::components::BeamBuilder::SetQuadratureStyle </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structkynema__fmb_1_1interfaces_1_1components_1_1BeamInput.html#ae1acddc15026ecc9ec1f344a1c28f1b8">BeamInput::QuadratureStyle</a>&#160;</td>
+          <td class="paramname"><em>style</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the Quadrature style to use for this beam. </p>
+<p>Segmented applies the quadrature rule between each of the specified sectional properties. WholeBeam has just one quadrature applied to the entire beam.</p>
+<p>Combining GLL quadrature with the Segmented style wil preserve the user's specified sectional properties at their exact locations. This is expected to give better performance for complex property distributions.</p>
+<p>WholeBeam will likely be the most efficient for simple property distributions.</p>
+<dl class="section return"><dt>Returns</dt><dd>A reference to this <a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.html" title="Builder class for creating Blade objects.">BeamBuilder</a> </dd></dl>
+
+</div>
+</div>
+<a id="a5b073fd39c8af190a9bf995e5a69672a" name="a5b073fd39c8af190a9bf995e5a69672a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b073fd39c8af190a9bf995e5a69672a">&#9670;&#160;</a></span>SetRootAcceleration()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.html">BeamBuilder</a> &amp; kynema_fmb::interfaces::components::BeamBuilder::SetRootAcceleration </td>
+          <td>(</td>
+          <td class="paramtype">const std::array&lt; double, 6 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>a</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the acceleration of this beam's root node. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">a</td><td>The root node acceleration/angular acceleration </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A reference to this <a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.html" title="Builder class for creating Blade objects.">BeamBuilder</a> </dd></dl>
+
+</div>
+</div>
+<a id="ac67528ea633bfebc877e9b24b5846b1e" name="ac67528ea633bfebc877e9b24b5846b1e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac67528ea633bfebc877e9b24b5846b1e">&#9670;&#160;</a></span>SetRootPosition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.html">BeamBuilder</a> &amp; kynema_fmb::interfaces::components::BeamBuilder::SetRootPosition </td>
+          <td>(</td>
+          <td class="paramtype">const std::array&lt; double, 7 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>p</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the position of this beam's root node. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p</td><td>The root node position/orientation as a quaternion </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A reference to this <a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.html" title="Builder class for creating Blade objects.">BeamBuilder</a> </dd></dl>
+
+</div>
+</div>
+<a id="a1d3a7ab4e39e995a68dd360147d1c31a" name="a1d3a7ab4e39e995a68dd360147d1c31a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d3a7ab4e39e995a68dd360147d1c31a">&#9670;&#160;</a></span>SetRootVelocity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.html">BeamBuilder</a> &amp; kynema_fmb::interfaces::components::BeamBuilder::SetRootVelocity </td>
+          <td>(</td>
+          <td class="paramtype">const std::array&lt; double, 6 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>v</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the velocity of this beam's root node. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v</td><td>The root node velocity/angular velocity </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A reference to this <a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.html" title="Builder class for creating Blade objects.">BeamBuilder</a> </dd></dl>
+
+</div>
+</div>
+<a id="ab65ca1169997001334625f2b8c2c3e8a" name="ab65ca1169997001334625f2b8c2c3e8a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab65ca1169997001334625f2b8c2c3e8a">&#9670;&#160;</a></span>SetSectionRefinement()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.html">BeamBuilder</a> &amp; kynema_fmb::interfaces::components::BeamBuilder::SetSectionRefinement </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>section_refinement</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the number of section refinements to perform. </p>
+<p>This adds additional quadrature points between the supplied sections and sets their physical properties using linear interpolation.</p>
+<dl class="section return"><dt>Returns</dt><dd>A reference to this <a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.html" title="Builder class for creating Blade objects.">BeamBuilder</a> </dd></dl>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
+<li>/home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/interfaces/components/<a class="el" href="beam__builder_8hpp_source.html">beam_builder.hpp</a></li>
+<li>/home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/interfaces/components/<a class="el" href="beam__builder_8cpp.html">beam_builder.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023 - Present, MIT License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

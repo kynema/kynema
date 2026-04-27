@@ -1,11 +1,11 @@
-.. meta::38cc53256aa0795a96781cddf93deba33f2945528d9dace104d7be1df26a40f53c93e26bb938e50eefc48d72b809bdabd98c48a0c63265b51ccb1c79b8564cb9
+.. meta::c0a32cbb20082f2b43276939194bd10b7ae826aea5bbb3b6a182809cd0ed14f20f0f5af7fb27bdab9d4b5a41cc704ef35c5e3b25419021fb2a1a24be24e27f38
 
 :orphan:
 
-.. title:: Kynema API: /home/runner/work/kynema/kynema/kynema/src/math/quaternion_operations.hpp Source File
+.. title:: Kynema API: /home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/math/quaternion_operations.hpp Source File
 
-/home/runner/work/kynema/kynema/kynema/src/math/quaternion\_operations.hpp Source File
-======================================================================================
+/home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/math/quaternion\_operations.hpp Source File
+==================================================================================================
 
 .. container:: doxygen-content
 

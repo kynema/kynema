@@ -1,0 +1,14 @@
+.. meta::1b98d6b57410daed857353bcbaac16a9ecdb156f0427d43c2be3d0f3d92675b4a7c730bb295f4bc943fcbf8dfa92ea4099aa780df351bd4c6c33d5e0f56ea8d5
+
+:orphan:
+
+.. title:: Kynema API: kynema_fmb::util::dylib::filename_components Struct Reference
+
+filename\_components Struct Reference
+=====================================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: structkynema__fmb_1_1util_1_1dylib_1_1filename__components.html

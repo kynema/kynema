@@ -1,0 +1,14 @@
+.. meta::d95348adcbd3edeaddede53913c96096e27fd6f9475dcdd83e94b1c33faea07fe65461077b81f3ef1d0d69325520bc6cca4ed673c3ca8a161e584a9916fcb049
+
+:orphan:
+
+.. title:: Kynema API: kynema_fmb::util::EnvironmentalConditions Struct Reference
+
+EnvironmentalConditions Struct Reference
+========================================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: structkynema__fmb_1_1util_1_1EnvironmentalConditions.html

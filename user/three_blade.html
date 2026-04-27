@@ -55,7 +55,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="user.html">User Manual</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="compiling.html">Compiling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="linking.html">Linking To Kynema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linking.html">Linking To Kynema-FMB</a></li>
 <li class="toctree-l2"><a class="reference internal" href="vtk_visualization.html">VTK Visualization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="floating_platform.html">Example: Rigid body with three springs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="turbine.html">Example: IEA15MW Turbine</a></li>
@@ -67,7 +67,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../theory/index.html">Theory Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../developer/index.html">Developer Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../testing/index.html">Benchmark Testing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../publications.html">Kynema Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../publications.html">Kynema-FMB Publications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../acknowledgement.html">Acknowledgements</a></li>
 </ul>
 
@@ -99,13 +99,13 @@
   <div class="section" id="example-three-blade-rotor">
 <h1>Example: Three Blade Rotor<a class="headerlink" href="#example-three-blade-rotor" title="Permalink to this heading"></a></h1>
 <p>This example will walk through how to run a simulation of a rotor made of three blades connected to a central hub.
-We’ll use Kynema’s low level API, which, unlike Kynema’s high level APIs, will require us to manually set up all nodes and their connectivities.
+We’ll use Kynema-FMB’s low level API, which, unlike Kynema-FMB’s high level APIs, will require us to manually set up all nodes and their connectivities.
 This extra complexity is the trade-off required for unlimited freedom.
 For the most up to date and working version of this code, see <code class="docutils literal notranslate"><span class="pre">tests/documentation_tests/three_blade_rotor/</span></code>.</p>
 <p>As with any C++ program, start with the includes.
 To set up problems like this one, you might need to perform some linear algebra - we’ll include <code class="docutils literal notranslate"><span class="pre">Eigen/Dense</span></code> to perform these operations, but you can use any libraries or hand written code as you see fit.
-As a Kokkos-based library, you’ll need to include <code class="docutils literal notranslate"><span class="pre">Kokkos_Core.hpp</span></code> for setup, teardown, and working with Kynema’s data structures.
-From Kynema, you’ll have to include <code class="docutils literal notranslate"><span class="pre">model.hpp</span></code> for the Model class, our tool for setting up and creating the system, and <code class="docutils literal notranslate"><span class="pre">step.hpp</span></code> for the Step function which performs the action of system asembly and solve.</p>
+As a Kokkos-based library, you’ll need to include <code class="docutils literal notranslate"><span class="pre">Kokkos_Core.hpp</span></code> for setup, teardown, and working with Kynema-FMB’s data structures.
+From Kynema-FMB, you’ll have to include <code class="docutils literal notranslate"><span class="pre">model.hpp</span></code> for the Model class, our tool for setting up and creating the system, and <code class="docutils literal notranslate"><span class="pre">step.hpp</span></code> for the Step function which performs the action of system assembly and solve.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;array&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cassert&gt;</span>
 
@@ -149,8 +149,8 @@ This problem uses a constant-cross-section blade, so the sections at the root an
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="p">{</span><span class="mf">0.</span><span class="p">,</span><span class="w"> </span><span class="mf">0.</span><span class="p">,</span><span class="w"> </span><span class="mf">0.</span><span class="p">,</span><span class="w"> </span><span class="mf">-0.3510e3</span><span class="p">,</span><span class="w"> </span><span class="mf">-0.3700e3</span><span class="p">,</span><span class="w"> </span><span class="mf">141.470e3</span><span class="p">},</span>
 <span class="p">};</span>
 <span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">sections</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="p">{</span>
-<span class="w">    </span><span class="n">kynema</span><span class="o">::</span><span class="n">BeamSection</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span><span class="w"> </span><span class="n">mass_matrix</span><span class="p">,</span><span class="w"> </span><span class="n">stiffness_matrix</span><span class="p">),</span>
-<span class="w">    </span><span class="n">kynema</span><span class="o">::</span><span class="n">BeamSection</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="w"> </span><span class="n">mass_matrix</span><span class="p">,</span><span class="w"> </span><span class="n">stiffness_matrix</span><span class="p">),</span>
+<span class="w">    </span><span class="n">kynema_fmb</span><span class="o">::</span><span class="n">BeamSection</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span><span class="w"> </span><span class="n">mass_matrix</span><span class="p">,</span><span class="w"> </span><span class="n">stiffness_matrix</span><span class="p">),</span>
+<span class="w">    </span><span class="n">kynema_fmb</span><span class="o">::</span><span class="n">BeamSection</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="w"> </span><span class="n">mass_matrix</span><span class="p">,</span><span class="w"> </span><span class="n">stiffness_matrix</span><span class="p">),</span>
 <span class="p">};</span>
 </pre></div>
 </div>
@@ -172,9 +172,9 @@ We’ve precalculated these to be a seven point GL quadrature rule, which will b
 <span class="p">};</span>
 </pre></div>
 </div>
-<p>A Model is Kynema’s low level interface for specifying elements, nodes, constraints, and their connectivities.
-One everything has been specified, we will use model to create Kynema’s fundamental data structures and advance the problem in time.</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kynema</span><span class="o">::</span><span class="n">Model</span><span class="p">();</span>
+<p>A Model is Kynema-FMB’s low level interface for specifying elements, nodes, constraints, and their connectivities.
+One everything has been specified, we will use model to create Kynema-FMB’s fundamental data structures and advance the problem in time.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kynema_fmb</span><span class="o">::</span><span class="n">Model</span><span class="p">();</span>
 </pre></div>
 </div>
 <p>The aptly named SetGravity method is used to set the gravity vector for the problem.</p>
@@ -226,7 +226,7 @@ modify during time stepping to create rotation.</p>
 <span class="k">auto</span><span class="w"> </span><span class="n">hub_bc_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">model</span><span class="p">.</span><span class="n">AddPrescribedBC</span><span class="p">(</span><span class="n">hub_node_id</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>Now that the problem has been fully described in the model, we will create Kynema’s main data structures: State, Elements, Constraints, and Solver.</p>
+<p>Now that the problem has been fully described in the model, we will create Kynema-FMB’s main data structures: State, Elements, Constraints, and Solver.</p>
 <p>The CreateSystem method takes an optional template argument with a Kokkos device describing where the system will reside and run.
 By default, it uses Kokkos’ default execution/memory space, so a serial build will run on the CPU, a CUDA build will run on a CUDA device, etc.</p>
 <p>The CreateSolver&lt;&gt; function uses the connectivity defined in the State, Elements, and Constraints structures to construct the Solver object.</p>
@@ -236,7 +236,7 @@ These contain the connectivity and basis information or all of the elements of t
 <p>Constraints contains the connectivity information for each constraint in the system.</p>
 <p>Solver contains the linear system (sparse matrix, RHS) and linear system solver</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="p">[</span><span class="n">state</span><span class="p">,</span><span class="w"> </span><span class="n">elements</span><span class="p">,</span><span class="w"> </span><span class="n">constraints</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">model</span><span class="p">.</span><span class="n">CreateSystem</span><span class="p">();</span>
-<span class="k">auto</span><span class="w"> </span><span class="n">solver</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kynema</span><span class="o">::</span><span class="n">CreateSolver</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="n">state</span><span class="p">,</span><span class="w"> </span><span class="n">elements</span><span class="p">,</span><span class="w"> </span><span class="n">constraints</span><span class="p">);</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">solver</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kynema_fmb</span><span class="o">::</span><span class="n">CreateSolver</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="n">state</span><span class="p">,</span><span class="w"> </span><span class="n">elements</span><span class="p">,</span><span class="w"> </span><span class="n">constraints</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>The final stage is to create a StepParameters object, which contains information like the number of non-linear iterations, time step size, and numerical damping factor used to take a single time step.</p>
@@ -246,21 +246,21 @@ These contain the connectivity and basis information or all of the elements of t
 <span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">rho_inf</span><span class="p">(</span><span class="mf">0.9</span><span class="p">);</span>
 <span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">t_end</span><span class="p">(</span><span class="mf">0.1</span><span class="p">);</span>
 <span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">num_steps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">floor</span><span class="p">(</span><span class="n">t_end</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">step_size</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1.0</span><span class="p">));</span>
-<span class="k">auto</span><span class="w"> </span><span class="n">parameters</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kynema</span><span class="o">::</span><span class="n">StepParameters</span><span class="p">(</span><span class="n">is_dynamic_solve</span><span class="p">,</span><span class="w"> </span><span class="n">max_iter</span><span class="p">,</span><span class="w"> </span><span class="n">step_size</span><span class="p">,</span><span class="w"> </span><span class="n">rho_inf</span><span class="p">);</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">parameters</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kynema_fmb</span><span class="o">::</span><span class="n">StepParameters</span><span class="p">(</span><span class="n">is_dynamic_solve</span><span class="p">,</span><span class="w"> </span><span class="n">max_iter</span><span class="p">,</span><span class="w"> </span><span class="n">step_size</span><span class="p">,</span><span class="w"> </span><span class="n">rho_inf</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>Kynema allows the user to control the actual time stepping process.
+<p>Kynema-FMB allows the user to control the actual time stepping process.
 This includes setting forces, post-processing data, or coupling to other codes.
 For this problem, we will prescribe a rotation on the hub boundary condition, which will be transmitted to the blades through their respective constraints.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0U</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">num_steps</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">q_hub</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kynema</span><span class="o">::</span><span class="n">math</span><span class="o">::</span><span class="n">RotationVectorToQuaternion</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">q_hub</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kynema_fmb</span><span class="o">::</span><span class="n">math</span><span class="o">::</span><span class="n">RotationVectorToQuaternion</span><span class="p">(</span>
 <span class="w">        </span><span class="p">{</span><span class="n">step_size</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">velocity</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span><span class="w"> </span><span class="n">step_size</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">velocity</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span>
 <span class="w">         </span><span class="n">step_size</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">velocity</span><span class="p">[</span><span class="mi">5</span><span class="p">]}</span>
 <span class="w">    </span><span class="p">);</span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">u_hub</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="p">{</span><span class="mf">0.</span><span class="p">,</span><span class="w"> </span><span class="mf">0.</span><span class="p">,</span><span class="w"> </span><span class="mf">0.</span><span class="p">,</span><span class="w"> </span><span class="n">q_hub</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="n">q_hub</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="n">q_hub</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="w"> </span><span class="n">q_hub</span><span class="p">[</span><span class="mi">3</span><span class="p">]};</span>
 <span class="w">    </span><span class="n">constraints</span><span class="p">.</span><span class="n">UpdateDisplacement</span><span class="p">(</span><span class="n">hub_bc_id</span><span class="p">,</span><span class="w"> </span><span class="n">u_hub</span><span class="p">);</span>
 <span class="w">    </span><span class="p">[[</span><span class="n">maybe_unused</span><span class="p">]]</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">converged</span><span class="w"> </span><span class="o">=</span>
-<span class="w">        </span><span class="n">kynema</span><span class="o">::</span><span class="n">Step</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span><span class="w"> </span><span class="n">solver</span><span class="p">,</span><span class="w"> </span><span class="n">elements</span><span class="p">,</span><span class="w"> </span><span class="n">state</span><span class="p">,</span><span class="w"> </span><span class="n">constraints</span><span class="p">);</span>
+<span class="w">        </span><span class="n">kynema_fmb</span><span class="o">::</span><span class="n">Step</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span><span class="w"> </span><span class="n">solver</span><span class="p">,</span><span class="w"> </span><span class="n">elements</span><span class="p">,</span><span class="w"> </span><span class="n">state</span><span class="p">,</span><span class="w"> </span><span class="n">constraints</span><span class="p">);</span>
 <span class="w">    </span><span class="n">assert</span><span class="p">(</span><span class="n">converged</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>

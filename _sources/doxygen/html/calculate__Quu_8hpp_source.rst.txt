@@ -1,11 +1,11 @@
-.. meta::095b31cbb20077d9b8e6589d0b4454aebcab6830a840a180dbd47b72bae0434778dc9a5545d55361bedacfd0191b2a60830c9d13800f57499dd4b5dad13f337f
+.. meta::3f8babc0f6e4bc0d0ee149c8bec07e0f2305606eb6e04984398f67e6f15aed94a11816616124118a40f2545c4578fab65341e1117f8725fade7c6bacdd6e1162
 
 :orphan:
 
-.. title:: Kynema API: /home/runner/work/kynema/kynema/kynema/src/system/beams/calculate_Quu.hpp Source File
+.. title:: Kynema API: /home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/system/beams/calculate_Quu.hpp Source File
 
-/home/runner/work/kynema/kynema/kynema/src/system/beams/calculate\_Quu.hpp Source File
-======================================================================================
+/home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/system/beams/calculate\_Quu.hpp Source File
+==================================================================================================
 
 .. container:: doxygen-content
 

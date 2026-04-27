@@ -1,0 +1,14 @@
+.. meta::b8c4db7d566b152e85f1c045bb76e590a5e8dd8e6ee829ad5595a424cb3a7c669488a4914247e8665a26f205b22f73a42da5738c55ab983b4c2980924f8fc8be
+
+:orphan:
+
+.. title:: Kynema API: kynema_fmb::beams::CalculateQuadraturePointValues&lt; DeviceType &gt; Struct Template Reference
+
+CalculateQuadraturePointValues&lt; DeviceType &gt; Struct Template Reference
+============================================================================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: structkynema__fmb_1_1beams_1_1CalculateQuadraturePointValues.html

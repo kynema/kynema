@@ -1,0 +1,14 @@
+.. meta::3401fe1bd682576d0a7880f345a79f403cecba535ff5a31bf64e804bc8e193159e13e830915ecf50cea787e159ffde05f12816fb8b314f39eb969052eb8f74d1
+
+:orphan:
+
+.. title:: Kynema API: kynema_fmb::beams::CalculateQPPosition&lt; DeviceType &gt; Struct Template Reference
+
+CalculateQPPosition&lt; DeviceType &gt; Struct Template Reference
+=================================================================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: structkynema__fmb_1_1beams_1_1CalculateQPPosition.html

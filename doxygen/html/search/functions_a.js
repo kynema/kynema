@@ -1,9 +1,9 @@
 var searchData=
 [
-  ['lagrangepolynomialderivweights_0',['LagrangePolynomialDerivWeights',['../namespacekynema_1_1math.html#a55aa78460bdbb9616c64bb8837da1f2c',1,'kynema::math']]],
-  ['lagrangepolynomialinterpweights_1',['LagrangePolynomialInterpWeights',['../namespacekynema_1_1math.html#a36dd71b3ba890b71a34198d3da48125a',1,'kynema::math']]],
-  ['legendrepolynomial_2',['LegendrePolynomial',['../namespacekynema_1_1math.html#a42f9db3bae76edd783981815a2c8b571',1,'kynema::math']]],
-  ['linearinterp_3',['LinearInterp',['../namespacekynema_1_1math.html#af446ed12cbeafb698952c0dd51380a4e',1,'kynema::math']]],
-  ['linearinterpweights_4',['LinearInterpWeights',['../namespacekynema_1_1math.html#a4c8b96ab1fcaa05338745026f25e883c',1,'kynema::math']]],
-  ['locate_5fsymbol_5',['locate_symbol',['../classkynema_1_1util_1_1dylib.html#af988ace313ef618326af92d1266df20f',1,'kynema::util::dylib']]]
+  ['lagrangepolynomialderivweights_0',['LagrangePolynomialDerivWeights',['../namespacekynema__fmb_1_1math.html#abbb80f1e0c4a73144036b8677b2cab6a',1,'kynema_fmb::math']]],
+  ['lagrangepolynomialinterpweights_1',['LagrangePolynomialInterpWeights',['../namespacekynema__fmb_1_1math.html#adece7b5e380f341071d38b2f7c777e65',1,'kynema_fmb::math']]],
+  ['legendrepolynomial_2',['LegendrePolynomial',['../namespacekynema__fmb_1_1math.html#afdd075f2259ae8887fb81dc696e0d452',1,'kynema_fmb::math']]],
+  ['linearinterp_3',['LinearInterp',['../namespacekynema__fmb_1_1math.html#abc7ed847d64ee3792b8ef76def97ff88',1,'kynema_fmb::math']]],
+  ['linearinterpweights_4',['LinearInterpWeights',['../namespacekynema__fmb_1_1math.html#a129373b87cddb5c503d1b0789efad3f4',1,'kynema_fmb::math']]],
+  ['locate_5fsymbol_5',['locate_symbol',['../classkynema__fmb_1_1util_1_1dylib.html#abc74416c33eee88e2c10b72c9b005cf6',1,'kynema_fmb::util::dylib']]]
 ];

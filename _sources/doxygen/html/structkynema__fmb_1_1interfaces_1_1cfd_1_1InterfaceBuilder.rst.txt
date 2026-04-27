@@ -1,0 +1,14 @@
+.. meta::ce423526f8d98c8ab1c202e57c670d5e69d287dbf33ed1774b19091f20ec02b775dd98b1d59858c7c3328e2f65470eadbac79e80fb4a0c848483a9325ca100cc
+
+:orphan:
+
+.. title:: Kynema API: kynema_fmb::interfaces::cfd::InterfaceBuilder Struct Reference
+
+InterfaceBuilder Struct Reference
+=================================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: structkynema__fmb_1_1interfaces_1_1cfd_1_1InterfaceBuilder.html

@@ -1,0 +1,14 @@
+.. meta::8e6563a206374b164ad5b80ed058379b912161a69d0c16d07515e563900f7c602d56e2cc01298e615ac59a9cbe47956e7a9e87f749f97136a23d77df4de396dd
+
+:orphan:
+
+.. title:: Kynema API: kynema_fmb::dss::SolveFunction&lt; Handle&lt; Algorithm::KLU &gt;, CrsMatrixType, MultiVectorType &gt; Struct Template Reference
+
+KLU &gt;, CrsMatrixType, MultiVectorType &gt; Struct Template Reference
+=======================================================================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: structkynema__fmb_1_1dss_1_1SolveFunction_3_01Handle_3_01Algorithm_1_1KLU_01_4_00_01CrsMatrixType_00_01MultiVectorType_01_4.html

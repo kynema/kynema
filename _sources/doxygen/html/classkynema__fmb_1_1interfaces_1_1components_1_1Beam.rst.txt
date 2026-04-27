@@ -1,0 +1,14 @@
+.. meta::e7b80f435d49b419fa9e9508fc3154f5bbd4f63efe0e0beb04ca61a6279e8b5f03f8d42b1a23e8fdfc5c5425c6ed6901a8be725b4c03ee5961ec7c7ff6e2b15d
+
+:orphan:
+
+.. title:: Kynema API: kynema_fmb::interfaces::components::Beam Class Reference
+
+Beam Class Reference
+====================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: classkynema__fmb_1_1interfaces_1_1components_1_1Beam.html

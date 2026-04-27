@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kynema API: kynema_fmb::solver::ContributeBeamsToSparseMatrix&amp;lt; CrsMatrixType &amp;gt; Struct Template Reference &mdash; Kynema 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Kynema
+              <img src="../../_static/oturb_logo_v2.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/user.html">User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../theory/index.html">Theory Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/index.html">Developer Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/index.html">Benchmark Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../publications.html">Kynema-FMB Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../acknowledgement.html">Acknowledgements</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Kynema</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Kynema API: kynema_fmb::solver::ContributeBeamsToSparseMatrix&amp;lt; CrsMatrixType &amp;gt; Struct Template Reference</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/doxygen/html/structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="contributebeamstosparsematrix-lt-crsmatrixtype-gt-struct-template-reference">
+<h1>ContributeBeamsToSparseMatrix&amp;lt; CrsMatrixType &amp;gt; Struct Template Reference<a class="headerlink" href="#contributebeamstosparsematrix-lt-crsmatrixtype-gt-struct-template-reference" title="Permalink to this heading"></a></h1>
+<div class="doxygen-content docutils container">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Kynema API: kynema_fmb::solver::ContributeBeamsToSparseMatrix&lt; CrsMatrixType &gt; Struct Template Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Kynema API
+   </div>
+   <div id="projectbrief">A flexible multibody structural dynamics code for wind turbines</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacekynema__fmb.html">kynema_fmb</a></li><li class="navelem"><a class="el" href="namespacekynema__fmb_1_1solver.html">solver</a></li><li class="navelem"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html">ContributeBeamsToSparseMatrix</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">kynema_fmb::solver::ContributeBeamsToSparseMatrix&lt; CrsMatrixType &gt; Struct Template Reference</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>A Kernel which sums the system matrix contributions computed at each node in a beam into the correct location of the global CRS matrix.  
+ <a href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="contribute__beams__to__sparse__matrix_8hpp_source.html">contribute_beams_to_sparse_matrix.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:af520caa7f43753a02bfb1bbe3abfc2cf" id="r_af520caa7f43753a02bfb1bbe3abfc2cf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#aaf7c35a0fbdfdef8828d045254193269">using</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#af520caa7f43753a02bfb1bbe3abfc2cf">DeviceType</a> = <a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#aaf7c35a0fbdfdef8828d045254193269">typename</a> CrsMatrixType::device_type</td></tr>
+<tr class="separator:af520caa7f43753a02bfb1bbe3abfc2cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5eb085cd23bbba1070dd4a1a4947acf" id="r_aa5eb085cd23bbba1070dd4a1a4947acf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#aaf7c35a0fbdfdef8828d045254193269">using</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#aa5eb085cd23bbba1070dd4a1a4947acf">RowDataType</a> = <a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#aaf7c35a0fbdfdef8828d045254193269">typename</a> CrsMatrixType::values_type::non_const_type</td></tr>
+<tr class="separator:aa5eb085cd23bbba1070dd4a1a4947acf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39d40b72ced47b871ace8ab78100dd30" id="r_a39d40b72ced47b871ace8ab78100dd30"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#aaf7c35a0fbdfdef8828d045254193269">using</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#a39d40b72ced47b871ace8ab78100dd30">ColIdxType</a> = <a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#aaf7c35a0fbdfdef8828d045254193269">typename</a> CrsMatrixType::staticcrsgraph_type::entries_type::non_const_type</td></tr>
+<tr class="separator:a39d40b72ced47b871ace8ab78100dd30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a827899f335308a31883d7f03e12b26" id="r_a7a827899f335308a31883d7f03e12b26"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#aaf7c35a0fbdfdef8828d045254193269">using</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#a7a827899f335308a31883d7f03e12b26">TeamPolicy</a> = Kokkos::TeamPolicy&lt; <a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#aaf7c35a0fbdfdef8828d045254193269">typename</a> DeviceType::execution_space &gt;</td></tr>
+<tr class="separator:a7a827899f335308a31883d7f03e12b26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6b59b1846e6f55f4a529b13abdb7929" id="r_ad6b59b1846e6f55f4a529b13abdb7929"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#aaf7c35a0fbdfdef8828d045254193269">using</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#ad6b59b1846e6f55f4a529b13abdb7929">member_type</a> = <a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#aaf7c35a0fbdfdef8828d045254193269">typename</a> TeamPolicy::member_type</td></tr>
+<tr class="separator:ad6b59b1846e6f55f4a529b13abdb7929"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf7c35a0fbdfdef8828d045254193269" id="r_aaf7c35a0fbdfdef8828d045254193269"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#aaf7c35a0fbdfdef8828d045254193269">typename</a> ValueType &gt; </td></tr>
+<tr class="memitem:aaf7c35a0fbdfdef8828d045254193269"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#aaf7c35a0fbdfdef8828d045254193269">using</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#aaf7c35a0fbdfdef8828d045254193269">View</a> = Kokkos::View&lt; ValueType, <a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#af520caa7f43753a02bfb1bbe3abfc2cf">DeviceType</a> &gt;</td></tr>
+<tr class="separator:aaf7c35a0fbdfdef8828d045254193269"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5e2cf58981a22824405a16fa41804d1" id="r_ab5e2cf58981a22824405a16fa41804d1"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#aaf7c35a0fbdfdef8828d045254193269">typename</a> ValueType &gt; </td></tr>
+<tr class="memitem:ab5e2cf58981a22824405a16fa41804d1"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#aaf7c35a0fbdfdef8828d045254193269">using</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#ab5e2cf58981a22824405a16fa41804d1">ConstView</a> = <a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#aaf7c35a0fbdfdef8828d045254193269">typename</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#aaf7c35a0fbdfdef8828d045254193269">View</a>&lt; ValueType &gt;<a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#aaf7c35a0fbdfdef8828d045254193269">::const_type</a></td></tr>
+<tr class="separator:ab5e2cf58981a22824405a16fa41804d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:ade86d76c3924cc8bf5edfb7575093ac0" id="r_ade86d76c3924cc8bf5edfb7575093ac0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#aaf7c35a0fbdfdef8828d045254193269">KOKKOS_FUNCTION</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#aaf7c35a0fbdfdef8828d045254193269">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#ade86d76c3924cc8bf5edfb7575093ac0">operator()</a> (<a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#ad6b59b1846e6f55f4a529b13abdb7929">member_type</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#aaf7c35a0fbdfdef8828d045254193269">member</a>) <a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#aaf7c35a0fbdfdef8828d045254193269">const</a></td></tr>
+<tr class="separator:ade86d76c3924cc8bf5edfb7575093ac0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:afb6a7b05307f0fef3b4fb6a2bc8f47df" id="r_afb6a7b05307f0fef3b4fb6a2bc8f47df"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#aaf7c35a0fbdfdef8828d045254193269">double</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#afb6a7b05307f0fef3b4fb6a2bc8f47df">conditioner</a> {}</td></tr>
+<tr class="separator:afb6a7b05307f0fef3b4fb6a2bc8f47df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33c5206b2d42a78fece5cea1ce47206a" id="r_a33c5206b2d42a78fece5cea1ce47206a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#ab5e2cf58981a22824405a16fa41804d1">ConstView</a>&lt; <a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#aaf7c35a0fbdfdef8828d045254193269">size_t</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#a33c5206b2d42a78fece5cea1ce47206a">num_nodes_per_element</a></td></tr>
+<tr class="separator:a33c5206b2d42a78fece5cea1ce47206a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe2e4c8f95f1af3d5a29be1f656ee2fd" id="r_afe2e4c8f95f1af3d5a29be1f656ee2fd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#ab5e2cf58981a22824405a16fa41804d1">ConstView</a>&lt; <a class="el" href="namespacekynema__fmb_1_1dof.html#afcc99d83b451e115cd97d1ef58625cd7">dof::FreedomSignature</a> ** &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#afe2e4c8f95f1af3d5a29be1f656ee2fd">element_freedom_signature</a></td></tr>
+<tr class="separator:afe2e4c8f95f1af3d5a29be1f656ee2fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2c97b8a0c744fdaac65e480ef601b99" id="r_ac2c97b8a0c744fdaac65e480ef601b99"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#ab5e2cf58981a22824405a16fa41804d1">ConstView</a>&lt; <a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#aaf7c35a0fbdfdef8828d045254193269">size_t</a> **[6]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#ac2c97b8a0c744fdaac65e480ef601b99">element_freedom_table</a></td></tr>
+<tr class="separator:ac2c97b8a0c744fdaac65e480ef601b99"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f7db90b153ee81394adcb9618687a5a" id="r_a7f7db90b153ee81394adcb9618687a5a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#ab5e2cf58981a22824405a16fa41804d1">ConstView</a>&lt; <a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#aaf7c35a0fbdfdef8828d045254193269">double</a> ***[6][6]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#a7f7db90b153ee81394adcb9618687a5a">dense</a></td></tr>
+<tr class="separator:a7f7db90b153ee81394adcb9618687a5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45b202be862e9928ae394cb35ea32460" id="r_a45b202be862e9928ae394cb35ea32460"><td class="memItemLeft" align="right" valign="top">CrsMatrixType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#a45b202be862e9928ae394cb35ea32460">sparse</a></td></tr>
+<tr class="separator:a45b202be862e9928ae394cb35ea32460"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#aaf7c35a0fbdfdef8828d045254193269">typename</a> CrsMatrixType&gt;<br />
+struct kynema_fmb::solver::ContributeBeamsToSparseMatrix&lt; CrsMatrixType &gt;</div><p>A Kernel which sums the system matrix contributions computed at each node in a beam into the correct location of the global CRS matrix. </p>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="a39d40b72ced47b871ace8ab78100dd30" name="a39d40b72ced47b871ace8ab78100dd30"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39d40b72ced47b871ace8ab78100dd30">&#9670;&#160;</a></span>ColIdxType</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#aaf7c35a0fbdfdef8828d045254193269">typename</a> CrsMatrixType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#aaf7c35a0fbdfdef8828d045254193269">using</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html">kynema_fmb::solver::ContributeBeamsToSparseMatrix</a>&lt; CrsMatrixType &gt;::ColIdxType =  <a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#aaf7c35a0fbdfdef8828d045254193269">typename</a> CrsMatrixType::staticcrsgraph_type::entries_type::non_const_type</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab5e2cf58981a22824405a16fa41804d1" name="ab5e2cf58981a22824405a16fa41804d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5e2cf58981a22824405a16fa41804d1">&#9670;&#160;</a></span>ConstView</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#aaf7c35a0fbdfdef8828d045254193269">typename</a> CrsMatrixType &gt; </div>
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#aaf7c35a0fbdfdef8828d045254193269">typename</a> ValueType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#aaf7c35a0fbdfdef8828d045254193269">using</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html">kynema_fmb::solver::ContributeBeamsToSparseMatrix</a>&lt; CrsMatrixType &gt;::ConstView =  <a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#aaf7c35a0fbdfdef8828d045254193269">typename</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#aaf7c35a0fbdfdef8828d045254193269">View</a>&lt;ValueType&gt;<a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#aaf7c35a0fbdfdef8828d045254193269">::const_type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af520caa7f43753a02bfb1bbe3abfc2cf" name="af520caa7f43753a02bfb1bbe3abfc2cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af520caa7f43753a02bfb1bbe3abfc2cf">&#9670;&#160;</a></span>DeviceType</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#aaf7c35a0fbdfdef8828d045254193269">typename</a> CrsMatrixType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#aaf7c35a0fbdfdef8828d045254193269">using</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html">kynema_fmb::solver::ContributeBeamsToSparseMatrix</a>&lt; CrsMatrixType &gt;::DeviceType =  <a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#aaf7c35a0fbdfdef8828d045254193269">typename</a> CrsMatrixType::device_type</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad6b59b1846e6f55f4a529b13abdb7929" name="ad6b59b1846e6f55f4a529b13abdb7929"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6b59b1846e6f55f4a529b13abdb7929">&#9670;&#160;</a></span>member_type</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#aaf7c35a0fbdfdef8828d045254193269">typename</a> CrsMatrixType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#aaf7c35a0fbdfdef8828d045254193269">using</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html">kynema_fmb::solver::ContributeBeamsToSparseMatrix</a>&lt; CrsMatrixType &gt;::member_type =  <a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#aaf7c35a0fbdfdef8828d045254193269">typename</a> TeamPolicy::member_type</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa5eb085cd23bbba1070dd4a1a4947acf" name="aa5eb085cd23bbba1070dd4a1a4947acf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5eb085cd23bbba1070dd4a1a4947acf">&#9670;&#160;</a></span>RowDataType</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#aaf7c35a0fbdfdef8828d045254193269">typename</a> CrsMatrixType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#aaf7c35a0fbdfdef8828d045254193269">using</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html">kynema_fmb::solver::ContributeBeamsToSparseMatrix</a>&lt; CrsMatrixType &gt;::RowDataType =  <a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#aaf7c35a0fbdfdef8828d045254193269">typename</a> CrsMatrixType::values_type::non_const_type</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7a827899f335308a31883d7f03e12b26" name="a7a827899f335308a31883d7f03e12b26"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a827899f335308a31883d7f03e12b26">&#9670;&#160;</a></span>TeamPolicy</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#aaf7c35a0fbdfdef8828d045254193269">typename</a> CrsMatrixType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#aaf7c35a0fbdfdef8828d045254193269">using</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html">kynema_fmb::solver::ContributeBeamsToSparseMatrix</a>&lt; CrsMatrixType &gt;::TeamPolicy =  Kokkos::TeamPolicy&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#aaf7c35a0fbdfdef8828d045254193269">typename</a> DeviceType::execution_space&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aaf7c35a0fbdfdef8828d045254193269" name="aaf7c35a0fbdfdef8828d045254193269"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf7c35a0fbdfdef8828d045254193269">&#9670;&#160;</a></span>View</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#aaf7c35a0fbdfdef8828d045254193269">typename</a> CrsMatrixType &gt; </div>
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#aaf7c35a0fbdfdef8828d045254193269">typename</a> ValueType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#aaf7c35a0fbdfdef8828d045254193269">using</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html">kynema_fmb::solver::ContributeBeamsToSparseMatrix</a>&lt; CrsMatrixType &gt;::View =  Kokkos::View&lt;ValueType, <a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#af520caa7f43753a02bfb1bbe3abfc2cf">DeviceType</a>&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="ade86d76c3924cc8bf5edfb7575093ac0" name="ade86d76c3924cc8bf5edfb7575093ac0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade86d76c3924cc8bf5edfb7575093ac0">&#9670;&#160;</a></span>operator()()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#aaf7c35a0fbdfdef8828d045254193269">typename</a> CrsMatrixType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#aaf7c35a0fbdfdef8828d045254193269">KOKKOS_FUNCTION</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#aaf7c35a0fbdfdef8828d045254193269">void</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html">kynema_fmb::solver::ContributeBeamsToSparseMatrix</a>&lt; CrsMatrixType &gt;<a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#aaf7c35a0fbdfdef8828d045254193269">::operator</a>() </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#ad6b59b1846e6f55f4a529b13abdb7929">member_type</a>&#160;</td>
+          <td class="paramname"><em>member</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="afb6a7b05307f0fef3b4fb6a2bc8f47df" name="afb6a7b05307f0fef3b4fb6a2bc8f47df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb6a7b05307f0fef3b4fb6a2bc8f47df">&#9670;&#160;</a></span>conditioner</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#aaf7c35a0fbdfdef8828d045254193269">typename</a> CrsMatrixType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#aaf7c35a0fbdfdef8828d045254193269">double</a> <a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html">kynema_fmb::solver::ContributeBeamsToSparseMatrix</a>&lt; CrsMatrixType &gt;::conditioner {}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7f7db90b153ee81394adcb9618687a5a" name="a7f7db90b153ee81394adcb9618687a5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f7db90b153ee81394adcb9618687a5a">&#9670;&#160;</a></span>dense</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#aaf7c35a0fbdfdef8828d045254193269">typename</a> CrsMatrixType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#ab5e2cf58981a22824405a16fa41804d1">ConstView</a>&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#aaf7c35a0fbdfdef8828d045254193269">double</a>*** [6][6]&gt; <a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html">kynema_fmb::solver::ContributeBeamsToSparseMatrix</a>&lt; CrsMatrixType &gt;::dense</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afe2e4c8f95f1af3d5a29be1f656ee2fd" name="afe2e4c8f95f1af3d5a29be1f656ee2fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe2e4c8f95f1af3d5a29be1f656ee2fd">&#9670;&#160;</a></span>element_freedom_signature</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#aaf7c35a0fbdfdef8828d045254193269">typename</a> CrsMatrixType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#ab5e2cf58981a22824405a16fa41804d1">ConstView</a>&lt;<a class="el" href="namespacekynema__fmb_1_1dof.html#afcc99d83b451e115cd97d1ef58625cd7">dof::FreedomSignature</a>**&gt; <a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html">kynema_fmb::solver::ContributeBeamsToSparseMatrix</a>&lt; CrsMatrixType &gt;::element_freedom_signature</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac2c97b8a0c744fdaac65e480ef601b99" name="ac2c97b8a0c744fdaac65e480ef601b99"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2c97b8a0c744fdaac65e480ef601b99">&#9670;&#160;</a></span>element_freedom_table</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#aaf7c35a0fbdfdef8828d045254193269">typename</a> CrsMatrixType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#ab5e2cf58981a22824405a16fa41804d1">ConstView</a>&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#aaf7c35a0fbdfdef8828d045254193269">size_t</a>** [6]&gt; <a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html">kynema_fmb::solver::ContributeBeamsToSparseMatrix</a>&lt; CrsMatrixType &gt;::element_freedom_table</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a33c5206b2d42a78fece5cea1ce47206a" name="a33c5206b2d42a78fece5cea1ce47206a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33c5206b2d42a78fece5cea1ce47206a">&#9670;&#160;</a></span>num_nodes_per_element</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#aaf7c35a0fbdfdef8828d045254193269">typename</a> CrsMatrixType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#ab5e2cf58981a22824405a16fa41804d1">ConstView</a>&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#aaf7c35a0fbdfdef8828d045254193269">size_t</a>*&gt; <a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html">kynema_fmb::solver::ContributeBeamsToSparseMatrix</a>&lt; CrsMatrixType &gt;::num_nodes_per_element</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a45b202be862e9928ae394cb35ea32460" name="a45b202be862e9928ae394cb35ea32460"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a45b202be862e9928ae394cb35ea32460">&#9670;&#160;</a></span>sparse</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html#aaf7c35a0fbdfdef8828d045254193269">typename</a> CrsMatrixType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">CrsMatrixType <a class="el" href="structkynema__fmb_1_1solver_1_1ContributeBeamsToSparseMatrix.html">kynema_fmb::solver::ContributeBeamsToSparseMatrix</a>&lt; CrsMatrixType &gt;::sparse</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
+<li>/home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/solver/<a class="el" href="contribute__beams__to__sparse__matrix_8hpp_source.html">contribute_beams_to_sparse_matrix.hpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023 - Present, MIT License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,14 @@
+.. meta::5371113c12b04799b8c777c20769f2fb3f92b3afb6dee9ef904132a24ef6ed5c079fba8352a9c67a31a24990930be9ff960828b9dd35e05975b3d4767051cf12
+
+:orphan:
+
+.. title:: Kynema API: kynema_fmb::solver::ComputeNumSystemDofsReducer&lt; DeviceType &gt; Struct Template Reference
+
+ComputeNumSystemDofsReducer&lt; DeviceType &gt; Struct Template Reference
+=========================================================================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: structkynema__fmb_1_1solver_1_1ComputeNumSystemDofsReducer.html

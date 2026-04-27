@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kynema API: kynema_fmb::constraints::CalculateConstraintResidualGradient&amp;lt; DeviceType &amp;gt; Struct Template Reference &mdash; Kynema 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Kynema
+              <img src="../../_static/oturb_logo_v2.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/user.html">User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../theory/index.html">Theory Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/index.html">Developer Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/index.html">Benchmark Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../publications.html">Kynema-FMB Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../acknowledgement.html">Acknowledgements</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Kynema</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Kynema API: kynema_fmb::constraints::CalculateConstraintResidualGradient&amp;lt; DeviceType &amp;gt; Struct Template Reference</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/doxygen/html/structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="calculateconstraintresidualgradient-lt-devicetype-gt-struct-template-reference">
+<h1>CalculateConstraintResidualGradient&amp;lt; DeviceType &amp;gt; Struct Template Reference<a class="headerlink" href="#calculateconstraintresidualgradient-lt-devicetype-gt-struct-template-reference" title="Permalink to this heading"></a></h1>
+<div class="doxygen-content docutils container">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Kynema API: kynema_fmb::constraints::CalculateConstraintResidualGradient&lt; DeviceType &gt; Struct Template Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Kynema API
+   </div>
+   <div id="projectbrief">A flexible multibody structural dynamics code for wind turbines</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacekynema__fmb.html">kynema_fmb</a></li><li class="navelem"><a class="el" href="namespacekynema__fmb_1_1constraints.html">constraints</a></li><li class="navelem"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html">CalculateConstraintResidualGradient</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">kynema_fmb::constraints::CalculateConstraintResidualGradient&lt; DeviceType &gt; Struct Template Reference</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Top level kernel which calculates the residual and gradient contributions of a constraint.  
+ <a href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="calculate__constraint__residual__gradient_8hpp_source.html">calculate_constraint_residual_gradient.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:aa924bfe52706a3fa38bf48b37ed33e98" id="r_aa924bfe52706a3fa38bf48b37ed33e98"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">using</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#aa924bfe52706a3fa38bf48b37ed33e98">TransposeMatrix</a> = KokkosBatched::SerialCopy&lt; KokkosBatched::Trans::Transpose &gt;</td></tr>
+<tr class="separator:aa924bfe52706a3fa38bf48b37ed33e98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6bc240aa7ea947faa7a751b695d93b9" id="r_ac6bc240aa7ea947faa7a751b695d93b9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">using</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#ac6bc240aa7ea947faa7a751b695d93b9">Gemm</a> = KokkosBatched::SerialGemm&lt; KokkosBatched::Trans::NoTranspose, KokkosBatched::Trans::NoTranspose, KokkosBatched::Algo::Gemm::Default &gt;</td></tr>
+<tr class="separator:ac6bc240aa7ea947faa7a751b695d93b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a3dd06f4de2a01cec1d13a290705776" id="r_a6a3dd06f4de2a01cec1d13a290705776"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">using</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a6a3dd06f4de2a01cec1d13a290705776">CopyVector</a> = KokkosBatched::SerialCopy&lt; KokkosBatched::Trans::NoTranspose, 1 &gt;</td></tr>
+<tr class="separator:a6a3dd06f4de2a01cec1d13a290705776"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a7a790ad92017734a90cbaafaac5de8" id="r_a5a7a790ad92017734a90cbaafaac5de8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">using</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a5a7a790ad92017734a90cbaafaac5de8">CopyMatrix</a> = KokkosBatched::SerialCopy&lt; KokkosBatched::Trans::NoTranspose, 2 &gt;</td></tr>
+<tr class="separator:a5a7a790ad92017734a90cbaafaac5de8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a152606ff93865d04b663903d32bbf228" id="r_a152606ff93865d04b663903d32bbf228"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">typename</a> ValueType &gt; </td></tr>
+<tr class="memitem:a152606ff93865d04b663903d32bbf228"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">using</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">View</a> = Kokkos::View&lt; ValueType, DeviceType &gt;</td></tr>
+<tr class="separator:a152606ff93865d04b663903d32bbf228"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a361f631086dd1a3f9a0e9a81b46a3493" id="r_a361f631086dd1a3f9a0e9a81b46a3493"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">typename</a> ValueType &gt; </td></tr>
+<tr class="memitem:a361f631086dd1a3f9a0e9a81b46a3493"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">using</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a361f631086dd1a3f9a0e9a81b46a3493">ConstView</a> = <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">typename</a> <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">View</a>&lt; ValueType &gt;<a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">::const_type</a></td></tr>
+<tr class="separator:a361f631086dd1a3f9a0e9a81b46a3493"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:af7d99bf1ce12433ec85f4505eec69880" id="r_af7d99bf1ce12433ec85f4505eec69880"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">KOKKOS_FUNCTION</a> <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#af7d99bf1ce12433ec85f4505eec69880">FixedBC</a> (<a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">size_t</a> constraint) <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">const</a></td></tr>
+<tr class="separator:af7d99bf1ce12433ec85f4505eec69880"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a520556241197bbf49ab45ffbcb27b85f" id="r_a520556241197bbf49ab45ffbcb27b85f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">KOKKOS_FUNCTION</a> <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a520556241197bbf49ab45ffbcb27b85f">FixedBC3DOF</a> (<a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">size_t</a> constraint) <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">const</a></td></tr>
+<tr class="separator:a520556241197bbf49ab45ffbcb27b85f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad32515ba2045b334c83ffd0687d4d2f0" id="r_ad32515ba2045b334c83ffd0687d4d2f0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">KOKKOS_FUNCTION</a> <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#ad32515ba2045b334c83ffd0687d4d2f0">PrescribedBC</a> (<a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">size_t</a> constraint) <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">const</a></td></tr>
+<tr class="separator:ad32515ba2045b334c83ffd0687d4d2f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad74779dd59e69b9755d63f2b12c28f9f" id="r_ad74779dd59e69b9755d63f2b12c28f9f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">KOKKOS_FUNCTION</a> <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#ad74779dd59e69b9755d63f2b12c28f9f">PrescribedBC3DOF</a> (<a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">size_t</a> constraint) <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">const</a></td></tr>
+<tr class="separator:ad74779dd59e69b9755d63f2b12c28f9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a563a0f149ade15a887fcd6e9758929d3" id="r_a563a0f149ade15a887fcd6e9758929d3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">KOKKOS_FUNCTION</a> <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a563a0f149ade15a887fcd6e9758929d3">RigidJoint</a> (<a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">size_t</a> constraint) <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">const</a></td></tr>
+<tr class="separator:a563a0f149ade15a887fcd6e9758929d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99b53475bdd01c9e063ed57e26f550d9" id="r_a99b53475bdd01c9e063ed57e26f550d9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">KOKKOS_FUNCTION</a> <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a99b53475bdd01c9e063ed57e26f550d9">RigidJoint3DOF</a> (<a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">size_t</a> constraint) <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">const</a></td></tr>
+<tr class="separator:a99b53475bdd01c9e063ed57e26f550d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6f86c1eea4897179c38613ded1f08a9" id="r_aa6f86c1eea4897179c38613ded1f08a9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">KOKKOS_FUNCTION</a> <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#aa6f86c1eea4897179c38613ded1f08a9">RevoluteJoint</a> (<a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">size_t</a> constraint) <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">const</a></td></tr>
+<tr class="separator:aa6f86c1eea4897179c38613ded1f08a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d4d99c0ecf5437fa684f0f396b715e0" id="r_a4d4d99c0ecf5437fa684f0f396b715e0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">KOKKOS_FUNCTION</a> <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a4d4d99c0ecf5437fa684f0f396b715e0">RotationControl</a> (<a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">size_t</a> constraint) <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">const</a></td></tr>
+<tr class="separator:a4d4d99c0ecf5437fa684f0f396b715e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5743c7adc303ede255355337a7c8f2b4" id="r_a5743c7adc303ede255355337a7c8f2b4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">KOKKOS_FUNCTION</a> <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a5743c7adc303ede255355337a7c8f2b4">operator()</a> (<a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">size_t</a> constraint) <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">const</a></td></tr>
+<tr class="separator:a5743c7adc303ede255355337a7c8f2b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:afefcfd35170116e90b866488caaeea41" id="r_afefcfd35170116e90b866488caaeea41"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a361f631086dd1a3f9a0e9a81b46a3493">ConstView</a>&lt; <a class="el" href="namespacekynema__fmb_1_1constraints.html#ac0b238a87da8c2d93bd5729293dbad3c">ConstraintType</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#afefcfd35170116e90b866488caaeea41">type_</a></td></tr>
+<tr class="separator:afefcfd35170116e90b866488caaeea41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a923c8389842a06717b28486ca51bec2c" id="r_a923c8389842a06717b28486ca51bec2c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a361f631086dd1a3f9a0e9a81b46a3493">ConstView</a>&lt; <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">size_t</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a923c8389842a06717b28486ca51bec2c">base_node_index_</a></td></tr>
+<tr class="separator:a923c8389842a06717b28486ca51bec2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9428f3750f504b43ee918c1bc996daf0" id="r_a9428f3750f504b43ee918c1bc996daf0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a361f631086dd1a3f9a0e9a81b46a3493">ConstView</a>&lt; <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">size_t</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a9428f3750f504b43ee918c1bc996daf0">target_node_index_</a></td></tr>
+<tr class="separator:a9428f3750f504b43ee918c1bc996daf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf6ae5323c7d7dddd67baeec266c7c3b" id="r_acf6ae5323c7d7dddd67baeec266c7c3b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a361f631086dd1a3f9a0e9a81b46a3493">ConstView</a>&lt; <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">double</a> *[3]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#acf6ae5323c7d7dddd67baeec266c7c3b">X0_</a></td></tr>
+<tr class="separator:acf6ae5323c7d7dddd67baeec266c7c3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81f48db5c8b3643141aeafd6ea52f637" id="r_a81f48db5c8b3643141aeafd6ea52f637"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a361f631086dd1a3f9a0e9a81b46a3493">ConstView</a>&lt; <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">double</a> *[3][3]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a81f48db5c8b3643141aeafd6ea52f637">axes_</a></td></tr>
+<tr class="separator:a81f48db5c8b3643141aeafd6ea52f637"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4bfbe8299b74bdb83f51446c55b3582e" id="r_a4bfbe8299b74bdb83f51446c55b3582e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a361f631086dd1a3f9a0e9a81b46a3493">ConstView</a>&lt; <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">double</a> *[7]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a4bfbe8299b74bdb83f51446c55b3582e">constraint_inputs_</a></td></tr>
+<tr class="separator:a4bfbe8299b74bdb83f51446c55b3582e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac235b162a60537a456e3a56289688d27" id="r_ac235b162a60537a456e3a56289688d27"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a361f631086dd1a3f9a0e9a81b46a3493">ConstView</a>&lt; <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">double</a> *[6]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#ac235b162a60537a456e3a56289688d27">lambda_</a></td></tr>
+<tr class="separator:ac235b162a60537a456e3a56289688d27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acbaecb3a72c106b2941d27f2d589a985" id="r_acbaecb3a72c106b2941d27f2d589a985"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a361f631086dd1a3f9a0e9a81b46a3493">ConstView</a>&lt; <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">double</a> *[6][6]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#acbaecb3a72c106b2941d27f2d589a985">tangent_</a></td></tr>
+<tr class="separator:acbaecb3a72c106b2941d27f2d589a985"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa5194b417643b6cb584aa60d4ce1e4a" id="r_aaa5194b417643b6cb584aa60d4ce1e4a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a361f631086dd1a3f9a0e9a81b46a3493">ConstView</a>&lt; <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">double</a> *[7]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#aaa5194b417643b6cb584aa60d4ce1e4a">node_u_</a></td></tr>
+<tr class="separator:aaa5194b417643b6cb584aa60d4ce1e4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2586f35eaa840f13d098769e08934702" id="r_a2586f35eaa840f13d098769e08934702"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">View</a>&lt; <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">double</a> *[6]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a2586f35eaa840f13d098769e08934702">res_</a></td></tr>
+<tr class="separator:a2586f35eaa840f13d098769e08934702"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1866da864edc0851249ae026766b7bff" id="r_a1866da864edc0851249ae026766b7bff"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">View</a>&lt; <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">double</a> *[6]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a1866da864edc0851249ae026766b7bff">b_lambda_res_</a></td></tr>
+<tr class="separator:a1866da864edc0851249ae026766b7bff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2400a942d478e37594be32b36743a5ca" id="r_a2400a942d478e37594be32b36743a5ca"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">View</a>&lt; <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">double</a> *[6]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a2400a942d478e37594be32b36743a5ca">t_lambda_res_</a></td></tr>
+<tr class="separator:a2400a942d478e37594be32b36743a5ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a680aeef4d496920cf70e47aeb17b593e" id="r_a680aeef4d496920cf70e47aeb17b593e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">View</a>&lt; <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">double</a> *[6]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a680aeef4d496920cf70e47aeb17b593e">system_res_</a></td></tr>
+<tr class="separator:a680aeef4d496920cf70e47aeb17b593e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0cfa719128d0ebd968b8d2a2bf66a6fb" id="r_a0cfa719128d0ebd968b8d2a2bf66a6fb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">View</a>&lt; <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">double</a> *[6][6]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a0cfa719128d0ebd968b8d2a2bf66a6fb">b_grad_</a></td></tr>
+<tr class="separator:a0cfa719128d0ebd968b8d2a2bf66a6fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5952ae2d380c90afe5b7c1eab014358f" id="r_a5952ae2d380c90afe5b7c1eab014358f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">View</a>&lt; <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">double</a> *[6][6]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a5952ae2d380c90afe5b7c1eab014358f">t_grad_</a></td></tr>
+<tr class="separator:a5952ae2d380c90afe5b7c1eab014358f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5ac40638d27ac9b5d9be6b2996797dc" id="r_af5ac40638d27ac9b5d9be6b2996797dc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">View</a>&lt; <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">double</a> *[6][6]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#af5ac40638d27ac9b5d9be6b2996797dc">b_grad_trans_</a></td></tr>
+<tr class="separator:af5ac40638d27ac9b5d9be6b2996797dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6cfb4646c3d03311e5eee52539d4aef" id="r_af6cfb4646c3d03311e5eee52539d4aef"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">View</a>&lt; <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">double</a> *[6][6]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#af6cfb4646c3d03311e5eee52539d4aef">t_grad_trans_</a></td></tr>
+<tr class="separator:af6cfb4646c3d03311e5eee52539d4aef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;<a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">typename</a> DeviceType&gt;<br />
+struct kynema_fmb::constraints::CalculateConstraintResidualGradient&lt; DeviceType &gt;</div><p>Top level kernel which calculates the residual and gradient contributions of a constraint. </p>
+<p>This Kernel performs the action of identifying the constraint's type, loading the required input variables into local variables, and then calling specialized kernels that perform the actual calculations. </p>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="a361f631086dd1a3f9a0e9a81b46a3493" name="a361f631086dd1a3f9a0e9a81b46a3493"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a361f631086dd1a3f9a0e9a81b46a3493">&#9670;&#160;</a></span>ConstView</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">typename</a> DeviceType &gt; </div>
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">typename</a> ValueType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">using</a> <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html">kynema_fmb::constraints::CalculateConstraintResidualGradient</a>&lt; DeviceType &gt;::ConstView =  <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">typename</a> <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">View</a>&lt;ValueType&gt;<a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">::const_type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5a7a790ad92017734a90cbaafaac5de8" name="a5a7a790ad92017734a90cbaafaac5de8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a7a790ad92017734a90cbaafaac5de8">&#9670;&#160;</a></span>CopyMatrix</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">using</a> <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html">kynema_fmb::constraints::CalculateConstraintResidualGradient</a>&lt; DeviceType &gt;::CopyMatrix =  KokkosBatched::SerialCopy&lt;KokkosBatched::Trans::NoTranspose, 2&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6a3dd06f4de2a01cec1d13a290705776" name="a6a3dd06f4de2a01cec1d13a290705776"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a3dd06f4de2a01cec1d13a290705776">&#9670;&#160;</a></span>CopyVector</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">using</a> <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html">kynema_fmb::constraints::CalculateConstraintResidualGradient</a>&lt; DeviceType &gt;::CopyVector =  KokkosBatched::SerialCopy&lt;KokkosBatched::Trans::NoTranspose, 1&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac6bc240aa7ea947faa7a751b695d93b9" name="ac6bc240aa7ea947faa7a751b695d93b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6bc240aa7ea947faa7a751b695d93b9">&#9670;&#160;</a></span>Gemm</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">using</a> <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html">kynema_fmb::constraints::CalculateConstraintResidualGradient</a>&lt; DeviceType &gt;::Gemm =  KokkosBatched::SerialGemm&lt; KokkosBatched::Trans::NoTranspose, KokkosBatched::Trans::NoTranspose, KokkosBatched::Algo::Gemm::Default&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa924bfe52706a3fa38bf48b37ed33e98" name="aa924bfe52706a3fa38bf48b37ed33e98"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa924bfe52706a3fa38bf48b37ed33e98">&#9670;&#160;</a></span>TransposeMatrix</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">using</a> <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html">kynema_fmb::constraints::CalculateConstraintResidualGradient</a>&lt; DeviceType &gt;::TransposeMatrix =  KokkosBatched::SerialCopy&lt;KokkosBatched::Trans::Transpose&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a152606ff93865d04b663903d32bbf228" name="a152606ff93865d04b663903d32bbf228"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a152606ff93865d04b663903d32bbf228">&#9670;&#160;</a></span>View</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">typename</a> DeviceType &gt; </div>
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">typename</a> ValueType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">using</a> <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html">kynema_fmb::constraints::CalculateConstraintResidualGradient</a>&lt; DeviceType &gt;::View =  Kokkos::View&lt;ValueType, DeviceType&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="af7d99bf1ce12433ec85f4505eec69880" name="af7d99bf1ce12433ec85f4505eec69880"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7d99bf1ce12433ec85f4505eec69880">&#9670;&#160;</a></span>FixedBC()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">typename</a> DeviceType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">KOKKOS_FUNCTION</a> <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">void</a> <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html">kynema_fmb::constraints::CalculateConstraintResidualGradient</a>&lt; DeviceType &gt;::FixedBC </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">size_t</a>&#160;</td>
+          <td class="paramname"><em>constraint</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a520556241197bbf49ab45ffbcb27b85f" name="a520556241197bbf49ab45ffbcb27b85f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a520556241197bbf49ab45ffbcb27b85f">&#9670;&#160;</a></span>FixedBC3DOF()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">typename</a> DeviceType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">KOKKOS_FUNCTION</a> <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">void</a> <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html">kynema_fmb::constraints::CalculateConstraintResidualGradient</a>&lt; DeviceType &gt;::FixedBC3DOF </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">size_t</a>&#160;</td>
+          <td class="paramname"><em>constraint</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5743c7adc303ede255355337a7c8f2b4" name="a5743c7adc303ede255355337a7c8f2b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5743c7adc303ede255355337a7c8f2b4">&#9670;&#160;</a></span>operator()()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">typename</a> DeviceType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">KOKKOS_FUNCTION</a> <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">void</a> <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html">kynema_fmb::constraints::CalculateConstraintResidualGradient</a>&lt; DeviceType &gt;<a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">::operator</a>() </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">size_t</a>&#160;</td>
+          <td class="paramname"><em>constraint</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad32515ba2045b334c83ffd0687d4d2f0" name="ad32515ba2045b334c83ffd0687d4d2f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad32515ba2045b334c83ffd0687d4d2f0">&#9670;&#160;</a></span>PrescribedBC()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">typename</a> DeviceType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">KOKKOS_FUNCTION</a> <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">void</a> <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html">kynema_fmb::constraints::CalculateConstraintResidualGradient</a>&lt; DeviceType &gt;::PrescribedBC </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">size_t</a>&#160;</td>
+          <td class="paramname"><em>constraint</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad74779dd59e69b9755d63f2b12c28f9f" name="ad74779dd59e69b9755d63f2b12c28f9f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad74779dd59e69b9755d63f2b12c28f9f">&#9670;&#160;</a></span>PrescribedBC3DOF()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">typename</a> DeviceType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">KOKKOS_FUNCTION</a> <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">void</a> <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html">kynema_fmb::constraints::CalculateConstraintResidualGradient</a>&lt; DeviceType &gt;::PrescribedBC3DOF </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">size_t</a>&#160;</td>
+          <td class="paramname"><em>constraint</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa6f86c1eea4897179c38613ded1f08a9" name="aa6f86c1eea4897179c38613ded1f08a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6f86c1eea4897179c38613ded1f08a9">&#9670;&#160;</a></span>RevoluteJoint()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">typename</a> DeviceType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">KOKKOS_FUNCTION</a> <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">void</a> <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html">kynema_fmb::constraints::CalculateConstraintResidualGradient</a>&lt; DeviceType &gt;::RevoluteJoint </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">size_t</a>&#160;</td>
+          <td class="paramname"><em>constraint</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a563a0f149ade15a887fcd6e9758929d3" name="a563a0f149ade15a887fcd6e9758929d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a563a0f149ade15a887fcd6e9758929d3">&#9670;&#160;</a></span>RigidJoint()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">typename</a> DeviceType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">KOKKOS_FUNCTION</a> <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">void</a> <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html">kynema_fmb::constraints::CalculateConstraintResidualGradient</a>&lt; DeviceType &gt;::RigidJoint </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">size_t</a>&#160;</td>
+          <td class="paramname"><em>constraint</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a99b53475bdd01c9e063ed57e26f550d9" name="a99b53475bdd01c9e063ed57e26f550d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a99b53475bdd01c9e063ed57e26f550d9">&#9670;&#160;</a></span>RigidJoint3DOF()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">typename</a> DeviceType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">KOKKOS_FUNCTION</a> <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">void</a> <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html">kynema_fmb::constraints::CalculateConstraintResidualGradient</a>&lt; DeviceType &gt;::RigidJoint3DOF </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">size_t</a>&#160;</td>
+          <td class="paramname"><em>constraint</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4d4d99c0ecf5437fa684f0f396b715e0" name="a4d4d99c0ecf5437fa684f0f396b715e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d4d99c0ecf5437fa684f0f396b715e0">&#9670;&#160;</a></span>RotationControl()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">typename</a> DeviceType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">KOKKOS_FUNCTION</a> <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">void</a> <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html">kynema_fmb::constraints::CalculateConstraintResidualGradient</a>&lt; DeviceType &gt;::RotationControl </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">size_t</a>&#160;</td>
+          <td class="paramname"><em>constraint</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a81f48db5c8b3643141aeafd6ea52f637" name="a81f48db5c8b3643141aeafd6ea52f637"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81f48db5c8b3643141aeafd6ea52f637">&#9670;&#160;</a></span>axes_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a361f631086dd1a3f9a0e9a81b46a3493">ConstView</a>&lt;<a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">double</a>* [3][3]&gt; <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html">kynema_fmb::constraints::CalculateConstraintResidualGradient</a>&lt; DeviceType &gt;::axes_</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0cfa719128d0ebd968b8d2a2bf66a6fb" name="a0cfa719128d0ebd968b8d2a2bf66a6fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0cfa719128d0ebd968b8d2a2bf66a6fb">&#9670;&#160;</a></span>b_grad_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">View</a>&lt;<a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">double</a>* [6][6]&gt; <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html">kynema_fmb::constraints::CalculateConstraintResidualGradient</a>&lt; DeviceType &gt;::b_grad_</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af5ac40638d27ac9b5d9be6b2996797dc" name="af5ac40638d27ac9b5d9be6b2996797dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5ac40638d27ac9b5d9be6b2996797dc">&#9670;&#160;</a></span>b_grad_trans_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">View</a>&lt;<a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">double</a>* [6][6]&gt; <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html">kynema_fmb::constraints::CalculateConstraintResidualGradient</a>&lt; DeviceType &gt;::b_grad_trans_</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1866da864edc0851249ae026766b7bff" name="a1866da864edc0851249ae026766b7bff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1866da864edc0851249ae026766b7bff">&#9670;&#160;</a></span>b_lambda_res_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">View</a>&lt;<a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">double</a>* [6]&gt; <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html">kynema_fmb::constraints::CalculateConstraintResidualGradient</a>&lt; DeviceType &gt;::b_lambda_res_</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a923c8389842a06717b28486ca51bec2c" name="a923c8389842a06717b28486ca51bec2c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a923c8389842a06717b28486ca51bec2c">&#9670;&#160;</a></span>base_node_index_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a361f631086dd1a3f9a0e9a81b46a3493">ConstView</a>&lt;<a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">size_t</a>*&gt; <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html">kynema_fmb::constraints::CalculateConstraintResidualGradient</a>&lt; DeviceType &gt;::base_node_index_</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4bfbe8299b74bdb83f51446c55b3582e" name="a4bfbe8299b74bdb83f51446c55b3582e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4bfbe8299b74bdb83f51446c55b3582e">&#9670;&#160;</a></span>constraint_inputs_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a361f631086dd1a3f9a0e9a81b46a3493">ConstView</a>&lt;<a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">double</a>* [7]&gt; <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html">kynema_fmb::constraints::CalculateConstraintResidualGradient</a>&lt; DeviceType &gt;::constraint_inputs_</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac235b162a60537a456e3a56289688d27" name="ac235b162a60537a456e3a56289688d27"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac235b162a60537a456e3a56289688d27">&#9670;&#160;</a></span>lambda_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a361f631086dd1a3f9a0e9a81b46a3493">ConstView</a>&lt;<a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">double</a>* [6]&gt; <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html">kynema_fmb::constraints::CalculateConstraintResidualGradient</a>&lt; DeviceType &gt;::lambda_</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aaa5194b417643b6cb584aa60d4ce1e4a" name="aaa5194b417643b6cb584aa60d4ce1e4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa5194b417643b6cb584aa60d4ce1e4a">&#9670;&#160;</a></span>node_u_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a361f631086dd1a3f9a0e9a81b46a3493">ConstView</a>&lt;<a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">double</a>* [7]&gt; <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html">kynema_fmb::constraints::CalculateConstraintResidualGradient</a>&lt; DeviceType &gt;::node_u_</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2586f35eaa840f13d098769e08934702" name="a2586f35eaa840f13d098769e08934702"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2586f35eaa840f13d098769e08934702">&#9670;&#160;</a></span>res_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">View</a>&lt;<a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">double</a>* [6]&gt; <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html">kynema_fmb::constraints::CalculateConstraintResidualGradient</a>&lt; DeviceType &gt;::res_</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a680aeef4d496920cf70e47aeb17b593e" name="a680aeef4d496920cf70e47aeb17b593e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a680aeef4d496920cf70e47aeb17b593e">&#9670;&#160;</a></span>system_res_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">View</a>&lt;<a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">double</a>* [6]&gt; <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html">kynema_fmb::constraints::CalculateConstraintResidualGradient</a>&lt; DeviceType &gt;::system_res_</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5952ae2d380c90afe5b7c1eab014358f" name="a5952ae2d380c90afe5b7c1eab014358f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5952ae2d380c90afe5b7c1eab014358f">&#9670;&#160;</a></span>t_grad_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">View</a>&lt;<a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">double</a>* [6][6]&gt; <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html">kynema_fmb::constraints::CalculateConstraintResidualGradient</a>&lt; DeviceType &gt;::t_grad_</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af6cfb4646c3d03311e5eee52539d4aef" name="af6cfb4646c3d03311e5eee52539d4aef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af6cfb4646c3d03311e5eee52539d4aef">&#9670;&#160;</a></span>t_grad_trans_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">View</a>&lt;<a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">double</a>* [6][6]&gt; <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html">kynema_fmb::constraints::CalculateConstraintResidualGradient</a>&lt; DeviceType &gt;::t_grad_trans_</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2400a942d478e37594be32b36743a5ca" name="a2400a942d478e37594be32b36743a5ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2400a942d478e37594be32b36743a5ca">&#9670;&#160;</a></span>t_lambda_res_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">View</a>&lt;<a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">double</a>* [6]&gt; <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html">kynema_fmb::constraints::CalculateConstraintResidualGradient</a>&lt; DeviceType &gt;::t_lambda_res_</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acbaecb3a72c106b2941d27f2d589a985" name="acbaecb3a72c106b2941d27f2d589a985"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acbaecb3a72c106b2941d27f2d589a985">&#9670;&#160;</a></span>tangent_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a361f631086dd1a3f9a0e9a81b46a3493">ConstView</a>&lt;<a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">double</a>* [6][6]&gt; <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html">kynema_fmb::constraints::CalculateConstraintResidualGradient</a>&lt; DeviceType &gt;::tangent_</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9428f3750f504b43ee918c1bc996daf0" name="a9428f3750f504b43ee918c1bc996daf0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9428f3750f504b43ee918c1bc996daf0">&#9670;&#160;</a></span>target_node_index_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a361f631086dd1a3f9a0e9a81b46a3493">ConstView</a>&lt;<a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">size_t</a>*&gt; <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html">kynema_fmb::constraints::CalculateConstraintResidualGradient</a>&lt; DeviceType &gt;::target_node_index_</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afefcfd35170116e90b866488caaeea41" name="afefcfd35170116e90b866488caaeea41"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afefcfd35170116e90b866488caaeea41">&#9670;&#160;</a></span>type_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a361f631086dd1a3f9a0e9a81b46a3493">ConstView</a>&lt;<a class="el" href="namespacekynema__fmb_1_1constraints.html#ac0b238a87da8c2d93bd5729293dbad3c">ConstraintType</a>*&gt; <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html">kynema_fmb::constraints::CalculateConstraintResidualGradient</a>&lt; DeviceType &gt;::type_</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acf6ae5323c7d7dddd67baeec266c7c3b" name="acf6ae5323c7d7dddd67baeec266c7c3b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf6ae5323c7d7dddd67baeec266c7c3b">&#9670;&#160;</a></span>X0_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a361f631086dd1a3f9a0e9a81b46a3493">ConstView</a>&lt;<a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html#a152606ff93865d04b663903d32bbf228">double</a>* [3]&gt; <a class="el" href="structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html">kynema_fmb::constraints::CalculateConstraintResidualGradient</a>&lt; DeviceType &gt;::X0_</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
+<li>/home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/constraints/<a class="el" href="calculate__constraint__residual__gradient_8hpp_source.html">calculate_constraint_residual_gradient.hpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023 - Present, MIT License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

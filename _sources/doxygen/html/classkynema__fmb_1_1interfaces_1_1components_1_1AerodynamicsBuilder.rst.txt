@@ -1,0 +1,14 @@
+.. meta::03dfbb45a281271f364bb7528517acb43d5423da483f601fb4a4bd67677b8f7ee5655e237a57e9d6777710716680d5075c1637592547bfcc5de0baf1de1dccdf
+
+:orphan:
+
+.. title:: Kynema API: kynema_fmb::interfaces::components::AerodynamicsBuilder Class Reference
+
+AerodynamicsBuilder Class Reference
+===================================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: classkynema__fmb_1_1interfaces_1_1components_1_1AerodynamicsBuilder.html

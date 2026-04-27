@@ -70,7 +70,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../developer/index.html">Developer Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../testing/index.html">Benchmark Testing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../publications.html">Kynema Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../publications.html">Kynema-FMB Publications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../acknowledgement.html">Acknowledgements</a></li>
 </ul>
 
@@ -102,10 +102,10 @@
              
   <div class="section" id="heavy-top-constrained-rigid-body-example">
 <span id="sec-heavy-top"></span><h1>Heavy top constrained-rigid-body example<a class="headerlink" href="#heavy-top-constrained-rigid-body-example" title="Permalink to this heading"></a></h1>
-<p>We provide here a simple application of the Kynema formulation for the
+<p>We provide here a simple application of the Kynema-FMB formulation for the
 heavy-top problem, which is a rotating body fixed to the ground by a spherical
 joint. It is a common benchmark problem for constrained-rigid-body dynamics and
-for testing Lie-group time integrators like that used in Kynema. Our approach
+for testing Lie-group time integrators like that used in Kynema-FMB. Our approach
 follows much of what is described in in [&#64;Bruls-etal:2012], but with the key
 differences that we formulate the problem in inertial coordinates rather than
 material coordinates and we include three translational DOFs for the spherical joint, <span class="math notranslate nohighlight">\(\underline{u}_\mathrm{SJ}\)</span>.   The generalized coordinates for this problem are</p>
@@ -144,7 +144,7 @@ Eq. <a class="reference internal" href="rigid.html#equation-rbresid">(6)</a>) is
 \[\underline{f} = [0,0,-g,0,0,0,0,0,0]^T\]</div>
 <p>where <span class="math notranslate nohighlight">\(g=9.81\)</span> m/s<span class="math notranslate nohighlight">\(^2\)</span>.</p>
 <p>The problem is constrained such that the spherical joint is located at the global origin, the heavy-top center of mass is located 1 m from the
-origin, and the heavy-top body-attached-coordinate-system y-axis is pointing away from the global origin.  The Kynema implementation employs the following constraint:</p>
+origin, and the heavy-top body-attached-coordinate-system y-axis is pointing away from the global origin.  The Kynema-FMB implementation employs the following constraint:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\underline{\Phi} = \begin{bmatrix}
 \underline{u}_\mathrm{HT} - \underline{u}_\mathrm{SJ}
@@ -184,10 +184,10 @@ origin, and the heavy-top body-attached-coordinate-system y-axis is pointing awa
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The term <span class="math notranslate nohighlight">\(\underline{\underline{K}}^\Phi\)</span> is include here for
-completeness, but is not in the current Kynema implementation, and
+completeness, but is not in the current Kynema-FMB implementation, and
 nonlinear-system convergence has been satisfactory.</p>
 </div>
-<p>The Kynema regression test suite includes the spinning, heavy top
+<p>The Kynema-FMB regression test suite includes the spinning, heavy top
 problem with the following initial conditions:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{aligned}

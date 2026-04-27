@@ -1,0 +1,14 @@
+.. meta::66ef4756ff20b4a50533c5268826867bdafd3568000a674de7e28cc40bd94aca052347985c314daf8aad0732e1426e0e0086c9f7ae7a9bf34f3b51a3595cbc2a
+
+:orphan:
+
+.. title:: Kynema API: kynema_fmb::beams::InterpolateQPRotation&lt; DeviceType &gt; Struct Template Reference
+
+InterpolateQPRotation&lt; DeviceType &gt; Struct Template Reference
+===================================================================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: structkynema__fmb_1_1beams_1_1InterpolateQPRotation.html

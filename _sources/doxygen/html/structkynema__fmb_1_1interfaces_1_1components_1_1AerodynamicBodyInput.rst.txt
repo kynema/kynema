@@ -1,0 +1,14 @@
+.. meta::300ae200bb59e45c3cc9ad53c6cdc78873e24df616f5e9853f33cac8320402bc54d1f2eccb3f976108675b56a29fa83446065158b271792d02c7264418561720
+
+:orphan:
+
+.. title:: Kynema API: kynema_fmb::interfaces::components::AerodynamicBodyInput Struct Reference
+
+AerodynamicBodyInput Struct Reference
+=====================================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: structkynema__fmb_1_1interfaces_1_1components_1_1AerodynamicBodyInput.html

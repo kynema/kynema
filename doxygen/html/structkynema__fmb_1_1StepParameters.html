@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kynema API: kynema_fmb::StepParameters Struct Reference &mdash; Kynema 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Kynema
+              <img src="../../_static/oturb_logo_v2.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/user.html">User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../theory/index.html">Theory Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/index.html">Developer Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/index.html">Benchmark Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../publications.html">Kynema-FMB Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../acknowledgement.html">Acknowledgements</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Kynema</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Kynema API: kynema_fmb::StepParameters Struct Reference</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/doxygen/html/structkynema__fmb_1_1StepParameters.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="stepparameters-struct-reference">
+<h1>StepParameters Struct Reference<a class="headerlink" href="#stepparameters-struct-reference" title="Permalink to this heading"></a></h1>
+<div class="doxygen-content docutils container">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Kynema API: kynema_fmb::StepParameters Struct Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Kynema API
+   </div>
+   <div id="projectbrief">A flexible multibody structural dynamics code for wind turbines</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacekynema__fmb.html">kynema_fmb</a></li><li class="navelem"><a class="el" href="structkynema__fmb_1_1StepParameters.html">StepParameters</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="structkynema__fmb_1_1StepParameters-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">kynema_fmb::StepParameters Struct Reference</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>A Struct containing the paramters used to control the time stepping process.  
+ <a href="structkynema__fmb_1_1StepParameters.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="step__parameters_8hpp_source.html">step_parameters.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:aac44940b3324e42bc00f589457e769ef" id="r_aac44940b3324e42bc00f589457e769ef"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1StepParameters.html#aac44940b3324e42bc00f589457e769ef">StepParameters</a> (bool is_dynamic_solve_, size_t max_iter_, double h_, double rho_inf, double a_tol=1e-5, double r_tol=1e-3, size_t num_retries=20)</td></tr>
+<tr class="memdesc:aac44940b3324e42bc00f589457e769ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for the <a class="el" href="structkynema__fmb_1_1StepParameters.html" title="A Struct containing the paramters used to control the time stepping process.">StepParameters</a> object.  <br /></td></tr>
+<tr class="separator:aac44940b3324e42bc00f589457e769ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:a63ad7ddfdb167f7dd03303981c975be2" id="r_a63ad7ddfdb167f7dd03303981c975be2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1StepParameters.html#a63ad7ddfdb167f7dd03303981c975be2">is_dynamic_solve</a></td></tr>
+<tr class="separator:a63ad7ddfdb167f7dd03303981c975be2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a9aa4c1d39fde4230d8d05546503345" id="r_a3a9aa4c1d39fde4230d8d05546503345"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1StepParameters.html#a3a9aa4c1d39fde4230d8d05546503345">max_iter</a></td></tr>
+<tr class="separator:a3a9aa4c1d39fde4230d8d05546503345"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84aae604ce40e6a2f815fc718b6c8834" id="r_a84aae604ce40e6a2f815fc718b6c8834"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1StepParameters.html#a84aae604ce40e6a2f815fc718b6c8834">h</a></td></tr>
+<tr class="separator:a84aae604ce40e6a2f815fc718b6c8834"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b3639d8b54e2974247a87c460b31887" id="r_a1b3639d8b54e2974247a87c460b31887"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1StepParameters.html#a1b3639d8b54e2974247a87c460b31887">alpha_m</a></td></tr>
+<tr class="separator:a1b3639d8b54e2974247a87c460b31887"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a983b760e6516448e440d5f91c6fc5dc3" id="r_a983b760e6516448e440d5f91c6fc5dc3"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1StepParameters.html#a983b760e6516448e440d5f91c6fc5dc3">alpha_f</a></td></tr>
+<tr class="separator:a983b760e6516448e440d5f91c6fc5dc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09edf55f5fe75fa684170c9d24abb308" id="r_a09edf55f5fe75fa684170c9d24abb308"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1StepParameters.html#a09edf55f5fe75fa684170c9d24abb308">gamma</a></td></tr>
+<tr class="separator:a09edf55f5fe75fa684170c9d24abb308"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abbfe9efd6dc582a841436abde4aaa3f8" id="r_abbfe9efd6dc582a841436abde4aaa3f8"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1StepParameters.html#abbfe9efd6dc582a841436abde4aaa3f8">beta</a></td></tr>
+<tr class="separator:abbfe9efd6dc582a841436abde4aaa3f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acac2f77fbd2dc8094e364b8bc4f31217" id="r_acac2f77fbd2dc8094e364b8bc4f31217"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1StepParameters.html#acac2f77fbd2dc8094e364b8bc4f31217">gamma_prime</a></td></tr>
+<tr class="separator:acac2f77fbd2dc8094e364b8bc4f31217"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aede147c701ada027f5b57f928fe12cbd" id="r_aede147c701ada027f5b57f928fe12cbd"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1StepParameters.html#aede147c701ada027f5b57f928fe12cbd">beta_prime</a></td></tr>
+<tr class="separator:aede147c701ada027f5b57f928fe12cbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4abe2e335aec71a1c0b2ce4ead5bed4" id="r_ac4abe2e335aec71a1c0b2ce4ead5bed4"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1StepParameters.html#ac4abe2e335aec71a1c0b2ce4ead5bed4">conditioner</a></td></tr>
+<tr class="separator:ac4abe2e335aec71a1c0b2ce4ead5bed4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a690953d13bbe8736f60e780d3c432d8c" id="r_a690953d13bbe8736f60e780d3c432d8c"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1StepParameters.html#a690953d13bbe8736f60e780d3c432d8c">absolute_convergence_tol</a></td></tr>
+<tr class="separator:a690953d13bbe8736f60e780d3c432d8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04c2b5835dd510635e525a9f75edf7a2" id="r_a04c2b5835dd510635e525a9f75edf7a2"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1StepParameters.html#a04c2b5835dd510635e525a9f75edf7a2">relative_convergence_tol</a></td></tr>
+<tr class="separator:a04c2b5835dd510635e525a9f75edf7a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2fab05b29884f86fb5b4d203c9dda24c" id="r_a2fab05b29884f86fb5b4d203c9dda24c"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1StepParameters.html#a2fab05b29884f86fb5b4d203c9dda24c">static_load_retries</a></td></tr>
+<tr class="separator:a2fab05b29884f86fb5b4d203c9dda24c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>A Struct containing the paramters used to control the time stepping process. </p>
+<p>These paramteres </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="aac44940b3324e42bc00f589457e769ef" name="aac44940b3324e42bc00f589457e769ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac44940b3324e42bc00f589457e769ef">&#9670;&#160;</a></span>StepParameters()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">kynema_fmb::StepParameters::StepParameters </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>is_dynamic_solve_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>max_iter_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>h_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>rho_inf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>a_tol</em> = <code>1e-5</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>r_tol</em> = <code>1e-3</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>num_retries</em> = <code>20</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructor for the <a class="el" href="structkynema__fmb_1_1StepParameters.html" title="A Struct containing the paramters used to control the time stepping process.">StepParameters</a> object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">is_dynamic_solve_</td><td>if a dynamic solve is to be performed (versus static) </td></tr>
+    <tr><td class="paramname">max_iter_</td><td>the maximum number of nonlinear iterations to be performed </td></tr>
+    <tr><td class="paramname">h_</td><td>the time step size </td></tr>
+    <tr><td class="paramname">rho_inf</td><td>the numerical damping pactor, used to set the generalized alpha solver parameters </td></tr>
+    <tr><td class="paramname">a_tol</td><td>the absolute error convergence tolerance </td></tr>
+    <tr><td class="paramname">r_tol</td><td>the relative error convergence tolerance </td></tr>
+    <tr><td class="paramname">num_retries</td><td>the maximum number of load reduction attempts for static solves </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a690953d13bbe8736f60e780d3c432d8c" name="a690953d13bbe8736f60e780d3c432d8c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a690953d13bbe8736f60e780d3c432d8c">&#9670;&#160;</a></span>absolute_convergence_tol</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double kynema_fmb::StepParameters::absolute_convergence_tol</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a983b760e6516448e440d5f91c6fc5dc3" name="a983b760e6516448e440d5f91c6fc5dc3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a983b760e6516448e440d5f91c6fc5dc3">&#9670;&#160;</a></span>alpha_f</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double kynema_fmb::StepParameters::alpha_f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1b3639d8b54e2974247a87c460b31887" name="a1b3639d8b54e2974247a87c460b31887"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1b3639d8b54e2974247a87c460b31887">&#9670;&#160;</a></span>alpha_m</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double kynema_fmb::StepParameters::alpha_m</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abbfe9efd6dc582a841436abde4aaa3f8" name="abbfe9efd6dc582a841436abde4aaa3f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abbfe9efd6dc582a841436abde4aaa3f8">&#9670;&#160;</a></span>beta</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double kynema_fmb::StepParameters::beta</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aede147c701ada027f5b57f928fe12cbd" name="aede147c701ada027f5b57f928fe12cbd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aede147c701ada027f5b57f928fe12cbd">&#9670;&#160;</a></span>beta_prime</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double kynema_fmb::StepParameters::beta_prime</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac4abe2e335aec71a1c0b2ce4ead5bed4" name="ac4abe2e335aec71a1c0b2ce4ead5bed4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac4abe2e335aec71a1c0b2ce4ead5bed4">&#9670;&#160;</a></span>conditioner</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double kynema_fmb::StepParameters::conditioner</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a09edf55f5fe75fa684170c9d24abb308" name="a09edf55f5fe75fa684170c9d24abb308"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09edf55f5fe75fa684170c9d24abb308">&#9670;&#160;</a></span>gamma</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double kynema_fmb::StepParameters::gamma</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acac2f77fbd2dc8094e364b8bc4f31217" name="acac2f77fbd2dc8094e364b8bc4f31217"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acac2f77fbd2dc8094e364b8bc4f31217">&#9670;&#160;</a></span>gamma_prime</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double kynema_fmb::StepParameters::gamma_prime</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a84aae604ce40e6a2f815fc718b6c8834" name="a84aae604ce40e6a2f815fc718b6c8834"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84aae604ce40e6a2f815fc718b6c8834">&#9670;&#160;</a></span>h</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double kynema_fmb::StepParameters::h</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a63ad7ddfdb167f7dd03303981c975be2" name="a63ad7ddfdb167f7dd03303981c975be2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63ad7ddfdb167f7dd03303981c975be2">&#9670;&#160;</a></span>is_dynamic_solve</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool kynema_fmb::StepParameters::is_dynamic_solve</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3a9aa4c1d39fde4230d8d05546503345" name="a3a9aa4c1d39fde4230d8d05546503345"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a9aa4c1d39fde4230d8d05546503345">&#9670;&#160;</a></span>max_iter</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t kynema_fmb::StepParameters::max_iter</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a04c2b5835dd510635e525a9f75edf7a2" name="a04c2b5835dd510635e525a9f75edf7a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04c2b5835dd510635e525a9f75edf7a2">&#9670;&#160;</a></span>relative_convergence_tol</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double kynema_fmb::StepParameters::relative_convergence_tol</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2fab05b29884f86fb5b4d203c9dda24c" name="a2fab05b29884f86fb5b4d203c9dda24c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2fab05b29884f86fb5b4d203c9dda24c">&#9670;&#160;</a></span>static_load_retries</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t kynema_fmb::StepParameters::static_load_retries</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
+<li>/home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/step/<a class="el" href="step__parameters_8hpp_source.html">step_parameters.hpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023 - Present, MIT License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

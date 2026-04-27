@@ -1,0 +1,14 @@
+.. meta::6f476f99cb0b3d8dfe6c6cf4255a460b6d33cf9faa20be1dd16cc9e8bd2193ba2a1254b04877915424b8aa821b2d75d9f597e8f6b7375489a133cb9b8860c918
+
+:orphan:
+
+.. title:: Kynema API: kynema_fmb::Masses&lt; DeviceType &gt; Struct Template Reference
+
+Masses&lt; DeviceType &gt; Struct Template Reference
+====================================================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: structkynema__fmb_1_1Masses.html

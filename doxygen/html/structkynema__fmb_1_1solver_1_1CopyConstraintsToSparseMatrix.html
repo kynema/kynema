@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kynema API: kynema_fmb::solver::CopyConstraintsToSparseMatrix&amp;lt; CrsMatrixType &amp;gt; Struct Template Reference &mdash; Kynema 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Kynema
+              <img src="../../_static/oturb_logo_v2.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/user.html">User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../theory/index.html">Theory Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/index.html">Developer Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/index.html">Benchmark Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../publications.html">Kynema-FMB Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../acknowledgement.html">Acknowledgements</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Kynema</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Kynema API: kynema_fmb::solver::CopyConstraintsToSparseMatrix&amp;lt; CrsMatrixType &amp;gt; Struct Template Reference</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/doxygen/html/structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="copyconstraintstosparsematrix-lt-crsmatrixtype-gt-struct-template-reference">
+<h1>CopyConstraintsToSparseMatrix&amp;lt; CrsMatrixType &amp;gt; Struct Template Reference<a class="headerlink" href="#copyconstraintstosparsematrix-lt-crsmatrixtype-gt-struct-template-reference" title="Permalink to this heading"></a></h1>
+<div class="doxygen-content docutils container">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Kynema API: kynema_fmb::solver::CopyConstraintsToSparseMatrix&lt; CrsMatrixType &gt; Struct Template Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Kynema API
+   </div>
+   <div id="projectbrief">A flexible multibody structural dynamics code for wind turbines</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacekynema__fmb.html">kynema_fmb</a></li><li class="navelem"><a class="el" href="namespacekynema__fmb_1_1solver.html">solver</a></li><li class="navelem"><a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html">CopyConstraintsToSparseMatrix</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">kynema_fmb::solver::CopyConstraintsToSparseMatrix&lt; CrsMatrixType &gt; Struct Template Reference</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>A Kernel which copies the gradient matrix contributions for the base and target node of a constraint to the correct locations in the global CRS matrix.  
+ <a href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="copy__constraints__to__sparse__matrix_8hpp_source.html">copy_constraints_to_sparse_matrix.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a80f4553a3a3223235cc1f0b81c00475e" id="r_a80f4553a3a3223235cc1f0b81c00475e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">using</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#a80f4553a3a3223235cc1f0b81c00475e">DeviceType</a> = <a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">typename</a> CrsMatrixType::device_type</td></tr>
+<tr class="separator:a80f4553a3a3223235cc1f0b81c00475e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaede41d0f59816980b0c738c27285e7b" id="r_aaede41d0f59816980b0c738c27285e7b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">using</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#aaede41d0f59816980b0c738c27285e7b">RowDataType</a> = <a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">typename</a> CrsMatrixType::values_type::non_const_type</td></tr>
+<tr class="separator:aaede41d0f59816980b0c738c27285e7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28cb1182ed01d5710c91f26b30528340" id="r_a28cb1182ed01d5710c91f26b30528340"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">using</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#a28cb1182ed01d5710c91f26b30528340">ColIdxType</a> = <a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">typename</a> CrsMatrixType::staticcrsgraph_type::entries_type::non_const_type</td></tr>
+<tr class="separator:a28cb1182ed01d5710c91f26b30528340"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acacb38fad2094ba2c866e4401dd854c7" id="r_acacb38fad2094ba2c866e4401dd854c7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">using</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#acacb38fad2094ba2c866e4401dd854c7">TeamPolicy</a> = <a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">typename</a> Kokkos::TeamPolicy&lt; <a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">typename</a> DeviceType::execution_space &gt;</td></tr>
+<tr class="separator:acacb38fad2094ba2c866e4401dd854c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2996b1cb4763e3bd883d2f10a47b42e9" id="r_a2996b1cb4763e3bd883d2f10a47b42e9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">using</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#a2996b1cb4763e3bd883d2f10a47b42e9">member_type</a> = <a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">typename</a> TeamPolicy::member_type</td></tr>
+<tr class="separator:a2996b1cb4763e3bd883d2f10a47b42e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5f2f50a3a33e517d7e6374eedb4db20" id="r_ac5f2f50a3a33e517d7e6374eedb4db20"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">typename</a> ValueType &gt; </td></tr>
+<tr class="memitem:ac5f2f50a3a33e517d7e6374eedb4db20"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">using</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">View</a> = Kokkos::View&lt; ValueType, <a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#a80f4553a3a3223235cc1f0b81c00475e">DeviceType</a> &gt;</td></tr>
+<tr class="separator:ac5f2f50a3a33e517d7e6374eedb4db20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4fa2508ddd76e994f644fb1ac8717ba" id="r_ad4fa2508ddd76e994f644fb1ac8717ba"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">typename</a> ValueType &gt; </td></tr>
+<tr class="memitem:ad4fa2508ddd76e994f644fb1ac8717ba"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">using</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ad4fa2508ddd76e994f644fb1ac8717ba">ConstView</a> = <a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">typename</a> <a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">View</a>&lt; ValueType &gt;<a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">::const_type</a></td></tr>
+<tr class="separator:ad4fa2508ddd76e994f644fb1ac8717ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:af997cd93691ce8853c27db9ce6a6791e" id="r_af997cd93691ce8853c27db9ce6a6791e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">KOKKOS_FUNCTION</a> <a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#af997cd93691ce8853c27db9ce6a6791e">operator()</a> (<a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#a2996b1cb4763e3bd883d2f10a47b42e9">member_type</a> <a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">member</a>) <a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">const</a></td></tr>
+<tr class="separator:af997cd93691ce8853c27db9ce6a6791e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:a05dd409aaf8576c898ab46af2bc1e966" id="r_a05dd409aaf8576c898ab46af2bc1e966"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">size_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#a05dd409aaf8576c898ab46af2bc1e966">num_system_rows</a> {}</td></tr>
+<tr class="separator:a05dd409aaf8576c898ab46af2bc1e966"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42d4c956509e5a86743c9c8a5f7db4d6" id="r_a42d4c956509e5a86743c9c8a5f7db4d6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ad4fa2508ddd76e994f644fb1ac8717ba">ConstView</a>&lt; Kokkos::pair&lt; <a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">size_t</a>, <a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">size_t</a> &gt; * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#a42d4c956509e5a86743c9c8a5f7db4d6">row_range</a></td></tr>
+<tr class="separator:a42d4c956509e5a86743c9c8a5f7db4d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb7a7fa83eb9888e7a2c0a2c80394332" id="r_aeb7a7fa83eb9888e7a2c0a2c80394332"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ad4fa2508ddd76e994f644fb1ac8717ba">ConstView</a>&lt; <a class="el" href="namespacekynema__fmb_1_1dof.html#afcc99d83b451e115cd97d1ef58625cd7">dof::FreedomSignature</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#aeb7a7fa83eb9888e7a2c0a2c80394332">base_node_freedom_signature</a></td></tr>
+<tr class="separator:aeb7a7fa83eb9888e7a2c0a2c80394332"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b1993307d6591dcd65457fd2ed84720" id="r_a0b1993307d6591dcd65457fd2ed84720"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ad4fa2508ddd76e994f644fb1ac8717ba">ConstView</a>&lt; <a class="el" href="namespacekynema__fmb_1_1dof.html#afcc99d83b451e115cd97d1ef58625cd7">dof::FreedomSignature</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#a0b1993307d6591dcd65457fd2ed84720">target_node_freedom_signature</a></td></tr>
+<tr class="separator:a0b1993307d6591dcd65457fd2ed84720"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2761f0494d4061ef790d7c06085137df" id="r_a2761f0494d4061ef790d7c06085137df"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ad4fa2508ddd76e994f644fb1ac8717ba">ConstView</a>&lt; <a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">size_t</a> *[6]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#a2761f0494d4061ef790d7c06085137df">base_node_freedom_table</a></td></tr>
+<tr class="separator:a2761f0494d4061ef790d7c06085137df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a5b771c7d29077216e7379371238c17" id="r_a5a5b771c7d29077216e7379371238c17"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ad4fa2508ddd76e994f644fb1ac8717ba">ConstView</a>&lt; <a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">size_t</a> *[6]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#a5a5b771c7d29077216e7379371238c17">target_node_freedom_table</a></td></tr>
+<tr class="separator:a5a5b771c7d29077216e7379371238c17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a924495028f3e21dff94b31e3dfce17e9" id="r_a924495028f3e21dff94b31e3dfce17e9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ad4fa2508ddd76e994f644fb1ac8717ba">ConstView</a>&lt; <a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">double</a> *[6][6]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#a924495028f3e21dff94b31e3dfce17e9">base_dense</a></td></tr>
+<tr class="separator:a924495028f3e21dff94b31e3dfce17e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0af5f0026aac9e6f2bd44e28251e28c" id="r_ad0af5f0026aac9e6f2bd44e28251e28c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ad4fa2508ddd76e994f644fb1ac8717ba">ConstView</a>&lt; <a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">double</a> *[6][6]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ad0af5f0026aac9e6f2bd44e28251e28c">target_dense</a></td></tr>
+<tr class="separator:ad0af5f0026aac9e6f2bd44e28251e28c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c6563f1e72610a51fe11da2447cbf4d" id="r_a0c6563f1e72610a51fe11da2447cbf4d"><td class="memItemLeft" align="right" valign="top">CrsMatrixType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#a0c6563f1e72610a51fe11da2447cbf4d">sparse</a></td></tr>
+<tr class="separator:a0c6563f1e72610a51fe11da2447cbf4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">typename</a> CrsMatrixType&gt;<br />
+struct kynema_fmb::solver::CopyConstraintsToSparseMatrix&lt; CrsMatrixType &gt;</div><p>A Kernel which copies the gradient matrix contributions for the base and target node of a constraint to the correct locations in the global CRS matrix. </p>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="a28cb1182ed01d5710c91f26b30528340" name="a28cb1182ed01d5710c91f26b30528340"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a28cb1182ed01d5710c91f26b30528340">&#9670;&#160;</a></span>ColIdxType</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">typename</a> CrsMatrixType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">using</a> <a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html">kynema_fmb::solver::CopyConstraintsToSparseMatrix</a>&lt; CrsMatrixType &gt;::ColIdxType =  <a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">typename</a> CrsMatrixType::staticcrsgraph_type::entries_type::non_const_type</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad4fa2508ddd76e994f644fb1ac8717ba" name="ad4fa2508ddd76e994f644fb1ac8717ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4fa2508ddd76e994f644fb1ac8717ba">&#9670;&#160;</a></span>ConstView</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">typename</a> CrsMatrixType &gt; </div>
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">typename</a> ValueType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">using</a> <a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html">kynema_fmb::solver::CopyConstraintsToSparseMatrix</a>&lt; CrsMatrixType &gt;::ConstView =  <a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">typename</a> <a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">View</a>&lt;ValueType&gt;<a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">::const_type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a80f4553a3a3223235cc1f0b81c00475e" name="a80f4553a3a3223235cc1f0b81c00475e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a80f4553a3a3223235cc1f0b81c00475e">&#9670;&#160;</a></span>DeviceType</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">typename</a> CrsMatrixType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">using</a> <a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html">kynema_fmb::solver::CopyConstraintsToSparseMatrix</a>&lt; CrsMatrixType &gt;::DeviceType =  <a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">typename</a> CrsMatrixType::device_type</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2996b1cb4763e3bd883d2f10a47b42e9" name="a2996b1cb4763e3bd883d2f10a47b42e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2996b1cb4763e3bd883d2f10a47b42e9">&#9670;&#160;</a></span>member_type</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">typename</a> CrsMatrixType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">using</a> <a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html">kynema_fmb::solver::CopyConstraintsToSparseMatrix</a>&lt; CrsMatrixType &gt;::member_type =  <a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">typename</a> TeamPolicy::member_type</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aaede41d0f59816980b0c738c27285e7b" name="aaede41d0f59816980b0c738c27285e7b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaede41d0f59816980b0c738c27285e7b">&#9670;&#160;</a></span>RowDataType</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">typename</a> CrsMatrixType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">using</a> <a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html">kynema_fmb::solver::CopyConstraintsToSparseMatrix</a>&lt; CrsMatrixType &gt;::RowDataType =  <a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">typename</a> CrsMatrixType::values_type::non_const_type</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acacb38fad2094ba2c866e4401dd854c7" name="acacb38fad2094ba2c866e4401dd854c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acacb38fad2094ba2c866e4401dd854c7">&#9670;&#160;</a></span>TeamPolicy</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">typename</a> CrsMatrixType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">using</a> <a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html">kynema_fmb::solver::CopyConstraintsToSparseMatrix</a>&lt; CrsMatrixType &gt;::TeamPolicy =  <a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">typename</a> Kokkos::TeamPolicy&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">typename</a> DeviceType::execution_space&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac5f2f50a3a33e517d7e6374eedb4db20" name="ac5f2f50a3a33e517d7e6374eedb4db20"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac5f2f50a3a33e517d7e6374eedb4db20">&#9670;&#160;</a></span>View</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">typename</a> CrsMatrixType &gt; </div>
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">typename</a> ValueType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">using</a> <a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html">kynema_fmb::solver::CopyConstraintsToSparseMatrix</a>&lt; CrsMatrixType &gt;::View =  Kokkos::View&lt;ValueType, <a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#a80f4553a3a3223235cc1f0b81c00475e">DeviceType</a>&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="af997cd93691ce8853c27db9ce6a6791e" name="af997cd93691ce8853c27db9ce6a6791e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af997cd93691ce8853c27db9ce6a6791e">&#9670;&#160;</a></span>operator()()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">typename</a> CrsMatrixType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">KOKKOS_FUNCTION</a> <a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">void</a> <a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html">kynema_fmb::solver::CopyConstraintsToSparseMatrix</a>&lt; CrsMatrixType &gt;<a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">::operator</a>() </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#a2996b1cb4763e3bd883d2f10a47b42e9">member_type</a>&#160;</td>
+          <td class="paramname"><em>member</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a924495028f3e21dff94b31e3dfce17e9" name="a924495028f3e21dff94b31e3dfce17e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a924495028f3e21dff94b31e3dfce17e9">&#9670;&#160;</a></span>base_dense</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">typename</a> CrsMatrixType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ad4fa2508ddd76e994f644fb1ac8717ba">ConstView</a>&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">double</a>* [6][6]&gt; <a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html">kynema_fmb::solver::CopyConstraintsToSparseMatrix</a>&lt; CrsMatrixType &gt;::base_dense</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aeb7a7fa83eb9888e7a2c0a2c80394332" name="aeb7a7fa83eb9888e7a2c0a2c80394332"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb7a7fa83eb9888e7a2c0a2c80394332">&#9670;&#160;</a></span>base_node_freedom_signature</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">typename</a> CrsMatrixType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ad4fa2508ddd76e994f644fb1ac8717ba">ConstView</a>&lt;<a class="el" href="namespacekynema__fmb_1_1dof.html#afcc99d83b451e115cd97d1ef58625cd7">dof::FreedomSignature</a>*&gt; <a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html">kynema_fmb::solver::CopyConstraintsToSparseMatrix</a>&lt; CrsMatrixType &gt;::base_node_freedom_signature</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2761f0494d4061ef790d7c06085137df" name="a2761f0494d4061ef790d7c06085137df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2761f0494d4061ef790d7c06085137df">&#9670;&#160;</a></span>base_node_freedom_table</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">typename</a> CrsMatrixType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ad4fa2508ddd76e994f644fb1ac8717ba">ConstView</a>&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">size_t</a>* [6]&gt; <a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html">kynema_fmb::solver::CopyConstraintsToSparseMatrix</a>&lt; CrsMatrixType &gt;::base_node_freedom_table</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a05dd409aaf8576c898ab46af2bc1e966" name="a05dd409aaf8576c898ab46af2bc1e966"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05dd409aaf8576c898ab46af2bc1e966">&#9670;&#160;</a></span>num_system_rows</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">typename</a> CrsMatrixType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">size_t</a> <a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html">kynema_fmb::solver::CopyConstraintsToSparseMatrix</a>&lt; CrsMatrixType &gt;::num_system_rows {}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a42d4c956509e5a86743c9c8a5f7db4d6" name="a42d4c956509e5a86743c9c8a5f7db4d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42d4c956509e5a86743c9c8a5f7db4d6">&#9670;&#160;</a></span>row_range</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">typename</a> CrsMatrixType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ad4fa2508ddd76e994f644fb1ac8717ba">ConstView</a>&lt;Kokkos::pair&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">size_t</a>, <a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">size_t</a>&gt;*&gt; <a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html">kynema_fmb::solver::CopyConstraintsToSparseMatrix</a>&lt; CrsMatrixType &gt;::row_range</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0c6563f1e72610a51fe11da2447cbf4d" name="a0c6563f1e72610a51fe11da2447cbf4d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c6563f1e72610a51fe11da2447cbf4d">&#9670;&#160;</a></span>sparse</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">typename</a> CrsMatrixType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">CrsMatrixType <a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html">kynema_fmb::solver::CopyConstraintsToSparseMatrix</a>&lt; CrsMatrixType &gt;::sparse</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad0af5f0026aac9e6f2bd44e28251e28c" name="ad0af5f0026aac9e6f2bd44e28251e28c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad0af5f0026aac9e6f2bd44e28251e28c">&#9670;&#160;</a></span>target_dense</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">typename</a> CrsMatrixType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ad4fa2508ddd76e994f644fb1ac8717ba">ConstView</a>&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">double</a>* [6][6]&gt; <a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html">kynema_fmb::solver::CopyConstraintsToSparseMatrix</a>&lt; CrsMatrixType &gt;::target_dense</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0b1993307d6591dcd65457fd2ed84720" name="a0b1993307d6591dcd65457fd2ed84720"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b1993307d6591dcd65457fd2ed84720">&#9670;&#160;</a></span>target_node_freedom_signature</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">typename</a> CrsMatrixType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ad4fa2508ddd76e994f644fb1ac8717ba">ConstView</a>&lt;<a class="el" href="namespacekynema__fmb_1_1dof.html#afcc99d83b451e115cd97d1ef58625cd7">dof::FreedomSignature</a>*&gt; <a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html">kynema_fmb::solver::CopyConstraintsToSparseMatrix</a>&lt; CrsMatrixType &gt;::target_node_freedom_signature</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5a5b771c7d29077216e7379371238c17" name="a5a5b771c7d29077216e7379371238c17"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a5b771c7d29077216e7379371238c17">&#9670;&#160;</a></span>target_node_freedom_table</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">typename</a> CrsMatrixType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ad4fa2508ddd76e994f644fb1ac8717ba">ConstView</a>&lt;<a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html#ac5f2f50a3a33e517d7e6374eedb4db20">size_t</a>* [6]&gt; <a class="el" href="structkynema__fmb_1_1solver_1_1CopyConstraintsToSparseMatrix.html">kynema_fmb::solver::CopyConstraintsToSparseMatrix</a>&lt; CrsMatrixType &gt;::target_node_freedom_table</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
+<li>/home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/solver/<a class="el" href="copy__constraints__to__sparse__matrix_8hpp_source.html">copy_constraints_to_sparse_matrix.hpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023 - Present, MIT License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

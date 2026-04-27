@@ -1,0 +1,14 @@
+.. meta::20881b7a26c2d602513e3a95320f071f27553bb0fac475548b03711b8e009df0bafd606f2cfb42fa1aa7bbb645fc966410015dcda3cb747466c78b6cd80bec07
+
+:orphan:
+
+.. title:: Kynema API: kynema_fmb::BeamSection Struct Reference
+
+BeamSection Struct Reference
+============================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: structkynema__fmb_1_1BeamSection.html

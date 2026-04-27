@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kynema API: kynema_fmb::util::SimulationControls Struct Reference &mdash; Kynema 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Kynema
+              <img src="../../_static/oturb_logo_v2.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/user.html">User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../theory/index.html">Theory Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/index.html">Developer Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/index.html">Benchmark Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../publications.html">Kynema-FMB Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../acknowledgement.html">Acknowledgements</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Kynema</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Kynema API: kynema_fmb::util::SimulationControls Struct Reference</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/doxygen/html/structkynema__fmb_1_1util_1_1SimulationControls.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="simulationcontrols-struct-reference">
+<h1>SimulationControls Struct Reference<a class="headerlink" href="#simulationcontrols-struct-reference" title="Permalink to this heading"></a></h1>
+<div class="doxygen-content docutils container">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Kynema API: kynema_fmb::util::SimulationControls Struct Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Kynema API
+   </div>
+   <div id="projectbrief">A flexible multibody structural dynamics code for wind turbines</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacekynema__fmb.html">kynema_fmb</a></li><li class="navelem"><a class="el" href="namespacekynema__fmb_1_1util.html">util</a></li><li class="navelem"><a class="el" href="structkynema__fmb_1_1util_1_1SimulationControls.html">SimulationControls</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
+<a href="structkynema__fmb_1_1util_1_1SimulationControls-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">kynema_fmb::util::SimulationControls Struct Reference</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Struct to hold the settings for simulation controls.  
+ <a href="structkynema__fmb_1_1util_1_1SimulationControls.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="aerodyn__inflow_8hpp_source.html">aerodyn_inflow.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a3f05054168f07450108b6243c8e2a2ca" id="r_a3f05054168f07450108b6243c8e2a2ca"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1SimulationControls.html#a3f05054168f07450108b6243c8e2a2ca">DebugLevel</a> : std::uint8_t { <br />
+&#160;&#160;<a class="el" href="structkynema__fmb_1_1util_1_1SimulationControls.html#a3f05054168f07450108b6243c8e2a2caa35c3ace1970663a16e5c65baa5941b13">kNone</a> = 0
+, <a class="el" href="structkynema__fmb_1_1util_1_1SimulationControls.html#a3f05054168f07450108b6243c8e2a2caa5316f21c59cf9dd9526061bcb5da9b76">kSummary</a> = 1
+, <a class="el" href="structkynema__fmb_1_1util_1_1SimulationControls.html#a3f05054168f07450108b6243c8e2a2caade970de858c5ffbaccdc0250e117ea9c">kDetailed</a> = 2
+, <a class="el" href="structkynema__fmb_1_1util_1_1SimulationControls.html#a3f05054168f07450108b6243c8e2a2caa4040db3385da12d7dfbf28b8ea02435b">kInputFiles</a> = 3
+, <br />
+&#160;&#160;<a class="el" href="structkynema__fmb_1_1util_1_1SimulationControls.html#a3f05054168f07450108b6243c8e2a2caa34bdbffdb1c0e1b603f58fc0d49548b6">kAll</a> = 4
+<br />
+ }</td></tr>
+<tr class="memdesc:a3f05054168f07450108b6243c8e2a2ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Debug levels used in AeroDyn-Inflow C bindings.  <a href="structkynema__fmb_1_1util_1_1SimulationControls.html#a3f05054168f07450108b6243c8e2a2ca">More...</a><br /></td></tr>
+<tr class="separator:a3f05054168f07450108b6243c8e2a2ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79d49707135c3bdb1cf154fb28c866ff" id="r_a79d49707135c3bdb1cf154fb28c866ff"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1SimulationControls.html#a79d49707135c3bdb1cf154fb28c866ff">OutputFormat</a> : std::uint8_t { <a class="el" href="structkynema__fmb_1_1util_1_1SimulationControls.html#a79d49707135c3bdb1cf154fb28c866ffa35c3ace1970663a16e5c65baa5941b13">kNone</a> = 0
+, <a class="el" href="structkynema__fmb_1_1util_1_1SimulationControls.html#a79d49707135c3bdb1cf154fb28c866ffa3c8cbd89acf49a4b20aded693e13ae86">kText</a> = 1
+, <a class="el" href="structkynema__fmb_1_1util_1_1SimulationControls.html#a79d49707135c3bdb1cf154fb28c866ffa212f9f34e4e151a9ba569c71e1aace47">kBinary</a> = 2
+, <a class="el" href="structkynema__fmb_1_1util_1_1SimulationControls.html#a79d49707135c3bdb1cf154fb28c866ffac551be589b7892e096a0b186a4ef7e61">kText_Binary</a> = 3
+ }</td></tr>
+<tr class="memdesc:a79d49707135c3bdb1cf154fb28c866ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write output format.  <a href="structkynema__fmb_1_1util_1_1SimulationControls.html#a79d49707135c3bdb1cf154fb28c866ff">More...</a><br /></td></tr>
+<tr class="separator:a79d49707135c3bdb1cf154fb28c866ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:aa9eb40a26004aa0dbd5d246a64377d7c" id="r_aa9eb40a26004aa0dbd5d246a64377d7c"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1SimulationControls.html#aa9eb40a26004aa0dbd5d246a64377d7c">aerodyn_input</a></td></tr>
+<tr class="separator:aa9eb40a26004aa0dbd5d246a64377d7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d2d6bdc5b7525c8a117559debf6f432" id="r_a9d2d6bdc5b7525c8a117559debf6f432"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1SimulationControls.html#a9d2d6bdc5b7525c8a117559debf6f432">inflowwind_input</a></td></tr>
+<tr class="separator:a9d2d6bdc5b7525c8a117559debf6f432"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0d1cba1187268503d17ef8a2653d286" id="r_ad0d1cba1187268503d17ef8a2653d286"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1SimulationControls.html#ad0d1cba1187268503d17ef8a2653d286">interpolation_order</a> {1}</td></tr>
+<tr class="separator:ad0d1cba1187268503d17ef8a2653d286"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9fdfb0f752f544c9d849f55303e59ffd" id="r_a9fdfb0f752f544c9d849f55303e59ffd"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1SimulationControls.html#a9fdfb0f752f544c9d849f55303e59ffd">time_step</a> {0.1}</td></tr>
+<tr class="separator:a9fdfb0f752f544c9d849f55303e59ffd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69b2c7d289fcb380b4728c1d0a19d6ba" id="r_a69b2c7d289fcb380b4728c1d0a19d6ba"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1SimulationControls.html#a69b2c7d289fcb380b4728c1d0a19d6ba">max_time</a> {600.}</td></tr>
+<tr class="separator:a69b2c7d289fcb380b4728c1d0a19d6ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb0448068e70486c308d1d6c33147326" id="r_abb0448068e70486c308d1d6c33147326"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1SimulationControls.html#abb0448068e70486c308d1d6c33147326">total_elapsed_time</a> {0.}</td></tr>
+<tr class="separator:abb0448068e70486c308d1d6c33147326"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acfb0b4098be8e484f9ccedf754b077b0" id="r_acfb0b4098be8e484f9ccedf754b077b0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1SimulationControls.html#acfb0b4098be8e484f9ccedf754b077b0">n_time_steps</a> {0}</td></tr>
+<tr class="separator:acfb0b4098be8e484f9ccedf754b077b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a384a2c2b1b6e86e9441116dfedca6767" id="r_a384a2c2b1b6e86e9441116dfedca6767"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1SimulationControls.html#a384a2c2b1b6e86e9441116dfedca6767">transpose_DCM</a> {true}</td></tr>
+<tr class="separator:a384a2c2b1b6e86e9441116dfedca6767"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac64c15e90e6bec60fadad702d232884a" id="r_ac64c15e90e6bec60fadad702d232884a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1SimulationControls.html#ac64c15e90e6bec60fadad702d232884a">point_load_output</a> {true}</td></tr>
+<tr class="separator:ac64c15e90e6bec60fadad702d232884a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab543e74ee4a110b3ee4c262a37d772db" id="r_ab543e74ee4a110b3ee4c262a37d772db"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1util_1_1SimulationControls.html#a3f05054168f07450108b6243c8e2a2ca">DebugLevel</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1SimulationControls.html#ab543e74ee4a110b3ee4c262a37d772db">debug_level</a> {<a class="el" href="structkynema__fmb_1_1util_1_1SimulationControls.html#a3f05054168f07450108b6243c8e2a2caa35c3ace1970663a16e5c65baa5941b13">DebugLevel::kNone</a>}</td></tr>
+<tr class="separator:ab543e74ee4a110b3ee4c262a37d772db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed16cff68e56f533e970f5d1721e53d3" id="r_aed16cff68e56f533e970f5d1721e53d3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1util_1_1SimulationControls.html#a79d49707135c3bdb1cf154fb28c866ff">OutputFormat</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1SimulationControls.html#aed16cff68e56f533e970f5d1721e53d3">output_format</a> {<a class="el" href="structkynema__fmb_1_1util_1_1SimulationControls.html#a79d49707135c3bdb1cf154fb28c866ffa35c3ace1970663a16e5c65baa5941b13">OutputFormat::kNone</a>}</td></tr>
+<tr class="separator:aed16cff68e56f533e970f5d1721e53d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8348a3ad13a3523a7e48ded177a9db1b" id="r_a8348a3ad13a3523a7e48ded177a9db1b"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1SimulationControls.html#a8348a3ad13a3523a7e48ded177a9db1b">output_root_name</a> {&quot;ADI_out&quot;}</td></tr>
+<tr class="separator:a8348a3ad13a3523a7e48ded177a9db1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c447ca9b42c61b9192b54c271b97334" id="r_a3c447ca9b42c61b9192b54c271b97334"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1SimulationControls.html#a3c447ca9b42c61b9192b54c271b97334">output_time_step</a> {0.1}</td></tr>
+<tr class="separator:a3c447ca9b42c61b9192b54c271b97334"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ac19103b840162f59173c1463d94455" id="r_a1ac19103b840162f59173c1463d94455"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1SimulationControls.html#a1ac19103b840162f59173c1463d94455">n_channels</a> {0}</td></tr>
+<tr class="separator:a1ac19103b840162f59173c1463d94455"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:ab4856421aec3aa5e5fdb3aed6d1e16c9" id="r_ab4856421aec3aa5e5fdb3aed6d1e16c9"><td class="memItemLeft" align="right" valign="top">static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1util_1_1SimulationControls.html#ab4856421aec3aa5e5fdb3aed6d1e16c9">kDefaultStringLength</a> {1025}</td></tr>
+<tr class="separator:ab4856421aec3aa5e5fdb3aed6d1e16c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Struct to hold the settings for simulation controls. </p>
+<p>This struct holds the settings for simulation controls, including input file handling, interpolation order, time-related variables, and flags. </p>
+</div><h2 class="groupheader">Member Enumeration Documentation</h2>
+<a id="a3f05054168f07450108b6243c8e2a2ca" name="a3f05054168f07450108b6243c8e2a2ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f05054168f07450108b6243c8e2a2ca">&#9670;&#160;</a></span>DebugLevel</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="structkynema__fmb_1_1util_1_1SimulationControls.html#a3f05054168f07450108b6243c8e2a2ca">kynema_fmb::util::SimulationControls::DebugLevel</a> : std::uint8_t</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Debug levels used in AeroDyn-Inflow C bindings. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a3f05054168f07450108b6243c8e2a2caa35c3ace1970663a16e5c65baa5941b13" name="a3f05054168f07450108b6243c8e2a2caa35c3ace1970663a16e5c65baa5941b13"></a>kNone&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a3f05054168f07450108b6243c8e2a2caa5316f21c59cf9dd9526061bcb5da9b76" name="a3f05054168f07450108b6243c8e2a2caa5316f21c59cf9dd9526061bcb5da9b76"></a>kSummary&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a3f05054168f07450108b6243c8e2a2caade970de858c5ffbaccdc0250e117ea9c" name="a3f05054168f07450108b6243c8e2a2caade970de858c5ffbaccdc0250e117ea9c"></a>kDetailed&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a3f05054168f07450108b6243c8e2a2caa4040db3385da12d7dfbf28b8ea02435b" name="a3f05054168f07450108b6243c8e2a2caa4040db3385da12d7dfbf28b8ea02435b"></a>kInputFiles&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a3f05054168f07450108b6243c8e2a2caa34bdbffdb1c0e1b603f58fc0d49548b6" name="a3f05054168f07450108b6243c8e2a2caa34bdbffdb1c0e1b603f58fc0d49548b6"></a>kAll&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<a id="a79d49707135c3bdb1cf154fb28c866ff" name="a79d49707135c3bdb1cf154fb28c866ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a79d49707135c3bdb1cf154fb28c866ff">&#9670;&#160;</a></span>OutputFormat</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="structkynema__fmb_1_1util_1_1SimulationControls.html#a79d49707135c3bdb1cf154fb28c866ff">kynema_fmb::util::SimulationControls::OutputFormat</a> : std::uint8_t</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Write output format. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a79d49707135c3bdb1cf154fb28c866ffa35c3ace1970663a16e5c65baa5941b13" name="a79d49707135c3bdb1cf154fb28c866ffa35c3ace1970663a16e5c65baa5941b13"></a>kNone&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a79d49707135c3bdb1cf154fb28c866ffa3c8cbd89acf49a4b20aded693e13ae86" name="a79d49707135c3bdb1cf154fb28c866ffa3c8cbd89acf49a4b20aded693e13ae86"></a>kText&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a79d49707135c3bdb1cf154fb28c866ffa212f9f34e4e151a9ba569c71e1aace47" name="a79d49707135c3bdb1cf154fb28c866ffa212f9f34e4e151a9ba569c71e1aace47"></a>kBinary&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a79d49707135c3bdb1cf154fb28c866ffac551be589b7892e096a0b186a4ef7e61" name="a79d49707135c3bdb1cf154fb28c866ffac551be589b7892e096a0b186a4ef7e61"></a>kText_Binary&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="aa9eb40a26004aa0dbd5d246a64377d7c" name="aa9eb40a26004aa0dbd5d246a64377d7c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9eb40a26004aa0dbd5d246a64377d7c">&#9670;&#160;</a></span>aerodyn_input</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string kynema_fmb::util::SimulationControls::aerodyn_input</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab543e74ee4a110b3ee4c262a37d772db" name="ab543e74ee4a110b3ee4c262a37d772db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab543e74ee4a110b3ee4c262a37d772db">&#9670;&#160;</a></span>debug_level</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1util_1_1SimulationControls.html#a3f05054168f07450108b6243c8e2a2ca">DebugLevel</a> kynema_fmb::util::SimulationControls::debug_level {<a class="el" href="structkynema__fmb_1_1util_1_1SimulationControls.html#a3f05054168f07450108b6243c8e2a2caa35c3ace1970663a16e5c65baa5941b13">DebugLevel::kNone</a>}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9d2d6bdc5b7525c8a117559debf6f432" name="a9d2d6bdc5b7525c8a117559debf6f432"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d2d6bdc5b7525c8a117559debf6f432">&#9670;&#160;</a></span>inflowwind_input</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string kynema_fmb::util::SimulationControls::inflowwind_input</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad0d1cba1187268503d17ef8a2653d286" name="ad0d1cba1187268503d17ef8a2653d286"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad0d1cba1187268503d17ef8a2653d286">&#9670;&#160;</a></span>interpolation_order</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int kynema_fmb::util::SimulationControls::interpolation_order {1}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab4856421aec3aa5e5fdb3aed6d1e16c9" name="ab4856421aec3aa5e5fdb3aed6d1e16c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab4856421aec3aa5e5fdb3aed6d1e16c9">&#9670;&#160;</a></span>kDefaultStringLength</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr size_t kynema_fmb::util::SimulationControls::kDefaultStringLength {1025}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a69b2c7d289fcb380b4728c1d0a19d6ba" name="a69b2c7d289fcb380b4728c1d0a19d6ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a69b2c7d289fcb380b4728c1d0a19d6ba">&#9670;&#160;</a></span>max_time</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double kynema_fmb::util::SimulationControls::max_time {600.}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1ac19103b840162f59173c1463d94455" name="a1ac19103b840162f59173c1463d94455"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ac19103b840162f59173c1463d94455">&#9670;&#160;</a></span>n_channels</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t kynema_fmb::util::SimulationControls::n_channels {0}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acfb0b4098be8e484f9ccedf754b077b0" name="acfb0b4098be8e484f9ccedf754b077b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acfb0b4098be8e484f9ccedf754b077b0">&#9670;&#160;</a></span>n_time_steps</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int kynema_fmb::util::SimulationControls::n_time_steps {0}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aed16cff68e56f533e970f5d1721e53d3" name="aed16cff68e56f533e970f5d1721e53d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed16cff68e56f533e970f5d1721e53d3">&#9670;&#160;</a></span>output_format</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1util_1_1SimulationControls.html#a79d49707135c3bdb1cf154fb28c866ff">OutputFormat</a> kynema_fmb::util::SimulationControls::output_format {<a class="el" href="structkynema__fmb_1_1util_1_1SimulationControls.html#a79d49707135c3bdb1cf154fb28c866ffa35c3ace1970663a16e5c65baa5941b13">OutputFormat::kNone</a>}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8348a3ad13a3523a7e48ded177a9db1b" name="a8348a3ad13a3523a7e48ded177a9db1b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8348a3ad13a3523a7e48ded177a9db1b">&#9670;&#160;</a></span>output_root_name</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string kynema_fmb::util::SimulationControls::output_root_name {&quot;ADI_out&quot;}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3c447ca9b42c61b9192b54c271b97334" name="a3c447ca9b42c61b9192b54c271b97334"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c447ca9b42c61b9192b54c271b97334">&#9670;&#160;</a></span>output_time_step</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double kynema_fmb::util::SimulationControls::output_time_step {0.1}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac64c15e90e6bec60fadad702d232884a" name="ac64c15e90e6bec60fadad702d232884a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac64c15e90e6bec60fadad702d232884a">&#9670;&#160;</a></span>point_load_output</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool kynema_fmb::util::SimulationControls::point_load_output {true}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9fdfb0f752f544c9d849f55303e59ffd" name="a9fdfb0f752f544c9d849f55303e59ffd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9fdfb0f752f544c9d849f55303e59ffd">&#9670;&#160;</a></span>time_step</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double kynema_fmb::util::SimulationControls::time_step {0.1}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abb0448068e70486c308d1d6c33147326" name="abb0448068e70486c308d1d6c33147326"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb0448068e70486c308d1d6c33147326">&#9670;&#160;</a></span>total_elapsed_time</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double kynema_fmb::util::SimulationControls::total_elapsed_time {0.}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a384a2c2b1b6e86e9441116dfedca6767" name="a384a2c2b1b6e86e9441116dfedca6767"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a384a2c2b1b6e86e9441116dfedca6767">&#9670;&#160;</a></span>transpose_DCM</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool kynema_fmb::util::SimulationControls::transpose_DCM {true}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
+<li>/home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/utilities/aerodynamics/<a class="el" href="aerodyn__inflow_8hpp_source.html">aerodyn_inflow.hpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023 - Present, MIT License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

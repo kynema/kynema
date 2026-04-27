@@ -1,11 +1,11 @@
-.. meta::db0d60facff04f4863543802508155017f32fe6c006df9a797a28f887d7268c64437924614ed25873a5664b95a136a2430032f3c44cedc334d56219a25bc5caa
+.. meta::679a4113a851373d87d815bfeee78dc9cba8a14abaeaf2782f89f289b165d203a9fea6911ea252188f41140cc67f8a799aa8d48aea41d048015ceeb7c3e05dc3
 
 :orphan:
 
-.. title:: Kynema API: /home/runner/work/kynema/kynema/kynema/src/dof_management/compute_node_freedom_map_table.hpp File Reference
+.. title:: Kynema API: /home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/dof_management/compute_node_freedom_map_table.hpp File Reference
 
-/home/runner/work/kynema/kynema/kynema/src/dof\_management/compute\_node\_freedom\_map\_table.hpp File Reference
-================================================================================================================
+/home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/dof\_management/compute\_node\_freedom\_map\_table.hpp File Reference
+============================================================================================================================
 
 .. container:: doxygen-content
 

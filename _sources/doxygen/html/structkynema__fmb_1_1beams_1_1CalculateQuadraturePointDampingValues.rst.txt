@@ -1,0 +1,14 @@
+.. meta::3da503125981e1ae43fb56c35efa98ae824198bce7b74b8bb51e8a565694826bd593caf99ede559e6c3a76760a238ca2f6c12c51edf9e8eba7950e694d2d3ea0
+
+:orphan:
+
+.. title:: Kynema API: kynema_fmb::beams::CalculateQuadraturePointDampingValues&lt; DeviceType &gt; Struct Template Reference
+
+CalculateQuadraturePointDampingValues&lt; DeviceType &gt; Struct Template Reference
+===================================================================================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: structkynema__fmb_1_1beams_1_1CalculateQuadraturePointDampingValues.html

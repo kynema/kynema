@@ -1,0 +1,14 @@
+.. meta::c002b53ba8a62bf36cf3700ce2834ceff4c3863dbcbb1de0420fdfb8a417ee0c80971ccfd68476f74c0d03218e9f2b075c0ac6cf324df87abcea2e817f997565
+
+:orphan:
+
+.. title:: Kynema API: kynema_fmb::dss::Handle&lt; Algorithm &gt; Class Template Reference
+
+Handle&lt; Algorithm &gt; Class Template Reference
+==================================================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: classkynema__fmb_1_1dss_1_1Handle.html

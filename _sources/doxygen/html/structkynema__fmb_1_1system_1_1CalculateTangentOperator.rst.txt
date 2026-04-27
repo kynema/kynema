@@ -1,0 +1,14 @@
+.. meta::9b07437b6cdfc34abdcd47c67e0671aa6e4580dce1e010557b08976c6f38c781ef645865ec8dc8d1ab8925f215eb5754d0d862b9a35302e6d2fd93ac789e830a
+
+:orphan:
+
+.. title:: Kynema API: kynema_fmb::system::CalculateTangentOperator&lt; DeviceType &gt; Struct Template Reference
+
+CalculateTangentOperator&lt; DeviceType &gt; Struct Template Reference
+======================================================================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: structkynema__fmb_1_1system_1_1CalculateTangentOperator.html

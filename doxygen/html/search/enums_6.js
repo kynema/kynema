@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['outputformat_0',['OutputFormat',['../structkynema_1_1util_1_1SimulationControls.html#ab99879bffe9cb15b62967d8589c4c049',1,'kynema::util::SimulationControls']]],
-  ['outputtype_1',['OutputType',['../structkynema_1_1util_1_1VTKSettings.html#af28cbc6574f6064fbf30fca71c3f12ff',1,'kynema::util::VTKSettings']]]
+  ['outputformat_0',['OutputFormat',['../structkynema__fmb_1_1util_1_1SimulationControls.html#a79d49707135c3bdb1cf154fb28c866ff',1,'kynema_fmb::util::SimulationControls']]],
+  ['outputtype_1',['OutputType',['../structkynema__fmb_1_1util_1_1VTKSettings.html#a2d2a07b5ecdeb41fbba554ae98df9654',1,'kynema_fmb::util::VTKSettings']]]
 ];

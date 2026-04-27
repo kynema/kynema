@@ -24,7 +24,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Kynema Publications" href="../publications.html" />
+    <link rel="next" title="Kynema-FMB Publications" href="../publications.html" />
     <link rel="prev" title="Dynamic bending of the IEA 15 MW reference wind turbine blade" href="iea15mw-blade.html" /> 
 </head>
 
@@ -74,7 +74,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../publications.html">Kynema Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../publications.html">Kynema-FMB Publications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../acknowledgement.html">Acknowledgements</a></li>
 </ul>
 
@@ -109,7 +109,7 @@
 wind turbine, as defined in the ExaWind benchmark repository. The benchmark models a single NREL
 5MW turbine using an actuator-line representation within a slightly convective, unstable
 atmospheric boundary layer (ABL).</p>
-<p>Fully coupled fluid–structure interaction (FSI) simulations performed with Kynema–AMR-Wind are
+<p>Fully coupled fluid–structure interaction (FSI) simulations performed with Kynema-FMB–AMR-Wind are
 compared against the OpenFAST–AMR-Wind reference solution. The purpose of this benchmark is to
 assess consistency in predicted turbine-level performance and spanwise aerodynamic quantities
 between the two simulation frameworks.</p>
@@ -139,66 +139,66 @@ post-processing steps are provided in the ExaWind Benchmarks documentation:
 <tr class="row-odd"><td><p><strong>OF no twr</strong></p></td>
 <td><p>Benchmark case with tower aerodynamic points disabled.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Kynema</strong></p></td>
-<td><p>Kynema–AMR-Wind using the same time step as OpenFAST.</p></td>
+<tr class="row-even"><td><p><strong>Kynema-FMB</strong></p></td>
+<td><p>Kynema-FMB–AMR-Wind using the same time step as OpenFAST.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Kyn. 10dt</strong></p></td>
-<td><p>Kynema–AMR-Wind using 10× the OpenFAST time step (2 Kynema steps per AMR-Wind step).</p></td>
+<td><p>Kynema-FMB–AMR-Wind using 10× the OpenFAST time step (2 Kynema-FMB steps per AMR-Wind step).</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>Kyn. 20dt</strong></p></td>
-<td><p>Kynema–AMR-Wind using 20× the OpenFAST time step (1 Kynema step per AMR-Wind step).</p></td>
+<td><p>Kynema-FMB–AMR-Wind using 20× the OpenFAST time step (1 Kynema-FMB step per AMR-Wind step).</p></td>
 </tr>
 </tbody>
 </table>
 <p>The “OF, no damp,twr” case is included to isolate differences arising from damping treatment and
-tower aerodynamics. The larger time-step cases (Kyn. 10dt, Kyn. 20dt) demonstrate Kynema’s ability
+tower aerodynamics. The larger time-step cases (Kyn. 10dt, Kyn. 20dt) demonstrate Kynema-FMB’s ability
 to maintain accuracy and stability with larger time steps.</p>
 </div>
 <div class="section" id="turbine-results">
 <h2>Turbine results<a class="headerlink" href="#turbine-results" title="Permalink to this heading"></a></h2>
-<p>This section compares time histories of turbine performance quantities from Kynema and OpenFAST.
+<p>This section compares time histories of turbine performance quantities from Kynema-FMB and OpenFAST.
 The quantities shown include generator power, rotor thrust, rotor speed, blade pitch, and rotor
 torque. These signals reflect both the mean operating state of the turbine and its unsteady
 response to turbulent inflow and control actions.</p>
-<p>Overall, Kynema predictions closely match the OpenFAST reference results, demonstrating consistent
+<p>Overall, Kynema-FMB predictions closely match the OpenFAST reference results, demonstrating consistent
 aeroelastic behavior at the turbine level.</p>
 <div class="figure align-center" id="id1">
-<a class="reference internal image-reference" href="../_images/T0_GenPwr.png"><img alt="Generator power comparison between Kynema and OpenFAST" src="../_images/T0_GenPwr.png" style="width: 90%;" /></a>
-<p class="caption"><span class="caption-number">10 </span><span class="caption-text">Generator power comparison between Kynema and OpenFAST.</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+<a class="reference internal image-reference" href="../_images/T0_GenPwr.png"><img alt="Generator power comparison between Kynema-FMB and OpenFAST" src="../_images/T0_GenPwr.png" style="width: 90%;" /></a>
+<p class="caption"><span class="caption-number">10 </span><span class="caption-text">Generator power comparison between Kynema-FMB and OpenFAST.</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
 </div>
 <div class="figure align-center" id="id2">
-<a class="reference internal image-reference" href="../_images/T0_RotThrust.png"><img alt="Rotor thrust comparison between Kynema and OpenFAST" src="../_images/T0_RotThrust.png" style="width: 90%;" /></a>
-<p class="caption"><span class="caption-number">11 </span><span class="caption-text">Rotor thrust comparison between Kynema and OpenFAST.</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+<a class="reference internal image-reference" href="../_images/T0_RotThrust.png"><img alt="Rotor thrust comparison between Kynema-FMB and OpenFAST" src="../_images/T0_RotThrust.png" style="width: 90%;" /></a>
+<p class="caption"><span class="caption-number">11 </span><span class="caption-text">Rotor thrust comparison between Kynema-FMB and OpenFAST.</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
 </div>
 <div class="figure align-center" id="id3">
-<a class="reference internal image-reference" href="../_images/T0_RotSpeed.png"><img alt="Rotor speed comparison between Kynema and OpenFAST" src="../_images/T0_RotSpeed.png" style="width: 90%;" /></a>
-<p class="caption"><span class="caption-number">12 </span><span class="caption-text">Rotor speed comparison between Kynema and OpenFAST.</span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
+<a class="reference internal image-reference" href="../_images/T0_RotSpeed.png"><img alt="Rotor speed comparison between Kynema-FMB and OpenFAST" src="../_images/T0_RotSpeed.png" style="width: 90%;" /></a>
+<p class="caption"><span class="caption-number">12 </span><span class="caption-text">Rotor speed comparison between Kynema-FMB and OpenFAST.</span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
 </div>
 <div class="figure align-center" id="id4">
-<a class="reference internal image-reference" href="../_images/T0_BldPitch1.png"><img alt="Blade pitch comparison between Kynema and OpenFAST" src="../_images/T0_BldPitch1.png" style="width: 90%;" /></a>
-<p class="caption"><span class="caption-number">13 </span><span class="caption-text">Blade pitch comparison between Kynema and OpenFAST.</span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
+<a class="reference internal image-reference" href="../_images/T0_BldPitch1.png"><img alt="Blade pitch comparison between Kynema-FMB and OpenFAST" src="../_images/T0_BldPitch1.png" style="width: 90%;" /></a>
+<p class="caption"><span class="caption-number">13 </span><span class="caption-text">Blade pitch comparison between Kynema-FMB and OpenFAST.</span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
 </div>
 <div class="figure align-center" id="id5">
-<a class="reference internal image-reference" href="../_images/T0_RotTorq.png"><img alt="Rotor torque comparison between Kynema and OpenFAST" src="../_images/T0_RotTorq.png" style="width: 90%;" /></a>
-<p class="caption"><span class="caption-number">14 </span><span class="caption-text">Rotor torque comparison between Kynema and OpenFAST.</span><a class="headerlink" href="#id5" title="Permalink to this image"></a></p>
+<a class="reference internal image-reference" href="../_images/T0_RotTorq.png"><img alt="Rotor torque comparison between Kynema-FMB and OpenFAST" src="../_images/T0_RotTorq.png" style="width: 90%;" /></a>
+<p class="caption"><span class="caption-number">14 </span><span class="caption-text">Rotor torque comparison between Kynema-FMB and OpenFAST.</span><a class="headerlink" href="#id5" title="Permalink to this image"></a></p>
 </div>
 </div>
 <div class="section" id="blade-loading-profiles">
 <h2>Blade loading profiles<a class="headerlink" href="#blade-loading-profiles" title="Permalink to this heading"></a></h2>
 <p>To further assess the actuator-line implementation, we compare spanwise distributions of sectional
-blade quantities. The results show close agreement between Kynema and OpenFAST for angle of attack,
+blade quantities. The results show close agreement between Kynema-FMB and OpenFAST for angle of attack,
 normal and tangential force coefficients, and sectional force components.</p>
 <div class="figure align-center" id="id6">
-<a class="reference internal image-reference" href="../_images/T0_AOA.png"><img alt="Angle of attack comparison between Kynema and OpenFAST" src="../_images/T0_AOA.png" style="width: 90%;" /></a>
-<p class="caption"><span class="caption-number">15 </span><span class="caption-text">Angle of attack comparison between Kynema and OpenFAST.</span><a class="headerlink" href="#id6" title="Permalink to this image"></a></p>
+<a class="reference internal image-reference" href="../_images/T0_AOA.png"><img alt="Angle of attack comparison between Kynema-FMB and OpenFAST" src="../_images/T0_AOA.png" style="width: 90%;" /></a>
+<p class="caption"><span class="caption-number">15 </span><span class="caption-text">Angle of attack comparison between Kynema-FMB and OpenFAST.</span><a class="headerlink" href="#id6" title="Permalink to this image"></a></p>
 </div>
 <div class="figure align-center" id="id7">
-<a class="reference internal image-reference" href="../_images/T0_CnCt.png"><img alt="Normal/tangential coefficient comparison between Kynema and OpenFAST" src="../_images/T0_CnCt.png" style="width: 90%;" /></a>
-<p class="caption"><span class="caption-number">16 </span><span class="caption-text">Sectional normal/tangential coefficient comparison between Kynema and OpenFAST.</span><a class="headerlink" href="#id7" title="Permalink to this image"></a></p>
+<a class="reference internal image-reference" href="../_images/T0_CnCt.png"><img alt="Normal/tangential coefficient comparison between Kynema-FMB and OpenFAST" src="../_images/T0_CnCt.png" style="width: 90%;" /></a>
+<p class="caption"><span class="caption-number">16 </span><span class="caption-text">Sectional normal/tangential coefficient comparison between Kynema-FMB and OpenFAST.</span><a class="headerlink" href="#id7" title="Permalink to this image"></a></p>
 </div>
 <div class="figure align-center" id="id8">
-<a class="reference internal image-reference" href="../_images/T0_FxiFyi.png"><img alt="Sectional force components comparison between Kynema and OpenFAST" src="../_images/T0_FxiFyi.png" style="width: 90%;" /></a>
-<p class="caption"><span class="caption-number">17 </span><span class="caption-text">Sectional force components comparison between Kynema and OpenFAST.</span><a class="headerlink" href="#id8" title="Permalink to this image"></a></p>
+<a class="reference internal image-reference" href="../_images/T0_FxiFyi.png"><img alt="Sectional force components comparison between Kynema-FMB and OpenFAST" src="../_images/T0_FxiFyi.png" style="width: 90%;" /></a>
+<p class="caption"><span class="caption-number">17 </span><span class="caption-text">Sectional force components comparison between Kynema-FMB and OpenFAST.</span><a class="headerlink" href="#id8" title="Permalink to this image"></a></p>
 </div>
 </div>
 </div>
@@ -208,7 +208,7 @@ normal and tangential force coefficients, and sectional force components.</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="iea15mw-blade.html" class="btn btn-neutral float-left" title="Dynamic bending of the IEA 15 MW reference wind turbine blade" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../publications.html" class="btn btn-neutral float-right" title="Kynema Publications" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../publications.html" class="btn btn-neutral float-right" title="Kynema-FMB Publications" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

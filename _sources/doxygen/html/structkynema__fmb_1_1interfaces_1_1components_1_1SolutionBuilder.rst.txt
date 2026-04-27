@@ -1,0 +1,14 @@
+.. meta::014074925c9a4fe82b486e2af8f457bf8c1f8b179b382a4ab7638fd7e68a12da116ebcd03f3ccae866b7b68e5251b2e8e50a6404abb27128bbafed2b23eeab51
+
+:orphan:
+
+.. title:: Kynema API: kynema_fmb::interfaces::components::SolutionBuilder Struct Reference
+
+SolutionBuilder Struct Reference
+================================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: structkynema__fmb_1_1interfaces_1_1components_1_1SolutionBuilder.html

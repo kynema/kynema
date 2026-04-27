@@ -55,7 +55,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="user.html">User Manual</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="compiling.html">Compiling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="linking.html">Linking To Kynema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linking.html">Linking To Kynema-FMB</a></li>
 <li class="toctree-l2"><a class="reference internal" href="vtk_visualization.html">VTK Visualization</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Example: Rigid body with three springs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="turbine.html">Example: IEA15MW Turbine</a></li>
@@ -67,7 +67,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../theory/index.html">Theory Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../developer/index.html">Developer Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../testing/index.html">Benchmark Testing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../publications.html">Kynema Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../publications.html">Kynema-FMB Publications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../acknowledgement.html">Acknowledgements</a></li>
 </ul>
 
@@ -98,11 +98,11 @@
              
   <div class="section" id="example-rigid-body-with-three-springs">
 <h1>Example: Rigid body with three springs<a class="headerlink" href="#example-rigid-body-with-three-springs" title="Permalink to this heading"></a></h1>
-<p>This example will walkthrough how to run simulation of a forced rigid body supported by three nonlinear springs (see <a class="reference internal" href="../theory/rb-springs.html#sec-rb-springs"><span class="std std-ref">Rigid body with three springs</span></a> for details) using Kynema’s high level API.  This model is associated with the DeepCWind platform.
+<p>This example will walkthrough how to run simulation of a forced rigid body supported by three nonlinear springs (see <a class="reference internal" href="../theory/rb-springs.html#sec-rb-springs"><span class="std std-ref">Rigid body with three springs</span></a> for details) using Kynema-FMB’s high level API.  This model is associated with the DeepCWind platform.
 For the most up to date working version of this code, look in <code class="docutils literal notranslate"><span class="pre">tests/documentation_tests/floating_platform</span></code>.</p>
 <p>As with any C++ program, start with the includes.
 As a Kokkos-based library, you’ll need to include <code class="docutils literal notranslate"><span class="pre">Kokkos_Core.hpp</span></code> for setup and teardown operations.
-In this example, we will be interfacing to Kynema using its CFD interface.
+In this example, we will be interfacing to Kynema-FMB using its CFD interface.
 In addition to the interface itself, we will include the builder, which is a factory class which will aid in setting up all the necessary data structures.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;array&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cassert&gt;</span>
@@ -151,7 +151,7 @@ In general, these will be read fom an input file, but we just define them inline
 You can string together setter functions, or call them individually, depending on what works best with your application.</p>
 <p>First, we’ll set some general parameters to be used by the solver.
 These include the gravity, time step size, numerical damping factor, and maximum number of nonlinear iterations taken per step.</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">interface_builder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kynema</span><span class="o">::</span><span class="n">interfaces</span><span class="o">::</span><span class="n">cfd</span><span class="o">::</span><span class="n">InterfaceBuilder</span><span class="p">{}</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">interface_builder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kynema_fmb</span><span class="o">::</span><span class="n">interfaces</span><span class="o">::</span><span class="n">cfd</span><span class="o">::</span><span class="n">InterfaceBuilder</span><span class="p">{}</span>
 <span class="w">                          </span><span class="p">.</span><span class="n">SetGravity</span><span class="p">(</span><span class="n">gravity</span><span class="p">)</span>
 <span class="w">                          </span><span class="p">.</span><span class="n">SetTimeStep</span><span class="p">(</span><span class="n">time_step</span><span class="p">)</span>
 <span class="w">                          </span><span class="p">.</span><span class="n">SetDampingFactor</span><span class="p">(</span><span class="n">rho_inf</span><span class="p">)</span>
@@ -185,7 +185,7 @@ Pick whichever style best fits your application.</p>
 <span class="w">    </span><span class="p">.</span><span class="n">SetMooringLineAnchorPosition</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="mf">52.73</span><span class="p">,</span><span class="w"> </span><span class="mf">91.34</span><span class="p">,</span><span class="w"> </span><span class="mf">-58.4</span><span class="p">});</span>
 </pre></div>
 </div>
-<p>When done, call the <code class="docutils literal notranslate"><span class="pre">.Build()</span></code> function to generate all of Kynema’s data structures and create the interface itself.</p>
+<p>When done, call the <code class="docutils literal notranslate"><span class="pre">.Build()</span></code> function to generate all of Kynema-FMB’s data structures and create the interface itself.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">interface</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">interface_builder</span><span class="p">.</span><span class="n">Build</span><span class="p">();</span>
 </pre></div>
 </div>
@@ -221,7 +221,7 @@ This function returns a boolean stating if the time step converged or not.</p>
 </div>
 <p>And that’s it - the simulation will advance the solution in time.
 At any time, you can access the current position and orientation of the platform as a quaternion through the <code class="docutils literal notranslate"><span class="pre">interface/turbine.floating_platform.node.displacement</span></code> variable.
-You can also tell Kynema to write out the solution to a file at each time step by providing an output file name to the <code class="docutils literal notranslate"><span class="pre">InterfaceBuilder::SetOutputFile</span></code> method before building the interface.</p>
+You can also tell Kynema-FMB to write out the solution to a file at each time step by providing an output file name to the <code class="docutils literal notranslate"><span class="pre">InterfaceBuilder::SetOutputFile</span></code> method before building the interface.</p>
 </div>
 
 

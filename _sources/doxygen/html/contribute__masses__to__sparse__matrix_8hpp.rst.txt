@@ -1,11 +1,11 @@
-.. meta::8b931fbb8e275dc582dfab1632ec21c2c21fb1c95099bcddf2ccf634602b165f344195b191bf6b4bb2a112aa6405251e6dfc81a1a2fe992ad6b162f1290cebdb
+.. meta::ac1ae278493f1b5ee96b88dccb767bae67fc813d09769d836f4151d97b700172fd68c847edc0ebb4a231de8823fc203339746bf932d480df28a2a89fddb15a91
 
 :orphan:
 
-.. title:: Kynema API: /home/runner/work/kynema/kynema/kynema/src/solver/contribute_masses_to_sparse_matrix.hpp File Reference
+.. title:: Kynema API: /home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/solver/contribute_masses_to_sparse_matrix.hpp File Reference
 
-/home/runner/work/kynema/kynema/kynema/src/solver/contribute\_masses\_to\_sparse\_matrix.hpp File Reference
-===========================================================================================================
+/home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/solver/contribute\_masses\_to\_sparse\_matrix.hpp File Reference
+=======================================================================================================================
 
 .. container:: doxygen-content
 

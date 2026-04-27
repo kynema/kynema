@@ -1,0 +1,14 @@
+.. meta::53594d67d4a7e7decfcfdca39a6de433df016f78c40fcf0d96eff6b50d986d8ed3109a4c4dd117e7c18ed70a02685aa5e37b8a25bafdfaecb2db50cb791c9e8d
+
+:orphan:
+
+.. title:: Kynema API: kynema_fmb::beams::CalculateK_D2&lt; DeviceType &gt; Struct Template Reference
+
+CalculateK\_D2&lt; DeviceType &gt; Struct Template Reference
+============================================================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: structkynema__fmb_1_1beams_1_1CalculateK__D2.html

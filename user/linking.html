@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Linking To Kynema &mdash; Kynema 0.0.1 documentation</title>
+  <title>Linking To Kynema-FMB &mdash; Kynema 0.0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
@@ -55,7 +55,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="user.html">User Manual</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="compiling.html">Compiling</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Linking To Kynema</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Linking To Kynema-FMB</a></li>
 <li class="toctree-l2"><a class="reference internal" href="vtk_visualization.html">VTK Visualization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="floating_platform.html">Example: Rigid body with three springs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="turbine.html">Example: IEA15MW Turbine</a></li>
@@ -67,7 +67,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../theory/index.html">Theory Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../developer/index.html">Developer Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../testing/index.html">Benchmark Testing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../publications.html">Kynema Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../publications.html">Kynema-FMB Publications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../acknowledgement.html">Acknowledgements</a></li>
 </ul>
 
@@ -86,7 +86,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="user.html">User Manual</a></li>
-      <li class="breadcrumb-item active">Linking To Kynema</li>
+      <li class="breadcrumb-item active">Linking To Kynema-FMB</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/user/linking.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -96,19 +96,19 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="linking-to-kynema">
-<h1>Linking To Kynema<a class="headerlink" href="#linking-to-kynema" title="Permalink to this heading"></a></h1>
-<p>Kynema is fully discoverable using CMake’s <code class="docutils literal notranslate"><span class="pre">find_package</span></code> utility.
+  <div class="section" id="linking-to-kynema-fmb">
+<h1>Linking To Kynema-FMB<a class="headerlink" href="#linking-to-kynema-fmb" title="Permalink to this heading"></a></h1>
+<p>Kynema-FMB is fully discoverable using CMake’s <code class="docutils literal notranslate"><span class="pre">find_package</span></code> utility.
 Simply add the following line to your <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file.</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">find_package</span><span class="p">(</span><span class="s">Kynema</span><span class="w"> </span><span class="s">REQUIRED</span><span class="p">)</span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">find_package</span><span class="p">(</span><span class="s">KynemaFMB</span><span class="w"> </span><span class="s">REQUIRED</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>This utility will search your path for your Kynema installation and load its target information.
-To link against Kynema, add to your <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> the line</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">my_executable</span><span class="w"> </span><span class="s">PRIVATE</span><span class="w"> </span><span class="s">Kynema::kynema_library</span><span class="p">)</span>
+<p>This utility will search your path for your Kynema-FMB installation and load its target information.
+To link against Kynema-FMB, add to your <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> the line</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">my_executable</span><span class="w"> </span><span class="s">PRIVATE</span><span class="w"> </span><span class="s">KynemaFMB::kynema_fmb_library</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>This line will link to Kynema and all of its dependencies - there is no need to include any transitive dependencies, such as Kokkos, explicitly.</p>
+<p>This line will link to Kynema-FMB and all of its dependencies - there is no need to include any transitive dependencies, such as Kokkos, explicitly.</p>
 </div>
 
 

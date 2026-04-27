@@ -1,7 +1,7 @@
 Theory Manual
 =============
 
-This section describes the theoretical background of Kynema such as formulation of
+This section describes the theoretical background of Kynema-FMB such as formulation of
 elements, constraints, and other relevant topics.
 
 .. toctree::

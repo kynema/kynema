@@ -1,0 +1,14 @@
+.. meta::f17bdadee79c657b8110b3df752ebb5ec17c30a135f40d89f69c0323febb5ecb460ee5306e49ad6b02a26d6ba49ff0c85a051133ccfe1faa8020c52a2df9ee19
+
+:orphan:
+
+.. title:: Kynema API: kynema_fmb::interfaces::components::SolutionInput Struct Reference
+
+SolutionInput Struct Reference
+==============================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: structkynema__fmb_1_1interfaces_1_1components_1_1SolutionInput.html

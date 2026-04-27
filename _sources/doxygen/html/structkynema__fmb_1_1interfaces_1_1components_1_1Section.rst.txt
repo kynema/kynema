@@ -1,0 +1,14 @@
+.. meta::c2e53ea562e0590c7d880cdc8faebb4158254c20c43b3e80e8db77217cc86516f72cf390d953691ec0b6b281c2ab76bed6659edad3b784c53ebaf0c40040321d
+
+:orphan:
+
+.. title:: Kynema API: kynema_fmb::interfaces::components::Section Struct Reference
+
+Section Struct Reference
+========================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: structkynema__fmb_1_1interfaces_1_1components_1_1Section.html

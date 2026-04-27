@@ -1,0 +1,14 @@
+.. meta::fa63162388f2cc0f24ff45019addbbb758bf8832ccfbec77330df919d4a7fe42f8950bdf82119976224e66308836c7d2977da64e93de3ae29107849976bf16af
+
+:orphan:
+
+.. title:: Kynema API: kynema_fmb::util::dylib::load_error Class Reference
+
+load\_error Class Reference
+===========================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: classkynema__fmb_1_1util_1_1dylib_1_1load__error.html

@@ -1,0 +1,14 @@
+.. meta::5db2b08bb332cc3c9adfbcce738289eb4e518929e7f1abb23364ee19937ec2e7734e5cb78283bb573ac2e73b18374c3ebdaffc60972891af287a524af8ddd67b
+
+:orphan:
+
+.. title:: Kynema API: kynema_fmb::constraints::CalculateConstraintResidualGradient&lt; DeviceType &gt; Struct Template Reference
+
+CalculateConstraintResidualGradient&lt; DeviceType &gt; Struct Template Reference
+=================================================================================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: structkynema__fmb_1_1constraints_1_1CalculateConstraintResidualGradient.html

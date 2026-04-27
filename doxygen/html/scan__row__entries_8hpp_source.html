@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kynema API: /home/runner/work/kynema/kynema/kynema/src/solver/scan_row_entries.hpp Source File &mdash; Kynema 0.0.1 documentation</title>
+  <title>Kynema API: /home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/solver/scan_row_entries.hpp Source File &mdash; Kynema 0.0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
@@ -54,7 +54,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../theory/index.html">Theory Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../developer/index.html">Developer Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../testing/index.html">Benchmark Testing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../publications.html">Kynema Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../publications.html">Kynema-FMB Publications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../acknowledgement.html">Acknowledgements</a></li>
 </ul>
 
@@ -72,7 +72,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Kynema API: /home/runner/work/kynema/kynema/kynema/src/solver/scan_row_entries.hpp Source File</li>
+      <li class="breadcrumb-item active">Kynema API: /home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/solver/scan_row_entries.hpp Source File</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/doxygen/html/scan__row__entries_8hpp_source.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -82,8 +82,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="home-runner-work-kynema-kynema-kynema-src-solver-scan-row-entries-hpp-source-file">
-<h1>/home/runner/work/kynema/kynema/kynema/src/solver/scan_row_entries.hpp Source File<a class="headerlink" href="#home-runner-work-kynema-kynema-kynema-src-solver-scan-row-entries-hpp-source-file" title="Permalink to this heading"></a></h1>
+  <div class="section" id="home-runner-work-kynema-fmb-kynema-fmb-kynema-fmb-src-solver-scan-row-entries-hpp-source-file">
+<h1>/home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/solver/scan_row_entries.hpp Source File<a class="headerlink" href="#home-runner-work-kynema-fmb-kynema-fmb-kynema-fmb-src-solver-scan-row-entries-hpp-source-file" title="Permalink to this heading"></a></h1>
 <div class="doxygen-content docutils container">
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
@@ -92,7 +92,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Kynema API: /home/runner/work/kynema/kynema/kynema/src/solver/scan_row_entries.hpp Source File</title>
+<title>Kynema API: /home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/solver/scan_row_entries.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -180,34 +180,34 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;Kokkos_Core.hpp&gt;</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacekynema_1_1solver.html">kynema::solver</a> {</div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacekynema__fmb_1_1solver.html">kynema_fmb::solver</a> {</div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> RowPtrType&gt;</div>
 <div class="foldopen" id="foldopen00012" data-start="{" data-end="};">
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="structkynema_1_1solver_1_1ScanRowEntries.html">   12</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structkynema_1_1solver_1_1ScanRowEntries.html">ScanRowEntries</a> {</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="structkynema_1_1solver_1_1ScanRowEntries.html#a2e52d1620ec6f75964a78866aa5f9c08">   13</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="structkynema_1_1solver_1_1ScanRowEntries.html#a2e52d1620ec6f75964a78866aa5f9c08">ValueType</a> = <span class="keyword">typename</span> RowPtrType::value_type;</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="structkynema_1_1solver_1_1ScanRowEntries.html#acf94329353f773ad82bfc5810982ddc3">   14</a></span>    <span class="keyword">typename</span> RowPtrType::const_type <a class="code hl_variable" href="structkynema_1_1solver_1_1ScanRowEntries.html#acf94329353f773ad82bfc5810982ddc3">row_entries</a>;</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="structkynema_1_1solver_1_1ScanRowEntries.html#a86037b9967ad874e4b30fd4de032bc66">   15</a></span>    RowPtrType <a class="code hl_variable" href="structkynema_1_1solver_1_1ScanRowEntries.html#a86037b9967ad874e4b30fd4de032bc66">row_ptrs</a>;</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="structkynema__fmb_1_1solver_1_1ScanRowEntries.html">   12</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structkynema__fmb_1_1solver_1_1ScanRowEntries.html">ScanRowEntries</a> {</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="structkynema__fmb_1_1solver_1_1ScanRowEntries.html#a7169d4ebd8d590e07172183a59cad895">   13</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="structkynema__fmb_1_1solver_1_1ScanRowEntries.html#a7169d4ebd8d590e07172183a59cad895">ValueType</a> = <span class="keyword">typename</span> RowPtrType::value_type;</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="structkynema__fmb_1_1solver_1_1ScanRowEntries.html#a988f01e63a2432f8cd5336ee01e37522">   14</a></span>    <span class="keyword">typename</span> RowPtrType::const_type <a class="code hl_variable" href="structkynema__fmb_1_1solver_1_1ScanRowEntries.html#a988f01e63a2432f8cd5336ee01e37522">row_entries</a>;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="structkynema__fmb_1_1solver_1_1ScanRowEntries.html#a80a869ac40a4014dc283096c71af14a2">   15</a></span>    RowPtrType <a class="code hl_variable" href="structkynema__fmb_1_1solver_1_1ScanRowEntries.html#a80a869ac40a4014dc283096c71af14a2">row_ptrs</a>;</div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    KOKKOS_FUNCTION</div>
 <div class="foldopen" id="foldopen00018" data-start="{" data-end="}">
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="structkynema_1_1solver_1_1ScanRowEntries.html#a12e636023ec93a762ae1fac357818836">   18</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="structkynema_1_1solver_1_1ScanRowEntries.html#a12e636023ec93a762ae1fac357818836">operator()</a>(<span class="keywordtype">size_t</span> i, <a class="code hl_typedef" href="structkynema_1_1solver_1_1ScanRowEntries.html#a2e52d1620ec6f75964a78866aa5f9c08">ValueType</a>&amp; update, <span class="keywordtype">bool</span> is_final)<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        update += <a class="code hl_variable" href="structkynema_1_1solver_1_1ScanRowEntries.html#acf94329353f773ad82bfc5810982ddc3">row_entries</a>(i);</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="structkynema__fmb_1_1solver_1_1ScanRowEntries.html#ac39d5ee724aeed5d1e7496d03fa87728">   18</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="structkynema__fmb_1_1solver_1_1ScanRowEntries.html#ac39d5ee724aeed5d1e7496d03fa87728">operator()</a>(<span class="keywordtype">size_t</span> i, <a class="code hl_typedef" href="structkynema__fmb_1_1solver_1_1ScanRowEntries.html#a7169d4ebd8d590e07172183a59cad895">ValueType</a>&amp; update, <span class="keywordtype">bool</span> is_final)<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        update += <a class="code hl_variable" href="structkynema__fmb_1_1solver_1_1ScanRowEntries.html#a988f01e63a2432f8cd5336ee01e37522">row_entries</a>(i);</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        <span class="keywordflow">if</span> (is_final) {</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>            <a class="code hl_variable" href="structkynema_1_1solver_1_1ScanRowEntries.html#a86037b9967ad874e4b30fd4de032bc66">row_ptrs</a>(i + 1) = update;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>            <a class="code hl_variable" href="structkynema__fmb_1_1solver_1_1ScanRowEntries.html#a80a869ac40a4014dc283096c71af14a2">row_ptrs</a>(i + 1) = update;</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        }</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    }</div>
 </div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>};</div>
 </div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>}  <span class="comment">// namespace kynema::solver</span></div>
-<div class="ttc" id="anamespacekynema_1_1solver_html"><div class="ttname"><a href="namespacekynema_1_1solver.html">kynema::solver</a></div><div class="ttdef"><b>Definition</b> calculate_error_sum_squares.hpp:5</div></div>
-<div class="ttc" id="astructkynema_1_1solver_1_1ScanRowEntries_html"><div class="ttname"><a href="structkynema_1_1solver_1_1ScanRowEntries.html">kynema::solver::ScanRowEntries</a></div><div class="ttdoc">A Scanning Kernel which calculates the row pointers from a list of the number of entries in each row.</div><div class="ttdef"><b>Definition</b> scan_row_entries.hpp:12</div></div>
-<div class="ttc" id="astructkynema_1_1solver_1_1ScanRowEntries_html_a12e636023ec93a762ae1fac357818836"><div class="ttname"><a href="structkynema_1_1solver_1_1ScanRowEntries.html#a12e636023ec93a762ae1fac357818836">kynema::solver::ScanRowEntries::operator()</a></div><div class="ttdeci">KOKKOS_FUNCTION void operator()(size_t i, ValueType &amp;update, bool is_final) const</div><div class="ttdef"><b>Definition</b> scan_row_entries.hpp:18</div></div>
-<div class="ttc" id="astructkynema_1_1solver_1_1ScanRowEntries_html_a2e52d1620ec6f75964a78866aa5f9c08"><div class="ttname"><a href="structkynema_1_1solver_1_1ScanRowEntries.html#a2e52d1620ec6f75964a78866aa5f9c08">kynema::solver::ScanRowEntries::ValueType</a></div><div class="ttdeci">typename RowPtrType::value_type ValueType</div><div class="ttdef"><b>Definition</b> scan_row_entries.hpp:13</div></div>
-<div class="ttc" id="astructkynema_1_1solver_1_1ScanRowEntries_html_a86037b9967ad874e4b30fd4de032bc66"><div class="ttname"><a href="structkynema_1_1solver_1_1ScanRowEntries.html#a86037b9967ad874e4b30fd4de032bc66">kynema::solver::ScanRowEntries::row_ptrs</a></div><div class="ttdeci">RowPtrType row_ptrs</div><div class="ttdef"><b>Definition</b> scan_row_entries.hpp:15</div></div>
-<div class="ttc" id="astructkynema_1_1solver_1_1ScanRowEntries_html_acf94329353f773ad82bfc5810982ddc3"><div class="ttname"><a href="structkynema_1_1solver_1_1ScanRowEntries.html#acf94329353f773ad82bfc5810982ddc3">kynema::solver::ScanRowEntries::row_entries</a></div><div class="ttdeci">RowPtrType::const_type row_entries</div><div class="ttdef"><b>Definition</b> scan_row_entries.hpp:14</div></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>}  <span class="comment">// namespace kynema_fmb::solver</span></div>
+<div class="ttc" id="anamespacekynema__fmb_1_1solver_html"><div class="ttname"><a href="namespacekynema__fmb_1_1solver.html">kynema_fmb::solver</a></div><div class="ttdef"><b>Definition</b> calculate_error_sum_squares.hpp:5</div></div>
+<div class="ttc" id="astructkynema__fmb_1_1solver_1_1ScanRowEntries_html"><div class="ttname"><a href="structkynema__fmb_1_1solver_1_1ScanRowEntries.html">kynema_fmb::solver::ScanRowEntries</a></div><div class="ttdoc">A Scanning Kernel which calculates the row pointers from a list of the number of entries in each row.</div><div class="ttdef"><b>Definition</b> scan_row_entries.hpp:12</div></div>
+<div class="ttc" id="astructkynema__fmb_1_1solver_1_1ScanRowEntries_html_a7169d4ebd8d590e07172183a59cad895"><div class="ttname"><a href="structkynema__fmb_1_1solver_1_1ScanRowEntries.html#a7169d4ebd8d590e07172183a59cad895">kynema_fmb::solver::ScanRowEntries::ValueType</a></div><div class="ttdeci">typename RowPtrType::value_type ValueType</div><div class="ttdef"><b>Definition</b> scan_row_entries.hpp:13</div></div>
+<div class="ttc" id="astructkynema__fmb_1_1solver_1_1ScanRowEntries_html_a80a869ac40a4014dc283096c71af14a2"><div class="ttname"><a href="structkynema__fmb_1_1solver_1_1ScanRowEntries.html#a80a869ac40a4014dc283096c71af14a2">kynema_fmb::solver::ScanRowEntries::row_ptrs</a></div><div class="ttdeci">RowPtrType row_ptrs</div><div class="ttdef"><b>Definition</b> scan_row_entries.hpp:15</div></div>
+<div class="ttc" id="astructkynema__fmb_1_1solver_1_1ScanRowEntries_html_a988f01e63a2432f8cd5336ee01e37522"><div class="ttname"><a href="structkynema__fmb_1_1solver_1_1ScanRowEntries.html#a988f01e63a2432f8cd5336ee01e37522">kynema_fmb::solver::ScanRowEntries::row_entries</a></div><div class="ttdeci">RowPtrType::const_type row_entries</div><div class="ttdef"><b>Definition</b> scan_row_entries.hpp:14</div></div>
+<div class="ttc" id="astructkynema__fmb_1_1solver_1_1ScanRowEntries_html_ac39d5ee724aeed5d1e7496d03fa87728"><div class="ttname"><a href="structkynema__fmb_1_1solver_1_1ScanRowEntries.html#ac39d5ee724aeed5d1e7496d03fa87728">kynema_fmb::solver::ScanRowEntries::operator()</a></div><div class="ttdeci">KOKKOS_FUNCTION void operator()(size_t i, ValueType &amp;update, bool is_final) const</div><div class="ttdef"><b>Definition</b> scan_row_entries.hpp:18</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

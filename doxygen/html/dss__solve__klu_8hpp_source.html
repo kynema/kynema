@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kynema API: /home/runner/work/kynema/kynema/kynema/src/solver/linear_solver/dss_solve_klu.hpp Source File &mdash; Kynema 0.0.1 documentation</title>
+  <title>Kynema API: /home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/solver/linear_solver/dss_solve_klu.hpp Source File &mdash; Kynema 0.0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
@@ -54,7 +54,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../theory/index.html">Theory Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../developer/index.html">Developer Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../testing/index.html">Benchmark Testing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../publications.html">Kynema Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../publications.html">Kynema-FMB Publications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../acknowledgement.html">Acknowledgements</a></li>
 </ul>
 
@@ -72,7 +72,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Kynema API: /home/runner/work/kynema/kynema/kynema/src/solver/linear_solver/dss_solve_klu.hpp Source File</li>
+      <li class="breadcrumb-item active">Kynema API: /home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/solver/linear_solver/dss_solve_klu.hpp Source File</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/doxygen/html/dss__solve__klu_8hpp_source.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -82,8 +82,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="home-runner-work-kynema-kynema-kynema-src-solver-linear-solver-dss-solve-klu-hpp-source-file">
-<h1>/home/runner/work/kynema/kynema/kynema/src/solver/linear_solver/dss_solve_klu.hpp Source File<a class="headerlink" href="#home-runner-work-kynema-kynema-kynema-src-solver-linear-solver-dss-solve-klu-hpp-source-file" title="Permalink to this heading"></a></h1>
+  <div class="section" id="home-runner-work-kynema-fmb-kynema-fmb-kynema-fmb-src-solver-linear-solver-dss-solve-klu-hpp-source-file">
+<h1>/home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/solver/linear_solver/dss_solve_klu.hpp Source File<a class="headerlink" href="#home-runner-work-kynema-fmb-kynema-fmb-kynema-fmb-src-solver-linear-solver-dss-solve-klu-hpp-source-file" title="Permalink to this heading"></a></h1>
 <div class="doxygen-content docutils container">
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
@@ -92,7 +92,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Kynema API: /home/runner/work/kynema/kynema/kynema/src/solver/linear_solver/dss_solve_klu.hpp Source File</title>
+<title>Kynema API: /home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/solver/linear_solver/dss_solve_klu.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -184,13 +184,13 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="dss__algorithm_8hpp.html">dss_algorithm.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="dss__handle__klu_8hpp.html">dss_handle_klu.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacekynema_1_1dss.html">kynema::dss</a> {</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacekynema__fmb_1_1dss.html">kynema_fmb::dss</a> {</div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> CrsMatrixType, <span class="keyword">typename</span> MultiVectorType&gt;</div>
 <div class="foldopen" id="foldopen00011" data-start="{" data-end="};">
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="structkynema_1_1dss_1_1SolveFunction_3_01Handle_3_01Algorithm_1_1KLU_01_4_00_01CrsMatrixType_00_01MultiVectorType_01_4.html">   11</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structkynema_1_1dss_1_1SolveFunction.html">SolveFunction</a>&lt;<a class="code hl_class" href="classkynema_1_1dss_1_1Handle.html">Handle</a>&lt;<a class="code hl_enumeration" href="namespacekynema_1_1dss.html#a80f774692ab0d512e96cf414a121b3d2">Algorithm</a>::<a class="code hl_enumvalue" href="namespacekynema_1_1dss.html#a80f774692ab0d512e96cf414a121b3d2ad4dcdada1c05a280bb7e95da2874fa97">KLU</a>&gt;, CrsMatrixType, MultiVectorType&gt; {</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="structkynema__fmb_1_1dss_1_1SolveFunction_3_01Handle_3_01Algorithm_1_1KLU_01_4_00_01CrsMatrixType_00_01MultiVectorType_01_4.html">   11</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structkynema__fmb_1_1dss_1_1SolveFunction.html">SolveFunction</a>&lt;<a class="code hl_class" href="classkynema__fmb_1_1dss_1_1Handle.html">Handle</a>&lt;<a class="code hl_enumeration" href="namespacekynema__fmb_1_1dss.html#a14d0ab73a88776d39b9126d546c3f351">Algorithm</a>::<a class="code hl_enumvalue" href="namespacekynema__fmb_1_1dss.html#a14d0ab73a88776d39b9126d546c3f351ad4dcdada1c05a280bb7e95da2874fa97">KLU</a>&gt;, CrsMatrixType, MultiVectorType&gt; {</div>
 <div class="foldopen" id="foldopen00012" data-start="{" data-end="}">
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="structkynema_1_1dss_1_1SolveFunction_3_01Handle_3_01Algorithm_1_1KLU_01_4_00_01CrsMatrixType_00_01MultiVectorType_01_4.html#a0934f7ad2fd70c3dafb739a2569f4e5f">   12</a></span>    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="structkynema_1_1dss_1_1SolveFunction_3_01Handle_3_01Algorithm_1_1KLU_01_4_00_01CrsMatrixType_00_01MultiVectorType_01_4.html#a0934f7ad2fd70c3dafb739a2569f4e5f">solve</a>(</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>        <a class="code hl_class" href="classkynema_1_1dss_1_1Handle.html">Handle&lt;Algorithm::KLU&gt;</a>&amp; dss_handle, CrsMatrixType&amp; A, MultiVectorType&amp; b, MultiVectorType&amp; x</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="structkynema__fmb_1_1dss_1_1SolveFunction_3_01Handle_3_01Algorithm_1_1KLU_01_4_00_01CrsMatrixType_00_01MultiVectorType_01_4.html#aa0c538e3e04178a24228afe7171a2918">   12</a></span>    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="structkynema__fmb_1_1dss_1_1SolveFunction_3_01Handle_3_01Algorithm_1_1KLU_01_4_00_01CrsMatrixType_00_01MultiVectorType_01_4.html#aa0c538e3e04178a24228afe7171a2918">solve</a>(</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>        <a class="code hl_class" href="classkynema__fmb_1_1dss_1_1Handle.html">Handle&lt;Algorithm::KLU&gt;</a>&amp; dss_handle, CrsMatrixType&amp; A, MultiVectorType&amp; b, MultiVectorType&amp; x</div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    ) {</div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>        <span class="keyword">const</span> <span class="keyword">auto</span> num_rows = A.numRows();</div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
@@ -208,15 +208,15 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>};</div>
 </div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>}  <span class="comment">// namespace kynema::dss</span></div>
-<div class="ttc" id="aclasskynema_1_1dss_1_1Handle_html"><div class="ttname"><a href="classkynema_1_1dss_1_1Handle.html">kynema::dss::Handle</a></div><div class="ttdef"><b>Definition</b> dss_handle.hpp:10</div></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>}  <span class="comment">// namespace kynema_fmb::dss</span></div>
+<div class="ttc" id="aclasskynema__fmb_1_1dss_1_1Handle_html"><div class="ttname"><a href="classkynema__fmb_1_1dss_1_1Handle.html">kynema_fmb::dss::Handle</a></div><div class="ttdef"><b>Definition</b> dss_handle.hpp:10</div></div>
 <div class="ttc" id="adss__algorithm_8hpp_html"><div class="ttname"><a href="dss__algorithm_8hpp.html">dss_algorithm.hpp</a></div></div>
 <div class="ttc" id="adss__handle__klu_8hpp_html"><div class="ttname"><a href="dss__handle__klu_8hpp.html">dss_handle_klu.hpp</a></div></div>
-<div class="ttc" id="anamespacekynema_1_1dss_html"><div class="ttname"><a href="namespacekynema_1_1dss.html">kynema::dss</a></div><div class="ttdef"><b>Definition</b> dss_algorithm.hpp:4</div></div>
-<div class="ttc" id="anamespacekynema_1_1dss_html_a80f774692ab0d512e96cf414a121b3d2"><div class="ttname"><a href="namespacekynema_1_1dss.html#a80f774692ab0d512e96cf414a121b3d2">kynema::dss::Algorithm</a></div><div class="ttdeci">Algorithm</div><div class="ttdef"><b>Definition</b> dss_algorithm.hpp:6</div></div>
-<div class="ttc" id="anamespacekynema_1_1dss_html_a80f774692ab0d512e96cf414a121b3d2ad4dcdada1c05a280bb7e95da2874fa97"><div class="ttname"><a href="namespacekynema_1_1dss.html#a80f774692ab0d512e96cf414a121b3d2ad4dcdada1c05a280bb7e95da2874fa97">kynema::dss::Algorithm::KLU</a></div><div class="ttdeci">@ KLU</div></div>
-<div class="ttc" id="astructkynema_1_1dss_1_1SolveFunction_3_01Handle_3_01Algorithm_1_1KLU_01_4_00_01CrsMatrixType_00_01MultiVectorType_01_4_html_a0934f7ad2fd70c3dafb739a2569f4e5f"><div class="ttname"><a href="structkynema_1_1dss_1_1SolveFunction_3_01Handle_3_01Algorithm_1_1KLU_01_4_00_01CrsMatrixType_00_01MultiVectorType_01_4.html#a0934f7ad2fd70c3dafb739a2569f4e5f">kynema::dss::SolveFunction&lt; Handle&lt; Algorithm::KLU &gt;, CrsMatrixType, MultiVectorType &gt;::solve</a></div><div class="ttdeci">static void solve(Handle&lt; Algorithm::KLU &gt; &amp;dss_handle, CrsMatrixType &amp;A, MultiVectorType &amp;b, MultiVectorType &amp;x)</div><div class="ttdef"><b>Definition</b> dss_solve_klu.hpp:12</div></div>
-<div class="ttc" id="astructkynema_1_1dss_1_1SolveFunction_html"><div class="ttname"><a href="structkynema_1_1dss_1_1SolveFunction.html">kynema::dss::SolveFunction</a></div><div class="ttdef"><b>Definition</b> dss_solve.hpp:8</div></div>
+<div class="ttc" id="anamespacekynema__fmb_1_1dss_html"><div class="ttname"><a href="namespacekynema__fmb_1_1dss.html">kynema_fmb::dss</a></div><div class="ttdef"><b>Definition</b> dss_algorithm.hpp:4</div></div>
+<div class="ttc" id="anamespacekynema__fmb_1_1dss_html_a14d0ab73a88776d39b9126d546c3f351"><div class="ttname"><a href="namespacekynema__fmb_1_1dss.html#a14d0ab73a88776d39b9126d546c3f351">kynema_fmb::dss::Algorithm</a></div><div class="ttdeci">Algorithm</div><div class="ttdef"><b>Definition</b> dss_algorithm.hpp:6</div></div>
+<div class="ttc" id="anamespacekynema__fmb_1_1dss_html_a14d0ab73a88776d39b9126d546c3f351ad4dcdada1c05a280bb7e95da2874fa97"><div class="ttname"><a href="namespacekynema__fmb_1_1dss.html#a14d0ab73a88776d39b9126d546c3f351ad4dcdada1c05a280bb7e95da2874fa97">kynema_fmb::dss::Algorithm::KLU</a></div><div class="ttdeci">@ KLU</div></div>
+<div class="ttc" id="astructkynema__fmb_1_1dss_1_1SolveFunction_3_01Handle_3_01Algorithm_1_1KLU_01_4_00_01CrsMatrixType_00_01MultiVectorType_01_4_html_aa0c538e3e04178a24228afe7171a2918"><div class="ttname"><a href="structkynema__fmb_1_1dss_1_1SolveFunction_3_01Handle_3_01Algorithm_1_1KLU_01_4_00_01CrsMatrixType_00_01MultiVectorType_01_4.html#aa0c538e3e04178a24228afe7171a2918">kynema_fmb::dss::SolveFunction&lt; Handle&lt; Algorithm::KLU &gt;, CrsMatrixType, MultiVectorType &gt;::solve</a></div><div class="ttdeci">static void solve(Handle&lt; Algorithm::KLU &gt; &amp;dss_handle, CrsMatrixType &amp;A, MultiVectorType &amp;b, MultiVectorType &amp;x)</div><div class="ttdef"><b>Definition</b> dss_solve_klu.hpp:12</div></div>
+<div class="ttc" id="astructkynema__fmb_1_1dss_1_1SolveFunction_html"><div class="ttname"><a href="structkynema__fmb_1_1dss_1_1SolveFunction.html">kynema_fmb::dss::SolveFunction</a></div><div class="ttdef"><b>Definition</b> dss_solve.hpp:8</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

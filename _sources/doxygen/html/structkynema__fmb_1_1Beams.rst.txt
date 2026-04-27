@@ -1,0 +1,14 @@
+.. meta::bf844cf193d35afd4021c012fb21c117e33b3c5f49604db4ad98dabb2fea4109d4b72d06978c4e2fd1f2babe7d6d3668492a51a991e43a70ba8f13853fbdf7a7
+
+:orphan:
+
+.. title:: Kynema API: kynema_fmb::Beams&lt; DeviceType &gt; Struct Template Reference
+
+Beams&lt; DeviceType &gt; Struct Template Reference
+===================================================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: structkynema__fmb_1_1Beams.html

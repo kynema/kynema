@@ -1,0 +1,14 @@
+.. meta::7fe96913d752a0b7b66ffeebdedb527a978109c084eb23d87fde8afc62d3117fa1a6c797f74b1a7b7737d067b8fe2a13e4c5907761066849860115fd0083fbdf
+
+:orphan:
+
+.. title:: Kynema API: kynema_fmb::dss::NumericFunction&lt; Handle&lt; Algorithm::UMFPACK &gt;, CrsMatrixType &gt; Struct Template Reference
+
+UMFPACK &gt;, CrsMatrixType &gt; Struct Template Reference
+==========================================================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: structkynema__fmb_1_1dss_1_1NumericFunction_3_01Handle_3_01Algorithm_1_1UMFPACK_01_4_00_01CrsMatrixType_01_4.html

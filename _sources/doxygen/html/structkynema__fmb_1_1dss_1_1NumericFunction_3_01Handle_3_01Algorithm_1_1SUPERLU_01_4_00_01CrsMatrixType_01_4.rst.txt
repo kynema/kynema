@@ -1,0 +1,14 @@
+.. meta::714b1d0fbc095f75ac42a0f3ac4e60b8951fd195611c470e423d0cd86580491ba6a7faa129e5811805798a524a5ebe136e1ad4513b8ff781ec31eb8004fbe914
+
+:orphan:
+
+.. title:: Kynema API: kynema_fmb::dss::NumericFunction&lt; Handle&lt; Algorithm::SUPERLU &gt;, CrsMatrixType &gt; Struct Template Reference
+
+SUPERLU &gt;, CrsMatrixType &gt; Struct Template Reference
+==========================================================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: structkynema__fmb_1_1dss_1_1NumericFunction_3_01Handle_3_01Algorithm_1_1SUPERLU_01_4_00_01CrsMatrixType_01_4.html

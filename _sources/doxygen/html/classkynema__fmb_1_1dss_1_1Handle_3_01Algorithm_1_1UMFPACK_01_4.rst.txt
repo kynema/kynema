@@ -1,0 +1,14 @@
+.. meta::b5be0299f7bc4f2969ba98651e71f9ee0e684f6807e8f95cc95e2473260ee45a494b18107077087f936e2f3c30734a7d640c09450a635e12cd5f58e01774b583
+
+:orphan:
+
+.. title:: Kynema API: kynema_fmb::dss::Handle&lt; Algorithm::UMFPACK &gt; Class Reference
+
+UMFPACK &gt; Class Reference
+============================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: classkynema__fmb_1_1dss_1_1Handle_3_01Algorithm_1_1UMFPACK_01_4.html

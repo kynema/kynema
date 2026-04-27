@@ -1,0 +1,14 @@
+.. meta::94af99ce7e4a62d578e3a65d9bca9a045bab11dd4e8cca1978a0aff984448a77726ba5c3046ca99df6872fa9d5fc470f80fb4389ed696a8e8105bd367cf8d9d8
+
+:orphan:
+
+.. title:: Kynema API: kynema_fmb::state::UpdateStaticPrediction&lt; DeviceType &gt; Struct Template Reference
+
+UpdateStaticPrediction&lt; DeviceType &gt; Struct Template Reference
+====================================================================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: structkynema__fmb_1_1state_1_1UpdateStaticPrediction.html

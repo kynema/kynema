@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kynema API: kynema_fmb::state::CalculateNextState&amp;lt; DeviceType &amp;gt; Struct Template Reference &mdash; Kynema 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Kynema
+              <img src="../../_static/oturb_logo_v2.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/user.html">User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../theory/index.html">Theory Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/index.html">Developer Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/index.html">Benchmark Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../publications.html">Kynema-FMB Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../acknowledgement.html">Acknowledgements</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Kynema</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Kynema API: kynema_fmb::state::CalculateNextState&amp;lt; DeviceType &amp;gt; Struct Template Reference</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/doxygen/html/structkynema__fmb_1_1state_1_1CalculateNextState.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="calculatenextstate-lt-devicetype-gt-struct-template-reference">
+<h1>CalculateNextState&amp;lt; DeviceType &amp;gt; Struct Template Reference<a class="headerlink" href="#calculatenextstate-lt-devicetype-gt-struct-template-reference" title="Permalink to this heading"></a></h1>
+<div class="doxygen-content docutils container">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Kynema API: kynema_fmb::state::CalculateNextState&lt; DeviceType &gt; Struct Template Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Kynema API
+   </div>
+   <div id="projectbrief">A flexible multibody structural dynamics code for wind turbines</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacekynema__fmb.html">kynema_fmb</a></li><li class="navelem"><a class="el" href="namespacekynema__fmb_1_1state.html">state</a></li><li class="navelem"><a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html">CalculateNextState</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="structkynema__fmb_1_1state_1_1CalculateNextState-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">kynema_fmb::state::CalculateNextState&lt; DeviceType &gt; Struct Template Reference</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>A Kernel to predict the next state values before nonlinear iteration begins for a given time step.  
+ <a href="structkynema__fmb_1_1state_1_1CalculateNextState.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="calculate__next__state_8hpp_source.html">calculate_next_state.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a10bddd810e092fdaa0e09611a006a3be" id="r_a10bddd810e092fdaa0e09611a006a3be"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html#a10bddd810e092fdaa0e09611a006a3be">typename</a> ValueType &gt; </td></tr>
+<tr class="memitem:a10bddd810e092fdaa0e09611a006a3be"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html#a10bddd810e092fdaa0e09611a006a3be">using</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html#a10bddd810e092fdaa0e09611a006a3be">View</a> = Kokkos::View&lt; ValueType, DeviceType &gt;</td></tr>
+<tr class="separator:a10bddd810e092fdaa0e09611a006a3be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a6228f84a4c69d8fe5ff9155da9cc1735" id="r_a6228f84a4c69d8fe5ff9155da9cc1735"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html#a10bddd810e092fdaa0e09611a006a3be">KOKKOS_FUNCTION</a> <a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html#a10bddd810e092fdaa0e09611a006a3be">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html#a6228f84a4c69d8fe5ff9155da9cc1735">operator()</a> (<a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html#a10bddd810e092fdaa0e09611a006a3be">size_t</a> node) <a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html#a10bddd810e092fdaa0e09611a006a3be">const</a></td></tr>
+<tr class="separator:a6228f84a4c69d8fe5ff9155da9cc1735"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:abb56f2229fcdd82302abb9b6a66c7c5d" id="r_abb56f2229fcdd82302abb9b6a66c7c5d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html#a10bddd810e092fdaa0e09611a006a3be">double</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html#abb56f2229fcdd82302abb9b6a66c7c5d">h</a></td></tr>
+<tr class="separator:abb56f2229fcdd82302abb9b6a66c7c5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f0fda2e1744cc236c52ead227c59d2b" id="r_a4f0fda2e1744cc236c52ead227c59d2b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html#a10bddd810e092fdaa0e09611a006a3be">double</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html#a4f0fda2e1744cc236c52ead227c59d2b">alpha_f</a></td></tr>
+<tr class="separator:a4f0fda2e1744cc236c52ead227c59d2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a186c1bcb41ac15d417c739249d3386ae" id="r_a186c1bcb41ac15d417c739249d3386ae"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html#a10bddd810e092fdaa0e09611a006a3be">double</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html#a186c1bcb41ac15d417c739249d3386ae">alpha_m</a></td></tr>
+<tr class="separator:a186c1bcb41ac15d417c739249d3386ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9357f903fa8bc47a042d9c2904c118f" id="r_ae9357f903fa8bc47a042d9c2904c118f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html#a10bddd810e092fdaa0e09611a006a3be">double</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html#ae9357f903fa8bc47a042d9c2904c118f">beta</a></td></tr>
+<tr class="separator:ae9357f903fa8bc47a042d9c2904c118f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aebdaa2f714aef42fc0c54a40809b968a" id="r_aebdaa2f714aef42fc0c54a40809b968a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html#a10bddd810e092fdaa0e09611a006a3be">double</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html#aebdaa2f714aef42fc0c54a40809b968a">gamma</a></td></tr>
+<tr class="separator:aebdaa2f714aef42fc0c54a40809b968a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08fda228090defb4988f9657e75a6f0c" id="r_a08fda228090defb4988f9657e75a6f0c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html#a10bddd810e092fdaa0e09611a006a3be">View</a>&lt; <a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html#a10bddd810e092fdaa0e09611a006a3be">double</a> *[6]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html#a08fda228090defb4988f9657e75a6f0c">q_delta</a></td></tr>
+<tr class="separator:a08fda228090defb4988f9657e75a6f0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a186fbee9291879c3f561224633a6f486" id="r_a186fbee9291879c3f561224633a6f486"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html#a10bddd810e092fdaa0e09611a006a3be">View</a>&lt; <a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html#a10bddd810e092fdaa0e09611a006a3be">double</a> *[6]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html#a186fbee9291879c3f561224633a6f486">v</a></td></tr>
+<tr class="separator:a186fbee9291879c3f561224633a6f486"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2cf084267c738b7b2932a0b351790ac5" id="r_a2cf084267c738b7b2932a0b351790ac5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html#a10bddd810e092fdaa0e09611a006a3be">View</a>&lt; <a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html#a10bddd810e092fdaa0e09611a006a3be">double</a> *[6]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html#a2cf084267c738b7b2932a0b351790ac5">vd</a></td></tr>
+<tr class="separator:a2cf084267c738b7b2932a0b351790ac5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac16a6b60fbe96f31f6c916e5faeebfa7" id="r_ac16a6b60fbe96f31f6c916e5faeebfa7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html#a10bddd810e092fdaa0e09611a006a3be">View</a>&lt; <a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html#a10bddd810e092fdaa0e09611a006a3be">double</a> *[6]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html#ac16a6b60fbe96f31f6c916e5faeebfa7">a</a></td></tr>
+<tr class="separator:ac16a6b60fbe96f31f6c916e5faeebfa7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;<a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html#a10bddd810e092fdaa0e09611a006a3be">typename</a> DeviceType&gt;<br />
+struct kynema_fmb::state::CalculateNextState&lt; DeviceType &gt;</div><p>A Kernel to predict the next state values before nonlinear iteration begins for a given time step. </p>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="a10bddd810e092fdaa0e09611a006a3be" name="a10bddd810e092fdaa0e09611a006a3be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10bddd810e092fdaa0e09611a006a3be">&#9670;&#160;</a></span>View</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html#a10bddd810e092fdaa0e09611a006a3be">typename</a> DeviceType &gt; </div>
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html#a10bddd810e092fdaa0e09611a006a3be">typename</a> ValueType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html#a10bddd810e092fdaa0e09611a006a3be">using</a> <a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html">kynema_fmb::state::CalculateNextState</a>&lt; DeviceType &gt;::View =  Kokkos::View&lt;ValueType, DeviceType&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a6228f84a4c69d8fe5ff9155da9cc1735" name="a6228f84a4c69d8fe5ff9155da9cc1735"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6228f84a4c69d8fe5ff9155da9cc1735">&#9670;&#160;</a></span>operator()()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html#a10bddd810e092fdaa0e09611a006a3be">typename</a> DeviceType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html#a10bddd810e092fdaa0e09611a006a3be">KOKKOS_FUNCTION</a> <a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html#a10bddd810e092fdaa0e09611a006a3be">void</a> <a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html">kynema_fmb::state::CalculateNextState</a>&lt; DeviceType &gt;<a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html#a10bddd810e092fdaa0e09611a006a3be">::operator</a>() </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html#a10bddd810e092fdaa0e09611a006a3be">size_t</a>&#160;</td>
+          <td class="paramname"><em>node</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="ac16a6b60fbe96f31f6c916e5faeebfa7" name="ac16a6b60fbe96f31f6c916e5faeebfa7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac16a6b60fbe96f31f6c916e5faeebfa7">&#9670;&#160;</a></span>a</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html#a10bddd810e092fdaa0e09611a006a3be">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html#a10bddd810e092fdaa0e09611a006a3be">View</a>&lt;<a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html#a10bddd810e092fdaa0e09611a006a3be">double</a>* [6]&gt; <a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html">kynema_fmb::state::CalculateNextState</a>&lt; DeviceType &gt;::a</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4f0fda2e1744cc236c52ead227c59d2b" name="a4f0fda2e1744cc236c52ead227c59d2b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f0fda2e1744cc236c52ead227c59d2b">&#9670;&#160;</a></span>alpha_f</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html#a10bddd810e092fdaa0e09611a006a3be">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html#a10bddd810e092fdaa0e09611a006a3be">double</a> <a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html">kynema_fmb::state::CalculateNextState</a>&lt; DeviceType &gt;::alpha_f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a186c1bcb41ac15d417c739249d3386ae" name="a186c1bcb41ac15d417c739249d3386ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a186c1bcb41ac15d417c739249d3386ae">&#9670;&#160;</a></span>alpha_m</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html#a10bddd810e092fdaa0e09611a006a3be">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html#a10bddd810e092fdaa0e09611a006a3be">double</a> <a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html">kynema_fmb::state::CalculateNextState</a>&lt; DeviceType &gt;::alpha_m</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae9357f903fa8bc47a042d9c2904c118f" name="ae9357f903fa8bc47a042d9c2904c118f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9357f903fa8bc47a042d9c2904c118f">&#9670;&#160;</a></span>beta</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html#a10bddd810e092fdaa0e09611a006a3be">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html#a10bddd810e092fdaa0e09611a006a3be">double</a> <a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html">kynema_fmb::state::CalculateNextState</a>&lt; DeviceType &gt;::beta</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aebdaa2f714aef42fc0c54a40809b968a" name="aebdaa2f714aef42fc0c54a40809b968a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aebdaa2f714aef42fc0c54a40809b968a">&#9670;&#160;</a></span>gamma</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html#a10bddd810e092fdaa0e09611a006a3be">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html#a10bddd810e092fdaa0e09611a006a3be">double</a> <a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html">kynema_fmb::state::CalculateNextState</a>&lt; DeviceType &gt;::gamma</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abb56f2229fcdd82302abb9b6a66c7c5d" name="abb56f2229fcdd82302abb9b6a66c7c5d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb56f2229fcdd82302abb9b6a66c7c5d">&#9670;&#160;</a></span>h</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html#a10bddd810e092fdaa0e09611a006a3be">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html#a10bddd810e092fdaa0e09611a006a3be">double</a> <a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html">kynema_fmb::state::CalculateNextState</a>&lt; DeviceType &gt;::h</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a08fda228090defb4988f9657e75a6f0c" name="a08fda228090defb4988f9657e75a6f0c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08fda228090defb4988f9657e75a6f0c">&#9670;&#160;</a></span>q_delta</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html#a10bddd810e092fdaa0e09611a006a3be">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html#a10bddd810e092fdaa0e09611a006a3be">View</a>&lt;<a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html#a10bddd810e092fdaa0e09611a006a3be">double</a>* [6]&gt; <a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html">kynema_fmb::state::CalculateNextState</a>&lt; DeviceType &gt;::q_delta</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a186fbee9291879c3f561224633a6f486" name="a186fbee9291879c3f561224633a6f486"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a186fbee9291879c3f561224633a6f486">&#9670;&#160;</a></span>v</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html#a10bddd810e092fdaa0e09611a006a3be">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html#a10bddd810e092fdaa0e09611a006a3be">View</a>&lt;<a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html#a10bddd810e092fdaa0e09611a006a3be">double</a>* [6]&gt; <a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html">kynema_fmb::state::CalculateNextState</a>&lt; DeviceType &gt;::v</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2cf084267c738b7b2932a0b351790ac5" name="a2cf084267c738b7b2932a0b351790ac5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2cf084267c738b7b2932a0b351790ac5">&#9670;&#160;</a></span>vd</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html#a10bddd810e092fdaa0e09611a006a3be">typename</a> DeviceType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html#a10bddd810e092fdaa0e09611a006a3be">View</a>&lt;<a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html#a10bddd810e092fdaa0e09611a006a3be">double</a>* [6]&gt; <a class="el" href="structkynema__fmb_1_1state_1_1CalculateNextState.html">kynema_fmb::state::CalculateNextState</a>&lt; DeviceType &gt;::vd</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
+<li>/home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/state/<a class="el" href="calculate__next__state_8hpp_source.html">calculate_next_state.hpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023 - Present, MIT License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

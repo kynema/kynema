@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kynema API: kynema_fmb::util::AeroDynInflowLibrary Class Reference &mdash; Kynema 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Kynema
+              <img src="../../_static/oturb_logo_v2.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/user.html">User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../theory/index.html">Theory Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/index.html">Developer Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/index.html">Benchmark Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../publications.html">Kynema-FMB Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../acknowledgement.html">Acknowledgements</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Kynema</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Kynema API: kynema_fmb::util::AeroDynInflowLibrary Class Reference</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/doxygen/html/classkynema__fmb_1_1util_1_1AeroDynInflowLibrary.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="aerodyninflowlibrary-class-reference">
+<h1>AeroDynInflowLibrary Class Reference<a class="headerlink" href="#aerodyninflowlibrary-class-reference" title="Permalink to this heading"></a></h1>
+<div class="doxygen-content docutils container">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Kynema API: kynema_fmb::util::AeroDynInflowLibrary Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Kynema API
+   </div>
+   <div id="projectbrief">A flexible multibody structural dynamics code for wind turbines</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacekynema__fmb.html">kynema_fmb</a></li><li class="navelem"><a class="el" href="namespacekynema__fmb_1_1util.html">util</a></li><li class="navelem"><a class="el" href="classkynema__fmb_1_1util_1_1AeroDynInflowLibrary.html">AeroDynInflowLibrary</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="classkynema__fmb_1_1util_1_1AeroDynInflowLibrary-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">kynema_fmb::util::AeroDynInflowLibrary Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Wrapper class for the AeroDynInflow (ADI) shared library.  
+ <a href="classkynema__fmb_1_1util_1_1AeroDynInflowLibrary.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="aerodyn__inflow_8hpp_source.html">aerodyn_inflow.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:aa8007bdcecf9d483ad0b3f4eefa81e21" id="r_aa8007bdcecf9d483ad0b3f4eefa81e21"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1util_1_1AeroDynInflowLibrary.html#aa8007bdcecf9d483ad0b3f4eefa81e21">AeroDynInflowLibrary</a> (const std::string &amp;shared_lib_path=&quot;aerodyn_inflow_c_binding.dll&quot;, <a class="el" href="structkynema__fmb_1_1util_1_1ErrorHandling.html">ErrorHandling</a> eh=<a class="el" href="structkynema__fmb_1_1util_1_1ErrorHandling.html">ErrorHandling</a>{}, <a class="el" href="structkynema__fmb_1_1util_1_1FluidProperties.html">FluidProperties</a> fp=<a class="el" href="structkynema__fmb_1_1util_1_1FluidProperties.html">FluidProperties</a>{}, <a class="el" href="structkynema__fmb_1_1util_1_1EnvironmentalConditions.html">EnvironmentalConditions</a> ec=<a class="el" href="structkynema__fmb_1_1util_1_1EnvironmentalConditions.html">EnvironmentalConditions</a>{}, <a class="el" href="structkynema__fmb_1_1util_1_1SimulationControls.html">SimulationControls</a> sc=<a class="el" href="structkynema__fmb_1_1util_1_1SimulationControls.html">SimulationControls</a>{}, <a class="el" href="structkynema__fmb_1_1util_1_1VTKSettings.html">VTKSettings</a> vtk=<a class="el" href="structkynema__fmb_1_1util_1_1VTKSettings.html">VTKSettings</a>{})</td></tr>
+<tr class="memdesc:aa8007bdcecf9d483ad0b3f4eefa81e21"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classkynema__fmb_1_1util_1_1AeroDynInflowLibrary.html" title="Wrapper class for the AeroDynInflow (ADI) shared library.">AeroDynInflowLibrary</a> object.  <br /></td></tr>
+<tr class="separator:aa8007bdcecf9d483ad0b3f4eefa81e21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab54c0eef2220ed798943b741884c670" id="r_aab54c0eef2220ed798943b741884c670"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structkynema__fmb_1_1util_1_1ErrorHandling.html">ErrorHandling</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1util_1_1AeroDynInflowLibrary.html#aab54c0eef2220ed798943b741884c670">GetErrorHandling</a> () const</td></tr>
+<tr class="memdesc:aab54c0eef2220ed798943b741884c670"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter methods for the private member variables.  <br /></td></tr>
+<tr class="separator:aab54c0eef2220ed798943b741884c670"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee1063277ab10e18b409821ba9cfabca" id="r_aee1063277ab10e18b409821ba9cfabca"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structkynema__fmb_1_1util_1_1EnvironmentalConditions.html">EnvironmentalConditions</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1util_1_1AeroDynInflowLibrary.html#aee1063277ab10e18b409821ba9cfabca">GetEnvironmentalConditions</a> () const</td></tr>
+<tr class="separator:aee1063277ab10e18b409821ba9cfabca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92c0b8b668bec24fe6ce15d5729eef7e" id="r_a92c0b8b668bec24fe6ce15d5729eef7e"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structkynema__fmb_1_1util_1_1FluidProperties.html">FluidProperties</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1util_1_1AeroDynInflowLibrary.html#a92c0b8b668bec24fe6ce15d5729eef7e">GetFluidProperties</a> () const</td></tr>
+<tr class="separator:a92c0b8b668bec24fe6ce15d5729eef7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a297fb95a576595d6d4446112da62cf5e" id="r_a297fb95a576595d6d4446112da62cf5e"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structkynema__fmb_1_1util_1_1SimulationControls.html">SimulationControls</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1util_1_1AeroDynInflowLibrary.html#a297fb95a576595d6d4446112da62cf5e">GetSimulationControls</a> () const</td></tr>
+<tr class="separator:a297fb95a576595d6d4446112da62cf5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c75ce5b271b0c8ad0febb4ec6a1f8d4" id="r_a2c75ce5b271b0c8ad0febb4ec6a1f8d4"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structkynema__fmb_1_1util_1_1VTKSettings.html">VTKSettings</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1util_1_1AeroDynInflowLibrary.html#a2c75ce5b271b0c8ad0febb4ec6a1f8d4">GetVTKSettings</a> () const</td></tr>
+<tr class="separator:a2c75ce5b271b0c8ad0febb4ec6a1f8d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a790a59a1d7a519da9bc7f2889110b53f" id="r_a790a59a1d7a519da9bc7f2889110b53f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1util_1_1AeroDynInflowLibrary.html#a790a59a1d7a519da9bc7f2889110b53f">Initialize</a> (std::span&lt; const <a class="el" href="structkynema__fmb_1_1util_1_1TurbineConfig.html">TurbineConfig</a> &gt; turbine_configs)</td></tr>
+<tr class="memdesc:a790a59a1d7a519da9bc7f2889110b53f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the AeroDyn Inflow library.  <br /></td></tr>
+<tr class="separator:a790a59a1d7a519da9bc7f2889110b53f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7b74d87fe166ce04869f2eca89e0e4e" id="r_ab7b74d87fe166ce04869f2eca89e0e4e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1util_1_1AeroDynInflowLibrary.html#ab7b74d87fe166ce04869f2eca89e0e4e">PreInitialize</a> (size_t n_turbines)</td></tr>
+<tr class="memdesc:ab7b74d87fe166ce04869f2eca89e0e4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs pre-initialization setup.  <br /></td></tr>
+<tr class="separator:ab7b74d87fe166ce04869f2eca89e0e4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c3122aa766df753263c4c9f7ca68c26" id="r_a4c3122aa766df753263c4c9f7ca68c26"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1util_1_1AeroDynInflowLibrary.html#a4c3122aa766df753263c4c9f7ca68c26">SetupRotors</a> (std::span&lt; const <a class="el" href="structkynema__fmb_1_1util_1_1TurbineConfig.html">TurbineConfig</a> &gt; turbine_configs)</td></tr>
+<tr class="memdesc:a4c3122aa766df753263c4c9f7ca68c26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets up rotor configurations for all turbines.  <br /></td></tr>
+<tr class="separator:a4c3122aa766df753263c4c9f7ca68c26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf526cd2864cd01b7433d479b7881f99" id="r_acf526cd2864cd01b7433d479b7881f99"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1util_1_1AeroDynInflowLibrary.html#acf526cd2864cd01b7433d479b7881f99">FinalizeInitialization</a> ()</td></tr>
+<tr class="memdesc:acf526cd2864cd01b7433d479b7881f99"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finalizes the initialization process.  <br /></td></tr>
+<tr class="separator:acf526cd2864cd01b7433d479b7881f99"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b727c370ce92478433e1f67619b063c" id="r_a8b727c370ce92478433e1f67619b063c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1util_1_1AeroDynInflowLibrary.html#a8b727c370ce92478433e1f67619b063c">SetRotorMotion</a> ()</td></tr>
+<tr class="memdesc:a8b727c370ce92478433e1f67619b063c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set up the rotor motion for the current simulation step.  <br /></td></tr>
+<tr class="separator:a8b727c370ce92478433e1f67619b063c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8813d8d5a61644e3c140d8251ca2f871" id="r_a8813d8d5a61644e3c140d8251ca2f871"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1util_1_1AeroDynInflowLibrary.html#a8813d8d5a61644e3c140d8251ca2f871">CalculateOutput</a> (double time)</td></tr>
+<tr class="memdesc:a8813d8d5a61644e3c140d8251ca2f871"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the output channels at a given time.  <br /></td></tr>
+<tr class="separator:a8813d8d5a61644e3c140d8251ca2f871"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0cc2dd4cc8f4067f21b53f7233e365f9" id="r_a0cc2dd4cc8f4067f21b53f7233e365f9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1util_1_1AeroDynInflowLibrary.html#a0cc2dd4cc8f4067f21b53f7233e365f9">UpdateStates</a> (double current_time, double next_time)</td></tr>
+<tr class="memdesc:a0cc2dd4cc8f4067f21b53f7233e365f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the states of the AeroDyn Inflow library.  <br /></td></tr>
+<tr class="separator:a0cc2dd4cc8f4067f21b53f7233e365f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e313b47da5df830eb9c474ddbadc155" id="r_a3e313b47da5df830eb9c474ddbadc155"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1util_1_1AeroDynInflowLibrary.html#a3e313b47da5df830eb9c474ddbadc155">Finalize</a> ()</td></tr>
+<tr class="memdesc:a3e313b47da5df830eb9c474ddbadc155"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ends the simulation and frees memory.  <br /></td></tr>
+<tr class="separator:a3e313b47da5df830eb9c474ddbadc155"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:a51056d1c2dc71764fa86480a08ffc706" id="r_a51056d1c2dc71764fa86480a08ffc706"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structkynema__fmb_1_1util_1_1TurbineData.html">TurbineData</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1util_1_1AeroDynInflowLibrary.html#a51056d1c2dc71764fa86480a08ffc706">turbines</a></td></tr>
+<tr class="separator:a51056d1c2dc71764fa86480a08ffc706"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeeb468b67788ab88ba24af45bb542c7b" id="r_aeeb468b67788ab88ba24af45bb542c7b"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1util_1_1AeroDynInflowLibrary.html#aeeb468b67788ab88ba24af45bb542c7b">channel_names</a></td></tr>
+<tr class="separator:aeeb468b67788ab88ba24af45bb542c7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a108c5c430c31040e05df1a175f47f225" id="r_a108c5c430c31040e05df1a175f47f225"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1util_1_1AeroDynInflowLibrary.html#a108c5c430c31040e05df1a175f47f225">channel_units</a></td></tr>
+<tr class="separator:a108c5c430c31040e05df1a175f47f225"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a688435259ea44a53cf788b150c07d846" id="r_a688435259ea44a53cf788b150c07d846"><td class="memItemLeft" align="right" valign="top">std::vector&lt; float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1util_1_1AeroDynInflowLibrary.html#a688435259ea44a53cf788b150c07d846">channel_values</a></td></tr>
+<tr class="separator:a688435259ea44a53cf788b150c07d846"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Wrapper class for the AeroDynInflow (ADI) shared library. </p>
+<p>This class provides a C++ interface for interacting with the AeroDynInflow (ADI) shared library, which offers C bindings for the AeroDyn x InflowWind modules of OpenFAST. It encapsulates key functions for AeroDyn/InflowWind simulation, including initialization, rotor setup, state updates, and load calculations.</p>
+<p>Key functions:</p><ul>
+<li>Initialize: Set up the simulation environment</li>
+<li>SetupRotorMotion: Update rotor motion for each timestep</li>
+<li>UpdateStates: Advance internal states</li>
+<li>CalculateOutputChannels: Compute output values</li>
+<li>GetRotorAerodynamicLoads: Retrieve aerodynamic forces and moments</li>
+<li>Finalize: Clean up and release resources</li>
+</ul>
+<dl class="section note"><dt>Note</dt><dd>This class manages the lifecycle of the ADI library, ensuring proper initialization and cleanup. </dd></dl>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="aa8007bdcecf9d483ad0b3f4eefa81e21" name="aa8007bdcecf9d483ad0b3f4eefa81e21"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8007bdcecf9d483ad0b3f4eefa81e21">&#9670;&#160;</a></span>AeroDynInflowLibrary()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">kynema_fmb::util::AeroDynInflowLibrary::AeroDynInflowLibrary </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>shared_lib_path</em> = <code>&quot;aerodyn_inflow_c_binding.dll&quot;</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structkynema__fmb_1_1util_1_1ErrorHandling.html">ErrorHandling</a>&#160;</td>
+          <td class="paramname"><em>eh</em> = <code><a class="el" href="structkynema__fmb_1_1util_1_1ErrorHandling.html">ErrorHandling</a>{}</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structkynema__fmb_1_1util_1_1FluidProperties.html">FluidProperties</a>&#160;</td>
+          <td class="paramname"><em>fp</em> = <code><a class="el" href="structkynema__fmb_1_1util_1_1FluidProperties.html">FluidProperties</a>{}</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structkynema__fmb_1_1util_1_1EnvironmentalConditions.html">EnvironmentalConditions</a>&#160;</td>
+          <td class="paramname"><em>ec</em> = <code><a class="el" href="structkynema__fmb_1_1util_1_1EnvironmentalConditions.html">EnvironmentalConditions</a>{}</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structkynema__fmb_1_1util_1_1SimulationControls.html">SimulationControls</a>&#160;</td>
+          <td class="paramname"><em>sc</em> = <code><a class="el" href="structkynema__fmb_1_1util_1_1SimulationControls.html">SimulationControls</a>{}</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structkynema__fmb_1_1util_1_1VTKSettings.html">VTKSettings</a>&#160;</td>
+          <td class="paramname"><em>vtk</em> = <code><a class="el" href="structkynema__fmb_1_1util_1_1VTKSettings.html">VTKSettings</a>{}</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Construct a new <a class="el" href="classkynema__fmb_1_1util_1_1AeroDynInflowLibrary.html" title="Wrapper class for the AeroDynInflow (ADI) shared library.">AeroDynInflowLibrary</a> object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">shared_lib_path</td><td>Path to the ADI shared library </td></tr>
+    <tr><td class="paramname">eh</td><td>Error handling settings </td></tr>
+    <tr><td class="paramname">fp</td><td>Fluid properties </td></tr>
+    <tr><td class="paramname">ec</td><td>Environmental conditions </td></tr>
+    <tr><td class="paramname">sc</td><td>Simulation control settings </td></tr>
+    <tr><td class="paramname">vtk</td><td>VTK output settings </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a8813d8d5a61644e3c140d8251ca2f871" name="a8813d8d5a61644e3c140d8251ca2f871"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8813d8d5a61644e3c140d8251ca2f871">&#9670;&#160;</a></span>CalculateOutput()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema_fmb::util::AeroDynInflowLibrary::CalculateOutput </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>time</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Calculates the output channels at a given time. </p>
+<p>This function calculates the output channels at a given time by passing the time and the output channel values to the Fortran routine. It also populates the turbine loads.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">time</td><td>Time at which to calculate the output channels </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a3e313b47da5df830eb9c474ddbadc155" name="a3e313b47da5df830eb9c474ddbadc155"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e313b47da5df830eb9c474ddbadc155">&#9670;&#160;</a></span>Finalize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema_fmb::util::AeroDynInflowLibrary::Finalize </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Ends the simulation and frees memory. </p>
+<p>This function ends the simulation and frees memory by passing the error status and error message buffer to the Fortran routine. </p>
+
+</div>
+</div>
+<a id="acf526cd2864cd01b7433d479b7881f99" name="acf526cd2864cd01b7433d479b7881f99"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf526cd2864cd01b7433d479b7881f99">&#9670;&#160;</a></span>FinalizeInitialization()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema_fmb::util::AeroDynInflowLibrary::FinalizeInitialization </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Finalizes the initialization process. </p>
+
+</div>
+</div>
+<a id="aee1063277ab10e18b409821ba9cfabca" name="aee1063277ab10e18b409821ba9cfabca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee1063277ab10e18b409821ba9cfabca">&#9670;&#160;</a></span>GetEnvironmentalConditions()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structkynema__fmb_1_1util_1_1EnvironmentalConditions.html">EnvironmentalConditions</a> &amp; kynema_fmb::util::AeroDynInflowLibrary::GetEnvironmentalConditions </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aab54c0eef2220ed798943b741884c670" name="aab54c0eef2220ed798943b741884c670"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab54c0eef2220ed798943b741884c670">&#9670;&#160;</a></span>GetErrorHandling()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structkynema__fmb_1_1util_1_1ErrorHandling.html">ErrorHandling</a> &amp; kynema_fmb::util::AeroDynInflowLibrary::GetErrorHandling </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Getter methods for the private member variables. </p>
+
+</div>
+</div>
+<a id="a92c0b8b668bec24fe6ce15d5729eef7e" name="a92c0b8b668bec24fe6ce15d5729eef7e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92c0b8b668bec24fe6ce15d5729eef7e">&#9670;&#160;</a></span>GetFluidProperties()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structkynema__fmb_1_1util_1_1FluidProperties.html">FluidProperties</a> &amp; kynema_fmb::util::AeroDynInflowLibrary::GetFluidProperties </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a297fb95a576595d6d4446112da62cf5e" name="a297fb95a576595d6d4446112da62cf5e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a297fb95a576595d6d4446112da62cf5e">&#9670;&#160;</a></span>GetSimulationControls()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structkynema__fmb_1_1util_1_1SimulationControls.html">SimulationControls</a> &amp; kynema_fmb::util::AeroDynInflowLibrary::GetSimulationControls </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2c75ce5b271b0c8ad0febb4ec6a1f8d4" name="a2c75ce5b271b0c8ad0febb4ec6a1f8d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c75ce5b271b0c8ad0febb4ec6a1f8d4">&#9670;&#160;</a></span>GetVTKSettings()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structkynema__fmb_1_1util_1_1VTKSettings.html">VTKSettings</a> &amp; kynema_fmb::util::AeroDynInflowLibrary::GetVTKSettings </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a790a59a1d7a519da9bc7f2889110b53f" name="a790a59a1d7a519da9bc7f2889110b53f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a790a59a1d7a519da9bc7f2889110b53f">&#9670;&#160;</a></span>Initialize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema_fmb::util::AeroDynInflowLibrary::Initialize </td>
+          <td>(</td>
+          <td class="paramtype">std::span&lt; const <a class="el" href="structkynema__fmb_1_1util_1_1TurbineConfig.html">TurbineConfig</a> &gt;&#160;</td>
+          <td class="paramname"><em>turbine_configs</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Initialize the AeroDyn Inflow library. </p>
+<p>Performs a complete initialization of the AeroDyn Inflow library through a three-step process:</p><ol type="1">
+<li>Pre-initialization (ADI_C_PreInit)</li>
+<li>Rotor setup (ADI_C_SetupRotor)</li>
+<li>Final initialization (ADI_C_Init)</li>
+</ol>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">turbine_configs</td><td>Vector of <a class="el" href="structkynema__fmb_1_1util_1_1TurbineConfig.html" title="Configuration for the initial state of a turbine.">TurbineConfig</a> objects, each representing a single turbine </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ab7b74d87fe166ce04869f2eca89e0e4e" name="ab7b74d87fe166ce04869f2eca89e0e4e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7b74d87fe166ce04869f2eca89e0e4e">&#9670;&#160;</a></span>PreInitialize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema_fmb::util::AeroDynInflowLibrary::PreInitialize </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>n_turbines</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Performs pre-initialization setup. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n_turbines</td><td>Number of turbines in the simulation </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a8b727c370ce92478433e1f67619b063c" name="a8b727c370ce92478433e1f67619b063c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b727c370ce92478433e1f67619b063c">&#9670;&#160;</a></span>SetRotorMotion()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema_fmb::util::AeroDynInflowLibrary::SetRotorMotion </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set up the rotor motion for the current simulation step. </p>
+<p>Sets up the motion data (position, orientation, velocity, acceleration) for the hub, nacelle, blade roots, and blade nodes of each turbine. </p>
+
+</div>
+</div>
+<a id="a4c3122aa766df753263c4c9f7ca68c26" name="a4c3122aa766df753263c4c9f7ca68c26"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c3122aa766df753263c4c9f7ca68c26">&#9670;&#160;</a></span>SetupRotors()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema_fmb::util::AeroDynInflowLibrary::SetupRotors </td>
+          <td>(</td>
+          <td class="paramtype">std::span&lt; const <a class="el" href="structkynema__fmb_1_1util_1_1TurbineConfig.html">TurbineConfig</a> &gt;&#160;</td>
+          <td class="paramname"><em>turbine_configs</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets up rotor configurations for all turbines. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">turbine_configs</td><td>Vector of turbine configurations </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a0cc2dd4cc8f4067f21b53f7233e365f9" name="a0cc2dd4cc8f4067f21b53f7233e365f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0cc2dd4cc8f4067f21b53f7233e365f9">&#9670;&#160;</a></span>UpdateStates()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kynema_fmb::util::AeroDynInflowLibrary::UpdateStates </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>current_time</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>next_time</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Updates the states of the AeroDyn Inflow library. </p>
+<p>This function updates the states of the AeroDyn Inflow library by passing the current time and the next time to the Fortran routine.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">current_time</td><td>Current time </td></tr>
+    <tr><td class="paramname">next_time</td><td>Next time </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="aeeb468b67788ab88ba24af45bb542c7b" name="aeeb468b67788ab88ba24af45bb542c7b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeeb468b67788ab88ba24af45bb542c7b">&#9670;&#160;</a></span>channel_names</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::string&gt; kynema_fmb::util::AeroDynInflowLibrary::channel_names</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a108c5c430c31040e05df1a175f47f225" name="a108c5c430c31040e05df1a175f47f225"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a108c5c430c31040e05df1a175f47f225">&#9670;&#160;</a></span>channel_units</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::string&gt; kynema_fmb::util::AeroDynInflowLibrary::channel_units</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a688435259ea44a53cf788b150c07d846" name="a688435259ea44a53cf788b150c07d846"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a688435259ea44a53cf788b150c07d846">&#9670;&#160;</a></span>channel_values</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;float&gt; kynema_fmb::util::AeroDynInflowLibrary::channel_values</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a51056d1c2dc71764fa86480a08ffc706" name="a51056d1c2dc71764fa86480a08ffc706"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51056d1c2dc71764fa86480a08ffc706">&#9670;&#160;</a></span>turbines</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="structkynema__fmb_1_1util_1_1TurbineData.html">TurbineData</a>&gt; kynema_fmb::util::AeroDynInflowLibrary::turbines</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li>/home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/utilities/aerodynamics/<a class="el" href="aerodyn__inflow_8hpp_source.html">aerodyn_inflow.hpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023 - Present, MIT License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

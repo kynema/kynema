@@ -1,0 +1,14 @@
+.. meta::67a04bd8dcfc169d1fb255a753ab866ce5f273a6291e761e466fd5529611535b4fdacde82d2af4aa22a39705ef5f20db8d7b20c1bf883da45155d56a6fc5c24d
+
+:orphan:
+
+.. title:: Kynema API: kynema_fmb::beams::CalculateQuu&lt; DeviceType &gt; Struct Template Reference
+
+CalculateQuu&lt; DeviceType &gt; Struct Template Reference
+==========================================================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: structkynema__fmb_1_1beams_1_1CalculateQuu.html

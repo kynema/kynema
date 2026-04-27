@@ -1,0 +1,14 @@
+.. meta::6110ed94ad8e28c8602492ab36b66f9f9ac2b009f9d84e7a4e4edc0ddb6e9829f151a2680a264f5eb6d48b11ede6e56b995e82530af2e85a05007d885d0789c7
+
+:orphan:
+
+.. title:: Kynema API: kynema_fmb::beams::CalculateQuadraturePointInertialValues&lt; DeviceType &gt; Struct Template Reference
+
+CalculateQuadraturePointInertialValues&lt; DeviceType &gt; Struct Template Reference
+====================================================================================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: structkynema__fmb_1_1beams_1_1CalculateQuadraturePointInertialValues.html

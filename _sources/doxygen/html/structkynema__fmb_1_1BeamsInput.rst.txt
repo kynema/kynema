@@ -1,0 +1,14 @@
+.. meta::9d87636fe20a6e48df07cd3512d386047777e257577fc6de5dbe6c146710bfe1f7a9a946adf901d9a057c1d3b4eed599cd19dcee1c9306908518fcfe1620a27e
+
+:orphan:
+
+.. title:: Kynema API: kynema_fmb::BeamsInput Struct Reference
+
+BeamsInput Struct Reference
+===========================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: structkynema__fmb_1_1BeamsInput.html

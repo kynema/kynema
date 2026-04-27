@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kynema &mdash; Kynema 0.0.1 documentation</title>
+  <title>Kynema-FMB &mdash; Kynema 0.0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css" />
       <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
@@ -56,7 +56,7 @@
 <li class="toctree-l1"><a class="reference internal" href="theory/index.html">Theory Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="developer/index.html">Developer Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="testing/index.html">Benchmark Testing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="publications.html">Kynema Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="publications.html">Kynema-FMB Publications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="acknowledgement.html">Acknowledgements</a></li>
 </ul>
 
@@ -74,7 +74,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Kynema</li>
+      <li class="breadcrumb-item active">Kynema-FMB</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -84,27 +84,27 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="kynema">
-<h1>Kynema<a class="headerlink" href="#kynema" title="Permalink to this heading"></a></h1>
+  <div class="section" id="kynema-fmb">
+<h1>Kynema-FMB<a class="headerlink" href="#kynema-fmb" title="Permalink to this heading"></a></h1>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a></h2>
-<p><a class="reference external" href="https://github.com/kynema/kynema">Kynema</a> [&#64;Sprague-Mudafort:2022,&#64;Sprague-etal:2025]
-is an open-source flexible multibody dynamics (FMD) solver designed for time-domain simulations.  While originally created for wind turbine structural dynamics, the formulation and implementation are those of a general FMD solver and can readily be applied to other systems.  Kynema was designed with a narrow focus, namely to provide a lightweight, accurate FMD solver for coupling to fluid-dynamics codes in wind turbine research, especially the <a class="reference external" href="https://github.com/exawind">ExaWind</a> [&#64;Sprague-etal:2020,&#64;Sharma-etal:2023,&#64;Kuhn-etal:2025] suite of computational-fluid-dynamics codes.
-Wind turbine blades and towers are long slender structures; as such turbines can be represented at high-fidelity with beams, rigid bodies, and constraints.  Kynema provides these model elements, where degrees of freedom are defined in the inertial/global frame of reference and include displacements and rotations (formally as rotation matrices, but stored as quaternions).
+<p><a class="reference external" href="https://github.com/kynema/kynema-fmb">Kynema-FMB</a> [&#64;Sprague-Mudafort:2022,&#64;Sprague-etal:2025]
+is an open-source flexible multibody dynamics (FMD) solver designed for time-domain simulations.  While originally created for wind turbine structural dynamics, the formulation and implementation are those of a general FMD solver and can readily be applied to other systems.  Kynema-FMB was designed with a narrow focus, namely to provide a lightweight, accurate FMD solver for coupling to fluid-dynamics codes in wind turbine research, especially the <a class="reference external" href="https://github.com/exawind">ExaWind</a> [&#64;Sprague-etal:2020,&#64;Sharma-etal:2023,&#64;Kuhn-etal:2025] suite of computational-fluid-dynamics codes.
+Wind turbine blades and towers are long slender structures; as such turbines can be represented at high-fidelity with beams, rigid bodies, and constraints.  Kynema-FMB provides these model elements, where degrees of freedom are defined in the inertial/global frame of reference and include displacements and rotations (formally as rotation matrices, but stored as quaternions).
 The underlying formulation is built on a Lie-group time integrator for index-3 differential-algebraic equations which is second-order accurate in time [&#64;Bruls-etal:2012].
 Beam models are based on geometrically exact beam theory (GEBT) and are discretized as high-order spectral finite elements similar to those in the BeamDyn module [&#64;Wang-etal:2017] of <a class="reference external" href="https://github.com/openfast/">OpenFAST</a> [&#64;Jonkman:2013].
-The governing equations for a FMD system like a wind turbine form a highly nonlinear system of constrained partial-differential equations.  Kynema uses analytical Jacobians in the nonlinear-system solves performed at each time step.  Linear systems use sparse storage and several third-party sparse-linear-system solvers are enabled. Ill conditioning of the linear systems are mitigated with preconditioning described in [&#64;Bottasso-etal:2008].  Kynema is integrated with a simple open-source controller [&#64;Abbas-etal:2022].
-Kynema is written in C++ and leverages Kokkos and Kokkos-Kernels as its performance portability layer enabling simulations on both CPU and GPU systems.   The repository is equipped with extensive automated testing at the unit and regression/system levels including several full reference megawatt-scale reference turbines.
-Kynema fills the need for a lightweight, open-source turbine structural dynamics code that is high fidelity, robust, fast, and capable on running on different computer architectures.</p>
+The governing equations for a FMD system like a wind turbine form a highly nonlinear system of constrained partial-differential equations.  Kynema-FMB uses analytical Jacobians in the nonlinear-system solves performed at each time step.  Linear systems use sparse storage and several third-party sparse-linear-system solvers are enabled. Ill conditioning of the linear systems are mitigated with preconditioning described in [&#64;Bottasso-etal:2008].  Kynema-FMB is integrated with a simple open-source controller [&#64;Abbas-etal:2022].
+Kynema-FMB is written in C++ and leverages Kokkos and Kokkos-Kernels as its performance portability layer enabling simulations on both CPU and GPU systems.   The repository is equipped with extensive automated testing at the unit and regression/system levels including several full reference megawatt-scale reference turbines.
+Kynema-FMB fills the need for a lightweight, open-source turbine structural dynamics code that is high fidelity, robust, fast, and capable on running on different computer architectures.</p>
 </div>
-<div class="section" id="software-development-objectives-of-kynema">
-<h2>Software-development objectives of Kynema<a class="headerlink" href="#software-development-objectives-of-kynema" title="Permalink to this heading"></a></h2>
+<div class="section" id="software-development-objectives-of-kynema-fmb">
+<h2>Software-development objectives of Kynema-FMB<a class="headerlink" href="#software-development-objectives-of-kynema-fmb" title="Permalink to this heading"></a></h2>
 <ul class="simple">
-<li><p>Kynema adheres to modern software development best practices. The
+<li><p>Kynema-FMB adheres to modern software development best practices. The
 development process emphasizes test-driven development (TDD), version control,
 hierarchical automated testing, and continuous integration, leading to a robust
 development environment.</p></li>
-<li><p>Kynema is developed in modern C++ and leverages
+<li><p>Kynema-FMB is developed in modern C++ and leverages
 <a class="reference external" href="https://github.com/kokkos/kokkos">Kokkos</a> as its performance-portability
 library, drawing inspiration from the ExaWind stack.</p></li>
 <li><p>The core data structures are crafted to be memory efficient, enabling
@@ -127,7 +127,7 @@ learning, and AI.</p></li>
 <li class="toctree-l1"><a class="reference internal" href="user/user.html">User Manual</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="user/introduction.html">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="user/compiling.html">Compiling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="user/linking.html">Linking To Kynema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/linking.html">Linking To Kynema-FMB</a></li>
 <li class="toctree-l2"><a class="reference internal" href="user/vtk_visualization.html">VTK Visualization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="user/floating_platform.html">Example: Rigid body with three springs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="user/turbine.html">Example: IEA15MW Turbine</a></li>
@@ -147,7 +147,7 @@ learning, and AI.</p></li>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="developer/index.html">Developer Documentation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="developer/overview.html">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="developer/dev_plan.html">Kynema Development Plan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer/dev_plan.html">Kynema-FMB Development Plan</a></li>
 <li class="toctree-l2"><a class="reference internal" href="developer/documentation.html">Documentation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="doxygen/html/index.html">Kynema API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="developer/tools.html">Developer Tools</a></li>
@@ -157,7 +157,7 @@ learning, and AI.</p></li>
 <li class="toctree-l2"><a class="reference internal" href="testing/index.html#verification-overview">Verification Overview</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="publications.html">Kynema Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="publications.html">Kynema-FMB Publications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="acknowledgement.html">Acknowledgements</a></li>
 </ul>
 </div>
@@ -224,7 +224,7 @@ wind energy.” <em>Journal of Physics: Conference Series</em> <strong>1452</str
 <a class="reference external" href="https://doi.org/10.1088/1742-6596/1452/1/012071">https://doi.org/10.1088/1742-6596/1452/1/012071</a></p>
 </div>
 <div class="csl-entry docutils container" id="ref-sprague-mudafort-2022">
-<p>Sprague, M.A. and R. Mudafort, 2022, Kynema [SWR-23-07].
+<p>Sprague, M.A. and R. Mudafort, 2022, Kynema-FMB [SWR-23-07].
 <a class="reference external" href="https://doi.org/10.11578/dc.20251006.3">https://doi.org/10.11578/dc.20251006.3</a></p>
 </div>
 <div class="csl-entry docutils container" id="ref-sprague-etal-2025">

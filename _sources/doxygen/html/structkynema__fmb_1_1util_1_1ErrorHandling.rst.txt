@@ -1,0 +1,14 @@
+.. meta::9992ef0d8a7e4bdb52f4d6384ffc4b83f52b1b7a1d498a277aaba14c4f843af82cb6047add4b9f3263c94a5f26fb97f9800f6a61b9ad11c5ecbc3c9d0dd36149
+
+:orphan:
+
+.. title:: Kynema API: kynema_fmb::util::ErrorHandling Struct Reference
+
+ErrorHandling Struct Reference
+==============================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: structkynema__fmb_1_1util_1_1ErrorHandling.html

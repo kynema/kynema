@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['algorithm_0',['Algorithm',['../namespacekynema_1_1dss.html#a80f774692ab0d512e96cf414a121b3d2',1,'kynema::dss']]]
+  ['algorithm_0',['Algorithm',['../namespacekynema__fmb_1_1dss.html#a14d0ab73a88776d39b9126d546c3f351',1,'kynema_fmb::dss']]]
 ];

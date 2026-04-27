@@ -3,10 +3,10 @@
 Heavy top constrained-rigid-body example
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-We provide here a simple application of the Kynema formulation for the
+We provide here a simple application of the Kynema-FMB formulation for the
 heavy-top problem, which is a rotating body fixed to the ground by a spherical
 joint. It is a common benchmark problem for constrained-rigid-body dynamics and
-for testing Lie-group time integrators like that used in Kynema. Our approach
+for testing Lie-group time integrators like that used in Kynema-FMB. Our approach
 follows much of what is described in in [@Bruls-etal:2012], but with the key
 differences that we formulate the problem in inertial coordinates rather than
 material coordinates and we include three translational DOFs for the spherical joint, :math:`\underline{u}_\mathrm{SJ}`.   The generalized coordinates for this problem are
@@ -61,7 +61,7 @@ where :math:`g=9.81` m/s\ :math:`^2`.
 
 
 The problem is constrained such that the spherical joint is located at the global origin, the heavy-top center of mass is located 1 m from the
-origin, and the heavy-top body-attached-coordinate-system y-axis is pointing away from the global origin.  The Kynema implementation employs the following constraint:
+origin, and the heavy-top body-attached-coordinate-system y-axis is pointing away from the global origin.  The Kynema-FMB implementation employs the following constraint:
 
 .. math:: \underline{\Phi} = \begin{bmatrix}
    \underline{u}_\mathrm{HT} - \underline{u}_\mathrm{SJ} 
@@ -108,11 +108,11 @@ and the contribution to the iteration matrix in Eq. :eq:`iteration` is
 .. note::
   
    The term :math:`\underline{\underline{K}}^\Phi` is include here for 
-   completeness, but is not in the current Kynema implementation, and
+   completeness, but is not in the current Kynema-FMB implementation, and
    nonlinear-system convergence has been satisfactory. 
 
 
-The Kynema regression test suite includes the spinning, heavy top
+The Kynema-FMB regression test suite includes the spinning, heavy top
 problem with the following initial conditions:
 
 .. math::

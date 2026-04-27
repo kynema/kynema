@@ -3,7 +3,7 @@
 Time integration: Generalized-Alpha
 -----------------------------------
 
-Kynema time-integration is achieved with a Lie-group
+Kynema-FMB time-integration is achieved with a Lie-group
 generalized-:math:`\alpha` algorithm, described in detail by
 [@Bruls-etal:2012]. This algorithm is second-order time accurate and
 summarized here for completeness. For a system represented as

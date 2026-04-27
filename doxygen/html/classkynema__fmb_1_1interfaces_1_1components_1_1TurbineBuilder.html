@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kynema API: kynema_fmb::interfaces::components::TurbineBuilder Class Reference &mdash; Kynema 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Kynema
+              <img src="../../_static/oturb_logo_v2.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/user.html">User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../theory/index.html">Theory Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/index.html">Developer Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/index.html">Benchmark Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../publications.html">Kynema-FMB Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../acknowledgement.html">Acknowledgements</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Kynema</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Kynema API: kynema_fmb::interfaces::components::TurbineBuilder Class Reference</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/doxygen/html/classkynema__fmb_1_1interfaces_1_1components_1_1TurbineBuilder.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="turbinebuilder-class-reference">
+<h1>TurbineBuilder Class Reference<a class="headerlink" href="#turbinebuilder-class-reference" title="Permalink to this heading"></a></h1>
+<div class="doxygen-content docutils container">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Kynema API: kynema_fmb::interfaces::components::TurbineBuilder Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Kynema API
+   </div>
+   <div id="projectbrief">A flexible multibody structural dynamics code for wind turbines</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacekynema__fmb.html">kynema_fmb</a></li><li class="navelem"><a class="el" href="namespacekynema__fmb_1_1interfaces.html">interfaces</a></li><li class="navelem"><a class="el" href="namespacekynema__fmb_1_1interfaces_1_1components.html">components</a></li><li class="navelem"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1TurbineBuilder.html">TurbineBuilder</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="classkynema__fmb_1_1interfaces_1_1components_1_1TurbineBuilder-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">kynema_fmb::interfaces::components::TurbineBuilder Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Builder class for creating <a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1Turbine.html" title="Represents a turbine with nodes, elements, and constraints.">Turbine</a> objects with a fluent interface pattern.  
+ <a href="classkynema__fmb_1_1interfaces_1_1components_1_1TurbineBuilder.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="turbine__builder_8hpp_source.html">turbine_builder.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a8352123f704d5360c834ce4c019f6e07" id="r_a8352123f704d5360c834ce4c019f6e07"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1TurbineBuilder.html#a8352123f704d5360c834ce4c019f6e07">TurbineBuilder</a> ()=default</td></tr>
+<tr class="separator:a8352123f704d5360c834ce4c019f6e07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a415f721092783581d049edde6b629abe" id="r_a415f721092783581d049edde6b629abe"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structkynema__fmb_1_1interfaces_1_1components_1_1TurbineInput.html">TurbineInput</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1TurbineBuilder.html#a415f721092783581d049edde6b629abe">Input</a> ()</td></tr>
+<tr class="memdesc:a415f721092783581d049edde6b629abe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current turbine input configuration.  <br /></td></tr>
+<tr class="separator:a415f721092783581d049edde6b629abe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af16a947d7303eb63d90c6cf5643e682d" id="r_af16a947d7303eb63d90c6cf5643e682d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1Turbine.html">Turbine</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1TurbineBuilder.html#af16a947d7303eb63d90c6cf5643e682d">Build</a> (<a class="el" href="classkynema__fmb_1_1Model.html">Model</a> &amp;model)</td></tr>
+<tr class="memdesc:af16a947d7303eb63d90c6cf5643e682d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Build a <a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1Turbine.html" title="Represents a turbine with nodes, elements, and constraints.">Turbine</a> object from the current configuration.  <br /></td></tr>
+<tr class="separator:af16a947d7303eb63d90c6cf5643e682d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aabe4ecc26d5ed4a4bbff3cda013acaf5" id="r_aabe4ecc26d5ed4a4bbff3cda013acaf5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.html">components::BeamBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1TurbineBuilder.html#aabe4ecc26d5ed4a4bbff3cda013acaf5">Blade</a> (size_t blade_index)</td></tr>
+<tr class="memdesc:aabe4ecc26d5ed4a4bbff3cda013acaf5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get reference to builder for a specific blade.  <br /></td></tr>
+<tr class="separator:aabe4ecc26d5ed4a4bbff3cda013acaf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a669365642cefd3bb3e0affa642e9996e" id="r_a669365642cefd3bb3e0affa642e9996e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.html">components::BeamBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1TurbineBuilder.html#a669365642cefd3bb3e0affa642e9996e">Tower</a> ()</td></tr>
+<tr class="memdesc:a669365642cefd3bb3e0affa642e9996e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get reference to builder for the tower.  <br /></td></tr>
+<tr class="separator:a669365642cefd3bb3e0affa642e9996e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41a5cac336bf2a97e156f4c9c923343b" id="r_a41a5cac336bf2a97e156f4c9c923343b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1TurbineBuilder.html">TurbineBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1TurbineBuilder.html#a41a5cac336bf2a97e156f4c9c923343b">SetYawBearingInertiaMatrix</a> (const std::array&lt; std::array&lt; double, 6 &gt;, 6 &gt; &amp;matrix)</td></tr>
+<tr class="memdesc:a41a5cac336bf2a97e156f4c9c923343b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the yaw bearing inertia matrix (6x6)  <br /></td></tr>
+<tr class="separator:a41a5cac336bf2a97e156f4c9c923343b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76f2bdbad8a651860984a090ee00831d" id="r_a76f2bdbad8a651860984a090ee00831d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1TurbineBuilder.html">TurbineBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1TurbineBuilder.html#a76f2bdbad8a651860984a090ee00831d">SetHubInertiaMatrix</a> (const std::array&lt; std::array&lt; double, 6 &gt;, 6 &gt; &amp;matrix)</td></tr>
+<tr class="memdesc:a76f2bdbad8a651860984a090ee00831d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the hub inertia matrix (6x6)  <br /></td></tr>
+<tr class="separator:a76f2bdbad8a651860984a090ee00831d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7eab1a924aaf9cfaef46b8ef2d7f91d" id="r_ac7eab1a924aaf9cfaef46b8ef2d7f91d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1TurbineBuilder.html">TurbineBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1TurbineBuilder.html#ac7eab1a924aaf9cfaef46b8ef2d7f91d">SetNacelleInertiaMatrix</a> (const std::array&lt; std::array&lt; double, 6 &gt;, 6 &gt; &amp;matrix, const std::array&lt; double, 3 &gt; &amp;cm_offset)</td></tr>
+<tr class="memdesc:ac7eab1a924aaf9cfaef46b8ef2d7f91d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the nacelle inertia matrix (6x6) and center of mass offset (3x1)  <br /></td></tr>
+<tr class="separator:ac7eab1a924aaf9cfaef46b8ef2d7f91d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc50b02f17b88063b01d1eff6424e59c" id="r_afc50b02f17b88063b01d1eff6424e59c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1TurbineBuilder.html">TurbineBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1TurbineBuilder.html#afc50b02f17b88063b01d1eff6424e59c">SetTowerBasePosition</a> (const std::array&lt; double, 7 &gt; &amp;position)</td></tr>
+<tr class="memdesc:afc50b02f17b88063b01d1eff6424e59c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the position of the tower base node.  <br /></td></tr>
+<tr class="separator:afc50b02f17b88063b01d1eff6424e59c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abaca4b997371c33285809cfa5abde5c0" id="r_abaca4b997371c33285809cfa5abde5c0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1TurbineBuilder.html">TurbineBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1TurbineBuilder.html#abaca4b997371c33285809cfa5abde5c0">SetTowerAxisToRotorApex</a> (double distance)</td></tr>
+<tr class="memdesc:abaca4b997371c33285809cfa5abde5c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the distance from tower axis to hub i.e. distance from tower axis -&gt; rotor apex (meters)  <br /></td></tr>
+<tr class="separator:abaca4b997371c33285809cfa5abde5c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aebb7c9f56c2b40bdd782cdbe93fd50e1" id="r_aebb7c9f56c2b40bdd782cdbe93fd50e1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1TurbineBuilder.html">TurbineBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1TurbineBuilder.html#aebb7c9f56c2b40bdd782cdbe93fd50e1">SetTowerTopToRotorApex</a> (double height)</td></tr>
+<tr class="memdesc:aebb7c9f56c2b40bdd782cdbe93fd50e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the hub height above the tower top i.e. distrance from tower top -&gt; rotor apex (meters)  <br /></td></tr>
+<tr class="separator:aebb7c9f56c2b40bdd782cdbe93fd50e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa54dd35224558bfc9680dc1e2f996c81" id="r_aa54dd35224558bfc9680dc1e2f996c81"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1TurbineBuilder.html">TurbineBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1TurbineBuilder.html#aa54dd35224558bfc9680dc1e2f996c81">SetRotorApexToHub</a> (double distance)</td></tr>
+<tr class="memdesc:aa54dd35224558bfc9680dc1e2f996c81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Distance from rotor apex to hub center of mass (meters)  <br /></td></tr>
+<tr class="separator:aa54dd35224558bfc9680dc1e2f996c81"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb6bb9a451ac963f9eb0e1d5c4a972ba" id="r_aeb6bb9a451ac963f9eb0e1d5c4a972ba"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1TurbineBuilder.html">TurbineBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1TurbineBuilder.html#aeb6bb9a451ac963f9eb0e1d5c4a972ba">SetHubDiameter</a> (double diameter)</td></tr>
+<tr class="memdesc:aeb6bb9a451ac963f9eb0e1d5c4a972ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the hub diameter (meters)  <br /></td></tr>
+<tr class="separator:aeb6bb9a451ac963f9eb0e1d5c4a972ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0510d26d9a8bfb141dd8bea5e69172a6" id="r_a0510d26d9a8bfb141dd8bea5e69172a6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1TurbineBuilder.html">TurbineBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1TurbineBuilder.html#a0510d26d9a8bfb141dd8bea5e69172a6">SetShaftTiltAngle</a> (double angle)</td></tr>
+<tr class="memdesc:a0510d26d9a8bfb141dd8bea5e69172a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the shaft tilt angle (degrees)  <br /></td></tr>
+<tr class="separator:a0510d26d9a8bfb141dd8bea5e69172a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00cff80a6f894b66aa4d388ea912765b" id="r_a00cff80a6f894b66aa4d388ea912765b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1TurbineBuilder.html">TurbineBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1TurbineBuilder.html#a00cff80a6f894b66aa4d388ea912765b">SetNacelleYawAngle</a> (double angle)</td></tr>
+<tr class="memdesc:a00cff80a6f894b66aa4d388ea912765b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the initial nacelle yaw angle (radians)  <br /></td></tr>
+<tr class="separator:a00cff80a6f894b66aa4d388ea912765b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a868da63a41552e24dcf0256df4facf07" id="r_a868da63a41552e24dcf0256df4facf07"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1TurbineBuilder.html">TurbineBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1TurbineBuilder.html#a868da63a41552e24dcf0256df4facf07">SetConeAngle</a> (double angle)</td></tr>
+<tr class="memdesc:a868da63a41552e24dcf0256df4facf07"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the initial cone angle (radians)  <br /></td></tr>
+<tr class="separator:a868da63a41552e24dcf0256df4facf07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1edfa40bb51f65ad04735c3d217923af" id="r_a1edfa40bb51f65ad04735c3d217923af"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1TurbineBuilder.html">TurbineBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1TurbineBuilder.html#a1edfa40bb51f65ad04735c3d217923af">SetBladePitchAngle</a> (double angle)</td></tr>
+<tr class="memdesc:a1edfa40bb51f65ad04735c3d217923af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the initial blade pitch angle (radians)  <br /></td></tr>
+<tr class="separator:a1edfa40bb51f65ad04735c3d217923af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac65109626868c75b9f73252a2fc5068" id="r_aac65109626868c75b9f73252a2fc5068"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1TurbineBuilder.html">TurbineBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1TurbineBuilder.html#aac65109626868c75b9f73252a2fc5068">SetAzimuthAngle</a> (double angle)</td></tr>
+<tr class="memdesc:aac65109626868c75b9f73252a2fc5068"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the azimuth angle (radiams)  <br /></td></tr>
+<tr class="separator:aac65109626868c75b9f73252a2fc5068"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23cb1b8bea9fdfb9f192aa1c552f5e92" id="r_a23cb1b8bea9fdfb9f192aa1c552f5e92"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1TurbineBuilder.html">TurbineBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1TurbineBuilder.html#a23cb1b8bea9fdfb9f192aa1c552f5e92">SetRotorSpeed</a> (double speed)</td></tr>
+<tr class="memdesc:a23cb1b8bea9fdfb9f192aa1c552f5e92"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the initial rotor speed (rad/s)  <br /></td></tr>
+<tr class="separator:a23cb1b8bea9fdfb9f192aa1c552f5e92"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04b177d417f83c2c1e3f72138be4a18c" id="r_a04b177d417f83c2c1e3f72138be4a18c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1TurbineBuilder.html">TurbineBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1TurbineBuilder.html#a04b177d417f83c2c1e3f72138be4a18c">SetGearBoxRatio</a> (double ratio)</td></tr>
+<tr class="memdesc:a04b177d417f83c2c1e3f72138be4a18c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the gear box ratio.  <br /></td></tr>
+<tr class="separator:a04b177d417f83c2c1e3f72138be4a18c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2087371f757632915f0f6b12940c146b" id="r_a2087371f757632915f0f6b12940c146b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1TurbineBuilder.html">TurbineBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1TurbineBuilder.html#a2087371f757632915f0f6b12940c146b">SetGeneratorEfficiency</a> (double efficiency)</td></tr>
+<tr class="memdesc:a2087371f757632915f0f6b12940c146b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the generator efficiency.  <br /></td></tr>
+<tr class="separator:a2087371f757632915f0f6b12940c146b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65e36fc93eda2f3a68f980a322c089d0" id="r_a65e36fc93eda2f3a68f980a322c089d0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1TurbineBuilder.html">TurbineBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1TurbineBuilder.html#a65e36fc93eda2f3a68f980a322c089d0">SetGeneratorPower</a> (double power)</td></tr>
+<tr class="memdesc:a65e36fc93eda2f3a68f980a322c089d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the generator power.  <br /></td></tr>
+<tr class="separator:a65e36fc93eda2f3a68f980a322c089d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e9a75e3a0b9461e54dfb5e140478613" id="r_a9e9a75e3a0b9461e54dfb5e140478613"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1TurbineBuilder.html">TurbineBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1TurbineBuilder.html#a9e9a75e3a0b9461e54dfb5e140478613">SetHubWindSpeed</a> (double speed)</td></tr>
+<tr class="memdesc:a9e9a75e3a0b9461e54dfb5e140478613"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the controller wind speed.  <br /></td></tr>
+<tr class="separator:a9e9a75e3a0b9461e54dfb5e140478613"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Builder class for creating <a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1Turbine.html" title="Represents a turbine with nodes, elements, and constraints.">Turbine</a> objects with a fluent interface pattern. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a8352123f704d5360c834ce4c019f6e07" name="a8352123f704d5360c834ce4c019f6e07"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8352123f704d5360c834ce4c019f6e07">&#9670;&#160;</a></span>TurbineBuilder()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">kynema_fmb::interfaces::components::TurbineBuilder::TurbineBuilder </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="aabe4ecc26d5ed4a4bbff3cda013acaf5" name="aabe4ecc26d5ed4a4bbff3cda013acaf5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aabe4ecc26d5ed4a4bbff3cda013acaf5">&#9670;&#160;</a></span>Blade()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.html">components::BeamBuilder</a> &amp; kynema_fmb::interfaces::components::TurbineBuilder::Blade </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>blade_index</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get reference to builder for a specific blade. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">blade_index</td><td>The index of the blade </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Reference to the blade builder </dd></dl>
+
+</div>
+</div>
+<a id="af16a947d7303eb63d90c6cf5643e682d" name="af16a947d7303eb63d90c6cf5643e682d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af16a947d7303eb63d90c6cf5643e682d">&#9670;&#160;</a></span>Build()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1Turbine.html">Turbine</a> kynema_fmb::interfaces::components::TurbineBuilder::Build </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classkynema__fmb_1_1Model.html">Model</a> &amp;&#160;</td>
+          <td class="paramname"><em>model</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Build a <a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1Turbine.html" title="Represents a turbine with nodes, elements, and constraints.">Turbine</a> object from the current configuration. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">model</td><td>The model to associate with this turbine </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A new <a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1Turbine.html" title="Represents a turbine with nodes, elements, and constraints.">Turbine</a> object </dd></dl>
+
+</div>
+</div>
+<a id="a415f721092783581d049edde6b629abe" name="a415f721092783581d049edde6b629abe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a415f721092783581d049edde6b629abe">&#9670;&#160;</a></span>Input()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structkynema__fmb_1_1interfaces_1_1components_1_1TurbineInput.html">TurbineInput</a> &amp; kynema_fmb::interfaces::components::TurbineBuilder::Input </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the current turbine input configuration. </p>
+<dl class="section return"><dt>Returns</dt><dd>Reference to the current turbine input </dd></dl>
+
+</div>
+</div>
+<a id="aac65109626868c75b9f73252a2fc5068" name="aac65109626868c75b9f73252a2fc5068"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac65109626868c75b9f73252a2fc5068">&#9670;&#160;</a></span>SetAzimuthAngle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1TurbineBuilder.html">TurbineBuilder</a> &amp; kynema_fmb::interfaces::components::TurbineBuilder::SetAzimuthAngle </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>angle</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the azimuth angle (radiams) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">angle</td><td>The azimuth angle to set </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Reference to the builder for method chaining </dd></dl>
+
+</div>
+</div>
+<a id="a1edfa40bb51f65ad04735c3d217923af" name="a1edfa40bb51f65ad04735c3d217923af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1edfa40bb51f65ad04735c3d217923af">&#9670;&#160;</a></span>SetBladePitchAngle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1TurbineBuilder.html">TurbineBuilder</a> &amp; kynema_fmb::interfaces::components::TurbineBuilder::SetBladePitchAngle </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>angle</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the initial blade pitch angle (radians) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">angle</td><td>The blade pitch angle to set </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Reference to the builder for method chaining </dd></dl>
+
+</div>
+</div>
+<a id="a868da63a41552e24dcf0256df4facf07" name="a868da63a41552e24dcf0256df4facf07"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a868da63a41552e24dcf0256df4facf07">&#9670;&#160;</a></span>SetConeAngle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1TurbineBuilder.html">TurbineBuilder</a> &amp; kynema_fmb::interfaces::components::TurbineBuilder::SetConeAngle </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>angle</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the initial cone angle (radians) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">angle</td><td>The cone angle to set </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Reference to the builder for method chaining </dd></dl>
+
+</div>
+</div>
+<a id="a04b177d417f83c2c1e3f72138be4a18c" name="a04b177d417f83c2c1e3f72138be4a18c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04b177d417f83c2c1e3f72138be4a18c">&#9670;&#160;</a></span>SetGearBoxRatio()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1TurbineBuilder.html">TurbineBuilder</a> &amp; kynema_fmb::interfaces::components::TurbineBuilder::SetGearBoxRatio </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>ratio</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the gear box ratio. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ratio</td><td>ratio between generator speed and rotor speed </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Reference to the builder for method chaining </dd></dl>
+
+</div>
+</div>
+<a id="a2087371f757632915f0f6b12940c146b" name="a2087371f757632915f0f6b12940c146b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2087371f757632915f0f6b12940c146b">&#9670;&#160;</a></span>SetGeneratorEfficiency()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1TurbineBuilder.html">TurbineBuilder</a> &amp; kynema_fmb::interfaces::components::TurbineBuilder::SetGeneratorEfficiency </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>efficiency</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the generator efficiency. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">efficiency</td><td>ratio of mechanical power output to electrical power output </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Reference to the builder for method chaining </dd></dl>
+
+</div>
+</div>
+<a id="a65e36fc93eda2f3a68f980a322c089d0" name="a65e36fc93eda2f3a68f980a322c089d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a65e36fc93eda2f3a68f980a322c089d0">&#9670;&#160;</a></span>SetGeneratorPower()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1TurbineBuilder.html">TurbineBuilder</a> &amp; kynema_fmb::interfaces::components::TurbineBuilder::SetGeneratorPower </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>power</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the generator power. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">power</td><td>initial generator power (W) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Reference to the builder for method chaining </dd></dl>
+
+</div>
+</div>
+<a id="aeb6bb9a451ac963f9eb0e1d5c4a972ba" name="aeb6bb9a451ac963f9eb0e1d5c4a972ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb6bb9a451ac963f9eb0e1d5c4a972ba">&#9670;&#160;</a></span>SetHubDiameter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1TurbineBuilder.html">TurbineBuilder</a> &amp; kynema_fmb::interfaces::components::TurbineBuilder::SetHubDiameter </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>diameter</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the hub diameter (meters) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">diameter</td><td>The hub diameter to set (meters) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Reference to this builder for method chaining </dd></dl>
+
+</div>
+</div>
+<a id="a76f2bdbad8a651860984a090ee00831d" name="a76f2bdbad8a651860984a090ee00831d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76f2bdbad8a651860984a090ee00831d">&#9670;&#160;</a></span>SetHubInertiaMatrix()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1TurbineBuilder.html">TurbineBuilder</a> &amp; kynema_fmb::interfaces::components::TurbineBuilder::SetHubInertiaMatrix </td>
+          <td>(</td>
+          <td class="paramtype">const std::array&lt; std::array&lt; double, 6 &gt;, 6 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>matrix</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the hub inertia matrix (6x6) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">matrix</td><td>The inertia matrix to set, includes hub assembly mass and inertia </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Reference to the builder for method chaining </dd></dl>
+
+</div>
+</div>
+<a id="a9e9a75e3a0b9461e54dfb5e140478613" name="a9e9a75e3a0b9461e54dfb5e140478613"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e9a75e3a0b9461e54dfb5e140478613">&#9670;&#160;</a></span>SetHubWindSpeed()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1TurbineBuilder.html">TurbineBuilder</a> &amp; kynema_fmb::interfaces::components::TurbineBuilder::SetHubWindSpeed </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>speed</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the controller wind speed. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">speed</td><td>The wind speed at the hub </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Reference to the builder for method chaining </dd></dl>
+
+</div>
+</div>
+<a id="ac7eab1a924aaf9cfaef46b8ef2d7f91d" name="ac7eab1a924aaf9cfaef46b8ef2d7f91d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac7eab1a924aaf9cfaef46b8ef2d7f91d">&#9670;&#160;</a></span>SetNacelleInertiaMatrix()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1TurbineBuilder.html">TurbineBuilder</a> &amp; kynema_fmb::interfaces::components::TurbineBuilder::SetNacelleInertiaMatrix </td>
+          <td>(</td>
+          <td class="paramtype">const std::array&lt; std::array&lt; double, 6 &gt;, 6 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>matrix</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::array&lt; double, 3 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>cm_offset</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the nacelle inertia matrix (6x6) and center of mass offset (3x1) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">matrix</td><td>The inertia matrix to set, includes mass and inertia </td></tr>
+    <tr><td class="paramname">cm_offset</td><td>The nacelle center of mass offset from the yaw bearing (meters) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Reference to the builder for method chaining </dd></dl>
+
+</div>
+</div>
+<a id="a00cff80a6f894b66aa4d388ea912765b" name="a00cff80a6f894b66aa4d388ea912765b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a00cff80a6f894b66aa4d388ea912765b">&#9670;&#160;</a></span>SetNacelleYawAngle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1TurbineBuilder.html">TurbineBuilder</a> &amp; kynema_fmb::interfaces::components::TurbineBuilder::SetNacelleYawAngle </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>angle</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the initial nacelle yaw angle (radians) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">angle</td><td>The nacelle yaw angle to set </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Reference to the builder for method chaining </dd></dl>
+
+</div>
+</div>
+<a id="aa54dd35224558bfc9680dc1e2f996c81" name="aa54dd35224558bfc9680dc1e2f996c81"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa54dd35224558bfc9680dc1e2f996c81">&#9670;&#160;</a></span>SetRotorApexToHub()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1TurbineBuilder.html">TurbineBuilder</a> &amp; kynema_fmb::interfaces::components::TurbineBuilder::SetRotorApexToHub </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>distance</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Distance from rotor apex to hub center of mass (meters) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">distance</td><td>The distance to set (meters) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Reference to the builder for method chaining </dd></dl>
+
+</div>
+</div>
+<a id="a23cb1b8bea9fdfb9f192aa1c552f5e92" name="a23cb1b8bea9fdfb9f192aa1c552f5e92"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23cb1b8bea9fdfb9f192aa1c552f5e92">&#9670;&#160;</a></span>SetRotorSpeed()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1TurbineBuilder.html">TurbineBuilder</a> &amp; kynema_fmb::interfaces::components::TurbineBuilder::SetRotorSpeed </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>speed</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the initial rotor speed (rad/s) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">speed</td><td>The rotor speed to set </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Reference to the builder for method chaining </dd></dl>
+
+</div>
+</div>
+<a id="a0510d26d9a8bfb141dd8bea5e69172a6" name="a0510d26d9a8bfb141dd8bea5e69172a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0510d26d9a8bfb141dd8bea5e69172a6">&#9670;&#160;</a></span>SetShaftTiltAngle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1TurbineBuilder.html">TurbineBuilder</a> &amp; kynema_fmb::interfaces::components::TurbineBuilder::SetShaftTiltAngle </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>angle</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the shaft tilt angle (degrees) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">angle</td><td>The shaft tilt angle to set </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Reference to the builder for method chaining </dd></dl>
+
+</div>
+</div>
+<a id="abaca4b997371c33285809cfa5abde5c0" name="abaca4b997371c33285809cfa5abde5c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abaca4b997371c33285809cfa5abde5c0">&#9670;&#160;</a></span>SetTowerAxisToRotorApex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1TurbineBuilder.html">TurbineBuilder</a> &amp; kynema_fmb::interfaces::components::TurbineBuilder::SetTowerAxisToRotorApex </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>distance</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the distance from tower axis to hub i.e. distance from tower axis -&gt; rotor apex (meters) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">distance</td><td>The distance to set </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Reference to the builder for method chaining </dd></dl>
+
+</div>
+</div>
+<a id="afc50b02f17b88063b01d1eff6424e59c" name="afc50b02f17b88063b01d1eff6424e59c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc50b02f17b88063b01d1eff6424e59c">&#9670;&#160;</a></span>SetTowerBasePosition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1TurbineBuilder.html">TurbineBuilder</a> &amp; kynema_fmb::interfaces::components::TurbineBuilder::SetTowerBasePosition </td>
+          <td>(</td>
+          <td class="paramtype">const std::array&lt; double, 7 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>position</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the position of the tower base node. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">position</td><td>Array containing position/orientation [x,y,z,qw,qx,qy,qz] </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Reference to the builder for method chaining </dd></dl>
+
+</div>
+</div>
+<a id="aebb7c9f56c2b40bdd782cdbe93fd50e1" name="aebb7c9f56c2b40bdd782cdbe93fd50e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aebb7c9f56c2b40bdd782cdbe93fd50e1">&#9670;&#160;</a></span>SetTowerTopToRotorApex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1TurbineBuilder.html">TurbineBuilder</a> &amp; kynema_fmb::interfaces::components::TurbineBuilder::SetTowerTopToRotorApex </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>height</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the hub height above the tower top i.e. distrance from tower top -&gt; rotor apex (meters) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">height</td><td>The hub height to set </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Reference to the builder for method chaining </dd></dl>
+
+</div>
+</div>
+<a id="a41a5cac336bf2a97e156f4c9c923343b" name="a41a5cac336bf2a97e156f4c9c923343b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41a5cac336bf2a97e156f4c9c923343b">&#9670;&#160;</a></span>SetYawBearingInertiaMatrix()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1TurbineBuilder.html">TurbineBuilder</a> &amp; kynema_fmb::interfaces::components::TurbineBuilder::SetYawBearingInertiaMatrix </td>
+          <td>(</td>
+          <td class="paramtype">const std::array&lt; std::array&lt; double, 6 &gt;, 6 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>matrix</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the yaw bearing inertia matrix (6x6) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">matrix</td><td>The inertia matrix to set, includes yaw bearing and nacelle mass with inertia about yaw bearing i.e. system_inertia_tt in WindIO </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Reference to the builder for method chaining </dd></dl>
+
+</div>
+</div>
+<a id="a669365642cefd3bb3e0affa642e9996e" name="a669365642cefd3bb3e0affa642e9996e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a669365642cefd3bb3e0affa642e9996e">&#9670;&#160;</a></span>Tower()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classkynema__fmb_1_1interfaces_1_1components_1_1BeamBuilder.html">components::BeamBuilder</a> &amp; kynema_fmb::interfaces::components::TurbineBuilder::Tower </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get reference to builder for the tower. </p>
+<dl class="section return"><dt>Returns</dt><dd>Reference to the tower builder </dd></dl>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
+<li>/home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/interfaces/components/<a class="el" href="turbine__builder_8hpp_source.html">turbine_builder.hpp</a></li>
+<li>/home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/interfaces/components/<a class="el" href="turbine__builder_8cpp.html">turbine_builder.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023 - Present, MIT License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

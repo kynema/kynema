@@ -1,0 +1,14 @@
+.. meta::6fffde5a0d5ac029c857e60bfaf54cd323be46a0b7648391e4a3cd1565581d6b21fd71752d26b1fe986c2d340b0a3c57f0ff7ceef966e71431b791a0e6a8c4c9
+
+:orphan:
+
+.. title:: Kynema API: kynema_fmb::beams::CalculateG_D1&lt; DeviceType &gt; Struct Template Reference
+
+CalculateG\_D1&lt; DeviceType &gt; Struct Template Reference
+============================================================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: structkynema__fmb_1_1beams_1_1CalculateG__D1.html

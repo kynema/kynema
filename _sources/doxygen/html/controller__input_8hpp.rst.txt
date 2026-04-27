@@ -1,11 +1,11 @@
-.. meta::d072c3f2033e8b9cde84e90419a85385eea485d9a5401ce725729f2d0b91a92341d228b6160e34f8f6fb063cf647721f21a4360cb0dc33b75c8e305b04a0dac1
+.. meta::33d2ad0361399d292415fb455819caf96d93ec87d57591fa20bb9dbff9294c54f8d912cd0a53cba3556447afc48ac4d9016387707d2f3af6116446afba921e40
 
 :orphan:
 
-.. title:: Kynema API: /home/runner/work/kynema/kynema/kynema/src/interfaces/components/controller_input.hpp File Reference
+.. title:: Kynema API: /home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/interfaces/components/controller_input.hpp File Reference
 
-/home/runner/work/kynema/kynema/kynema/src/interfaces/components/controller\_input.hpp File Reference
-=====================================================================================================
+/home/runner/work/kynema-fmb/kynema-fmb/kynema-fmb/src/interfaces/components/controller\_input.hpp File Reference
+=================================================================================================================
 
 .. container:: doxygen-content
 

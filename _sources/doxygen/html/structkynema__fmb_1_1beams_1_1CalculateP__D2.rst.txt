@@ -1,0 +1,14 @@
+.. meta::08a6fd30e878bc3dc13854bf91bd94ea7ea4a316a42174f8452c75726d4849ae9fb2ff2b3cf41abd225d36b2853218de07b0fb2717cbe5f66c9ca89b86db6221
+
+:orphan:
+
+.. title:: Kynema API: kynema_fmb::beams::CalculateP_D2&lt; DeviceType &gt; Struct Template Reference
+
+CalculateP\_D2&lt; DeviceType &gt; Struct Template Reference
+============================================================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: structkynema__fmb_1_1beams_1_1CalculateP__D2.html

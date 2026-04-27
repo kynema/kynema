@@ -1,0 +1,14 @@
+.. meta::8d1a6912f3f18f1426647cda2c4950be614d275b7ffc7d358eccccb4765b936e7feb7e541528c0f5acc9276e7b0c277a4f807c0581e72e19ebb0d2ee8d0f09c2
+
+:orphan:
+
+.. title:: Kynema API: kynema_fmb::dss::NumericFunction&lt; Handle&lt; Algorithm::CUSOLVER_SP &gt;, CrsMatrixType &gt; Struct Template Reference
+
+CUSOLVER\_SP &gt;, CrsMatrixType &gt; Struct Template Reference
+===============================================================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: structkynema__fmb_1_1dss_1_1NumericFunction_3_01Handle_3_01Algorithm_1_1CUSOLVER__SP_01_4_00_01CrsMatrixType_01_4.html
