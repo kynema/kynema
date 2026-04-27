@@ -7,21 +7,12 @@ on:
     branches: [main]
 
 jobs:
-  clang-format:
-    runs-on: ubuntu-24.04
+  Formatting:
+    runs-on: ubuntu-latest
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+    - uses: actions/checkout@v4
     - name: Run clang-format
-      run: |
-        clang-format --version
-        find . -regex '.*\.\(cpp\|hpp\|c\|h\)' -exec clang-format-18 -i {} \;
-    - name: Check for formatting changes
-      run: |
-        if [[ `git status --porcelain` ]]; then
-          echo "Code is not formatted. Please run clang-format."
-          git diff
-          exit 1
-        else
-          echo "Code is properly formatted."
-        fi
+      uses: jidicula/clang-format-action@v4.18.0
+      with:
+        clang-format-version: '22'
+        check-path: '.'
