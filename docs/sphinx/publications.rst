@@ -1,5 +1,5 @@
 Kynema-FMB Publications
--------------------
+-----------------------
 
 Sprague, M.A. and R. Mudafort, 2022, Kynema-FMB [SWR-23-07]. https://doi.org/10.11578/dc.20251006.3 
 
