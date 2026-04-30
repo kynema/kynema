@@ -64,7 +64,7 @@ jobs:
           spack load rosco
           spack load openfast
           spack load eigen
-          cd kynema
+          cd kynema-fmb
           mkdir build
           cd build
           cmake .. \
