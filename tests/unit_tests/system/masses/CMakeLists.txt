@@ -1,6 +1,6 @@
 # Specify the source files for the unit test executable
 target_sources(
-    kynema_unit_tests
+    kynema_fmb_unit_tests
     PRIVATE
     test_rotate_section_matrix.cpp
     test_calculate_mass_matrix_components.cpp

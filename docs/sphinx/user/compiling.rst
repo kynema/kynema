@@ -70,8 +70,8 @@ Next, the tests can be run either through ctest or directly from the unit test o
 .. code-block:: bash
 
     ctest
-    ./tests/unit_tests/kynema_unit_tests
-    ./tests/regression_tests/kynema_regression_tests
+    ./tests/unit_tests/kynema_fmb_unit_tests
+    ./tests/regression_tests/kynema_fmb_regression_tests
 
 You can also build Kynema-FMB from this folder using standard make commands.
 
@@ -236,7 +236,7 @@ Once built, the unit test executable can also be run directly from the build dir
 
 .. code-block:: bash
 
-    ./tests/unit_tests/kynema_unit_tests
+    ./tests/unit_tests/kynema_fmb_unit_tests
 
 External Controllers
 ~~~~~~~~~~~~~~~~~~~~
