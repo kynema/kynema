@@ -1,6 +1,6 @@
 # Specify the source files for the unit test executable
 target_sources(
-    kynema_unit_tests
+    kynema_fmb_unit_tests
     PRIVATE
     test_calculate_fixed_bc_constraint.cpp
     test_calculate_prescribed_bc_constraint.cpp
