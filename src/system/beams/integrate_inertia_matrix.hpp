@@ -31,7 +31,7 @@ struct IntegrateInertiaMatrixElement {
     ConstView<double* [6][6]> qp_DD2_;
     double beta_prime_;
     double gamma_prime_;
-    Kokkos::View<double** [6][6], DeviceType> gbl_M_;
+    View<double** [6][6]> gbl_M_;
 
     KOKKOS_FUNCTION
     void operator()(size_t node_simd_node) const {
@@ -56,6 +56,9 @@ struct IntegrateInertiaMatrixElement {
         const auto qp_GD1 = ConstView<double* [36]>(qp_GD1_.data(), num_qps);
         const auto qp_GD2 = ConstView<double* [36]>(qp_GD2_.data(), num_qps);
         const auto qp_DD2 = ConstView<double* [36]>(qp_DD2_.data(), num_qps);
+
+        const auto beta_prime = simd_type(beta_prime_);
+        const auto gamma_prime = simd_type(gamma_prime_);
 
         for (auto qp = 0U; qp < num_qps; ++qp) {
             const auto w = simd_type(qp_weight_(qp));
@@ -85,7 +88,7 @@ struct IntegrateInertiaMatrixElement {
                 const auto DD2 = simd_type(DD2_local(i));
                 const auto Mij = c4 * Muu;
                 const auto Gij = c1 * Duu + c2 * GD1 + c3 * DD2 + c4 * (G_I + GD2);
-                local_M[i] = local_M[i] + (beta_prime_ * Mij) + (gamma_prime_ * Gij);
+                local_M[i] = local_M[i] + (beta_prime * Mij) + (gamma_prime * Gij);
             }
         }
 
