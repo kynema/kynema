@@ -206,50 +206,51 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keyword">const</span> <span class="keyword">auto</span> shape_size = Kokkos::View&lt;double**&gt;::shmem_size(padded_num_nodes, num_qps);</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keyword">const</span> <span class="keyword">auto</span> weight_size = Kokkos::View&lt;double*&gt;::shmem_size(num_qps);</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keyword">const</span> <span class="keyword">auto</span> node_variable_size = Kokkos::View&lt;double* [7]&gt;::shmem_size(num_nodes);</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keyword">const</span> <span class="keyword">auto</span> qp_variable_size = Kokkos::View&lt;double* [6]&gt;::shmem_size(num_qps);</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="keyword">const</span> <span class="keyword">auto</span> qp_matrix_size = Kokkos::View&lt;double* [6][6]&gt;::shmem_size(num_qps);</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keyword">const</span> <span class="keyword">auto</span> system_matrix_size = Kokkos::View&lt;double** [6][6]&gt;::shmem_size(num_nodes, num_nodes);</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keyword">const</span> <span class="keyword">auto</span> hbmem = (4 * node_variable_size) + (10 * qp_variable_size) + (15 * qp_matrix_size) +</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>                       (2 * system_matrix_size);</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keyword">const</span> <span class="keyword">auto</span> smem = (2 * shape_size) + (2 * weight_size);</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    range_policy.set_scratch_size(1, Kokkos::PerTeam(hbmem))</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        .set_scratch_size(0, Kokkos::PerTeam(smem));</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    Kokkos::parallel_for(</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <span class="stringliteral">&quot;beams::CalculateQuadraturePointValues&quot;</span>, range_policy,</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <a class="code hl_struct" href="structkynema__fmb_1_1beams_1_1CalculateQuadraturePointValues.html">beams::CalculateQuadraturePointValues&lt;DeviceType&gt;</a>{</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>            parameters.<a class="code hl_variable" href="structkynema__fmb_1_1StepParameters.html#aede147c701ada027f5b57f928fe12cbd">beta_prime</a>,</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>            parameters.<a class="code hl_variable" href="structkynema__fmb_1_1StepParameters.html#acac2f77fbd2dc8094e364b8bc4f31217">gamma_prime</a>,</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>            state.<a class="code hl_variable" href="structkynema__fmb_1_1State.html#adb6ef60b97601d4541a55b105527e690">q</a>,</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>            state.<a class="code hl_variable" href="structkynema__fmb_1_1State.html#a3e897d7d978deaf2ec8a820bece392bf">v</a>,</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>            state.<a class="code hl_variable" href="structkynema__fmb_1_1State.html#aaf9b312b2206745e1fb2b1516f677e5f">vd</a>,</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>            state.<a class="code hl_variable" href="structkynema__fmb_1_1State.html#a19d6f38cb6fa6c40e6689d07aff662b9">tangent</a>,</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>            beams.<a class="code hl_variable" href="structkynema__fmb_1_1Beams.html#a420543aafdcc80ff0207abd364550cd4">node_state_indices</a>,</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>            beams.<a class="code hl_variable" href="structkynema__fmb_1_1Beams.html#a6cd13646474f9fad37e595b83a2ea2ed">num_nodes_per_element</a>,</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>            beams.<a class="code hl_variable" href="structkynema__fmb_1_1Beams.html#adf87b3d38e6e8403a17b709cd0ca4a01">num_qps_per_element</a>,</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>            beams.<a class="code hl_variable" href="structkynema__fmb_1_1Beams.html#ab93a1c89c8520fa9c58c99c0e83acb7c">element_mu</a>,</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>            beams.<a class="code hl_variable" href="structkynema__fmb_1_1Beams.html#a3f45cf4dcf000b1387945ba768c4a800">qp_weight</a>,</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>            beams.<a class="code hl_variable" href="structkynema__fmb_1_1Beams.html#a847cb8e3edc30fd7febdb9ccdec53385">qp_jacobian</a>,</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>            beams.<a class="code hl_variable" href="structkynema__fmb_1_1Beams.html#a0a5fb603738d434c0b3b5c8215166d19">shape_interp</a>,</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>            beams.<a class="code hl_variable" href="structkynema__fmb_1_1Beams.html#a26c6bc4d8560549304c2d66ddcff978a">shape_deriv</a>,</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>            beams.<a class="code hl_variable" href="structkynema__fmb_1_1Beams.html#a7f2ba593039d4c3ee5ad14b04f78d089">gravity</a>,</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>            beams.<a class="code hl_variable" href="structkynema__fmb_1_1Beams.html#a68711d13daba3923573b83661243b8b9">node_FX</a>,</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>            beams.<a class="code hl_variable" href="structkynema__fmb_1_1Beams.html#a0dd4167be19e5e1868d6cee43ac249d0">qp_r0</a>,</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>            beams.<a class="code hl_variable" href="structkynema__fmb_1_1Beams.html#aa1211526264b8f742883c97f1226f77e">qp_x0</a>,</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>            beams.<a class="code hl_variable" href="structkynema__fmb_1_1Beams.html#a0053c2681265225359d972d3bf19111a">qp_x0_prime</a>,</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>            beams.<a class="code hl_variable" href="structkynema__fmb_1_1Beams.html#aab06964093684f58a5908b674ce17aac">qp_Mstar</a>,</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>            beams.<a class="code hl_variable" href="structkynema__fmb_1_1Beams.html#a035448161532a1265bada0e4c97da48e">qp_Cstar</a>,</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>            beams.<a class="code hl_variable" href="structkynema__fmb_1_1Beams.html#ac123bd727ce4c03c006fbe865c2a57e5">qp_Fe</a>,</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>            beams.<a class="code hl_variable" href="structkynema__fmb_1_1Beams.html#a75c15f4233d2c08324e789e62c501c26">residual_vector_terms</a>,</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>            beams.<a class="code hl_variable" href="structkynema__fmb_1_1Beams.html#a80a2fc6a60a5c5df337898d71d8a4f83">system_matrix_terms</a></div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        }</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    );</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>}</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keyword">const</span> <span class="keyword">auto</span> mu_size = Kokkos::View&lt;double[6]&gt;::shmem_size();</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keyword">const</span> <span class="keyword">auto</span> node_variable_size = Kokkos::View&lt;double* [7]&gt;::shmem_size(num_nodes);</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="keyword">const</span> <span class="keyword">auto</span> qp_variable_size = Kokkos::View&lt;double* [6]&gt;::shmem_size(num_qps);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keyword">const</span> <span class="keyword">auto</span> qp_matrix_size = Kokkos::View&lt;double* [6][6]&gt;::shmem_size(num_qps);</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keyword">const</span> <span class="keyword">auto</span> system_matrix_size = Kokkos::View&lt;double** [6][6]&gt;::shmem_size(num_nodes, num_nodes);</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keyword">const</span> <span class="keyword">auto</span> hbmem = (4 * node_variable_size) + (10 * qp_variable_size) + (15 * qp_matrix_size) +</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>                       (2 * system_matrix_size);</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keyword">const</span> <span class="keyword">auto</span> smem = (2 * shape_size) + (2 * weight_size) + mu_size;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    range_policy.set_scratch_size(1, Kokkos::PerTeam(hbmem))</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        .set_scratch_size(0, Kokkos::PerTeam(smem));</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    Kokkos::parallel_for(</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="stringliteral">&quot;beams::CalculateQuadraturePointValues&quot;</span>, range_policy,</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        <a class="code hl_struct" href="structkynema__fmb_1_1beams_1_1CalculateQuadraturePointValues.html">beams::CalculateQuadraturePointValues&lt;DeviceType&gt;</a>{</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>            parameters.<a class="code hl_variable" href="structkynema__fmb_1_1StepParameters.html#aede147c701ada027f5b57f928fe12cbd">beta_prime</a>,</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>            parameters.<a class="code hl_variable" href="structkynema__fmb_1_1StepParameters.html#acac2f77fbd2dc8094e364b8bc4f31217">gamma_prime</a>,</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>            state.<a class="code hl_variable" href="structkynema__fmb_1_1State.html#adb6ef60b97601d4541a55b105527e690">q</a>,</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>            state.<a class="code hl_variable" href="structkynema__fmb_1_1State.html#a3e897d7d978deaf2ec8a820bece392bf">v</a>,</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>            state.<a class="code hl_variable" href="structkynema__fmb_1_1State.html#aaf9b312b2206745e1fb2b1516f677e5f">vd</a>,</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>            state.<a class="code hl_variable" href="structkynema__fmb_1_1State.html#a19d6f38cb6fa6c40e6689d07aff662b9">tangent</a>,</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>            beams.<a class="code hl_variable" href="structkynema__fmb_1_1Beams.html#a420543aafdcc80ff0207abd364550cd4">node_state_indices</a>,</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>            beams.<a class="code hl_variable" href="structkynema__fmb_1_1Beams.html#a6cd13646474f9fad37e595b83a2ea2ed">num_nodes_per_element</a>,</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>            beams.<a class="code hl_variable" href="structkynema__fmb_1_1Beams.html#adf87b3d38e6e8403a17b709cd0ca4a01">num_qps_per_element</a>,</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>            beams.<a class="code hl_variable" href="structkynema__fmb_1_1Beams.html#ab93a1c89c8520fa9c58c99c0e83acb7c">element_mu</a>,</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>            beams.<a class="code hl_variable" href="structkynema__fmb_1_1Beams.html#a3f45cf4dcf000b1387945ba768c4a800">qp_weight</a>,</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>            beams.<a class="code hl_variable" href="structkynema__fmb_1_1Beams.html#a847cb8e3edc30fd7febdb9ccdec53385">qp_jacobian</a>,</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>            beams.<a class="code hl_variable" href="structkynema__fmb_1_1Beams.html#a0a5fb603738d434c0b3b5c8215166d19">shape_interp</a>,</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>            beams.<a class="code hl_variable" href="structkynema__fmb_1_1Beams.html#a26c6bc4d8560549304c2d66ddcff978a">shape_deriv</a>,</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>            beams.<a class="code hl_variable" href="structkynema__fmb_1_1Beams.html#a7f2ba593039d4c3ee5ad14b04f78d089">gravity</a>,</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>            beams.<a class="code hl_variable" href="structkynema__fmb_1_1Beams.html#a68711d13daba3923573b83661243b8b9">node_FX</a>,</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>            beams.<a class="code hl_variable" href="structkynema__fmb_1_1Beams.html#a0dd4167be19e5e1868d6cee43ac249d0">qp_r0</a>,</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>            beams.<a class="code hl_variable" href="structkynema__fmb_1_1Beams.html#aa1211526264b8f742883c97f1226f77e">qp_x0</a>,</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>            beams.<a class="code hl_variable" href="structkynema__fmb_1_1Beams.html#a0053c2681265225359d972d3bf19111a">qp_x0_prime</a>,</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>            beams.<a class="code hl_variable" href="structkynema__fmb_1_1Beams.html#aab06964093684f58a5908b674ce17aac">qp_Mstar</a>,</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>            beams.<a class="code hl_variable" href="structkynema__fmb_1_1Beams.html#a035448161532a1265bada0e4c97da48e">qp_Cstar</a>,</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>            beams.<a class="code hl_variable" href="structkynema__fmb_1_1Beams.html#ac123bd727ce4c03c006fbe865c2a57e5">qp_Fe</a>,</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>            beams.<a class="code hl_variable" href="structkynema__fmb_1_1Beams.html#a75c15f4233d2c08324e789e62c501c26">residual_vector_terms</a>,</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>            beams.<a class="code hl_variable" href="structkynema__fmb_1_1Beams.html#a80a2fc6a60a5c5df337898d71d8a4f83">system_matrix_terms</a></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        }</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    );</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>}</div>
 </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>}  <span class="comment">// namespace kynema_fmb::step</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>}  <span class="comment">// namespace kynema_fmb::step</span></div>
 <div class="ttc" id="abeams_2calculate__quadrature__point__values_8hpp_html"><div class="ttname"><a href="beams_2calculate__quadrature__point__values_8hpp.html">calculate_quadrature_point_values.hpp</a></div></div>
 <div class="ttc" id="abeams_8hpp_html"><div class="ttname"><a href="beams_8hpp.html">beams.hpp</a></div></div>
 <div class="ttc" id="anamespacekynema__fmb_1_1step_html"><div class="ttname"><a href="namespacekynema__fmb_1_1step.html">kynema_fmb::step</a></div><div class="ttdef"><b>Definition</b> assemble_constraints_matrix.hpp:11</div></div>
