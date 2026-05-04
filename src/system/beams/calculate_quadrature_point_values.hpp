@@ -158,9 +158,9 @@ struct CalculateQuadraturePointValues {
 
         const auto damping_quad_point_calculator =
             beams::CalculateQuadraturePointDampingValues<DeviceType>{
-                element,   element_mu,      qp_jacobian, shape_interp, shape_deriv, qp_r0_,
-                qp_x0_prime_, qp_Cstar_, node_u,  node_u_dot,  qp_F_D1,      qp_F_D2,     qp_Duu, qp_D_D1,
-                qp_D_D2,   qp_G_D1, qp_G_D2,     qp_P_D2,      qp_K_D1,     qp_K_D2
+                element,   element_mu, qp_jacobian, shape_interp, shape_deriv, qp_r0_, qp_x0_prime_,
+                qp_Cstar_, node_u,     node_u_dot,  qp_F_D1,      qp_F_D2,     qp_Duu, qp_D_D1,
+                qp_D_D2,   qp_G_D1,    qp_G_D2,     qp_P_D2,      qp_K_D1,     qp_K_D2
             };
         parallel_for(qp_range, damping_quad_point_calculator);
 
