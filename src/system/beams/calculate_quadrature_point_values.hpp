@@ -33,7 +33,7 @@ struct CalculateQuadraturePointValues {
     ConstView<size_t**> node_state_indices;
     ConstView<size_t*> num_nodes_per_element;
     ConstView<size_t*> num_qps_per_element;
-    ConstView<double* [6]> element_mu;
+    ConstView<double* [6]> element_mu_;
     ConstView<double**> qp_weight_;
     ConstView<double**> qp_jacobian_;
     ConstView<double***> shape_interp_;
@@ -82,6 +82,8 @@ struct CalculateQuadraturePointValues {
         const auto shape_deriv =
             LeftView<double**>(member.team_scratch(0), padded_num_nodes, num_qps);
 
+        const auto element_mu = View<double[6]>(member.team_scratch(0));
+
         const auto qp_weight = View<double*>(member.team_scratch(0), num_qps);
         const auto qp_jacobian = View<double*>(member.team_scratch(0), num_qps);
 
@@ -129,12 +131,10 @@ struct CalculateQuadraturePointValues {
         CopyMatrix::invoke(member, subview(qp_FE_, element, qp_pair, ALL), qp_Fe);
         CopyMatrix::invoke(member, subview(node_FX_, element, node_pair, ALL), node_FX);
 
+        CopyVector::invoke(member, subview(element_mu_, element, ALL), element_mu);
+
         CopyVector::invoke(member, subview(qp_weight_, element, qp_pair), qp_weight);
         CopyVector::invoke(member, subview(qp_jacobian_, element, qp_pair), qp_jacobian);
-
-        auto mu_data = Array<double, 6>{};
-        const auto mu = View<double[6]>(mu_data.data());
-        CopyVector::invoke(member, subview(element_mu, element, ALL), mu);
 
         const auto node_state_updater = beams::UpdateNodeStateElement<DeviceType>{
             element, node_state_indices, node_u, node_u_dot, node_u_ddot, Q, V, A
@@ -158,9 +158,9 @@ struct CalculateQuadraturePointValues {
 
         const auto damping_quad_point_calculator =
             beams::CalculateQuadraturePointDampingValues<DeviceType>{
-                element,   mu,      qp_jacobian, shape_interp, shape_deriv, qp_r0_, qp_x0_prime_,
-                qp_Cstar_, node_u,  node_u_dot,  qp_F_D1,      qp_F_D2,     qp_Duu, qp_D_D1,
-                qp_D_D2,   qp_G_D1, qp_G_D2,     qp_P_D2,      qp_K_D1,     qp_K_D2
+                element,   element_mu, qp_jacobian, shape_interp, shape_deriv, qp_r0_, qp_x0_prime_,
+                qp_Cstar_, node_u,     node_u_dot,  qp_F_D1,      qp_F_D2,     qp_Duu, qp_D_D1,
+                qp_D_D2,   qp_G_D1,    qp_G_D2,     qp_P_D2,      qp_K_D1,     qp_K_D2
             };
         parallel_for(qp_range, damping_quad_point_calculator);
 
